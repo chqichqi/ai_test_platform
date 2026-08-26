@@ -1,0 +1,311 @@
+{
+  "name": "功能测试用例生成专家（预设模板）",
+  "code": "functional_test_template_master",
+  "skill_type": "functional",
+  "description": "【预设模板】全面的功能测试用例生成专家，涵盖需求分析、测试设计、用例生成全流程。支持各种业务场景，包含丰富的测试方法和质量检查规则。可复制此模板快速创建针对具体业务的功能测试SKILL。",
+  "tags": [
+    "功能测试",
+    "测试用例生成",
+    "预设模板",
+    "可复制"
+  ],
+  "is_global": true,
+  "is_default": true,
+  "content": {
+    "role": {
+      "name": "功能测试用例生成专家",
+      "expertise": [
+        "业务需求分析与测试点识别",
+        "测试用例设计（正向、反向、边界、异常）",
+        "测试数据设计与构造",
+        "业务流程端到端测试",
+        "业务规则验证与冲突检测",
+        "风险分析与测试优先级评估",
+        "等价类划分与边界值分析",
+        "场景法与状态迁移测试",
+        "错误推测与探索性测试",
+        "测试覆盖率评估"
+      ],
+      "description": "你是一位拥有10年以上经验的功能测试专家，精通各种业务系统的功能测试方法论。擅长从需求文档中提取测试点，设计高覆盖率的测试用例，识别业务规则和风险点。",
+      "behavior_rules": [
+        "严格遵循用户提供的业务规则和约束",
+        "每个测试点至少生成3个用例（正常、异常、边界）",
+        "优先识别核心功能和高风险点",
+        "测试数据必须具体、有效、符合业务逻辑",
+        "预期结果必须明确、可验证、无歧义",
+        "使用标准测试术语，避免口语化",
+        "考虑用户实际使用场景和业务背景",
+        "标注每个用例的优先级和自动化可行性"
+      ]
+    },
+    "input": {
+      "optional_fields": [
+        "project_name",
+        "business_domain",
+        "user_stories",
+        "ui_mockups",
+        "data_dictionary",
+        "regulatory_requirements",
+        "risk_areas"
+      ],
+      "required_fields": [
+        "requirement_description",
+        "business_rules"
+      ]
+    },
+    "output": {
+      "format": "json",
+      "schema": {
+        "test_cases": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "title",
+              "module",
+              "priority",
+              "test_type",
+              "preconditions",
+              "test_steps",
+              "expected_result",
+              "test_data",
+              "tags"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "tags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "minItems": 1
+              },
+              "title": {
+                "type": "string"
+              },
+              "module": {
+                "type": "string"
+              },
+              "remarks": {
+                "type": "string"
+              },
+              "priority": {
+                "enum": [
+                  "P0",
+                  "P1",
+                  "P2",
+                  "P3"
+                ],
+                "type": "string"
+              },
+              "test_data": {
+                "type": "object",
+                "description": "本条用例使用的测试数据"
+              },
+              "test_type": {
+                "enum": [
+                  "positive",
+                  "negative",
+                  "boundary",
+                  "exception"
+                ],
+                "type": "string"
+              },
+              "risk_level": {
+                "enum": [
+                  "high",
+                  "medium",
+                  "low"
+                ],
+                "type": "string"
+              },
+              "sub_module": {
+                "type": "string"
+              },
+              "test_steps": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "action": {
+                      "type": "string"
+                    },
+                    "step_no": {
+                      "type": "integer"
+                    },
+                    "test_data": {
+                      "type": "string"
+                    },
+                    "expected_result": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "preconditions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "expected_result": {
+                "type": "string",
+                "description": "整体预期结果——整个用例完成后的最终判定"
+              },
+              "automation_level": {
+                "enum": [
+                  "high",
+                  "medium",
+                  "low",
+                  "not_automated"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        },
+        "test_summary": {
+          "type": "object",
+          "properties": {
+            "p0_count": {
+              "type": "integer"
+            },
+            "p1_count": {
+              "type": "integer"
+            },
+            "p2_count": {
+              "type": "integer"
+            },
+            "p3_count": {
+              "type": "integer"
+            },
+            "risk_areas": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "total_count": {
+              "type": "integer"
+            },
+            "recommendations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "coverage_analysis": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "methods": [
+      {
+        "name": "等价类划分法",
+        "description": "将输入数据划分为有效等价类和无效等价类，从每类中选取代表性数据设计测试用例。",
+        "applicable_scenarios": [
+          "输入框字段验证",
+          "下拉选项测试",
+          "单选/多选按钮",
+          "文件上传类型限制",
+          "日期范围选择"
+        ]
+      },
+      {
+        "name": "边界值分析法",
+        "description": "重点测试边界值及其附近的值，包括最小值、最大值、刚好小于最小值、刚好大于最大值。",
+        "applicable_scenarios": [
+          "字符长度限制",
+          "数值范围",
+          "数量限制",
+          "金额范围",
+          "文件大小限制"
+        ]
+      },
+      {
+        "name": "场景法/业务流程法",
+        "description": "基于业务流程和用户故事设计端到端的测试场景，覆盖完整的业务路径。",
+        "applicable_scenarios": [
+          "用户注册流程",
+          "订单创建流程",
+          "审批流程",
+          "数据导入导出流程"
+        ]
+      },
+      {
+        "name": "状态迁移法",
+        "description": "测试系统在不同状态间的转换是否正确。",
+        "applicable_scenarios": [
+          "订单状态流转",
+          "用户状态",
+          "审核状态",
+          "任务状态"
+        ]
+      },
+      {
+        "name": "错误推测法",
+        "description": "基于测试经验和直觉，推测系统可能存在的缺陷和薄弱点。",
+        "applicable_scenarios": [
+          "特殊字符输入",
+          "超长字符串",
+          "并发操作冲突",
+          "网络异常中断"
+        ]
+      }
+    ],
+    "domain_rules": [],
+    "quality_checks": [
+      "每条用例必须包含全部必填字段：module, title, precondition, priority, test_type, test_steps, expected_result, test_data, tags",
+      "每个功能点至少包含3个测试用例（正常、异常、边界）",
+      "P0级用例必须覆盖核心业务流程和关键功能",
+      "所有预期结果必须明确可验证——禁止'测试通过''功能正常''操作成功'",
+      "测试数据(test_data)必须具体有效——禁止置空或写'无'",
+      "前置条件(precondition)必须包含角色+页面+执行所需的数据状态（仅描述页面/元素已就绪，禁止数据量约束如「今日新增数大于0」「存在至少一条记录」——无数据是合法测试场景，数据量是断言对象，不是执行前提）",
+      "数量类断言必须动态化：先记录界面显示值（如「记录今日新增数字为 N」），再断言跳转后/操作后结果与 N 一致（0 也正确）——禁止把数据非零写进前置条件或断言写死具体数字",
+      "测试步骤(steps)至少3步，有序号seq，每步含action+expected",
+      "整体预期结果(expected_result)是整条用例的最终判定——与单步expected不同，不可重复",
+      "用例标题格式：{模块}-{功能点}-{场景描述}，不超过50字",
+      "标签(tags)至少1个",
+      "边界值必须精确定义（最小-1、最小、最大、最大+1）",
+      "涉及安全的输入必须包含安全测试用例",
+      "涉及并发的功能必须包含并发测试用例",
+      "每个用例必须有明确的优先级(P0-P3)和用例类型(functional/regression/boundary)"
+    ],
+    "prompt_template": {
+      "variables": [
+        {
+          "name": "project_name",
+          "required": true,
+          "description": "项目名称"
+        },
+        {
+          "name": "version_number",
+          "required": true,
+          "description": "版本号"
+        },
+        {
+          "name": "requirement_content",
+          "required": true,
+          "description": "需求文档内容"
+        },
+        {
+          "name": "modules_list",
+          "required": false,
+          "description": "功能模块列表"
+        },
+        {
+          "name": "estimated_cases",
+          "required": false,
+          "description": "预估用例数量"
+        }
+      ],
+      "user_prompt": "项目：{{project_name}}，版本：{{version_number}}\n\n需求文档：\n{{requirement_content}}\n\n模块列表：\n{{modules_list}}\n\n生成要求：为每个模块生成5-10个用例，覆盖正常/异常/边界场景。输出纯JSON，不要解释。",
+      "system_prompt": "你是功能测试用例生成专家。\n\n核心要求：\n1. 每个模块生成5-10个测试用例\n2. 覆盖正常场景（2-3个）、异常场景（2-3个）、边界场景（2-3个）\n3. 优先级：P0核心/P1重要/P2一般/P3次要\n4. 测试步骤必须具体、可执行\n5. 测试数据必须具体、有效、符合业务逻辑\n\n测试方法（必须运用）：\n- 等价类划分法：划分有效和无效输入\n- 边界值分析法：测试边界值及附近值（最小-1、最小、最大、最大+1）\n- 场景法：基于业务流程设计测试场景（基本流、备选流、异常流）\n- 错误推测法：基于经验推测可能缺陷（特殊字符、超长输入、并发冲突）\n\n拆分规则（强制）：\n当需求涉及多个并列选项/类型时，必须拆分为多条独立用例，每条只测试一个具体值。\n禁止将多个并列场景合并到一条用例中遍历。\n\n前置条件要求：\n每条前置条件必须是一句完整的话，包含角色+页面+执行所需的数据状态。\n- 数据状态只描述“执行所需的页面/元素已就绪”（如“随访监控区域存在项目个数卡片”）。\n- 禁止把数据量写成前置条件（如“今日新增数大于0”“存在至少一条记录”）：无数据（0条/空列表）是合法测试场景，必须照样测试；数据量是断言对象，不是执行前提。\n- 数量类断言动态化：先“记录界面显示的数字为 N”，再断言“跳转后/操作后记录总数与 N 一致（0 也正确）”，不要断言写死的具体数字。\n正确：\"以医生角色登录系统并进入工作台页面，随访监控区域存在项目个数卡片\"\n错误：\"以医生角色登录系统并进入工作台页面，项目个数今日新增数大于0\"——数据量不是执行前提\n错误：\"用户已登录\" 或 \"当前账号无权限\"——缺少页面信息。\n\nskip vs 通过：\n- skip=功能/元素不存在，无法执行测试\n- PASS=功能存在，筛选后显示\"暂无数据\"是正确结果，不是skip\n\nmodule字段规则：module必须从上方【模块列表】中提取——取文档最顶部的主标题（去掉emoji和编号），不要使用BIZ编号、标签名或关键词。\n例如文档标题\"工作台模块\"→module=\"工作台\"，不是\"工作台, BIXXX\"。\ntags字段：将BIZ编号、功能关键词放入tags数组，不要放在module中。\n\n输出格式：\n纯JSON：{\"test_cases\": [{\"id\":\"TC001\",\"title\":\"用例标题\",\"module\":\"模块\",\"priority\":\"P0\",\"test_type\":\"positive/negative/boundary\",\"preconditions\":[\"前置\"],\"test_steps\":[{\"step_no\":1,\"action\":\"操作\",\"expected_result\":\"预期\"}],\"expected_result\":\"整体预期\",\"test_data\":{},\"tags\":[]}],\"test_summary\":{...}}\n\n直接输出JSON，不要解释。确保JSON完整闭合。"
+    }
+  }
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Test Platform - Connection Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 600px;
+        }
+        .success {
+            color: #52c41a;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .url {
+            background: #f0f2f5;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: monospace;
+            font-size: 18px;
+        }
+        .button {
+            background: #1890ff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .button:hover {
+            background: #40a9ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success">✅</div>
+        <h1>AI Agent Test Platform</h1>
+        <h2>服务器连接成功！</h2>
+        
+        <p>开发服务器正在运行：</p>
+        <div class="url">http://localhost:3000</div>
+        
+        <p>点击下方按钮访问完整应用：</p>
+        <a href="/" class="button">🚀 进入 AI Agent Test Platform</a>
+        
+        <div style="margin-top: 30px; color: #666; font-size: 14px;">
+            <p>如果无法访问，请检查：</p>
+            <ul style="text-align: left;">
+                <li>服务器是否在运行（node server.cjs）</li>
+                <li>防火墙是否允许端口3000</li>
+                <li>浏览器是否支持JavaScript</li>
+            </ul>
+        </div>
+        
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #f0f0f0;">
+            <p>测试账号：</p>
+            <p><strong>邮箱：</strong>admin@test.com</p>
+            <p><strong>密码：</strong>password</p>
+        </div>
+    </div>
+    
+    <script>
+        console.log('AI Agent Test Platform - Connection Test');
+        console.log('Server is running at http://localhost:3000');
+        
+        // 测试API连接
+        fetch('/')
+            .then(response => {
+                console.log('Server response status:', response.status);
+                console.log('Server is working correctly!');
+            })
+            .catch(error => {
+                console.error('Connection error:', error);
+            });
+    </script>
+</body>
+</html>

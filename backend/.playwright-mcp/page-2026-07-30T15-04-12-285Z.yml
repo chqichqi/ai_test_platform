@@ -1,0 +1,141 @@
+- generic [ref=e5]:
+  - generic [ref=e6]:
+    - generic [ref=e7]:
+      - img "logo" [ref=e8]
+      - generic [ref=e9]: 心吉康心血管健康综合管理平台
+    - generic [ref=e36]: 测试机构
+    - generic [ref=e10]:
+      - generic [ref=e13]: 2026/07/30 星期
+      - generic [ref=e14]: 四
+      - generic [ref=e15] [cursor=pointer]: 陈强
+  - generic [ref=e19]:
+    - menu [ref=e38]:
+      - menuitem "工作台" [ref=e39] [cursor=pointer]
+      - menuitem "患者档案" [ref=e42] [cursor=pointer]
+      - menuitem "设备管理" [ref=e45] [cursor=pointer]
+      - menuitem "问卷管理" [ref=e48] [cursor=pointer]
+      - menuitem "账号管理" [ref=e51] [cursor=pointer]
+      - menuitem "数据管理" [ref=e54] [cursor=pointer]
+      - menuitem "运营配置" [ref=e57] [cursor=pointer]
+      - menuitem "操作日志" [ref=e60] [cursor=pointer]
+      - menuitem "随访管理" [ref=e63] [cursor=pointer]
+    - generic [ref=e21]:
+      - navigation [ref=e19036]:
+        - list [ref=e19037]:
+          - listitem [ref=e19038]: 患者档案
+      - generic [ref=e19040]:
+        - generic [ref=e19041]:
+          - generic [ref=e19042]: 患者档案
+          - generic [ref=e19043]:
+            - button "导出统计数据" [ref=e19044] [cursor=pointer]
+            - button "卡片信息设置" [ref=e19046] [cursor=pointer]
+            - button "新增患者" [ref=e19048] [cursor=pointer]
+        - generic [ref=e19050]:
+          - generic [ref=e19051]:
+            - tablist [ref=e19052]:
+              - generic [ref=e19054]:
+                - tab "全部" [selected] [ref=e19056] [cursor=pointer]
+                - tab "我的患者" [ref=e19058] [cursor=pointer]
+            - generic:
+              - generic:
+                - tabpanel "全部"
+          - generic [ref=e19063]:
+            - generic [ref=e19067]:
+              - generic "录入时间" [ref=e19069]: "录入时间 :"
+              - generic [ref=e19074]:
+                - textbox "录入时间 :" [ref=e19075]:
+                  - /placeholder: 请选择
+                - generic:
+                  - img "calendar"
+            - generic [ref=e19079]:
+              - generic "编号" [ref=e19081]: "编号 :"
+              - textbox "编号 :" [ref=e19086]:
+                - /placeholder: 请输入编号
+            - generic [ref=e19091]:
+              - generic "姓名" [ref=e19093]: "姓名 :"
+              - textbox "姓名 :" [ref=e19098]:
+                - /placeholder: 请输入姓名
+            - generic [ref=e19103]:
+              - generic "手机号码" [ref=e19105]: "手机号码 :"
+              - textbox "手机号码 :" [ref=e19110]:
+                - /placeholder: 请输入手机号码
+            - generic [ref=e19115]:
+              - generic "性别" [ref=e19117]: "性别 :"
+              - generic [ref=e19123] [cursor=pointer]:
+                - combobox "性别 :" [ref=e19125]
+                - generic: 请选择
+            - generic [ref=e19129]:
+              - generic "疾病标签" [ref=e19131]: "疾病标签 :"
+              - generic [ref=e19137] [cursor=pointer]:
+                - combobox "疾病标签 :" [ref=e19139]
+                - generic: 请选择
+            - generic [ref=e19142]:
+              - generic [ref=e19146]:
+                - generic "年龄" [ref=e19148]: "年龄 :"
+                - generic [ref=e19152]:
+                  - generic:
+                    - button "Increase Value" [ref=e19153] [cursor=pointer]:
+                      - img "up" [ref=e19154]
+                    - button "Decrease Value" [ref=e19157] [cursor=pointer]:
+                      - img "down" [ref=e19158]
+                  - spinbutton "年龄 :" [ref=e19162]
+              - generic [ref=e19163]: ~
+              - generic [ref=e19171]:
+                - generic:
+                  - button "Increase Value" [ref=e19172] [cursor=pointer]:
+                    - img "up" [ref=e19173]
+                  - button "Decrease Value" [ref=e19176] [cursor=pointer]:
+                    - img "down" [ref=e19177]
+                - spinbutton "请输入" [ref=e19181]
+            - generic [ref=e19185]:
+              - generic "绑定设备" [ref=e19187]: "绑定设备 :"
+              - generic [ref=e19193] [cursor=pointer]:
+                - combobox "绑定设备 :" [ref=e19195]
+                - generic: 请选择
+            - generic [ref=e19199]:
+              - generic "关注" [ref=e19201]: "关注 :"
+              - generic [ref=e19207] [cursor=pointer]:
+                - combobox "关注 :" [ref=e19209]
+                - generic: 请选择
+            - generic [ref=e19213]:
+              - generic "随访项目" [ref=e19215]: "随访项目 :"
+              - generic [ref=e19221] [cursor=pointer]:
+                - combobox "随访项目 :" [ref=e19223]
+                - generic: 请选择
+            - generic [ref=e19227]:
+              - generic "报告类型" [ref=e19229]: "报告类型 :"
+              - generic [ref=e19235] [cursor=pointer]:
+                - combobox "报告类型 :" [ref=e19237]
+                - generic: 请选择
+            - generic [ref=e19241]:
+              - generic "入组情况" [ref=e19243]: "入组情况 :"
+              - generic [ref=e19249] [cursor=pointer]:
+                - combobox "入组情况 :" [ref=e19251]
+                - generic: 请选择
+            - generic [ref=e19254]:
+              - button "重 置" [ref=e19255] [cursor=pointer]
+              - button "查 询" [ref=e19257] [cursor=pointer]
+              - generic [ref=e19259] [cursor=pointer]:
+                - generic [ref=e19260]: 收起
+                - img "up" [ref=e19261]
+        - table [ref=e19279]:
+          - rowgroup [ref=e19293]:
+            - row [ref=e19294]:
+              - columnheader "姓名" [ref=e19295]
+              - columnheader "编号" [ref=e19296]
+              - columnheader "手机号码" [ref=e19297]
+              - columnheader "性别" [ref=e19298]
+              - columnheader "年龄" [ref=e19299]
+              - columnheader "绑定设备" [ref=e19300]
+              - columnheader "录入时间" [ref=e19301]
+              - columnheader "随访项目" [ref=e19302]
+              - columnheader "疾病标签" [ref=e19303]
+              - columnheader "异常事件" [ref=e19304]
+              - columnheader "备注" [ref=e19305]
+              - columnheader "操作" [ref=e19306]
+          - rowgroup [ref=e19307]:
+            - row [ref=e19308]:
+              - cell "暂无数据 暂无数据" [ref=e19309]:
+                - generic [ref=e19310]:
+                  - img "暂无数据" [ref=e19312]
+                  - generic [ref=e19318]: 暂无数据

@@ -1,0 +1,232 @@
+- generic [ref=e5]:
+  - generic [ref=e6]:
+    - generic [ref=e7]:
+      - img "logo" [ref=e8]
+      - generic [ref=e9]: 心吉康心血管健康综合管理平台
+    - generic [ref=e36]: 测试机构
+    - generic [ref=e10]:
+      - generic [ref=e13]: 2026/07/31 星期
+      - generic [ref=e14]: 五
+      - generic [ref=e15] [cursor=pointer]: 陈强
+  - generic [ref=e19]:
+    - menu [ref=e38]:
+      - menuitem "工作台" [ref=e39] [cursor=pointer]
+      - menuitem "患者档案" [ref=e42] [cursor=pointer]
+      - menuitem "设备管理" [ref=e45] [cursor=pointer]
+      - menuitem "问卷管理" [ref=e48] [cursor=pointer]
+      - menuitem "账号管理" [ref=e51] [cursor=pointer]
+      - menuitem "数据管理" [ref=e54] [cursor=pointer]
+      - menuitem "运营配置" [ref=e57] [cursor=pointer]
+      - menuitem "操作日志" [ref=e60] [cursor=pointer]
+      - menuitem "随访管理" [ref=e63] [cursor=pointer]
+    - generic [ref=e21]:
+      - navigation [ref=e24]:
+        - list [ref=e25]:
+          - listitem [ref=e26]: 工作台
+      - generic [ref=e2896]:
+        - generic [ref=e2897]:
+          - text: 指标总览
+          - generic [ref=e2898] [cursor=pointer]: 自定义
+        - generic [ref=e2901]:
+          - generic [ref=e2902]:
+            - generic [ref=e2903]: 患者概览
+            - generic [ref=e2905]:
+              - generic [ref=e2911] [cursor=pointer]:
+                - generic [ref=e2912]: 患者人数
+                - generic [ref=e2913]:
+                  - text: "105"
+                  - generic [ref=e2914]: 今日新增+0
+              - generic [ref=e2921] [cursor=pointer]:
+                - generic [ref=e2922]: Smart 报告(份)
+                - generic [ref=e2923]:
+                  - text: "35"
+                  - generic [ref=e2924]: 今日新增+0
+          - generic [ref=e2926]:
+            - generic [ref=e2927]: 疾病统计
+            - generic [ref=e2929]:
+              - generic [ref=e2934] [cursor=pointer]:
+                - generic [ref=e2935]:
+                  - generic [ref=e2936]: 室早
+                  - generic [ref=e2937]: 室性
+                - generic [ref=e2938]:
+                  - text: "0"
+                  - generic [ref=e2939]: 今日新增+0
+              - generic [ref=e2945] [cursor=pointer]:
+                - generic [ref=e2946]:
+                  - generic [ref=e2947]: 室速
+                  - generic [ref=e2948]: 室性
+                - generic [ref=e2949]:
+                  - text: "0"
+                  - generic [ref=e2950]: 今日新增+0
+              - generic [ref=e2956] [cursor=pointer]:
+                - generic [ref=e2957]:
+                  - generic [ref=e2958]: 室颤
+                  - generic [ref=e2959]: 室性
+                - generic [ref=e2960]:
+                  - text: "0"
+                  - generic [ref=e2961]: 今日新增+0
+              - generic [ref=e2967] [cursor=pointer]:
+                - generic [ref=e2968]:
+                  - generic [ref=e2969]: 房颤
+                  - generic [ref=e2970]: 房性
+                - generic [ref=e2971]:
+                  - text: "27"
+                  - generic [ref=e2972]: 今日新增+0
+              - generic [ref=e2978] [cursor=pointer]:
+                - generic [ref=e2979]:
+                  - generic [ref=e2980]: 房速
+                  - generic [ref=e2981]: 房性
+                - generic [ref=e2982]:
+                  - text: "1"
+                  - generic [ref=e2983]: 今日新增+0
+              - generic [ref=e2989] [cursor=pointer]:
+                - generic [ref=e2990]:
+                  - generic [ref=e2991]: 房扑
+                  - generic [ref=e2992]: 房性
+                - generic [ref=e2993]:
+                  - text: "0"
+                  - generic [ref=e2994]: 今日新增+0
+              - generic [ref=e3000] [cursor=pointer]:
+                - generic [ref=e3001]:
+                  - generic [ref=e3002]: 房早
+                  - generic [ref=e3003]: 房性
+                - generic [ref=e3004]:
+                  - text: "0"
+                  - generic [ref=e3005]: 今日新增+0
+              - generic [ref=e3011] [cursor=pointer]:
+                - generic [ref=e3012]:
+                  - generic [ref=e3013]: 持续性房颤
+                  - generic [ref=e3014]: 房性
+                - generic [ref=e3015]:
+                  - text: "0"
+                  - generic [ref=e3016]: 今日新增+0
+              - generic [ref=e3022] [cursor=pointer]:
+                - generic [ref=e3023]:
+                  - generic [ref=e3024]: 阵发性房颤
+                  - generic [ref=e3025]: 房性
+                - generic [ref=e3026]:
+                  - text: "1"
+                  - generic [ref=e3027]: 今日新增+0
+              - generic [ref=e3033] [cursor=pointer]:
+                - generic [ref=e3034]:
+                  - generic [ref=e3035]: 二联律
+                  - generic [ref=e3036]: 节律
+                - generic [ref=e3037]:
+                  - text: "0"
+                  - generic [ref=e3038]: 今日新增+0
+              - generic [ref=e3044] [cursor=pointer]:
+                - generic [ref=e3045]:
+                  - generic [ref=e3046]: 三联律
+                  - generic [ref=e3047]: 节律
+                - generic [ref=e3048]:
+                  - text: "0"
+                  - generic [ref=e3049]: 今日新增+0
+              - generic [ref=e3055] [cursor=pointer]:
+                - generic [ref=e3056]:
+                  - generic [ref=e3057]: 心动过速
+                  - generic [ref=e3058]: 窦性
+                - generic [ref=e3059]:
+                  - text: "0"
+                  - generic [ref=e3060]: 今日新增+0
+              - generic [ref=e3066] [cursor=pointer]:
+                - generic [ref=e3067]:
+                  - generic [ref=e3068]: 心动过缓
+                  - generic [ref=e3069]: 窦性
+                - generic [ref=e3070]:
+                  - text: "0"
+                  - generic [ref=e3071]: 今日新增+0
+              - generic [ref=e3077] [cursor=pointer]:
+                - generic [ref=e3078]:
+                  - generic [ref=e3079]: 停搏
+                  - generic [ref=e3080]: 窦性
+                - generic [ref=e3081]:
+                  - text: "0"
+                  - generic [ref=e3082]: 今日新增+0
+          - generic [ref=e3084]:
+            - generic [ref=e3085]: 审核任务
+            - generic [ref=e3087]:
+              - generic [ref=e3092] [cursor=pointer]:
+                - generic [ref=e3093]: 待审核数据
+                - generic [ref=e3094]:
+                  - text: "0"
+                  - generic [ref=e3095]: 去处理
+              - generic [ref=e3286] [cursor=pointer]:
+                - generic [ref=e3287]: 待审核报告
+                - generic [ref=e3288]:
+                  - text: "15"
+                  - generic [ref=e3289]: 去处理
+              - generic [ref=e3111] [cursor=pointer]:
+                - generic [ref=e3112]: 待审核周报
+                - generic [ref=e3113]:
+                  - text: "2"
+                  - generic [ref=e3114]: 去处理
+          - generic [ref=e3117]:
+            - generic [ref=e3118]: 物流看板
+            - generic [ref=e3120]:
+              - generic [ref=e3294] [cursor=pointer]:
+                - generic [ref=e3295]: 待发货数
+                - generic [ref=e3296]:
+                  - text: "23"
+                  - generic [ref=e3297]: 去处理
+              - generic [ref=e3302] [cursor=pointer]:
+                - generic [ref=e3303]: 预约回收数
+                - generic [ref=e3304]: "5"
+          - generic [ref=e3139]:
+            - generic [ref=e3140]: 随访监控
+            - generic [ref=e3142]:
+              - generic [ref=e3147] [cursor=pointer]:
+                - generic [ref=e3148]: 入组人数
+                - generic [ref=e3149]:
+                  - text: "28"
+                  - generic [ref=e3150]: 今日新增+0
+              - generic [ref=e3156] [cursor=pointer]:
+                - generic [ref=e3157]: 项目个数
+                - generic [ref=e3158]: "3"
+              - generic [ref=e3164] [cursor=pointer]:
+                - generic [ref=e3165]: 待随访人数
+                - generic [ref=e3166]:
+                  - text: "1"
+                  - generic [ref=e3167]: 去处理
+              - generic [ref=e3174] [cursor=pointer]:
+                - generic [ref=e3175]: 延期人数
+                - generic [ref=e3176]: "41"
+              - generic [ref=e3182] [cursor=pointer]:
+                - generic [ref=e3183]: 进行中人数
+                - generic [ref=e3184]: "0"
+              - generic [ref=e3190] [cursor=pointer]:
+                - generic [ref=e3191]: 中止人数
+                - generic [ref=e3192]: "0"
+        - generic [ref=e3194]:
+          - generic [ref=e3195]: 预警信息
+          - generic [ref=e3196]:
+            - generic [ref=e3199]:
+              - tablist [ref=e3200]:
+                - generic [ref=e3201]: 房颤预警
+                - generic [ref=e3208] [cursor=pointer]:
+                  - combobox [ref=e3210]
+                  - generic "全部" [ref=e3211]
+              - tabpanel [ref=e3219]:
+                - generic [ref=e3228]:
+                  - img "暂无数据" [ref=e3230]
+                  - generic [ref=e3236]: 暂无数据
+            - generic [ref=e3237]:
+              - generic [ref=e3238] [cursor=pointer]: ">"
+              - generic [ref=e3239]:
+                - generic [ref=e3240]:
+                  - generic [ref=e3241]:
+                    - generic [ref=e3242]: 佩戴预警 (0)
+                    - generic [ref=e3246] [cursor=pointer]:
+                      - combobox [ref=e3248]
+                      - generic "全部" [ref=e3249]
+                  - generic [ref=e3253]:
+                    - img "暂无数据" [ref=e3255]
+                    - generic [ref=e3261]: 暂无数据
+                - generic [ref=e3262]:
+                  - generic [ref=e3263]:
+                    - generic [ref=e3264]: 测量预警 (0)
+                    - generic [ref=e3268] [cursor=pointer]:
+                      - combobox [ref=e3270]
+                      - generic "全部" [ref=e3271]
+                  - generic [ref=e3275]:
+                    - img "暂无数据" [ref=e3277]
+                    - generic [ref=e3283]: 暂无数据

@@ -1,0 +1,143 @@
+{
+  "label": "step001_患者人数",
+  "url": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1787750750201&oId=9ee70b68673b4660af488e86a0112f68",
+  "total_elements": 15,
+  "elements": [
+    {
+      "tag": "UL",
+      "role": "menu",
+      "cls": "ant-menu ant-menu-root ant-menu-inline ant-menu-light menu___1qUGa css-1sdc3xm",
+      "text": "工作台患者档案设备管理问卷管理账号管理数据管理运营配置操作日志随访管理",
+      "onclick": false,
+      "href": "",
+      "size": "199x468"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-default ant-btn-color-default ant-btn-variant-outlined undefined ",
+      "text": "导出统计数据",
+      "onclick": false,
+      "href": "",
+      "size": "116x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid border-border-primar",
+      "text": "卡片信息设置",
+      "onclick": false,
+      "href": "",
+      "size": "116x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid undefined ml-3",
+      "text": "新增患者",
+      "onclick": false,
+      "href": "",
+      "size": "88x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "tab",
+      "cls": "ant-tabs-tab-btn",
+      "text": "全部",
+      "onclick": false,
+      "href": "",
+      "size": "32x24"
+    },
+    {
+      "tag": "DIV",
+      "role": "tab",
+      "cls": "ant-tabs-tab-btn",
+      "text": "我的患者",
+      "onclick": false,
+      "href": "",
+      "size": "64x24"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-default ant-btn-color-default ant-btn-variant-outlined",
+      "text": "重 置",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid ml-4",
+      "text": "查 询",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-item ant-pagination-item-1 ant-pagination-item-active",
+      "text": "1",
+      "onclick": false,
+      "href": "",
+      "size": "32x32"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-item ant-pagination-item-2",
+      "text": "2",
+      "onclick": false,
+      "href": "",
+      "size": "32x32"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-item ant-pagination-item-3",
+      "text": "3",
+      "onclick": false,
+      "href": "",
+      "size": "32x32"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-item ant-pagination-item-4",
+      "text": "4",
+      "onclick": false,
+      "href": "",
+      "size": "32x32"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-item ant-pagination-item-5 ant-pagination-item-before-jump-next",
+      "text": "5",
+      "onclick": false,
+      "href": "",
+      "size": "32x32"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-jump-next ant-pagination-jump-next-custom-icon",
+      "text": "•••",
+      "onclick": false,
+      "href": "",
+      "size": "32x32"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-item ant-pagination-item-8",
+      "text": "8",
+      "onclick": false,
+      "href": "",
+      "size": "32x32"
+    }
+  ],
+  "overlay_elements": []
+}

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Test Platform</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .app-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #1890ff;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            color: #666;
+            font-size: 18px;
+        }
+        
+        .status-badge {
+            background: #52c41a;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .feature-card {
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #f0f0f0;
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .feature-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .login-form {
+            background: #fafafa;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d9d9d9;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 14px;
+            background: #1890ff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .login-button:hover {
+            background: #40a9ff;
+        }
+        
+        .demo-info {
+            background: #f6ffed;
+            border: 1px solid #b7eb8f;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .pages-list {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+        }
+        
+        .pages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .page-item {
+            background: #f0f2f5;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        .server-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: #52c41a;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <div class="logo">🤖 AI Agent Test Platform</div>
+            <div class="tagline">Comprehensive Testing Platform for AI Agents</div>
+            
+            <div class="server-status">
+                <div class="status-dot"></div>
+                <span>Server running on http://localhost:3000</span>
+            </div>
+            
+            <div class="status-badge">✅ Frontend 100% Complete • 12 Pages Ready</div>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <div class="feature-title">RAG Testing</div>
+                <div>Knowledge base, document upload, query testing</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🛠️</div>
+                <div class="feature-title">SKILLS Management</div>
+                <div>Manage and test specialized AI skills</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-title">Automated Testing</div>
+                <div>Functional tests, API tests, reporting</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <div class="feature-title">Analytics & Reports</div>
+                <div>Detailed metrics and insights</div>
+            </div>
+        </div>
+        
+        <div class="login-form">
+            <h3 style="margin-bottom: 20px; color: #333;">Demo Login</h3>
+            
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-input" id="email" value="admin@test.com" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-input" id="password" value="password" readonly>
+            </div>
+            
+            <button class="login-button" onclick="simulateLogin()">
+                🚀 Simulate Login (Demo)
+            </button>
+            
+            <div class="demo-info">
+                <p><strong>Note:</strong> This is a static demo. In the full React version:</p>
+                <ul style="margin-top: 10px; padding-left: 20px;">
+                    <li>Full authentication system</li>
+                    <li>Interactive dashboard with real data</li>
+                    <li>All 12 pages with full functionality</li>
+                    <li>React Router navigation</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="pages-list">
+            <h3 style="margin-bottom: 15px; color: #333;">12 Complete Pages</h3>
+            <div class="pages-grid">
+                <div class="page-item">Login Page</div>
+                <div class="page-item">Register Page</div>
+                <div class="page-item">Dashboard</div>
+                <div class="page-item">Knowledge Base</div>
+                <div class="page-item">Document Upload</div>
+                <div class="page-item">Query Testing</div>
+                <div class="page-item">SKILLS Management</div>
+                <div class="page-item">Skill Details</div>
+                <div class="page-item">Functional Tests</div>
+                <div class="page-item">API Tests</div>
+                <div class="page-item">Reports</div>
+                <div class="page-item">Settings</div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #f0f0f0; text-align: center; color: #666;">
+            <p>Technology: React 18 • TypeScript • Ant Design 5 • React Router 6</p>
+            <p style="margin-top: 10px; font-size: 14px;">Frontend development 100% complete. Ready for backend integration.</p>
+        </div>
+    </div>
+    
+    <script>
+        function simulateLogin() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            alert(`Demo Login Successful!\n\nEmail: ${email}\nPassword: ${password}\n\nIn the full React app, this would:\n1. Validate credentials\n2. Set authentication token\n3. Redirect to dashboard\n4. Load all 12 pages with full functionality`);
+            
+            // Show demo dashboard
+            document.querySelector('.login-form').style.display = 'none';
+            document.querySelector('.pages-list').innerHTML = `
+                <h3 style="margin-bottom: 15px; color: #333;">🎉 Demo Dashboard</h3>
+                <div style="background: #f0f2f5; padding: 20px; border-radius: 12px;">
+                    <h4>Welcome to AI Agent Test Platform!</h4>
+                    <p style="margin-top: 10px;">You are now logged in as <strong>admin@test.com</strong></p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 20px;">
+                        <div style="background: white; padding: 15px; border-radius: 8px;">
+                            <div style="font-size: 24px; font-weight: bold; color: #1890ff;">12</div>
+                            <div>Active Tests</div>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 8px;">
+                            <div style="font-size: 24px; font-weight: bold; color: #52c41a;">8</div>
+                            <div>SKILLS Available</div>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 8px;">
+                            <div style="font-size: 24px; font-weight: bold; color: #fa8c16;">156</div>
+                            <div>Documents Processed</div>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 8px;">
+                            <div style="font-size: 24px; font-weight: bold; color: #722ed1;">94%</div>
+                            <div>Success Rate</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 20px;">
+                        <button onclick="location.reload()" style="padding: 10px 20px; background: #666; color: white; border: none; border-radius: 6px; cursor: pointer;">
+                            Back to Login
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Check if React version would load
+        console.log('AI Agent Test Platform - Static Demo');
+        console.log('Full React version includes:');
+        console.log('- 12 complete pages');
+        console.log('- React Router navigation');
+        console.log('- Ant Design components');
+        console.log('- Real-time data updates');
+        console.log('- Full authentication flow');
+        
+        // Simulate checking server
+        fetch(window.location.href)
+            .then(response => {
+                console.log('Server status:', response.status);
+                console.log('Server is running correctly');
+            })
+            .catch(error => {
+                console.error('Server check failed:', error);
+            });
+    </script>
+</body>
+</html>

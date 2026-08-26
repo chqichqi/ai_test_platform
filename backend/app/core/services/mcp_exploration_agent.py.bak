@@ -1,0 +1,388 @@
+"""
+MCP 探索 Agent — 发现 + 下拉探索 + 批量点击，零 LLM。
+
+阶段 1: snapshot + JS 发现（卡片/下拉/工具栏按钮）
+阶段 1.5: 下拉元素展开 → 捕获选项
+阶段 2: 批量点击执行，记录导航跳转
+"""
+
+import json, re, time
+from typing import Dict, List, Optional
+from app.core.logger import logger
+from app.core.services.mcp_client import PlaywrightMCPClient
+
+
+class MCPExplorationAgent:
+    """MCP 探索引擎。"""
+
+    # ── 可配置项 ──
+    NAV_ROLES = {'menuitem', 'navigation', 'menu', 'sidebar'}
+    NOISE_KW = ['暂无数据', '今日新增', 'Loading', '加载中']
+    DANGER_KW = ['退出', '注销', '删除', '清空', '重置密码']
+    INTERACTIVE_ROLES = {'button','link','listitem','tab','menuitem',
+                         'textbox','combobox','searchbox'}
+
+    # 点击选择器（窄，精确定位）
+    CLICK_SEL = ('[class*="card"], [class*="Card"], button, a[href], '
+                 '[class*="item"], [class*="panel"], [class*="row"], tr[class]')
+
+    # 卡片发现选择器（宽）
+    CARD_SEL = ('[class*="card"], [class*="Card"], [class*="panel"], [class*="Panel"], '
+                '[class*="item"], [class*="row"], [class*="Row"], tr[class], '
+                'button, [role="button"], a[href], [onclick], '
+                '[class*="btn"], [class*="link"], [class*="clickable"]')
+
+    # 下拉发现选择器（专找下拉/选择器组件）
+    DROPDOWN_SEL = ('select, [role="combobox"], [role="listbox"], '
+                    '.ant-select, .el-select, [class*="-select"], '
+                    '[class*="dropdown"]:not([class*="dropdown-menu"]):not([class*="dropdownMenu"]), '
+                    '[class*="picker"], [class*="Picker"]')
+
+    # 工具栏按钮发现（专找 toolbar/actions 区域的图标和文字按钮）
+    TOOLBAR_SEL = ('[class*="toolbar"] button, [class*="toolbar"] a, '
+                   '[class*="toolbar"] [onclick], [class*="toolbar"] [class*="btn"], '
+                   '[class*="action"] button, [class*="action"] a, [class*="action"] [onclick], '
+                   '[class*="actions"] button, [class*="actions"] a, '
+                   '[class*="header"] button, [class*="header"] a, [class*="header"] [onclick], '
+                   '[class*="icon-btn"], [class*="iconButton"], '
+                   '[class*="setting"], [class*="Setting"], '
+                   'button[class*="icon"], a[class*="icon"]')
+
+    def __init__(self, mcp: PlaywrightMCPClient):
+        self.mcp = mcp
+
+    async def explore(self, start_url: str,
+                      on_progress=None, max_clicks: int = 80) -> Dict:
+        pages_visited = {start_url}
+
+        # ═══ 阶段 1: 元素发现 ═══
+        self._notify(on_progress, "plan", "获取页面结构...", 10, 0)
+        self.mcp.navigate(start_url)
+        time.sleep(2)
+
+        raw_elements = []
+
+        # 1a. snapshot 上半区
+        snap1 = self.mcp.snapshot()
+        raw_elements += self._parse_snapshot(self.mcp.extract_text(snap1))
+
+        # 1b. 滚动下半区
+        self._notify(on_progress, "plan", "滚动下半区...", 18, 0)
+        self.mcp.press_key("PageDown"); time.sleep(0.5)
+        self.mcp.press_key("PageDown"); time.sleep(0.5)
+        snap2 = self.mcp.snapshot()
+        raw_elements += self._parse_snapshot(self.mcp.extract_text(snap2))
+
+        # 1c. JS 发现：卡片 + 下拉 + 工具栏按钮
+        self._notify(on_progress, "plan", "JS 发现卡片...", 22, 0)
+        for c in self._js_find(self.CARD_SEL, min_text=4):
+            raw_elements.append({"ref": "", "name": c["name"], "role": "card",
+                                 "selector": c.get("selector", "")})
+
+        self._notify(on_progress, "plan", "JS 发现下拉组件...", 24, 0)
+        for d in self._js_find(self.DROPDOWN_SEL, min_text=1):
+            raw_elements.append({"ref": "", "name": d["name"], "role": "combobox",
+                                 "selector": d.get("selector", ""), "is_dropdown": True})
+
+        self._notify(on_progress, "plan", "JS 发现工具栏按钮...", 25, 0)
+        for b in self._js_find(self.TOOLBAR_SEL, min_text=0):
+            raw_elements.append({"ref": "", "name": b["name"], "role": "button",
+                                 "selector": b.get("selector", ""),
+                                 "section": "toolbar"})
+
+        # 1d. 去重（短名优先）
+        unique = []
+        for e in sorted(raw_elements, key=lambda x: len(x["name"])):
+            dup = False
+            for u in unique:
+                if len(e["name"]) < len(u["name"]) and u["name"].startswith(e["name"]):
+                    # 短名更精确，但如果短名的 role 是 button/toolbar 保留之
+                    if e.get("section") == "toolbar" or e.get("is_dropdown"):
+                        unique.remove(u); unique.append(e); dup = True; break
+                if len(e["name"]) >= len(u["name"]) and e["name"].startswith(u["name"]):
+                    dup = True; break
+            if not dup:
+                unique.append(e)
+        logger.info(f"[MCP Agent] 发现: {len(raw_elements)} → {len(unique)} 去重")
+
+        # 1e. 排序：内容优先，导航放最后
+        nav = [e for e in unique if self._is_nav(e)]
+        main = [e for e in unique if not self._is_nav(e)]
+        plan = main + nav
+        dd_count = sum(1 for e in main if e.get("is_dropdown"))
+        tb_count = sum(1 for e in main if e.get("section") == "toolbar")
+        logger.info(f"[MCP Agent] 计划: {len(plan)} (内容:{len(main)} 下拉:{dd_count} "
+                    f"工具栏:{tb_count} 导航:{len(nav)})")
+
+        # ═══ 阶段 1.5: 下拉选项捕获 ═══
+        dropdown_options = {}
+        combos = [e for e in main if e.get("is_dropdown")]
+        if combos:
+            self._notify(on_progress, "dropdowns",
+                         f"展开 {len(combos)} 个下拉...", 28, len(combos))
+            for i, combo in enumerate(combos[:15]):
+                self._notify(on_progress, "dropdowns",
+                             f"[{i+1}/{min(len(combos),15)}] {combo['name'][:30]}",
+                             28, len(combos), current_item=combo["name"])
+                opts = self._expand_and_capture(combo)
+                if opts:
+                    dropdown_options[combo["name"][:40]] = opts
+
+        # ═══ 阶段 2: 批量点击 ═══
+        results = []; errors = 0
+        total = min(len(plan), max_clicks)
+        self._notify(on_progress, "executing",
+                     f"批量点击 {total} 个元素...", 35, total)
+
+        for i, item in enumerate(plan[:max_clicks]):
+            ref = item.get("ref", "")
+            name = item.get("name", "")[:60]
+            role = item.get("role", "element")
+            selector = item.get("selector", "")
+            is_nav = self._is_nav(item)
+
+            self._notify(on_progress, "executing",
+                         f"[{i+1}/{total}] {name[:40]}",
+                         35 + int(55 * (i+1) / total), total,
+                         current_item=name)
+
+            # 跳过纯导航元素（不点击，避免离开工作台后回不来）
+            if is_nav and not item.get("is_dropdown"):
+                results.append({"name": name, "role": role, "ref": ref,
+                                "selector": selector, "interaction_type": "skipped",
+                                "navigated": False})
+                logger.info(f"[MCP Agent] / {name[:30]} (nav skipped)")
+                continue
+
+            try:
+                url_before = self._get_current_url()
+                if ref and role not in ("generic", "card"):
+                    self.mcp.click(ref)
+                else:
+                    self._click_js(name)
+                time.sleep(1.5)
+                url_after = self._get_current_url()
+
+                if url_after and url_after != url_before and url_after != "about:blank":
+                    results.append({"name": name, "role": role, "ref": ref,
+                                    "selector": selector,
+                                    "interaction_type": "navigation",
+                                    "navigated": True, "url": url_after})
+                    pages_visited.add(url_after)
+                    logger.info(f"[MCP Agent] OK {name[:40]} -> {url_after[:60]}")
+                    self.mcp.go_back(); time.sleep(1.0)
+                    self.mcp.evaluate("() => window.scrollTo(0, 0)")
+                else:
+                    results.append({"name": name, "role": role, "ref": ref,
+                                    "selector": selector,
+                                    "interaction_type": "static",
+                                    "navigated": False})
+                    logger.info(f"[MCP Agent] - {name[:40]} (no jump)")
+            except Exception as e:
+                errors += 1
+                logger.warning(f"[MCP Agent] x {name[:30]}: {e}")
+                results.append({"name": name, "role": role, "ref": ref,
+                                "selector": selector,
+                                "interaction_type": "error",
+                                "navigated": False, "error": str(e)[:100]})
+                try:
+                    self.mcp.navigate(start_url); time.sleep(1.5)
+                    self.mcp.evaluate("() => window.scrollTo(0, 0)")
+                except Exception:
+                    pass
+
+        # ═══ 汇总 ═══
+        stats = {"total": len(results),
+                 "navigated": sum(1 for r in results if r.get("navigated")),
+                 "errors": errors,
+                 "dropdowns_explored": len(dropdown_options)}
+        self._notify(on_progress, "done",
+                     f"Done: {stats['total']} elements, {stats['navigated']} nav, "
+                     f"{stats['dropdowns_explored']} dropdowns", 100, 0)
+        logger.info(f"[MCP Agent] {stats}")
+        return {"pages_visited": list(pages_visited), "elements": results,
+                "stats": stats, "dropdown_options": dropdown_options}
+
+    # ========================================================================
+    # JS 元素发现（通用）
+    # ========================================================================
+
+    def _js_find(self, css_selector: str, min_text: int = 4) -> List[dict]:
+        """执行 JS 查询，返回匹配元素的 name/role/selector 列表。"""
+        sel = css_selector.replace("'", "\\'")
+        try:
+            result = self.mcp.evaluate(
+                f"() => {{"
+                f"const found = []; const seen = new Set();"
+                f"document.querySelectorAll('{sel}').forEach(el => {{"
+                f"const r = el.getBoundingClientRect();"
+                f"if (r.width < 15 || r.height < 10 || el.offsetParent === null) return;"
+                f"let t = (el.textContent || el.innerText || "
+                f"el.getAttribute('aria-label') || el.getAttribute('title') || '').trim();"
+                f"if (t && t.length <= 3) t = '';"  # 丢弃纯标点/单字
+                # 无文本元素：记录其 CSS selector 和位置，用父级文本作为 name
+                f"if (!t) {{"
+                f"const parent = el.closest('[class*=\"card\"], [class*=\"item\"], [class*=\"panel\"], [class*=\"row\"], label');"
+                f"if (parent) t = (parent.textContent || '').trim().substring(0, 40);"
+                f"}}"
+                f"if (!t || seen.has(t)) return; seen.add(t);"
+                f"let tag = el.tagName.toLowerCase();"
+                f"let css = tag;"
+                f"if (el.id) css = '#' + el.id;"
+                f"else if (el.className && typeof el.className === 'string') {{"
+                f"const c = el.className.split(/\\s+/).filter(c => c && c.length > 1 && c.length < 40)[0];"
+                f"if (c) css = tag + '.' + c;"
+                f"}}"
+                f"found.push({{n: t.substring(0, 80), s: css}});"
+                f"}}); return found; }}"
+            )
+            text = self.mcp.extract_text(result)
+            data_str = self.mcp.extract_result_section(text)
+            items = json.loads(data_str) if data_str else []
+            out = []
+            for i in items:
+                n = i.get("n", "").strip()
+                if len(n) < min_text: continue
+                if re.match(r'^[\d\s\.\+\-\/\%\:]+$', n): continue
+                if any(kw in n for kw in self.NOISE_KW): continue
+                if any(kw in n for kw in self.DANGER_KW): continue
+                out.append({"name": n, "selector": i.get("s", "")})
+            return out
+        except Exception:
+            return []
+
+    # ========================================================================
+    # Snapshot 解析
+    # ========================================================================
+
+    def _parse_snapshot(self, yaml_text: str) -> List[dict]:
+        elements = []
+        for line in yaml_text.split('\n'):
+            m = re.match(
+                r'\s*-\s+(\w+)\s*(?:"([^"]*)")?\s*\[ref=(\S+)\](?::\s*(.*))?', line
+            )
+            if not m: continue
+            role, name, ref, rest = m.group(1), m.group(2), m.group(3), m.group(4)
+            name = (name or rest or '').strip()
+            if not name: continue
+            if any(kw in name for kw in self.NOISE_KW): continue
+            if any(kw in name for kw in self.DANGER_KW): continue
+
+            if role in self.INTERACTIVE_ROLES:
+                is_dd = role in ('combobox', 'searchbox')
+                elements.append({"ref": ref, "name": name[:80], "role": role,
+                                 "is_dropdown": is_dd})
+            elif role == "generic" and len(name) > 3:
+                if re.match(r'^[\d\s\.\+\-\/]+$', name): continue
+                if re.match(r'^\d{4}/\d{2}/\d{2}', name): continue
+                elements.append({"ref": ref, "name": name[:80], "role": "generic"})
+        return elements
+
+    # ========================================================================
+    # 导航 + 下拉
+    # ========================================================================
+
+    @classmethod
+    def _is_nav(cls, item: dict) -> bool:
+        return item.get("role") in cls.NAV_ROLES
+
+    def _expand_and_capture(self, item: dict) -> List[str]:
+        """展开下拉并捕获选项列表。"""
+        try:
+            ref = item.get("ref", "")
+            name = item.get("name", "")[:40]
+            selector = item.get("selector", "")
+
+            if ref:
+                self.mcp.click(ref)
+            elif selector:
+                self._click_by_sel(selector)
+            else:
+                self._click_js(name)
+            time.sleep(0.6)
+
+            snap = self.mcp.snapshot()
+            snap_text = self.mcp.extract_text(snap)
+            opts = self._extract_options(snap_text)
+            self.mcp.press_key("Escape"); time.sleep(0.2)
+
+            if opts:
+                logger.info(f"[MCP Agent] v {name[:30]} -> {opts}")
+            return opts
+        except Exception as e:
+            logger.warning(f"[MCP Agent] dropdown {name}: {e}")
+            return []
+
+    @staticmethod
+    def _extract_options(text: str) -> List[str]:
+        opts = []
+        for line in text.split('\n'):
+            m = re.match(r'\s*-\s+(option|listitem|menuitem)\s*(?:"([^"]*)")?', line)
+            if m:
+                o = (m.group(2) or '').strip()
+                if o and len(o) < 50: opts.append(o)
+        return list(dict.fromkeys(opts))
+
+    # ========================================================================
+    # 点击
+    # ========================================================================
+
+    def _click_by_sel(self, selector: str):
+        safe = selector.replace('\\', '\\\\').replace("'", "\\'")
+        self.mcp.evaluate(
+            f"() => {{"
+            f"const el = document.querySelector('{safe}');"
+            f"if (el) {{ el.scrollIntoView({{block:'center',behavior:'instant'}});"
+            f"el.style.outline='3px solid #1890ff'; el.click(); }} }}"
+        )
+
+    def _click_js(self, text: str):
+        """JS 文本逐级降级匹配点击。"""
+        needle_full = text[:40].replace('\\', '\\\\').replace("'", "\\'")
+        sel = self.CLICK_SEL.replace("'", "\\'")
+        candidates = [needle_full]
+        parts = needle_full.split()
+        while len(parts) > 1:
+            parts.pop(); candidates.append(' '.join(parts))
+        if len(needle_full) > 4:
+            for n in [4, 3, 2]:
+                if len(needle_full) > n: candidates.append(needle_full[:n])
+        js_candidates = json.dumps(candidates[:8])
+
+        self.mcp.evaluate(
+            f"() => {{"
+            f"const candidates = {js_candidates};"
+            f"const all = document.querySelectorAll('{sel}');"
+            f"for (const needle of candidates) {{"
+            f"for (const el of all) {{"
+            f"const r = el.getBoundingClientRect();"
+            f"if (r.width < 20 || r.height < 10 || el.offsetParent === null) continue;"
+            f"const t = (el.textContent || '').trim();"
+            f"if (t.indexOf(needle) === 0) {{"
+            f"el.scrollIntoView({{block:'center',behavior:'instant'}});"
+            f"el.style.outline='3px solid #1890ff';"
+            f"el.click(); return 'ok'; }} }}"
+            f"for (const el of document.querySelectorAll('{sel}')) {{"
+            f"const r = el.getBoundingClientRect();"
+            f"if (r.width < 20 || r.height < 10 || el.offsetParent === null) continue;"
+            f"const t = (el.textContent || '').trim();"
+            f"if (t.indexOf(needle) > -1 && t.length < 200) {{"
+            f"el.scrollIntoView({{block:'center',behavior:'instant'}});"
+            f"el.style.outline='3px solid #1890ff';"
+            f"el.click(); return 'ok'; }} }} }}"
+            f"return 'miss'; }}"
+        )
+
+    def _get_current_url(self) -> str:
+        try:
+            result = self.mcp.evaluate("() => window.location.href")
+            text = self.mcp.extract_text(result)
+            return self.mcp.extract_result_section(text).strip()
+        except Exception:
+            return ""
+
+    @staticmethod
+    def _notify(cb, stage, msg, pct, total, **extra):
+        if cb:
+            try: cb({"stage": stage, "message": msg, "progress": pct, "total": total, **extra})
+            except Exception: pass

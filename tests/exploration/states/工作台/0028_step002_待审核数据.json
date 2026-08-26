@@ -1,0 +1,62 @@
+{
+  "label": "step002_待审核数据",
+  "url": "https://hospitalweb.xinjikang.cn/#/fileaudit?refresh=1787750750201&oId=9ee70b68673b4660af488e86a0112f68&tabKey=0",
+  "total_elements": 6,
+  "elements": [
+    {
+      "tag": "UL",
+      "role": "menu",
+      "cls": "ant-menu ant-menu-root ant-menu-inline ant-menu-light menu___1qUGa css-1sdc3xm",
+      "text": "工作台患者档案设备管理问卷管理账号管理数据管理文件审核内部报告健康报告周报审核运营配置操作日志随访管理",
+      "onclick": false,
+      "href": "",
+      "size": "194x676"
+    },
+    {
+      "tag": "DIV",
+      "role": "tab",
+      "cls": "ant-tabs-tab-btn",
+      "text": "数据审核",
+      "onclick": false,
+      "href": "",
+      "size": "64x24"
+    },
+    {
+      "tag": "DIV",
+      "role": "tab",
+      "cls": "ant-tabs-tab-btn",
+      "text": "报告审核",
+      "onclick": false,
+      "href": "",
+      "size": "64x24"
+    },
+    {
+      "tag": "DIV",
+      "role": "tab",
+      "cls": "ant-tabs-tab-btn",
+      "text": "回收站",
+      "onclick": false,
+      "href": "",
+      "size": "48x24"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-default ant-btn-color-default ant-btn-variant-outlined",
+      "text": "重 置",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid ml-4",
+      "text": "查 询",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    }
+  ],
+  "overlay_elements": []
+}

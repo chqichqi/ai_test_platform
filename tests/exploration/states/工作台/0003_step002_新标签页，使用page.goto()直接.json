@@ -1,0 +1,26 @@
+{
+  "label": "step002_新标签页，使用page.goto()直接",
+  "url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1787750750201&oId=9ee70b68673b4660af488e86a0112f68",
+  "total_elements": 2,
+  "elements": [
+    {
+      "tag": "UL",
+      "role": "menu",
+      "cls": "ant-menu ant-menu-root ant-menu-inline ant-menu-light menu___1qUGa css-1sdc3xm",
+      "text": "工作台患者档案设备管理问卷管理账号管理数据管理运营配置操作日志随访管理",
+      "onclick": false,
+      "href": "",
+      "size": "199x468"
+    },
+    {
+      "tag": "DIV",
+      "role": "tabpanel",
+      "cls": "ant-tabs-tabpane ant-tabs-tabpane-active",
+      "text": "暂无数据暂无数据",
+      "onclick": false,
+      "href": "",
+      "size": "723x521"
+    }
+  ],
+  "overlay_elements": []
+}

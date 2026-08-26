@@ -1,0 +1,387 @@
+- generic [ref=e5]:
+  - generic [ref=e6]:
+    - generic [ref=e7]:
+      - img "logo" [ref=e8]
+      - generic [ref=e9]: 心吉康心血管健康综合管理平台
+    - generic [ref=e36]: 测试机构
+    - generic [ref=e10]:
+      - generic [ref=e13]: 2026/08/01 星期
+      - generic [ref=e14]: 六
+      - generic [ref=e15] [cursor=pointer]: 陈强
+  - generic [ref=e19]:
+    - menu [ref=e38]:
+      - menuitem "工作台" [ref=e39] [cursor=pointer]
+      - menuitem "患者档案" [ref=e42] [cursor=pointer]
+      - menuitem "设备管理" [expanded] [ref=e45] [cursor=pointer]
+      - menu [ref=e19499]:
+        - menuitem "设备列表" [ref=e19500] [cursor=pointer]
+        - menuitem "设备收发" [ref=e19502] [cursor=pointer]
+      - menuitem "问卷管理" [ref=e48] [cursor=pointer]
+      - menuitem "账号管理" [ref=e51] [cursor=pointer]
+      - menuitem "数据管理" [expanded] [ref=e54] [cursor=pointer]
+      - menu [ref=e17965]:
+        - menuitem "文件审核" [ref=e17966] [cursor=pointer]
+        - menuitem "内部报告" [ref=e17968] [cursor=pointer]
+        - menuitem "健康报告" [ref=e17970] [cursor=pointer]
+        - menuitem "周报审核" [ref=e17972] [cursor=pointer]
+      - menuitem "运营配置" [ref=e57] [cursor=pointer]
+      - menuitem "操作日志" [ref=e60] [cursor=pointer]
+      - menuitem "随访管理" [ref=e63] [cursor=pointer]
+    - generic [ref=e21]:
+      - navigation [ref=e2201]:
+        - list [ref=e2202]:
+          - listitem [ref=e2203]: 设备收发
+      - generic [ref=e19505]:
+        - generic [ref=e19506]:
+          - generic [ref=e19507]: 设备收发
+          - button "线下快速回收" [ref=e19509] [cursor=pointer]
+        - generic [ref=e19511]:
+          - generic [ref=e19512]:
+            - tablist [ref=e19513]:
+              - generic [ref=e19515]:
+                - tab "全部" [ref=e19517] [cursor=pointer]
+                - tab "待发货" [selected] [ref=e19519] [cursor=pointer]
+                - tab "已发货" [ref=e19521] [cursor=pointer]
+                - tab "待回收" [ref=e19523] [cursor=pointer]
+                - tab "已预约回收" [ref=e19525] [cursor=pointer]
+                - tab "已退回" [ref=e19527] [cursor=pointer]
+            - generic:
+              - generic:
+                - tabpanel "待发货"
+          - generic [ref=e19532]:
+            - generic [ref=e19536]:
+              - generic "姓名" [ref=e19538]: "姓名 :"
+              - textbox "姓名 :" [ref=e19543]:
+                - /placeholder: 请输入
+            - generic [ref=e19548]:
+              - generic "手机号码" [ref=e19550]: "手机号码 :"
+              - textbox "手机号码 :" [ref=e19555]:
+                - /placeholder: 请输入
+            - generic [ref=e19560]:
+              - generic "设备类型" [ref=e19562]: "设备类型 :"
+              - generic [ref=e19568] [cursor=pointer]:
+                - combobox "设备类型 :" [ref=e19570]
+                - generic: 请选择
+            - generic [ref=e19574]:
+              - generic "发放方式" [ref=e19576]: "发放方式 :"
+              - generic [ref=e19582] [cursor=pointer]:
+                - combobox "发放方式 :" [ref=e19584]
+                - generic: 请选择
+            - generic [ref=e19588]:
+              - generic "设备编号" [ref=e19590]: "设备编号 :"
+              - textbox "设备编号 :" [ref=e19595]:
+                - /placeholder: 请输入
+            - generic [ref=e19600]:
+              - generic "物流状态" [ref=e19602]: "物流状态 :"
+              - generic [ref=e19608]:
+                - combobox "物流状态 :" [disabled] [ref=e19610]
+                - generic "待发货" [ref=e19913]
+            - generic [ref=e19615]:
+              - generic "发货时间" [ref=e19617]: "发货时间 :"
+              - generic [ref=e19622]:
+                - textbox "发货时间 :" [ref=e19623]:
+                  - /placeholder: 请选择
+                - generic:
+                  - img "calendar"
+            - generic [ref=e19627]:
+              - generic "编号" [ref=e19629]: "编号 :"
+              - textbox "编号 :" [ref=e19634]:
+                - /placeholder: 请输入
+            - generic [ref=e19639]:
+              - generic "发放类型" [ref=e19641]: "发放类型 :"
+              - generic [ref=e19647] [cursor=pointer]:
+                - combobox "发放类型 :" [ref=e19649]
+                - generic: 请选择
+            - generic [ref=e19653]:
+              - generic "发货来源" [ref=e19655]: "发货来源 :"
+              - generic [ref=e19661] [cursor=pointer]:
+                - combobox "发货来源 :" [ref=e19663]
+                - generic: 请选择
+            - generic [ref=e19685]:
+              - button "重 置" [ref=e19686] [cursor=pointer]
+              - button "查 询" [ref=e19688] [cursor=pointer]
+              - generic [ref=e19690] [cursor=pointer]:
+                - generic [ref=e19691]: 收起
+                - img "up" [ref=e19692]
+        - generic [ref=e19696]:
+          - generic [ref=e19701]:
+            - table [ref=e19915]:
+              - rowgroup [ref=e19933]:
+                - row [ref=e19934]:
+                  - columnheader "编号" [ref=e19935]
+                  - columnheader "姓名" [ref=e19936]
+                  - columnheader "手机号码" [ref=e19937]
+                  - columnheader "发放类型" [ref=e19938]
+                  - columnheader "发货时间" [ref=e19939]
+                  - columnheader "发货来源" [ref=e19940]
+                  - columnheader "项目名称" [ref=e19941]
+                  - columnheader "项目阶段" [ref=e19942]
+                  - columnheader "发货备注" [ref=e19943]
+                  - columnheader "发放方式" [ref=e19944]
+                  - columnheader "设备类型" [ref=e19945]
+                  - columnheader "设备编号" [ref=e19946]
+                  - columnheader "异常提示" [ref=e19947]
+                  - columnheader "物流状态" [ref=e19948]
+                  - columnheader "操作" [ref=e19949]
+                  - columnheader [ref=e19950]
+            - table [ref=e19952]:
+              - rowgroup [ref=e19969]:
+                - row [ref=e19970]:
+                  - cell "-" [ref=e19971]
+                  - cell "0520001" [ref=e19972]
+                  - cell "10065602648" [ref=e19973]
+                  - cell "正常发货" [ref=e19974]
+                  - cell "2026-05-20" [ref=e19975]
+                  - cell "档案发货" [ref=e19978]
+                  - cell "-" [ref=e19980]
+                  - cell "-" [ref=e19982]
+                  - cell "-" [ref=e19984]
+                  - cell "现场佩戴" [ref=e19986]
+                  - cell "-" [ref=e19987]
+                  - cell "-" [ref=e19988]
+                  - cell "设备超过73天未发货" [ref=e19989]
+                  - cell [ref=e19992]
+                  - cell "详情" [ref=e19995]
+                - row [ref=e19998]:
+                  - cell "-" [ref=e19999]
+                  - cell "0416001" [ref=e20000]
+                  - cell "10026102220" [ref=e20001]
+                  - cell "正常发货" [ref=e20002]
+                  - cell "2026-04-18" [ref=e20003]
+                  - cell "档案发货" [ref=e20006]
+                  - cell "-" [ref=e20008]
+                  - cell "-" [ref=e20010]
+                  - cell "-" [ref=e20012]
+                  - cell "现场佩戴" [ref=e20014]
+                  - cell "-" [ref=e20015]
+                  - cell "-" [ref=e20016]
+                  - cell "设备超过105天未发..." [ref=e20017]
+                  - cell [ref=e20020]
+                  - cell "详情" [ref=e20023]
+                - row [ref=e20026]:
+                  - cell "-" [ref=e20027]
+                  - cell "2024071916" [ref=e20028]
+                  - cell "10000000009" [ref=e20029]
+                  - cell "正常发货" [ref=e20030]
+                  - cell "2026-04-16" [ref=e20031]
+                  - cell "项目发货" [ref=e20034]
+                  - cell "测试机构" [ref=e20036]
+                  - cell "第3阶段" [ref=e20038]
+                  - cell "-" [ref=e20040]
+                  - cell "邮寄" [ref=e20042]
+                  - cell "-" [ref=e20043]
+                  - cell "-" [ref=e20044]
+                  - cell "设备超过107天未发..." [ref=e20045]
+                  - cell [ref=e20048]
+                  - cell "详情" [ref=e20051]
+                - row [ref=e20054]:
+                  - cell "-" [ref=e20055]
+                  - cell "王强" [ref=e20056]
+                  - cell "10026102176" [ref=e20057]
+                  - cell "正常发货" [ref=e20058]
+                  - cell "2025-09-01" [ref=e20059]
+                  - cell "档案发货" [ref=e20062]
+                  - cell "-" [ref=e20064]
+                  - cell "-" [ref=e20066]
+                  - cell "-" [ref=e20068]
+                  - cell "邮寄" [ref=e20070]
+                  - cell "-" [ref=e20071]
+                  - cell "-" [ref=e20072]
+                  - cell "设备超过334天未发..." [ref=e20073]
+                  - cell [ref=e20076]
+                  - cell "详情" [ref=e20079]
+                - row [ref=e20082]:
+                  - cell "-" [ref=e20083]
+                  - cell "张军" [ref=e20084]
+                  - cell "10026102175" [ref=e20085]
+                  - cell "正常发货" [ref=e20086]
+                  - cell "2025-09-01" [ref=e20087]
+                  - cell "档案发货" [ref=e20090]
+                  - cell "-" [ref=e20092]
+                  - cell "-" [ref=e20094]
+                  - cell "-" [ref=e20096]
+                  - cell "邮寄" [ref=e20098]
+                  - cell "-" [ref=e20099]
+                  - cell "-" [ref=e20100]
+                  - cell "设备超过334天未发..." [ref=e20101]
+                  - cell [ref=e20104]
+                  - cell "详情" [ref=e20107]
+                - row [ref=e20110]:
+                  - cell "-" [ref=e20111]
+                  - cell "刘光明" [ref=e20112]
+                  - cell "10026102002" [ref=e20113]
+                  - cell "正常发货" [ref=e20114]
+                  - cell "2025-08-12" [ref=e20115]
+                  - cell "档案发货" [ref=e20118]
+                  - cell "-" [ref=e20120]
+                  - cell "-" [ref=e20122]
+                  - cell "-" [ref=e20124]
+                  - cell "邮寄" [ref=e20126]
+                  - cell "-" [ref=e20127]
+                  - cell "-" [ref=e20128]
+                  - cell "设备超过354天未发..." [ref=e20129]
+                  - cell [ref=e20132]
+                  - cell "详情" [ref=e20135]
+                - row [ref=e20138]:
+                  - cell "-" [ref=e20139]
+                  - cell "imya0715" [ref=e20140]
+                  - cell "10026101840" [ref=e20141]
+                  - cell "正常发货" [ref=e20142]
+                  - cell "2025-07-15" [ref=e20143]
+                  - cell "档案发货" [ref=e20146]
+                  - cell "-" [ref=e20148]
+                  - cell "-" [ref=e20150]
+                  - cell "-" [ref=e20152]
+                  - cell "邮寄" [ref=e20154]
+                  - cell "-" [ref=e20155]
+                  - cell "-" [ref=e20156]
+                  - cell "设备超过382天未发..." [ref=e20157]
+                  - cell [ref=e20160]
+                  - cell "详情" [ref=e20163]
+                - row [ref=e20166]:
+                  - cell "-" [ref=e20167]
+                  - cell "imya070715" [ref=e20168]
+                  - cell "10026101759" [ref=e20169]
+                  - cell "正常发货" [ref=e20170]
+                  - cell "2025-07-07" [ref=e20171]
+                  - cell "档案发货" [ref=e20174]
+                  - cell "-" [ref=e20176]
+                  - cell "-" [ref=e20178]
+                  - cell "-" [ref=e20180]
+                  - cell "邮寄" [ref=e20182]
+                  - cell "-" [ref=e20183]
+                  - cell "-" [ref=e20184]
+                  - cell "设备超过390天未发..." [ref=e20185]
+                  - cell [ref=e20188]
+                  - cell "详情" [ref=e20191]
+                - row [ref=e20194]:
+                  - cell "-" [ref=e20195]
+                  - cell "123" [ref=e20196]
+                  - cell "13981739035" [ref=e20197]
+                  - cell "正常发货" [ref=e20198]
+                  - cell "2025-06-12" [ref=e20199]
+                  - cell "档案发货" [ref=e20202]
+                  - cell "-" [ref=e20204]
+                  - cell "-" [ref=e20206]
+                  - cell "-" [ref=e20208]
+                  - cell "邮寄" [ref=e20210]
+                  - cell "-" [ref=e20211]
+                  - cell "-" [ref=e20212]
+                  - cell "设备超过415天未发..." [ref=e20213]
+                  - cell [ref=e20216]
+                  - cell "详情" [ref=e20219]
+                - row [ref=e20222]:
+                  - cell "-" [ref=e20223]
+                  - cell "1111111111" [ref=e20224]
+                  - cell "13981739395" [ref=e20225]
+                  - cell "正常发货" [ref=e20226]
+                  - cell "2025-06-12" [ref=e20227]
+                  - cell "档案发货" [ref=e20230]
+                  - cell "-" [ref=e20232]
+                  - cell "-" [ref=e20234]
+                  - cell "-" [ref=e20236]
+                  - cell "邮寄" [ref=e20238]
+                  - cell "-" [ref=e20239]
+                  - cell "-" [ref=e20240]
+                  - cell "设备超过415天未发..." [ref=e20241]
+                  - cell [ref=e20244]
+                  - cell "详情" [ref=e20247]
+                - row [ref=e20250]:
+                  - cell "-" [ref=e20251]
+                  - cell "1111111112" [ref=e20252]
+                  - cell "13981739396" [ref=e20253]
+                  - cell "正常发货" [ref=e20254]
+                  - cell "2025-06-12" [ref=e20255]
+                  - cell "档案发货" [ref=e20258]
+                  - cell "-" [ref=e20260]
+                  - cell "-" [ref=e20262]
+                  - cell "-" [ref=e20264]
+                  - cell "邮寄" [ref=e20266]
+                  - cell "-" [ref=e20267]
+                  - cell "-" [ref=e20268]
+                  - cell "设备超过415天未发..." [ref=e20269]
+                  - cell [ref=e20272]
+                  - cell "详情" [ref=e20275]
+                - row [ref=e20278]:
+                  - cell "-" [ref=e20279]
+                  - cell "imya0612" [ref=e20280]
+                  - cell "10026101729" [ref=e20281]
+                  - cell "正常发货" [ref=e20282]
+                  - cell "2025-06-12" [ref=e20283]
+                  - cell "档案发货" [ref=e20286]
+                  - cell "-" [ref=e20288]
+                  - cell "-" [ref=e20290]
+                  - cell "-" [ref=e20292]
+                  - cell "邮寄" [ref=e20294]
+                  - cell "-" [ref=e20295]
+                  - cell "-" [ref=e20296]
+                  - cell "设备超过415天未发..." [ref=e20297]
+                  - cell [ref=e20300]
+                  - cell "详情" [ref=e20303]
+                - row [ref=e20306]:
+                  - cell "-" [ref=e20307]
+                  - cell "IMYA0603-3" [ref=e20308]
+                  - cell "10026101573" [ref=e20309]
+                  - cell "正常发货" [ref=e20310]
+                  - cell "2025-06-03" [ref=e20311]
+                  - cell "档案发货" [ref=e20314]
+                  - cell "-" [ref=e20316]
+                  - cell "-" [ref=e20318]
+                  - cell "-" [ref=e20320]
+                  - cell "邮寄" [ref=e20322]
+                  - cell "-" [ref=e20323]
+                  - cell "-" [ref=e20324]
+                  - cell "设备超过424天未发..." [ref=e20325]
+                  - cell [ref=e20328]
+                  - cell "详情" [ref=e20331]
+                - row [ref=e20334]:
+                  - cell "-" [ref=e20335]
+                  - cell "测试0603-2" [ref=e20336]
+                  - cell "10026101572" [ref=e20337]
+                  - cell "正常发货" [ref=e20338]
+                  - cell "2025-06-03" [ref=e20339]
+                  - cell "档案发货" [ref=e20342]
+                  - cell "-" [ref=e20344]
+                  - cell "-" [ref=e20346]
+                  - cell "-" [ref=e20348]
+                  - cell "邮寄" [ref=e20350]
+                  - cell "-" [ref=e20351]
+                  - cell "-" [ref=e20352]
+                  - cell "设备超过424天未发..." [ref=e20353]
+                  - cell [ref=e20356]
+                  - cell "详情" [ref=e20359]
+                - row [ref=e20362]:
+                  - cell "-" [ref=e20363]
+                  - cell "测试0603" [ref=e20364]
+                  - cell "10026101570" [ref=e20365]
+                  - cell "正常发货" [ref=e20366]
+                  - cell "2025-06-03" [ref=e20367]
+                  - cell "档案发货" [ref=e20370]
+                  - cell "-" [ref=e20372]
+                  - cell "-" [ref=e20374]
+                  - cell "-" [ref=e20376]
+                  - cell "邮寄" [ref=e20378]
+                  - cell "-" [ref=e20379]
+                  - cell "-" [ref=e20380]
+                  - cell "设备超过424天未发..." [ref=e20381]
+                  - cell [ref=e20384]
+                  - cell "详情" [ref=e20387]
+          - list [ref=e20390]:
+            - listitem [ref=e20391]: 共23条记录
+            - listitem "上一页" [ref=e20392]:
+              - button [disabled] [ref=e20393]:
+                - img "left" [ref=e20394]
+            - listitem "1" [ref=e20397] [cursor=pointer]
+            - listitem "2" [ref=e20399] [cursor=pointer]
+            - listitem "下一页" [ref=e20401] [cursor=pointer]:
+              - button [ref=e20402]:
+                - img "right" [ref=e20403]
+            - listitem [ref=e20406]:
+              - generic "页码" [ref=e20407] [cursor=pointer]:
+                - generic [ref=e20409]:
+                  - combobox "页码" [ref=e20411]
+                  - generic "15 条/页" [ref=e20412]
+              - generic [ref=e20413]:
+                - text: 跳至
+                - textbox "页" [ref=e20414]
+                - text: 页

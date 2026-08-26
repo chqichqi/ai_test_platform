@@ -1,0 +1,21 @@
+{
+  "nav": {},
+  "cards": {
+    "室早": {
+      "label": "室早",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve",
+      "role": "button"
+    },
+    "患者人数": {
+      "label": "患者人数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve",
+      "role": "button"
+    }
+  },
+  "dropdowns": {},
+  "sub_menus": {}
+}

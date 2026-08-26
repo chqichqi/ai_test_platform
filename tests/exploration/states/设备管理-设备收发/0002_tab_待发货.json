@@ -1,0 +1,62 @@
+{
+  "label": "tab_待发货",
+  "url": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1786028576052&oId=c66a8c1b1c54462aa9f7a5de69218fee&tabKey=1",
+  "total_elements": 6,
+  "elements": [
+    {
+      "tag": "UL",
+      "role": "menu",
+      "cls": "ant-menu ant-menu-root ant-menu-inline ant-menu-light menu___1qUGa css-1sdc3xm",
+      "text": "工作台患者档案设备管理设备列表设备收发问卷管理账号管理数据管理运营配置操作日志随访管理",
+      "onclick": false,
+      "href": "",
+      "size": "199x572"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid undefined ",
+      "text": "发货地址",
+      "onclick": false,
+      "href": "",
+      "size": "88x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid undefined ml-3",
+      "text": "线下快速回收",
+      "onclick": false,
+      "href": "",
+      "size": "116x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "tab",
+      "cls": "ant-tabs-tab-btn",
+      "text": "待发货",
+      "onclick": false,
+      "href": "",
+      "size": "48x24"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-default ant-btn-color-default ant-btn-variant-outlined",
+      "text": "重 置",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid ml-4",
+      "text": "查 询",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    }
+  ],
+  "overlay_elements": []
+}

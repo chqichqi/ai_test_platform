@@ -1,0 +1,151 @@
+{
+  "module": "预警信息-佩戴与测量预警",
+  "total_clicks": 12,
+  "pages": 1,
+  "clicks": [
+    {
+      "seq": 1,
+      "name": "工作台",
+      "actual_text": "工作台",
+      "action": "navigate",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 2,
+      "name": "佩戴预警",
+      "actual_text": "佩戴预警 (0)",
+      "action": "fill",
+      "status": "failed",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_contains",
+      "error": ""
+    },
+    {
+      "seq": 3,
+      "name": "佩戴预警",
+      "actual_text": "佩戴预警 (0)",
+      "action": "click",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_contains",
+      "error": ""
+    },
+    {
+      "seq": 1,
+      "name": "佩戴预警",
+      "actual_text": "佩戴预警 (0)",
+      "action": "select",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_contains",
+      "error": ""
+    },
+    {
+      "seq": 1,
+      "name": "佩戴预警",
+      "actual_text": "佩戴预警 (0)",
+      "action": "select",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_contains",
+      "error": ""
+    },
+    {
+      "seq": 2,
+      "name": "佩戴预警",
+      "actual_text": "佩戴预警 (0)",
+      "action": "validate",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_contains",
+      "error": ""
+    },
+    {
+      "seq": 2,
+      "name": "测量预警",
+      "actual_text": "测量预警 (0)",
+      "action": "fill",
+      "status": "failed",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_contains",
+      "error": ""
+    },
+    {
+      "seq": 3,
+      "name": "测量预警",
+      "actual_text": "测量预警 (0)",
+      "action": "click",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_contains",
+      "error": ""
+    },
+    {
+      "seq": 1,
+      "name": "测量预警",
+      "actual_text": "测量预警 (0)",
+      "action": "select",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "overlay",
+      "strategy": "text_contains",
+      "error": ""
+    },
+    {
+      "seq": 1,
+      "name": "测量预警",
+      "actual_text": "测量预警 (0)",
+      "action": "select",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_contains",
+      "error": ""
+    },
+    {
+      "seq": 2,
+      "name": "测量预警",
+      "actual_text": "测量预警 (0)",
+      "action": "validate",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_contains",
+      "error": ""
+    },
+    {
+      "seq": 1,
+      "name": "房颤预警",
+      "actual_text": "房颤预警",
+      "action": "select",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_exact",
+      "error": ""
+    }
+  ]
+}

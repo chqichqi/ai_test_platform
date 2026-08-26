@@ -1,0 +1,85 @@
+{
+  "timestamp": "2026-08-23T13:00:18.728516",
+  "pipeline": "functional_to_ui",
+  "test_cases_total": 0,
+  "exploration": {
+    "module": "指标总览-自定义",
+    "steps_total": 5,
+    "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1787490002521&oId=9ee70b68673b4660af488e86a0112f68",
+    "steps": [
+      {
+        "seq": 1,
+        "target": "工作台",
+        "action": "navigate",
+        "role": "link",
+        "ui_pattern": "",
+        "found": true,
+        "actual_text": "工作台",
+        "strategy": "text_exact",
+        "page_text_len": 527,
+        "current_url": "jikang.cn/#/workpanel?refresh=1787490002521&oId=9ee70b68673b4660af488e86a0112f68",
+        "clicked": true,
+        "url_changed": false
+      },
+      {
+        "seq": 2,
+        "target": "自定义",
+        "action": "click",
+        "role": "button",
+        "ui_pattern": "button",
+        "found": true,
+        "actual_text": "自定义",
+        "strategy": "text_exact",
+        "page_text_len": 490,
+        "current_url": "jikang.cn/#/workpanel?refresh=1787490002521&oId=9ee70b68673b4660af488e86a0112f68",
+        "clicked": true,
+        "url_changed": true,
+        "jump_url": "https://hospitalweb.xinjikang.cn/#/workpanel/customCard?refresh=1787490002521&oId=9ee70b68673b4660af488e86a0112f68"
+      },
+      {
+        "seq": 3,
+        "target": "重置",
+        "action": "click",
+        "role": "",
+        "ui_pattern": "",
+        "found": false,
+        "actual_text": "",
+        "strategy": "",
+        "page_text_len": 527,
+        "current_url": "jikang.cn/#/workpanel?refresh=1787490002521&oId=9ee70b68673b4660af488e86a0112f68"
+      },
+      {
+        "seq": 4,
+        "target": "保存布局",
+        "action": "click",
+        "role": "",
+        "ui_pattern": "",
+        "found": false,
+        "actual_text": "",
+        "strategy": "",
+        "page_text_len": 527,
+        "current_url": "jikang.cn/#/workpanel?refresh=1787490002521&oId=9ee70b68673b4660af488e86a0112f68"
+      }
+    ],
+    "summary": {
+      "found": 2,
+      "clicked": 2,
+      "navigated": 1,
+      "missed": 2
+    },
+    "stats": {
+      "total_elements": 2,
+      "navigated_elements": 1,
+      "pages_explored": 1,
+      "visited_states": 2,
+      "elapsed_seconds": 12.1,
+      "errors": 2,
+      "guided_steps_total": 5,
+      "guided_steps_executed": 2,
+      "exploration_mode": "guided",
+      "platform_type": "web"
+    }
+  },
+  "conversions": [],
+  "summary": {}
+}

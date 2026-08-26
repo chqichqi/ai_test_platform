@@ -1,0 +1,6760 @@
+{
+  "timestamp": "2026-08-17T13:15:09.436204",
+  "pipeline": "functional_to_ui",
+  "test_cases_total": 55,
+  "exploration": {},
+  "conversions": [
+    {
+      "test_case_id": "2",
+      "case_name": "工作台-页面加载-上下区域完整显示",
+      "module": "工作台模块",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载，无报错"
+          },
+          {
+            "step": 2,
+            "action": "验证：页面显示\"指标总览\"区域",
+            "expected": "上半区指标总览正常显示"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面显示\"预警信息\"区域",
+            "expected": "下半区预警信息正常显示"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 5,
+        "title": "工作台-页面加载-上下区域完整显示",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入「工作台」页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待页面正常加载，无报错",
+            "args": {
+              "locator": "指标总览"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证上半区「指标总览」区域正常显示",
+            "args": {
+              "locator": "指标总览"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证下半区「预警信息」区域正常显示",
+            "args": {
+              "locator": "预警信息"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：页面显示\"指标总览\"区域', 'expected': '上半区指标总览正常显示'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面显示\"预警信息\"区域', 'expected': '下半区预警信息正常显示'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "3",
+      "case_name": "工作台-指标卡片不存在-跳过用例",
+      "module": "工作台模块",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "验证：检查「患者人数」卡片是否可见",
+            "expected": "若不可见，则pytest.skip()；可见则继续执行"
+          },
+          {
+            "step": 3,
+            "action": "验证：「患者人数」卡片展示总数和今日新增字段",
+            "expected": "卡片字段完整展示"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 6,
+        "title": "工作台-指标卡片不存在-跳过用例",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入「工作台」页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待页面加载",
+            "args": {
+              "locator": "患者人数"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "检查「患者人数」卡片是否可见，若不可见则pytest.skip()",
+            "args": {
+              "locator": "患者人数"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证「患者人数」卡片展示总数字段",
+            "args": {
+              "locator": "总数"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证「患者人数」卡片展示今日新增字段",
+            "args": {
+              "locator": "今日新增"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 3,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "患者人数",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「患者人数」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "target": "患者人数",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「患者人数」(text_exact)"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "4",
+      "case_name": "工作台-预警暂无数据-跳过用例",
+      "module": "工作台模块",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "验证：检查「房颤预警」区域是否显示\"暂无数据\"",
+            "expected": "若暂无数据则pytest.skip()；有数据则继续执行"
+          },
+          {
+            "step": 3,
+            "action": "验证：「房颤预警」区域显示预警卡片列表",
+            "expected": "预警卡片列表正常显示"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 5,
+        "title": "工作台-预警暂无数据-跳过用例",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入「工作台」页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待页面加载",
+            "args": {
+              "locator": "房颤预警"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "检查「房颤预警」区域是否显示，若暂无数据则pytest.skip()",
+            "args": {
+              "locator": "房颤预警"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证「房颤预警」区域显示预警卡片列表",
+            "args": {
+              "locator": "预警信息"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 3,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "房颤预警",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "target": "房颤预警",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "5",
+      "case_name": "工作台-卡片跳转后-使用go_back返回",
+      "module": "工作台模块",
+      "mode": "v2",
+      "status": "steps_missing",
+      "error": "",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "验证：检查「室早」卡片是否可见",
+            "expected": "若不可见则pytest.skip()；可见则继续"
+          },
+          {
+            "step": 2,
+            "action": "点击「室早」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL跳转正确"
+          },
+          {
+            "step": 4,
+            "action": "执行page.go_back()返回上一页",
+            "expected": "成功返回工作台"
+          },
+          {
+            "step": 5,
+            "action": "验证：页面显示\"指标总览\"和\"预警信息\"区域",
+            "expected": "工作台正常显示"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 10,
+        "title": "工作台-卡片跳转后-使用go_back返回",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入「工作台」页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待页面加载",
+            "args": {
+              "locator": "室早移除"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "检查「室早」卡片是否可见，若不可见则pytest.skip()",
+            "args": {
+              "locator": "室早移除"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "click",
+            "desc": "点击「室早」卡片",
+            "args": {
+              "locator": "室早移除"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "wait_for_render",
+            "desc": "验证页面URL包含patient-profile",
+            "args": {
+              "locator": "patient-profile"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "go_back",
+            "desc": "执行page.go_back()返回上一页",
+            "args": {}
+          },
+          {
+            "seq": 7,
+            "action": "wait_for_render",
+            "desc": "等待返回工作台",
+            "args": {
+              "locator": "指标总览"
+            }
+          },
+          {
+            "seq": 8,
+            "action": "assert_visible",
+            "desc": "验证工作台「指标总览」区域正常显示",
+            "args": {
+              "locator": "指标总览"
+            }
+          },
+          {
+            "seq": 9,
+            "action": "assert_visible",
+            "desc": "验证工作台「预警信息」区域正常显示",
+            "args": {
+              "locator": "预警信息"
+            }
+          },
+          {
+            "seq": 10,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 5,
+        "found_steps": 2,
+        "missing_steps": [
+          {
+            "seq": 4,
+            "target": "上一页",
+            "action": "go_back",
+            "status": "not_found",
+            "strategy": "",
+            "message": "✗ 未找到「上一页」— element_not_found"
+          }
+        ],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "室早",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「室早」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "室早",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「室早」(text_contains)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面URL包含patient-profile', 'expected': 'URL跳转正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "target": "上一页",
+            "action": "go_back",
+            "status": "not_found",
+            "strategy": "",
+            "message": "✗ 未找到「上一页」— element_not_found"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '验证：页面显示\"指标总览\"和\"预警信息\"区域', 'expected': '工作台正常显示'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": "2/5 步已定位"
+      }
+    },
+    {
+      "test_case_id": "6",
+      "case_name": "工作台-自定义按钮存在性判断-无权限跳过",
+      "module": "工作台模块",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "验证：检查「自定义」按钮是否可见",
+            "expected": "若不可见则pytest.skip()；可见则继续"
+          },
+          {
+            "step": 3,
+            "action": "验证：「自定义」按钮文本为\"自定义\"",
+            "expected": "按钮文本正确"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 5,
+        "title": "工作台-自定义按钮存在性判断-无权限跳过",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入「工作台」页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待页面加载",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "检查「自定义」按钮是否可见，若不可见则pytest.skip()",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证「自定义」按钮文本为自定义",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 3,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "自定义",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「自定义」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "target": "自定义",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「自定义」(text_exact)"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7",
+      "case_name": "工作台-上下半区独立显示-互不影响",
+      "module": "工作台模块",
+      "mode": "v2",
+      "status": "steps_missing",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "点击「患者人数」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "执行page.go_back()返回上一页",
+            "expected": "成功返回工作台"
+          },
+          {
+            "step": 4,
+            "action": "验证：「房颤预警」区域仍正常显示",
+            "expected": "下半区预警信息未受上半区操作影响"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 7,
+        "title": "工作台-上下半区独立显示-互不影响",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入「工作台」页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待页面加载",
+            "args": {
+              "locator": "指标总览"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击「患者人数」卡片",
+            "args": {
+              "locator": "患者人数"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "go_back",
+            "desc": "执行page.go_back()返回上一页",
+            "args": {}
+          },
+          {
+            "seq": 5,
+            "action": "wait_for_render",
+            "desc": "等待工作台下半区渲染",
+            "args": {
+              "locator": "房颤预警"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "assert_visible",
+            "desc": "验证「房颤预警」区域仍正常显示",
+            "args": {
+              "locator": "房颤预警"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 3,
+        "missing_steps": [
+          {
+            "seq": 3,
+            "target": "上一页",
+            "action": "go_back",
+            "status": "not_found",
+            "strategy": "",
+            "message": "✗ 未找到「上一页」— element_not_found"
+          }
+        ],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "患者人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「患者人数」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "target": "上一页",
+            "action": "go_back",
+            "status": "not_found",
+            "strategy": "",
+            "message": "✗ 未找到「上一页」— element_not_found"
+          },
+          {
+            "seq": 4,
+            "target": "房颤预警",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          }
+        ],
+        "warning": "3/4 步已定位"
+      }
+    },
+    {
+      "test_case_id": "8",
+      "case_name": "患者概览-患者人数-卡片点击跳转患者档案",
+      "module": "指标总览-患者概览",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "点击「患者人数」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL跳转正确"
+          },
+          {
+            "step": 4,
+            "action": "验证：患者档案列表正常加载",
+            "expected": "列表页面展示成功"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 6,
+        "title": "患者概览-患者人数-卡片点击跳转患者档案",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入「工作台」页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待页面加载",
+            "args": {
+              "locator": "指标总览"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击「患者人数」卡片",
+            "args": {
+              "locator": "患者人数"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "wait_for_render",
+            "desc": "验证页面URL包含patient-profile",
+            "args": {
+              "locator": "patient-profile"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证患者档案列表正常加载",
+            "args": {
+              "locator": "患者档案列表"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "患者人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「患者人数」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面URL包含patient-profile', 'expected': 'URL跳转正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：患者档案列表正常加载', 'expected': '列表页面展示成功'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "9",
+      "case_name": "患者概览-患者人数-总数与列表记录数一致",
+      "module": "指标总览-患者概览",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「患者人数」卡片「总数」值，记为N",
+            "expected": "成功获取N，N为数字且N>=0"
+          },
+          {
+            "step": 2,
+            "action": "点击「患者人数」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "获取患者档案列表总记录数，记为M",
+            "expected": "成功获取M，M为数字"
+          },
+          {
+            "step": 4,
+            "action": "验证：M等于N",
+            "expected": "卡片总数与列表记录总数一致"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 8,
+        "title": "患者概览-患者人数-总数与列表记录数一致",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入「工作台」页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待页面加载",
+            "args": {
+              "locator": "患者人数"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "获取「患者人数」卡片「总数」值记为N，N为数字且N>=0",
+            "args": {
+              "locator": "总数"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "click",
+            "desc": "点击「患者人数」卡片",
+            "args": {
+              "locator": "患者人数"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "wait_for_render",
+            "desc": "跳转到患者档案页面",
+            "args": {
+              "locator": "patient-profile"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "assert_visible",
+            "desc": "获取患者档案列表总记录数，记为M",
+            "args": {
+              "locator": "患者档案列表"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "wait_for_render",
+            "desc": "验证M等于N，卡片总数与列表记录总数一致",
+            "args": {
+              "locator": "患者档案列表"
+            }
+          },
+          {
+            "seq": 8,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "患者人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「患者人数」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "患者人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「患者人数」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '获取患者档案列表总记录数，记为M', 'expected': '成功获取M，M为数字'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：M等于N', 'expected': '卡片总数与列表记录总数一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "10",
+      "case_name": "患者概览-患者人数-今日新增与列表记录一致",
+      "module": "指标总览-患者概览",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「患者人数」卡片「今日新增」值，记为N",
+            "expected": "成功获取N，N为数字且N>=0"
+          },
+          {
+            "step": 2,
+            "action": "点击「患者人数」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "在「登记日期」筛选框中选择\"今日新增\"",
+            "expected": "列表按今日新增过滤"
+          },
+          {
+            "step": 4,
+            "action": "获取过滤后列表记录数，记为M",
+            "expected": "成功获取M"
+          },
+          {
+            "step": 5,
+            "action": "验证：M等于N",
+            "expected": "今日新增数字与列表记录数一致"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 10,
+        "title": "患者概览-患者人数-今日新增与列表记录一致",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入「工作台」页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待页面加载",
+            "args": {
+              "locator": "患者人数"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "获取「患者人数」卡片「今日新增」值记为N，N为数字且N>=0",
+            "args": {
+              "locator": "今日新增"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "click",
+            "desc": "点击「患者人数」卡片",
+            "args": {
+              "locator": "患者人数"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "wait_for_render",
+            "desc": "跳转到患者档案页面",
+            "args": {
+              "locator": "patient-profile"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "select",
+            "desc": "在「登记日期」筛选框中选择「今日新增」",
+            "args": {
+              "locator": "今日新增",
+              "trigger": "日"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "wait_for_render",
+            "desc": "等待列表按今日新增过滤",
+            "args": {
+              "locator": "患者档案列表"
+            }
+          },
+          {
+            "seq": 8,
+            "action": "assert_visible",
+            "desc": "获取过滤后列表记录数，记为M",
+            "args": {
+              "locator": "患者档案列表"
+            }
+          },
+          {
+            "seq": 9,
+            "action": "wait_for_render",
+            "desc": "验证M等于N，今日新增数字与列表记录数一致",
+            "args": {
+              "locator": "患者档案列表"
+            }
+          },
+          {
+            "seq": 10,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 5,
+        "found_steps": 3,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "患者人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「患者人数」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "患者人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「患者人数」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "target": "登记日期",
+            "action": "select",
+            "status": "success",
+            "strategy": "scored_text(30)",
+            "message": "✓ 已定位「登记日期」(scored_text(30))"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '获取过滤后列表记录数，记为M', 'expected': '成功获取M'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '验证：M等于N', 'expected': '今日新增数字与列表记录数一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "11",
+      "case_name": "患者概览-患者人数-总数为0显示暂无数据",
+      "module": "指标总览-患者概览",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「患者人数」卡片「总数」值，记为N=0",
+            "expected": "成功获取N且N=0"
+          },
+          {
+            "step": 2,
+            "action": "点击「患者人数」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面显示\"暂无数据\"",
+            "expected": "空状态文案正确显示"
+          },
+          {
+            "step": 4,
+            "action": "验证：列表记录数为0",
+            "expected": "列表无记录"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 8,
+        "title": "患者概览-患者人数-总数为0显示暂无数据",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入「工作台」页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待页面加载",
+            "args": {
+              "locator": "患者人数"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "获取「患者人数」卡片「总数」值记为N=0",
+            "args": {
+              "locator": "总数"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "click",
+            "desc": "点击「患者人数」卡片",
+            "args": {
+              "locator": "患者人数"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "wait_for_render",
+            "desc": "跳转到患者档案页面",
+            "args": {
+              "locator": "patient-profile"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "assert_visible",
+            "desc": "验证页面显示「暂无数据」",
+            "args": {
+              "locator": "暂无数据"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "wait_for_render",
+            "desc": "验证列表记录数为0",
+            "args": {
+              "locator": "暂无数据"
+            }
+          },
+          {
+            "seq": 8,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "患者人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「患者人数」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "患者人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「患者人数」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面显示\"暂无数据\"', 'expected': '空状态文案正确显示'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：列表记录数为0', 'expected': '列表无记录'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "12",
+      "case_name": "患者概览-Smart报告-卡片点击跳转患者档案",
+      "module": "指标总览-患者概览",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "点击「Smart报告(份)」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL跳转正确"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 5,
+        "title": "患者概览-Smart报告-卡片点击跳转患者档案",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入「工作台」页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待页面加载",
+            "args": {
+              "locator": "指标总览"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击「Smart报告(份)」卡片",
+            "args": {
+              "locator": "Smart 报告(份)35今日新增+0"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "wait_for_render",
+            "desc": "验证页面URL包含patient-profile",
+            "args": {
+              "locator": "patient-profile"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "Smart报告(份)",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(50)",
+            "message": "✓ 已定位「Smart报告(份)」(scored_text(50))"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面URL包含patient-profile', 'expected': 'URL跳转正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "13",
+      "case_name": "患者概览-Smart报告-今日新增为0显示暂无数据",
+      "module": "指标总览-患者概览",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「Smart报告(份)」卡片「今日新增」值为0",
+            "expected": "成功获取且值为0"
+          },
+          {
+            "step": 2,
+            "action": "点击「Smart报告(份)」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面显示\"暂无数据\"",
+            "expected": "空状态文案正确显示"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 7,
+        "title": "患者概览-Smart报告-今日新增为0显示暂无数据",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入「工作台」页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待页面加载",
+            "args": {
+              "locator": "Smart 报告(份)35今日新增+0"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "获取「Smart报告(份)」卡片「今日新增」值为0",
+            "args": {
+              "locator": "Smart 报告(份)35今日新增+0"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "click",
+            "desc": "点击「Smart报告(份)」卡片",
+            "args": {
+              "locator": "Smart 报告(份)35今日新增+0"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "wait_for_render",
+            "desc": "跳转到患者档案页面",
+            "args": {
+              "locator": "patient-profile"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "assert_visible",
+            "desc": "验证页面显示「暂无数据」",
+            "args": {
+              "locator": "暂无数据"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "Smart报告(份)",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(50)",
+            "message": "✓ 已定位「Smart报告(份)」(scored_text(50))"
+          },
+          {
+            "seq": 2,
+            "target": "Smart报告(份)",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(50)",
+            "message": "✓ 已定位「Smart报告(份)」(scored_text(50))"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面显示\"暂无数据\"', 'expected': '空状态文案正确显示'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "14",
+      "case_name": "患者概览-患者人数卡片-字段完整性验证",
+      "module": "指标总览-患者概览",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "验证：「患者人数」卡片显示\"总数\"字段",
+            "expected": "总数字段展示"
+          },
+          {
+            "step": 3,
+            "action": "验证：「患者人数」卡片显示\"今日新增\"字段",
+            "expected": "今日新增字段展示"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 5,
+        "title": "患者概览-患者人数卡片-字段完整性验证",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入「工作台」页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待页面加载",
+            "args": {
+              "locator": "患者人数"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证「患者人数」卡片显示「总数」字段",
+            "args": {
+              "locator": "总数"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证「患者人数」卡片显示「今日新增」字段",
+            "args": {
+              "locator": "今日新增"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 3,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "患者人数",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「患者人数」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "target": "患者人数",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「患者人数」(text_exact)"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "15",
+      "case_name": "疾病统计-室早-卡片跳转患者档案带疾病筛选",
+      "module": "指标总览-疾病统计",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "点击「室早」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL跳转正确"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面URL查询参数包含disease=室早",
+            "expected": "疾病筛选参数正确携带"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 6,
+        "title": "疾病统计-室早-卡片跳转患者档案带疾病筛选",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入「工作台」页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待页面加载",
+            "args": {
+              "locator": "指标总览"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击「室早」卡片",
+            "args": {
+              "locator": "室早移除"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "wait_for_render",
+            "desc": "验证页面URL包含patient-profile",
+            "args": {
+              "locator": "patient-profile"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "wait_for_render",
+            "desc": "验证页面URL查询参数包含disease=室早",
+            "args": {
+              "locator": "disease=室早"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "室早",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「室早」(text_contains)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面URL包含patient-profile', 'expected': 'URL跳转正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：页面URL查询参数包含disease=室早', 'expected': '疾病筛选参数正确携带'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "16",
+      "case_name": "疾病统计-室早-跳转后筛选框选中对应疾病",
+      "module": "指标总览-疾病统计",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "点击「室早」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL跳转正确"
+          },
+          {
+            "step": 4,
+            "action": "验证：「疾病类型」下拉框显示\"室早\"",
+            "expected": "筛选框已自动选中室早"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 7,
+        "title": "疾病统计-室早-跳转后筛选框选中对应疾病",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入「工作台」页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待页面加载",
+            "args": {
+              "locator": "指标总览"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击「室早」卡片",
+            "args": {
+              "locator": "室早移除"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "wait_for_render",
+            "desc": "验证页面URL包含patient-profile",
+            "args": {
+              "locator": "patient-profile"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证「疾病类型」下拉框显示",
+            "args": {
+              "locator": "疾病统计"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "assert_visible",
+            "desc": "验证「疾病类型」下拉框已自动选中室早",
+            "args": {
+              "locator": "室早"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 3,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "室早",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「室早」(text_contains)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面URL包含patient-profile', 'expected': 'URL跳转正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "target": "疾病类型",
+            "action": "validate",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「疾病类型」(scored_text(10))"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "17",
+      "case_name": "疾病统计-房颤-跳转后筛选框选中房颤",
+      "module": "指标总览-疾病统计",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "点击「房颤」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：「疾病类型」下拉框显示\"房颤\"",
+            "expected": "筛选框已自动选中房颤"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 6,
+        "title": "疾病统计-房颤-跳转后筛选框选中房颤",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入工作台页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "页面正常加载",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击房颤卡片",
+            "args": {
+              "locator": "房颤"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "wait_for_render",
+            "desc": "跳转到患者档案页面",
+            "args": {
+              "locator": "疾病类型"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证疾病类型下拉框显示房颤",
+            "args": {
+              "locator": "房颤"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 3,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "房颤",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "target": "疾病类型",
+            "action": "validate",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「疾病类型」(scored_text(10))"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "18",
+      "case_name": "疾病统计-室早-总数等于列表记录数",
+      "module": "指标总览-疾病统计",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「室早」卡片「总数」值，记为N",
+            "expected": "成功获取N，N>=0"
+          },
+          {
+            "step": 2,
+            "action": "点击「室早」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "获取患者档案列表总记录数，记为M",
+            "expected": "成功获取M"
+          },
+          {
+            "step": 4,
+            "action": "验证：M等于N",
+            "expected": "总数与列表记录数一致"
+          },
+          {
+            "step": 5,
+            "action": "若N=0，验证页面显示\"暂无数据\"",
+            "expected": "空状态正确显示"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 9,
+        "title": "疾病统计-室早-总数等于列表记录数",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入工作台页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "页面正常加载",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "wait_for_render",
+            "desc": "获取室早卡片总数N,N>=0",
+            "args": {
+              "locator": "室早"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "click",
+            "desc": "点击室早卡片",
+            "args": {
+              "locator": "室早"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "wait_for_render",
+            "desc": "跳转到患者档案页面",
+            "args": {
+              "locator": "疾病类型"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "wait_for_render",
+            "desc": "获取患者档案列表总记录数M",
+            "args": {
+              "locator": "日"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "assert_visible",
+            "desc": "验证M等于N，总数与列表记录数一致",
+            "args": {
+              "locator": "日"
+            }
+          },
+          {
+            "seq": 8,
+            "action": "assert_visible",
+            "desc": "若N=0，验证页面显示暂无数据",
+            "args": {
+              "locator": "暂无数据"
+            }
+          },
+          {
+            "seq": 9,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 5,
+        "found_steps": 3,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "室早",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「室早」(text_contains)"
+          },
+          {
+            "seq": 2,
+            "target": "室早",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「室早」(text_contains)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '获取患者档案列表总记录数，记为M', 'expected': '成功获取M'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：M等于N', 'expected': '总数与列表记录数一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "target": "页面显示\"暂无数据\"",
+            "action": "validate",
+            "status": "success",
+            "strategy": "scored_info(30)",
+            "message": "✓ 已定位「页面显示\"暂无数据\"」(scored_info(30))"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "19",
+      "case_name": "疾病统计-房颤-今日新增与列表记录一致",
+      "module": "指标总览-疾病统计",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「房颤」卡片「今日新增」值，记为N",
+            "expected": "成功获取N，N>=0"
+          },
+          {
+            "step": 2,
+            "action": "点击「房颤」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：「疾病类型」下拉框显示\"房颤\"",
+            "expected": "筛选框已选中房颤"
+          },
+          {
+            "step": 4,
+            "action": "按今日新增过滤，获取列表记录数记为M",
+            "expected": "成功获取M"
+          },
+          {
+            "step": 5,
+            "action": "验证：M等于N",
+            "expected": "今日新增与列表记录数一致"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 10,
+        "title": "疾病统计-房颤-今日新增与列表记录一致",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入工作台页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "页面正常加载",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "wait_for_render",
+            "desc": "获取房颤卡片今日新增N,N>=0",
+            "args": {
+              "locator": "房颤"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "click",
+            "desc": "点击房颤卡片",
+            "args": {
+              "locator": "房颤"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "wait_for_render",
+            "desc": "跳转到患者档案页面",
+            "args": {
+              "locator": "疾病类型"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "assert_visible",
+            "desc": "验证疾病类型下拉框显示房颤",
+            "args": {
+              "locator": "房颤"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "select",
+            "desc": "按今日新增过滤",
+            "args": {
+              "locator": "日",
+              "trigger": "登记日期"
+            }
+          },
+          {
+            "seq": 8,
+            "action": "wait_for_render",
+            "desc": "获取列表记录数M",
+            "args": {
+              "locator": "日"
+            }
+          },
+          {
+            "seq": 9,
+            "action": "assert_visible",
+            "desc": "验证M等于N，今日新增与列表记录数一致",
+            "args": {
+              "locator": "日"
+            }
+          },
+          {
+            "seq": 10,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 5,
+        "found_steps": 4,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "房颤",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "房颤",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "target": "疾病类型",
+            "action": "validate",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「疾病类型」(scored_text(10))"
+          },
+          {
+            "seq": 4,
+            "target": "今日新增过滤，获取列表记录数记为M",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(30)",
+            "message": "✓ 已定位「今日新增过滤，获取列表记录数记为M」(scored_text(30))"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '验证：M等于N', 'expected': '今日新增与列表记录数一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "20",
+      "case_name": "疾病统计-室早-总数为0显示暂无数据",
+      "module": "指标总览-疾病统计",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「室早」卡片「总数」值为0",
+            "expected": "成功获取且值为0"
+          },
+          {
+            "step": 2,
+            "action": "点击「室早」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面显示\"暂无数据\"",
+            "expected": "空状态文案正确显示"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 7,
+        "title": "疾病统计-室早-总数为0显示暂无数据",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入工作台页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "页面正常加载",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "wait_for_render",
+            "desc": "获取室早卡片总数为0",
+            "args": {
+              "locator": "室早"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "click",
+            "desc": "点击室早卡片",
+            "args": {
+              "locator": "室早"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "wait_for_render",
+            "desc": "跳转到患者档案页面",
+            "args": {
+              "locator": "疾病类型"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "assert_visible",
+            "desc": "验证页面显示暂无数据",
+            "args": {
+              "locator": "暂无数据"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "室早",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「室早」(text_contains)"
+          },
+          {
+            "seq": 2,
+            "target": "室早",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「室早」(text_contains)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面显示\"暂无数据\"', 'expected': '空状态文案正确显示'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "21",
+      "case_name": "疾病统计-疾病卡片不存在-跳过用例",
+      "module": "指标总览-疾病统计",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "验证：检查「室早」卡片是否可见",
+            "expected": "若不可见则pytest.skip()；可见则继续"
+          },
+          {
+            "step": 3,
+            "action": "验证：「室早」卡片正常显示",
+            "expected": "疾病卡片展示成功"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 5,
+        "title": "疾病统计-疾病卡片不存在-跳过用例",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入工作台页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "页面正常加载",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "wait_for_render",
+            "desc": "检查室早卡片是否可见；若不可见则pytest.skip()",
+            "args": {
+              "locator": "室早"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "室早卡片正常显示",
+            "args": {
+              "locator": "室早"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 3,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "室早",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「室早」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "target": "室早",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「室早」(text_exact)"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "22",
+      "case_name": "审核任务-待审核数据-跳转数据管理子页且数字一致",
+      "module": "指标总览-审核任务",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 6,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "获取「待审核数据」卡片「今日新增」值，记为N",
+            "expected": "成功获取N，N>=0"
+          },
+          {
+            "step": 3,
+            "action": "点击「待审核数据」卡片",
+            "expected": "跳转到数据管理子页"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面URL包含data-management",
+            "expected": "URL跳转正确"
+          },
+          {
+            "step": 5,
+            "action": "获取列表总记录数，记为M",
+            "expected": "成功获取M"
+          },
+          {
+            "step": 6,
+            "action": "验证：M等于N",
+            "expected": "今日新增数字与列表记录数一致"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 9,
+        "title": "审核任务-待审核数据-跳转数据管理子页且数字一致",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入工作台页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "页面正常加载",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "wait_for_render",
+            "desc": "获取待审核数据卡片今日新增N,N>=0",
+            "args": {
+              "locator": "待审核数据"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "click",
+            "desc": "点击待审核数据卡片",
+            "args": {
+              "locator": "待审核数据"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "wait_for_render",
+            "desc": "跳转到数据管理子页",
+            "args": {
+              "locator": "待审核数据"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "assert_visible",
+            "desc": "验证页面URL包含data-management",
+            "args": {
+              "locator": "待审核数据"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "wait_for_render",
+            "desc": "获取列表总记录数M",
+            "args": {
+              "locator": "待审核数据"
+            }
+          },
+          {
+            "seq": 8,
+            "action": "assert_visible",
+            "desc": "验证M等于N，今日新增数字与列表记录数一致",
+            "args": {
+              "locator": "待审核数据"
+            }
+          },
+          {
+            "seq": 9,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 6,
+        "found_steps": 3,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "待审核数据",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「待审核数据」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "target": "待审核数据",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「待审核数据」(text_exact)"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：页面URL包含data-management', 'expected': 'URL跳转正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '获取列表总记录数，记为M', 'expected': '成功获取M'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 6,
+            "step_raw": "{'step': 6, 'action': '验证：M等于N', 'expected': '今日新增数字与列表记录数一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "23",
+      "case_name": "审核任务-待审核数据-今日新增为0显示暂无数据",
+      "module": "指标总览-审核任务",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「待审核数据」卡片「今日新增」值为0",
+            "expected": "成功获取且值为0"
+          },
+          {
+            "step": 2,
+            "action": "点击「待审核数据」卡片",
+            "expected": "跳转到数据管理子页"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面显示\"暂无数据\"",
+            "expected": "空状态文案正确显示"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 7,
+        "title": "审核任务-待审核数据-今日新增为0显示暂无数据",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入工作台页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "页面正常加载",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "wait_for_render",
+            "desc": "获取待审核数据卡片今日新增为0",
+            "args": {
+              "locator": "待审核数据"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "click",
+            "desc": "点击待审核数据卡片",
+            "args": {
+              "locator": "待审核数据"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "wait_for_render",
+            "desc": "跳转到数据管理子页",
+            "args": {
+              "locator": "待审核数据"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "assert_visible",
+            "desc": "验证页面显示暂无数据",
+            "args": {
+              "locator": "暂无数据"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "待审核数据",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「待审核数据」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "待审核数据",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「待审核数据」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面显示\"暂无数据\"', 'expected': '空状态文案正确显示'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "24",
+      "case_name": "审核任务-待审核报告-跳转数据管理子页",
+      "module": "指标总览-审核任务",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "点击「待审核报告」卡片",
+            "expected": "跳转到数据管理子页"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含data-management",
+            "expected": "URL跳转正确"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 6,
+        "title": "审核任务-待审核报告-跳转数据管理子页",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入工作台页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "页面正常加载",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击待审核报告卡片",
+            "args": {
+              "locator": "待审核报告"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "wait_for_render",
+            "desc": "跳转到数据管理子页",
+            "args": {
+              "locator": "待审核报告"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证页面URL包含data-management",
+            "args": {
+              "locator": "待审核报告"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "待审核报告",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「待审核报告」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面URL包含data-management', 'expected': 'URL跳转正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "25",
+      "case_name": "物流看板-待发货数-跳转设备收发对应tab",
+      "module": "指标总览-物流看板",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "点击「待发货数」卡片",
+            "expected": "跳转到设备收发页面待发货tab"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面显示\"待发货\"tab处于选中状态",
+            "expected": "tab正确跳转"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 6,
+        "title": "物流看板-待发货数-跳转设备收发对应tab",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入工作台页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "页面正常加载",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击待发货数卡片",
+            "args": {
+              "locator": "待发货数"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "wait_for_render",
+            "desc": "跳转到设备收发页面待发货tab",
+            "args": {
+              "locator": "待发货数"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证待发货tab处于选中状态",
+            "args": {
+              "locator": "待发货数"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "待发货数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「待发货数」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面显示\"待发货\"tab处于选中状态', 'expected': 'tab正确跳转'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "26",
+      "case_name": "物流看板-预约回收数-跳转设备收发对应tab",
+      "module": "指标总览-物流看板",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "点击「预约回收数」卡片",
+            "expected": "跳转到设备收发页面预约回收tab"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面显示\"预约回收\"tab处于选中状态",
+            "expected": "tab正确跳转"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 6,
+        "title": "物流看板-预约回收数-跳转设备收发对应tab",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入工作台页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "页面正常加载",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击预约回收数卡片",
+            "args": {
+              "locator": "预约回收数"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "wait_for_render",
+            "desc": "跳转到设备收发页面预约回收tab",
+            "args": {
+              "locator": "预约回收数"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证预约回收tab处于选中状态",
+            "args": {
+              "locator": "预约回收数"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "预约回收数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「预约回收数」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面显示\"预约回收\"tab处于选中状态', 'expected': 'tab正确跳转'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "27",
+      "case_name": "随访监控-入组人数-跳转患者档案URL带joinStatus=1",
+      "module": "指标总览-随访监控",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "点击「入组人数」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL跳转正确"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面URL查询参数包含joinStatus=1",
+            "expected": "入组筛选参数正确携带"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 7,
+        "title": "随访监控-入组人数-跳转患者档案URL带joinStatus=1",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入工作台页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "页面正常加载",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击入组人数卡片",
+            "args": {
+              "locator": "入组人数"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "wait_for_render",
+            "desc": "跳转到患者档案页面",
+            "args": {
+              "locator": "入组人数"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证页面URL包含patient-profile",
+            "args": {
+              "locator": "入组人数"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "assert_visible",
+            "desc": "验证页面URL查询参数包含joinStatus=1",
+            "args": {
+              "locator": "入组人数"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "入组人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「入组人数」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面URL包含patient-profile', 'expected': 'URL跳转正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：页面URL查询参数包含joinStatus=1', 'expected': '入组筛选参数正确携带'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "28",
+      "case_name": "随访监控-进行中人数-跳转随访管理已入组tab",
+      "module": "指标总览-随访监控",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "点击「进行中人数」卡片",
+            "expected": "跳转到随访管理页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面显示\"已入组\"tab处于选中状态",
+            "expected": "已入组tab正确跳转"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 6,
+        "title": "随访监控-进行中人数-跳转随访管理已入组tab",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入工作台页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "页面正常加载",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击进行中人数卡片",
+            "args": {
+              "locator": "进行中人数"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "wait_for_render",
+            "desc": "跳转到随访管理页面",
+            "args": {
+              "locator": "进行中人数"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证已入组tab处于选中状态",
+            "args": {
+              "locator": "已入组"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "进行中人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「进行中人数」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面显示\"已入组\"tab处于选中状态', 'expected': '已入组tab正确跳转'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "29",
+      "case_name": "随访监控-待随访人数-跳转随访管理已入组tab",
+      "module": "指标总览-随访监控",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "点击「待随访人数」卡片",
+            "expected": "跳转到随访管理页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面显示\"已入组\"tab处于选中状态",
+            "expected": "已入组tab正确跳转"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 6,
+        "title": "随访监控-待随访人数-跳转随访管理已入组tab",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入工作台页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "页面正常加载",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击待随访人数卡片",
+            "args": {
+              "locator": "待随访人数"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "wait_for_render",
+            "desc": "跳转到随访管理页面",
+            "args": {
+              "locator": "待随访人数"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证已入组tab处于选中状态",
+            "args": {
+              "locator": "已入组"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "待随访人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「待随访人数」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面显示\"已入组\"tab处于选中状态', 'expected': '已入组tab正确跳转'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "30",
+      "case_name": "自定义-打开弹窗显示指标列表",
+      "module": "指标总览-自定义",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "点击「自定义」按钮",
+            "expected": "弹出自定义弹窗"
+          },
+          {
+            "step": 3,
+            "action": "验证：弹窗中显示可用指标列表",
+            "expected": "指标列表完整展示"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 6,
+        "title": "自定义-打开弹窗显示指标列表",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入工作台页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "页面正常加载",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击自定义按钮",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "wait_for_render",
+            "desc": "弹出自定义弹窗",
+            "args": {
+              "locator": "全部"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证弹窗中显示可用指标列表",
+            "args": {
+              "locator": "全部"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "自定义",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「自定义」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：弹窗中显示可用指标列表', 'expected': '指标列表完整展示'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "31",
+      "case_name": "自定义-添加3个指标保存后恰好显示3个卡片",
+      "module": "指标总览-自定义",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「自定义」按钮",
+            "expected": "弹出自定义弹窗"
+          },
+          {
+            "step": 2,
+            "action": "在弹窗中，取消所有已选指标，仅勾选「室早」「房颤」「停搏」3个指标",
+            "expected": "弹窗显示已选数量为3"
+          },
+          {
+            "step": 3,
+            "action": "点击「保存布局」按钮",
+            "expected": "弹窗关闭，布局保存成功"
+          },
+          {
+            "step": 4,
+            "action": "验证：工作台指标卡片数量恰为3（to_have_count(3)）",
+            "expected": "卡片数量不多不少，恰好为3"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 15,
+        "title": "自定义-添加3个指标保存后恰好显示3个卡片",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入工作台页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "页面正常加载",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击自定义按钮",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "wait_for_render",
+            "desc": "弹出自定义弹窗",
+            "args": {
+              "locator": "全部"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "click",
+            "desc": "取消所有已选指标",
+            "args": {
+              "locator": "移除"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "click",
+            "desc": "勾选室早指标",
+            "args": {
+              "locator": "室早"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "click",
+            "desc": "勾选房颤指标",
+            "args": {
+              "locator": "房颤"
+            }
+          },
+          {
+            "seq": 8,
+            "action": "click",
+            "desc": "勾选停搏指标",
+            "args": {
+              "locator": "停搏"
+            }
+          },
+          {
+            "seq": 9,
+            "action": "assert_visible",
+            "desc": "弹窗显示已选数量为3",
+            "args": {
+              "locator": "停搏"
+            }
+          },
+          {
+            "seq": 10,
+            "action": "click",
+            "desc": "点击保存布局按钮",
+            "args": {
+              "locator": "保存布局"
+            }
+          },
+          {
+            "seq": 11,
+            "action": "wait_for_render",
+            "desc": "弹窗关闭，布局保存成功",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 12,
+            "action": "assert_visible",
+            "desc": "验证工作台指标卡片数量恰为3，室早卡片显示",
+            "args": {
+              "locator": "室早"
+            }
+          },
+          {
+            "seq": 13,
+            "action": "assert_visible",
+            "desc": "验证工作台指标卡片数量恰为3，房颤卡片显示",
+            "args": {
+              "locator": "房颤"
+            }
+          },
+          {
+            "seq": 14,
+            "action": "assert_visible",
+            "desc": "验证工作台指标卡片数量恰为3，停搏卡片显示",
+            "args": {
+              "locator": "停搏"
+            }
+          },
+          {
+            "seq": 15,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 3,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "自定义",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「自定义」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "室早",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「室早」(text_contains)"
+          },
+          {
+            "seq": 3,
+            "target": "保存布局",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「保存布局」(scored_text(10))"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：工作台指标卡片数量恰为3（to_have_count(3)）', 'expected': '卡片数量不多不少，恰好为3'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "32",
+      "case_name": "自定义-移除全部指标保存后显示空状态",
+      "module": "指标总览-自定义",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「自定义」按钮",
+            "expected": "弹出自定义弹窗"
+          },
+          {
+            "step": 2,
+            "action": "在弹窗中，用for循环逐个点击每个已选指标右侧的「移除」按钮",
+            "expected": "已选指标全部被移除"
+          },
+          {
+            "step": 3,
+            "action": "点击「保存布局」按钮",
+            "expected": "弹窗关闭，布局保存成功"
+          },
+          {
+            "step": 4,
+            "action": "验证：工作台指标区域显示空状态文案\"去添加指标\"",
+            "expected": "空状态正确显示"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 5,
+        "title": "自定义-移除全部指标保存后显示空状态",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「自定义」按钮，弹出自定义弹窗",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "click",
+            "desc": "在弹窗中for循环逐个点击每个已选指标右侧的「移除」按钮，直到已选指标全部被移除",
+            "args": {
+              "locator": "移除"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击「保存布局」按钮，弹窗关闭，布局保存成功",
+            "args": {
+              "locator": "保存布局"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证工作台指标区域显示空状态文案「去添加指标」",
+            "args": {
+              "locator": "去添加指标"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 3,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "自定义",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「自定义」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "移除",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「移除」(text_contains)"
+          },
+          {
+            "seq": 3,
+            "target": "保存布局",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「保存布局」(scored_text(10))"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：工作台指标区域显示空状态文案\"去添加指标\"', 'expected': '空状态正确显示'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "33",
+      "case_name": "自定义-移除部分指标保存后数量减少",
+      "module": "指标总览-自定义",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「自定义」按钮",
+            "expected": "弹出自定义弹窗"
+          },
+          {
+            "step": 2,
+            "action": "记录当前已选指标数量为M",
+            "expected": "成功获取M"
+          },
+          {
+            "step": 3,
+            "action": "在弹窗中，点击1个已选指标右侧的「移除」按钮",
+            "expected": "该指标被移除"
+          },
+          {
+            "step": 4,
+            "action": "点击「保存布局」按钮",
+            "expected": "弹窗关闭，布局保存成功"
+          },
+          {
+            "step": 5,
+            "action": "验证：工作台指标卡片数量为M-1",
+            "expected": "指标数量正确减少1个"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 6,
+        "title": "自定义-移除部分指标保存后数量减少",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「自定义」按钮，弹出自定义弹窗",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "记录当前已选指标数量为M，成功获取M",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "在弹窗中点击1个已选指标右侧的「移除」按钮，该指标被移除",
+            "args": {
+              "locator": "移除"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "click",
+            "desc": "点击「保存布局」按钮，弹窗关闭，布局保存成功",
+            "args": {
+              "locator": "保存布局"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证工作台指标卡片数量为M-1，指标数量正确减少1个",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 5,
+        "found_steps": 3,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "自定义",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「自定义」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '记录当前已选指标数量为M', 'expected': '成功获取M'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "target": "移除",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「移除」(text_contains)"
+          },
+          {
+            "seq": 4,
+            "target": "保存布局",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「保存布局」(scored_text(10))"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '验证：工作台指标卡片数量为M-1', 'expected': '指标数量正确减少1个'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "34",
+      "case_name": "自定义-重置按钮恢复本次弹窗打开后的操作",
+      "module": "指标总览-自定义",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「自定义」按钮",
+            "expected": "弹出自定义弹窗"
+          },
+          {
+            "step": 2,
+            "action": "在弹窗中，点击某个已选指标右侧的「移除」按钮",
+            "expected": "该指标被移除"
+          },
+          {
+            "step": 3,
+            "action": "点击「重置」按钮",
+            "expected": "弹窗中该指标恢复为已选状态"
+          },
+          {
+            "step": 4,
+            "action": "验证：该指标仍显示在已选列表中",
+            "expected": "重置恢复本次弹窗打开后的操作"
+          },
+          {
+            "step": 5,
+            "action": "点击「取消」按钮",
+            "expected": "弹窗关闭，不保存布局变更"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 7,
+        "title": "自定义-重置按钮恢复本次弹窗打开后的操作",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「自定义」按钮，弹出自定义弹窗",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "click",
+            "desc": "在弹窗中点击「室早」已选指标右侧的「移除」按钮，该指标被移除",
+            "args": {
+              "locator": "室早移除"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击「重置」按钮",
+            "args": {
+              "locator": "重置"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证「室早」仍显示在已选列表中，重置恢复本次弹窗打开后的操作",
+            "args": {
+              "locator": "室早移除"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "click",
+            "desc": "点击「取消」按钮，弹窗关闭，不保存布局变更",
+            "args": {
+              "locator": "取消"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "assert_visible",
+            "desc": "验证弹窗已关闭，返回工作台",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 5,
+        "found_steps": 4,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "自定义",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「自定义」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "移除",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「移除」(text_contains)"
+          },
+          {
+            "seq": 3,
+            "target": "重置",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「重置」(scored_text(10))"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：该指标仍显示在已选列表中', 'expected': '重置恢复本次弹窗打开后的操作'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "target": "取消",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「取消」(scored_text(10))"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "35",
+      "case_name": "自定义-重置无法恢复上次保存结果",
+      "module": "指标总览-自定义",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面，确认工作台无指标A",
+            "expected": "工作台未显示指标A"
+          },
+          {
+            "step": 2,
+            "action": "点击「自定义」按钮",
+            "expected": "弹出自定义弹窗"
+          },
+          {
+            "step": 3,
+            "action": "点击「重置」按钮",
+            "expected": "弹窗状态保持上次保存结果，指标A仍为未选中状态"
+          },
+          {
+            "step": 4,
+            "action": "点击「保存布局」按钮",
+            "expected": "弹窗关闭，布局保存成功"
+          },
+          {
+            "step": 5,
+            "action": "验证：返回工作台后指标A仍未显示",
+            "expected": "重置未恢复上次保存已移除的指标A"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 7,
+        "title": "自定义-重置无法恢复上次保存结果",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入「工作台」页面，确认工作台无指标A",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待工作台页面渲染完成",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击「自定义」按钮，弹出自定义弹窗",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "click",
+            "desc": "点击「重置」按钮，弹窗状态保持上次保存结果，指标A仍为未选中状态",
+            "args": {
+              "locator": "重置"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "click",
+            "desc": "点击「保存布局」按钮，弹窗关闭，布局保存成功",
+            "args": {
+              "locator": "保存布局"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "assert_visible",
+            "desc": "验证返回工作台后指标A仍未显示，重置未恢复上次保存已移除的指标A",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 5,
+        "found_steps": 4,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "自定义",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「自定义」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "target": "重置",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「重置」(scored_text(10))"
+          },
+          {
+            "seq": 4,
+            "target": "保存布局",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「保存布局」(scored_text(10))"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '验证：返回工作台后指标A仍未显示', 'expected': '重置未恢复上次保存已移除的指标A'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "36",
+      "case_name": "自定义-取消保存不生效",
+      "module": "指标总览-自定义",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「自定义」按钮",
+            "expected": "弹出自定义弹窗"
+          },
+          {
+            "step": 2,
+            "action": "在弹窗中，取消所有已选指标，仅勾选「室早」1个指标",
+            "expected": "弹窗显示已选数量为1"
+          },
+          {
+            "step": 3,
+            "action": "点击「取消」按钮",
+            "expected": "弹窗关闭"
+          },
+          {
+            "step": 4,
+            "action": "验证：工作台指标卡片数量与打开弹窗前一致",
+            "expected": "取消操作未保存布局变更"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 7,
+        "title": "自定义-取消保存不生效",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「自定义」按钮，弹出自定义弹窗",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "click",
+            "desc": "在弹窗中取消所有已选指标（逐个点击「移除」按钮）",
+            "args": {
+              "locator": "移除"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "仅勾选「室早」1个指标",
+            "args": {
+              "locator": "室早"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "弹窗显示已选数量为1",
+            "args": {
+              "locator": "室早"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "click",
+            "desc": "点击「取消」按钮，弹窗关闭",
+            "args": {
+              "locator": "取消"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "assert_visible",
+            "desc": "验证工作台指标卡片数量与打开弹窗前一致，取消操作未保存布局变更",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 3,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "自定义",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「自定义」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "室早",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「室早」(text_contains)"
+          },
+          {
+            "seq": 3,
+            "target": "取消",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「取消」(scored_text(10))"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：工作台指标卡片数量与打开弹窗前一致', 'expected': '取消操作未保存布局变更'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "37",
+      "case_name": "自定义-按钮不存在-跳过用例",
+      "module": "指标总览-自定义",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "验证：检查「自定义」按钮是否可见",
+            "expected": "若不可见则pytest.skip()；可见则继续"
+          },
+          {
+            "step": 3,
+            "action": "验证：「自定义」按钮可点击",
+            "expected": "按钮可正常点击"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 5,
+        "title": "自定义-按钮不存在-跳过用例",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入「工作台」页面，页面正常加载",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待工作台页面渲染完成",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证「自定义」按钮是否可见，若不可见则pytest.skip()；可见则继续",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "click",
+            "desc": "验证「自定义」按钮可点击，按钮可正常点击",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 3,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "自定义",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「自定义」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "target": "自定义",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「自定义」(text_exact)"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "38",
+      "case_name": "自定义-添加全部可用指标保存后数量等于总可用数",
+      "module": "指标总览-自定义",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「自定义」按钮",
+            "expected": "弹出自定义弹窗"
+          },
+          {
+            "step": 2,
+            "action": "在弹窗中，勾选全部可用指标，记录总数为T",
+            "expected": "成功获取T"
+          },
+          {
+            "step": 3,
+            "action": "点击「保存布局」按钮",
+            "expected": "弹窗关闭，布局保存成功"
+          },
+          {
+            "step": 4,
+            "action": "验证：工作台指标卡片数量为T",
+            "expected": "卡片数量等于全部可用指标数"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 6,
+        "title": "自定义-添加全部可用指标保存后数量等于总可用数",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「自定义」按钮，弹出自定义弹窗",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "click",
+            "desc": "在弹窗中勾选全部可用指标，记录总数为T",
+            "args": {
+              "locator": "全部"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "wait_for_render",
+            "desc": "等待全部可用指标勾选完成，成功获取T",
+            "args": {
+              "locator": "全部"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "click",
+            "desc": "点击「保存布局」按钮，弹窗关闭，布局保存成功",
+            "args": {
+              "locator": "保存布局"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证工作台指标卡片数量为T，卡片数量等于全部可用指标数",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "自定义",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「自定义」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '在弹窗中，勾选全部可用指标，记录总数为T', 'expected': '成功获取T'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "target": "保存布局",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「保存布局」(scored_text(10))"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：工作台指标卡片数量为T', 'expected': '卡片数量等于全部可用指标数'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "39",
+      "case_name": "房颤预警-卡片点击跳转患者详情页",
+      "module": "预警信息-房颤预警",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "点击「房颤预警」卡片",
+            "expected": "跳转到患者详情页"
+          },
+          {
+            "step": 3,
+            "action": "验证：患者详情页正常加载",
+            "expected": "详情页展示成功"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 5,
+        "title": "房颤预警-卡片点击跳转患者详情页",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入「工作台」页面，页面正常加载",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待工作台页面渲染完成",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击「房颤预警」卡片，跳转到患者详情页",
+            "args": {
+              "locator": "房颤预警"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证患者详情页正常加载，详情页展示成功",
+            "args": {
+              "locator": "负荷占比"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "房颤预警",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：患者详情页正常加载', 'expected': '详情页展示成功'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "40",
+      "case_name": "房颤预警-患者姓名与详情页一致",
+      "module": "预警信息-房颤预警",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "记录「房颤预警」卡片左上角患者姓名为\"张三\"",
+            "expected": "成功获取患者姓名"
+          },
+          {
+            "step": 2,
+            "action": "点击「房颤预警」卡片",
+            "expected": "跳转到患者详情页"
+          },
+          {
+            "step": 3,
+            "action": "验证：患者详情页左上角患者姓名为\"张三\"",
+            "expected": "卡片姓名与详情页姓名一致"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "房颤预警-患者姓名与详情页一致",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "assert_visible",
+            "desc": "记录「房颤预警」卡片左上角患者姓名为「张三」",
+            "args": {
+              "locator": "张三"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "click",
+            "desc": "点击「房颤预警」卡片，跳转到患者详情页",
+            "args": {
+              "locator": "房颤预警"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证患者详情页左上角患者姓名为「张三」，卡片姓名与详情页姓名一致",
+            "args": {
+              "locator": "张三"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "房颤预警",
+            "action": "fill",
+            "status": "failed",
+            "strategy": "text_exact",
+            "message": "✗ 未找到「房颤预警」— "
+          },
+          {
+            "seq": 2,
+            "target": "房颤预警",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：患者详情页左上角患者姓名为\"张三\"', 'expected': '卡片姓名与详情页姓名一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "41",
+      "case_name": "房颤预警-占比与详情页负荷占比一致",
+      "module": "预警信息-房颤预警",
+      "mode": "v2",
+      "status": "steps_missing",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "记录「房颤预警」卡片进度条右侧占比值为\"35%\"",
+            "expected": "成功获取占比值"
+          },
+          {
+            "step": 2,
+            "action": "点击「房颤预警」卡片",
+            "expected": "跳转到患者详情页"
+          },
+          {
+            "step": 3,
+            "action": "验证：详情页中间「负荷占比」显示\"35%\"",
+            "expected": "卡片占比与详情页负荷占比一致"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 5,
+        "title": "房颤预警-占比与详情页负荷占比一致",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "assert_visible",
+            "desc": "记录「房颤预警」卡片进度条右侧占比值为「35%」",
+            "args": {
+              "locator": "35%"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "click",
+            "desc": "点击「房颤预警」卡片，跳转到患者详情页",
+            "args": {
+              "locator": "房颤预警"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证详情页中间「负荷占比」区域可见",
+            "args": {
+              "locator": "负荷占比"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证详情页中间「负荷占比」显示「35%」，卡片占比与详情页负荷占比一致",
+            "args": {
+              "locator": "35%"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 1,
+        "missing_steps": [
+          {
+            "seq": 3,
+            "target": "负荷占比",
+            "action": "validate",
+            "status": "not_found",
+            "strategy": "",
+            "message": "✗ 未找到「负荷占比」— element_not_found"
+          }
+        ],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "房颤预警",
+            "action": "fill",
+            "status": "failed",
+            "strategy": "text_exact",
+            "message": "✗ 未找到「房颤预警」— "
+          },
+          {
+            "seq": 2,
+            "target": "房颤预警",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "target": "负荷占比",
+            "action": "validate",
+            "status": "not_found",
+            "strategy": "",
+            "message": "✗ 未找到「负荷占比」— element_not_found"
+          }
+        ],
+        "warning": "1/3 步已定位"
+      }
+    },
+    {
+      "test_case_id": "42",
+      "case_name": "房颤预警-有效时长与详情页一致",
+      "module": "预警信息-房颤预警",
+      "mode": "v2",
+      "status": "steps_missing",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "记录「房颤预警」卡片底部左侧有效时长为\"02:30:00\"",
+            "expected": "成功获取有效时长"
+          },
+          {
+            "step": 2,
+            "action": "点击「房颤预警」卡片",
+            "expected": "跳转到患者详情页"
+          },
+          {
+            "step": 3,
+            "action": "验证：详情页中间「有效时长」显示\"02:30:00\"",
+            "expected": "卡片有效时长与详情页有效时长完全一致"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 5,
+        "title": "房颤预警-有效时长与详情页一致",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "assert_visible",
+            "desc": "记录「房颤预警」卡片底部左侧有效时长为「02:30:00」",
+            "args": {
+              "locator": "02:30:00"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "click",
+            "desc": "点击「房颤预警」卡片，跳转到患者详情页",
+            "args": {
+              "locator": "房颤预警"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证详情页中间「有效时长」区域可见",
+            "args": {
+              "locator": "有效时长"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证详情页中间「有效时长」显示「02:30:00」，卡片有效时长与详情页有效时长完全一致",
+            "args": {
+              "locator": "02:30:00"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 1,
+        "missing_steps": [
+          {
+            "seq": 3,
+            "target": "有效时长",
+            "action": "validate",
+            "status": "not_found",
+            "strategy": "",
+            "message": "✗ 未找到「有效时长」— element_not_found"
+          }
+        ],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "房颤预警",
+            "action": "fill",
+            "status": "failed",
+            "strategy": "text_exact",
+            "message": "✗ 未找到「房颤预警」— "
+          },
+          {
+            "seq": 2,
+            "target": "房颤预警",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "target": "有效时长",
+            "action": "validate",
+            "status": "not_found",
+            "strategy": "",
+            "message": "✗ 未找到「有效时长」— element_not_found"
+          }
+        ],
+        "warning": "1/3 步已定位"
+      }
+    },
+    {
+      "test_case_id": "43",
+      "case_name": "房颤预警-负荷时长与详情页持续时间一致",
+      "module": "预警信息-房颤预警",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "记录「房颤预警」卡片底部右侧负荷时长为\"03:45:00\"",
+            "expected": "成功获取负荷时长"
+          },
+          {
+            "step": 2,
+            "action": "点击「房颤预警」卡片",
+            "expected": "跳转到患者详情页"
+          },
+          {
+            "step": 3,
+            "action": "验证：详情页中间「持续时间」显示\"03:45:00\"",
+            "expected": "卡片负荷时长与详情页持续时间完全一致"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 5,
+        "title": "房颤预警-负荷时长与详情页持续时间一致",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "assert_visible",
+            "desc": "记录「房颤预警」卡片底部右侧负荷时长为「03:45:00」",
+            "args": {
+              "locator": "03:45:00"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "click",
+            "desc": "点击「房颤预警」卡片，跳转到患者详情页",
+            "args": {
+              "locator": "房颤预警"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证详情页中间「持续时间」区域可见",
+            "args": {
+              "locator": "持续时间"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证详情页中间「持续时间」显示「03:45:00」，卡片负荷时长与详情页持续时间完全一致",
+            "args": {
+              "locator": "03:45:00"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "房颤预警",
+            "action": "fill",
+            "status": "failed",
+            "strategy": "text_exact",
+            "message": "✗ 未找到「房颤预警」— "
+          },
+          {
+            "seq": 2,
+            "target": "房颤预警",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "target": "持续时间",
+            "action": "validate",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「持续时间」(scored_text(10))"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "44",
+      "case_name": "房颤预警-筛选≥30后占比数据一致",
+      "module": "预警信息-房颤预警",
+      "mode": "v2",
+      "status": "steps_missing",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「房颤预警」区域「筛选」下拉框中选择\"≥30\"",
+            "expected": "下拉筛选成功"
+          },
+          {
+            "step": 2,
+            "action": "验证：显示的所有房颤预警卡片占比值均≥30",
+            "expected": "页面数据符合筛选条件"
+          },
+          {
+            "step": 3,
+            "action": "点击第一条「房颤预警」卡片",
+            "expected": "跳转到患者详情页"
+          },
+          {
+            "step": 4,
+            "action": "验证：详情页「负荷占比」值≥30",
+            "expected": "详情页数据与筛选结果一致"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 8,
+        "title": "房颤预警-筛选≥30后占比数据一致",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入「工作台」页面，页面正常加载",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待「房颤预警」区域渲染完成",
+            "args": {
+              "locator": "房颤预警"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "select",
+            "desc": "在「房颤预警」区域「筛选」下拉框中选择「≥30」",
+            "args": {
+              "locator": "≥30",
+              "trigger": "筛选"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "wait_for_render",
+            "desc": "等待筛选结果渲染",
+            "args": {
+              "locator": "房颤预警"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证显示的所有房颤预警卡片占比值均≥30",
+            "args": {
+              "locator": "房颤预警"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "click",
+            "desc": "点击第一条「房颤预警」卡片，跳转到患者详情页",
+            "args": {
+              "locator": "房颤预警"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "assert_visible",
+            "desc": "验证详情页「负荷占比」值≥30，详情页数据与筛选结果一致",
+            "args": {
+              "locator": "负荷占比"
+            }
+          },
+          {
+            "seq": 8,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 2,
+        "missing_steps": [
+          {
+            "seq": 4,
+            "target": "负荷占比",
+            "action": "validate",
+            "status": "not_found",
+            "strategy": "",
+            "message": "✗ 未找到「负荷占比」— element_not_found"
+          }
+        ],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "房颤预警",
+            "action": "select",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：显示的所有房颤预警卡片占比值均≥30', 'expected': '页面数据符合筛选条件'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "target": "房颤预警",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          },
+          {
+            "seq": 4,
+            "target": "负荷占比",
+            "action": "validate",
+            "status": "not_found",
+            "strategy": "",
+            "message": "✗ 未找到「负荷占比」— element_not_found"
+          }
+        ],
+        "warning": "2/4 步已定位"
+      }
+    },
+    {
+      "test_case_id": "45",
+      "case_name": "房颤预警-暂无数据-跳过用例",
+      "module": "预警信息-房颤预警",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "验证：检查「房颤预警」区域是否显示\"暂无数据\"",
+            "expected": "若暂无数据则pytest.skip()；有数据则继续"
+          },
+          {
+            "step": 3,
+            "action": "验证：「房颤预警」区域存在预警卡片数据",
+            "expected": "预警数据正常展示"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 5,
+        "title": "房颤预警-暂无数据-跳过用例",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入「工作台」页面，页面正常加载",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待「房颤预警」区域渲染完成",
+            "args": {
+              "locator": "房颤预警"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "检查「房颤预警」区域是否显示「暂无数据」，若暂无数据则pytest.skip()；有数据则继续",
+            "args": {
+              "locator": "暂无数据"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证「房颤预警」区域存在预警卡片数据，预警数据正常展示",
+            "args": {
+              "locator": "房颤预警"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 3,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "房颤预警",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "target": "房颤预警",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "46",
+      "case_name": "房颤预警-默认筛选状态为全部",
+      "module": "预警信息-房颤预警",
+      "mode": "v2",
+      "status": "steps_missing",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "查看「房颤预警」区域「筛选」下拉框默认值",
+            "expected": "下拉框显示\"全部\""
+          },
+          {
+            "step": 3,
+            "action": "验证：「筛选」下拉框当前值为\"全部\"",
+            "expected": "默认状态为全部，用例间无需复位"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 5,
+        "title": "房颤预警-默认筛选状态为全部",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入「工作台」页面，页面正常加载",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待「房颤预警」区域渲染完成",
+            "args": {
+              "locator": "房颤预警"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "查看「房颤预警」区域「筛选」下拉框默认值，下拉框显示「全部」",
+            "args": {
+              "locator": "全部"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证「筛选」下拉框当前值为「全部」，默认状态为全部，用例间无需复位",
+            "args": {
+              "locator": "全部"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 2,
+        "missing_steps": [
+          {
+            "seq": 3,
+            "target": "筛选",
+            "action": "validate",
+            "status": "not_found",
+            "strategy": "",
+            "message": "✗ 未找到「筛选」— element_not_found"
+          }
+        ],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "房颤预警",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "target": "筛选",
+            "action": "validate",
+            "status": "not_found",
+            "strategy": "",
+            "message": "✗ 未找到「筛选」— element_not_found"
+          }
+        ],
+        "warning": "2/3 步已定位"
+      }
+    },
+    {
+      "test_case_id": "47",
+      "case_name": "佩戴预警-跳转患者详情页姓名一致",
+      "module": "预警信息-佩戴与测量预警",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "记录第一条「佩戴预警」卡片患者姓名为\"李四\"",
+            "expected": "成功获取患者姓名"
+          },
+          {
+            "step": 3,
+            "action": "点击该「佩戴预警」卡片",
+            "expected": "跳转到患者详情页"
+          },
+          {
+            "step": 4,
+            "action": "验证：详情页左上角患者姓名为\"李四\"",
+            "expected": "姓名一致"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 6,
+        "title": "佩戴预警-跳转患者详情页姓名一致",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入工作台页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待工作台页面正常加载",
+            "args": {
+              "locator": "患者人数"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "记录第一条佩戴预警卡片患者姓名为李四",
+            "args": {
+              "locator": "李四"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "click",
+            "desc": "点击该佩戴预警卡片",
+            "args": {
+              "locator": "佩戴预警"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证详情页左上角患者姓名为李四",
+            "args": {
+              "locator": "李四"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "佩戴预警",
+            "action": "fill",
+            "status": "failed",
+            "strategy": "text_contains",
+            "message": "✗ 未找到「佩戴预警」— "
+          },
+          {
+            "seq": 3,
+            "target": "佩戴预警",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「佩戴预警」(text_contains)"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：详情页左上角患者姓名为\"李四\"', 'expected': '姓名一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "48",
+      "case_name": "佩戴预警-筛选已发送数据一致",
+      "module": "预警信息-佩戴与测量预警",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「佩戴预警」区域「筛选」下拉框中选择\"已发送\"",
+            "expected": "下拉筛选成功"
+          },
+          {
+            "step": 2,
+            "action": "验证：显示的佩戴预警卡片状态均为\"已发送\"",
+            "expected": "页面数据状态与筛选项匹配"
+          },
+          {
+            "step": 3,
+            "action": "验证：接口请求参数中 sendStatus=\"sent\"",
+            "expected": "API参数正确"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "佩戴预警-筛选已发送数据一致",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "select",
+            "desc": "在佩戴预警区域筛选下拉框中选择已发送",
+            "args": {
+              "locator": "已发送",
+              "trigger": "筛选"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "验证接口请求参数中 sendStatus=sent，等待筛选结果加载",
+            "args": {
+              "locator": "已发送"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证显示的佩戴预警卡片状态均为已发送",
+            "args": {
+              "locator": "已发送"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "佩戴预警",
+            "action": "select",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「佩戴预警」(text_contains)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：显示的佩戴预警卡片状态均为\"已发送\"', 'expected': '页面数据状态与筛选项匹配'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：接口请求参数中 sendStatus=\"sent\"', 'expected': 'API参数正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "49",
+      "case_name": "佩戴预警-筛选未发送数据一致",
+      "module": "预警信息-佩戴与测量预警",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 2,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「佩戴预警」区域「筛选」下拉框中选择\"未发送\"",
+            "expected": "下拉筛选成功"
+          },
+          {
+            "step": 2,
+            "action": "验证：显示的佩戴预警卡片状态均为\"未发送\"",
+            "expected": "页面数据状态与筛选项匹配"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "佩戴预警-筛选未发送数据一致",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "select",
+            "desc": "在佩戴预警区域筛选下拉框中选择未发送",
+            "args": {
+              "locator": "未发送",
+              "trigger": "筛选"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待未发送筛选结果加载",
+            "args": {
+              "locator": "未发送"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证显示的佩戴预警卡片状态均为未发送",
+            "args": {
+              "locator": "未发送"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 2,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "佩戴预警",
+            "action": "select",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「佩戴预警」(text_contains)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：显示的佩戴预警卡片状态均为\"未发送\"', 'expected': '页面数据状态与筛选项匹配'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "50",
+      "case_name": "佩戴预警-暂无数据-跳过用例",
+      "module": "预警信息-佩戴与测量预警",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "验证：检查「佩戴预警」区域是否显示\"暂无数据\"",
+            "expected": "若暂无数据则pytest.skip()；有数据则继续"
+          },
+          {
+            "step": 3,
+            "action": "验证：「佩戴预警」区域存在预警卡片数据",
+            "expected": "预警数据正常展示"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 5,
+        "title": "佩戴预警-暂无数据-跳过用例",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入工作台页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待工作台页面正常加载",
+            "args": {
+              "locator": "患者人数"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "wait_for_render",
+            "desc": "检查佩戴预警区域是否显示暂无数据；若暂无数据则pytest.skip()，有数据则继续",
+            "args": {
+              "locator": "暂无数据"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证佩戴预警区域存在预警卡片数据",
+            "args": {
+              "locator": "佩戴预警"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 3,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "佩戴预警",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「佩戴预警」(text_contains)"
+          },
+          {
+            "seq": 3,
+            "target": "佩戴预警",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「佩戴预警」(text_contains)"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "51",
+      "case_name": "测量预警-跳转患者详情页姓名一致",
+      "module": "预警信息-佩戴与测量预警",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "记录第一条「测量预警」卡片患者姓名为\"王五\"",
+            "expected": "成功获取患者姓名"
+          },
+          {
+            "step": 3,
+            "action": "点击该「测量预警」卡片",
+            "expected": "跳转到患者详情页"
+          },
+          {
+            "step": 4,
+            "action": "验证：详情页左上角患者姓名为\"王五\"",
+            "expected": "姓名一致"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 6,
+        "title": "测量预警-跳转患者详情页姓名一致",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入工作台页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待工作台页面正常加载",
+            "args": {
+              "locator": "患者人数"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "记录第一条测量预警卡片患者姓名为王五",
+            "args": {
+              "locator": "王五"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "click",
+            "desc": "点击该测量预警卡片",
+            "args": {
+              "locator": "测量预警"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证详情页左上角患者姓名为王五",
+            "args": {
+              "locator": "王五"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "测量预警",
+            "action": "fill",
+            "status": "failed",
+            "strategy": "text_contains",
+            "message": "✗ 未找到「测量预警」— "
+          },
+          {
+            "seq": 3,
+            "target": "测量预警",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「测量预警」(text_contains)"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：详情页左上角患者姓名为\"王五\"', 'expected': '姓名一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "52",
+      "case_name": "测量预警-筛选已发送数据一致",
+      "module": "预警信息-佩戴与测量预警",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「测量预警」区域「筛选」下拉框中选择\"已发送\"",
+            "expected": "下拉筛选成功"
+          },
+          {
+            "step": 2,
+            "action": "验证：显示的测量预警卡片状态均为\"已发送\"",
+            "expected": "页面数据状态与筛选项匹配"
+          },
+          {
+            "step": 3,
+            "action": "验证：接口请求参数中 sendStatus=\"sent\"",
+            "expected": "API参数正确"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "测量预警-筛选已发送数据一致",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "select",
+            "desc": "在测量预警区域筛选下拉框中选择已发送",
+            "args": {
+              "locator": "已发送",
+              "trigger": "筛选"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "验证接口请求参数中 sendStatus=sent，等待筛选结果加载",
+            "args": {
+              "locator": "已发送"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证显示的测量预警卡片状态均为已发送",
+            "args": {
+              "locator": "已发送"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "测量预警",
+            "action": "select",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「测量预警」(text_contains)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：显示的测量预警卡片状态均为\"已发送\"', 'expected': '页面数据状态与筛选项匹配'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：接口请求参数中 sendStatus=\"sent\"', 'expected': 'API参数正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "53",
+      "case_name": "测量预警-筛选未发送数据一致",
+      "module": "预警信息-佩戴与测量预警",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 2,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「测量预警」区域「筛选」下拉框中选择\"未发送\"",
+            "expected": "下拉筛选成功"
+          },
+          {
+            "step": 2,
+            "action": "验证：显示的测量预警卡片状态均为\"未发送\"",
+            "expected": "页面数据状态与筛选项匹配"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "测量预警-筛选未发送数据一致",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "select",
+            "desc": "在测量预警区域筛选下拉框中选择未发送",
+            "args": {
+              "locator": "未发送",
+              "trigger": "筛选"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待未发送筛选结果加载",
+            "args": {
+              "locator": "未发送"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证显示的测量预警卡片状态均为未发送",
+            "args": {
+              "locator": "未发送"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 2,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "测量预警",
+            "action": "select",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「测量预警」(text_contains)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：显示的测量预警卡片状态均为\"未发送\"', 'expected': '页面数据状态与筛选项匹配'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "54",
+      "case_name": "测量预警-暂无数据-跳过用例",
+      "module": "预警信息-佩戴与测量预警",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "验证：检查「测量预警」区域是否显示\"暂无数据\"",
+            "expected": "若暂无数据则pytest.skip()；有数据则继续"
+          },
+          {
+            "step": 3,
+            "action": "验证：「测量预警」区域存在预警卡片数据",
+            "expected": "预警数据正常展示"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 5,
+        "title": "测量预警-暂无数据-跳过用例",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "进入工作台页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待工作台页面正常加载",
+            "args": {
+              "locator": "患者人数"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "wait_for_render",
+            "desc": "检查测量预警区域是否显示暂无数据；若暂无数据则pytest.skip()，有数据则继续",
+            "args": {
+              "locator": "暂无数据"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证测量预警区域存在预警卡片数据",
+            "args": {
+              "locator": "测量预警"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 3,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "测量预警",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「测量预警」(text_contains)"
+          },
+          {
+            "seq": 3,
+            "target": "测量预警",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「测量预警」(text_contains)"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "55",
+      "case_name": "预警筛选-房颤选择≥50接口参数与页面数据均正确",
+      "module": "预警信息-佩戴与测量预警",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「房颤预警」区域「筛选」下拉框中选择\"≥50\"",
+            "expected": "下拉筛选成功"
+          },
+          {
+            "step": 2,
+            "action": "验证：接口请求参数中 filter=\"≥50\"",
+            "expected": "API参数正确"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面上所有房颤预警卡片占比值均≥50",
+            "expected": "页面数据符合筛选条件"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "预警筛选-房颤选择≥50接口参数与页面数据均正确",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "select",
+            "desc": "在房颤预警区域筛选下拉框中选择≥50",
+            "args": {
+              "locator": "≥50",
+              "trigger": "筛选"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "验证接口请求参数中 filter=≥50，等待筛选结果加载",
+            "args": {
+              "locator": "房颤预警"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证页面上所有房颤预警卡片占比值均≥50",
+            "args": {
+              "locator": "房颤预警"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "房颤预警",
+            "action": "select",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：接口请求参数中 filter=\"≥50\"', 'expected': 'API参数正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面上所有房颤预警卡片占比值均≥50', 'expected': '页面数据符合筛选条件'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "56",
+      "case_name": "预警筛选-佩戴选择已发送接口参数与页面数据均正确",
+      "module": "预警信息-佩戴与测量预警",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「佩戴预警」区域「筛选」下拉框中选择\"已发送\"",
+            "expected": "下拉筛选成功"
+          },
+          {
+            "step": 2,
+            "action": "验证：接口请求参数中 sendStatus=\"sent\"",
+            "expected": "API参数正确"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面上所有佩戴预警卡片状态为\"已发送\"",
+            "expected": "页面数据符合筛选条件"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "预警筛选-佩戴选择已发送接口参数与页面数据均正确",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "select",
+            "desc": "在佩戴预警区域筛选下拉框中选择已发送",
+            "args": {
+              "locator": "已发送",
+              "trigger": "筛选"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "验证接口请求参数中 sendStatus=sent，等待筛选结果加载",
+            "args": {
+              "locator": "已发送"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证页面上所有佩戴预警卡片状态为已发送",
+            "args": {
+              "locator": "已发送"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "佩戴预警",
+            "action": "select",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「佩戴预警」(text_contains)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：接口请求参数中 sendStatus=\"sent\"', 'expected': 'API参数正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面上所有佩戴预警卡片状态为\"已发送\"', 'expected': '页面数据符合筛选条件'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    }
+  ],
+  "summary": {
+    "success": 49,
+    "exploration_insufficient": 0,
+    "exploration_failed": 0,
+    "conversion_failed": 0,
+    "steps_missing": 6
+  }
+}

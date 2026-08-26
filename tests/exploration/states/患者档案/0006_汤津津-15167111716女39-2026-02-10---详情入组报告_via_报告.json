@@ -1,0 +1,161 @@
+{
+  "label": "汤津津-15167111716女39-2026-02-10---详情入组报告_via_报告",
+  "url": "https://hospitalweb.xinjikang.cn/#/internalreport?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68",
+  "total_elements": 17,
+  "elements": [
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "header-root flex-shrink-0 flex flex-row items-center justify-between w-full px-4 bg-white border-b-2",
+      "text": "心吉康心血管健康综合管理平台测试机构2026/08/01  星期六陈强",
+      "onclick": false,
+      "href": "",
+      "size": "1280x64"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-start",
+      "text": "心吉康心血管健康综合管理平台",
+      "onclick": false,
+      "href": "",
+      "size": "374x38"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-start text-normal333",
+      "text": "2026/08/01  星期六陈强",
+      "onclick": false,
+      "href": "",
+      "size": "303x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-dropdown-trigger p-1 ml-8 flex flex-row items-center justify-start cursor-pointer rounded-sm hov",
+      "text": "陈强",
+      "onclick": false,
+      "href": "",
+      "size": "102x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "layout-body w-full flex flex-row",
+      "text": "工作台患者档案设备管理设备列表设备收发问卷管理账号管理数据管理文件审核内部报告健康报告周报审核运营配置操作日志随访管理内部报告",
+      "onclick": false,
+      "href": "",
+      "size": "1280x836"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "工作台",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "患者档案",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "设备列表",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "设备收发",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "问卷管理",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "文件审核",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-active ant-menu-item-selected ant-menu-item-only-child",
+      "text": "内部报告",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "健康报告",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "周报审核",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "运营配置",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "操作日志",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-breadcrumb-item",
+      "text": "内部报告",
+      "onclick": false,
+      "href": "",
+      "size": "56x22"
+    }
+  ],
+  "overlay_elements": []
+}

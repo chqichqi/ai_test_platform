@@ -1,0 +1,103 @@
+{
+  "module": "设备管理-设备列表设备收发",
+  "total_clicks": 16,
+  "pages": 1,
+  "clicks": [
+    {
+      "name": "编号\n\t\n姓名\n\t\n手机号码\n\t\n发放类型\n\t\n发货时间\n\t\n发货来源\n\t\n项目名称\n\t\n项目阶段\n\t\n发货备注\n\t\n发",
+      "before": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "-\tGDH000\t10065666692\t正常发货\t\n2026-08-10\n\t\n项目发货\n\t\n验证TA数据\n\t\n第2阶段",
+      "before": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "-\t070900001\t10065602704\t正常发货\t\n2026-08-06\n\t\n项目发货\n\t\n验证TA数据\n\t\n第",
+      "before": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "-\t07090006\t10065602709\t正常发货\t\n2026-08-06\n\t\n项目发货\n\t\n验证TA数据\n\t\n第4",
+      "before": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "-\t071400055\t10065602722\t正常发货\t\n2026-08-05\n\t\n项目发货\n\t\n验证TA数据\n\t\n第",
+      "before": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "-\t07140098\t10065602737\t正常发货\t\n2026-08-05\n\t\n项目发货\n\t\n验证TA数据\n\t\n第4",
+      "before": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "-\t071400001\t10065602718\t正常发货\t\n2026-08-05\n\t\n项目发货\n\t\n验证TA数据\n\t\n第",
+      "before": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "0012\t071400082\t10065602729\t正常发货\t\n2026-08-05\n\t\n项目发货\n\t\n验证TA数据\n",
+      "before": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "-\t070900003\t10065602706\t正常发货\t\n2026-08-05\n\t\n项目发货\n\t\n验证TA数据\n\t\n第",
+      "before": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "-\t070900005\t10065602708\t正常发货\t\n2026-08-05\n\t\n项目发货\n\t\n验证TA数据\n\t\n第",
+      "before": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "123485\t0709000056\t10065602711\t正常发货\t\n2026-08-05\n\t\n项目发货\n\t\n验证TA",
+      "before": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "-\t070900002\t10065602705\t正常发货\t\n2026-08-05\n\t\n项目发货\n\t\n验证TA数据\n\t\n第",
+      "before": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "-\t070900004\t10065602707\t正常发货\t\n2026-08-05\n\t\n项目发货\n\t\n验证TA数据\n\t\n第",
+      "before": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "0000366\t07090007\t10065602710\t正常发货\t\n2026-08-05\n\t\n项目发货\n\t\n验证TA数",
+      "before": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "-\tGDH000\t10065666692\t正常发货\t\n2026-08-03\n\t\n项目发货\n\t\n验证TA数据\n\t\n第1阶段",
+      "before": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "-\t071403621\t10065602731\t正常发货\t\n2026-08-03\n\t\n项目发货\n\t\n验证TA数据\n\t\n第",
+      "before": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    }
+  ]
+}

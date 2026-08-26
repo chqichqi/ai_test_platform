@@ -1,0 +1,1241 @@
+{
+  "label": "待随访人数",
+  "url": "https://hospitalweb.xinjikang.cn/#/visitpatientmanage?refresh=1785581359799&oId=9ee70b68673b4660af488e86a0112f68&visitStatus=0",
+  "total_elements": 137,
+  "elements": [
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "header-root flex-shrink-0 flex flex-row items-center justify-between w-full px-4 bg-white border-b-2",
+      "text": "心吉康心血管健康综合管理平台测试机构2026/08/01  星期六陈强",
+      "onclick": false,
+      "href": "",
+      "size": "1280x64"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-start",
+      "text": "心吉康心血管健康综合管理平台",
+      "onclick": false,
+      "href": "",
+      "size": "374x38"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-start text-normal333",
+      "text": "2026/08/01  星期六陈强",
+      "onclick": false,
+      "href": "",
+      "size": "303x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-dropdown-trigger p-1 ml-8 flex flex-row items-center justify-start cursor-pointer rounded-sm hov",
+      "text": "陈强",
+      "onclick": false,
+      "href": "",
+      "size": "102x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "layout-body w-full flex flex-row",
+      "text": "工作台患者档案设备管理设备列表设备收发问卷管理账号管理数据管理文件审核内部报告健康报告周报审核运营配置操作日志随访管理患者管理随访项目患者管理患者管理已入组已退",
+      "onclick": false,
+      "href": "",
+      "size": "1280x836"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "工作台",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "患者档案",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "设备列表",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "设备收发",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "问卷管理",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "文件审核",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "内部报告",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "健康报告",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "周报审核",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "运营配置",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "操作日志",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "none",
+      "cls": "ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-open ant-menu-submenu-selected",
+      "text": "随访管理患者管理随访项目",
+      "onclick": false,
+      "href": "",
+      "size": "193x156"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-selected ant-menu-item-only-child",
+      "text": "患者管理",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "随访项目",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-breadcrumb-item",
+      "text": "患者管理",
+      "onclick": false,
+      "href": "",
+      "size": "56x22"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-breadcrumb-link cursor-pointer",
+      "text": "患者管理",
+      "onclick": false,
+      "href": "",
+      "size": "56x20"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "contianer-root flex flex-col items-start justify-start flex-1 overflow-x-auto ",
+      "text": "患者管理已入组已退组入组时间姓名手机号码随访状态未启用问卷情况请选择随访项目编号关联医生异常信息请选择所属医院请选择重 置查 询收起姓名编号入组时间手机号码关联",
+      "onclick": false,
+      "href": "",
+      "size": "1080x836"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-between w-full mb-2",
+      "text": "患者管理",
+      "onclick": false,
+      "href": "",
+      "size": "1052x40"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-tabs ant-tabs-top ant-tabs-large tabsStyle___YLd5p css-1sdc3xm",
+      "text": "已入组已退组",
+      "onclick": false,
+      "href": "",
+      "size": "1052x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "tablist",
+      "cls": "ant-tabs-nav",
+      "text": "已入组已退组",
+      "onclick": false,
+      "href": "",
+      "size": "1052x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-tabs-nav-wrap",
+      "text": "已入组已退组",
+      "onclick": false,
+      "href": "",
+      "size": "1052x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-tabs-nav-list",
+      "text": "已入组已退组",
+      "onclick": false,
+      "href": "",
+      "size": "128x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-tabs-tab ant-tabs-tab-active",
+      "text": "已入组",
+      "onclick": false,
+      "href": "",
+      "size": "48x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "tab",
+      "cls": "ant-tabs-tab-btn",
+      "text": "已入组",
+      "onclick": false,
+      "href": "",
+      "size": "48x24"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-tabs-tab",
+      "text": "已退组",
+      "onclick": false,
+      "href": "",
+      "size": "48x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "tab",
+      "cls": "ant-tabs-tab-btn",
+      "text": "已退组",
+      "onclick": false,
+      "href": "",
+      "size": "48x24"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-start justify-between w-full pt-6 pl-2 pr-4 bg-white rounded-md",
+      "text": "入组时间姓名手机号码随访状态未启用问卷情况请选择随访项目编号关联医生异常信息请选择所属医院请选择重 置查 询收起",
+      "onclick": false,
+      "href": "",
+      "size": "1052x189"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row css-1sdc3xm",
+      "text": "入组时间姓名手机号码随访状态未启用问卷情况请选择随访项目编号关联医生异常信息请选择所属医院请选择重 置查 询收起",
+      "onclick": false,
+      "href": "",
+      "size": "1039x168"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row flex flex-row items-start justify-start w-full px-0 css-1sdc3xm",
+      "text": "入组时间姓名手机号码随访状态未启用问卷情况请选择随访项目编号关联医生异常信息请选择所属医院请选择重 置查 询收起",
+      "onclick": false,
+      "href": "",
+      "size": "1039x168"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "入组时间",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "入组时间",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "入组时间",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "姓名",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "姓名",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "姓名",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "手机号码",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "手机号码",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "手机号码",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "随访状态未启用",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "随访状态未启用",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "随访状态",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-18 ant-col-md-20 css-1sdc3xm",
+      "text": "未启用",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "未启用",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "未启用",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "未启用",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-selector",
+      "text": "未启用",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-wrap",
+      "text": "未启用",
+      "onclick": false,
+      "href": "",
+      "size": "144x30"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-item",
+      "text": "未启用",
+      "onclick": false,
+      "href": "",
+      "size": "144x30"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "问卷情况请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "问卷情况请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "问卷情况",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-18 ant-col-md-20 css-1sdc3xm",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-selector",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-wrap",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "144x30"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-placeholder",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "144x30"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "随访项目",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "随访项目",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "随访项目",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "编号",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "编号",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "编号",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "关联医生",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "关联医生",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "关联医生",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "异常信息请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "异常信息请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label css-1sdc3xm",
+      "text": "异常信息",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control css-1sdc3xm",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-selector",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-wrap",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "144x30"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-placeholder",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "144x30"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "所属医院请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "所属医院请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label css-1sdc3xm",
+      "text": "所属医院",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control css-1sdc3xm",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-selector",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-wrap",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "144x30"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-placeholder",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "144x30"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-start justify-end",
+      "text": "重 置查 询收起",
+      "onclick": false,
+      "href": "",
+      "size": "254x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center",
+      "text": "重 置查 询收起",
+      "onclick": false,
+      "href": "",
+      "size": "209x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-default ant-btn-color-default ant-btn-variant-outlined",
+      "text": "重 置",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid ml-4",
+      "text": "查 询",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ml-6 flex items-center text-text-primary cursor-pointer",
+      "text": "收起",
+      "onclick": false,
+      "href": "",
+      "size": "49x22"
+    },
+    {
+      "tag": "FORM",
+      "role": "",
+      "cls": "ant-form ant-form-vertical css-1sdc3xm editTableForm___ydCTW ant-pro-form css-1sdc3xm",
+      "text": "姓名编号入组时间手机号码关联医生所属医院随访项目随访阶段随访状态患者备注异常信息操作姓名编号入组时间手机号码关联医生所属医院随访项目随访阶段随访状态患者备注异常",
+      "onclick": false,
+      "href": "",
+      "size": "1052x115"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-has-success ant-form-item-vertical",
+      "text": "姓名编号入组时间手机号码关联医生所属医院随访项目随访阶段随访状态患者备注异常信息操作姓名编号入组时间手机号码关联医生所属医院随访项目随访阶段随访状态患者备注异常",
+      "onclick": false,
+      "href": "",
+      "size": "1052x115"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "姓名编号入组时间手机号码关联医生所属医院随访项目随访阶段随访状态患者备注异常信息操作姓名编号入组时间手机号码关联医生所属医院随访项目随访阶段随访状态患者备注异常",
+      "onclick": false,
+      "href": "",
+      "size": "1052x115"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control css-1sdc3xm",
+      "text": "姓名编号入组时间手机号码关联医生所属医院随访项目随访阶段随访状态患者备注异常信息操作姓名编号入组时间手机号码关联医生所属医院随访项目随访阶段随访状态患者备注异常",
+      "onclick": false,
+      "href": "",
+      "size": "1052x115"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "姓名编号入组时间手机号码关联医生所属医院随访项目随访阶段随访状态患者备注异常信息操作姓名编号入组时间手机号码关联医生所属医院随访项目随访阶段随访状态患者备注异常",
+      "onclick": false,
+      "href": "",
+      "size": "1052x115"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "姓名编号入组时间手机号码关联医生所属医院随访项目随访阶段随访状态患者备注异常信息操作姓名编号入组时间手机号码关联医生所属医院随访项目随访阶段随访状态患者备注异常",
+      "onclick": false,
+      "href": "",
+      "size": "1052x115"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-pro-table table___3Qqbh editTable___3yeJO css-1sdc3xm",
+      "text": "姓名编号入组时间手机号码关联医生所属医院随访项目随访阶段随访状态患者备注异常信息操作姓名编号入组时间手机号码关联医生所属医院随访项目随访阶段随访状态患者备注异常",
+      "onclick": false,
+      "href": "",
+      "size": "1052x115"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-table-wrapper css-1sdc3xm",
+      "text": "姓名编号入组时间手机号码关联医生所属医院随访项目随访阶段随访状态患者备注异常信息操作姓名编号入组时间手机号码关联医生所属医院随访项目随访阶段随访状态患者备注异常",
+      "onclick": false,
+      "href": "",
+      "size": "1052x115"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-table ant-table-middle css-1sdc3xm ant-table-ping-right ant-table-layout-fixed ant-table-fixed-h",
+      "text": "姓名编号入组时间手机号码关联医生所属医院随访项目随访阶段随访状态患者备注异常信息操作姓名编号入组时间手机号码关联医生所属医院随访项目随访阶段随访状态患者备注异常",
+      "onclick": false,
+      "href": "",
+      "size": "1052x115"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-table-container",
+      "text": "姓名编号入组时间手机号码关联医生所属医院随访项目随访阶段随访状态患者备注异常信息操作姓名编号入组时间手机号码关联医生所属医院随访项目随访阶段随访状态患者备注异常",
+      "onclick": false,
+      "href": "",
+      "size": "1052x115"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-table-header",
+      "text": "姓名编号入组时间手机号码关联医生所属医院随访项目随访阶段随访状态患者备注异常信息操作",
+      "onclick": false,
+      "href": "",
+      "size": "1052x55"
+    },
+    {
+      "tag": "THEAD",
+      "role": "",
+      "cls": "ant-table-thead",
+      "text": "姓名编号入组时间手机号码关联医生所属医院随访项目随访阶段随访状态患者备注异常信息操作",
+      "onclick": false,
+      "href": "",
+      "size": "1756x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-fix-left ant-table-cell-fix-left-last",
+      "text": "姓名",
+      "onclick": false,
+      "href": "",
+      "size": "130x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "编号",
+      "onclick": false,
+      "href": "",
+      "size": "100x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "入组时间",
+      "onclick": false,
+      "href": "",
+      "size": "110x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "手机号码",
+      "onclick": false,
+      "href": "",
+      "size": "120x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-ellipsis",
+      "text": "关联医生",
+      "onclick": false,
+      "href": "",
+      "size": "120x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-ellipsis",
+      "text": "所属医院",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-ellipsis",
+      "text": "随访项目",
+      "onclick": false,
+      "href": "",
+      "size": "120x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "随访阶段",
+      "onclick": false,
+      "href": "",
+      "size": "110x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "随访状态",
+      "onclick": false,
+      "href": "",
+      "size": "120x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者备注",
+      "onclick": false,
+      "href": "",
+      "size": "220x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "异常信息",
+      "onclick": false,
+      "href": "",
+      "size": "300x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-fix-right ant-table-cell-fix-right-first",
+      "text": "操作",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-table-body",
+      "text": "姓名编号入组时间手机号码关联医生所属医院随访项目随访阶段随访状态患者备注异常信息操作薛成-2025-11-0413333333399-四川大学华西医院测试机构3",
+      "onclick": false,
+      "href": "",
+      "size": "1052x60"
+    },
+    {
+      "tag": "TBODY",
+      "role": "",
+      "cls": "ant-table-tbody",
+      "text": "姓名编号入组时间手机号码关联医生所属医院随访项目随访阶段随访状态患者备注异常信息操作薛成-2025-11-0413333333399-四川大学华西医院测试机构3",
+      "onclick": false,
+      "href": "",
+      "size": "1750x55"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "薛成-2025-11-0413333333399-四川大学华西医院测试机构3/4阶段中正在随访-详情",
+      "onclick": false,
+      "href": "",
+      "size": "1750x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-fix-left ant-table-cell-fix-left-last ant-table-cell-with-append",
+      "text": "薛成",
+      "onclick": false,
+      "href": "",
+      "size": "130x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "100x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "2025-11-04",
+      "onclick": false,
+      "href": "",
+      "size": "110x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "13333333399",
+      "onclick": false,
+      "href": "",
+      "size": "120x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-ellipsis",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "120x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-ellipsis",
+      "text": "四川大学华西医院",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-ellipsis",
+      "text": "测试机构",
+      "onclick": false,
+      "href": "",
+      "size": "120x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "3/4阶段中",
+      "onclick": false,
+      "href": "",
+      "size": "110x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "正在随访",
+      "onclick": false,
+      "href": "",
+      "size": "120x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center gap-x-1",
+      "text": "正在随访",
+      "onclick": false,
+      "href": "",
+      "size": "88x22"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "300x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-fix-right ant-table-cell-fix-right-first",
+      "text": "详情",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情",
+      "onclick": false,
+      "href": "",
+      "size": "118x22"
+    }
+  ],
+  "overlay_elements": []
+}

@@ -1,0 +1,55 @@
+{
+  "module": "指标总览-自定义",
+  "total_clicks": 4,
+  "pages": 1,
+  "clicks": [
+    {
+      "seq": 1,
+      "name": "工作台",
+      "actual_text": "工作台",
+      "action": "navigate",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1787490002521&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1787490002521&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 2,
+      "name": "自定义",
+      "actual_text": "自定义",
+      "action": "click",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1787490002521&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel/customCard?refresh=1787490002521&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "jump",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 3,
+      "name": "重置",
+      "actual_text": "",
+      "action": "click",
+      "status": "not_found",
+      "result": "static",
+      "error": "element_not_found",
+      "strategy": "",
+      "current_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1787490002521&oId=9ee70b68673b4660af488e86a0112f68",
+      "message": "步骤 3: 未找到「重置」— 请检查用例描述是否与当前页面匹配"
+    },
+    {
+      "seq": 4,
+      "name": "保存布局",
+      "actual_text": "",
+      "action": "click",
+      "status": "not_found",
+      "result": "static",
+      "error": "element_not_found",
+      "strategy": "",
+      "current_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1787490002521&oId=9ee70b68673b4660af488e86a0112f68",
+      "message": "步骤 4: 未找到「保存布局」— 请检查用例描述是否与当前页面匹配"
+    }
+  ]
+}

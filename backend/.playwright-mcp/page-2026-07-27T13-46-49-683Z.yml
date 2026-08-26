@@ -1,0 +1,482 @@
+- generic [ref=e5]:
+  - generic [ref=e6]:
+    - generic [ref=e7]:
+      - img "logo" [ref=e8]
+      - generic [ref=e9]: 心吉康心血管健康综合管理平台
+    - generic [ref=e36]: 测试机构
+    - generic [ref=e10]:
+      - generic [ref=e13]: 2026/07/27 星期
+      - generic [ref=e14]: 一
+      - generic [ref=e15] [cursor=pointer]: 陈强
+  - generic [ref=e19]:
+    - menu [ref=e38]:
+      - menuitem "工作台" [ref=e39] [cursor=pointer]
+      - menuitem "患者档案" [ref=e42] [cursor=pointer]
+      - menuitem "设备管理" [ref=e45] [cursor=pointer]
+      - menuitem "问卷管理" [ref=e48] [cursor=pointer]
+      - menuitem "账号管理" [ref=e51] [cursor=pointer]
+      - menuitem "数据管理" [ref=e54] [cursor=pointer]
+      - menuitem "运营配置" [ref=e57] [cursor=pointer]
+      - menuitem "操作日志" [ref=e60] [cursor=pointer]
+      - menuitem "随访管理" [ref=e63] [cursor=pointer]
+    - generic [ref=e21]:
+      - navigation [ref=e1107]:
+        - list [ref=e1108]:
+          - listitem [ref=e1109]: 患者档案
+      - generic [ref=e1509]:
+        - generic [ref=e1510]:
+          - generic [ref=e1511]: 患者档案
+          - generic [ref=e1512]:
+            - button "导出统计数据" [ref=e1513] [cursor=pointer]
+            - button "卡片信息设置" [ref=e1515] [cursor=pointer]
+            - button "新增患者" [ref=e1517] [cursor=pointer]
+        - generic [ref=e1519]:
+          - generic [ref=e1520]:
+            - tablist [ref=e1521]:
+              - generic [ref=e1523]:
+                - tab "全部" [selected] [ref=e1525] [cursor=pointer]
+                - tab "我的患者" [ref=e1527] [cursor=pointer]
+            - generic:
+              - generic:
+                - tabpanel "全部"
+          - generic [ref=e1532]:
+            - generic [ref=e1536]:
+              - generic "录入时间" [ref=e1538]: "录入时间 :"
+              - generic [ref=e1543]:
+                - textbox "录入时间 :" [ref=e1544]:
+                  - /placeholder: 请选择
+                - generic:
+                  - img "calendar"
+            - generic [ref=e1548]:
+              - generic "编号" [ref=e1550]: "编号 :"
+              - textbox "编号 :" [ref=e1555]:
+                - /placeholder: 请输入编号
+            - generic [ref=e1560]:
+              - generic "姓名" [ref=e1562]: "姓名 :"
+              - textbox "姓名 :" [ref=e1567]:
+                - /placeholder: 请输入姓名
+            - generic [ref=e1572]:
+              - generic "手机号码" [ref=e1574]: "手机号码 :"
+              - textbox "手机号码 :" [ref=e1579]:
+                - /placeholder: 请输入手机号码
+            - generic [ref=e1584]:
+              - generic "性别" [ref=e1586]: "性别 :"
+              - generic [ref=e1592] [cursor=pointer]:
+                - combobox "性别 :" [ref=e1594]
+                - generic: 请选择
+            - generic [ref=e1598]:
+              - generic "疾病标签" [ref=e1600]: "疾病标签 :"
+              - generic [ref=e1606] [cursor=pointer]:
+                - combobox "疾病标签 :" [ref=e1608]
+                - generic: 请选择
+            - generic [ref=e1611]:
+              - generic [ref=e1615]:
+                - generic "年龄" [ref=e1617]: "年龄 :"
+                - generic [ref=e1621]:
+                  - generic:
+                    - button "Increase Value" [ref=e1622] [cursor=pointer]:
+                      - img "up" [ref=e1623]
+                    - button "Decrease Value" [ref=e1626] [cursor=pointer]:
+                      - img "down" [ref=e1627]
+                  - spinbutton "年龄 :" [ref=e1631]
+              - generic [ref=e1632]: ~
+              - generic [ref=e1640]:
+                - generic:
+                  - button "Increase Value" [ref=e1641] [cursor=pointer]:
+                    - img "up" [ref=e1642]
+                  - button "Decrease Value" [ref=e1645] [cursor=pointer]:
+                    - img "down" [ref=e1646]
+                - spinbutton "请输入" [ref=e1650]
+            - generic [ref=e1654]:
+              - generic "绑定设备" [ref=e1656]: "绑定设备 :"
+              - generic [ref=e1662] [cursor=pointer]:
+                - combobox "绑定设备 :" [ref=e1664]
+                - generic: 请选择
+            - generic [ref=e1668]:
+              - generic "关注" [ref=e1670]: "关注 :"
+              - generic [ref=e1676] [cursor=pointer]:
+                - combobox "关注 :" [ref=e1678]
+                - generic: 请选择
+            - generic [ref=e1682]:
+              - generic "随访项目" [ref=e1684]: "随访项目 :"
+              - generic [ref=e1690] [cursor=pointer]:
+                - combobox "随访项目 :" [ref=e1692]
+                - generic: 请选择
+            - generic [ref=e1696]:
+              - generic "报告类型" [ref=e1698]: "报告类型 :"
+              - generic [ref=e1704] [cursor=pointer]:
+                - combobox "报告类型 :" [ref=e1706]
+                - generic: 请选择
+            - generic [ref=e1710]:
+              - generic "入组情况" [ref=e1712]: "入组情况 :"
+              - generic [ref=e1718] [cursor=pointer]:
+                - combobox "入组情况 :" [ref=e1720]
+                - generic: 请选择
+            - generic [ref=e1723]:
+              - button "重 置" [ref=e1724] [cursor=pointer]
+              - button "查 询" [ref=e1726] [cursor=pointer]
+              - generic [ref=e1728] [cursor=pointer]:
+                - generic [ref=e1729]: 收起
+                - img "up" [ref=e1730]
+        - generic [ref=e1733]:
+          - generic [ref=e1746]:
+            - table [ref=e1748]:
+              - rowgroup [ref=e1763]:
+                - row [ref=e1764]:
+                  - columnheader "姓名" [ref=e1765]
+                  - columnheader "编号" [ref=e1766]
+                  - columnheader "手机号码" [ref=e1767]
+                  - columnheader "性别" [ref=e1768]
+                  - columnheader "年龄" [ref=e1769]
+                  - columnheader "绑定设备" [ref=e1770]
+                  - columnheader "录入时间" [ref=e1771]
+                  - columnheader "随访项目" [ref=e1772]
+                  - columnheader "疾病标签" [ref=e1773]
+                  - columnheader "异常事件" [ref=e1774]
+                  - columnheader "备注" [ref=e1775]
+                  - columnheader "操作" [ref=e1776]
+                  - columnheader [ref=e1777]
+            - table [ref=e1779]:
+              - rowgroup [ref=e1793]:
+                - row [ref=e1794]:
+                  - cell [ref=e1795]
+                  - cell "-" [ref=e1799]
+                  - cell "13036674456" [ref=e1800]
+                  - cell "女" [ref=e1801]
+                  - cell "29" [ref=e1802]
+                  - cell "心电记录仪" [ref=e1803]
+                  - cell "2024-11-21" [ref=e1806]
+                  - cell "-" [ref=e1807]
+                  - cell "-" [ref=e1808]
+                  - cell "-" [ref=e1809]
+                  - cell [ref=e1810]
+                  - cell "详情 入组 报告 star star" [ref=e1814]:
+                    - generic [ref=e1815]:
+                      - generic [ref=e1816] [cursor=pointer]: 详情
+                      - generic [ref=e1817] [cursor=pointer]: 入组
+                      - generic [ref=e1818] [cursor=pointer]: 报告
+                      - list [ref=e1822] [cursor=pointer]:
+                        - listitem [ref=e1823]:
+                          - radio [checked] [ref=e1824]:
+                            - img "star" [ref=e1826]
+                            - img "star" [ref=e1830]
+                - row [ref=e1833]:
+                  - cell "CQ-房颤患者" [ref=e1834]
+                  - cell "-" [ref=e1836]
+                  - cell "18081197206" [ref=e1837]
+                  - cell "男" [ref=e1838]
+                  - cell "39" [ref=e1839]
+                  - cell "-" [ref=e1840]
+                  - cell "2024-12-30" [ref=e1841]
+                  - cell "-" [ref=e1842]
+                  - cell "房颤" [ref=e1843]
+                  - cell "房颤 2026-02-10 14:58:12" [ref=e1847]
+                  - cell [ref=e1850]
+                  - cell "详情 入组 报告 star star" [ref=e1854]:
+                    - generic [ref=e1855]:
+                      - generic [ref=e1856] [cursor=pointer]: 详情
+                      - generic [ref=e1857] [cursor=pointer]: 入组
+                      - generic [ref=e1858] [cursor=pointer]: 报告
+                      - list [ref=e1862] [cursor=pointer]:
+                        - listitem [ref=e1863]:
+                          - radio [checked] [ref=e1864]:
+                            - img "star" [ref=e1866]
+                            - img "star" [ref=e1870]
+                - row [ref=e1873]:
+                  - cell [ref=e1874]
+                  - cell "-" [ref=e1878]
+                  - cell "15167111716" [ref=e1879]
+                  - cell "女" [ref=e1880]
+                  - cell "39" [ref=e1881]
+                  - cell "-" [ref=e1882]
+                  - cell "2026-02-10" [ref=e1883]
+                  - cell "-" [ref=e1884]
+                  - cell "-" [ref=e1885]
+                  - cell "-" [ref=e1886]
+                  - cell [ref=e1887]
+                  - cell "详情 入组 报告 star star" [ref=e1891]:
+                    - generic [ref=e1892]:
+                      - generic [ref=e1893] [cursor=pointer]: 详情
+                      - generic [ref=e1894] [cursor=pointer]: 入组
+                      - generic [ref=e1895] [cursor=pointer]: 报告
+                      - list [ref=e1899] [cursor=pointer]:
+                        - listitem [ref=e1900]:
+                          - radio [checked] [ref=e1901]:
+                            - img "star" [ref=e1903]
+                            - img "star" [ref=e1907]
+                - row [ref=e1910]:
+                  - cell "勾小倩" [ref=e1911]
+                  - cell "-" [ref=e1913]
+                  - cell "13668336190" [ref=e1914]
+                  - cell "女" [ref=e1915]
+                  - cell "61" [ref=e1916]
+                  - cell "-" [ref=e1917]
+                  - cell "2026-02-10" [ref=e1918]
+                  - cell "-" [ref=e1919]
+                  - cell "-" [ref=e1920]
+                  - cell "-" [ref=e1921]
+                  - cell [ref=e1922]
+                  - cell "详情 入组 star star" [ref=e1926]:
+                    - generic [ref=e1927]:
+                      - generic [ref=e1928] [cursor=pointer]: 详情
+                      - generic [ref=e1929] [cursor=pointer]: 入组
+                      - list [ref=e1931] [cursor=pointer]:
+                        - listitem [ref=e1932]:
+                          - radio [checked] [ref=e1933]:
+                            - img "star" [ref=e1935]
+                            - img "star" [ref=e1939]
+                - row [ref=e1942]:
+                  - cell "05280001" [ref=e1943]
+                  - cell "-" [ref=e1945]
+                  - cell "10065602678" [ref=e1946]
+                  - cell "-" [ref=e1947]
+                  - cell "-" [ref=e1948]
+                  - cell "-" [ref=e1949]
+                  - cell "2026-05-28" [ref=e1950]
+                  - cell "CX-心脑科" [ref=e1951]
+                  - cell "-" [ref=e1952]
+                  - cell "-" [ref=e1953]
+                  - cell [ref=e1954]
+                  - cell "详情 入组 star star" [ref=e1958]:
+                    - generic [ref=e1959]:
+                      - generic [ref=e1960] [cursor=pointer]: 详情
+                      - generic [ref=e1961] [cursor=pointer]: 入组
+                      - list [ref=e1963] [cursor=pointer]:
+                        - listitem [ref=e1964]:
+                          - radio [ref=e1965]:
+                            - img "star" [ref=e1967]
+                            - img "star" [ref=e1971]
+                - row [ref=e1974]:
+                  - cell "0520002" [ref=e1975]
+                  - cell "-" [ref=e1977]
+                  - cell "10065602649" [ref=e1978]
+                  - cell "-" [ref=e1979]
+                  - cell "-" [ref=e1980]
+                  - cell "-" [ref=e1981]
+                  - cell "2026-05-20" [ref=e1982]
+                  - cell "-" [ref=e1983]
+                  - cell "-" [ref=e1984]
+                  - cell "-" [ref=e1985]
+                  - cell [ref=e1986]
+                  - cell "详情 入组 star star" [ref=e1990]:
+                    - generic [ref=e1991]:
+                      - generic [ref=e1992] [cursor=pointer]: 详情
+                      - generic [ref=e1993] [cursor=pointer]: 入组
+                      - list [ref=e1995] [cursor=pointer]:
+                        - listitem [ref=e1996]:
+                          - radio [ref=e1997]:
+                            - img "star" [ref=e1999]
+                            - img "star" [ref=e2003]
+                - row [ref=e2006]:
+                  - cell "0520001" [ref=e2007]
+                  - cell "-" [ref=e2009]
+                  - cell "10065602648" [ref=e2010]
+                  - cell "-" [ref=e2011]
+                  - cell "-" [ref=e2012]
+                  - cell "-" [ref=e2013]
+                  - cell "2026-05-20" [ref=e2014]
+                  - cell "-" [ref=e2015]
+                  - cell "-" [ref=e2016]
+                  - cell "-" [ref=e2017]
+                  - cell [ref=e2018]
+                  - cell "详情 入组 star star" [ref=e2022]:
+                    - generic [ref=e2023]:
+                      - generic [ref=e2024] [cursor=pointer]: 详情
+                      - generic [ref=e2025] [cursor=pointer]: 入组
+                      - list [ref=e2027] [cursor=pointer]:
+                        - listitem [ref=e2028]:
+                          - radio [ref=e2029]:
+                            - img "star" [ref=e2031]
+                            - img "star" [ref=e2035]
+                - row [ref=e2038]:
+                  - cell "新朝澎湃" [ref=e2039]
+                  - cell "-" [ref=e2041]
+                  - cell "10026102274" [ref=e2042]
+                  - cell "-" [ref=e2043]
+                  - cell "-" [ref=e2044]
+                  - cell "-" [ref=e2045]
+                  - cell "2026-05-08" [ref=e2046]
+                  - cell "-" [ref=e2047]
+                  - cell "-" [ref=e2048]
+                  - cell "-" [ref=e2049]
+                  - cell [ref=e2050]
+                  - cell "详情 入组 star star" [ref=e2054]:
+                    - generic [ref=e2055]:
+                      - generic [ref=e2056] [cursor=pointer]: 详情
+                      - generic [ref=e2057] [cursor=pointer]: 入组
+                      - list [ref=e2059] [cursor=pointer]:
+                        - listitem [ref=e2060]:
+                          - radio [ref=e2061]:
+                            - img "star" [ref=e2063]
+                            - img "star" [ref=e2067]
+                - row [ref=e2070]:
+                  - cell "新朝澎湃" [ref=e2071]
+                  - cell "-" [ref=e2073]
+                  - cell "10026102273" [ref=e2074]
+                  - cell "-" [ref=e2075]
+                  - cell "-" [ref=e2076]
+                  - cell "-" [ref=e2077]
+                  - cell "2026-05-08" [ref=e2078]
+                  - cell "-" [ref=e2079]
+                  - cell "-" [ref=e2080]
+                  - cell "-" [ref=e2081]
+                  - cell [ref=e2082]
+                  - cell "详情 入组 star star" [ref=e2086]:
+                    - generic [ref=e2087]:
+                      - generic [ref=e2088] [cursor=pointer]: 详情
+                      - generic [ref=e2089] [cursor=pointer]: 入组
+                      - list [ref=e2091] [cursor=pointer]:
+                        - listitem [ref=e2092]:
+                          - radio [ref=e2093]:
+                            - img "star" [ref=e2095]
+                            - img "star" [ref=e2099]
+                - row [ref=e2102]:
+                  - cell "新朝澎湃" [ref=e2103]
+                  - cell "-" [ref=e2105]
+                  - cell "10026102264" [ref=e2106]
+                  - cell "-" [ref=e2107]
+                  - cell "-" [ref=e2108]
+                  - cell "-" [ref=e2109]
+                  - cell "2026-05-07" [ref=e2110]
+                  - cell "-" [ref=e2111]
+                  - cell "-" [ref=e2112]
+                  - cell "-" [ref=e2113]
+                  - cell [ref=e2114]
+                  - cell "详情 入组 star star" [ref=e2118]:
+                    - generic [ref=e2119]:
+                      - generic [ref=e2120] [cursor=pointer]: 详情
+                      - generic [ref=e2121] [cursor=pointer]: 入组
+                      - list [ref=e2123] [cursor=pointer]:
+                        - listitem [ref=e2124]:
+                          - radio [ref=e2125]:
+                            - img "star" [ref=e2127]
+                            - img "star" [ref=e2131]
+                - row [ref=e2134]:
+                  - cell "新朝澎湃" [ref=e2135]
+                  - cell "-" [ref=e2137]
+                  - cell "10026102263" [ref=e2138]
+                  - cell "-" [ref=e2139]
+                  - cell "-" [ref=e2140]
+                  - cell "-" [ref=e2141]
+                  - cell "2026-05-07" [ref=e2142]
+                  - cell "-" [ref=e2143]
+                  - cell "-" [ref=e2144]
+                  - cell "-" [ref=e2145]
+                  - cell [ref=e2146]
+                  - cell "详情 入组 star star" [ref=e2150]:
+                    - generic [ref=e2151]:
+                      - generic [ref=e2152] [cursor=pointer]: 详情
+                      - generic [ref=e2153] [cursor=pointer]: 入组
+                      - list [ref=e2155] [cursor=pointer]:
+                        - listitem [ref=e2156]:
+                          - radio [ref=e2157]:
+                            - img "star" [ref=e2159]
+                            - img "star" [ref=e2163]
+                - row [ref=e2166]:
+                  - cell "新朝澎湃" [ref=e2167]
+                  - cell "-" [ref=e2169]
+                  - cell "10026102262" [ref=e2170]
+                  - cell "-" [ref=e2171]
+                  - cell "-" [ref=e2172]
+                  - cell "-" [ref=e2173]
+                  - cell "2026-05-07" [ref=e2174]
+                  - cell "-" [ref=e2175]
+                  - cell "-" [ref=e2176]
+                  - cell "-" [ref=e2177]
+                  - cell [ref=e2178]
+                  - cell "详情 入组 star star" [ref=e2182]:
+                    - generic [ref=e2183]:
+                      - generic [ref=e2184] [cursor=pointer]: 详情
+                      - generic [ref=e2185] [cursor=pointer]: 入组
+                      - list [ref=e2187] [cursor=pointer]:
+                        - listitem [ref=e2188]:
+                          - radio [ref=e2189]:
+                            - img "star" [ref=e2191]
+                            - img "star" [ref=e2195]
+                - row [ref=e2198]:
+                  - cell "新朝澎湃" [ref=e2199]
+                  - cell "-" [ref=e2201]
+                  - cell "10026102261" [ref=e2202]
+                  - cell "-" [ref=e2203]
+                  - cell "-" [ref=e2204]
+                  - cell "-" [ref=e2205]
+                  - cell "2026-05-07" [ref=e2206]
+                  - cell "-" [ref=e2207]
+                  - cell "-" [ref=e2208]
+                  - cell "-" [ref=e2209]
+                  - cell [ref=e2210]
+                  - cell "详情 入组 star star" [ref=e2214]:
+                    - generic [ref=e2215]:
+                      - generic [ref=e2216] [cursor=pointer]: 详情
+                      - generic [ref=e2217] [cursor=pointer]: 入组
+                      - list [ref=e2219] [cursor=pointer]:
+                        - listitem [ref=e2220]:
+                          - radio [ref=e2221]:
+                            - img "star" [ref=e2223]
+                            - img "star" [ref=e2227]
+                - row [ref=e2230]:
+                  - cell "新朝澎湃" [ref=e2231]
+                  - cell "-" [ref=e2233]
+                  - cell "10026102260" [ref=e2234]
+                  - cell "-" [ref=e2235]
+                  - cell "-" [ref=e2236]
+                  - cell "-" [ref=e2237]
+                  - cell "2026-05-06" [ref=e2238]
+                  - cell "-" [ref=e2239]
+                  - cell "-" [ref=e2240]
+                  - cell "-" [ref=e2241]
+                  - cell [ref=e2242]
+                  - cell "详情 入组 star star" [ref=e2246]:
+                    - generic [ref=e2247]:
+                      - generic [ref=e2248] [cursor=pointer]: 详情
+                      - generic [ref=e2249] [cursor=pointer]: 入组
+                      - list [ref=e2251] [cursor=pointer]:
+                        - listitem [ref=e2252]:
+                          - radio [ref=e2253]:
+                            - img "star" [ref=e2255]
+                            - img "star" [ref=e2259]
+                - row [ref=e2262]:
+                  - cell "新朝澎湃" [ref=e2263]
+                  - cell "-" [ref=e2265]
+                  - cell "10026102259" [ref=e2266]
+                  - cell "-" [ref=e2267]
+                  - cell "-" [ref=e2268]
+                  - cell "-" [ref=e2269]
+                  - cell "2026-05-06" [ref=e2270]
+                  - cell "-" [ref=e2271]
+                  - cell "-" [ref=e2272]
+                  - cell "-" [ref=e2273]
+                  - cell [ref=e2274]
+                  - cell "详情 入组 star star" [ref=e2278]:
+                    - generic [ref=e2279]:
+                      - generic [ref=e2280] [cursor=pointer]: 详情
+                      - generic [ref=e2281] [cursor=pointer]: 入组
+                      - list [ref=e2283] [cursor=pointer]:
+                        - listitem [ref=e2284]:
+                          - radio [ref=e2285]:
+                            - img "star" [ref=e2287]
+                            - img "star" [ref=e2291]
+          - list [ref=e2294]:
+            - listitem [ref=e2295]: 共105条记录
+            - listitem "上一页" [ref=e2296]:
+              - button [disabled] [ref=e2297]:
+                - img "left" [ref=e2298]
+            - listitem "1" [ref=e2301] [cursor=pointer]
+            - listitem "2" [ref=e2303] [cursor=pointer]
+            - listitem "3" [ref=e2305] [cursor=pointer]
+            - listitem "4" [ref=e2307] [cursor=pointer]
+            - listitem "5" [ref=e2309] [cursor=pointer]
+            - listitem "6" [ref=e2311] [cursor=pointer]
+            - listitem "7" [ref=e2313] [cursor=pointer]
+            - listitem "下一页" [ref=e2315] [cursor=pointer]:
+              - button [ref=e2316]:
+                - img "right" [ref=e2317]
+            - listitem [ref=e2320]:
+              - generic "页码" [ref=e2321] [cursor=pointer]:
+                - generic [ref=e2323]:
+                  - combobox "页码" [ref=e2325]
+                  - generic "15 条/页" [ref=e2326]
+              - generic [ref=e2327]:
+                - text: 跳至
+                - textbox "页" [ref=e2328]
+                - text: 页

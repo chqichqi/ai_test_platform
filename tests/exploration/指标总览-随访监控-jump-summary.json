@@ -1,0 +1,28 @@
+{
+  "nav": {},
+  "cards": {
+    "入组人数": {
+      "label": "入组人数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve",
+      "role": "button"
+    },
+    "进行中人数": {
+      "label": "进行中人数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/visitpatientmanage",
+      "role": "button"
+    },
+    "待随访人数": {
+      "label": "待随访人数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/visitpatientmanage",
+      "role": "button"
+    }
+  },
+  "dropdowns": {},
+  "sub_menus": {}
+}

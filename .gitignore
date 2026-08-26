@@ -1,0 +1,36 @@
+# 依赖
+node_modules/
+
+# IDE
+.idea/
+.claude/
+
+# 日志
+logs/
+*.log
+
+# 临时文件、压缩包
+*.rar
+*.zip
+*.docx
+*.png
+nul
+=0.0.5
+
+# 环境密钥
+.env
+.env.*
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# python虚拟环境
+venv/
+.venv/
+env/
+ENV/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd

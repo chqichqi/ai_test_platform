@@ -1,0 +1,400 @@
+- generic [ref=e1]:
+  - generic [ref=e5]:
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - img "logo" [ref=e8]
+        - generic [ref=e9]: 心吉康心血管健康综合管理平台
+      - generic [ref=e36]: 测试机构
+      - generic [ref=e10]:
+        - generic [ref=e13]: 2026/07/31 星期
+        - generic [ref=e14]: 五
+        - generic [ref=e15] [cursor=pointer]: 陈强
+    - generic [ref=e19]:
+      - menu [ref=e38]:
+        - menuitem "工作台" [ref=e39] [cursor=pointer]
+        - menuitem "患者档案" [ref=e42] [cursor=pointer]
+        - menuitem "设备管理" [expanded] [ref=e45] [cursor=pointer]
+        - menu [ref=e20314]:
+          - menuitem "设备列表" [ref=e20315] [cursor=pointer]
+          - menuitem "设备收发" [ref=e20317] [cursor=pointer]
+        - menuitem "问卷管理" [ref=e48] [cursor=pointer]
+        - menuitem "账号管理" [ref=e51] [cursor=pointer]
+        - menuitem "数据管理" [expanded] [ref=e54] [cursor=pointer]
+        - menu [ref=e19223]:
+          - menuitem "文件审核" [ref=e19224] [cursor=pointer]
+          - menuitem "内部报告" [ref=e19226] [cursor=pointer]
+          - menuitem "健康报告" [ref=e19228] [cursor=pointer]
+          - menuitem "周报审核" [ref=e19230] [cursor=pointer]
+        - menuitem "运营配置" [ref=e57] [cursor=pointer]
+        - menuitem "操作日志" [ref=e60] [cursor=pointer]
+        - menuitem "随访管理" [expanded] [ref=e63] [cursor=pointer]
+        - menu [ref=e23602]:
+          - menuitem "患者管理" [ref=e23603] [cursor=pointer]
+          - menuitem "随访项目" [ref=e23605] [cursor=pointer]
+      - generic [ref=e27543]:
+        - generic [ref=e27544]:
+          - generic [ref=e27545]:
+            - text: 指标总览
+            - generic [ref=e27546] [cursor=pointer]: 自定义
+          - generic [ref=e27549]:
+            - generic [ref=e27550]:
+              - generic [ref=e27551]: 患者概览
+              - generic [ref=e27556]:
+                - button "患者人数 105今日新增+0" [ref=e27559]:
+                  - generic [ref=e27564] [cursor=pointer]:
+                    - generic [ref=e27565]: 患者人数
+                    - generic [ref=e27566]:
+                      - text: "105"
+                      - generic [ref=e27567]: 今日新增+0
+                - button "Smart 报告(份) 35今日新增+0" [ref=e27572]:
+                  - generic [ref=e27577] [cursor=pointer]:
+                    - generic [ref=e27578]: Smart 报告(份)
+                    - generic [ref=e27579]:
+                      - text: "35"
+                      - generic [ref=e27580]: 今日新增+0
+              - status [ref=e27583]
+            - generic [ref=e27584]:
+              - generic [ref=e27585]: 疾病统计
+              - generic [ref=e27590]:
+                - button "室早 室性 0今日新增+0" [ref=e27593]:
+                  - generic [ref=e27597] [cursor=pointer]:
+                    - generic [ref=e27598]:
+                      - generic [ref=e27599]: 室早
+                      - generic [ref=e27600]: 室性
+                    - generic [ref=e27601]:
+                      - text: "0"
+                      - generic [ref=e27602]: 今日新增+0
+                - button "室速 室性 0今日新增+0" [ref=e27607]:
+                  - generic [ref=e27611] [cursor=pointer]:
+                    - generic [ref=e27612]:
+                      - generic [ref=e27613]: 室速
+                      - generic [ref=e27614]: 室性
+                    - generic [ref=e27615]:
+                      - text: "0"
+                      - generic [ref=e27616]: 今日新增+0
+                - button "室颤 室性 0今日新增+0" [ref=e27621]:
+                  - generic [ref=e27625] [cursor=pointer]:
+                    - generic [ref=e27626]:
+                      - generic [ref=e27627]: 室颤
+                      - generic [ref=e27628]: 室性
+                    - generic [ref=e27629]:
+                      - text: "0"
+                      - generic [ref=e27630]: 今日新增+0
+                - button "房颤 房性 27今日新增+0" [ref=e27635]:
+                  - generic [ref=e27639] [cursor=pointer]:
+                    - generic [ref=e27640]:
+                      - generic [ref=e27641]: 房颤
+                      - generic [ref=e27642]: 房性
+                    - generic [ref=e27643]:
+                      - text: "27"
+                      - generic [ref=e27644]: 今日新增+0
+                - button "房速 房性 1今日新增+0" [ref=e27649]:
+                  - generic [ref=e27653] [cursor=pointer]:
+                    - generic [ref=e27654]:
+                      - generic [ref=e27655]: 房速
+                      - generic [ref=e27656]: 房性
+                    - generic [ref=e27657]:
+                      - text: "1"
+                      - generic [ref=e27658]: 今日新增+0
+                - button "房扑 房性 0今日新增+0" [ref=e27663]:
+                  - generic [ref=e27667] [cursor=pointer]:
+                    - generic [ref=e27668]:
+                      - generic [ref=e27669]: 房扑
+                      - generic [ref=e27670]: 房性
+                    - generic [ref=e27671]:
+                      - text: "0"
+                      - generic [ref=e27672]: 今日新增+0
+                - button "房早 房性 0今日新增+0" [ref=e27677]:
+                  - generic [ref=e27681] [cursor=pointer]:
+                    - generic [ref=e27682]:
+                      - generic [ref=e27683]: 房早
+                      - generic [ref=e27684]: 房性
+                    - generic [ref=e27685]:
+                      - text: "0"
+                      - generic [ref=e27686]: 今日新增+0
+                - button "持续性房颤 房性 0今日新增+0" [ref=e27691]:
+                  - generic [ref=e27695] [cursor=pointer]:
+                    - generic [ref=e27696]:
+                      - generic [ref=e27697]: 持续性房颤
+                      - generic [ref=e27698]: 房性
+                    - generic [ref=e27699]:
+                      - text: "0"
+                      - generic [ref=e27700]: 今日新增+0
+                - button "阵发性房颤 房性 1今日新增+0" [ref=e27705]:
+                  - generic [ref=e27709] [cursor=pointer]:
+                    - generic [ref=e27710]:
+                      - generic [ref=e27711]: 阵发性房颤
+                      - generic [ref=e27712]: 房性
+                    - generic [ref=e27713]:
+                      - text: "1"
+                      - generic [ref=e27714]: 今日新增+0
+                - button "二联律 节律 0今日新增+0" [ref=e27719]:
+                  - generic [ref=e27723] [cursor=pointer]:
+                    - generic [ref=e27724]:
+                      - generic [ref=e27725]: 二联律
+                      - generic [ref=e27726]: 节律
+                    - generic [ref=e27727]:
+                      - text: "0"
+                      - generic [ref=e27728]: 今日新增+0
+                - button "三联律 节律 0今日新增+0" [ref=e27733]:
+                  - generic [ref=e27737] [cursor=pointer]:
+                    - generic [ref=e27738]:
+                      - generic [ref=e27739]: 三联律
+                      - generic [ref=e27740]: 节律
+                    - generic [ref=e27741]:
+                      - text: "0"
+                      - generic [ref=e27742]: 今日新增+0
+                - button "心动过速 窦性 0今日新增+0" [ref=e27747]:
+                  - generic [ref=e27751] [cursor=pointer]:
+                    - generic [ref=e27752]:
+                      - generic [ref=e27753]: 心动过速
+                      - generic [ref=e27754]: 窦性
+                    - generic [ref=e27755]:
+                      - text: "0"
+                      - generic [ref=e27756]: 今日新增+0
+                - button "心动过缓 窦性 0今日新增+0" [ref=e27761]:
+                  - generic [ref=e27765] [cursor=pointer]:
+                    - generic [ref=e27766]:
+                      - generic [ref=e27767]: 心动过缓
+                      - generic [ref=e27768]: 窦性
+                    - generic [ref=e27769]:
+                      - text: "0"
+                      - generic [ref=e27770]: 今日新增+0
+                - button "停搏 窦性 0今日新增+0" [ref=e27775]:
+                  - generic [ref=e27779] [cursor=pointer]:
+                    - generic [ref=e27780]:
+                      - generic [ref=e27781]: 停搏
+                      - generic [ref=e27782]: 窦性
+                    - generic [ref=e27783]:
+                      - text: "0"
+                      - generic [ref=e27784]: 今日新增+0
+              - status [ref=e27787]
+            - generic [ref=e27788]:
+              - generic [ref=e27789]: 审核任务
+              - generic [ref=e27794]:
+                - button "待审核数据 0 去处理" [ref=e27797]:
+                  - generic [ref=e27801] [cursor=pointer]:
+                    - generic [ref=e27802]: 待审核数据
+                    - generic [ref=e27803]:
+                      - text: "0"
+                      - generic [ref=e27804]: 去处理
+                - button "待审核报告 15 去处理" [ref=e27810]:
+                  - generic [ref=e27814] [cursor=pointer]:
+                    - generic [ref=e27815]: 待审核报告
+                    - generic [ref=e27816]:
+                      - text: "15"
+                      - generic [ref=e27817]: 去处理
+                - button "待审核周报 2 去处理" [ref=e27823]:
+                  - generic [ref=e27827] [cursor=pointer]:
+                    - generic [ref=e27828]: 待审核周报
+                    - generic [ref=e27829]:
+                      - text: "2"
+                      - generic [ref=e27830]: 去处理
+              - status [ref=e27834]
+            - generic [ref=e27835]:
+              - generic [ref=e27836]: 物流看板
+              - generic [ref=e27841]:
+                - button "待发货数 23 去处理" [ref=e27844]:
+                  - generic [ref=e27848] [cursor=pointer]:
+                    - generic [ref=e27849]: 待发货数
+                    - generic [ref=e27850]:
+                      - text: "23"
+                      - generic [ref=e27851]: 去处理
+                - button "预约回收数 5" [ref=e27857]:
+                  - generic [ref=e27861] [cursor=pointer]:
+                    - generic [ref=e27862]: 预约回收数
+                    - generic [ref=e27863]: "5"
+              - status [ref=e27866]
+            - generic [ref=e27867]:
+              - generic [ref=e27868]: 随访监控
+              - generic [ref=e27873]:
+                - button "入组人数 28今日新增+0" [ref=e27876]:
+                  - generic [ref=e27880] [cursor=pointer]:
+                    - generic [ref=e27881]: 入组人数
+                    - generic [ref=e27882]:
+                      - text: "28"
+                      - generic [ref=e27883]: 今日新增+0
+                - button "项目个数 3" [ref=e27888]:
+                  - generic [ref=e27892] [cursor=pointer]:
+                    - generic [ref=e27893]: 项目个数
+                    - generic [ref=e27894]: "3"
+                - button "待随访人数 1 去处理" [ref=e27899]:
+                  - generic [ref=e27903] [cursor=pointer]:
+                    - generic [ref=e27904]: 待随访人数
+                    - generic [ref=e27905]:
+                      - text: "1"
+                      - generic [ref=e27906]: 去处理
+                - button "延期人数 41" [ref=e27912]:
+                  - generic [ref=e27916] [cursor=pointer]:
+                    - generic [ref=e27917]: 延期人数
+                    - generic [ref=e27918]: "41"
+                - button "进行中人数 0" [ref=e27923]:
+                  - generic [ref=e27927] [cursor=pointer]:
+                    - generic [ref=e27928]: 进行中人数
+                    - generic [ref=e27929]: "0"
+                - button "中止人数 0" [ref=e27934]:
+                  - generic [ref=e27938] [cursor=pointer]:
+                    - generic [ref=e27939]: 中止人数
+                    - generic [ref=e27940]: "0"
+              - status [ref=e27943]
+        - generic [ref=e27945]:
+          - button "取 消" [ref=e27947] [cursor=pointer]
+          - button "保存布局" [ref=e27950] [cursor=pointer]
+  - dialog "自定义" [ref=e27952]:
+    - generic [ref=e27953]:
+      - generic [ref=e27954]: 自定义
+      - button "关闭" [ref=e27956] [cursor=pointer]:
+        - img "close" [ref=e27957]
+    - generic [ref=e27960]:
+      - generic [ref=e27962]:
+        - button "expanded 患者概览" [expanded] [ref=e27963] [cursor=pointer]:
+          - img "expanded" [ref=e27965]
+          - generic [ref=e27968]: 患者概览
+        - list [ref=e27975]:
+          - listitem [ref=e27976]:
+            - generic [ref=e27977]:
+              - text: 患者人数
+              - generic [ref=e27978] [cursor=pointer]: 移除
+          - listitem [ref=e27979]:
+            - generic [ref=e27980]:
+              - text: Smart 报告(份)
+              - generic [ref=e27981] [cursor=pointer]: 移除
+      - generic [ref=e27983]:
+        - button "expanded 疾病统计" [expanded] [ref=e27984] [cursor=pointer]:
+          - img "expanded" [ref=e27986]
+          - generic [ref=e27989]: 疾病统计
+        - list [ref=e27996]:
+          - listitem [ref=e27997]:
+            - generic [ref=e28000]:
+              - button "室性" [expanded] [ref=e28001] [cursor=pointer]
+              - list [ref=e28012]:
+                - listitem [ref=e28013]:
+                  - generic [ref=e28014]:
+                    - text: 室早
+                    - generic [ref=e28015] [cursor=pointer]: 移除
+                - listitem [ref=e28016]:
+                  - generic [ref=e28017]:
+                    - text: 室速
+                    - generic [ref=e28018] [cursor=pointer]: 移除
+                - listitem [ref=e28019]:
+                  - generic [ref=e28020]:
+                    - text: 室颤
+                    - generic [ref=e28021] [cursor=pointer]: 移除
+          - listitem [ref=e28022]:
+            - generic [ref=e28025]:
+              - button "房性" [expanded] [ref=e28026] [cursor=pointer]
+              - list [ref=e28037]:
+                - listitem [ref=e28038]:
+                  - generic [ref=e28039]:
+                    - text: 房颤
+                    - generic [ref=e28040] [cursor=pointer]: 移除
+                - listitem [ref=e28041]:
+                  - generic [ref=e28042]:
+                    - text: 房速
+                    - generic [ref=e28043] [cursor=pointer]: 移除
+                - listitem [ref=e28044]:
+                  - generic [ref=e28045]:
+                    - text: 房扑
+                    - generic [ref=e28046] [cursor=pointer]: 移除
+                - listitem [ref=e28047]:
+                  - generic [ref=e28048]:
+                    - text: 房早
+                    - generic [ref=e28049] [cursor=pointer]: 移除
+                - listitem [ref=e28050]:
+                  - generic [ref=e28051]:
+                    - text: 持续性房颤
+                    - generic [ref=e28052] [cursor=pointer]: 移除
+                - listitem [ref=e28053]:
+                  - generic [ref=e28054]:
+                    - text: 阵发性房颤
+                    - generic [ref=e28055] [cursor=pointer]: 移除
+          - listitem [ref=e28056]:
+            - generic [ref=e28059]:
+              - button "节律疾病" [expanded] [ref=e28060] [cursor=pointer]
+              - list [ref=e28071]:
+                - listitem [ref=e28072]:
+                  - generic [ref=e28073]:
+                    - text: 二联律
+                    - generic [ref=e28074] [cursor=pointer]: 移除
+                - listitem [ref=e28075]:
+                  - generic [ref=e28076]:
+                    - text: 三联律
+                    - generic [ref=e28077] [cursor=pointer]: 移除
+          - listitem [ref=e28078]:
+            - generic [ref=e28081]:
+              - button "窦性" [expanded] [ref=e28082] [cursor=pointer]
+              - list [ref=e28093]:
+                - listitem [ref=e28094]:
+                  - generic [ref=e28095]:
+                    - text: 停搏
+                    - generic [ref=e28096] [cursor=pointer]: 移除
+                - listitem [ref=e28097]:
+                  - generic [ref=e28098]:
+                    - text: 心动过速
+                    - generic [ref=e28099] [cursor=pointer]: 移除
+                - listitem [ref=e28100]:
+                  - generic [ref=e28101]:
+                    - text: 心动过缓
+                    - generic [ref=e28102] [cursor=pointer]: 移除
+      - generic [ref=e28104]:
+        - button "expanded 审核任务" [expanded] [ref=e28105] [cursor=pointer]:
+          - img "expanded" [ref=e28107]
+          - generic [ref=e28110]: 审核任务
+        - list [ref=e28117]:
+          - listitem [ref=e28118]:
+            - generic [ref=e28119]:
+              - text: 待审核数据
+              - generic [ref=e28120] [cursor=pointer]: 移除
+          - listitem [ref=e28121]:
+            - generic [ref=e28122]:
+              - text: 待审核报告
+              - generic [ref=e28123] [cursor=pointer]: 移除
+          - listitem [ref=e28124]:
+            - generic [ref=e28125]:
+              - text: 待审核周报
+              - generic [ref=e28126] [cursor=pointer]: 移除
+      - generic [ref=e28128]:
+        - button "expanded 物流看板" [expanded] [ref=e28129] [cursor=pointer]:
+          - img "expanded" [ref=e28131]
+          - generic [ref=e28134]: 物流看板
+        - list [ref=e28141]:
+          - listitem [ref=e28142]:
+            - generic [ref=e28143]:
+              - text: 待发货数
+              - generic [ref=e28144] [cursor=pointer]: 移除
+          - listitem [ref=e28145]:
+            - generic [ref=e28146]:
+              - text: 预约回收数
+              - generic [ref=e28147] [cursor=pointer]: 移除
+      - generic [ref=e28149]:
+        - button "expanded 随访监控" [expanded] [ref=e28150] [cursor=pointer]:
+          - img "expanded" [ref=e28152]
+          - generic [ref=e28155]: 随访监控
+        - list [ref=e28162]:
+          - listitem [ref=e28163]:
+            - generic [ref=e28164]:
+              - text: 入组人数
+              - generic [ref=e28165] [cursor=pointer]: 移除
+          - listitem [ref=e28166]:
+            - generic [ref=e28167]:
+              - text: 项目个数
+              - generic [ref=e28168] [cursor=pointer]: 移除
+          - listitem [ref=e28169]:
+            - generic [ref=e28170]:
+              - text: 待随访人数
+              - generic [ref=e28171] [cursor=pointer]: 移除
+          - listitem [ref=e28172]:
+            - generic [ref=e28173]:
+              - text: 延期人数
+              - generic [ref=e28174] [cursor=pointer]: 移除
+          - listitem [ref=e28175]:
+            - generic [ref=e28176]:
+              - text: 进行中人数
+              - generic [ref=e28177] [cursor=pointer]: 移除
+          - listitem [ref=e28178]:
+            - generic [ref=e28179]:
+              - text: 中止人数
+              - generic [ref=e28180] [cursor=pointer]: 移除
+    - generic [ref=e28183]:
+      - button "重 置" [ref=e28185] [cursor=pointer]
+      - button "去预览" [ref=e28188] [cursor=pointer]

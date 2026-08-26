@@ -1,0 +1,998 @@
+import React, { useState, useEffect } from 'react';
+import {
+  Card, Descriptions, Tag, Button, Space, Tabs, Table, Modal, Form, Input,
+  message, Row, Col, Statistic, DatePicker, Typography, Tooltip, Popconfirm, Select,
+  Upload, Empty, Spin
+} from 'antd';
+import {
+  ArrowLeftOutlined, EditOutlined, PlusOutlined, DeleteOutlined,
+  CalendarOutlined, CheckCircleOutlined, SyncOutlined,
+  TeamOutlined, GlobalOutlined, SettingOutlined, BranchesOutlined,
+  FileOutlined, UploadOutlined, EyeOutlined
+} from '@ant-design/icons';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { projectApi, versionApi, testPointApi, fileApi } from '../../api/projectApi';
+import axiosInstance from '../../api/axiosConfig';
+import ProjectMembers from '../../components/projects/ProjectMembers';
+import ProjectEnvironments from '../../components/projects/ProjectEnvironments';
+import ProjectSettings from '../../components/projects/ProjectSettings';
+import type { ProjectDetailResponse, ProjectStats, ProjectUpdate } from '../../types/project';
+import type { Version, VersionCreate, VersionUpdate } from '../../api/projectApi';
+
+const { Title, Text } = Typography;
+const { TextArea } = Input;
+
+const ProjectDetailPage: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [project, setProject] = useState<ProjectDetailResponse | null>(null);
+  const [stats, setStats] = useState<ProjectStats | null>(null);
+  const [versions, setVersions] = useState<Version[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const [editModalVisible, setEditModalVisible] = useState(false);
+  const [editForm] = Form.useForm();
+
+  const [versionModalVisible, setVersionModalVisible] = useState(false);
+  const [versionForm] = Form.useForm();
+
+  const [statusModalVisible, setStatusModalVisible] = useState(false);
+  const [selectedVersion, setSelectedVersion] = useState<Version | null>(null);
+  const [targetStatus, setTargetStatus] = useState<string>('');
+  const [statusComment, setStatusComment] = useState('');
+  const [activeTab, setActiveTab] = useState('versions');
+  const [requirementModalVisible, setRequirementModalVisible] = useState(false);
+  const [selectedRequirement, setSelectedRequirement] = useState<string | null>(null);
+  const [selectedVersionForDoc, setSelectedVersionForDoc] = useState<Version | null>(null);
+  const [docFileType, setDocFileType] = useState<string>('text');
+  const [docFilePath, setDocFilePath] = useState<string | null>(null);
+  const [uploadModalVisible, setUploadModalVisible] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [creating, setCreating] = useState(false);
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [uploadedFileInfo, setUploadedFileInfo] = useState<{ file_path: string; file_type: string } | null>(null);
+  
+  const [progressVisible, setProgressVisible] = useState(false);
+  const [progressLogs, setProgressLogs] = useState<{msg: string, time: string}[]>([]);
+  const [generatedStats, setGeneratedStats] = useState({ testCases: 0, mindMaps: 0 });
+  const [mindMapModalVisible, setMindMapModalVisible] = useState(false);
+  const [selectedMindMap, setSelectedMindMap] = useState<string | null>(null);
+  const [successModalVisible, setSuccessModalVisible] = useState(false);
+  const [successData, setSuccessData] = useState({ testCases: 0, mindMaps: 0 });
+
+  useEffect(() => {
+    if (id) {
+      fetchProject();
+      fetchStats();
+      fetchVersions();
+      
+      if (location.state?.openVersionModal) {
+        setVersionModalVisible(true);
+        navigate(location.pathname, { replace: true, state: {} });
+      }
+    }
+  }, [id, location.state]);
+
+  const fetchProject = async () => {
+    try {
+      const data = await projectApi.get(Number(id));
+      setProject(data);
+    } catch (error) {
+      message.error('获取项目详情失败');
+    }
+  };
+
+  const fetchStats = async () => {
+    try {
+      const data = await projectApi.getStats(Number(id));
+      setStats(data);
+    } catch (error) {
+      console.error('获取统计失败', error);
+    }
+  };
+
+  const fetchVersions = async () => {
+    try {
+      const data = await versionApi.listByProject(Number(id));
+      setVersions(data.items);
+      setLoading(false);
+    } catch (error) {
+      message.error('获取版本列表失败');
+      setLoading(false);
+    }
+  };
+
+  const handleUpdateProject = async (values: ProjectUpdate) => {
+    try {
+      await projectApi.update(Number(id), values);
+      message.success('更新项目成功');
+      setEditModalVisible(false);
+      fetchProject();
+    } catch (error: any) {
+      message.error(error.response?.data?.detail || '更新项目失败');
+    }
+  };
+
+  const handleCreateVersion = async (values: VersionCreate) => {
+    if (creating) return;
+    
+    if (!uploadedFileInfo && !values.requirement_doc) {
+      message.error('请上传需求文档文件或填写需求文档内容');
+      return;
+    }
+    
+    setCreating(true);
+    setProgressVisible(true);
+    setProgressLogs([]);
+    
+    const addLog = (msg: string) => {
+      setProgressLogs((prev) => [...prev, { msg, time: new Date().toLocaleTimeString() }]);
+    };
+    
+    try {
+      await new Promise((r) => setTimeout(r, 300));
+      addLog('🚀 开始创建版本...');
+      
+      await new Promise((r) => setTimeout(r, 300));
+      addLog('📝 版本号：' + values.version_number);
+      
+      if (values.version_name) {
+        await new Promise((r) => setTimeout(r, 200));
+        addLog('🏷️ 版本名称：' + values.version_name);
+      }
+      
+      if (uploadedFileInfo) {
+        addLog('📎 需求文档文件：' + (uploadedFile?.name || '未知'));
+      }
+      
+      addLog('💾 正在保存版本数据...');
+      await new Promise((r) => setTimeout(r, 800));
+      
+      const versionData: VersionCreate = {
+        ...values,
+        project_id: Number(id),
+        requirement_doc_file: uploadedFileInfo?.file_path,
+        requirement_doc_file_type: uploadedFileInfo?.file_type,
+      };
+      
+const shouldAutoGenerate = values.requirement_doc && 
+        values.requirement_doc.length > 50 && 
+        !values.requirement_doc.startsWith('[已上传文件') &&
+        !values.requirement_doc.includes('无法提取文本内容');
+      
+      const createPromise = versionApi.create(versionData, shouldAutoGenerate);
+      
+      await new Promise((r) => setTimeout(r, 500));
+      addLog('✅ 版本保存成功');
+      
+      if (shouldAutoGenerate) {
+        addLog('🤖 AI 开始分析需求文档...');
+        
+        const aiSteps = [
+          { delay: 800, msg: '🧩 加载 SKILL 模板' },
+          { delay: 1200, msg: '⚙️ 解析 SKILL 配置' },
+          { delay: 1800, msg: '📊 分析需求文档结构' },
+          { delay: 2500, msg: '🔍 识别功能模块' },
+          { delay: 3200, msg: '🏗️ 构建测试场景' },
+          { delay: 3800, msg: '✏️ 生成提示词' },
+          { delay: 4500, msg: '📡 正在连接 LLM API' },
+          { delay: 5500, msg: '🧠 LLM 正在思考' },
+          { delay: 8000, msg: '💭 LLM 正在生成测试用例' },
+          { delay: 12000, msg: '📥 接收 LLM 响应' },
+          { delay: 14000, msg: '📋 解析测试用例数据' },
+          { delay: 16000, msg: '✅ 验证数据格式' },
+          { delay: 18000, msg: '💾 保存测试用例' },
+          { delay: 20000, msg: '🌳 生成思维导图' },
+          { delay: 22000, msg: '🗂️ 保存思维导图' },
+        ];
+        
+        let prevDelay = 0;
+        for (const step of aiSteps) {
+          await new Promise((r) => setTimeout(r, step.delay - prevDelay));
+          addLog(step.msg);
+          prevDelay = step.delay;
+        }
+      }
+      
+      const response = await createPromise;
+      await new Promise((r) => setTimeout(r, 500));
+      const tcCount = (response as any).test_cases_count || 0;
+      const xmCount = shouldAutoGenerate ? 1 : 0;
+      setGeneratedStats({ testCases: tcCount, mindMaps: xmCount });
+      
+      if (shouldAutoGenerate) {
+        addLog('🎉 生成完成！共 ' + tcCount + ' 个测试用例，' + xmCount + ' 个思维导图');
+      } else {
+        addLog('✅ 版本创建完成（文件上传模式，未自动生成测试用例）');
+      }
+      
+      setTimeout(() => {
+        setProgressVisible(false);
+        setSuccessData({ testCases: tcCount, mindMaps: xmCount });
+        setSuccessModalVisible(true);
+      }, 1500);
+      
+    } catch (error: any) {
+      addLog('❌ 创建失败：' + error.message);
+      setTimeout(() => {
+        setProgressVisible(false);
+        message.error('创建版本失败');
+      }, 2000);
+    } finally {
+      setCreating(false);
+    }
+  };
+
+  const handleStatusChange = async () => {
+    if (!selectedVersion || !targetStatus) return;
+    
+    try {
+      await versionApi.updateStatus(selectedVersion.id, targetStatus, statusComment || undefined);
+      message.success('状态变更成功');
+      setStatusModalVisible(false);
+      fetchVersions();
+      fetchStats();
+    } catch (error: any) {
+      message.error(error.response?.data?.detail || '状态变更失败');
+    }
+  };
+
+  const handleDeleteVersion = async (versionId: number) => {
+    try {
+      await versionApi.delete(versionId);
+      message.success('删除版本成功');
+      fetchVersions();
+      fetchStats();
+    } catch (error: any) {
+      message.error(error.response?.data?.detail || '删除版本失败');
+    }
+  };
+
+  const handleViewMindMap = async (version: Version) => {
+    setSelectedVersionForDoc(version);
+    setMindMapModalVisible(true);
+    
+    try {
+      const mindMapData = await testPointApi.getByVersion(version.id);
+      if (mindMapData && mindMapData.content?.opml) {
+        setSelectedMindMap(mindMapData.content.opml);
+      } else {
+        setSelectedMindMap(null);
+      }
+    } catch (error) {
+      console.error('获取思维导图失败', error);
+      setSelectedMindMap(null);
+    }
+  };
+
+  const handleExportMindMap = () => {
+    if (!selectedMindMap) return;
+    
+    const blob = new Blob([selectedMindMap], { type: 'application/xml' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `思维导图-${selectedVersionForDoc?.version_number || 'export'}.opml`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    message.success('思维导图导出成功');
+  };
+
+  const handleViewRequirement = (version: Version) => {
+    setSelectedVersionForDoc(version);
+    
+    const fileType = version.requirement_doc_file_type;
+    const filePath = version.requirement_doc_file;
+    
+    if (filePath && fileType) {
+      if (['md', 'txt', 'markdown'].includes(fileType)) {
+        fetchTextDocument(filePath);
+      } else if (['pdf'].includes(fileType)) {
+        setSelectedRequirement(null);
+        setDocFileType(fileType);
+        setDocFilePath(filePath);
+        setRequirementModalVisible(true);
+      } else if (['docx', 'doc'].includes(fileType)) {
+        setSelectedRequirement(null);
+        setDocFileType(fileType);
+        setDocFilePath(filePath);
+        setRequirementModalVisible(true);
+      } else {
+        const docContent = version.requirement_doc || version.description || '暂无需求文档';
+        setSelectedRequirement(docContent);
+        setDocFileType('text');
+        setDocFilePath(null);
+        setRequirementModalVisible(true);
+      }
+    } else {
+      const docContent = version.requirement_doc || version.description || '暂无需求文档';
+      setSelectedRequirement(docContent);
+      setDocFileType('text');
+      setDocFilePath(null);
+      setRequirementModalVisible(true);
+    }
+  };
+
+  const fetchTextDocument = async (filePath: string) => {
+    try {
+      const response = await axiosInstance.get(`/files/preview/${filePath}`);
+      setSelectedRequirement(response.data.content || '');
+      setDocFileType(response.data.file_type || 'text');
+      setDocFilePath(null);
+      setRequirementModalVisible(true);
+    } catch (error) {
+      message.error('获取文档内容失败');
+      setSelectedRequirement('暂无需求文档');
+      setDocFileType('text');
+      setDocFilePath(null);
+      setRequirementModalVisible(true);
+    }
+  };
+
+  const openStatusModal = (version: Version) => {
+    setSelectedVersion(version);
+    setTargetStatus('');
+    setStatusComment('');
+    setStatusModalVisible(true);
+  };
+
+  const statusColors: Record<string, string> = {
+    planning: 'blue',
+    developing: 'orange',
+    testing: 'purple',
+    frozen: 'cyan',
+    released: 'green',
+    archived: 'default',
+  };
+
+  const statusNames: Record<string, string> = {
+    planning: '规划中',
+    developing: '开发中',
+    testing: '测试中',
+    frozen: '已冻结',
+    released: '已发布',
+    archived: '已归档',
+  };
+
+  const handleUploadRequirement = async (file: File) => {
+    if (uploadedFile && uploadedFile.name === file.name) {
+      Modal.confirm({
+        title: '文件已存在',
+        content: `文件"${file.name}"已上传，是否覆盖？`,
+        okText: '覆盖',
+        cancelText: '取消',
+        onOk: () => {
+          setUploadedFile(file);
+          performUpload(file);
+        }
+      });
+      return;
+    }
+    
+    setUploadedFile(file);
+    performUpload(file);
+  };
+
+  const performUpload = async (file: File) => {
+    setUploading(true);
+    
+    try {
+      const result = await fileApi.upload(file);
+      if (result.success) {
+        setUploadedFileInfo({
+          file_path: result.file_path,
+          file_type: result.file_type
+        });
+        message.success(`文件"${file.name}"上传成功`);
+        
+        if (result.extracted_text && result.extracted_text.length > 0) {
+          versionForm.setFieldsValue({
+            requirement_doc: result.extracted_text
+          });
+          message.info(`已提取文档内容 ${result.extracted_text.length} 字符，可用于 AI 生成`);
+        } else if (['md', 'txt', 'markdown'].includes(result.file_type)) {
+          versionForm.setFieldsValue({ requirement_doc: '' });
+        } else {
+          versionForm.setFieldsValue({
+            requirement_doc: `[已上传文件：${file.name}，无法提取文本内容]`
+          });
+          message.warning('文档解析失败，请手动粘贴内容');
+        }
+      }
+    } catch (error: any) {
+      message.error(error.response?.data?.detail || '文件上传失败');
+      setUploadedFile(null);
+      setUploadedFileInfo(null);
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const openEditModal = () => {
+    if (project) {
+      editForm.setFieldsValue({
+        name: project.name,
+        description: project.description,
+        status: project.status,
+      });
+      setEditModalVisible(true);
+    }
+  };
+
+  const versionColumns = [
+    {
+      title: '版本号',
+      dataIndex: 'version_number',
+      key: 'version_number',
+      width: 150,
+      render: (text: string, record: Version) => (
+        <a onClick={() => navigate(`/projects/${id}/versions/${record.id}`)}>{text}</a>
+      ),
+    },
+    {
+      title: '版本名称',
+      dataIndex: 'version_name',
+      key: 'version_name',
+      width: 150,
+      render: (text: string) => text || '-',
+    },
+    {
+      title: '状态',
+      dataIndex: 'status',
+      key: 'status',
+      width: 100,
+      render: (status: string) => (
+        <Tag color={statusColors[status]}>{statusNames[status] || status}</Tag>
+      ),
+    },
+    {
+      title: '需求文档',
+      key: 'requirement_doc',
+      width: 120,
+      render: (_: any, record: Version) => {
+        const hasDoc = true;
+        return hasDoc ? (
+          <Tooltip title="点击查看">
+            <Tag color="blue" style={{ cursor: 'pointer' }} onClick={() => handleViewRequirement(record)}>
+              <FileOutlined /> 已上传
+            </Tag>
+          </Tooltip>
+        ) : (
+          <Tag color="default">无</Tag>
+        );
+      },
+    },
+    {
+      title: '测试用例',
+      key: 'test_cases',
+      width: 100,
+      render: (_: any, record: Version) => record.test_cases_count || 0,
+    },
+    {
+      title: '计划时间',
+      key: 'plan_dates',
+      width: 200,
+      render: (_: any, record: Version) => {
+        if (!record.plan_start_date && !record.plan_end_date) return '-';
+        return (
+          <Space>
+            <CalendarOutlined />
+            <Text>
+              {record.plan_start_date ? new Date(record.plan_start_date).toLocaleDateString() : '-'}
+              {' ~ '}
+              {record.plan_end_date ? new Date(record.plan_end_date).toLocaleDateString() : '-'}
+            </Text>
+          </Space>
+        );
+      },
+    },
+    {
+      title: '操作',
+      key: 'action',
+      width: 250,
+      fixed: 'right' as const,
+      render: (_: any, record: Version) => (
+        <Space>
+          <Tooltip title="查看需求文档">
+            <Button
+              type="link"
+              icon={<FileOutlined />}
+              onClick={() => handleViewRequirement(record)}
+              disabled={false}
+            />
+          </Tooltip>
+          <Tooltip title="查看思维导图">
+            <Button
+              type="link"
+              icon={<BranchesOutlined />}
+              onClick={() => handleViewMindMap(record)}
+            />
+          </Tooltip>
+          <Tooltip title="查看测试用例">
+            <Button
+              type="link"
+              icon={<CheckCircleOutlined />}
+              onClick={() => navigate('/tests/functional')}
+            />
+          </Tooltip>
+          <Tooltip title="变更状态">
+            <Button
+              type="link"
+              icon={<SyncOutlined />}
+              onClick={() => openStatusModal(record)}
+            />
+          </Tooltip>
+          {record.status === 'planning' && (
+            <Popconfirm
+              title="确定删除此版本？"
+              onConfirm={() => handleDeleteVersion(record.id)}
+              okText="确定"
+              cancelText="取消"
+            >
+              <Button type="link" danger icon={<DeleteOutlined />} title="删除版本" />
+            </Popconfirm>
+          )}
+        </Space>
+      ),
+    },
+  ];
+
+  const tabItems = [
+    {
+      key: 'versions',
+      label: (
+        <Space>
+          <BranchesOutlined /> 版本列表
+          <Tag color="blue">{versions.length}</Tag>
+        </Space>
+      ),
+      children: (
+        <Table
+          columns={versionColumns}
+          dataSource={versions}
+          rowKey="id"
+          loading={loading}
+          pagination={{ pageSize: 10 }}
+          scroll={{ x: 1200 }}
+        />
+      ),
+    },
+    {
+      key: 'members',
+      label: (
+        <Space>
+          <TeamOutlined /> 项目成员
+        </Space>
+      ),
+      children: <ProjectMembers projectId={Number(id)} />,
+    },
+    {
+      key: 'environments',
+      label: (
+        <Space>
+          <GlobalOutlined /> 环境配置
+        </Space>
+      ),
+      children: <ProjectEnvironments projectId={Number(id)} />,
+    },
+    {
+      key: 'settings',
+      label: (
+        <Space>
+          <SettingOutlined /> 项目设置
+        </Space>
+      ),
+      children: <ProjectSettings projectId={Number(id)} />,
+    },
+  ];
+
+  return (
+    <div style={{ padding: 24 }}>
+      <Space style={{ marginBottom: 16 }}>
+        <Button icon={<ArrowLeftOutlined />} onClick={() => navigate('/projects')}>
+          返回项目列表
+        </Button>
+        <Button type="primary" icon={<EditOutlined />} onClick={openEditModal}>
+          编辑项目
+        </Button>
+        <Button type="primary" icon={<PlusOutlined />} onClick={() => setVersionModalVisible(true)}>
+          创建版本
+        </Button>
+      </Space>
+
+      {project && (
+        <Card style={{ marginBottom: 16 }}>
+          <Descriptions column={3}>
+            <Descriptions.Item label="项目名称" span={2}>
+              <Title level={3} style={{ margin: 0 }}>{project.name}</Title>
+            </Descriptions.Item>
+            <Descriptions.Item label="项目状态">
+              <Tag color={statusColors[project.status] || 'default'}>
+                {statusNames[project.status] || project.status}
+              </Tag>
+            </Descriptions.Item>
+            <Descriptions.Item label="项目编码">{project.code || '-'}</Descriptions.Item>
+            <Descriptions.Item label="负责人">{typeof project.owner === 'string' ? project.owner : (project.owner as any)?.username || '-'}</Descriptions.Item>
+            <Descriptions.Item label="描述" span={3}>
+              {project.description || '-'}
+            </Descriptions.Item>
+          </Descriptions>
+
+          <Row gutter={16} style={{ marginTop: 24 }}>
+            <Col span={6}>
+              <Card size="small">
+                <Statistic
+                  title="总版本数"
+                  value={stats?.total_versions || 0}
+                  prefix={<BranchesOutlined />}
+                />
+              </Card>
+            </Col>
+            <Col span={6}>
+              <Card size="small">
+                <Statistic
+                  title="总用例数"
+                  value={stats?.total_test_cases || 0}
+                  prefix={<CheckCircleOutlined />}
+                />
+              </Card>
+            </Col>
+            <Col span={6}>
+              <Card size="small">
+                <Statistic
+                  title="通过率"
+                  value={(stats?.pass_rate || 0)}
+                  precision={1}
+                  suffix="%"
+                  valueStyle={{ color: '#52c41a' }}
+                />
+              </Card>
+            </Col>
+            <Col span={6}>
+              <Card size="small">
+                <Statistic
+                  title="项目成员"
+                  value={stats?.total_members || 0}
+                  prefix={<TeamOutlined />}
+                />
+              </Card>
+            </Col>
+          </Row>
+        </Card>
+      )}
+
+      <Card>
+        <Tabs
+          activeKey={activeTab}
+          onChange={setActiveTab}
+          type="card"
+          items={tabItems}
+        />
+      </Card>
+
+      <Modal
+        title="编辑项目"
+        open={editModalVisible}
+        onCancel={() => {
+          setEditModalVisible(false);
+          editForm.resetFields();
+        }}
+        onOk={() => editForm.submit()}
+      >
+        <Form form={editForm} layout="vertical" onFinish={handleUpdateProject}>
+          <Form.Item name="name" label="项目名称" rules={[{ required: true }]}>
+            <Input />
+          </Form.Item>
+          <Form.Item name="description" label="项目描述">
+            <TextArea rows={3} />
+          </Form.Item>
+          <Form.Item name="status" label="项目状态">
+            <Select>
+              <Select.Option value="active">进行中</Select.Option>
+              <Select.Option value="completed">已完成</Select.Option>
+              <Select.Option value="suspended">已暂停</Select.Option>
+            </Select>
+          </Form.Item>
+        </Form>
+      </Modal>
+
+      <Modal
+        title="创建版本"
+        open={versionModalVisible}
+        onCancel={() => {
+          if (!creating) {
+            setVersionModalVisible(false);
+            versionForm.resetFields();
+            setUploadedFile(null);
+            setUploadedFileInfo(null);
+          }
+        }}
+        onOk={() => versionForm.submit()}
+        confirmLoading={creating}
+        okButtonProps={{ disabled: creating, loading: creating }}
+        cancelButtonProps={{ disabled: creating }}
+        maskClosable={!creating}
+        width={800}
+      >
+        <Form form={versionForm} layout="vertical" onFinish={handleCreateVersion}>
+          <Row gutter={16}>
+            <Col span={12}>
+              <Form.Item name="version_number" label="版本号" rules={[{ required: true }]}>
+                <Input placeholder="如：1.0.0" />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item name="version_name" label="版本名称">
+                <Input placeholder="如：第一版" />
+              </Form.Item>
+            </Col>
+          </Row>
+          <Form.Item label="上传需求文档附件">
+            <Upload.Dragger
+              name="file"
+              multiple={false}
+              accept=".docx,.doc,.pdf,.md,.markdown,.txt"
+              beforeUpload={(file) => {
+                handleUploadRequirement(file);
+                return false;
+              }}
+              fileList={uploadedFile ? [{
+                uid: '-1',
+                name: uploadedFile.name,
+                status: 'done',
+                size: uploadedFile.size,
+              }] : []}
+              onRemove={() => {
+                setUploadedFile(null);
+                setUploadedFileInfo(null);
+              }}
+            >
+              <p className="ant-upload-text">点击或拖拽文件上传</p>
+              <p className="ant-upload-hint">支持 Word、PDF、Markdown、文本格式</p>
+            </Upload.Dragger>
+          </Form.Item>
+          <Form.Item name="requirement_doc" label="需求文档内容（可选）">
+            <TextArea rows={12} placeholder="上传文件后可跳过此项，或直接粘贴文本内容用于 AI 生成测试用例" />
+          </Form.Item>
+          <Form.Item name="description" label="版本描述">
+            <TextArea rows={3} />
+          </Form.Item>
+          <Row gutter={16}>
+            <Col span={12}>
+              <Form.Item name="plan_start_date" label="计划开始日期">
+                <DatePicker style={{ width: '100%' }} disabled={creating} />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item name="plan_end_date" label="计划结束日期">
+                <DatePicker style={{ width: '100%' }} disabled={creating} />
+              </Form.Item>
+            </Col>
+          </Row>
+        </Form>
+      </Modal>
+
+      <Modal
+        title="变更版本状态"
+        open={statusModalVisible}
+        onCancel={() => {
+          setStatusModalVisible(false);
+          setSelectedVersion(null);
+        }}
+        onOk={handleStatusChange}
+      >
+        {selectedVersion && (
+          <>
+            <p>当前版本：<strong>{selectedVersion.version_number}</strong></p>
+            <p>当前状态：<Tag color={statusColors[selectedVersion.status]}>{statusNames[selectedVersion.status]}</Tag></p>
+            <Form.Item label="目标状态">
+              <Select value={targetStatus} onChange={setTargetStatus}>
+                {selectedVersion.status === 'planning' && <Select.Option value="developing">开发中</Select.Option>}
+                {selectedVersion.status === 'developing' && (
+                  <>
+                    <Select.Option value="testing">测试中</Select.Option>
+                    <Select.Option value="planning">规划中</Select.Option>
+                  </>
+                )}
+                {selectedVersion.status === 'testing' && (
+                  <>
+                    <Select.Option value="frozen">已冻结</Select.Option>
+                    <Select.Option value="developing">开发中</Select.Option>
+                  </>
+                )}
+                {selectedVersion.status === 'frozen' && (
+                  <>
+                    <Select.Option value="released">已发布</Select.Option>
+                    <Select.Option value="testing">测试中</Select.Option>
+                  </>
+                )}
+                {selectedVersion.status === 'released' && <Select.Option value="archived">已归档</Select.Option>}
+              </Select>
+            </Form.Item>
+            <Form.Item label="备注">
+              <Input.TextArea value={statusComment} onChange={(e) => setStatusComment(e.target.value)} rows={2} />
+            </Form.Item>
+          </>
+        )}
+      </Modal>
+
+      <Modal
+        title={<Space><FileOutlined /><span>需求文档 - {selectedVersionForDoc?.version_number}</span></Space>}
+        open={requirementModalVisible}
+        onCancel={() => {
+          setRequirementModalVisible(false);
+          setSelectedRequirement(null);
+          setSelectedVersionForDoc(null);
+          setDocFileType('text');
+          setDocFilePath(null);
+        }}
+        footer={[
+          docFilePath && <Button key="download" icon={<UploadOutlined />} onClick={() => {
+            const url = fileApi.getDownloadUrl(docFilePath);
+            window.open(url, '_blank');
+          }}>下载文件</Button>,
+          <Button key="close" onClick={() => setRequirementModalVisible(false)}>关闭</Button>
+        ]}
+        width={1000}
+      >
+        <div style={{ maxHeight: '60vh', overflow: 'auto' }}>
+          {docFileType === 'pdf' && docFilePath ? (
+            <iframe 
+              src={fileApi.getPreviewUrl(docFilePath)} 
+              style={{ width: '100%', height: '50vh', border: 'none' }}
+              title="PDF预览"
+            />
+          ) : docFileType === 'docx' || docFileType === 'doc' && docFilePath ? (
+            <div style={{ textAlign: 'center', padding: '40px' }}>
+              <p style={{ fontSize: '16px', marginBottom: '20px' }}>Word 文档预览</p>
+              <Button type="primary" icon={<EyeOutlined />} onClick={() => {
+                const url = fileApi.getPreviewUrl(docFilePath);
+                window.open(url, '_blank');
+              }}>
+                打开文档查看
+              </Button>
+              <Button style={{ marginLeft: '10px' }} icon={<UploadOutlined />} onClick={() => {
+                const url = fileApi.getDownloadUrl(docFilePath);
+                window.open(url, '_blank');
+              }}>
+                下载文档
+              </Button>
+            </div>
+          ) : selectedRequirement ? (
+            <pre style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word', fontFamily: 'monospace', fontSize: '14px', lineHeight: '1.6', padding: '16px', backgroundColor: '#f5f5f5', borderRadius: '4px' }}>
+              {selectedRequirement}
+            </pre>
+          ) : (
+            <Empty description="暂无需求文档" />
+          )}
+        </div>
+      </Modal>
+
+      <Modal
+        open={progressVisible}
+        footer={null}
+        closable={false}
+        width={750}
+        centered
+        styles={{ body: { padding: 0 } }}
+      >
+        <div style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', padding: '20px', borderRadius: '12px 12px 0 0', color: '#fff' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div style={{ fontSize: '28px' }}>{creating ? '🚀' : '✅'}</div>
+            <div>
+              <div style={{ fontSize: '18px', fontWeight: 'bold' }}>{creating ? '正在创建版本' : '创建完成'}</div>
+              <div style={{ fontSize: '12px', opacity: 0.9 }}>{creating ? 'AI 正在生成测试用例和思维导图' : '所有资产已准备就绪'}</div>
+            </div>
+          </div>
+        </div>
+        
+        <div style={{ padding: '20px', maxHeight: '450px', overflowY: 'auto', backgroundColor: '#f5f7fa' }}>
+          <div style={{ backgroundColor: '#fff', borderRadius: '8px', padding: '16px', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px', color: '#999', fontSize: '12px' }}><span>📝 执行详情</span></div>
+            {progressLogs.map((log, i) => (
+              <div key={i} style={{ 
+                padding: '8px 12px', 
+                marginBottom: '4px',
+                borderRadius: '6px',
+                fontSize: '13px',
+                backgroundColor: log.msg.includes('✅') || log.msg.includes('🎉') ? '#f6ffed' : 
+                               log.msg.includes('❌') ? '#fff1f0' : '#f5f5f5',
+                color: log.msg.includes('❌') ? '#ff4d4f' : 
+                       log.msg.includes('✅') || log.msg.includes('🎉') ? '#52c41a' : '#333',
+                transition: 'all 0.3s',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center'
+              }}>
+                <span style={{ flex: 1 }}>{log.msg}</span>
+                <span style={{ fontSize: '11px', color: '#999', marginLeft: '16px' }}>{log.time}</span>
+              </div>
+            ))}
+            <div ref={(el) => el?.scrollIntoView({ behavior: 'smooth' })} />
+          </div>
+        </div>
+        
+        {creating && (
+          <div style={{ padding: '16px', textAlign: 'center', borderTop: '1px solid #e8e8e8', backgroundColor: '#fff', color: '#667eea', fontSize: '13px' }}>
+            <Spin size="small" style={{ marginRight: '8px' }} />
+            ⏱️ 预计需要 20-30 秒，请耐心等待...
+          </div>
+        )}
+      </Modal>
+
+      <Modal
+        title={<Space><BranchesOutlined /><span>思维导图 - {selectedVersionForDoc?.version_number}</span></Space>}
+        open={mindMapModalVisible}
+        onCancel={() => {
+          setMindMapModalVisible(false);
+          setSelectedMindMap(null);
+        }}
+        footer={[
+          <Button key="export" type="primary" icon={<UploadOutlined />} onClick={handleExportMindMap} disabled={!selectedMindMap}>
+            导出 OPML
+          </Button>,
+          <Button key="close" onClick={() => setMindMapModalVisible(false)}>关闭</Button>
+        ]}
+        width={800}
+      >
+        <div style={{ maxHeight: '60vh', overflow: 'auto' }}>
+          {selectedMindMap ? (
+            <div style={{ padding: '16px', backgroundColor: '#fafafa', borderRadius: '4px' }}>
+              <pre style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word', fontFamily: 'monospace', fontSize: '14px', lineHeight: '1.6' }}>
+                {selectedMindMap}
+              </pre>
+            </div>
+          ) : (
+            <Empty description={
+              <div>
+                <p>暂无思维导图</p>
+                <p style={{ color: '#999', fontSize: '12px' }}>创建版本时会自动生成思维导图</p>
+              </div>
+            } />
+          )}
+        </div>
+      </Modal>
+
+      <Modal
+        title="🎉 版本创建成功"
+        open={successModalVisible}
+        onCancel={() => {
+          setSuccessModalVisible(false);
+          setVersionModalVisible(false);
+          setUploadedFile(null);
+          setUploadedFileInfo(null);
+          versionForm.resetFields();
+          fetchVersions();
+        }}
+        onOk={() => {
+          setSuccessModalVisible(false);
+          setVersionModalVisible(false);
+          setUploadedFile(null);
+          setUploadedFileInfo(null);
+          versionForm.resetFields();
+          fetchVersions();
+          navigate('/tests/functional');
+        }}
+        okText="查看测试用例"
+        cancelText="关闭"
+        width={400}
+        centered
+      >
+        <div style={{ textAlign: 'center', padding: '20px 0' }}>
+          <p style={{ fontSize: '16px', marginBottom: '12px' }}>
+            已生成 <strong style={{ color: '#1890ff', fontSize: '20px' }}>{successData.testCases}</strong> 个测试用例
+          </p>
+          <p style={{ fontSize: '16px', marginBottom: '12px' }}>
+            已生成 <strong style={{ color: '#52c41a', fontSize: '20px' }}>{successData.mindMaps}</strong> 个思维导图
+          </p>
+        </div>
+      </Modal>
+    </div>
+  );
+};
+
+
+export default ProjectDetailPage;

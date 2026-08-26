@@ -1,0 +1,43 @@
+{
+  "module": "指标总览-物流看板",
+  "total_clicks": 3,
+  "pages": 1,
+  "clicks": [
+    {
+      "seq": 1,
+      "name": "工作台",
+      "actual_text": "工作台",
+      "action": "navigate",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 2,
+      "name": "待发货数",
+      "actual_text": "待发货数",
+      "action": "click",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "jump",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 2,
+      "name": "预约回收数",
+      "actual_text": "预约回收数",
+      "action": "click",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68&tabKey=3",
+      "result": "jump",
+      "strategy": "text_exact",
+      "error": ""
+    }
+  ]
+}

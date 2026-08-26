@@ -1,0 +1,6003 @@
+{
+  "timestamp": "2026-08-09T11:51:37.984041",
+  "pipeline": "functional_to_ui",
+  "test_cases_total": 61,
+  "exploration": {},
+  "conversions": [
+    {
+      "test_case_id": "7168",
+      "case_name": "患者人数卡片-点击跳转患者档案",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 6,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「患者人数」卡片上的总数和今日新增数值",
+            "expected": "成功获取到两个数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「患者人数」卡片",
+            "expected": "页面跳转至患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL正确"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面总记录数等于卡片显示的总数",
+            "expected": "总数一致"
+          },
+          {
+            "step": 5,
+            "action": "验证：页面今日新增等于卡片显示的今日新增",
+            "expected": "今日新增一致"
+          },
+          {
+            "step": 6,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 3,
+        "title": "患者人数卡片-点击跳转患者档案",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「患者人数」卡片",
+            "args": {
+              "locator": "患者人数"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待患者档案页面加载",
+            "args": {}
+          },
+          {
+            "seq": 3,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 6,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "患者人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「患者人数」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "患者人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「患者人数」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面URL包含patient-profile', 'expected': 'URL正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：页面总记录数等于卡片显示的总数', 'expected': '总数一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '验证：页面今日新增等于卡片显示的今日新增', 'expected': '今日新增一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 6,
+            "step_raw": "{'step': 6, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7169",
+      "case_name": "Smart报告卡片-点击跳转患者档案",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 6,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「Smart报告」卡片上的总数和今日新增数值",
+            "expected": "获取到两个数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「Smart报告」卡片",
+            "expected": "页面跳转至患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL正确"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面总记录数等于卡片显示的总数",
+            "expected": "总数一致"
+          },
+          {
+            "step": 5,
+            "action": "验证：页面今日新增等于卡片显示的今日新增",
+            "expected": "今日新增一致"
+          },
+          {
+            "step": 6,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 3,
+        "title": "Smart报告卡片-点击跳转患者档案",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「Smart报告」卡片",
+            "args": {
+              "locator": "Smart报告"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待患者档案页面加载",
+            "args": {}
+          },
+          {
+            "seq": 3,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 6,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "Smart报告",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(35)",
+            "message": "✓ 已定位「Smart报告」(scored_text(35))"
+          },
+          {
+            "seq": 2,
+            "target": "Smart报告",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(35)",
+            "message": "✓ 已定位「Smart报告」(scored_text(35))"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面URL包含patient-profile', 'expected': 'URL正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：页面总记录数等于卡片显示的总数', 'expected': '总数一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '验证：页面今日新增等于卡片显示的今日新增', 'expected': '今日新增一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 6,
+            "step_raw": "{'step': 6, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7170",
+      "case_name": "室早卡片-点击跳转患者档案并验证筛选",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 7,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「室早」卡片上的总数和今日新增数值",
+            "expected": "获取到两个数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「室早」卡片",
+            "expected": "跳转至患者档案页面，页面筛选项已选中“室早”"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL正确"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面筛选框已选中“室早”",
+            "expected": "筛选框显示“室早”"
+          },
+          {
+            "step": 5,
+            "action": "验证：页面总记录数等于卡片显示的总数",
+            "expected": "总数一致"
+          },
+          {
+            "step": 6,
+            "action": "验证：页面今日新增等于卡片显示的今日新增",
+            "expected": "今日新增一致"
+          },
+          {
+            "step": 7,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "室早卡片-点击跳转患者档案并验证筛选",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「室早」卡片",
+            "args": {
+              "locator": "室早"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待患者档案页面加载",
+            "args": {}
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证筛选框已选中“室早”",
+            "args": {
+              "locator": "室早"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 7,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "室早",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「室早」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "室早",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「室早」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面URL包含patient-profile', 'expected': 'URL正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：页面筛选框已选中“室早”', 'expected': '筛选框显示“室早”'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '验证：页面总记录数等于卡片显示的总数', 'expected': '总数一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 6,
+            "step_raw": "{'step': 6, 'action': '验证：页面今日新增等于卡片显示的今日新增', 'expected': '今日新增一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 7,
+            "step_raw": "{'step': 7, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7171",
+      "case_name": "室速卡片-点击跳转患者档案并验证筛选",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 7,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「室速」卡片上的总数和今日新增数值",
+            "expected": "获取到两个数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「室速」卡片",
+            "expected": "跳转至患者档案页面，页面筛选项已选中“室速”"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL正确"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面筛选框已选中“室速”",
+            "expected": "筛选框显示“室速”"
+          },
+          {
+            "step": 5,
+            "action": "验证：页面总记录数等于卡片显示的总数",
+            "expected": "总数一致"
+          },
+          {
+            "step": 6,
+            "action": "验证：页面今日新增等于卡片显示的今日新增",
+            "expected": "今日新增一致"
+          },
+          {
+            "step": 7,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "室速卡片-点击跳转患者档案并验证筛选",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「室速」卡片",
+            "args": {
+              "locator": "室速"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待患者档案页面加载",
+            "args": {}
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证筛选框已选中“室速”",
+            "args": {
+              "locator": "室速"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 7,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "室速",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「室速」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "室速",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「室速」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面URL包含patient-profile', 'expected': 'URL正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：页面筛选框已选中“室速”', 'expected': '筛选框显示“室速”'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '验证：页面总记录数等于卡片显示的总数', 'expected': '总数一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 6,
+            "step_raw": "{'step': 6, 'action': '验证：页面今日新增等于卡片显示的今日新增', 'expected': '今日新增一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 7,
+            "step_raw": "{'step': 7, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7172",
+      "case_name": "房颤卡片（疾病统计）-点击跳转并验证筛选",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 6,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「房颤」卡片上的总数和今日新增数值",
+            "expected": "获取到两个数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「房颤」卡片",
+            "expected": "跳转至患者档案页面，页面筛选项已选中“房颤”"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面筛选框已选中“房颤”",
+            "expected": "筛选框显示“房颤”"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面总记录数等于卡片显示的总数",
+            "expected": "总数一致"
+          },
+          {
+            "step": 5,
+            "action": "验证：页面今日新增等于卡片显示的今日新增",
+            "expected": "今日新增一致"
+          },
+          {
+            "step": 6,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "房颤卡片（疾病统计）-点击跳转并验证筛选",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「房颤」卡片",
+            "args": {
+              "locator": "房颤"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待患者档案页面加载",
+            "args": {}
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证筛选框已选中“房颤”",
+            "args": {
+              "locator": "房颤"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 6,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "房颤",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "房颤",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面筛选框已选中“房颤”', 'expected': '筛选框显示“房颤”'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：页面总记录数等于卡片显示的总数', 'expected': '总数一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '验证：页面今日新增等于卡片显示的今日新增', 'expected': '今日新增一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 6,
+            "step_raw": "{'step': 6, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7173",
+      "case_name": "房扑卡片-点击跳转患者档案并验证筛选",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 6,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「房扑」卡片上的总数和今日新增数值",
+            "expected": "获取到两个数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「房扑」卡片",
+            "expected": "跳转至患者档案页面，页面筛选项已选中“房扑”"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面筛选框已选中“房扑”",
+            "expected": "筛选框显示“房扑”"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面总记录数等于卡片显示的总数",
+            "expected": "总数一致"
+          },
+          {
+            "step": 5,
+            "action": "验证：页面今日新增等于卡片显示的今日新增",
+            "expected": "今日新增一致"
+          },
+          {
+            "step": 6,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "房扑卡片-点击跳转患者档案并验证筛选",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「房扑」卡片",
+            "args": {
+              "locator": "房扑"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待患者档案页面加载",
+            "args": {}
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证筛选框已选中“房扑”",
+            "args": {
+              "locator": "房扑"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 6,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "房扑",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房扑」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "房扑",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房扑」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面筛选框已选中“房扑”', 'expected': '筛选框显示“房扑”'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：页面总记录数等于卡片显示的总数', 'expected': '总数一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '验证：页面今日新增等于卡片显示的今日新增', 'expected': '今日新增一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 6,
+            "step_raw": "{'step': 6, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7174",
+      "case_name": "房速卡片-点击跳转患者档案并验证筛选",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 6,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「房速」卡片上的总数和今日新增数值",
+            "expected": "获取到两个数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「房速」卡片",
+            "expected": "跳转至患者档案页面，页面筛选项已选中“房速”"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面筛选框已选中“房速”",
+            "expected": "筛选框显示“房速”"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面总记录数等于卡片显示的总数",
+            "expected": "总数一致"
+          },
+          {
+            "step": 5,
+            "action": "验证：页面今日新增等于卡片显示的今日新增",
+            "expected": "今日新增一致"
+          },
+          {
+            "step": 6,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "房速卡片-点击跳转患者档案并验证筛选",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「房速」卡片",
+            "args": {
+              "locator": "房速"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待患者档案页面加载",
+            "args": {}
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证筛选框已选中“房速”",
+            "args": {
+              "locator": "房速"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 6,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "房速",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房速」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "房速",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房速」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面筛选框已选中“房速”', 'expected': '筛选框显示“房速”'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：页面总记录数等于卡片显示的总数', 'expected': '总数一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '验证：页面今日新增等于卡片显示的今日新增', 'expected': '今日新增一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 6,
+            "step_raw": "{'step': 6, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7175",
+      "case_name": "房早卡片-点击跳转患者档案并验证筛选",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 6,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「房早」卡片上的总数和今日新增数值",
+            "expected": "获取到两个数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「房早」卡片",
+            "expected": "跳转至患者档案页面，页面筛选项已选中“房早”"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面筛选框已选中“房早”",
+            "expected": "筛选框显示“房早”"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面总记录数等于卡片显示的总数",
+            "expected": "总数一致"
+          },
+          {
+            "step": 5,
+            "action": "验证：页面今日新增等于卡片显示的今日新增",
+            "expected": "今日新增一致"
+          },
+          {
+            "step": 6,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "房早卡片-点击跳转患者档案并验证筛选",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「房早」卡片",
+            "args": {
+              "locator": "房早"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待患者档案页面加载",
+            "args": {}
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证筛选框已选中“房早”",
+            "args": {
+              "locator": "房早"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 6,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "房早",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房早」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "房早",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房早」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面筛选框已选中“房早”', 'expected': '筛选框显示“房早”'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：页面总记录数等于卡片显示的总数', 'expected': '总数一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '验证：页面今日新增等于卡片显示的今日新增', 'expected': '今日新增一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 6,
+            "step_raw": "{'step': 6, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7176",
+      "case_name": "持续性房颤卡片-点击跳转并验证筛选",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 6,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「持续性房颤」卡片上的总数和今日新增数值",
+            "expected": "获取到两个数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「持续性房颤」卡片",
+            "expected": "跳转至患者档案页面，页面筛选项已选中“持续性房颤”"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面筛选框已选中“持续性房颤”",
+            "expected": "筛选框显示“持续性房颤”"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面总记录数等于卡片显示的总数",
+            "expected": "总数一致"
+          },
+          {
+            "step": 5,
+            "action": "验证：页面今日新增等于卡片显示的今日新增",
+            "expected": "今日新增一致"
+          },
+          {
+            "step": 6,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "持续性房颤卡片-点击跳转并验证筛选",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「持续性房颤」卡片",
+            "args": {
+              "locator": "持续性房颤"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待患者档案页面加载",
+            "args": {}
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证筛选框已选中“持续性房颤”",
+            "args": {
+              "locator": "持续性房颤"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 6,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "持续性房颤",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「持续性房颤」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "持续性房颤",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「持续性房颤」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面筛选框已选中“持续性房颤”', 'expected': '筛选框显示“持续性房颤”'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：页面总记录数等于卡片显示的总数', 'expected': '总数一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '验证：页面今日新增等于卡片显示的今日新增', 'expected': '今日新增一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 6,
+            "step_raw": "{'step': 6, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7177",
+      "case_name": "阵发性房颤卡片-点击跳转并验证筛选",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 6,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「阵发性房颤」卡片上的总数和今日新增数值",
+            "expected": "获取到两个数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「阵发性房颤」卡片",
+            "expected": "跳转至患者档案页面，页面筛选项已选中“阵发性房颤”"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面筛选框已选中“阵发性房颤”",
+            "expected": "筛选框显示“阵发性房颤”"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面总记录数等于卡片显示的总数",
+            "expected": "总数一致"
+          },
+          {
+            "step": 5,
+            "action": "验证：页面今日新增等于卡片显示的今日新增",
+            "expected": "今日新增一致"
+          },
+          {
+            "step": 6,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "阵发性房颤卡片-点击跳转并验证筛选",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「阵发性房颤」卡片",
+            "args": {
+              "locator": "阵发性房颤"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_render",
+            "desc": "等待患者档案页面加载",
+            "args": {}
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证筛选框已选中“阵发性房颤”",
+            "args": {
+              "locator": "阵发性房颤"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 6,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "阵发性房颤",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「阵发性房颤」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "阵发性房颤",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「阵发性房颤」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面筛选框已选中“阵发性房颤”', 'expected': '筛选框显示“阵发性房颤”'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：页面总记录数等于卡片显示的总数', 'expected': '总数一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '验证：页面今日新增等于卡片显示的今日新增', 'expected': '今日新增一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 6,
+            "step_raw": "{'step': 6, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7178",
+      "case_name": "二联律卡片-点击跳转患者档案并验证筛选",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 6,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「二联律」卡片上的总数和今日新增数值",
+            "expected": "获取到两个数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「二联律」卡片",
+            "expected": "跳转至患者档案页面，页面筛选项已选中“二联律”"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面筛选框已选中“二联律”",
+            "expected": "筛选框显示“二联律”"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面总记录数等于卡片显示的总数",
+            "expected": "总数一致"
+          },
+          {
+            "step": 5,
+            "action": "验证：页面今日新增等于卡片显示的今日新增",
+            "expected": "今日新增一致"
+          },
+          {
+            "step": 6,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 3,
+        "title": "二联律卡片-点击跳转患者档案并验证筛选",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击二联律卡片",
+            "args": {
+              "locator": "二联律"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_visible",
+            "desc": "验证页面筛选框已选中“二联律”",
+            "args": {
+              "locator": "二联律"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 6,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "二联律",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「二联律」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "二联律",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「二联律」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面筛选框已选中“二联律”', 'expected': '筛选框显示“二联律”'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：页面总记录数等于卡片显示的总数', 'expected': '总数一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '验证：页面今日新增等于卡片显示的今日新增', 'expected': '今日新增一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 6,
+            "step_raw": "{'step': 6, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7179",
+      "case_name": "三联律卡片-点击跳转患者档案并验证筛选",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 6,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「三联律」卡片上的总数和今日新增数值",
+            "expected": "获取到两个数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「三联律」卡片",
+            "expected": "跳转至患者档案页面，页面筛选项已选中“三联律”"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面筛选框已选中“三联律”",
+            "expected": "筛选框显示“三联律”"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面总记录数等于卡片显示的总数",
+            "expected": "总数一致"
+          },
+          {
+            "step": 5,
+            "action": "验证：页面今日新增等于卡片显示的今日新增",
+            "expected": "今日新增一致"
+          },
+          {
+            "step": 6,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 3,
+        "title": "三联律卡片-点击跳转患者档案并验证筛选",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击三联律卡片",
+            "args": {
+              "locator": "三联律"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_visible",
+            "desc": "验证页面筛选框已选中“三联律”",
+            "args": {
+              "locator": "三联律"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 6,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "三联律",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「三联律」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "三联律",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「三联律」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面筛选框已选中“三联律”', 'expected': '筛选框显示“三联律”'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：页面总记录数等于卡片显示的总数', 'expected': '总数一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '验证：页面今日新增等于卡片显示的今日新增', 'expected': '今日新增一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 6,
+            "step_raw": "{'step': 6, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7180",
+      "case_name": "停搏卡片-点击跳转患者档案并验证筛选",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 6,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「停搏」卡片上的总数和今日新增数值",
+            "expected": "获取到两个数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「停搏」卡片",
+            "expected": "跳转至患者档案页面，页面筛选项已选中“停搏”"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面筛选框已选中“停搏”",
+            "expected": "筛选框显示“停搏”"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面总记录数等于卡片显示的总数",
+            "expected": "总数一致"
+          },
+          {
+            "step": 5,
+            "action": "验证：页面今日新增等于卡片显示的今日新增",
+            "expected": "今日新增一致"
+          },
+          {
+            "step": 6,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 3,
+        "title": "停搏卡片-点击跳转患者档案并验证筛选",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击停搏卡片",
+            "args": {
+              "locator": "停搏"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_visible",
+            "desc": "验证页面筛选框已选中“停搏”",
+            "args": {
+              "locator": "停搏"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 6,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "停搏",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「停搏」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "停搏",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「停搏」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面筛选框已选中“停搏”', 'expected': '筛选框显示“停搏”'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：页面总记录数等于卡片显示的总数', 'expected': '总数一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '验证：页面今日新增等于卡片显示的今日新增', 'expected': '今日新增一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 6,
+            "step_raw": "{'step': 6, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7181",
+      "case_name": "心动过速卡片-点击跳转患者档案并验证筛选",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 6,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「心动过速」卡片上的总数和今日新增数值",
+            "expected": "获取到两个数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「心动过速」卡片",
+            "expected": "跳转至患者档案页面，页面筛选项已选中“心动过速”"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面筛选框已选中“心动过速”",
+            "expected": "筛选框显示“心动过速”"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面总记录数等于卡片显示的总数",
+            "expected": "总数一致"
+          },
+          {
+            "step": 5,
+            "action": "验证：页面今日新增等于卡片显示的今日新增",
+            "expected": "今日新增一致"
+          },
+          {
+            "step": 6,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 3,
+        "title": "心动过速卡片-点击跳转患者档案并验证筛选",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击心动过速卡片",
+            "args": {
+              "locator": "心动过速"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_visible",
+            "desc": "验证页面筛选框已选中“心动过速”",
+            "args": {
+              "locator": "心动过速"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 6,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "心动过速",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「心动过速」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "心动过速",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「心动过速」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面筛选框已选中“心动过速”', 'expected': '筛选框显示“心动过速”'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：页面总记录数等于卡片显示的总数', 'expected': '总数一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '验证：页面今日新增等于卡片显示的今日新增', 'expected': '今日新增一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 6,
+            "step_raw": "{'step': 6, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7182",
+      "case_name": "心动过缓卡片-点击跳转患者档案并验证筛选",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 6,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「心动过缓」卡片上的总数和今日新增数值",
+            "expected": "获取到两个数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「心动过缓」卡片",
+            "expected": "跳转至患者档案页面，页面筛选项已选中“心动过缓”"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面筛选框已选中“心动过缓”",
+            "expected": "筛选框显示“心动过缓”"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面总记录数等于卡片显示的总数",
+            "expected": "总数一致"
+          },
+          {
+            "step": 5,
+            "action": "验证：页面今日新增等于卡片显示的今日新增",
+            "expected": "今日新增一致"
+          },
+          {
+            "step": 6,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 3,
+        "title": "心动过缓卡片-点击跳转患者档案并验证筛选",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击心动过缓卡片",
+            "args": {
+              "locator": "心动过缓"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_visible",
+            "desc": "验证页面筛选框已选中“心动过缓”",
+            "args": {
+              "locator": "心动过缓"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 6,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "心动过缓",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「心动过缓」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "心动过缓",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「心动过缓」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面筛选框已选中“心动过缓”', 'expected': '筛选框显示“心动过缓”'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：页面总记录数等于卡片显示的总数', 'expected': '总数一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '验证：页面今日新增等于卡片显示的今日新增', 'expected': '今日新增一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 6,
+            "step_raw": "{'step': 6, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7183",
+      "case_name": "待审核数据卡片-跳转数据管理并验证今日新增",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「待审核数据」卡片上的今日新增数值",
+            "expected": "获取到今日新增数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「待审核数据」卡片",
+            "expected": "跳转至数据管理子页"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面列表总记录数等于卡片今日新增数值",
+            "expected": "数字一致"
+          },
+          {
+            "step": 4,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 2,
+        "title": "待审核数据卡片-跳转数据管理并验证今日新增",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击待审核数据卡片",
+            "args": {
+              "locator": "待审核数据"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "待审核数据",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「待审核数据」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "待审核数据",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「待审核数据」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面列表总记录数等于卡片今日新增数值', 'expected': '数字一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7184",
+      "case_name": "待审核报告卡片-跳转数据管理并验证今日新增",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「待审核报告」卡片上的今日新增数值",
+            "expected": "获取到今日新增数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「待审核报告」卡片",
+            "expected": "跳转至数据管理子页"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面列表总记录数等于卡片今日新增数值",
+            "expected": "数字一致"
+          },
+          {
+            "step": 4,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 2,
+        "title": "待审核报告卡片-跳转数据管理并验证今日新增",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击待审核报告卡片",
+            "args": {
+              "locator": "待审核报告"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "待审核报告",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「待审核报告」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "待审核报告",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「待审核报告」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面列表总记录数等于卡片今日新增数值', 'expected': '数字一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7185",
+      "case_name": "待审核周报卡片-跳转数据管理并验证今日新增",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「待审核周报」卡片上的今日新增数值",
+            "expected": "获取到今日新增数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「待审核周报」卡片",
+            "expected": "跳转至数据管理子页"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面列表总记录数等于卡片今日新增数值",
+            "expected": "数字一致"
+          },
+          {
+            "step": 4,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 2,
+        "title": "待审核周报卡片-跳转数据管理并验证今日新增",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击待审核周报卡片",
+            "args": {
+              "locator": "待审核周报"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "待审核周报",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「待审核周报」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "待审核周报",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「待审核周报」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面列表总记录数等于卡片今日新增数值', 'expected': '数字一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7186",
+      "case_name": "待发货数卡片-跳转设备收发并验证今日新增",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「待发货数」卡片上的今日新增数值",
+            "expected": "获取到今日新增数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「待发货数」卡片",
+            "expected": "跳转至设备收发页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面列表总记录数等于卡片今日新增数值",
+            "expected": "数字一致"
+          },
+          {
+            "step": 4,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 2,
+        "title": "待发货数卡片-跳转设备收发并验证今日新增",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击待发货数卡片",
+            "args": {
+              "locator": "待发货数"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "待发货数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「待发货数」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "待发货数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「待发货数」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面列表总记录数等于卡片今日新增数值', 'expected': '数字一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7187",
+      "case_name": "预约回收数卡片-跳转设备收发并验证今日新增",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「预约回收数」卡片上的今日新增数值",
+            "expected": "获取到今日新增数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「预约回收数」卡片",
+            "expected": "跳转至设备收发页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面列表总记录数等于卡片今日新增数值",
+            "expected": "数字一致"
+          },
+          {
+            "step": 4,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 2,
+        "title": "预约回收数卡片-跳转设备收发并验证今日新增",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击预约回收数卡片",
+            "args": {
+              "locator": "预约回收数"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "预约回收数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「预约回收数」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "预约回收数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「预约回收数」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面列表总记录数等于卡片今日新增数值', 'expected': '数字一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7188",
+      "case_name": "项目个数卡片-跳转随访管理并验证今日新增",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「项目个数」卡片上的今日新增数值",
+            "expected": "获取到今日新增数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「项目个数」卡片",
+            "expected": "跳转至随访管理子页"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面列表总记录数等于卡片今日新增数值",
+            "expected": "数字一致"
+          },
+          {
+            "step": 4,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 3,
+        "title": "项目个数卡片-跳转随访管理并验证今日新增",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「项目个数」卡片",
+            "args": {
+              "locator": "项目个数"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "go_back",
+            "desc": "返回工作台页面",
+            "args": {}
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证已返回工作台，患者人数卡片可见",
+            "args": {
+              "locator": "患者人数"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "项目个数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「项目个数」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "项目个数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「项目个数」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面列表总记录数等于卡片今日新增数值', 'expected': '数字一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7189",
+      "case_name": "入组人数卡片-跳转患者档案带joinStatus=1",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「入组人数」卡片上的今日新增数值",
+            "expected": "获取到今日新增数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「入组人数」卡片",
+            "expected": "页面跳转，URL中包含joinStatus=1"
+          },
+          {
+            "step": 3,
+            "action": "验证：URL参数joinStatus=1",
+            "expected": "参数正确"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面列表总记录数等于卡片今日新增数值",
+            "expected": "数字一致"
+          },
+          {
+            "step": 5,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 3,
+        "title": "入组人数卡片-跳转患者档案带joinStatus=1",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「入组人数」卡片",
+            "args": {
+              "locator": "入组人数"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "go_back",
+            "desc": "返回工作台页面",
+            "args": {}
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证已返回工作台，患者人数卡片可见",
+            "args": {
+              "locator": "患者人数"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 5,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "入组人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「入组人数」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "入组人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「入组人数」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：URL参数joinStatus=1', 'expected': '参数正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：页面列表总记录数等于卡片今日新增数值', 'expected': '数字一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7190",
+      "case_name": "进行中人数卡片-跳转随访管理已入组tab",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「进行中人数」卡片上的今日新增数值",
+            "expected": "获取到今日新增数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「进行中人数」卡片",
+            "expected": "跳转至随访管理页面，已定位在「已入组」tab"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面当前tab为「已入组」",
+            "expected": "已入组tab高亮"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面列表总记录数等于卡片今日新增数值",
+            "expected": "数字一致"
+          },
+          {
+            "step": 5,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 3,
+        "title": "进行中人数卡片-跳转随访管理已入组tab",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「进行中人数」卡片",
+            "args": {
+              "locator": "进行中人数"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "go_back",
+            "desc": "返回工作台页面",
+            "args": {}
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证已返回工作台，患者人数卡片可见",
+            "args": {
+              "locator": "患者人数"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 5,
+        "found_steps": 3,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "进行中人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「进行中人数」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "进行中人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「进行中人数」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "target": "已入组",
+            "action": "validate",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「已入组」(scored_text(10))"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：页面列表总记录数等于卡片今日新增数值', 'expected': '数字一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7191",
+      "case_name": "待随访人数卡片-跳转随访管理已入组tab",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「待随访人数」卡片上的今日新增数值",
+            "expected": "获取到今日新增数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「待随访人数」卡片",
+            "expected": "跳转至随访管理页面，已定位在「已入组」tab"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面当前tab为「已入组」",
+            "expected": "已入组tab高亮"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面列表总记录数等于卡片今日新增数值",
+            "expected": "数字一致"
+          },
+          {
+            "step": 5,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 3,
+        "title": "待随访人数卡片-跳转随访管理已入组tab",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「待随访人数」卡片",
+            "args": {
+              "locator": "待随访人数"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "go_back",
+            "desc": "返回工作台页面",
+            "args": {}
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证已返回工作台，患者人数卡片可见",
+            "args": {
+              "locator": "患者人数"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 5,
+        "found_steps": 3,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "待随访人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「待随访人数」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "待随访人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「待随访人数」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "target": "已入组",
+            "action": "validate",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「已入组」(scored_text(10))"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：页面列表总记录数等于卡片今日新增数值', 'expected': '数字一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7192",
+      "case_name": "延期人数卡片-跳转随访管理已入组tab",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「延期人数」卡片上的今日新增数值",
+            "expected": "获取到今日新增数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「延期人数」卡片",
+            "expected": "跳转至随访管理页面，已定位在「已入组」tab"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面当前tab为「已入组」",
+            "expected": "已入组tab高亮"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面列表总记录数等于卡片今日新增数值",
+            "expected": "数字一致"
+          },
+          {
+            "step": 5,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 3,
+        "title": "延期人数卡片-跳转随访管理已入组tab",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「延期人数」卡片",
+            "args": {
+              "locator": "延期人数"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "go_back",
+            "desc": "返回工作台页面",
+            "args": {}
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证已返回工作台，患者人数卡片可见",
+            "args": {
+              "locator": "患者人数"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 5,
+        "found_steps": 3,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "延期人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「延期人数」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "延期人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「延期人数」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "target": "已入组",
+            "action": "validate",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「已入组」(scored_text(10))"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：页面列表总记录数等于卡片今日新增数值', 'expected': '数字一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7193",
+      "case_name": "中止人数卡片-跳转随访管理已入组tab",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取「中止人数」卡片上的今日新增数值",
+            "expected": "获取到今日新增数字"
+          },
+          {
+            "step": 2,
+            "action": "点击「中止人数」卡片",
+            "expected": "跳转至随访管理页面，已定位在「已入组」tab"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面当前tab为「已入组」",
+            "expected": "已入组tab高亮"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面列表总记录数等于卡片今日新增数值",
+            "expected": "数字一致"
+          },
+          {
+            "step": 5,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 3,
+        "title": "中止人数卡片-跳转随访管理已入组tab",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「中止人数」卡片",
+            "args": {
+              "locator": "中止人数"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "go_back",
+            "desc": "返回工作台页面",
+            "args": {}
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证已返回工作台，患者人数卡片可见",
+            "args": {
+              "locator": "患者人数"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 5,
+        "found_steps": 3,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "中止人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「中止人数」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "中止人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「中止人数」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "target": "已入组",
+            "action": "validate",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「已入组」(scored_text(10))"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：页面列表总记录数等于卡片今日新增数值', 'expected': '数字一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7194",
+      "case_name": "房颤预警卡片-点击跳转并验证4字段一致",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 7,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「房颤预警」区域获取第一条预警的四个字段值：患者姓名、占比、有效时长、负荷时长",
+            "expected": "成功获取四个字段文本"
+          },
+          {
+            "step": 2,
+            "action": "点击该条预警卡片",
+            "expected": "跳转至患者详情页"
+          },
+          {
+            "step": 3,
+            "action": "验证：详情页患者姓名等于卡片上患者姓名",
+            "expected": "姓名一致"
+          },
+          {
+            "step": 4,
+            "action": "验证：详情页「负荷占比」数值等于卡片占比",
+            "expected": "占比一致"
+          },
+          {
+            "step": 5,
+            "action": "验证：详情页「有效时长」数值等于卡片有效时长",
+            "expected": "有效时长一致"
+          },
+          {
+            "step": 6,
+            "action": "验证：详情页「持续时间」数值等于卡片负荷时长",
+            "expected": "负荷时长一致"
+          },
+          {
+            "step": 7,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "房颤预警卡片-点击跳转并验证4字段一致",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击房颤预警区域第一条预警卡片",
+            "args": {
+              "locator": "该条预警卡片跳转至患者详情页"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_visible",
+            "desc": "验证已跳转至患者详情页，保存按钮可见",
+            "args": {
+              "locator": "保存"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "go_back",
+            "desc": "返回工作台页面",
+            "args": {}
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证已返回工作台，患者人数卡片可见",
+            "args": {
+              "locator": "患者人数"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 7,
+        "found_steps": 5,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "房颤预警",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "该条预警卡片",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「该条预警卡片」(scored_text(10))"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：详情页患者姓名等于卡片上患者姓名', 'expected': '姓名一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "target": "负荷占比",
+            "action": "validate",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「负荷占比」(scored_text(10))"
+          },
+          {
+            "seq": 5,
+            "target": "有效时长",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「有效时长」(text_exact)"
+          },
+          {
+            "seq": 6,
+            "target": "持续时间",
+            "action": "validate",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「持续时间」(scored_text(10))"
+          },
+          {
+            "seq": 7,
+            "step_raw": "{'step': 7, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7195",
+      "case_name": "佩戴预警卡片-点击跳转并验证姓名一致",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「佩戴预警」区域获取第一条预警的患者姓名",
+            "expected": "获取到患者姓名"
+          },
+          {
+            "step": 2,
+            "action": "点击该条预警卡片",
+            "expected": "跳转至患者详情页"
+          },
+          {
+            "step": 3,
+            "action": "验证：详情页患者姓名等于卡片上患者姓名",
+            "expected": "姓名一致"
+          },
+          {
+            "step": 4,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "佩戴预警卡片-点击跳转并验证姓名一致",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击佩戴预警区域第一条预警卡片",
+            "args": {
+              "locator": "该条预警卡片跳转至患者详情页"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_visible",
+            "desc": "验证已跳转至患者详情页，保存按钮可见",
+            "args": {
+              "locator": "保存"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "go_back",
+            "desc": "返回工作台页面",
+            "args": {}
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证已返回工作台，患者人数卡片可见",
+            "args": {
+              "locator": "患者人数"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "佩戴预警",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「佩戴预警」(text_contains)"
+          },
+          {
+            "seq": 2,
+            "target": "该条预警卡片",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「该条预警卡片」(scored_text(10))"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：详情页患者姓名等于卡片上患者姓名', 'expected': '姓名一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7196",
+      "case_name": "测量预警卡片-点击跳转并验证姓名一致",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「测量预警」区域获取第一条预警的患者姓名",
+            "expected": "获取到患者姓名"
+          },
+          {
+            "step": 2,
+            "action": "点击该条预警卡片",
+            "expected": "跳转至患者详情页"
+          },
+          {
+            "step": 3,
+            "action": "验证：详情页患者姓名等于卡片上患者姓名",
+            "expected": "姓名一致"
+          },
+          {
+            "step": 4,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "测量预警卡片-点击跳转并验证姓名一致",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击测量预警区域第一条预警卡片",
+            "args": {
+              "locator": "该条预警卡片跳转至患者详情页"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_visible",
+            "desc": "验证已跳转至患者详情页，保存按钮可见",
+            "args": {
+              "locator": "保存"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "go_back",
+            "desc": "返回工作台页面",
+            "args": {}
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证已返回工作台，患者人数卡片可见",
+            "args": {
+              "locator": "患者人数"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "测量预警",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「测量预警」(text_contains)"
+          },
+          {
+            "seq": 2,
+            "target": "该条预警卡片",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「该条预警卡片」(scored_text(10))"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：详情页患者姓名等于卡片上患者姓名', 'expected': '姓名一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7197",
+      "case_name": "房颤预警-默认筛选为全部",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "定位到「房颤预警」区域的下拉筛选框",
+            "expected": "页面上存在筛选下拉框"
+          },
+          {
+            "step": 2,
+            "action": "验证：下拉框默认选中值为“全部”",
+            "expected": "显示“全部”"
+          },
+          {
+            "step": 3,
+            "action": "验证：预警列表显示所有房颤预警数据",
+            "expected": "列表不为空，无过滤"
+          },
+          {
+            "step": 4,
+            "action": "无需复位操作，验证数据即全部",
+            "expected": "符合默认全部状态"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 2,
+        "title": "房颤预警-默认筛选为全部",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "assert_visible",
+            "desc": "验证房颤预警区域存在",
+            "args": {
+              "locator": "房颤"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_visible",
+            "desc": "验证预警列表不为空，预警卡片可见",
+            "args": {
+              "locator": "该条预警卡片跳转至患者详情页"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "房颤预警",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：下拉框默认选中值为“全部”', 'expected': '显示“全部”'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：预警列表显示所有房颤预警数据', 'expected': '列表不为空，无过滤'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '无需复位操作，验证数据即全部', 'expected': '符合默认全部状态'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7198",
+      "case_name": "房颤预警-筛选≥10并验证数据一致性",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「房颤预警」区域的筛选下拉框中，选择“≥10”",
+            "expected": "下拉框值变为“≥10”，列表刷新"
+          },
+          {
+            "step": 2,
+            "action": "验证：所有显示的预警占比数值都≥10",
+            "expected": "每个占比都>=10"
+          },
+          {
+            "step": 3,
+            "action": "验证：请求接口参数包含正确的筛选条件",
+            "expected": "接口参数filter=≥10"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 0,
+        "title": "房颤预警-筛选≥10并验证数据一致性",
+        "steps": []
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "房颤预警",
+            "action": "select",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：所有显示的预警占比数值都≥10', 'expected': '每个占比都>=10'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：请求接口参数包含正确的筛选条件', 'expected': '接口参数filter=≥10'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7199",
+      "case_name": "房颤预警-筛选≥20并验证数据一致性",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「房颤预警」区域的筛选下拉框中，选择“≥20”",
+            "expected": "下拉框值变为“≥20”，列表刷新"
+          },
+          {
+            "step": 2,
+            "action": "验证：所有显示的预警占比数值都≥20",
+            "expected": "每个占比都>=20"
+          },
+          {
+            "step": 3,
+            "action": "验证：接口参数正确",
+            "expected": "filter=≥20"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 0,
+        "title": "房颤预警-筛选≥20并验证数据一致性",
+        "steps": []
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "房颤预警",
+            "action": "select",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：所有显示的预警占比数值都≥20', 'expected': '每个占比都>=20'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：接口参数正确', 'expected': 'filter=≥20'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7200",
+      "case_name": "房颤预警-筛选≥30并验证数据一致性",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「房颤预警」区域的筛选下拉框中，选择“≥30”",
+            "expected": "下拉框值变为“≥30”，列表刷新"
+          },
+          {
+            "step": 2,
+            "action": "验证：所有显示的预警占比数值都≥30",
+            "expected": "每个占比都>=30"
+          },
+          {
+            "step": 3,
+            "action": "验证：接口参数正确",
+            "expected": "filter=≥30"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 0,
+        "title": "房颤预警-筛选≥30并验证数据一致性",
+        "steps": []
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "房颤预警",
+            "action": "select",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：所有显示的预警占比数值都≥30', 'expected': '每个占比都>=30'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：接口参数正确', 'expected': 'filter=≥30'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7201",
+      "case_name": "房颤预警-筛选≥40并验证数据一致性",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「房颤预警」区域的筛选下拉框中，选择“≥40”",
+            "expected": "下拉框值变为“≥40”，列表刷新"
+          },
+          {
+            "step": 2,
+            "action": "验证：所有显示的预警占比数值都≥40",
+            "expected": "每个占比都>=40"
+          },
+          {
+            "step": 3,
+            "action": "验证：接口参数正确",
+            "expected": "filter=≥40"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 0,
+        "title": "房颤预警-筛选≥40并验证数据一致性",
+        "steps": []
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "房颤预警",
+            "action": "select",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：所有显示的预警占比数值都≥40', 'expected': '每个占比都>=40'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：接口参数正确', 'expected': 'filter=≥40'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7202",
+      "case_name": "房颤预警-筛选≥50并验证数据一致性",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「房颤预警」区域的筛选下拉框中，选择“≥50”",
+            "expected": "下拉框值变为“≥50”，列表刷新"
+          },
+          {
+            "step": 2,
+            "action": "验证：所有显示的预警占比数值都≥50",
+            "expected": "每个占比都>=50"
+          },
+          {
+            "step": 3,
+            "action": "验证：接口参数正确",
+            "expected": "filter=≥50"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 0,
+        "title": "房颤预警-筛选≥50并验证数据一致性",
+        "steps": []
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "房颤预警",
+            "action": "select",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：所有显示的预警占比数值都≥50', 'expected': '每个占比都>=50'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：接口参数正确', 'expected': 'filter=≥50'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7203",
+      "case_name": "佩戴预警-默认筛选为全部",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "定位到「佩戴预警」区域的筛选下拉框",
+            "expected": "存在筛选下拉框"
+          },
+          {
+            "step": 2,
+            "action": "验证：下拉框默认选中值为“全部”",
+            "expected": "显示“全部”"
+          },
+          {
+            "step": 3,
+            "action": "验证：预警列表显示当天所有佩戴预警数据",
+            "expected": "列表不为空，无状态过滤"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 0,
+        "title": "佩戴预警-默认筛选为全部",
+        "steps": []
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "佩戴预警",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「佩戴预警」(text_contains)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：下拉框默认选中值为“全部”', 'expected': '显示“全部”'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：预警列表显示当天所有佩戴预警数据', 'expected': '列表不为空，无状态过滤'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7204",
+      "case_name": "佩戴预警-筛选未发送并验证状态",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「佩戴预警」区域的筛选下拉框中，选择“未发送”",
+            "expected": "下拉框值变为“未发送”，列表刷新"
+          },
+          {
+            "step": 2,
+            "action": "验证：列表中所有数据的状态均为“未发送”",
+            "expected": "每条数据状态显示“未发送”"
+          },
+          {
+            "step": 3,
+            "action": "验证：接口参数正确",
+            "expected": "filter=未发送"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 0,
+        "title": "佩戴预警-筛选未发送并验证状态",
+        "steps": []
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "佩戴预警",
+            "action": "select",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「佩戴预警」(text_contains)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：列表中所有数据的状态均为“未发送”', 'expected': '每条数据状态显示“未发送”'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：接口参数正确', 'expected': 'filter=未发送'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7205",
+      "case_name": "佩戴预警-筛选已发送并验证状态",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「佩戴预警」区域的筛选下拉框中，选择“已发送”",
+            "expected": "下拉框值变为“已发送”，列表刷新"
+          },
+          {
+            "step": 2,
+            "action": "验证：列表中所有数据的状态均为“已发送”",
+            "expected": "每条数据状态显示“已发送”"
+          },
+          {
+            "step": 3,
+            "action": "验证：接口参数正确",
+            "expected": "filter=已发送"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 0,
+        "title": "佩戴预警-筛选已发送并验证状态",
+        "steps": []
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "佩戴预警",
+            "action": "select",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「佩戴预警」(text_contains)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：列表中所有数据的状态均为“已发送”', 'expected': '每条数据状态显示“已发送”'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：接口参数正确', 'expected': 'filter=已发送'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7206",
+      "case_name": "测量预警-默认筛选为全部",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "定位到「测量预警」区域的筛选下拉框",
+            "expected": "存在筛选下拉框"
+          },
+          {
+            "step": 2,
+            "action": "验证：下拉框默认选中值为“全部”",
+            "expected": "显示“全部”"
+          },
+          {
+            "step": 3,
+            "action": "验证：预警列表显示最近3天所有测量预警数据",
+            "expected": "列表不为空，无状态过滤"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 0,
+        "title": "测量预警-默认筛选为全部",
+        "steps": []
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "测量预警",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「测量预警」(text_contains)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：下拉框默认选中值为“全部”', 'expected': '显示“全部”'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：预警列表显示最近3天所有测量预警数据', 'expected': '列表不为空，无状态过滤'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7207",
+      "case_name": "测量预警-筛选未发送并验证状态",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「测量预警」区域的筛选下拉框中，选择“未发送”",
+            "expected": "下拉框值变为“未发送”，列表刷新"
+          },
+          {
+            "step": 2,
+            "action": "验证：列表中所有数据的状态均为“未发送”",
+            "expected": "每条数据状态显示“未发送”"
+          },
+          {
+            "step": 3,
+            "action": "验证：接口参数正确",
+            "expected": "filter=未发送"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 0,
+        "title": "测量预警-筛选未发送并验证状态",
+        "steps": []
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "测量预警",
+            "action": "select",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「测量预警」(text_contains)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：列表中所有数据的状态均为“未发送”', 'expected': '每条数据状态显示“未发送”'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：接口参数正确', 'expected': 'filter=未发送'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7208",
+      "case_name": "测量预警-筛选已发送并验证状态",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「测量预警」区域的筛选下拉框中，选择“已发送”",
+            "expected": "下拉框值变为“已发送”，列表刷新"
+          },
+          {
+            "step": 2,
+            "action": "验证：列表中所有数据的状态均为“已发送”",
+            "expected": "每条数据状态显示“已发送”"
+          },
+          {
+            "step": 3,
+            "action": "验证：接口参数正确",
+            "expected": "filter=已发送"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 0,
+        "title": "测量预警-筛选已发送并验证状态",
+        "steps": []
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "测量预警",
+            "action": "select",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「测量预警」(text_contains)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：列表中所有数据的状态均为“已发送”', 'expected': '每条数据状态显示“已发送”'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：接口参数正确', 'expected': 'filter=已发送'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7209",
+      "case_name": "规则BIZ001-房颤预警字段精确映射验证",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 7,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「房颤预警」区域，任意选取一条预警，分别获取卡片上的患者姓名、占比、有效时长、负荷时长四个值",
+            "expected": "成功获取四个字段值"
+          },
+          {
+            "step": 2,
+            "action": "点击该条预警卡片，跳转至患者详情页",
+            "expected": "跳转成功"
+          },
+          {
+            "step": 3,
+            "action": "验证：详情页患者姓名等于卡片患者姓名",
+            "expected": "一致"
+          },
+          {
+            "step": 4,
+            "action": "验证：详情页「负荷占比」等于卡片占比",
+            "expected": "一致"
+          },
+          {
+            "step": 5,
+            "action": "验证：详情页「有效时长」等于卡片有效时长",
+            "expected": "一致"
+          },
+          {
+            "step": 6,
+            "action": "验证：详情页「持续时间」等于卡片负荷时长",
+            "expected": "一致"
+          },
+          {
+            "step": 7,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 2,
+        "title": "规则BIZ001-房颤预警字段精确映射验证",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击阵发性房颤预警卡片跳转至患者详情页",
+            "args": {
+              "locator": "阵发性房颤"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 7,
+        "found_steps": 5,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "房颤预警",
+            "action": "select",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "该条预警卡片，跳转至患者详情页",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(20)",
+            "message": "✓ 已定位「该条预警卡片，跳转至患者详情页」(scored_text(20))"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：详情页患者姓名等于卡片患者姓名', 'expected': '一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "target": "负荷占比",
+            "action": "validate",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「负荷占比」(scored_text(10))"
+          },
+          {
+            "seq": 5,
+            "target": "有效时长",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「有效时长」(text_exact)"
+          },
+          {
+            "seq": 6,
+            "target": "持续时间",
+            "action": "validate",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「持续时间」(scored_text(10))"
+          },
+          {
+            "seq": 7,
+            "step_raw": "{'step': 7, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7210",
+      "case_name": "规则BIZ002-移除所有指标的正确流程验证",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "steps_missing",
+      "error": "",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「自定义」按钮打开弹窗",
+            "expected": "弹窗显示当前已添加的所有指标"
+          },
+          {
+            "step": 2,
+            "action": "循环点击每个指标右侧的「移除」按钮，直到移除所有指标",
+            "expected": "弹窗内指标列表为空"
+          },
+          {
+            "step": 3,
+            "action": "点击「保存」按钮",
+            "expected": "弹窗关闭，工作台刷新"
+          },
+          {
+            "step": 4,
+            "action": "验证：工作台指标区域显示空状态提示“去添加指标”",
+            "expected": "显示空状态提示"
+          },
+          {
+            "step": 5,
+            "action": "验证：不存在任何指标卡片",
+            "expected": "卡片数量为0"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 2,
+        "title": "规则BIZ002-移除所有指标的正确流程验证",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击自定义按钮打开弹窗",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "click",
+            "desc": "点击保存按钮关闭弹窗",
+            "args": {
+              "locator": "保存"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 5,
+        "found_steps": 2,
+        "missing_steps": [
+          {
+            "seq": 2,
+            "target": "移除",
+            "action": "click",
+            "status": "not_found",
+            "strategy": "",
+            "message": "✗ 未找到「移除」— element_not_found"
+          }
+        ],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "自定义",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「自定义」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "移除",
+            "action": "click",
+            "status": "not_found",
+            "strategy": "",
+            "message": "✗ 未找到「移除」— element_not_found"
+          },
+          {
+            "seq": 3,
+            "target": "保存",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「保存」(scored_text(10))"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：工作台指标区域显示空状态提示“去添加指标”', 'expected': '显示空状态提示'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '验证：不存在任何指标卡片', 'expected': '卡片数量为0'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": "2/5 步已定位"
+      }
+    },
+    {
+      "test_case_id": "7211",
+      "case_name": "规则BIZ003-添加N个指标后保存验证卡片数量",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「自定义」按钮打开弹窗",
+            "expected": "弹窗打开"
+          },
+          {
+            "step": 2,
+            "action": "在弹窗中勾选添加N个指标（例如N=3），点击「保存」",
+            "expected": "弹窗关闭，工作台刷新"
+          },
+          {
+            "step": 3,
+            "action": "验证：工作台显示的指标卡片数量恰好为N",
+            "expected": "expect(to_have_count(N)) 通过"
+          },
+          {
+            "step": 4,
+            "action": "验证：卡片名称与添加的指标一致",
+            "expected": "名称匹配"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 2,
+        "title": "规则BIZ003-添加N个指标后保存验证卡片数量",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击自定义按钮打开弹窗",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "click",
+            "desc": "点击保存按钮关闭弹窗",
+            "args": {
+              "locator": "保存"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "自定义",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「自定义」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "保存",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「保存」(scored_text(10))"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：工作台显示的指标卡片数量恰好为N', 'expected': 'expect(to_have_count(N)) 通过'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：卡片名称与添加的指标一致', 'expected': '名称匹配'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7212",
+      "case_name": "规则BIZ004-疾病统计跳转后筛选框断言",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击某个疾病统计卡片，例如「室早」卡片",
+            "expected": "跳转至患者档案页面"
+          },
+          {
+            "step": 2,
+            "action": "验证：页面筛选框已选中对应的疾病名称“室早”",
+            "expected": "筛选框显示“室早”"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面数据列表与筛选条件匹配",
+            "expected": "列表数据均为室早相关"
+          },
+          {
+            "step": 4,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 2,
+        "title": "规则BIZ004-疾病统计跳转后筛选框断言",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击室早卡片跳转患者档案",
+            "args": {
+              "locator": "室早"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "室早",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「室早」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：页面筛选框已选中对应的疾病名称“室早”', 'expected': '筛选框显示“室早”'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面数据列表与筛选条件匹配', 'expected': '列表数据均为室早相关'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7214",
+      "case_name": "规则BIZ006-指标不存在时pytest.skip",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "检查工作台指标总览区域是否存在任何指标卡片",
+            "expected": "可能不存在或全部为暂无数据"
+          },
+          {
+            "step": 2,
+            "action": "如果所有指标卡片都不存在或全部显示「暂无数据」，则执行pytest.skip()",
+            "expected": "用例跳过，不影响测试结果"
+          },
+          {
+            "step": 3,
+            "action": "验证：skip被正确执行，日志显示原因",
+            "expected": "skip原因包含“指标不存在”"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 0,
+        "title": "规则BIZ006-指标不存在时pytest.skip",
+        "steps": []
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台指标总览区域是否存在任何指标卡片",
+            "action": "validate",
+            "status": "success",
+            "strategy": "scored(33)",
+            "message": "✓ 已定位「工作台指标总览区域是否存在任何指标卡片」(scored(33))"
+          },
+          {
+            "seq": 2,
+            "target": "暂无数据",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「暂无数据」(text_contains)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：skip被正确执行，日志显示原因', 'expected': 'skip原因包含“指标不存在”'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7215",
+      "case_name": "规则BIZ007-入组人数跳转患者档案带joinStatus=1",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「入组人数」卡片",
+            "expected": "页面跳转"
+          },
+          {
+            "step": 2,
+            "action": "验证：当前URL中包含joinStatus=1参数",
+            "expected": "参数值正确"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面展示的患者列表均为joinStatus=1相关数据",
+            "expected": "数据过滤正确"
+          },
+          {
+            "step": 4,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 2,
+        "title": "规则BIZ007-入组人数跳转患者档案带joinStatus=1",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击入组人数卡片跳转",
+            "args": {
+              "locator": "入组人数"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "入组人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「入组人数」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：当前URL中包含joinStatus=1参数', 'expected': '参数值正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面展示的患者列表均为joinStatus=1相关数据', 'expected': '数据过滤正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7216",
+      "case_name": "预警下拉默认全部-用例间无需复位验证",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "分别查看「房颤预警」「佩戴预警」「测量预警」的下拉筛选框",
+            "expected": "每个筛选框默认选中“全部”"
+          },
+          {
+            "step": 2,
+            "action": "连续执行两个预警筛选用例，检查开始前筛选状态",
+            "expected": "始终保持“全部”默认状态，无需手动复位"
+          },
+          {
+            "step": 3,
+            "action": "验证：无需额外复位操作即可正常执行筛选测试",
+            "expected": "默认值一致"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 0,
+        "title": "预警下拉默认全部-用例间无需复位验证",
+        "steps": []
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "房颤预警",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '连续执行两个预警筛选用例，检查开始前筛选状态', 'expected': '始终保持“全部”默认状态，无需手动复位'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：无需额外复位操作即可正常执行筛选测试', 'expected': '默认值一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7217",
+      "case_name": "预警筛选数据一致性验证-房颤≥30",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「房颤预警」区域筛选下拉框中选择“≥30”",
+            "expected": "列表刷新"
+          },
+          {
+            "step": 2,
+            "action": "验证：列表中所有预警数据的占比数值均大于等于30",
+            "expected": "全部>=30"
+          },
+          {
+            "step": 3,
+            "action": "验证：后台接口请求中filter参数值为≥30",
+            "expected": "参数正确"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 0,
+        "title": "预警筛选数据一致性验证-房颤≥30",
+        "steps": []
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "房颤预警",
+            "action": "select",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：列表中所有预警数据的占比数值均大于等于30', 'expected': '全部>=30'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：后台接口请求中filter参数值为≥30', 'expected': '参数正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7218",
+      "case_name": "动态数据处理-指标不存在则skip",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "检查工作台是否加载出指标卡片",
+            "expected": "可能无卡片或只显示暂无数据提示"
+          },
+          {
+            "step": 2,
+            "action": "若整个指标区域无可见卡片，执行pytest.skip()",
+            "expected": "用例跳过"
+          },
+          {
+            "step": 3,
+            "action": "若存在卡片但数值为0，验证：卡片显示「暂无数据」",
+            "expected": "暂无数据显示正确"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 0,
+        "title": "动态数据处理-指标不存在则skip",
+        "steps": []
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台是否加载出指标卡片",
+            "action": "validate",
+            "status": "success",
+            "strategy": "scored(33)",
+            "message": "✓ 已定位「工作台是否加载出指标卡片」(scored(33))"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '若整个指标区域无可见卡片，执行pytest.skip()', 'expected': '用例跳过'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "target": "暂无数据",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「暂无数据」(text_contains)"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7219",
+      "case_name": "自定义按钮存在性判断-不可见则skip",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "检查「自定义」按钮是否存在于工作台页面",
+            "expected": "按钮可能可见或不可见"
+          },
+          {
+            "step": 2,
+            "action": "若按钮不可见，执行pytest.skip()并记录原因“自定义按钮不可见”",
+            "expected": "跳过用例"
+          },
+          {
+            "step": 3,
+            "action": "若按钮可见，继续执行后续自定义相关用例",
+            "expected": "正常执行"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 1,
+        "title": "自定义按钮存在性判断-不可见则skip",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "assert_visible",
+            "desc": "检查「自定义」按钮是否可见",
+            "args": {
+              "locator": "自定义"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "自定义",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「自定义」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '若按钮不可见，执行pytest.skip()并记录原因“自定义按钮不可见”', 'expected': '跳过用例'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '若按钮可见，继续执行后续自定义相关用例', 'expected': '正常执行'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7220",
+      "case_name": "随访状态卡片跳转已入组tab规则验证",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「进行中人数」卡片（或其他随访状态卡片）",
+            "expected": "跳转至随访管理页面"
+          },
+          {
+            "step": 2,
+            "action": "验证：页面当前激活的tab为「已入组」",
+            "expected": "已入组tab高亮"
+          },
+          {
+            "step": 3,
+            "action": "验证：卡片今日新增数等于已入组列表总记录数",
+            "expected": "数字一致"
+          },
+          {
+            "step": 4,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台页面"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 2,
+        "title": "随访状态卡片跳转已入组tab规则验证",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「进行中人数」卡片",
+            "args": {
+              "locator": "进行中人数"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "go_back",
+            "desc": "返回工作台页面",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "进行中人数",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「进行中人数」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "已入组",
+            "action": "validate",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「已入组」(scored_text(10))"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：卡片今日新增数等于已入组列表总记录数', 'expected': '数字一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台页面'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7222",
+      "case_name": "佩戴/测量预警跳转姓名断言规则验证",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「佩戴预警」区域获取第一条预警的患者姓名",
+            "expected": "获取姓名A"
+          },
+          {
+            "step": 2,
+            "action": "点击该条预警卡片跳转至患者详情页",
+            "expected": "跳转成功"
+          },
+          {
+            "step": 3,
+            "action": "验证：详情页患者姓名等于卡片患者姓名A",
+            "expected": "姓名一致"
+          },
+          {
+            "step": 4,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台"
+          },
+          {
+            "step": 5,
+            "action": "对「测量预警」重复步骤1-4",
+            "expected": "测量预警姓名断言也一致"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "佩戴/测量预警跳转姓名断言规则验证",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击佩戴预警卡片跳转至患者详情页",
+            "args": {
+              "locator": "该条预警卡片跳转至患者详情页"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击测量预警卡片跳转至患者详情页",
+            "args": {
+              "locator": "该条预警卡片跳转至患者详情页"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 5,
+        "found_steps": 3,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "佩戴预警",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「佩戴预警」(text_contains)"
+          },
+          {
+            "seq": 2,
+            "target": "该条预警卡片跳转至患者详情页",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored(13)",
+            "message": "✓ 已定位「该条预警卡片跳转至患者详情页」(scored(13))"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：详情页患者姓名等于卡片患者姓名A', 'expected': '姓名一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "target": "测量预警",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「测量预警」(text_contains)"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7223",
+      "case_name": "指标跳转数字一致性验证-审核/物流/随访卡片",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "选取「待审核数据」卡片，获取今日新增数",
+            "expected": "得到数值X"
+          },
+          {
+            "step": 2,
+            "action": "点击卡片跳转至数据管理页面",
+            "expected": "跳转成功"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面列表总记录数等于X",
+            "expected": "数字一致"
+          },
+          {
+            "step": 4,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "返回工作台"
+          },
+          {
+            "step": 5,
+            "action": "同样检查「待发货数」「项目个数」等其他卡片",
+            "expected": "所有对应卡片数字均匹配"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 6,
+        "title": "指标跳转数字一致性验证-审核/物流/随访卡片",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「待审核数据」卡片",
+            "args": {
+              "locator": "待审核数据"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击「待发货数」卡片",
+            "args": {
+              "locator": "待发货数"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          },
+          {
+            "seq": 5,
+            "action": "click",
+            "desc": "点击「项目个数」卡片",
+            "args": {
+              "locator": "项目个数"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "go_back",
+            "desc": "返回工作台",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 5,
+        "found_steps": 3,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "待审核数据",
+            "action": "select",
+            "status": "success",
+            "strategy": "scored_text(13)",
+            "message": "✓ 已定位「待审核数据」(scored_text(13))"
+          },
+          {
+            "seq": 2,
+            "target": "卡片跳转至数据管理页面",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(33)",
+            "message": "✓ 已定位「卡片跳转至数据管理页面」(scored_text(33))"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面列表总记录数等于X', 'expected': '数字一致'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '使用page.go_back()返回工作台', 'expected': '返回工作台'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "target": "待发货数",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「待发货数」(text_exact)"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7224",
+      "case_name": "自定义功能-逐步移除每个指标验证移除交互",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "steps_missing",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「自定义」按钮打开弹窗",
+            "expected": "弹窗显示已添加的指标列表"
+          },
+          {
+            "step": 2,
+            "action": "点击第一个指标右侧的「移除」按钮",
+            "expected": "该指标从弹窗列表中消失"
+          },
+          {
+            "step": 3,
+            "action": "继续逐个点击其余指标的「移除」按钮，直到列表清空",
+            "expected": "弹窗内指标数量逐渐减少至0"
+          },
+          {
+            "step": 4,
+            "action": "点击「保存」按钮",
+            "expected": "保存成功，工作台刷新为空状态"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 2,
+        "title": "自定义功能-逐步移除每个指标验证移除交互",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「自定义」按钮打开弹窗",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "click",
+            "desc": "点击「保存」按钮",
+            "args": {
+              "locator": "保存"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 2,
+        "missing_steps": [
+          {
+            "seq": 2,
+            "target": "移除",
+            "action": "click",
+            "status": "not_found",
+            "strategy": "",
+            "message": "✗ 未找到「移除」— element_not_found"
+          },
+          {
+            "seq": 3,
+            "target": "移除",
+            "action": "click",
+            "status": "not_found",
+            "strategy": "",
+            "message": "✗ 未找到「移除」— element_not_found"
+          }
+        ],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "自定义",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「自定义」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "移除",
+            "action": "click",
+            "status": "not_found",
+            "strategy": "",
+            "message": "✗ 未找到「移除」— element_not_found"
+          },
+          {
+            "seq": 3,
+            "target": "移除",
+            "action": "click",
+            "status": "not_found",
+            "strategy": "",
+            "message": "✗ 未找到「移除」— element_not_found"
+          },
+          {
+            "seq": 4,
+            "target": "保存",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「保存」(scored_text(10))"
+          }
+        ],
+        "warning": "2/4 步已定位"
+      }
+    },
+    {
+      "test_case_id": "7225",
+      "case_name": "自定义功能-添加多个指标并验证卡片显示",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「自定义」按钮打开弹窗",
+            "expected": "弹窗展示可添加的指标复选框"
+          },
+          {
+            "step": 2,
+            "action": "勾选多个指标（如“室早”、“房颤”）并点击「保存」",
+            "expected": "弹窗关闭，工作台刷新"
+          },
+          {
+            "step": 3,
+            "action": "验证：工作台出现所勾选指标的卡片，数量等于勾选数",
+            "expected": "卡片数量正确"
+          },
+          {
+            "step": 4,
+            "action": "验证：卡片名称与勾选指标一致",
+            "expected": "名称正确"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 6,
+        "title": "自定义功能-添加多个指标并验证卡片显示",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「自定义」按钮",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "click",
+            "desc": "勾选「室早」指标",
+            "args": {
+              "locator": "室早"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "勾选「房颤」指标",
+            "args": {
+              "locator": "房颤"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "click",
+            "desc": "点击「保存」按钮",
+            "args": {
+              "locator": "保存"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证工作台出现「室早」卡片",
+            "args": {
+              "locator": "室早"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "assert_visible",
+            "desc": "验证工作台出现「房颤」卡片",
+            "args": {
+              "locator": "房颤"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "自定义",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「自定义」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "保存",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「保存」(scored_text(10))"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：工作台出现所勾选指标的卡片，数量等于勾选数', 'expected': '卡片数量正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：卡片名称与勾选指标一致', 'expected': '名称正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7226",
+      "case_name": "自定义功能-修改布局后保存刷新工作台",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「自定义」按钮打开弹窗",
+            "expected": "弹窗显示当前布局指标"
+          },
+          {
+            "step": 2,
+            "action": "调整指标顺序或添加新指标，点击「保存」",
+            "expected": "保存成功，弹窗关闭"
+          },
+          {
+            "step": 3,
+            "action": "验证：工作台卡片按新布局顺序显示，且数量正确",
+            "expected": "布局刷新成功"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "自定义功能-修改布局后保存刷新工作台",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「自定义」按钮",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "click",
+            "desc": "勾选「室早」指标模拟添加",
+            "args": {
+              "locator": "室早"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击「保存」按钮",
+            "args": {
+              "locator": "保存"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证工作台刷新后「室早」卡片可见",
+            "args": {
+              "locator": "室早"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "自定义",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「自定义」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "保存",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「保存」(scored_text(10))"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：工作台卡片按新布局顺序显示，且数量正确', 'expected': '布局刷新成功'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7227",
+      "case_name": "边界-暂无数据显示验证",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "找到今日新增为0或总数为0的指标卡片",
+            "expected": "卡片存在"
+          },
+          {
+            "step": 2,
+            "action": "验证：卡片上显示「暂无数据」文案",
+            "expected": "显示“暂无数据”"
+          },
+          {
+            "step": 3,
+            "action": "点击该卡片，验证跳转后页面列表为空或显示无数据提示",
+            "expected": "跳转后页面无数据或提示"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 0,
+        "title": "边界-暂无数据显示验证",
+        "steps": []
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "step_raw": "{'step': 1, 'action': '找到今日新增为0或总数为0的指标卡片', 'expected': '卡片存在'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 2,
+            "target": "暂无数据",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「暂无数据」(text_contains)"
+          },
+          {
+            "seq": 3,
+            "target": "该卡片，验证跳转后页面列表为空或显示无数据提示",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(15)",
+            "message": "✓ 已定位「该卡片，验证跳转后页面列表为空或显示无数据提示」(scored_text(15))"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7228",
+      "case_name": "边界-移除所有指标后空状态提示",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在移除了所有指标的弹窗中点击「保存」",
+            "expected": "保存成功，弹窗关闭"
+          },
+          {
+            "step": 2,
+            "action": "验证：工作台指标区域显示空状态提示「去添加指标」",
+            "expected": "显示“去添加指标”文案"
+          },
+          {
+            "step": 3,
+            "action": "验证：工作台不存在任何指标卡片",
+            "expected": "卡片数量为0"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 1,
+        "title": "边界-移除所有指标后空状态提示",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「保存」按钮关闭弹窗",
+            "args": {
+              "locator": "保存"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "保存",
+            "action": "click",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「保存」(scored_text(10))"
+          },
+          {
+            "seq": 2,
+            "target": "去添加指标",
+            "action": "validate",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「去添加指标」(scored_text(10))"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：工作台不存在任何指标卡片', 'expected': '卡片数量为0'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7229",
+      "case_name": "边界-指标卡片不存在时pytest.skip处理",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "检查页面是否存在任何指标卡片元素",
+            "expected": "可能因权限或数据问题不存在"
+          },
+          {
+            "step": 2,
+            "action": "如果没有任何指标卡片，执行pytest.skip()",
+            "expected": "跳过测试"
+          },
+          {
+            "step": 3,
+            "action": "如果卡片存在则继续，验证正常功能",
+            "expected": "功能正常"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 1,
+        "title": "边界-指标卡片不存在时pytest.skip处理",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "assert_visible",
+            "desc": "检查是否存在指标卡片（如「室早」）",
+            "args": {
+              "locator": "室早"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "页面是否存在任何指标卡片元素",
+            "action": "validate",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「页面是否存在任何指标卡片元素」(scored_text(10))"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '如果没有任何指标卡片，执行pytest.skip()', 'expected': '跳过测试'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '如果卡片存在则继续，验证正常功能', 'expected': '功能正常'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "7230",
+      "case_name": "边界-预警暂无数据时pytest.skip处理",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "检查「房颤预警」「佩戴预警」「测量预警」各个区域",
+            "expected": "区域可见"
+          },
+          {
+            "step": 2,
+            "action": "若其中任一区域显示「暂无数据」，则对该部分用例执行pytest.skip()",
+            "expected": "跳过对应预警用例"
+          },
+          {
+            "step": 3,
+            "action": "验证：skip原因明确标注“预警暂无数据”",
+            "expected": "日志记录清晰"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 3,
+        "title": "边界-预警暂无数据时pytest.skip处理",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "assert_visible",
+            "desc": "验证「房颤预警」区域可见",
+            "args": {
+              "locator": "房颤"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_visible",
+            "desc": "验证「佩戴预警」区域可见",
+            "args": {
+              "locator": "Smart报告"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证「测量预警」区域可见",
+            "args": {
+              "locator": "患者人数"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "房颤预警",
+            "action": "validate",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「房颤预警」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "暂无数据",
+            "action": "click",
+            "status": "success",
+            "strategy": "text_contains",
+            "message": "✓ 已定位「暂无数据」(text_contains)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：skip原因明确标注“预警暂无数据”', 'expected': '日志记录清晰'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    }
+  ],
+  "summary": {
+    "success": 59,
+    "exploration_insufficient": 0,
+    "exploration_failed": 0,
+    "conversion_failed": 0,
+    "steps_missing": 4
+  }
+}

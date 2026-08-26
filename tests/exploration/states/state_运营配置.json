@@ -1,0 +1,467 @@
+{
+  "label": "运营配置",
+  "url": "https://hospitalweb.xinjikang.cn/#/operatorconfiguration?refresh=1785581359799&oId=9ee70b68673b4660af488e86a0112f68",
+  "total_elements": 51,
+  "elements": [
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "header-root flex-shrink-0 flex flex-row items-center justify-between w-full px-4 bg-white border-b-2",
+      "text": "心吉康心血管健康综合管理平台测试机构2026/08/01  星期六陈强",
+      "onclick": false,
+      "href": "",
+      "size": "1280x64"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-start",
+      "text": "心吉康心血管健康综合管理平台",
+      "onclick": false,
+      "href": "",
+      "size": "374x38"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-start text-normal333",
+      "text": "2026/08/01  星期六陈强",
+      "onclick": false,
+      "href": "",
+      "size": "303x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-dropdown-trigger p-1 ml-8 flex flex-row items-center justify-start cursor-pointer rounded-sm hov",
+      "text": "陈强",
+      "onclick": false,
+      "href": "",
+      "size": "102x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "layout-body w-full flex flex-row",
+      "text": "工作台患者档案设备管理设备列表设备收发问卷管理账号管理数据管理文件审核内部报告健康报告周报审核运营配置操作日志随访管理患者管理随访项目运营配置运营配置报告配置数",
+      "onclick": false,
+      "href": "",
+      "size": "1280x836"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "工作台",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "患者档案",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "设备列表",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "设备收发",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "问卷管理",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "文件审核",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "内部报告",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "健康报告",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "周报审核",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-active ant-menu-item-selected",
+      "text": "运营配置",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "操作日志",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "患者管理",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "随访项目",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-breadcrumb-item",
+      "text": "运营配置",
+      "onclick": false,
+      "href": "",
+      "size": "56x22"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-breadcrumb-link cursor-pointer",
+      "text": "运营配置",
+      "onclick": false,
+      "href": "",
+      "size": "56x20"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "contianer-root flex flex-col items-start justify-start flex-1 overflow-x-auto ",
+      "text": "运营配置报告配置数据审核配置算法配置smart报告审核方式人工审核只审核“房颤报告”系统自动审核报告注释自定义报告注释 保 存",
+      "onclick": false,
+      "href": "",
+      "size": "1080x836"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "px-4 py-2 h-10 w-full flex items-center rounded-sm bg-bg-second undefined",
+      "text": "smart报告",
+      "onclick": false,
+      "href": "",
+      "size": "869x35"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "审核方式人工审核只审核“房颤报告”系统自动审核",
+      "onclick": false,
+      "href": "",
+      "size": "869x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "审核方式人工审核只审核“房颤报告”系统自动审核",
+      "onclick": false,
+      "href": "",
+      "size": "869x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-6 ant-col-sm-4 ant-col-md-2 css-1sdc3xm",
+      "text": "审核方式",
+      "onclick": false,
+      "href": "",
+      "size": "72x32"
+    },
+    {
+      "tag": "LABEL",
+      "role": "",
+      "cls": "ant-form-item-required-mark-hidden",
+      "text": "审核方式",
+      "onclick": false,
+      "href": "",
+      "size": "70x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-18 ant-col-sm-20 ant-col-md-22 css-1sdc3xm",
+      "text": "人工审核只审核“房颤报告”系统自动审核",
+      "onclick": false,
+      "href": "",
+      "size": "797x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "人工审核只审核“房颤报告”系统自动审核",
+      "onclick": false,
+      "href": "",
+      "size": "797x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "人工审核只审核“房颤报告”系统自动审核",
+      "onclick": false,
+      "href": "",
+      "size": "797x22"
+    },
+    {
+      "tag": "LABEL",
+      "role": "",
+      "cls": "ant-radio-wrapper ant-radio-wrapper-checked ant-radio-wrapper-in-form-item css-1sdc3xm",
+      "text": "人工审核",
+      "onclick": false,
+      "href": "",
+      "size": "88x22"
+    },
+    {
+      "tag": "LABEL",
+      "role": "",
+      "cls": "ant-radio-wrapper ant-radio-wrapper-in-form-item css-1sdc3xm",
+      "text": "只审核“房颤报告”",
+      "onclick": false,
+      "href": "",
+      "size": "158x22"
+    },
+    {
+      "tag": "LABEL",
+      "role": "",
+      "cls": "ant-radio-wrapper ant-radio-wrapper-in-form-item css-1sdc3xm",
+      "text": "系统自动审核",
+      "onclick": false,
+      "href": "",
+      "size": "116x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "报告注释自定义报告注释",
+      "onclick": false,
+      "href": "",
+      "size": "869x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "报告注释自定义报告注释",
+      "onclick": false,
+      "href": "",
+      "size": "869x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-6 ant-col-sm-4 ant-col-md-2 css-1sdc3xm",
+      "text": "报告注释",
+      "onclick": false,
+      "href": "",
+      "size": "72x39"
+    },
+    {
+      "tag": "LABEL",
+      "role": "",
+      "cls": "ant-form-item-required-mark-hidden",
+      "text": "报告注释",
+      "onclick": false,
+      "href": "",
+      "size": "70x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-18 ant-col-sm-20 ant-col-md-22 css-1sdc3xm",
+      "text": "自定义报告注释",
+      "onclick": false,
+      "href": "",
+      "size": "797x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "自定义报告注释",
+      "onclick": false,
+      "href": "",
+      "size": "797x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "自定义报告注释",
+      "onclick": false,
+      "href": "",
+      "size": "797x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item mb-2 css-1sdc3xm ant-form-item-has-success ant-form-item-horizontal",
+      "text": "自定义报告注释",
+      "onclick": false,
+      "href": "",
+      "size": "797x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "自定义报告注释",
+      "onclick": false,
+      "href": "",
+      "size": "797x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control css-1sdc3xm",
+      "text": "自定义报告注释",
+      "onclick": false,
+      "href": "",
+      "size": "797x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "自定义报告注释",
+      "onclick": false,
+      "href": "",
+      "size": "797x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "自定义报告注释",
+      "onclick": false,
+      "href": "",
+      "size": "797x22"
+    },
+    {
+      "tag": "LABEL",
+      "role": "",
+      "cls": "ant-checkbox-wrapper ant-checkbox-wrapper-in-form-item css-1sdc3xm",
+      "text": "自定义报告注释",
+      "onclick": false,
+      "href": "",
+      "size": "130x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "保 存",
+      "onclick": false,
+      "href": "",
+      "size": "869x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "保 存",
+      "onclick": false,
+      "href": "",
+      "size": "869x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-18 ant-col-sm-20 ant-col-md-22 css-1sdc3xm",
+      "text": "保 存",
+      "onclick": false,
+      "href": "",
+      "size": "797x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "保 存",
+      "onclick": false,
+      "href": "",
+      "size": "797x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "保 存",
+      "onclick": false,
+      "href": "",
+      "size": "797x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid",
+      "text": "保 存",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    }
+  ],
+  "overlay_elements": []
+}

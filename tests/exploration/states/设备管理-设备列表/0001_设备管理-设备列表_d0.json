@@ -1,0 +1,53 @@
+{
+  "label": "设备管理-设备列表_d0",
+  "url": "https://hospitalweb.xinjikang.cn/#/device?refresh=1786028576052&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+  "total_elements": 5,
+  "elements": [
+    {
+      "tag": "UL",
+      "role": "menu",
+      "cls": "ant-menu ant-menu-root ant-menu-inline ant-menu-light menu___1qUGa css-1sdc3xm",
+      "text": "工作台患者档案设备管理设备列表设备收发问卷管理账号管理数据管理运营配置操作日志随访管理",
+      "onclick": false,
+      "href": "",
+      "size": "199x572"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-default ant-btn-color-default ant-btn-variant-outlined mr-4 border-p tex",
+      "text": "小程序二维码",
+      "onclick": false,
+      "href": "",
+      "size": "138x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid",
+      "text": "新增设备",
+      "onclick": false,
+      "href": "",
+      "size": "88x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-default ant-btn-color-default ant-btn-variant-outlined",
+      "text": "重 置",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid ml-4",
+      "text": "查 询",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    }
+  ],
+  "overlay_elements": []
+}

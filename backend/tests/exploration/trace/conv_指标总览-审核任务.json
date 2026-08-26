@@ -1,0 +1,114 @@
+{
+  "timestamp": "2026-08-23T12:37:40.683856",
+  "pipeline": "functional_to_ui",
+  "test_cases_total": 1,
+  "exploration": {},
+  "conversions": [
+    {
+      "test_case_id": "24",
+      "case_name": "审核任务-待审核报告-跳转数据管理子页",
+      "module": "指标总览-审核任务",
+      "mode": "v2",
+      "status": "success",
+      "error": "",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面",
+            "expected": "页面正常加载"
+          },
+          {
+            "step": 2,
+            "action": "点击「待审核报告」卡片",
+            "expected": "跳转到数据管理子页"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含data-management",
+            "expected": "URL跳转正确"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "审核任务-待审核报告-跳转数据管理子页",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "goto",
+            "desc": "进入工作台页面，页面正常加载",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "click",
+            "desc": "点击待审核报告卡片，跳转到数据管理子页",
+            "args": {
+              "locator": "待审核报告"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证页面URL包含data-management，URL跳转正确",
+            "args": {
+              "locator": "data-management"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "actual_text": "工作台",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "待审核报告",
+            "action": "click",
+            "actual_text": "待审核报告",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「待审核报告」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：页面URL包含data-management', 'expected': 'URL跳转正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    }
+  ],
+  "summary": {
+    "success": 1,
+    "exploration_insufficient": 0,
+    "exploration_failed": 0,
+    "conversion_failed": 0,
+    "steps_missing": 0
+  }
+}

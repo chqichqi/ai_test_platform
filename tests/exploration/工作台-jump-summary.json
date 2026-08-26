@@ -1,0 +1,161 @@
+{
+  "nav": {},
+  "cards": {
+    "患者人数": {
+      "label": "患者人数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve",
+      "role": "button"
+    },
+    "新标签页，使用page.goto()直接访问该工作台URL": {
+      "label": "新标签页，使用page.goto()直接访问该工作台URL",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/workpanel",
+      "role": "link"
+    },
+    "室早": {
+      "label": "室早",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve",
+      "role": "button"
+    },
+    "室速": {
+      "label": "室速",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve",
+      "role": "button"
+    },
+    "房扑": {
+      "label": "房扑",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve",
+      "role": "button"
+    },
+    "房速": {
+      "label": "房速",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve",
+      "role": "button"
+    },
+    "持续性房颤": {
+      "label": "持续性房颤",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve",
+      "role": "button"
+    },
+    "阵发性房颤": {
+      "label": "阵发性房颤",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve",
+      "role": "button"
+    },
+    "心动过速": {
+      "label": "心动过速",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve",
+      "role": "button"
+    },
+    "待审核报告": {
+      "label": "待审核报告",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/fileaudit",
+      "role": "button"
+    },
+    "待审核周报": {
+      "label": "待审核周报",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/weeklyapproval",
+      "role": "button"
+    },
+    "待发货数": {
+      "label": "待发货数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/devicesend",
+      "role": "button"
+    },
+    "预约回收数": {
+      "label": "预约回收数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/devicesend",
+      "role": "button"
+    },
+    "项目个数": {
+      "label": "项目个数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/visitproject",
+      "role": "button"
+    },
+    "入组人数": {
+      "label": "入组人数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve",
+      "role": "button"
+    },
+    "进行中人数": {
+      "label": "进行中人数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/visitpatientmanage",
+      "role": "button"
+    },
+    "待随访人数": {
+      "label": "待随访人数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/visitpatientmanage",
+      "role": "button"
+    },
+    "延期人数": {
+      "label": "延期人数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/visitpatientmanage",
+      "role": "button"
+    },
+    "中止人数": {
+      "label": "中止人数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/visitpatientmanage",
+      "role": "button"
+    },
+    "自定义": {
+      "label": "自定义",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/workpanel/customCard",
+      "role": "button"
+    },
+    "房颤": {
+      "label": "房颤",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve",
+      "role": "button"
+    },
+    "待审核数据": {
+      "label": "待审核数据",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/fileaudit",
+      "role": "button"
+    }
+  },
+  "dropdowns": {},
+  "sub_menus": {}
+}

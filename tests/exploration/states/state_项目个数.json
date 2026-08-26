@@ -1,0 +1,719 @@
+{
+  "label": "项目个数",
+  "url": "https://hospitalweb.xinjikang.cn/#/visitproject?refresh=1785581359799&oId=9ee70b68673b4660af488e86a0112f68",
+  "total_elements": 79,
+  "elements": [
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "header-root flex-shrink-0 flex flex-row items-center justify-between w-full px-4 bg-white border-b-2",
+      "text": "心吉康心血管健康综合管理平台测试机构2026/08/01  星期六陈强",
+      "onclick": false,
+      "href": "",
+      "size": "1280x64"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-start",
+      "text": "心吉康心血管健康综合管理平台",
+      "onclick": false,
+      "href": "",
+      "size": "374x38"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-start text-normal333",
+      "text": "2026/08/01  星期六陈强",
+      "onclick": false,
+      "href": "",
+      "size": "303x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-dropdown-trigger p-1 ml-8 flex flex-row items-center justify-start cursor-pointer rounded-sm hov",
+      "text": "陈强",
+      "onclick": false,
+      "href": "",
+      "size": "102x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "layout-body w-full flex flex-row",
+      "text": "工作台患者档案设备管理设备列表设备收发问卷管理账号管理数据管理运营配置操作日志随访管理患者管理随访项目随访项目随访项目列表新增随访项目随访项目时间周期重 置查 ",
+      "onclick": false,
+      "href": "",
+      "size": "1280x836"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "工作台",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "患者档案",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "设备列表",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "设备收发",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "问卷管理",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "运营配置",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "操作日志",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "none",
+      "cls": "ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-open ant-menu-submenu-selected",
+      "text": "随访管理患者管理随访项目",
+      "onclick": false,
+      "href": "",
+      "size": "198x156"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "患者管理",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-selected ant-menu-item-only-child",
+      "text": "随访项目",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-breadcrumb-item",
+      "text": "随访项目",
+      "onclick": false,
+      "href": "",
+      "size": "56x22"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-breadcrumb-link cursor-pointer",
+      "text": "随访项目",
+      "onclick": false,
+      "href": "",
+      "size": "56x20"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "contianer-root flex flex-col items-start justify-start flex-1 overflow-x-auto ",
+      "text": "随访项目列表新增随访项目随访项目时间周期重 置查 询随访项目时间周期使用设备项目人数在组人数完成人数异常人数操作随访项目时间周期使用设备项目人数在组人数完成人数",
+      "onclick": false,
+      "href": "",
+      "size": "1080x836"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-between w-full mb-2",
+      "text": "随访项目列表新增随访项目",
+      "onclick": false,
+      "href": "",
+      "size": "1052x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center",
+      "text": "新增随访项目",
+      "onclick": false,
+      "href": "",
+      "size": "116x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid",
+      "text": "新增随访项目",
+      "onclick": false,
+      "href": "",
+      "size": "116x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-start justify-between w-full pt-6 pl-2 pr-4 bg-white rounded-md",
+      "text": "随访项目时间周期重 置查 询",
+      "onclick": false,
+      "href": "",
+      "size": "1052x77"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row css-1sdc3xm",
+      "text": "随访项目时间周期重 置查 询",
+      "onclick": false,
+      "href": "",
+      "size": "1039x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row flex flex-row items-start justify-start w-full px-0 css-1sdc3xm",
+      "text": "随访项目时间周期重 置查 询",
+      "onclick": false,
+      "href": "",
+      "size": "1039x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "随访项目",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "随访项目",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "随访项目",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "时间周期",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "时间周期",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "时间周期",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-start justify-end",
+      "text": "重 置查 询",
+      "onclick": false,
+      "href": "",
+      "size": "254x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center",
+      "text": "重 置查 询",
+      "onclick": false,
+      "href": "",
+      "size": "139x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-default ant-btn-color-default ant-btn-variant-outlined",
+      "text": "重 置",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid ml-4",
+      "text": "查 询",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-table-wrapper table___3Qqbh undefined  css-1sdc3xm",
+      "text": "随访项目时间周期使用设备项目人数在组人数完成人数异常人数操作随访项目时间周期使用设备项目人数在组人数完成人数异常人数操作CX-心脑科2000-01-01~209",
+      "onclick": false,
+      "href": "",
+      "size": "1052x269"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-table css-1sdc3xm ant-table-ping-right ant-table-fixed-header ant-table-fixed-column ant-table-s",
+      "text": "随访项目时间周期使用设备项目人数在组人数完成人数异常人数操作随访项目时间周期使用设备项目人数在组人数完成人数异常人数操作CX-心脑科2000-01-01~209",
+      "onclick": false,
+      "href": "",
+      "size": "1052x269"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-table-container",
+      "text": "随访项目时间周期使用设备项目人数在组人数完成人数异常人数操作随访项目时间周期使用设备项目人数在组人数完成人数异常人数操作CX-心脑科2000-01-01~209",
+      "onclick": false,
+      "href": "",
+      "size": "1052x269"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-table-header",
+      "text": "随访项目时间周期使用设备项目人数在组人数完成人数异常人数操作",
+      "onclick": false,
+      "href": "",
+      "size": "1052x55"
+    },
+    {
+      "tag": "THEAD",
+      "role": "",
+      "cls": "ant-table-thead",
+      "text": "随访项目时间周期使用设备项目人数在组人数完成人数异常人数操作",
+      "onclick": false,
+      "href": "",
+      "size": "1356x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-ellipsis",
+      "text": "随访项目",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "时间周期",
+      "onclick": false,
+      "href": "",
+      "size": "200x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "使用设备",
+      "onclick": false,
+      "href": "",
+      "size": "310x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "项目人数",
+      "onclick": false,
+      "href": "",
+      "size": "110x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "在组人数",
+      "onclick": false,
+      "href": "",
+      "size": "110x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "完成人数",
+      "onclick": false,
+      "href": "",
+      "size": "110x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "异常人数",
+      "onclick": false,
+      "href": "",
+      "size": "110x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-fix-right ant-table-cell-fix-right-first",
+      "text": "操作",
+      "onclick": false,
+      "href": "",
+      "size": "250x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-table-body",
+      "text": "随访项目时间周期使用设备项目人数在组人数完成人数异常人数操作CX-心脑科2000-01-01~2099-12-31贴心集8807详情新增患者项目成员测试机构20",
+      "onclick": false,
+      "href": "",
+      "size": "1052x214"
+    },
+    {
+      "tag": "TBODY",
+      "role": "",
+      "cls": "ant-table-tbody",
+      "text": "随访项目时间周期使用设备项目人数在组人数完成人数异常人数操作CX-心脑科2000-01-01~2099-12-31贴心集8807详情新增患者项目成员测试机构20",
+      "onclick": false,
+      "href": "",
+      "size": "1350x208"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "CX-心脑科2000-01-01~2099-12-31贴心集8807详情新增患者项目成员",
+      "onclick": false,
+      "href": "",
+      "size": "1350x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-ellipsis",
+      "text": "CX-心脑科",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "2000-01-01~2099-12-31",
+      "onclick": false,
+      "href": "",
+      "size": "200x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "贴心集",
+      "onclick": false,
+      "href": "",
+      "size": "310x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "8",
+      "onclick": false,
+      "href": "",
+      "size": "110x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "8",
+      "onclick": false,
+      "href": "",
+      "size": "110x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "0",
+      "onclick": false,
+      "href": "",
+      "size": "110x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "7",
+      "onclick": false,
+      "href": "",
+      "size": "110x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-fix-right ant-table-cell-fix-right-first",
+      "text": "详情新增患者项目成员",
+      "onclick": false,
+      "href": "",
+      "size": "250x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情新增患者项目成员",
+      "onclick": false,
+      "href": "",
+      "size": "218x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "测试机构2000-01-01~2099-12-31吉康维尔、贴心集、多通道心电记录仪、心电记录仪2120110详情新增患者项目成员",
+      "onclick": false,
+      "href": "",
+      "size": "1350x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-ellipsis",
+      "text": "测试机构",
+      "onclick": false,
+      "href": "",
+      "size": "150x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "2000-01-01~2099-12-31",
+      "onclick": false,
+      "href": "",
+      "size": "200x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "吉康维尔、贴心集、多通道心电记录仪、心电记录仪",
+      "onclick": false,
+      "href": "",
+      "size": "310x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "21",
+      "onclick": false,
+      "href": "",
+      "size": "110x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "20",
+      "onclick": false,
+      "href": "",
+      "size": "110x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "1",
+      "onclick": false,
+      "href": "",
+      "size": "110x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "10",
+      "onclick": false,
+      "href": "",
+      "size": "110x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-fix-right ant-table-cell-fix-right-first",
+      "text": "详情新增患者项目成员",
+      "onclick": false,
+      "href": "",
+      "size": "250x77"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情新增患者项目成员",
+      "onclick": false,
+      "href": "",
+      "size": "218x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "随访项目1-简称2026-04-15~2026-12-31吉康维尔、贴心集、多通道心电记录仪、心电记录仪131303详情新增患者",
+      "onclick": false,
+      "href": "",
+      "size": "1350x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-ellipsis",
+      "text": "随访项目1-简称",
+      "onclick": false,
+      "href": "",
+      "size": "150x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "2026-04-15~2026-12-31",
+      "onclick": false,
+      "href": "",
+      "size": "200x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "吉康维尔、贴心集、多通道心电记录仪、心电记录仪",
+      "onclick": false,
+      "href": "",
+      "size": "310x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "13",
+      "onclick": false,
+      "href": "",
+      "size": "110x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "13",
+      "onclick": false,
+      "href": "",
+      "size": "110x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "0",
+      "onclick": false,
+      "href": "",
+      "size": "110x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "3",
+      "onclick": false,
+      "href": "",
+      "size": "110x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-fix-right ant-table-cell-fix-right-first",
+      "text": "详情新增患者",
+      "onclick": false,
+      "href": "",
+      "size": "250x77"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情新增患者",
+      "onclick": false,
+      "href": "",
+      "size": "218x22"
+    }
+  ],
+  "overlay_elements": []
+}

@@ -1,0 +1,31 @@
+{
+  "module": "指标总览-审核任务",
+  "total_clicks": 2,
+  "pages": 1,
+  "clicks": [
+    {
+      "seq": 1,
+      "name": "工作台",
+      "actual_text": "工作台",
+      "action": "navigate",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1787488433059&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1787488433059&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 2,
+      "name": "待审核报告",
+      "actual_text": "待审核报告",
+      "action": "click",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1787488433059&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/fileaudit?refresh=1787488433059&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "jump",
+      "strategy": "text_exact",
+      "error": ""
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+"""
+Playwright MCP 客户端 — 纯协议层封装。
+启动 @playwright/mcp 子进程，通过 JSON-RPC/stdio 通信。
+不包含任何项目特定的业务逻辑，任何项目直接可用。
+"""
+
+import subprocess, json, threading, queue, os, tempfile
+from typing import Optional, Any, Dict, List
+from app.core.logger import logger
+
+
+class PlaywrightMCPClient:
+    """
+    Playwright MCP 协议客户端。
+    启动 @playwright/mcp 子进程，通过 stdio JSON-RPC 通信。
+    支持传入 storage_state 以复用登录态。
+    """
+
+    def __init__(self, storage_state: Optional[str] = None,
+                 headless: bool = False, viewport_width: int = 1280, viewport_height: int = 900):
+        self._process: Optional[subprocess.Popen] = None
+        self._req_id = 0
+        self._lock = threading.Lock()
+        self._pending: Dict[int, queue.Queue] = {}
+        self._reader_thread: Optional[threading.Thread] = None
+        self._storage_state = storage_state
+        self._headless = headless
+        self._viewport = f"{viewport_width},{viewport_height}"
+
+    # ── 生命周期 ──
+
+    def start(self) -> bool:
+        """启动 MCP 子进程并完成 MCP 握手"""
+        if self._process:
+            return True
+        try:
+            npx = "npx.cmd" if os.name == "nt" else "npx"
+            cmd = [npx, "@playwright/mcp@latest",
+                   "--isolated",
+                   f"--viewport-size={self._viewport}"]
+            if self._headless:
+                cmd.append("--headless")
+
+            self._state_file = None
+            if self._storage_state:
+                self._state_file = tempfile.NamedTemporaryFile(
+                    mode='w', suffix='.json', delete=False, encoding='utf-8')
+                self._state_file.write(self._storage_state)
+                self._state_file.close()
+                cmd.append(f"--storage-state={self._state_file.name}")
+
+            logger.info(f"[MCP] 启动: {' '.join(cmd)}")
+            self._process = subprocess.Popen(
+                cmd,
+                stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                text=True, bufsize=1, encoding='utf-8', errors='replace',
+            )
+            self._reader_thread = threading.Thread(target=self._read_loop, daemon=True)
+            self._reader_thread.start()
+
+            # MCP 握手
+            self._request("initialize", {
+                "protocolVersion": "2024-11-05",
+                "capabilities": {},
+                "clientInfo": {"name": "ai-test-platform", "version": "1.0"},
+            })
+            self._notify("notifications/initialized")
+            logger.info("[MCP] Playwright MCP 子进程已启动")
+            return True
+        except Exception as e:
+            logger.error(f"[MCP] 启动失败: {e}")
+            return False
+
+    def stop(self):
+        """关闭 MCP 子进程"""
+        if self._process:
+            try:
+                self._process.terminate()
+                self._process.wait(timeout=5)
+            except Exception:
+                self._process.kill()
+            self._process = None
+            logger.info("[MCP] 子进程已关闭")
+
+    # ── JSON-RPC 通信 ──
+
+    def _read_loop(self):
+        """后台读取 MCP 子进程 stdout + stderr（新行分隔 JSON）"""
+        def _read(pipe):
+            while self._process and self._process.poll() is None:
+                line = pipe.readline()
+                if not line:
+                    break
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    msg = json.loads(line)
+                    rid = msg.get("id")
+                    if rid is not None and rid in self._pending:
+                        self._pending[rid].put(msg)
+                except json.JSONDecodeError:
+                    pass
+
+        threading.Thread(target=_read, args=(self._process.stdout,), daemon=True).start()
+        threading.Thread(target=_read, args=(self._process.stderr,), daemon=True).start()
+
+    def _request(self, method: str, params: Optional[dict] = None, timeout: int = 60) -> dict:
+        """发送 JSON-RPC 请求，同步等待响应"""
+        with self._lock:
+            rid = self._req_id + 1
+            self._req_id = rid
+        q = queue.Queue()
+        self._pending[rid] = q
+        payload = {"jsonrpc": "2.0", "id": rid, "method": method}
+        if params:
+            payload["params"] = params
+        self._process.stdin.write(json.dumps(payload, ensure_ascii=False) + "\n")
+        self._process.stdin.flush()
+        try:
+            resp = q.get(timeout=timeout)
+            del self._pending[rid]
+            if "error" in resp:
+                raise RuntimeError(f"MCP error: {resp['error']}")
+            return resp.get("result", {})
+        except queue.Empty:
+            del self._pending[rid]
+            raise RuntimeError(f"MCP timeout: {method}")
+
+    def _notify(self, method: str, params: Optional[dict] = None):
+        """发送 JSON-RPC 通知（无响应）"""
+        payload = {"jsonrpc": "2.0", "method": method}
+        if params:
+            payload["params"] = params
+        self._process.stdin.write(json.dumps(payload, ensure_ascii=False) + "\n")
+        self._process.stdin.flush()
+
+    # ── 通用 MCP 工具调用 ──
+
+    def list_tools(self) -> List[dict]:
+        """列出 MCP 提供的所有工具"""
+        return self._request("tools/list").get("tools", [])
+
+    def call_tool(self, name: str, arguments: dict = None) -> Any:
+        """通用 MCP 工具调用，返回原始 result dict"""
+        return self._request("tools/call", {
+            "name": name,
+            "arguments": arguments or {},
+        })
+
+    # ── 协议级快捷方法（纯封装，零业务逻辑）──
+
+    def navigate(self, url: str) -> dict:
+        """导航到 URL，返回 MCP 原始响应"""
+        return self.call_tool("browser_navigate", {"url": url})
+
+    def snapshot(self) -> dict:
+        """获取无障碍树快照，返回 MCP 原始响应 dict"""
+        return self.call_tool("browser_snapshot")
+
+    def click(self, ref: str) -> dict:
+        """通过无障碍树 ref 点击元素"""
+        return self.call_tool("browser_click", {"element": "element", "ref": ref})
+
+    def go_back(self) -> dict:
+        """浏览器后退"""
+        return self.call_tool("browser_navigate_back")
+
+    def evaluate(self, js_function: str) -> dict:
+        """在页面中执行 JavaScript，返回 MCP 原始响应"""
+        return self.call_tool("browser_evaluate", {"function": js_function})
+
+    def press_key(self, key: str) -> dict:
+        """按键盘按键"""
+        return self.call_tool("browser_press_key", {"key": key})
+
+    def hover(self, ref: str) -> dict:
+        """悬停在元素上"""
+        return self.call_tool("browser_hover", {"element": "element", "ref": ref})
+
+    def take_screenshot(self) -> dict:
+        """截取页面截图"""
+        return self.call_tool("browser_take_screenshot")
+
+    # ── 辅助 ──
+
+    @staticmethod
+    def extract_text(result: dict) -> str:
+        """从 MCP tool 响应中提取文本内容（content[0].text）"""
+        if isinstance(result, dict):
+            content = result.get("content", [])
+            if isinstance(content, list) and content:
+                return content[0].get("text", "")
+        return ""
+
+    @staticmethod
+    def extract_result_section(text: str) -> str:
+        """从 browser_evaluate 的文本响应中提取 ### Result 块"""
+        import re
+        m = re.search(r'### Result\n(.*?)\n###', text, re.DOTALL)
+        if m:
+            return m.group(1).strip()
+        m = re.search(r'### Error\n(.*?)\n###', text, re.DOTALL)
+        if m:
+            raise RuntimeError(f"MCP evaluate error: {m.group(1).strip()[:200]}")
+        return ""
+
+
+# ── 工具函数 ──
+
+async def export_storage_state(page) -> str:
+    """从 Playwright page 导出 storage_state JSON 字符串（cookies + localStorage）"""
+    state = await page.context.storage_state()
+    return json.dumps(state, ensure_ascii=False)

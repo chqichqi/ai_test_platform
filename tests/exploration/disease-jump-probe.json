@@ -1,0 +1,47 @@
+{
+  "室早": {
+    "url": "https://hospitalweb.tt.xinjikang.cn:8443/#/patientarchieve?refresh=1779717868630&oId=2a2bf57a79ab42369348f909983b4b3b&exceptionType=ventricularPremature",
+    "tabs": [
+      "全部",
+      "我的患者"
+    ],
+    "filter_tags": [
+      "室早"
+    ],
+    "disease_in_body": true
+  },
+  "房颤": {
+    "url": "https://hospitalweb.tt.xinjikang.cn:8443/#/patientarchieve?refresh=1779717868630&oId=2a2bf57a79ab42369348f909983b4b3b&exceptionType=atrialFibrillation",
+    "tabs": [
+      "全部",
+      "我的患者"
+    ],
+    "filter_tags": [
+      "房颤",
+      "15 条/页"
+    ],
+    "disease_in_body": true
+  },
+  "心动过速": {
+    "url": "https://hospitalweb.tt.xinjikang.cn:8443/#/patientarchieve?refresh=1779717868630&oId=2a2bf57a79ab42369348f909983b4b3b&exceptionType=tachycardia",
+    "tabs": [
+      "全部",
+      "我的患者"
+    ],
+    "filter_tags": [
+      "心动过速"
+    ],
+    "disease_in_body": true
+  },
+  "持续性房颤": {
+    "url": "https://hospitalweb.tt.xinjikang.cn:8443/#/patientarchieve?refresh=1779717868630&oId=2a2bf57a79ab42369348f909983b4b3b&exceptionType=persistent_af",
+    "tabs": [
+      "全部",
+      "我的患者"
+    ],
+    "filter_tags": [
+      "持续性房颤"
+    ],
+    "disease_in_body": true
+  }
+}

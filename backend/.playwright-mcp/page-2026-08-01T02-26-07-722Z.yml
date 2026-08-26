@@ -1,0 +1,222 @@
+- generic [ref=e5]:
+  - generic [ref=e6]:
+    - generic [ref=e7]:
+      - img "logo" [ref=e8]
+      - generic [ref=e9]: 心吉康心血管健康综合管理平台
+    - generic [ref=e36]: 测试机构
+    - generic [ref=e10]:
+      - generic [ref=e13]: 2026/08/01 星期
+      - generic [ref=e14]: 六
+      - generic [ref=e15] [cursor=pointer]: 陈强
+  - generic [ref=e19]:
+    - menu [ref=e38]:
+      - menuitem "工作台" [ref=e39] [cursor=pointer]
+      - menuitem "患者档案" [ref=e42] [cursor=pointer]
+      - menuitem "设备管理" [expanded] [ref=e45] [cursor=pointer]
+      - menu [ref=e19499]:
+        - menuitem "设备列表" [ref=e19500] [cursor=pointer]
+        - menuitem "设备收发" [ref=e19502] [cursor=pointer]
+      - menuitem "问卷管理" [ref=e48] [cursor=pointer]
+      - menuitem "账号管理" [ref=e51] [cursor=pointer]
+      - menuitem "数据管理" [expanded] [ref=e54] [cursor=pointer]
+      - menu [ref=e17965]:
+        - menuitem "文件审核" [ref=e17966] [cursor=pointer]
+        - menuitem "内部报告" [ref=e17968] [cursor=pointer]
+        - menuitem "健康报告" [ref=e17970] [cursor=pointer]
+        - menuitem "周报审核" [ref=e17972] [cursor=pointer]
+      - menuitem "运营配置" [ref=e57] [cursor=pointer]
+      - menuitem "操作日志" [ref=e60] [cursor=pointer]
+      - menuitem "随访管理" [ref=e63] [cursor=pointer]
+    - generic [ref=e21]:
+      - navigation [ref=e2201]:
+        - list [ref=e2202]:
+          - listitem [ref=e2203]: 设备收发
+      - generic [ref=e19505]:
+        - generic [ref=e19506]:
+          - generic [ref=e19507]: 设备收发
+          - button "线下快速回收" [ref=e19509] [cursor=pointer]
+        - generic [ref=e19511]:
+          - generic [ref=e19512]:
+            - tablist [ref=e19513]:
+              - generic [ref=e19515]:
+                - tab "全部" [ref=e19517] [cursor=pointer]
+                - tab "待发货" [selected] [ref=e19519] [cursor=pointer]
+                - tab "已发货" [ref=e19521] [cursor=pointer]
+                - tab "待回收" [ref=e19523] [cursor=pointer]
+                - tab "已预约回收" [ref=e19525] [cursor=pointer]
+                - tab "已退回" [ref=e19527] [cursor=pointer]
+            - generic:
+              - generic:
+                - tabpanel "待发货"
+          - generic [ref=e19532]:
+            - generic [ref=e19536]:
+              - generic "姓名" [ref=e19538]: "姓名 :"
+              - textbox "姓名 :" [ref=e19543]:
+                - /placeholder: 请输入
+            - generic [ref=e19548]:
+              - generic "手机号码" [ref=e19550]: "手机号码 :"
+              - textbox "手机号码 :" [ref=e19555]:
+                - /placeholder: 请输入
+            - generic [ref=e19560]:
+              - generic "设备类型" [ref=e19562]: "设备类型 :"
+              - generic [ref=e19568] [cursor=pointer]:
+                - combobox "设备类型 :" [ref=e19570]
+                - generic: 请选择
+            - generic [ref=e19574]:
+              - generic "发放方式" [ref=e19576]: "发放方式 :"
+              - generic [ref=e19582] [cursor=pointer]:
+                - combobox "发放方式 :" [ref=e19584]
+                - generic: 请选择
+            - generic [ref=e19588]:
+              - generic "设备编号" [ref=e19590]: "设备编号 :"
+              - textbox "设备编号 :" [ref=e19595]:
+                - /placeholder: 请输入
+            - generic [ref=e19600]:
+              - generic "物流状态" [ref=e19602]: "物流状态 :"
+              - generic [ref=e19608]:
+                - combobox "物流状态 :" [disabled] [ref=e19610]
+                - generic "待回收" [ref=e21566]
+            - generic [ref=e19615]:
+              - generic "发货时间" [ref=e19617]: "发货时间 :"
+              - generic [ref=e19622]:
+                - textbox "发货时间 :" [ref=e19623]:
+                  - /placeholder: 请选择
+                - generic:
+                  - img "calendar"
+            - generic [ref=e19627]:
+              - generic "编号" [ref=e19629]: "编号 :"
+              - textbox "编号 :" [ref=e19634]:
+                - /placeholder: 请输入
+            - generic [ref=e19639]:
+              - generic "发放类型" [ref=e19641]: "发放类型 :"
+              - generic [ref=e19647] [cursor=pointer]:
+                - combobox "发放类型 :" [ref=e19649]
+                - generic: 请选择
+            - generic [ref=e19653]:
+              - generic "发货来源" [ref=e19655]: "发货来源 :"
+              - generic [ref=e19661] [cursor=pointer]:
+                - combobox "发货来源 :" [ref=e19663]
+                - generic: 请选择
+            - generic [ref=e19685]:
+              - button "重 置" [ref=e19686] [cursor=pointer]
+              - button "查 询" [ref=e19688] [cursor=pointer]
+              - generic [ref=e19690] [cursor=pointer]:
+                - generic [ref=e19691]: 收起
+                - img "up" [ref=e19692]
+        - generic [ref=e19701]:
+          - table [ref=e21587]:
+            - rowgroup [ref=e21605]:
+              - row [ref=e21606]:
+                - columnheader "编号" [ref=e21607]
+                - columnheader "姓名" [ref=e21608]
+                - columnheader "手机号码" [ref=e21609]
+                - columnheader "发放类型" [ref=e21610]
+                - columnheader "发货时间" [ref=e21611]
+                - columnheader "发货来源" [ref=e21612]
+                - columnheader "项目名称" [ref=e21613]
+                - columnheader "项目阶段" [ref=e21614]
+                - columnheader "发货备注" [ref=e21615]
+                - columnheader "发放方式" [ref=e21616]
+                - columnheader "设备类型" [ref=e21617]
+                - columnheader "设备编号" [ref=e21618]
+                - columnheader "异常提示" [ref=e21619]
+                - columnheader "物流状态" [ref=e21620]
+                - columnheader "操作" [ref=e21621]
+                - columnheader [ref=e21622]
+          - table [ref=e21624]:
+            - rowgroup [ref=e21641]:
+              - row [ref=e21797]:
+                - cell "-" [ref=e21643]
+                - cell "薛成" [ref=e21644]
+                - cell "13333333399" [ref=e21645]
+                - cell "正常发货" [ref=e21646]
+                - cell "2025-09-30" [ref=e21647]
+                - cell "档案发货" [ref=e21650]
+                - cell "-" [ref=e21652]
+                - cell "-" [ref=e21654]
+                - cell "-" [ref=e21656]
+                - cell "邮寄" [ref=e21658]
+                - cell "贴心集" [ref=e21659]
+                - cell "R020007412502" [ref=e21661]
+                - cell "设备从签收超过305..." [ref=e21662]
+                - cell [ref=e21665]
+                - cell "详情 回收设备" [ref=e21798]:
+                  - generic [ref=e21669]:
+                    - generic [ref=e21670] [cursor=pointer]: 详情
+                    - generic [ref=e21671] [cursor=pointer]: 回收设备
+              - row [ref=e21799]:
+                - cell "-" [ref=e21674]
+                - cell "1111111111" [ref=e21675]
+                - cell "13981739395" [ref=e21676]
+                - cell "正常发货" [ref=e21677]
+                - cell "2025-09-25" [ref=e21678]
+                - cell "档案发货" [ref=e21681]
+                - cell "-" [ref=e21683]
+                - cell "-" [ref=e21685]
+                - cell "-" [ref=e21687]
+                - cell "邮寄" [ref=e21689]
+                - cell "吉康维尔" [ref=e21690]
+                - cell "JK30000112212" [ref=e21692]
+                - cell "设备从签收超过310..." [ref=e21693]
+                - cell [ref=e21696]
+                - cell "详情 回收设备" [ref=e21800]:
+                  - generic [ref=e21700]:
+                    - generic [ref=e21701] [cursor=pointer]: 详情
+                    - generic [ref=e21702] [cursor=pointer]: 回收设备
+              - row [ref=e21801]:
+                - cell "-" [ref=e21705]
+                - cell "张法真" [ref=e21706]
+                - cell "10026102004" [ref=e21707]
+                - cell "正常发货" [ref=e21708]
+                - cell "2025-08-14" [ref=e21709]
+                - cell "档案发货" [ref=e21712]
+                - cell "-" [ref=e21714]
+                - cell "-" [ref=e21716]
+                - cell "-" [ref=e21718]
+                - cell "邮寄" [ref=e21720]
+                - cell "吉康维尔" [ref=e21721]
+                - cell "JK30035912005" [ref=e21723]
+                - cell "设备从签收超过351..." [ref=e21724]
+                - cell [ref=e21727]
+                - cell "详情 回收设备" [ref=e21802]:
+                  - generic [ref=e21731]:
+                    - generic [ref=e21732] [cursor=pointer]: 详情
+                    - generic [ref=e21733] [cursor=pointer]: 回收设备
+              - row [ref=e21803]:
+                - cell "-" [ref=e21736]
+                - cell "用户4928(测试）" [ref=e21737]
+                - cell "18328984928" [ref=e21738]
+                - cell "正常发货" [ref=e21739]
+                - cell "2025-04-26" [ref=e21740]
+                - cell "项目发货" [ref=e21743]
+                - cell "测试机构" [ref=e21745]
+                - cell "第2阶段" [ref=e21747]
+                - cell "-" [ref=e21749]
+                - cell "邮寄" [ref=e21751]
+                - cell "贴心集" [ref=e21752]
+                - cell "RXD_050A92B64" [ref=e21754]
+                - cell "设备从签收超过310..." [ref=e21755]
+                - cell [ref=e21758]
+                - cell "详情 回收设备" [ref=e21804]:
+                  - generic [ref=e21762]:
+                    - generic [ref=e21763] [cursor=pointer]: 详情
+                    - generic [ref=e21764] [cursor=pointer]: 回收设备
+              - row [ref=e21805]:
+                - cell "-" [ref=e21767]
+                - cell "患者9999" [ref=e21768]
+                - cell "15555559999" [ref=e21769]
+                - cell "正常发货" [ref=e21770]
+                - cell "2024-11-07" [ref=e21771]
+                - cell "档案发货" [ref=e21774]
+                - cell "-" [ref=e21776]
+                - cell "-" [ref=e21778]
+                - cell "-" [ref=e21780]
+                - cell "邮寄" [ref=e21782]
+                - cell "吉康维尔" [ref=e21783]
+                - cell "JK30036612005" [ref=e21785]
+                - cell "设备从签收超过631..." [ref=e21786]
+                - cell [ref=e21789]
+                - cell "详情 回收设备" [ref=e21806]:
+                  - generic [ref=e21793]:
+                    - generic [ref=e21794] [cursor=pointer]: 详情
+                    - generic [ref=e21795] [cursor=pointer]: 回收设备

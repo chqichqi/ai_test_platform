@@ -1,0 +1,503 @@
+{
+  "label": "设备列表",
+  "url": "https://hospitalweb.xinjikang.cn/#/device?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68",
+  "total_elements": 55,
+  "elements": [
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "header-root flex-shrink-0 flex flex-row items-center justify-between w-full px-4 bg-white border-b-2",
+      "text": "心吉康心血管健康综合管理平台测试机构2026/08/01  星期六陈强",
+      "onclick": false,
+      "href": "",
+      "size": "1280x64"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-start",
+      "text": "心吉康心血管健康综合管理平台",
+      "onclick": false,
+      "href": "",
+      "size": "374x38"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-start text-normal333",
+      "text": "2026/08/01  星期六陈强",
+      "onclick": false,
+      "href": "",
+      "size": "303x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-dropdown-trigger p-1 ml-8 flex flex-row items-center justify-start cursor-pointer rounded-sm hov",
+      "text": "陈强",
+      "onclick": false,
+      "href": "",
+      "size": "102x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "layout-body w-full flex flex-row",
+      "text": "工作台患者档案设备管理设备列表设备收发问卷管理账号管理数据管理文件审核内部报告健康报告周报审核运营配置操作日志随访管理设备列表设备列表小程序二维码新增设备设备类",
+      "onclick": false,
+      "href": "",
+      "size": "1280x836"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "工作台",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "患者档案",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-active ant-menu-item-selected ant-menu-item-only-child",
+      "text": "设备列表",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "设备收发",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "问卷管理",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "文件审核",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "内部报告",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "健康报告",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "周报审核",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "运营配置",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "操作日志",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-breadcrumb-item",
+      "text": "设备列表",
+      "onclick": false,
+      "href": "",
+      "size": "56x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "contianer-root flex flex-col items-start justify-start flex-1 overflow-x-auto ",
+      "text": "设备列表小程序二维码新增设备设备类型 请选择设备编号绑定手机绑定用户设备状态请选择重 置查 询收起设备类型设备编号绑定用户设备状态操作设备类型设备编号绑定用户设",
+      "onclick": false,
+      "href": "",
+      "size": "1080x836"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-between w-full mb-2",
+      "text": "设备列表小程序二维码新增设备",
+      "onclick": false,
+      "href": "",
+      "size": "1052x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center",
+      "text": "小程序二维码新增设备",
+      "onclick": false,
+      "href": "",
+      "size": "239x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-default ant-btn-color-default ant-btn-variant-outlined mr-4 border-p tex",
+      "text": "小程序二维码",
+      "onclick": false,
+      "href": "",
+      "size": "138x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid",
+      "text": "新增设备",
+      "onclick": false,
+      "href": "",
+      "size": "88x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-start justify-between w-full pt-6 pl-2 pr-4 bg-white rounded-md",
+      "text": "设备类型 请选择设备编号绑定手机绑定用户设备状态请选择重 置查 询收起",
+      "onclick": false,
+      "href": "",
+      "size": "1052x133"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row css-1sdc3xm",
+      "text": "设备类型 请选择设备编号绑定手机绑定用户设备状态请选择重 置查 询收起",
+      "onclick": false,
+      "href": "",
+      "size": "1039x112"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row flex flex-row items-start justify-start w-full px-0 css-1sdc3xm",
+      "text": "设备类型 请选择设备编号绑定手机绑定用户设备状态请选择重 置查 询收起",
+      "onclick": false,
+      "href": "",
+      "size": "1039x112"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "设备类型 请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "设备类型 请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "设备类型",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-18 ant-col-md-20 css-1sdc3xm",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "设备编号",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "设备编号",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "设备编号",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "绑定手机",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "绑定手机",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "绑定手机",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "绑定用户",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "绑定用户",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "绑定用户",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "设备状态请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "设备状态请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "设备状态",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-18 ant-col-md-20 css-1sdc3xm",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-start justify-end",
+      "text": "重 置查 询收起",
+      "onclick": false,
+      "href": "",
+      "size": "254x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center",
+      "text": "重 置查 询收起",
+      "onclick": false,
+      "href": "",
+      "size": "209x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-default ant-btn-color-default ant-btn-variant-outlined",
+      "text": "重 置",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid ml-4",
+      "text": "查 询",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ml-6 flex items-center text-text-primary cursor-pointer",
+      "text": "收起",
+      "onclick": false,
+      "href": "",
+      "size": "49x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-placeholder",
+      "text": "暂无数据暂无数据",
+      "onclick": false,
+      "href": "",
+      "size": "1052x306"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-table-expanded-row-fixed",
+      "text": "暂无数据暂无数据",
+      "onclick": false,
+      "href": "",
+      "size": "1052x306"
+    }
+  ],
+  "overlay_elements": []
+}

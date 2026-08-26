@@ -1,0 +1,14 @@
+{
+  "exploration_anti_patterns": [
+    {"id": "EXP001", "pattern": "跳过P1登录直接导航", "severity": "block", "reason": "未登录状态下 SPA 路由守卫会拦截，导致页面为空白/loading"},
+    {"id": "EXP002", "pattern": "URL不加鉴权参数", "severity": "block", "reason": "不带 oId/refresh 参数跳转会被重定向到登录页"},
+    {"id": "EXP003", "pattern": "使用CSS/XPath选择器", "severity": "block", "reason": "必须用语义化 role+name 描述元素"},
+    {"id": "EXP004", "pattern": "探索时点击确认/保存/提交按钮", "severity": "block", "reason": "会在系统中产生脏数据"},
+    {"id": "EXP005", "pattern": "无限递归不设上限", "severity": "block", "reason": "max_pages 未设置会导致探索永不终止"},
+    {"id": "EXP006", "pattern": "弹窗内不执行P3被动发现", "severity": "warn", "reason": "弹窗中的表单字段、按钮等元素会被遗漏"},
+    {"id": "EXP007", "pattern": "下拉框只记录不试选", "severity": "warn", "reason": "不试选无法知道筛选后的实际效果"},
+    {"id": "EXP008", "pattern": "子Tab不递归探索", "severity": "warn", "reason": "遗漏嵌套Tab内的交互元素"},
+    {"id": "EXP009", "pattern": "硬编码选择器/关键词", "severity": "warn", "reason": "换系统时必须改动源码，应集中在 ExplorationConfig"},
+    {"id": "EXP010", "pattern": "探索结果有error仍保存", "severity": "block", "reason": "错误结果被缓存后，覆盖度检查失效"}
+  ]
+}

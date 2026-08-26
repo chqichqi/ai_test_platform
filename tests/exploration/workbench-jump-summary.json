@@ -1,0 +1,258 @@
+{
+  "nav": {
+    "患者档案": {
+      "label": "患者档案",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve"
+    },
+    "问卷管理": {
+      "label": "问卷管理",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/surveymanage"
+    },
+    "运营配置": {
+      "label": "运营配置",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/operatorconfiguration"
+    },
+    "操作日志": {
+      "label": "操作日志",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/operatorlog"
+    }
+  },
+  "cards": {
+    "患者概览": {
+      "label": "患者概览",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "患者人数": {
+      "label": "患者人数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve"
+    },
+    "疾病统计": {
+      "label": "疾病统计",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "室早室性": {
+      "label": "室早室性",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve"
+    },
+    "室速室性": {
+      "label": "室速室性",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve"
+    },
+    "室颤室性": {
+      "label": "室颤室性",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve"
+    },
+    "房颤房性": {
+      "label": "房颤房性",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve"
+    },
+    "房速房性": {
+      "label": "房速房性",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve"
+    },
+    "房扑房性": {
+      "label": "房扑房性",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve"
+    },
+    "房早房性": {
+      "label": "房早房性",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve"
+    },
+    "心动过速": {
+      "label": "心动过速",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve"
+    },
+    "心动过缓": {
+      "label": "心动过缓",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve"
+    },
+    "停搏窦性": {
+      "label": "停搏窦性",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve"
+    },
+    "审核任务": {
+      "label": "审核任务",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "物流看板": {
+      "label": "物流看板",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "待发货数": {
+      "label": "待发货数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/devicesend"
+    },
+    "随访监控": {
+      "label": "随访监控",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "入组人数": {
+      "label": "入组人数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve"
+    },
+    "项目个数": {
+      "label": "项目个数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/visitproject"
+    },
+    "延期人数": {
+      "label": "延期人数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/visitpatientmanage"
+    },
+    "中止人数": {
+      "label": "中止人数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/visitpatientmanage"
+    },
+    "房颤预警": {
+      "label": "房颤预警",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "持续性房颤": {
+      "label": "持续性房颤",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve"
+    },
+    "阵发性房颤": {
+      "label": "阵发性房颤",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve"
+    },
+    "二联律节律": {
+      "label": "二联律节律",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve"
+    },
+    "三联律节律": {
+      "label": "三联律节律",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve"
+    },
+    "待审核数据": {
+      "label": "待审核数据",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/fileaudit"
+    },
+    "待审核报告": {
+      "label": "待审核报告",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/fileaudit"
+    },
+    "待审核周报": {
+      "label": "待审核周报",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/weeklyapproval"
+    },
+    "预约回收数": {
+      "label": "预约回收数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/devicesend"
+    },
+    "待随访人数": {
+      "label": "待随访人数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/visitpatientmanage"
+    },
+    "进行中人数": {
+      "label": "进行中人数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/visitpatientmanage"
+    },
+    "指标总览自定义": {
+      "label": "指标总览自定义",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/workpanel/customCard"
+    },
+    "佩戴预警 (0)": {
+      "label": "佩戴预警 (0)",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "测量预警 (0)": {
+      "label": "测量预警 (0)",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "Smart 报告(份)": {
+      "label": "Smart 报告(份)",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve"
+    },
+    "心吉康心血管健康综合管理平台": {
+      "label": "心吉康心血管健康综合管理平台",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "2026/08/01  星期六陈强": {
+      "label": "2026/08/01  星期六陈强",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    }
+  }
+}

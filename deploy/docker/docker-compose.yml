@@ -1,0 +1,140 @@
+version: '3.8'
+
+services:
+  # PostgreSQL数据库
+  postgres:
+    image: postgres:15-alpine
+    container_name: ai-test-platform-postgres
+    environment:
+      POSTGRES_DB: ai_test_platform
+      POSTGRES_USER: ai_test_user
+      POSTGRES_PASSWORD: ai_test_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - ai-test-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ai_test_user -d ai_test_platform"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis缓存
+  redis:
+    image: redis:7-alpine
+    container_name: ai-test-platform-redis
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - ai-test-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # 后端API服务
+  backend:
+    build:
+      context: ../..
+      dockerfile: deploy/docker/Dockerfile.backend
+    container_name: ai-test-platform-backend
+    environment:
+      - APP_ENV=production
+      - DATABASE_URL=postgresql://ai_test_user:ai_test_password@postgres:5432/ai_test_platform
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=${SECRET_KEY:-your-secret-key-change-in-production}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY:-your-jwt-secret-key-change-in-production}
+    volumes:
+      - uploads_data:/app/data/uploads
+      - vector_store_data:/app/data/vector_store
+      - logs_data:/app/logs
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - ai-test-network
+    restart: unless-stopped
+
+  # 前端Web服务
+  frontend:
+    build:
+      context: ../..
+      dockerfile: deploy/docker/Dockerfile.frontend
+    container_name: ai-test-platform-frontend
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000/api/v1
+      - REACT_APP_ENV=production
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - ai-test-network
+    restart: unless-stopped
+
+  # Nginx反向代理（可选）
+  nginx:
+    image: nginx:alpine
+    container_name: ai-test-platform-nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      - ai-test-network
+    restart: unless-stopped
+
+  # 数据库管理（可选）
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: ai-test-platform-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@ai-test-platform.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - ai-test-network
+    restart: unless-stopped
+
+  # Redis管理（可选）
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: ai-test-platform-redis-commander
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis
+    networks:
+      - ai-test-network
+    restart: unless-stopped
+
+networks:
+  ai-test-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  redis_data:
+  uploads_data:
+  vector_store_data:
+  logs_data:

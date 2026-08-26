@@ -1,0 +1,69 @@
+﻿--- 校正前 test_steps（step3 应为 点击「重置」）
+  step1: 进入「工作台」页面，确认工作台无指标A
+  step2: 点击「自定义」按钮
+  step3: 点击「重置」按钮
+  step4: 点击「保存布局」按钮
+  step5: 验证：返回工作台后指标A仍未显示
+[32m2026-08-23 20:12:30[0m | [1mINFO    [0m | [36mapp.core.services.functional_to_ui_service[0m:[36m_parse_and_group_steps[0m:[36m1762[0m - [1m[FunctionalToUI] 步骤解析完成: {'指标总览-自定义': 5}[0m
+[32m2026-08-23 20:12:30[0m | [1mINFO    [0m | [36mapp.core.services.functional_to_ui_service[0m:[36mconvert_cases_with_exploration[0m:[36m1224[0m - [1m[FunctionalToUI] 用例涉及 1 个模块: ['指标总览-自定义'][0m
+[32m2026-08-23 20:12:30[0m | [1mINFO    [0m | [36mapp.core.services.functional_to_ui_service[0m:[36mconvert_cases_with_exploration[0m:[36m1233[0m - [1m[FunctionalToUI] 强制探索模式：1 个模块将全部重新探索[0m
+[32m2026-08-23 20:12:30[0m | [1mINFO    [0m | [36mapp.core.services.functional_to_ui_service[0m:[36mconvert_cases_with_exploration[0m:[36m1249[0m - [1m[FunctionalToUI] 开始步骤驱动探索 1 个模块: ['指标总览-自定义'][0m
+[32m2026-08-23 20:12:40[0m | [1mINFO    [0m | [36mapp.core.services.login_engine[0m:[36mlogin_with_ui_case[0m:[36m442[0m - [1m[LoginViaUI] 执行 __login__ 步骤（9步）user=13981739395[0m
+[32m2026-08-23 20:12:41[0m | [1mINFO    [0m | [36mapp.core.services.login_engine[0m:[36m_h_fill[0m:[36m510[0m - [1m[LoginViaUI] fill ✓ 输入：帐号[0m
+[32m2026-08-23 20:12:41[0m | [1mINFO    [0m | [36mapp.core.services.login_engine[0m:[36m_h_fill[0m:[36m510[0m - [1m[LoginViaUI] fill ✓ 输入：密码[0m
+[32m2026-08-23 20:12:42[0m | [1mINFO    [0m | [36mapp.core.services.login_engine[0m:[36m_h_click[0m:[36m526[0m - [1m[LoginViaUI] click ✓ 点击：登录按钮[0m
+[32m2026-08-23 20:12:48[0m | [1mINFO    [0m | [36mapp.core.services.login_engine[0m:[36m_h_handle_org_selection[0m:[36m584[0m - [1m[LoginViaUI] org_selection ✓ 已离开机构页[0m
+[32m2026-08-23 20:12:54[0m | [1mINFO    [0m | [36mapp.core.services.login_engine[0m:[36mlogin_with_ui_case[0m:[36m459[0m - [1m[LoginViaUI] ✓ 成功: https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1787487162407&oId=9ee70b686[0m
+[32m2026-08-23 20:12:57[0m | [33m[1mWARNING [0m | [36mapp.core.services.functional_to_ui_service[0m:[36m_resolve_browser_factory[0m:[36m1785[0m - [33m[1m[FunctionalToUI] 未知浏览器 '<Browser type=<BrowserType name=chromium executable_path=C:\Users\Lenovo\AppData\Local\ms-playwright\chromium-1194\chrome-win\chrome.exe> version=141.0.7390.37>'，回退 chromium[0m
+[32m2026-08-23 20:13:08[0m | [1mINFO    [0m | [36mapp.core.services.functional_to_ui_service[0m:[36m_run_sync_exploration[0m:[36m1990[0m - [1m[FunctionalToUI] 步骤驱动探索: '指标总览-自定义' (5 steps)[0m
+[32m2026-08-23 20:13:08[0m | [33m[1mWARNING [0m | [36mapp.core.services.functional_to_ui_service[0m:[36m_run_sync_exploration[0m:[36m2025[0m - [33m[1m[FunctionalToUI] Navigate to module '指标总览-自定义' failed: evaluate() takes from 2 to 3 positional arguments but 4 were given[0m
+[32m2026-08-23 20:13:08[0m | [1mINFO    [0m | [36mapp.core.services.guided_exploration_agent[0m:[36m_set_module_boundary[0m:[36m917[0m - [1m[GuidedAgent] Module boundary root=/workpanel[0m
+[32m2026-08-23 20:13:10[0m | [1mINFO    [0m | [36mapp.core.services.mcp_exploration_agent[0m:[36m_phase1_site_map[0m:[36m543[0m - [1m[Phase 1] site_map: 9 nav items[0m
+[32m2026-08-23 20:13:10[0m | [1mINFO    [0m | [36mapp.core.services.mcp_exploration_agent[0m:[36m_capture_state[0m:[36m883[0m - [1m[Agent] State captured: D:\test-programs\opencode\ai-agent-test-platform\tests\exploration\states\指标总览-自定义\0001_guided_start.json (2 elements, 0 overlay)[0m
+[32m2026-08-23 20:13:10[0m | [1mINFO    [0m | [36mapp.core.services.guided_exploration_agent[0m:[36m_run_guided_exploration[0m:[36m281[0m - [1m[GuidedAgent] Step 1/5: navigate:工作台 | role=link | ui= | context= | url=1787487162407&oId=9ee70b68673b4660af488e86a0112f68[0m
+[32m2026-08-23 20:13:10[0m | [1mINFO    [0m | [36mapp.core.services.element_locator[0m:[36mlocate[0m:[36m144[0m - [1m[ElementLocator] ✓ '工作台' found via L1-text_exact[0m
+[32m2026-08-23 20:13:11[0m | [1mINFO    [0m | [36mapp.core.services.guided_exploration_agent[0m:[36m_guided_click[0m:[36m741[0m - [1m[GuidedAgent] Guided click via locator: '工作台' strategy=text_exact[0m
+[32m2026-08-23 20:13:11[0m | [1mINFO    [0m | [36mapp.core.services.guided_exploration_agent[0m:[36m_run_guided_exploration[0m:[36m281[0m - [1m[GuidedAgent] Step 2/5: click:自定义 | role=button | ui=button | context= | url=1787487162407&oId=9ee70b68673b4660af488e86a0112f68[0m
+[32m2026-08-23 20:13:12[0m | [1mINFO    [0m | [36mapp.core.services.element_locator[0m:[36mlocate[0m:[36m144[0m - [1m[ElementLocator] ✓ '自定义' found via L1-text_exact[0m
+[32m2026-08-23 20:13:12[0m | [1mINFO    [0m | [36mapp.core.services.guided_exploration_agent[0m:[36m_guided_click[0m:[36m741[0m - [1m[GuidedAgent] Guided click via locator: '自定义' strategy=text_exact[0m
+[32m2026-08-23 20:13:13[0m | [1mINFO    [0m | [36mapp.core.services.mcp_exploration_agent[0m:[36m_capture_state[0m:[36m883[0m - [1m[Agent] State captured: D:\test-programs\opencode\ai-agent-test-platform\tests\exploration\states\指标总览-自定义\0002_step002_自定义.json (32 elements, 2 overlay)[0m
+[32m2026-08-23 20:13:15[0m | [1mINFO    [0m | [36mapp.core.services.guided_exploration_agent[0m:[36m_run_guided_exploration[0m:[36m281[0m - [1m[GuidedAgent] Step 3/5: click:重置 | role=button | ui=button | context= | url=1787487162407&oId=9ee70b68673b4660af488e86a0112f68[0m
+[32m2026-08-23 20:13:15[0m | [1mINFO    [0m | [36mapp.core.services.element_locator[0m:[36m_try_scoring_match[0m:[36m717[0m - [1m[ElementLocator] Scoring: 401 candidates, best='取 消' score=13 ctTag=button ctCls=ant-btn css-1sdc3xm ant-btn-default ant-[0m
+[32m2026-08-23 20:13:15[0m | [1mINFO    [0m | [36mapp.core.services.element_locator[0m:[36mlocate[0m:[36m177[0m - [1m[ElementLocator] ✓ '重置' found via L6-scored_text(13)[0m
+[32m2026-08-23 20:13:16[0m | [1mINFO    [0m | [36mapp.core.services.guided_exploration_agent[0m:[36m_guided_click[0m:[36m741[0m - [1m[GuidedAgent] Guided click via locator: '重置' strategy=scored_text(13)[0m
+[32m2026-08-23 20:13:19[0m | [1mINFO    [0m | [36mapp.core.services.mcp_exploration_agent[0m:[36m_capture_state[0m:[36m883[0m - [1m[Agent] State captured: D:\test-programs\opencode\ai-agent-test-platform\tests\exploration\states\指标总览-自定义\0003_step003_重置.json (2 elements, 0 overlay)[0m
+[32m2026-08-23 20:13:21[0m | [1mINFO    [0m | [36mapp.core.services.guided_exploration_agent[0m:[36m_run_guided_exploration[0m:[36m281[0m - [1m[GuidedAgent] Step 4/5: click:保存布局 | role=button | ui=button | context= | url=1787487162407&oId=9ee70b68673b4660af488e86a0112f68[0m
+[32m2026-08-23 20:13:22[0m | [1mINFO    [0m | [36mapp.core.services.element_locator[0m:[36m_try_scoring_match[0m:[36m717[0m - [1m[ElementLocator] Scoring: 393 candidates, best='自定义' score=10 ctTag=div ctCls=workBenchTitle___12T4A flex justify-betw[0m
+[32m2026-08-23 20:13:22[0m | [1mINFO    [0m | [36mapp.core.services.element_locator[0m:[36mlocate[0m:[36m177[0m - [1m[ElementLocator] ✓ '保存布局' found via L6-scored_text(10)[0m
+[32m2026-08-23 20:13:22[0m | [1mINFO    [0m | [36mapp.core.services.guided_exploration_agent[0m:[36m_guided_click[0m:[36m741[0m - [1m[GuidedAgent] Guided click via locator: '保存布局' strategy=scored_text(10)[0m
+[32m2026-08-23 20:13:23[0m | [1mINFO    [0m | [36mapp.core.services.mcp_exploration_agent[0m:[36m_capture_state[0m:[36m883[0m - [1m[Agent] State captured: D:\test-programs\opencode\ai-agent-test-platform\tests\exploration\states\指标总览-自定义\0004_step004_保存布局.json (30 elements, 0 overlay)[0m
+[32m2026-08-23 20:13:25[0m | [1mINFO    [0m | [36mapp.core.services.guided_exploration_agent[0m:[36m_run_guided_exploration[0m:[36m278[0m - [1m[GuidedAgent] Step 5: 跳过（无可定位目标）[0m
+[32m2026-08-23 20:13:30[0m | [1mINFO    [0m | [36mapp.core.services.mcp_exploration_agent[0m:[36m_p3_dropdowns[0m:[36m1646[0m - [1m[Phase 3] dropdowns: 非交互模式，跳过下拉触发（由引导循环覆盖）[0m
+[32m2026-08-23 20:13:30[0m | [1mINFO    [0m | [36mapp.core.services.guided_exploration_agent[0m:[36mexplore_guided[0m:[36m161[0m - [1m[GuidedAgent] Done: {"total_elements": 4, "navigated_elements": 3, "pages_explored": 1, "visited_states": 2, "elapsed_seconds": 22.0, "errors": 0, "guided_steps_total": 5, "guided_steps_executed": 4, "exploration_mode": "guided", "platform_type": "web"}[0m
+[32m2026-08-23 20:13:30[0m | [1mINFO    [0m | [36mapp.core.services.functional_to_ui_service[0m:[36m_run_sync_exploration[0m:[36m2037[0m - [1m[FunctionalToUI] Module '指标总览-自定义' explored: 4 elements[0m
+[32m2026-08-23 20:13:30[0m | [1mINFO    [0m | [36mapp.core.services.kg_populator[0m:[36mpopulate[0m:[36m189[0m - [1m[KGPopulator] 合并模式: pages 22(+4新), elements 48(+4新), dropdowns 9(+0新)[0m
+[32m2026-08-23 20:13:30[0m | [1mINFO    [0m | [36mapp.core.services.kg_populator[0m:[36mpopulate[0m:[36m250[0m - [1m[KGPopulator] 合并模式清理 2 条相关旧快照（保留其他模块）[0m
+[32m2026-08-23 20:13:30[0m | [1mINFO    [0m | [36mapp.core.services.kg_populator[0m:[36mpopulate[0m:[36m267[0m - [1m[KGPopulator] Graph #1 populated: 22 pages, 34 menus, 48 elements, 56 flows, 0 API calls, confidence=0.95[0m
+[32m2026-08-23 20:13:30[0m | [1mINFO    [0m | [36mapp.core.services.functional_to_ui_service[0m:[36m_run_sync_exploration[0m:[36m2060[0m - [1m[FunctionalToUI] KG populated with 1 modules[0m
+[32m2026-08-23 20:13:31[0m | [1mINFO    [0m | [36mapp.core.services.functional_to_ui_service[0m:[36m_run_sync_exploration[0m:[36m2093[0m - [1m[FunctionalToUI] 探索追踪日志: D:\test-programs\opencode\ai-agent-test-platform\backend\tests\exploration\trace\explore_指标总览-自定义.json[0m
+[32m2026-08-23 20:13:31[0m | [1mINFO    [0m | [36mapp.core.services.functional_to_ui_service[0m:[36mconvert_cases_with_exploration[0m:[36m1264[0m - [1m[FunctionalToUI] 步骤驱动探索完成: ['指标总览-自定义', '_trace_path'][0m
+[32m2026-08-23 20:13:31[0m | [1mINFO    [0m | [36mapp.core.services.llm_service[0m:[36mcall_llm[0m:[36m227[0m - [1mCalling LLM: DeepSeek-other, Model: deepseek-v4-flash, max_tokens: 100000 (passed: 100000, config: 160000)[0m
+[32m2026-08-23 20:14:41[0m | [1mINFO    [0m | [36mapp.core.services.llm_service[0m:[36mcall_llm[0m:[36m299[0m - [1mLLM response received, length: 2119[0m
+[32m2026-08-23 20:14:41[0m | [1mINFO    [0m | [36mapp.core.services.functional_to_ui_service[0m:[36mconvert_cases_with_exploration[0m:[36m1322[0m - [1m[FunctionalToUI] 批量 POM 生成完成: 2 个页面类 (共 1 条用例共享)[0m
+[32m2026-08-23 20:14:41[0m | [33m[1mWARNING [0m | [36mapp.core.services.functional_to_ui_service[0m:[36mconvert_cases_with_exploration[0m:[36m1461[0m - [33m[1m[FunctionalToUI] 探索校正异常（不影响转化）: name 'db' is not defined[0m
+[32m2026-08-23 20:14:41[0m | [1mINFO    [0m | [36mapp.core.services.functional_to_ui_service[0m:[36m_convert_batch_v2[0m:[36m2638[0m - [1m[FunctionalToUI] 批量转化 1 条...[0m
+[32m2026-08-23 20:14:41[0m | [1mINFO    [0m | [36mapp.core.services.llm_service[0m:[36mcall_llm[0m:[36m227[0m - [1mCalling LLM: DeepSeek-other, Model: deepseek-v4-flash, max_tokens: 100000 (passed: 100000, config: 160000)[0m
+[32m2026-08-23 20:17:09[0m | [1mINFO    [0m | [36mapp.core.services.llm_service[0m:[36mcall_llm[0m:[36m299[0m - [1mLLM response received, length: 1295[0m
+[32m2026-08-23 20:17:15[0m | [1mINFO    [0m | [36mapp.core.services.functional_to_ui_service[0m:[36m_convert_batch_v2[0m:[36m2738[0m - [1m[FunctionalToUI] 批量完成: 1 条[0m
+[32m2026-08-23 20:17:15[0m | [1mINFO    [0m | [36mapp.core.services.functional_to_ui_service[0m:[36mconvert_cases_with_exploration[0m:[36m1519[0m - [1m[FunctionalToUI] 转化完成: {'success': 1, 'exploration_insufficient': 0, 'exploration_failed': 0, 'conversion_failed': 0, 'steps_missing': 0}[0m
+[32m2026-08-23 20:17:15[0m | [1mINFO    [0m | [36mapp.core.services.functional_to_ui_service[0m:[36mconvert_cases_with_exploration[0m:[36m1533[0m - [1m[FunctionalToUI] 已存在登录用例（保留导入时的真实步骤），跳过模板覆盖[0m
+[32m2026-08-23 20:17:15[0m | [1mINFO    [0m | [36mapp.core.services.functional_to_ui_service[0m:[36mconvert_cases_with_exploration[0m:[36m1546[0m - [1m[FunctionalToUI] ✓ 转化追踪日志已保存: D:\test-programs\opencode\ai-agent-test-platform\backend\tests\exploration\trace\conv_指标总览-自定义.json (1 条)[0m
+=== 转化结果: success=True explored=['指标总览-自定义'] method=step_driven
+  用例 35: status=success error=None
+    ★ 诊断: {'seq': 3, 'target': '重置', 'action': 'click', 'actual_text': '取 消', 'status': 'success', 'strategy': 'scored_text(13)', 'message': '✓ 已定位「重置」(scored_text(13))'}
+--- 校正后 test_steps（step3 应变为 点击「重 置」）
+  step1: 进入「工作台」页面，确认工作台无指标A
+  step2: 点击「自定义」按钮
+  step3: 点击「重置」按钮
+  step4: 点击「保存布局」按钮
+  step5: 验证：返回工作台后指标A仍未显示

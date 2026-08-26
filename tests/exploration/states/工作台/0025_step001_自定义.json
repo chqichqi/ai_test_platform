@@ -1,0 +1,433 @@
+{
+  "label": "step001_自定义",
+  "url": "https://hospitalweb.xinjikang.cn/#/workpanel/customCard?refresh=1787750750201&oId=9ee70b68673b4660af488e86a0112f68",
+  "total_elements": 41,
+  "elements": [
+    {
+      "tag": "UL",
+      "role": "menu",
+      "cls": "ant-menu ant-menu-root ant-menu-inline ant-menu-light menu___1qUGa css-1sdc3xm",
+      "text": "工作台患者档案设备管理设备列表设备收发问卷管理账号管理数据管理文件审核内部报告健康报告周报审核运营配置操作日志随访管理患者管理随访项目",
+      "onclick": false,
+      "href": "",
+      "size": "194x884"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "Smart 报告(份)35今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "372x82"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "患者人数106今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "372x82"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "室早室性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "室速室性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "室颤室性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "房颤房性27今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "房速房性1今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "房扑房性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "房早房性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "持续性房颤房性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "阵发性房颤房性1今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "二联律节律0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "三联律节律0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "心动过速窦性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "心动过缓窦性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "停搏窦性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "待审核数据0去处理",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "待审核报告14去处理",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "待审核周报2去处理",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "待发货数24去处理",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "预约回收数5",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "入组人数30今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "项目个数3",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "待随访人数3去处理",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "延期人数41",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "进行中人数1",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-list-item",
+      "text": "中止人数0",
+      "onclick": false,
+      "href": "",
+      "size": "182x80"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-default ant-btn-color-default ant-btn-variant-outlined",
+      "text": "取 消",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid",
+      "text": "保存布局",
+      "onclick": false,
+      "href": "",
+      "size": "88x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-collapse-header",
+      "text": "患者概览",
+      "onclick": false,
+      "href": "",
+      "size": "305x46"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-collapse-header",
+      "text": "疾病统计",
+      "onclick": false,
+      "href": "",
+      "size": "305x46"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-collapse-header",
+      "text": "室性",
+      "onclick": false,
+      "href": "",
+      "size": "305x46"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-collapse-header",
+      "text": "房性",
+      "onclick": false,
+      "href": "",
+      "size": "305x46"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-collapse-header",
+      "text": "节律疾病",
+      "onclick": false,
+      "href": "",
+      "size": "305x46"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-collapse-header",
+      "text": "窦性",
+      "onclick": false,
+      "href": "",
+      "size": "305x46"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-collapse-header",
+      "text": "审核任务",
+      "onclick": false,
+      "href": "",
+      "size": "305x46"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-collapse-header",
+      "text": "物流看板",
+      "onclick": false,
+      "href": "",
+      "size": "305x46"
+    },
+    {
+      "tag": "DIV",
+      "role": "button",
+      "cls": "ant-collapse-header",
+      "text": "随访监控",
+      "onclick": false,
+      "href": "",
+      "size": "305x46"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-default ant-btn-color-default ant-btn-variant-outlined",
+      "text": "重 置",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid",
+      "text": "去预览",
+      "onclick": false,
+      "href": "",
+      "size": "74x32"
+    }
+  ],
+  "overlay_elements": [
+    {
+      "tag": "DIV",
+      "text": "患者概览",
+      "cls": "ant-collapse-header"
+    },
+    {
+      "tag": "DIV",
+      "text": "疾病统计",
+      "cls": "ant-collapse-header"
+    },
+    {
+      "tag": "DIV",
+      "text": "室性",
+      "cls": "ant-collapse-header"
+    },
+    {
+      "tag": "DIV",
+      "text": "房性",
+      "cls": "ant-collapse-header"
+    },
+    {
+      "tag": "DIV",
+      "text": "节律疾病",
+      "cls": "ant-collapse-header"
+    },
+    {
+      "tag": "DIV",
+      "text": "窦性",
+      "cls": "ant-collapse-header"
+    },
+    {
+      "tag": "DIV",
+      "text": "审核任务",
+      "cls": "ant-collapse-header"
+    },
+    {
+      "tag": "DIV",
+      "text": "物流看板",
+      "cls": "ant-collapse-header"
+    },
+    {
+      "tag": "DIV",
+      "text": "随访监控",
+      "cls": "ant-collapse-header"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "重 置",
+      "cls": "ant-btn css-1sdc3xm ant-btn-default ant-btn-color-default ant-btn-variant-outlin"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "去预览",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid"
+    }
+  ]
+}

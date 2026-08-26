@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Test Platform - React Version</title>
+    <!-- 使用可靠的CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/antd@5.12.8/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/antd@5.12.8/dist/antd.min.css">
+    <script crossorigin src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.development.js"></script>
+    <script crossorigin src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.23.2/babel.min.js"></script>
+    <script crossorigin src="https://cdn.jsdelivr.net/npm/react-router-dom@6.20.0/umd/react-router-dom.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ant-design/icons@5.3.0/dist/index.umd.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background: #f0f2f5;
+        }
+        #root { min-height: 100vh; }
+        .loading { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            font-size: 18px; 
+            color: #666;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #1890ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .error-message {
+            background: #fff2f0;
+            border: 1px solid #ffccc7;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <div class="loading">
+            <div class="loading-spinner"></div>
+            <div>Loading AI Agent Test Platform...</div>
+            <div style="font-size: 14px; color: #999;">React 18 • Ant Design 5 • React Router 6</div>
+        </div>
+    </div>
+    
+    <script type="text/babel" data-presets="react">
+        // 全局错误处理
+        window.addEventListener('error', function(e) {
+            console.error('Global error:', e.error);
+            const root = document.getElementById('root');
+            if (root) {
+                root.innerHTML = `
+                    <div class="error-message">
+                        <h3>⚠️ JavaScript Error</h3>
+                        <p><strong>Error:</strong> ${e.error?.message || 'Unknown error'}</p>
+                        <p><strong>File:</strong> ${e.filename}</p>
+                        <p><strong>Line:</strong> ${e.lineno}:${e.colno}</p>
+                        <p>Please check browser console (F12) for details.</p>
+                        <button onclick="location.reload()" style="margin-top: 10px; padding: 8px 16px; background: #1890ff; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                            Retry
+                        </button>
+                        <button onclick="location.href='/'" style="margin-top: 10px; margin-left: 10px; padding: 8px 16px; background: #666; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                            Go to Simple Version
+                        </button>
+                    </div>
+                `;
+            }
+        });
+
+        // 检查依赖是否加载
+        console.log('React:', typeof React !== 'undefined' ? '✅ Loaded' : '❌ Missing');
+        console.log('ReactDOM:', typeof ReactDOM !== 'undefined' ? '✅ Loaded' : '❌ Missing');
+        console.log('ReactRouterDOM:', typeof ReactRouterDOM !== 'undefined' ? '✅ Loaded' : '❌ Missing');
+        console.log('antd:', typeof antd !== 'undefined' ? '✅ Loaded' : '❌ Missing');
+        
+        if (!React || !ReactDOM) {
+            document.getElementById('root').innerHTML = `
+                <div class="error-message">
+                    <h3>❌ Missing Dependencies</h3>
+                    <p>React or ReactDOM failed to load. Possible issues:</p>
+                    <ul>
+                        <li>Network connection problem</li>
+                        <li>CDN blocked by firewall</li>
+                        <li>Browser security restrictions</li>
+                    </ul>
+                    <p>Try:</p>
+                    <ol>
+                        <li>Check network connection</li>
+                        <li>Disable ad-blockers</li>
+                        <li>Use different browser</li>
+                        <li>Visit <a href="/">simple version</a></li>
+                    </ol>
+                </div>
+            `;
+            throw new Error('React dependencies not loaded');
+        }
+
+        const { useState, useEffect, createContext, useContext } = React;
+        const { BrowserRouter, Routes, Route, Navigate, useNavigate, useLocation } = ReactRouterDOM;
+        const { Layout, Menu, Breadcrumb, Card, Row, Col, Statistic, Button, message } = antd;
+        
+        // 极简化的应用
+        function LoginPage() {
+            const [loading, setLoading] = useState(false);
+            
+            const handleLogin = () => {
+                setLoading(true);
+                setTimeout(() => {
+                    message.success('Login successful!');
+                    window.location.hash = '#dashboard';
+                    setLoading(false);
+                }, 1000);
+            };
+            
+            return (
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
+                    <Card title="AI Agent Test Platform" style={{ width: 400 }} headStyle={{ textAlign: 'center', fontSize: '24px', fontWeight: 'bold' }}>
+                        <div style={{ textAlign: 'center', padding: '20px 0' }}>
+                            <p>React Version Loaded Successfully! 🎉</p>
+                            <p style={{ color: '#666', marginTop: '10px' }}>This demonstrates React 18 + Ant Design 5</p>
+                        </div>
+                        
+                        <div style={{ margin: '20px 0' }}>
+                            <p><strong>Demo Credentials:</strong></p>
+                            <p>Email: admin@test.com</p>
+                            <p>Password: password</p>
+                        </div>
+                        
+                        <Button type="primary" block loading={loading} onClick={handleLogin}>
+                            Demo Login
+                        </Button>
+                        
+                        <div style={{ marginTop: '20px', textAlign: 'center' }}>
+                            <a href="/" style={{ color: '#1890ff' }}>← Back to Simple Version</a>
+                        </div>
+                    </Card>
+                </div>
+            );
+        }
+        
+        function DashboardPage() {
+            return (
+                <Layout style={{ minHeight: '100vh' }}>
+                    <Layout.Header style={{ background: '#001529', color: 'white', padding: '0 24px', display: 'flex', alignItems: 'center' }}>
+                        <div style={{ fontSize: '18px', fontWeight: 'bold' }}>🤖 AI Agent Test Platform</div>
+                        <div style={{ marginLeft: 'auto' }}>
+                            <Button type="text" style={{ color: 'white' }} onClick={() => window.location.hash = '#login'}>
+                                Logout
+                            </Button>
+                        </div>
+                    </Layout.Header>
+                    
+                    <Layout.Content style={{ padding: '24px' }}>
+                        <Card title="Dashboard">
+                            <Row gutter={[16, 16]}>
+                                <Col span={6}><Card><Statistic title="Active Tests" value={12} /></Card></Col>
+                                <Col span={6}><Card><Statistic title="SKILLS" value={8} /></Card></Col>
+                                <Col span={6}><Card><Statistic title="Documents" value={156} /></Card></Col>
+                                <Col span={6}><Card><Statistic title="Success Rate" value={94} suffix="%" /></Card></Col>
+                            </Row>
+                            
+                            <div style={{ marginTop: '24px' }}>
+                                <h3>Available Pages (12 Total)</h3>
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '10px', marginTop: '15px' }}>
+                                    {['Dashboard', 'RAG Knowledge Base', 'Document Upload', 'Query Testing', 'SKILLS Management', 'Functional Tests', 'API Tests', 'Reports', 'Settings'].map((page, index) => (
+                                        <Card key={index} size="small" style={{ textAlign: 'center' }}>
+                                            {page}
+                                        </Card>
+                                    ))}
+                                </div>
+                            </div>
+                            
+                            <div style={{ marginTop: '24px', textAlign: 'center' }}>
+                                <p>React version successfully loaded and running!</p>
+                                <Button type="link" onClick={() => window.location.hash = '#login'}>
+                                    Back to Login
+                                </Button>
+                            </div>
+                        </Card>
+                    </Layout.Content>
+                </Layout>
+            );
+        }
+        
+        function App() {
+            const [currentPage, setCurrentPage] = useState('login');
+            
+            useEffect(() => {
+                const handleHashChange = () => {
+                    const hash = window.location.hash.substring(1);
+                    setCurrentPage(hash || 'login');
+                };
+                
+                window.addEventListener('hashchange', handleHashChange);
+                handleHashChange();
+                
+                return () => window.removeEventListener('hashchange', handleHashChange);
+            }, []);
+            
+            console.log('Current page:', currentPage);
+            
+            switch(currentPage) {
+                case 'dashboard':
+                    return <DashboardPage />;
+                case 'login':
+                default:
+                    return <LoginPage />;
+            }
+        }
+        
+        // 渲染应用
+        console.log('Rendering React app...');
+        try {
+            const root = ReactDOM.createRoot(document.getElementById('root'));
+            root.render(<App />);
+            console.log('✅ React app rendered successfully!');
+        } catch (error) {
+            console.error('❌ React render error:', error);
+            document.getElementById('root').innerHTML = `
+                <div class="error-message">
+                    <h3>React Render Error</h3>
+                    <p>${error.message}</p>
+                    <button onclick="location.reload()">Retry</button>
+                    <button onclick="location.href='/'">Use Simple Version</button>
+                </div>
+            `;
+        }
+    </script>
+    
+    <script>
+        // 加载完成后的回调
+        window.addEventListener('load', function() {
+            console.log('Page fully loaded');
+            const loadingEl = document.querySelector('.loading');
+            if (loadingEl) {
+                setTimeout(() => {
+                    loadingEl.style.display = 'none';
+                }, 500);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+# 文档解析相关依赖
+
+# Word 文档解析
+python-docx>=0.8.11
+
+# PDF 解析（二选一）
+pdfplumber>=0.9.0  # 推荐，支持文本和图片提取
+# PyPDF2>=3.0.0  # 备选，仅支持文本提取
+
+# OCR 图片识别（已在主 requirements.txt 中）
+# pytesseract>=0.3.10
+# Pillow>=9.0.0

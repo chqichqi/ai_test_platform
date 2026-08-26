@@ -1,0 +1,103 @@
+{
+  "module": "工作台模块",
+  "total_clicks": 8,
+  "pages": 1,
+  "clicks": [
+    {
+      "seq": 1,
+      "name": "工作台",
+      "actual_text": "工作台",
+      "action": "navigate",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 2,
+      "name": "患者人数",
+      "actual_text": "患者人数",
+      "action": "validate",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 2,
+      "name": "房颤预警",
+      "actual_text": "房颤预警",
+      "action": "validate",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 1,
+      "name": "室早",
+      "actual_text": "室早",
+      "action": "validate",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 2,
+      "name": "室早",
+      "actual_text": "室早",
+      "action": "click",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=ventricularPremature",
+      "result": "jump",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 4,
+      "name": "上一页",
+      "actual_text": "",
+      "action": "go_back",
+      "status": "not_found",
+      "result": "static",
+      "error": "element_not_found",
+      "strategy": "",
+      "current_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "message": "步骤 4: 未找到「上一页」— 请检查用例描述是否与当前页面匹配"
+    },
+    {
+      "seq": 2,
+      "name": "自定义",
+      "actual_text": "自定义",
+      "action": "validate",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 2,
+      "name": "患者人数",
+      "actual_text": "患者人数",
+      "action": "click",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "jump",
+      "strategy": "text_exact",
+      "error": ""
+    }
+  ]
+}

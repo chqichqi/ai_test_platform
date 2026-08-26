@@ -1,0 +1,365 @@
+{
+  "nav": {},
+  "cards": {
+    "设备列表": {
+      "label": "设备列表",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/device"
+    },
+    "设备收发": {
+      "label": "设备收发",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/devicesend"
+    },
+    "文件审核": {
+      "label": "文件审核",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/fileaudit"
+    },
+    "内部报告": {
+      "label": "内部报告",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/internalreport"
+    },
+    "健康报告": {
+      "label": "健康报告",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/weeklyreport"
+    },
+    "周报审核": {
+      "label": "周报审核",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/weeklyapproval"
+    },
+    "档案详情": {
+      "label": "档案详情",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "基本数据": {
+      "label": "基本数据",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "原始数据": {
+      "label": "原始数据",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "个人报告": {
+      "label": "个人报告",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/internalreport"
+    },
+    "身体状态": {
+      "label": "身体状态",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "就诊记录": {
+      "label": "就诊记录",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "患者问卷": {
+      "label": "患者问卷",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/surveymanage"
+    },
+    "房颤负荷": {
+      "label": "房颤负荷",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "全部数据": {
+      "label": "全部数据",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": ""
+    },
+    "全部状态": {
+      "label": "全部状态",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": ""
+    },
+    "知情同意书": {
+      "label": "知情同意书",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "患者卡片打印": {
+      "label": "患者卡片打印",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "患者病史编辑": {
+      "label": "患者病史编辑",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "随访项目查看": {
+      "label": "随访项目查看",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "20 条/页": {
+      "label": "20 条/页",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "PPG事件次数": {
+      "label": "PPG事件次数",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "ECG事件次数": {
+      "label": "ECG事件次数",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "ECG事件列表": {
+      "label": "ECG事件列表",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "PPG事件列表": {
+      "label": "PPG事件列表",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "患者疾病标签编辑": {
+      "label": "患者疾病标签编辑",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "05280001编辑": {
+      "label": "05280001编辑",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "心吉康心血管健康综合管理平台": {
+      "label": "心吉康心血管健康综合管理平台",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "2026/08/01  星期六陈强": {
+      "label": "2026/08/01  星期六陈强",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "工作台患者档案设备管理设备列表设备收发问卷管理账号管理数据管理文件审核内部报告健康报告周报审核运营配置操作日志随访管理患": {
+      "label": "工作台患者档案设备管理设备列表设备收发问卷管理账号管理数据管理文件审核内部报告健康报告周报审核运营配置操作日志随访管理患",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "姓名\n\t\n编号\n\t\n手机号码\n\t\n性别\n\t\n年龄\n\t\n绑定设备\n\t\n录入时间\n\t\n随访项目\n\t\n疾病标签\n\t\n异常事件\n": {
+      "label": "姓名\n\t\n编号\n\t\n手机号码\n\t\n性别\n\t\n年龄\n\t\n绑定设备\n\t\n录入时间\n\t\n随访项目\n\t\n疾病标签\n\t\n异常事件\n",
+      "clicked": false,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "新增患者": {
+      "label": "新增患者",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": ""
+    },
+    "我的患者": {
+      "label": "我的患者",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "录入时间": {
+      "label": "录入时间",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "手机号码": {
+      "label": "手机号码",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "疾病标签": {
+      "label": "疾病标签",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "绑定设备": {
+      "label": "绑定设备",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "随访项目": {
+      "label": "随访项目",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "报告类型": {
+      "label": "报告类型",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "入组情况": {
+      "label": "入组情况",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "详情入组": {
+      "label": "详情入组",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "新朝澎湃": {
+      "label": "新朝澎湃",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "性别请选择": {
+      "label": "性别请选择",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": ""
+    },
+    "关注请选择": {
+      "label": "关注请选择",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": ""
+    },
+    "心电记录仪": {
+      "label": "心电记录仪",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "导出统计数据": {
+      "label": "导出统计数据",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "卡片信息设置": {
+      "label": "卡片信息设置",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": ""
+    },
+    "CX-心脑科": {
+      "label": "CX-心脑科",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "15 条/页": {
+      "label": "15 条/页",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "王明慧2.10": {
+      "label": "王明慧2.10",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "CQ-房颤患者": {
+      "label": "CQ-房颤患者",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "重 置查 询收起": {
+      "label": "重 置查 询收起",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "房颤 2026-02-10 14:58:12": {
+      "label": "房颤 2026-02-10 14:58:12",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "勾小倩-13668336190女61-2026-02-10---详情入组": {
+      "label": "勾小倩-13668336190女61-2026-02-10---详情入组",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "汤津津-15167111716女39-2026-02-10---详情入组报告": {
+      "label": "汤津津-15167111716女39-2026-02-10---详情入组报告",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/internalreport"
+    },
+    "0520002-10065602649---2026-05-20---详情入组": {
+      "label": "0520002-10065602649---2026-05-20---详情入组",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve/detail"
+    },
+    "0520001-10065602648---2026-05-20---详情入组": {
+      "label": "0520001-10065602648---2026-05-20---详情入组",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve/detail"
+    },
+    "05280001-10065602678---2026-05-28CX-心脑科-": {
+      "label": "05280001-10065602678---2026-05-28CX-心脑科-",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve/detail"
+    },
+    "工作台患者档案设备管理问卷管理账号管理数据管理运营配置操作日志随访管理患者档案患者档案导出统计数据卡片信息设置新增患者全": {
+      "label": "工作台患者档案设备管理问卷管理账号管理数据管理运营配置操作日志随访管理患者档案患者档案导出统计数据卡片信息设置新增患者全",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    },
+    "姓名编号手机号码性别年龄绑定设备录入时间随访项目疾病标签异常事件备注操作姓名编号手机号码性别年龄绑定设备录入时间随访项目": {
+      "label": "姓名编号手机号码性别年龄绑定设备录入时间随访项目疾病标签异常事件备注操作姓名编号手机号码性别年龄绑定设备录入时间随访项目",
+      "clicked": true,
+      "jumped": false,
+      "url_hash": ""
+    }
+  }
+}

@@ -1,0 +1,1259 @@
+{
+  "label": "操作日志",
+  "url": "https://hospitalweb.xinjikang.cn/#/operatorlog?refresh=1785581359799&oId=9ee70b68673b4660af488e86a0112f68",
+  "total_elements": 139,
+  "elements": [
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "header-root flex-shrink-0 flex flex-row items-center justify-between w-full px-4 bg-white border-b-2",
+      "text": "心吉康心血管健康综合管理平台测试机构2026/08/01  星期六陈强",
+      "onclick": false,
+      "href": "",
+      "size": "1280x64"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-start",
+      "text": "心吉康心血管健康综合管理平台",
+      "onclick": false,
+      "href": "",
+      "size": "374x38"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-start text-normal333",
+      "text": "2026/08/01  星期六陈强",
+      "onclick": false,
+      "href": "",
+      "size": "303x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-dropdown-trigger p-1 ml-8 flex flex-row items-center justify-start cursor-pointer rounded-sm hov",
+      "text": "陈强",
+      "onclick": false,
+      "href": "",
+      "size": "102x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "layout-body w-full flex flex-row",
+      "text": "工作台患者档案设备管理设备列表设备收发问卷管理账号管理数据管理文件审核内部报告健康报告周报审核运营配置操作日志随访管理患者管理随访项目操作日志操作日志操作人事件",
+      "onclick": false,
+      "href": "",
+      "size": "1280x836"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "工作台",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "患者档案",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "设备列表",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "设备收发",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "问卷管理",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "文件审核",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "内部报告",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "健康报告",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "周报审核",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "运营配置",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-active ant-menu-item-selected",
+      "text": "操作日志",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "患者管理",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "随访项目",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-breadcrumb-item",
+      "text": "操作日志",
+      "onclick": false,
+      "href": "",
+      "size": "56x22"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-breadcrumb-link cursor-pointer",
+      "text": "操作日志",
+      "onclick": false,
+      "href": "",
+      "size": "56x20"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "contianer-root flex flex-col items-start justify-start flex-1 overflow-x-auto ",
+      "text": "操作日志操作人事件类型请选择重 置查 询事件类型内容操作人操作时间事件类型内容操作人操作时间患者档案导出患者档案导出,organizationId：9ee70b",
+      "onclick": false,
+      "href": "",
+      "size": "1080x836"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between w-full mb-2",
+      "text": "操作日志",
+      "onclick": false,
+      "href": "",
+      "size": "1052x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-start justify-between w-full pt-6 pl-2 pr-4 bg-white rounded-md",
+      "text": "操作人事件类型请选择重 置查 询",
+      "onclick": false,
+      "href": "",
+      "size": "1052x77"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row css-1sdc3xm",
+      "text": "操作人事件类型请选择重 置查 询",
+      "onclick": false,
+      "href": "",
+      "size": "1039x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row flex flex-row items-start justify-start w-full px-0 css-1sdc3xm",
+      "text": "操作人事件类型请选择重 置查 询",
+      "onclick": false,
+      "href": "",
+      "size": "1039x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "操作人",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "操作人",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "操作人",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "事件类型请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "事件类型请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "事件类型",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-18 ant-col-md-20 css-1sdc3xm",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-selector",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-wrap",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "144x30"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-placeholder",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "144x30"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-start justify-end",
+      "text": "重 置查 询",
+      "onclick": false,
+      "href": "",
+      "size": "254x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center",
+      "text": "重 置查 询",
+      "onclick": false,
+      "href": "",
+      "size": "139x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-default ant-btn-color-default ant-btn-variant-outlined",
+      "text": "重 置",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid ml-4",
+      "text": "查 询",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-table-wrapper table___3Qqbh undefined  css-1sdc3xm",
+      "text": "事件类型内容操作人操作时间事件类型内容操作人操作时间患者档案导出患者档案导出,organizationId：9ee70b68673b4660af488e86a0",
+      "onclick": false,
+      "href": "",
+      "size": "1052x641"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-table css-1sdc3xm ant-table-fixed-header ant-table-scroll-horizontal",
+      "text": "事件类型内容操作人操作时间事件类型内容操作人操作时间患者档案导出患者档案导出,organizationId：9ee70b68673b4660af488e86a0",
+      "onclick": false,
+      "href": "",
+      "size": "1052x641"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-table-container",
+      "text": "事件类型内容操作人操作时间事件类型内容操作人操作时间患者档案导出患者档案导出,organizationId：9ee70b68673b4660af488e86a0",
+      "onclick": false,
+      "href": "",
+      "size": "1052x641"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-table-header",
+      "text": "事件类型内容操作人操作时间",
+      "onclick": false,
+      "href": "",
+      "size": "1052x55"
+    },
+    {
+      "tag": "THEAD",
+      "role": "",
+      "cls": "ant-table-thead",
+      "text": "事件类型内容操作人操作时间",
+      "onclick": false,
+      "href": "",
+      "size": "1052x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "事件类型",
+      "onclick": false,
+      "href": "",
+      "size": "169x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "内容",
+      "onclick": false,
+      "href": "",
+      "size": "437x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "操作人",
+      "onclick": false,
+      "href": "",
+      "size": "212x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "操作时间",
+      "onclick": false,
+      "href": "",
+      "size": "228x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-table-body",
+      "text": "事件类型内容操作人操作时间患者档案导出患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68陈强2026-",
+      "onclick": false,
+      "href": "",
+      "size": "1052x586"
+    },
+    {
+      "tag": "TBODY",
+      "role": "",
+      "cls": "ant-table-tbody",
+      "text": "事件类型内容操作人操作时间患者档案导出患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68陈强2026-",
+      "onclick": false,
+      "href": "",
+      "size": "1046x1130"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "患者档案导出患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68陈强2026-08-01 10:16:5",
+      "onclick": false,
+      "href": "",
+      "size": "1046x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出",
+      "onclick": false,
+      "href": "",
+      "size": "169x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68",
+      "onclick": false,
+      "href": "",
+      "size": "437x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "陈强",
+      "onclick": false,
+      "href": "",
+      "size": "212x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "2026-08-01 10:16:55",
+      "onclick": false,
+      "href": "",
+      "size": "228x77"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "患者档案导出患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68陈强2026-08-01 10:14:5",
+      "onclick": false,
+      "href": "",
+      "size": "1046x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出",
+      "onclick": false,
+      "href": "",
+      "size": "169x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68",
+      "onclick": false,
+      "href": "",
+      "size": "437x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "陈强",
+      "onclick": false,
+      "href": "",
+      "size": "212x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "2026-08-01 10:14:55",
+      "onclick": false,
+      "href": "",
+      "size": "228x77"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "患者档案导出患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68陈强2026-07-31 22:55:2",
+      "onclick": false,
+      "href": "",
+      "size": "1046x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出",
+      "onclick": false,
+      "href": "",
+      "size": "169x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68",
+      "onclick": false,
+      "href": "",
+      "size": "437x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "陈强",
+      "onclick": false,
+      "href": "",
+      "size": "212x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "2026-07-31 22:55:27",
+      "onclick": false,
+      "href": "",
+      "size": "228x77"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "患者档案导出患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68陈强2026-07-31 21:31:1",
+      "onclick": false,
+      "href": "",
+      "size": "1046x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出",
+      "onclick": false,
+      "href": "",
+      "size": "169x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68",
+      "onclick": false,
+      "href": "",
+      "size": "437x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "陈强",
+      "onclick": false,
+      "href": "",
+      "size": "212x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "2026-07-31 21:31:16",
+      "onclick": false,
+      "href": "",
+      "size": "228x77"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "患者档案导出患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68陈强2026-07-26 21:11:4",
+      "onclick": false,
+      "href": "",
+      "size": "1046x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出",
+      "onclick": false,
+      "href": "",
+      "size": "169x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68",
+      "onclick": false,
+      "href": "",
+      "size": "437x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "陈强",
+      "onclick": false,
+      "href": "",
+      "size": "212x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "2026-07-26 21:11:46",
+      "onclick": false,
+      "href": "",
+      "size": "228x77"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "患者档案导出患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68陈强2026-07-24 22:07:4",
+      "onclick": false,
+      "href": "",
+      "size": "1046x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出",
+      "onclick": false,
+      "href": "",
+      "size": "169x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68",
+      "onclick": false,
+      "href": "",
+      "size": "437x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "陈强",
+      "onclick": false,
+      "href": "",
+      "size": "212x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "2026-07-24 22:07:42",
+      "onclick": false,
+      "href": "",
+      "size": "228x77"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "患者档案导出患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68陈强2026-07-24 21:58:1",
+      "onclick": false,
+      "href": "",
+      "size": "1046x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出",
+      "onclick": false,
+      "href": "",
+      "size": "169x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68",
+      "onclick": false,
+      "href": "",
+      "size": "437x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "陈强",
+      "onclick": false,
+      "href": "",
+      "size": "212x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "2026-07-24 21:58:13",
+      "onclick": false,
+      "href": "",
+      "size": "228x77"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "患者档案导出患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68陈强2026-07-24 21:55:0",
+      "onclick": false,
+      "href": "",
+      "size": "1046x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出",
+      "onclick": false,
+      "href": "",
+      "size": "169x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68",
+      "onclick": false,
+      "href": "",
+      "size": "437x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "陈强",
+      "onclick": false,
+      "href": "",
+      "size": "212x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "2026-07-24 21:55:09",
+      "onclick": false,
+      "href": "",
+      "size": "228x77"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "患者档案导出患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68陈强2026-07-24 21:52:2",
+      "onclick": false,
+      "href": "",
+      "size": "1046x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出",
+      "onclick": false,
+      "href": "",
+      "size": "169x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68",
+      "onclick": false,
+      "href": "",
+      "size": "437x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "陈强",
+      "onclick": false,
+      "href": "",
+      "size": "212x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "2026-07-24 21:52:28",
+      "onclick": false,
+      "href": "",
+      "size": "228x77"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "患者档案导出患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68陈强2026-07-24 21:48:5",
+      "onclick": false,
+      "href": "",
+      "size": "1046x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出",
+      "onclick": false,
+      "href": "",
+      "size": "169x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68",
+      "onclick": false,
+      "href": "",
+      "size": "437x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "陈强",
+      "onclick": false,
+      "href": "",
+      "size": "212x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "2026-07-24 21:48:50",
+      "onclick": false,
+      "href": "",
+      "size": "228x77"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "患者档案导出患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68陈强2026-07-24 21:43:5",
+      "onclick": false,
+      "href": "",
+      "size": "1046x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出",
+      "onclick": false,
+      "href": "",
+      "size": "169x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68",
+      "onclick": false,
+      "href": "",
+      "size": "437x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "陈强",
+      "onclick": false,
+      "href": "",
+      "size": "212x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "2026-07-24 21:43:53",
+      "onclick": false,
+      "href": "",
+      "size": "228x77"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "患者档案导出患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68陈强2026-07-24 21:37:0",
+      "onclick": false,
+      "href": "",
+      "size": "1046x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出",
+      "onclick": false,
+      "href": "",
+      "size": "169x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68",
+      "onclick": false,
+      "href": "",
+      "size": "437x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "陈强",
+      "onclick": false,
+      "href": "",
+      "size": "212x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "2026-07-24 21:37:08",
+      "onclick": false,
+      "href": "",
+      "size": "228x77"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "患者档案导出患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68陈强2026-07-24 21:36:0",
+      "onclick": false,
+      "href": "",
+      "size": "1046x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出",
+      "onclick": false,
+      "href": "",
+      "size": "169x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68",
+      "onclick": false,
+      "href": "",
+      "size": "437x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "陈强",
+      "onclick": false,
+      "href": "",
+      "size": "212x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "2026-07-24 21:36:06",
+      "onclick": false,
+      "href": "",
+      "size": "228x77"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "患者档案导出患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68陈强2026-07-24 21:34:4",
+      "onclick": false,
+      "href": "",
+      "size": "1046x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出",
+      "onclick": false,
+      "href": "",
+      "size": "169x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "患者档案导出,organizationId：9ee70b68673b4660af488e86a0112f68",
+      "onclick": false,
+      "href": "",
+      "size": "437x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "陈强",
+      "onclick": false,
+      "href": "",
+      "size": "212x77"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "2026-07-24 21:34:45",
+      "onclick": false,
+      "href": "",
+      "size": "228x77"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "首次入组档案ID：e37004ee9fc3494b87db7e76e2f11173随访首次入组陈强2026-05-28 08:57:52",
+      "onclick": false,
+      "href": "",
+      "size": "1046x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "首次入组",
+      "onclick": false,
+      "href": "",
+      "size": "169x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "档案ID：e37004ee9fc3494b87db7e76e2f11173随访首次入组",
+      "onclick": false,
+      "href": "",
+      "size": "437x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "陈强",
+      "onclick": false,
+      "href": "",
+      "size": "212x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "2026-05-28 08:57:52",
+      "onclick": false,
+      "href": "",
+      "size": "228x55"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-item ant-pagination-item-1 ant-pagination-item-active",
+      "text": "1",
+      "onclick": false,
+      "href": "",
+      "size": "32x32"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-item ant-pagination-item-2",
+      "text": "2",
+      "onclick": false,
+      "href": "",
+      "size": "32x32"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-item ant-pagination-item-3",
+      "text": "3",
+      "onclick": false,
+      "href": "",
+      "size": "32x32"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-item ant-pagination-item-4",
+      "text": "4",
+      "onclick": false,
+      "href": "",
+      "size": "32x32"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-item ant-pagination-item-5",
+      "text": "5",
+      "onclick": false,
+      "href": "",
+      "size": "32x32"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-item ant-pagination-item-6",
+      "text": "6",
+      "onclick": false,
+      "href": "",
+      "size": "32x32"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-item ant-pagination-item-7",
+      "text": "7",
+      "onclick": false,
+      "href": "",
+      "size": "32x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-pagination-options-size-changer css-1sdc3xm ant-select-single ant",
+      "text": "15 条/页",
+      "onclick": false,
+      "href": "",
+      "size": "94x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-selector",
+      "text": "15 条/页",
+      "onclick": false,
+      "href": "",
+      "size": "94x32"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-wrap",
+      "text": "15 条/页",
+      "onclick": false,
+      "href": "",
+      "size": "70x30"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-item",
+      "text": "15 条/页",
+      "onclick": false,
+      "href": "",
+      "size": "70x30"
+    }
+  ],
+  "overlay_elements": []
+}

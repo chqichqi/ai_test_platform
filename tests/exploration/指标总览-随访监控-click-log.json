@@ -1,0 +1,55 @@
+{
+  "module": "指标总览-随访监控",
+  "total_clicks": 4,
+  "pages": 1,
+  "clicks": [
+    {
+      "seq": 1,
+      "name": "工作台",
+      "actual_text": "工作台",
+      "action": "navigate",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 2,
+      "name": "入组人数",
+      "actual_text": "入组人数",
+      "action": "click",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68&joinStatus=1",
+      "result": "jump",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 2,
+      "name": "进行中人数",
+      "actual_text": "进行中人数",
+      "action": "click",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/visitpatientmanage?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68&visitStatus=1",
+      "result": "jump",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 2,
+      "name": "待随访人数",
+      "actual_text": "待随访人数",
+      "action": "click",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/visitpatientmanage?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68&visitStatus=0",
+      "result": "jump",
+      "strategy": "text_exact",
+      "error": ""
+    }
+  ]
+}

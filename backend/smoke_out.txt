@@ -1,0 +1,212 @@
+﻿python.exe : D:\test-programs\opencode\ai-agent-test-platform\backend\app\core\services\kg_populator.py:285: SAWarning: relationship 'RequirementChangeReco
+rd.change_batch' will copy column requirement_change_batches.version_id to column requirement_change_records.version_id, which conflicts with relationship(
+s): 'RequirementChangeRecord.version' (copies versions.id to requirement_change_records.version_id), 'Version.requirement_change_records' (copies versions.
+id to requirement_change_records.version_id). If this is not the intention, consider if these relationships should be linked with back_populates, or if vie
+wonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm
+.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="requiremen
+t_change_records,version"' to the 'RequirementChangeRecord.change_batch' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This
+ warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+At line:1 char:375
++ ... m\backend"; & "D:\Program Files\Python39\python.exe" -X utf8 logs\smo ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (D:\test-program...ted operation.):String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  kg = self.db.query(KnowledgeGraph).filter(
+D:\test-programs\opencode\ai-agent-test-platform\backend\app\core\services\kg_populator.py:285: SAWarning: relationship 'RequirementChangeBatch.change_reco
+rds' will copy column requirement_change_batches.version_id to column requirement_change_records.version_id, which conflicts with relationship(s): 'Require
+mentChangeRecord.version' (copies versions.id to requirement_change_records.version_id), 'Version.requirement_change_records' (copies versions.id to requir
+ement_change_records.version_id). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True s
+hould be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() a
+nnotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="requirement_change_rec
+ords,version"' to the 'RequirementChangeBatch.change_records' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This warning or
+iginated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+  kg = self.db.query(KnowledgeGraph).filter(
+═══ 1. 模型：项目唯一约束 + version_id 可空 ═══
+  ✓ 唯一约束 uq_knowledge_graph_project_id
+  ✓ version_id nullable=True
+═══ 2. populate merge 语义 ═══
+[32m2026-08-23 20:08:36[0m | [1mINFO    [0m | [36mapp.core.services.kg_populator[0m:[36mpopulate[0m:[36m203[0m - [1m[KGPopulator] 全量替换模式: 1 pages, 0 elements[0m
+[32m2026-08-23 20:08:36[0m | [1mINFO    [0m | [36mapp.core.services.kg_populator[0m:[36mpopulate[0m:[36m267[0m - [1m[KGPopulator] Graph #1 populated: 1 pages, 0 menus, 0 elements, 0 flows, 0 API calls, confidence=0.00[0m
+  ✓ 首次 full 创建行
+[32m2026-08-23 20:08:36[0m | [1mINFO    [0m | [36mapp.core.services.kg_populator[0m:[36mpopulate[0m:[36m189[0m - [1m[KGPopulator] 合并模式: pages 2(+1新), elements 0(+0新), dropdowns 1(+0新)[0m
+[32m2026-08-23 20:08:36[0m | [1mINFO    [0m | [36mapp.core.services.kg_populator[0m:[36mpopulate[0m:[36m267[0m - [1m[KGPopulator] Graph #1 populated: 2 pages, 1 menus, 0 elements, 0 flows, 0 API calls, confidence=0.00[0m
+  ✓ auto 旧行仍 merge（同 id）
+  ✓ pages 累加去重（2 页）
+  ✓ dropdowns 保留旧数据
+  ✓ version_id 记录最近来源
+  ✓ menus 增量合并（1 条）
+[32m2026-08-23 20:08:36[0m | [1mINFO    [0m | [36mapp.core.services.kg_populator[0m:[36mpopulate[0m:[36m189[0m - [1m[KGPopulator] 合并模式: pages 2(+1新), elements 0(+0新), dropdowns 1(+0新)[0m
+[32m2026-08-23 20:08:36[0m | [1mINFO    [0m | [36mapp.core.services.kg_populator[0m:[36mpopulate[0m:[36m250[0m - [1m[KGPopulator] 合并模式清理 1 条相关旧快照（保留其他模块）[0m
+[32m2026-08-23 20:08:36[0m | [1mINFO    [0m | [36mapp.core.services.kg_populator[0m:[36mpopulate[0m:[36m267[0m - [1m[KGPopulator] Graph #1 populated: 2 pages, 1 menus, 0 elements, 0 flows, 0 API calls, confidence=0.00[0m
+  ✓ 同 URL 快照清理去重（p2 仅 1 行）
+  ✓ 其他模块快照保留（p1 仍在）
+[32m2026-08-23 20:08:36[0m | [1mINFO    [0m | [36mapp.core.services.kg_populator[0m:[36mpopulate[0m:[36m189[0m - [1m[KGPopulator] 合并模式: pages 3(+1新), elements 0(+0新), dropdowns 1(+0新)[0m
+[32m2026-08-23 20:08:36[0m | [1mINFO    [0m | [36mapp.core.services.kg_populator[0m:[36mpopulate[0m:[36m267[0m - [1m[KGPopulator] Graph #1 populated: 3 pages, 2 menus, 0 elements, 0 flows, 0 API calls, confidence=0.00[0m
+  ✓ running 行 merge 后仍 running
+  ✓ menus 跨模块合并去重（2 条）
+[32m2026-08-23 20:08:36[0m | [1mINFO    [0m | [36mapp.core.services.kg_populator[0m:[36mpopulate[0m:[36m189[0m - [1m[KGPopulator] 合并模式: pages 4(+1新), elements 0(+0新), dropdowns 1(+0新)[0m
+[32m2026-08-23 20:08:36[0m | [33m[1mWARNING [0m | [36mapp.core.services.kg_populator[0m:[36mpopulate[0m:[36m223[0m - [33m[1m[KGPopulator] 检测到 stale-running（>2h）死任务，置为 completed[0m
+[32m2026-08-23 20:08:36[0m | [1mINFO    [0m | [36mapp.core.services.kg_populator[0m:[36mpopulate[0m:[36m267[0m - [1m[KGPopulator] Graph #1 populated: 4 pages, 2 menus, 0 elements, 0 flows, 0 API calls, confidence=0.00[0m
+  ✓ stale-running(>2h) 兜底置 completed
+  ✓ pages 仍累加（4 页）
+═══ 3. populate(project_id, None) 不再静默失败 ═══
+[32m2026-08-23 20:08:36[0m | [1mINFO    [0m | [36mapp.core.services.kg_populator[0m:[36mpopulate[0m:[36m203[0m - [1m[KGPopulator] 全量替换模式: 1 pages, 0 elements[0m
+[32m2026-08-23 20:08:36[0m | [1mINFO    [0m | [36mapp.core.services.kg_populator[0m:[36mpopulate[0m:[36m267[0m - [1m[KGPopulator] Graph #2 populated: 1 pages, 0 menus, 0 elements, 0 flows, 0 API calls, confidence=0.00[0m
+  ✓ version_id=None 正常落库
+  ✓ graph_name 为 Exploration-P{pid}
+═══ 4. get_or_reset_graph ═══
+  ✓ completed 行重置同 id
+  ✓ 重置后状态 running
+  ✓ 重置后 JSON 列清空
+  ✓ 重置后快照清空
+  ✓ running 未 stale → 幂等返回
+  ✓ 无行 → 新建（version_id=None）
+═══ 5. 业务流查询项目级命中（版本无关） ═══
+  ✓ _query_existing_kg(p1, v99) 命中项目 KG
+  ✓ 跨项目隔离（项目99 不命中）
+═══ 6. 删版本不删 KG（解除来源关联） ═══
+  ✓ KG 行仍在
+  ✓ version_id 已置空
+  ✓ 总行数未减少
+  ✓ versions.py 不再 delete KG
+  ✓ functional_to_ui 查询去 version 过滤
+═══ 7. 审批 hook 触发 + running 跳过 ═══
+============================================================
+requirement_change_service.py LOADED - VERSION 19:45
+============================================================
+[32m2026-08-23 20:08:38[0m | [1mINFO    [0m | [36mapp.core.services.requirement_change_service[0m:[36m_spawn_kg_exploration[0m:[36m46[0m - [1m[KGIncremental] 已触发审批后增量探索：版本5，模块 ['模块A', '模块B'][0m
+  ✓ 增量探索收到 (版本, 模块)
+  ✓ 任务集合已清空（done_callback discard）
+[32m2026-08-23 20:08:38[0m | [33m[1mWARNING [0m | [36mapp.core.services.kg_incremental_explorer[0m:[36mexplore_affected_modules[0m:[36m66[0m - [33m[1m[KGIncremental] 项目99未配置 base_url/username/password，跳过增量探索[0m
+  ✓ 未配置 base_url 安全降级返回 False
+[32m2026-08-23 20:08:38[0m | [1mINFO    [0m | [36mapp.core.services.kg_incremental_explorer[0m:[36mexplore_affected_modules[0m:[36m75[0m - [1m[KGIncremental] 项目2全站探索进行中，跳过增量探索[0m
+  ✓ KG running → 跳过增量探索
+═══ 8.5 resolve_module_urls（执行器恢复导航映射）+ detail 快照透传 ═══
+  ✓ pages.page_name 命中 → 模块 URL
+  ✓ 登录模块命中
+  ✓ 未知模块 → 空列表
+  ✓ menus.href 拼接兜底
+  ✓ 空模块名 → 空列表
+  ✓ 依赖「导航」边反查命中
+  ✓ detail 返回 snapshots
+  ✓ snapshots 带元素（页面归属）
+  ✓ 执行器委托参数化执行（run_parametrized_specs）
+  ✓ 参数化执行器读 preconditions+steps
+  ✓ 导航动作词表同源定义（NAVIGATION_ACTIONS）
+  ✓ 生成 pytest 工程同源（spec 全量参数化）
+  ✓ 执行器不再挂 KG 复位链
+  ✓ 执行器不再调 resolve_module_urls
+  ✓ 文本定位去空白兜底存在（_ws_fallback_xpath）
+  ✓ 文本定位 count 探测决策（get_by_text 优先）
+  ✓ 归一化工具纯函数（重 置 → 重置）
+  ✓ 归一化工具纯函数（待审核报告 ≠ 报告审核）
+  ✓ 探索校正函数定义（_correct_case_steps）
+  ✓ 诊断含 actual_text 字段
+  ✓ 批量链路调用探索校正
+  ✓ 单条链路调用探索校正（KG __step_diagnostics__）
+  ✓ 探索评分归一化（L6 norm_text == norm_target）
+  ✓ 探索 L5 归一化匹配 + 节点自身文本（normTarget/selfText）
+[32m2026-08-23 20:08:39[0m | [1mINFO    [0m | [36mapp.core.services.functional_to_ui_service[0m:[36m_correct_case_steps[0m:[36m2560[0m - [1m[FunctionalToUI] 探索校正: 用例9003 step2「待审核报告」→「报告审核」[0m
+  ✓ 校正: 一致步骤不替换
+  ✓ 校正: 不一致步骤替换为真实文本
+  ✓ 校正: 返回校正步数
+  ✓ 校正: 幂等（再跑返回 0）
+  ✓ 校正: 非成功步骤不动
+  ✓ 安全阀: 容器污染（重置→自定义）不校正
+  ✓ 安全阀: 单字命中（登记日期→日）不校正
+[32m2026-08-23 20:08:39[0m | [1mINFO    [0m | [36mapp.core.services.functional_to_ui_service[0m:[36m_correct_case_steps[0m:[36m2560[0m - [1m[FunctionalToUI] 探索校正: 用例9005 step1「重置」→「重 置」[0m
+  ✓ 安全阀放行: 渲染差异（重置→重 置）
+[32m2026-08-23 20:08:39[0m | [1mINFO    [0m | [36mapp.core.services.functional_to_ui_service[0m:[36m_correct_case_steps[0m:[36m2560[0m - [1m[FunctionalToUI] 探索校正: 用例9005 step2「待审核报告」→「报告审核」[0m
+  ✓ 安全阀放行: 同物异名（待审核报告→报告审核）
+[32m2026-08-23 20:08:39[0m | [1mINFO    [0m | [36mapp.core.services.functional_to_ui_service[0m:[36m_correct_case_steps[0m:[36m2560[0m - [1m[FunctionalToUI] 探索校正: 用例9005 step3「佩戴预警」→「佩戴预警 (0)」[0m
+  ✓ 安全阀放行: 前后缀（佩戴预警→佩戴预警(0)）
+═══ 8.6 功能用例 → UI 用例转化守卫（审核通过前提） ═══
+[32m2026-08-23 20:08:43[0m | [1mINFO    [0m | [36mapp.core.services.ocr_service[0m:[36mconfigure_tesseract_path[0m:[36m25[0m - [1mTesseract路径已配置: C:\Program Files\Tesseract-OCR\tesseract.EXE[0m
+  ✓ 草稿用例拦截(400+请先审核)
+  ✓ 已通过用例放行
+  ✓ 不存在的用例 404
+  ✓ 可转化状态集同源
+  ✓ 单条转化端点调守卫
+  ✓ 批量转化端点调守卫
+  ✓ 批量跳过未审核(_load_case_meta)
+  ✓ 跳过名单透出(skipped_cases)
+  ✓ 均未审核整批拒绝
+  ✓ 批量已转化跳过(reason)
+  ✓ converted-ids 过滤软删
+  ✓ 删除保护过滤软删
+  ✓ 已转化删除保护 409
+═══ 8.7 转化链路闭环修复源码回归（2026-08-17 三查） ═══
+  ✓ check-login 判定同源(test_script+test_data)
+  ✓ check-login 无 handle_org_selection 判定
+  ✓ 批量跨项目跳过(reason)
+  ✓ 服务层同项目一致性校验
+  ✓ 批量转化按id匹配(_spec_by_id)
+  ✓ id不匹配显式失败文案
+  ✓ 死代码 _convert_single_case 已删
+  ✓ V1 兜底不再调用规则引擎
+  ✓ V1 失败返回明确错误
+  ✓ 规则引擎走生效行解析
+  ✓ 规则引擎绑定逻辑id
+  ✓ 规则引擎查重项目隔离
+  ✓ 规则引擎无print调试残留
+  ✓ v2 prompt 无 WorkpanelPage 残留
+  ✓ 批量大小参数化(convert_batch_size)
+  ✓ 批量大小默认15
+  ✓ 批量大小非法值兜底
+  ✓ 批量大小不再硬编码10
+  ✓ 批量大小schema字段透传
+  ✓ 补充探索阶段入口(缺元素触发)
+  ✓ 补充探索仅缺失模块(_supple_steps)
+  ✓ 补充探索复用步骤驱动管线
+  ✓ 补充探索复查重查KG
+  ✓ 补充探索后刷新all_exploration
+  ✓ 仍缺失标注文案
+  ✓ force_explore跳过补充探索
+  ✓ 模块KG匹配helper
+  ✓ 预检主循环复用helper
+  ✓ 端点批量force_explore字段
+  ✓ 端点批量headless字段
+  ✓ 服务层force全量重探索
+  ✓ 探索器浏览器headless透传
+  ✓ 探索器登录浏览器headless透传
+  ✓ 单条fallback透传force+headless
+  ✓ 单条端点force走探索分支
+═══ 8.8 探索偏差修复 + 「」标记链路闭环源码回归（2026-08-17） ═══
+  ✓ 探索器签名含browser+viewport
+  ✓ 主探索调用透传browser
+  ✓ 补充探索调用透传browser
+  ✓ viewport解析helper
+  ✓ browser工厂白名单helper
+  ✓ async登录浏览器用解析视口
+  ✓ sync探索浏览器用解析视口
+  ✓ sync探索浏览器工厂解析
+  ✓ 步骤前页面对齐块已删
+  ✓ 恢复1保留
+  ✓ 恢复1补渲染等待
+  ✓ P3交互开关配置字段
+  ✓ P3 deep_dive interactive参数
+  ✓ P3 modals按开关跳过
+  ✓ P3 pagination按开关透传
+  ✓ pagination interactive参数
+  ✓ pagination逐页点击包开关
+  ✓ P3 dropdowns按开关跳过
+  ✓ explore_guided传P3开关
+  ✓ BFS保持P3默认交互
+  ✓ 导航容器阈值参数化
+  ✓ 变更批量prompt补规则段
+  ✓ 变更批量json示例带标记
+  ✓ 变更单模块prompt补规则段
+  ✓ 派生重写保持标记约定
+  ✓ AuditResult带marker_stats
+  ✓ 标记覆盖率校验函数
+  ✓ 验证类步骤豁免
+  ✓ audit入口执行校验
+  ✓ under/over透传marker_stats
+═══ 8. 登录导入 populate 携带 auth_data ═══
+[32m2026-08-23 20:08:43[0m | [1mINFO    [0m | [36mapp.core.services.kg_populator[0m:[36mpopulate[0m:[36m203[0m - [1m[KGPopulator] 全量替换模式: 1 pages, 0 elements[0m
+[32m2026-08-23 20:08:43[0m | [1mINFO    [0m | [36mapp.core.services.kg_populator[0m:[36mpopulate[0m:[36m267[0m - [1m[KGPopulator] Graph #7 populated: 1 pages, 0 menus, 0 elements, 0 flows, 0 API calls, confidence=0.00[0m
+  ✓ auth_data 已落库
+  ✓ 登录导入 populate 带 auth_data
+
+结果: 147 通过 / 0 失败

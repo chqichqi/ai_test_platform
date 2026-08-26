@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Test Platform - 控制面板</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .card h2 {
+            color: #4f46e5;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .endpoint-list {
+            list-style: none;
+        }
+        
+        .endpoint-list li {
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background: #f8fafc;
+            border-radius: 8px;
+            border-left: 4px solid #4f46e5;
+        }
+        
+        .endpoint-list li:hover {
+            background: #f1f5f9;
+        }
+        
+        .endpoint-method {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        .method-get { background: #10b981; color: white; }
+        .method-post { background: #3b82f6; color: white; }
+        .method-put { background: #f59e0b; color: white; }
+        .method-delete { background: #ef4444; color: white; }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: #4f46e5;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background: #4338ca;
+        }
+        
+        .btn-secondary {
+            background: #6b7280;
+        }
+        
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+        
+        .btn-success {
+            background: #10b981;
+        }
+        
+        .btn-success:hover {
+            background: #0da271;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        
+        .api-tester {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .api-tester h2 {
+            color: #4f46e5;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #4b5563;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4f46e5;
+        }
+        
+        .response-area {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            color: white;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 AI Agent Test Platform</h1>
+            <p>基于AI Agent的自动化测试平台 - 控制面板</p>
+            <div class="status-badge">✅ 运行中</div>
+        </div>
+        
+        <div class="dashboard">
+            <div class="card">
+                <h2>📊 系统状态</h2>
+                <p>查看应用运行状态和基本信息</p>
+                <div class="btn-group">
+                    <a href="/health" class="btn" target="_blank">健康检查</a>
+                    <a href="/info" class="btn btn-secondary" target="_blank">应用信息</a>
+                    <a href="/api/status" class="btn btn-secondary" target="_blank">API状态</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>📚 API文档</h2>
+                <p>查看完整的API文档和测试接口</p>
+                <div class="btn-group">
+                    <a href="/docs" class="btn btn-success" target="_blank">Swagger UI</a>
+                    <a href="/redoc" class="btn" target="_blank">ReDoc</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>🔐 认证测试</h2>
+                <p>测试用户认证和权限系统</p>
+                <ul class="endpoint-list">
+                    <li>
+                        <span class="endpoint-method method-post">POST</span>
+                        <code>/api/v1/auth/register</code>
+                    </li>
+                    <li>
+                        <span class="endpoint-method method-post">POST</span>
+                        <code>/api/v1/auth/login</code>
+                    </li>
+                    <li>
+                        <span class="endpoint-method method-get">GET</span>
+                        <code>/api/v1/auth/me</code>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h2>⚙️ 系统功能</h2>
+                <p>平台核心功能模块</p>
+                <ul class="endpoint-list">
+                    <li>✅ 用户认证与权限管理</li>
+                    <li>✅ RBAC权限控制系统</li>
+                    <li>🔄 文档上传与RAG知识库</li>
+                    <li>🔄 AI测试用例生成</li>
+                    <li>🔄 测试用例管理</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="api-tester">
+            <h2>🔧 API测试工具</h2>
+            <div class="form-group">
+                <label for="endpoint">API端点</label>
+                <select id="endpoint" class="endpoint-select">
+                    <option value="/health">GET /health - 健康检查</option>
+                    <option value="/info">GET /info - 应用信息</option>
+                    <option value="/api/status">GET /api/status - API状态</option>
+                    <option value="/api/v1/auth/test">GET /api/v1/auth/test - 认证测试</option>
+                    <option value="/ping">GET /ping - Ping测试</option>
+                    <option value="/version">GET /version - 版本信息</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="method">HTTP方法</label>
+                <select id="method" class="method-select">
+                    <option value="GET">GET</option>
+                    <option value="POST">POST</option>
+                    <option value="PUT">PUT</option>
+                    <option value="DELETE">DELETE</option>
+                </select>
+            </div>
+            
+            <div class="form-group" id="requestBodyGroup" style="display: none;">
+                <label for="requestBody">请求体 (JSON)</label>
+                <textarea id="requestBody" rows="4" placeholder='{"key": "value"}'></textarea>
+            </div>
+            
+            <button class="btn" onclick="testApi()">发送请求</button>
+            
+            <div class="response-area" id="responseArea">
+                {/* 响应将显示在这里 */}
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>AI Agent Test Platform v1.0.0 | 开发环境 | © 2024</p>
+            <p>访问 <a href="/docs" style="color: white; text-decoration: underline;">完整API文档</a> 获取更多信息</p>
+        </div>
+    </div>
+    
+    <script>
+        // 显示/隐藏请求体输入框
+        document.getElementById('method').addEventListener('change', function() {
+            const requestBodyGroup = document.getElementById('requestBodyGroup');
+            requestBodyGroup.style.display = this.value === 'POST' || this.value === 'PUT' ? 'block' : 'none';
+        });
+        
+        // API测试函数
+        async function testApi() {
+            const endpoint = document.getElementById('endpoint').value;
+            const method = document.getElementById('method').value;
+            const requestBody = document.getElementById('requestBody').value;
+            const responseArea = document.getElementById('responseArea');
+            
+            responseArea.textContent = '发送请求中...';
+            responseArea.style.color = '#666';
+            
+            try {
+                const options = {
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                };
+                
+                if (method === 'POST' || method === 'PUT') {
+                    if (requestBody) {
+                        options.body = requestBody;
+                    }
+                }
+                
+                const response = await fetch(endpoint, options);
+                const data = await response.json();
+                
+                // 格式化JSON响应
+                responseArea.textContent = JSON.stringify(data, null, 2);
+                responseArea.style.color = response.ok ? '#10b981' : '#ef4444';
+                
+            } catch (error) {
+                responseArea.textContent = `错误: ${error.message}`;
+                responseArea.style.color = '#ef4444';
+            }
+        }
+        
+        // 页面加载时自动测试健康检查
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('endpoint').value = '/health';
+                testApi();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+{
+  "module": "设备管理-患者档案",
+  "total_clicks": 16,
+  "pages": 1,
+  "clicks": [
+    {
+      "name": "圆滚滚\n\t-\t10065602736\t女\t-\t-\t2026-07-14\t-\t-\t-\t\n\t\n详情\n入组",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "大数据\n\t-\t10065602735\t男\t-\t-\t2026-07-14\t-\t-\t-\t\n\t\n详情\n入组",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "0789433\n\t-\t10065602733\t男\t-\t-\t2026-07-14\t-\t-\t-\t\n\t\n详情\n入组",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "0714566\n\t-\t10065602732\t男\t-\t-\t2026-07-14\t-\t-\t-\t\n\t\n详情\n入组",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "0714666\n\t-\t12590000888\t女\t-\t-\t2026-07-14\t-\t-\t-\t\n\t\n详情\n入组\n报告",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "姓名\n\t\n编号\n\t\n手机号码\n\t\n性别\n\t\n年龄\n\t\n绑定设备\n\t\n录入时间\n\t\n随访项目\n\t\n疾病标签\n\t\n异常事件\n",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "GDH000\n\t-\t10065666692\t-\t-\t-\t2026-08-04\t验证TA数据\t\n阵发性房颤\n房颤\n\t\n房颤",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "07140098\n\t-\t10065602737\t-\t-\t-\t2026-07-14\t验证TA数据\t-\t-\t\n\t\n详情\n入组",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "071403621\n\t-\t10065602731\t-\t-\t-\t2026-07-14\t验证TA数据\t-\t-\t\n\t\n详情\n入",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "0714050000\n\t-\t10065602730\t-\t-\t-\t2026-07-14\t验证TA数据\t-\t-\t\n\t\n详情\n",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "071400082\n\t-\t10065602729\t-\t-\t-\t2026-07-14\t验证TA数据\t\n阵发性房颤\n房颤\n\t",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "071400055\n\t-\t10065602722\t-\t-\t-\t2026-07-14\t验证TA数据\t\n阵发性房颤\n房颤\n\t",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "071400004\n\t-\t10065602721\t-\t-\t-\t2026-07-14\t验证TA数据\t-\t-\t\n\t\n详情\n入",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "071400003\n\t-\t10065602720\t-\t-\t-\t2026-07-14\t验证TA数据\t-\t-\t\n\t\n详情\n入",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "071400002\n\t-\t10065602719\t-\t-\t-\t2026-07-14\t验证TA数据\t-\t-\t\n\t\n详情\n入",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    },
+    {
+      "name": "071400001\n\t-\t10065602718\t-\t-\t-\t2026-07-14\t验证TA数据\t\n阵发性房颤\n房颤\n\t",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "result": "static"
+    }
+  ]
+}

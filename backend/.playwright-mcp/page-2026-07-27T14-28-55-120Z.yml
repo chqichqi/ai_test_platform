@@ -1,0 +1,35 @@
+- generic [ref=e5]:
+  - generic [ref=e6]:
+    - generic [ref=e7]:
+      - img "logo" [ref=e8]
+      - generic [ref=e9]: 心吉康心血管健康综合管理平台
+    - generic [ref=e36]: 测试机构
+    - generic [ref=e10]:
+      - generic [ref=e13]: 2026/07/27 星期
+      - generic [ref=e14]: 一
+      - generic [ref=e15] [cursor=pointer]: 陈强
+  - generic [ref=e19]:
+    - menu [ref=e38]:
+      - menuitem "工作台" [ref=e39] [cursor=pointer]
+      - menuitem "患者档案" [ref=e42] [cursor=pointer]
+      - menuitem "设备管理" [expanded] [ref=e45] [cursor=pointer]
+      - menu [ref=e5876]:
+        - menuitem "设备列表" [ref=e5877] [cursor=pointer]
+        - menuitem "设备收发" [ref=e5879] [cursor=pointer]
+      - menuitem "问卷管理" [ref=e48] [cursor=pointer]
+      - menuitem "账号管理" [ref=e51] [cursor=pointer]
+      - menuitem "数据管理" [expanded] [ref=e54] [cursor=pointer]
+      - menu [ref=e4556]:
+        - menuitem "文件审核" [ref=e4557] [cursor=pointer]
+        - menuitem "内部报告" [ref=e4559] [cursor=pointer]
+        - menuitem "健康报告" [ref=e4561] [cursor=pointer]
+        - menuitem "周报审核" [ref=e4563] [cursor=pointer]
+      - menuitem "运营配置" [ref=e57] [cursor=pointer]
+      - menuitem "操作日志" [ref=e60] [cursor=pointer]
+      - menuitem "随访管理" [expanded] [ref=e63] [cursor=pointer]
+      - menu [ref=e6688]:
+        - menuitem "患者管理" [ref=e6689] [cursor=pointer]
+        - menuitem "随访项目" [ref=e6691] [cursor=pointer]
+    - navigation [ref=e24]:
+      - list [ref=e25]:
+        - listitem [ref=e26]: 工作台

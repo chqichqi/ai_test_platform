@@ -1,0 +1,683 @@
+{
+  "label": "dd_20 条/页",
+  "url": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+  "total_elements": 75,
+  "elements": [
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "header-root flex-shrink-0 flex flex-row items-center justify-between w-full px-4 bg-white border-b-2",
+      "text": "心吉康心血管健康综合管理平台测试机构2026/08/01  星期六陈强",
+      "onclick": false,
+      "href": "",
+      "size": "1280x64"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-start",
+      "text": "心吉康心血管健康综合管理平台",
+      "onclick": false,
+      "href": "",
+      "size": "374x38"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-start text-normal333",
+      "text": "2026/08/01  星期六陈强",
+      "onclick": false,
+      "href": "",
+      "size": "303x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-dropdown-trigger p-1 ml-8 flex flex-row items-center justify-start cursor-pointer rounded-sm hov",
+      "text": "陈强",
+      "onclick": false,
+      "href": "",
+      "size": "102x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "layout-body w-full flex flex-row",
+      "text": "工作台患者档案设备管理设备列表设备收发问卷管理账号管理数据管理文件审核内部报告健康报告周报审核运营配置操作日志随访管理患者档案/档案详情05280001编辑10",
+      "onclick": false,
+      "href": "",
+      "size": "1280x836"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "工作台",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-selected",
+      "text": "患者档案",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "设备列表",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "设备收发",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "问卷管理",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "文件审核",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "内部报告",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "健康报告",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "周报审核",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "运营配置",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "操作日志",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center px-4 overflow-hidden",
+      "text": "患者档案/档案详情",
+      "onclick": false,
+      "href": "",
+      "size": "1080x44"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-breadcrumb-item",
+      "text": "患者档案",
+      "onclick": false,
+      "href": "",
+      "size": "56x22"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-breadcrumb-item",
+      "text": "档案详情",
+      "onclick": false,
+      "href": "",
+      "size": "56x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "contianer-root flex flex-col items-start justify-start flex-1 overflow-x-auto ",
+      "text": "05280001编辑10065602678--陈强正式医生2更多--患者疾病标签编辑患者卡片打印患者病史编辑高血压知情同意书随访项目查看05280001100*",
+      "onclick": false,
+      "href": "",
+      "size": "1080x792"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "w-full flex items-center",
+      "text": "05280001编辑",
+      "onclick": false,
+      "href": "",
+      "size": "244x42"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex justify-between items-center",
+      "text": "05280001编辑",
+      "onclick": false,
+      "href": "",
+      "size": "188x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center mr-1 flex-1",
+      "text": "05280001",
+      "onclick": false,
+      "href": "",
+      "size": "157x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "mt-5 flex items-center undefined",
+      "text": "10065602678",
+      "onclick": false,
+      "href": "",
+      "size": "244x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "mt-5 flex items-center mb-5",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "244x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-end",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "244x40"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "mt-5 flex items-center undefined",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "28x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "mt-5 flex items-center undefined",
+      "text": "陈强正式医生2更多",
+      "onclick": false,
+      "href": "",
+      "size": "244x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-end flex-wrap",
+      "text": "陈强正式医生2更多",
+      "onclick": false,
+      "href": "",
+      "size": "119x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "mt-5 flex items-center undefined",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "244x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "mt-5 flex items-center mb-5",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "244x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between",
+      "text": "患者疾病标签编辑",
+      "onclick": false,
+      "href": "",
+      "size": "244x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between",
+      "text": "患者卡片打印",
+      "onclick": false,
+      "href": "",
+      "size": "244x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between",
+      "text": "患者病史编辑",
+      "onclick": false,
+      "href": "",
+      "size": "244x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between",
+      "text": "知情同意书",
+      "onclick": false,
+      "href": "",
+      "size": "244x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between",
+      "text": "随访项目查看",
+      "onclick": false,
+      "href": "",
+      "size": "244x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-col items-start justify-start w-full p-3 rounded-md bg-white mt-4 px-4 rounded-xl",
+      "text": "房颤负荷PPG事件次数ECG事件次数",
+      "onclick": false,
+      "href": "",
+      "size": "840x223"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "mb-2 flex justify-between items-end",
+      "text": "房颤负荷PPG事件次数ECG事件次数",
+      "onclick": false,
+      "href": "",
+      "size": "812x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center mr-3",
+      "text": "房颤负荷",
+      "onclick": false,
+      "href": "",
+      "size": "68x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center mr-3",
+      "text": "PPG事件次数",
+      "onclick": false,
+      "href": "",
+      "size": "94x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center",
+      "text": "ECG事件次数",
+      "onclick": false,
+      "href": "",
+      "size": "93x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-baseline",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "126x41"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-baseline",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "126x41"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-baseline",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "126x41"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-baseline",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "126x41"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-baseline",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "126x41"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex justify-between items-end px-4",
+      "text": "ECG事件列表PPG事件列表全部数据全部状态查 询重 置",
+      "onclick": false,
+      "href": "",
+      "size": "840x46"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-inline",
+      "text": "全部数据",
+      "onclick": false,
+      "href": "",
+      "size": "134x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "全部数据",
+      "onclick": false,
+      "href": "",
+      "size": "134x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control css-1sdc3xm",
+      "text": "全部数据",
+      "onclick": false,
+      "href": "",
+      "size": "134x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "全部数据",
+      "onclick": false,
+      "href": "",
+      "size": "134x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "全部数据",
+      "onclick": false,
+      "href": "",
+      "size": "134x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "全部数据",
+      "onclick": false,
+      "href": "",
+      "size": "134x32"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-item",
+      "text": "全部数据",
+      "onclick": false,
+      "href": "",
+      "size": "110x30"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-inline",
+      "text": "全部状态",
+      "onclick": false,
+      "href": "",
+      "size": "134x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "全部状态",
+      "onclick": false,
+      "href": "",
+      "size": "134x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control css-1sdc3xm",
+      "text": "全部状态",
+      "onclick": false,
+      "href": "",
+      "size": "134x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "全部状态",
+      "onclick": false,
+      "href": "",
+      "size": "134x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "全部状态",
+      "onclick": false,
+      "href": "",
+      "size": "134x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "全部状态",
+      "onclick": false,
+      "href": "",
+      "size": "134x32"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-item",
+      "text": "全部状态",
+      "onclick": false,
+      "href": "",
+      "size": "110x30"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid",
+      "text": "查 询",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-default ant-btn-color-default ant-btn-variant-outlined",
+      "text": "重 置",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "w-full flex items-center justify-center h-full",
+      "text": "暂无数据暂无数据",
+      "onclick": false,
+      "href": "",
+      "size": "826x261"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-item ant-pagination-item-1 ant-pagination-item-disabled",
+      "text": "1",
+      "onclick": false,
+      "href": "",
+      "size": "24x24"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-sm ant-select-outlined ant-pagination-options-size-changer css-1sdc3xm ant-sel",
+      "text": "20 条/页10 条/页20 条/页50 条/页100 条/页",
+      "onclick": false,
+      "href": "",
+      "size": "89x24"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-item",
+      "text": "20 条/页",
+      "onclick": false,
+      "href": "",
+      "size": "73x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "option",
+      "cls": "ant-select-item ant-select-item-option",
+      "text": "10 条/页",
+      "onclick": false,
+      "href": "",
+      "size": "84x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-item-option-content",
+      "text": "10 条/页",
+      "onclick": false,
+      "href": "",
+      "size": "60x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "option",
+      "cls": "ant-select-item ant-select-item-option ant-select-item-option-active ant-select-item-option-selected",
+      "text": "20 条/页",
+      "onclick": false,
+      "href": "",
+      "size": "84x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-item-option-content",
+      "text": "20 条/页",
+      "onclick": false,
+      "href": "",
+      "size": "60x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "option",
+      "cls": "ant-select-item ant-select-item-option",
+      "text": "50 条/页",
+      "onclick": false,
+      "href": "",
+      "size": "84x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-item-option-content",
+      "text": "50 条/页",
+      "onclick": false,
+      "href": "",
+      "size": "60x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "option",
+      "cls": "ant-select-item ant-select-item-option",
+      "text": "100 条/页",
+      "onclick": false,
+      "href": "",
+      "size": "84x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-item-option-content",
+      "text": "100 条/页",
+      "onclick": false,
+      "href": "",
+      "size": "60x22"
+    }
+  ],
+  "overlay_elements": []
+}

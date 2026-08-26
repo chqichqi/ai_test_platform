@@ -1,0 +1,14 @@
+- generic [ref=e5]:
+  - generic [ref=e6]:
+    - generic [ref=e7]:
+      - img "logo" [ref=e8]
+      - generic [ref=e9]: 心吉康心血管健康综合管理平台
+    - generic [ref=e10]:
+      - generic [ref=e13]: 2026/07/27 星期
+      - generic [ref=e14]: 一
+  - generic [ref=e19]:
+    - generic [ref=e20]:
+      - menu
+    - navigation [ref=e24]:
+      - list [ref=e25]:
+        - listitem [ref=e26]: 工作台

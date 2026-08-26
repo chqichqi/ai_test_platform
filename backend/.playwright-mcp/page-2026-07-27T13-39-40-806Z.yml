@@ -1,0 +1,489 @@
+- generic [ref=e5]:
+  - generic [ref=e6]:
+    - generic [ref=e7]:
+      - img "logo" [ref=e8]
+      - generic [ref=e9]: 心吉康心血管健康综合管理平台
+    - generic [ref=e36]: 测试机构
+    - generic [ref=e10]:
+      - generic [ref=e13]: 2026/07/27 星期
+      - generic [ref=e14]: 一
+      - generic [ref=e15] [cursor=pointer]: 陈强
+  - generic [ref=e19]:
+    - menu [ref=e38]:
+      - menuitem "工作台" [ref=e39] [cursor=pointer]
+      - menuitem "患者档案" [ref=e42] [cursor=pointer]
+      - menuitem "设备管理" [ref=e45] [cursor=pointer]
+      - menuitem "问卷管理" [ref=e48] [cursor=pointer]
+      - menuitem "账号管理" [ref=e51] [cursor=pointer]
+      - menuitem "数据管理" [ref=e54] [cursor=pointer]
+      - menuitem "运营配置" [ref=e57] [cursor=pointer]
+      - menuitem "操作日志" [ref=e60] [cursor=pointer]
+      - menuitem "随访管理" [ref=e63] [cursor=pointer]
+    - generic [ref=e21]:
+      - navigation [ref=e887]:
+        - list [ref=e888]:
+          - listitem [ref=e889]: 患者档案
+      - generic [ref=e5875]:
+        - generic [ref=e5876]:
+          - generic [ref=e5877]: 患者档案
+          - generic [ref=e5878]:
+            - button "导出统计数据" [ref=e5879] [cursor=pointer]
+            - button "卡片信息设置" [ref=e5881] [cursor=pointer]
+            - button "新增患者" [ref=e5883] [cursor=pointer]
+        - generic [ref=e5885]:
+          - generic [ref=e5886]:
+            - tablist [ref=e5887]:
+              - generic [ref=e5889]:
+                - tab "全部" [selected] [ref=e5891] [cursor=pointer]
+                - tab "我的患者" [ref=e5893] [cursor=pointer]
+            - generic:
+              - generic:
+                - tabpanel "全部"
+          - generic [ref=e5898]:
+            - generic [ref=e5902]:
+              - generic "录入时间" [ref=e5904]: "录入时间 :"
+              - generic [ref=e5909]:
+                - textbox "录入时间 :" [ref=e5910]:
+                  - /placeholder: 请选择
+                - generic:
+                  - img "calendar"
+            - generic [ref=e5914]:
+              - generic "编号" [ref=e5916]: "编号 :"
+              - textbox "编号 :" [ref=e5921]:
+                - /placeholder: 请输入编号
+            - generic [ref=e5926]:
+              - generic "姓名" [ref=e5928]: "姓名 :"
+              - textbox "姓名 :" [ref=e5933]:
+                - /placeholder: 请输入姓名
+            - generic [ref=e5938]:
+              - generic "手机号码" [ref=e5940]: "手机号码 :"
+              - textbox "手机号码 :" [ref=e5945]:
+                - /placeholder: 请输入手机号码
+            - generic [ref=e5950]:
+              - generic "性别" [ref=e5952]: "性别 :"
+              - generic [ref=e5958] [cursor=pointer]:
+                - combobox "性别 :" [ref=e5960]
+                - generic: 请选择
+            - generic [ref=e5964]:
+              - generic "疾病标签" [ref=e5966]: "疾病标签 :"
+              - generic [ref=e5972] [cursor=pointer]:
+                - combobox "疾病标签 :" [ref=e5974]
+                - generic "房颤" [ref=e5975]
+            - generic [ref=e5982]:
+              - generic [ref=e5986]:
+                - generic "年龄" [ref=e5988]: "年龄 :"
+                - generic [ref=e5992]:
+                  - generic:
+                    - button "Increase Value" [ref=e5993] [cursor=pointer]:
+                      - img "up" [ref=e5994]
+                    - button "Decrease Value" [ref=e5997] [cursor=pointer]:
+                      - img "down" [ref=e5998]
+                  - spinbutton "年龄 :" [ref=e6002]
+              - generic [ref=e6003]: ~
+              - generic [ref=e6011]:
+                - generic:
+                  - button "Increase Value" [ref=e6012] [cursor=pointer]:
+                    - img "up" [ref=e6013]
+                  - button "Decrease Value" [ref=e6016] [cursor=pointer]:
+                    - img "down" [ref=e6017]
+                - spinbutton "请输入" [ref=e6021]
+            - generic [ref=e6025]:
+              - generic "绑定设备" [ref=e6027]: "绑定设备 :"
+              - generic [ref=e6033] [cursor=pointer]:
+                - combobox "绑定设备 :" [ref=e6035]
+                - generic: 请选择
+            - generic [ref=e6039]:
+              - generic "关注" [ref=e6041]: "关注 :"
+              - generic [ref=e6047] [cursor=pointer]:
+                - combobox "关注 :" [ref=e6049]
+                - generic: 请选择
+            - generic [ref=e6053]:
+              - generic "随访项目" [ref=e6055]: "随访项目 :"
+              - generic [ref=e6061] [cursor=pointer]:
+                - combobox "随访项目 :" [ref=e6063]
+                - generic: 请选择
+            - generic [ref=e6067]:
+              - generic "报告类型" [ref=e6069]: "报告类型 :"
+              - generic [ref=e6075] [cursor=pointer]:
+                - combobox "报告类型 :" [ref=e6077]
+                - generic: 请选择
+            - generic [ref=e6081]:
+              - generic "入组情况" [ref=e6083]: "入组情况 :"
+              - generic [ref=e6089] [cursor=pointer]:
+                - combobox "入组情况 :" [ref=e6091]
+                - generic: 请选择
+            - generic [ref=e6094]:
+              - button "重 置" [ref=e6095] [cursor=pointer]
+              - button "查 询" [ref=e6097] [cursor=pointer]
+              - generic [ref=e6099] [cursor=pointer]:
+                - generic [ref=e6100]: 收起
+                - img "up" [ref=e6101]
+        - generic [ref=e6104]:
+          - generic [ref=e6117]:
+            - table [ref=e6119]:
+              - rowgroup [ref=e6134]:
+                - row [ref=e6135]:
+                  - columnheader "姓名" [ref=e6136]
+                  - columnheader "编号" [ref=e6137]
+                  - columnheader "手机号码" [ref=e6138]
+                  - columnheader "性别" [ref=e6139]
+                  - columnheader "年龄" [ref=e6140]
+                  - columnheader "绑定设备" [ref=e6141]
+                  - columnheader "录入时间" [ref=e6142]
+                  - columnheader "随访项目" [ref=e6143]
+                  - columnheader "疾病标签" [ref=e6144]
+                  - columnheader "异常事件" [ref=e6145]
+                  - columnheader "备注" [ref=e6146]
+                  - columnheader "操作" [ref=e6147]
+                  - columnheader [ref=e6148]
+            - table [ref=e6150]:
+              - rowgroup [ref=e6164]:
+                - row [ref=e6165]:
+                  - cell "CQ-房颤患者" [ref=e6166]
+                  - cell "-" [ref=e6168]
+                  - cell "18081197206" [ref=e6169]
+                  - cell "男" [ref=e6170]
+                  - cell "39" [ref=e6171]
+                  - cell "-" [ref=e6172]
+                  - cell "2024-12-30" [ref=e6173]
+                  - cell "-" [ref=e6174]
+                  - cell "房颤" [ref=e6175]
+                  - cell "房颤 2026-02-10 14:58:12" [ref=e6179]
+                  - cell [ref=e6182]
+                  - cell "详情 入组 报告 star star" [ref=e6186]:
+                    - generic [ref=e6187]:
+                      - generic [ref=e6188] [cursor=pointer]: 详情
+                      - generic [ref=e6189] [cursor=pointer]: 入组
+                      - generic [ref=e6190] [cursor=pointer]: 报告
+                      - list [ref=e6194] [cursor=pointer]:
+                        - listitem [ref=e6195]:
+                          - radio [checked] [ref=e6196]:
+                            - img "star" [ref=e6198]
+                            - img "star" [ref=e6202]
+                - row [ref=e6205]:
+                  - cell "张川" [ref=e6206]
+                  - cell "-" [ref=e6208]
+                  - cell "10026102193" [ref=e6209]
+                  - cell "男" [ref=e6210]
+                  - cell "40" [ref=e6211]
+                  - cell "-" [ref=e6212]
+                  - cell "2026-01-12" [ref=e6213]
+                  - cell "测试机构" [ref=e6214]
+                  - cell "房颤" [ref=e6215]
+                  - cell "-" [ref=e6219]
+                  - cell [ref=e6220]
+                  - cell "详情 入组 star star" [ref=e6224]:
+                    - generic [ref=e6225]:
+                      - generic [ref=e6226] [cursor=pointer]: 详情
+                      - generic [ref=e6227] [cursor=pointer]: 入组
+                      - list [ref=e6229] [cursor=pointer]:
+                        - listitem [ref=e6230]:
+                          - radio [ref=e6231]:
+                            - img "star" [ref=e6233]
+                            - img "star" [ref=e6237]
+                - row [ref=e6240]:
+                  - cell "王强" [ref=e6241]
+                  - cell "-" [ref=e6243]
+                  - cell "10026102176" [ref=e6244]
+                  - cell "男" [ref=e6245]
+                  - cell "21" [ref=e6246]
+                  - cell "贴心集" [ref=e6247]
+                  - cell "2025-09-01" [ref=e6250]
+                  - cell "测试机构" [ref=e6251]
+                  - cell "房颤" [ref=e6252]
+                  - cell "房颤 2025-09-01 20:43:57" [ref=e6256]
+                  - cell [ref=e6261]
+                  - cell "详情 入组 报告 star star" [ref=e6265]:
+                    - generic [ref=e6266]:
+                      - generic [ref=e6267] [cursor=pointer]: 详情
+                      - generic [ref=e6268] [cursor=pointer]: 入组
+                      - generic [ref=e6269] [cursor=pointer]: 报告
+                      - list [ref=e6273] [cursor=pointer]:
+                        - listitem [ref=e6274]:
+                          - radio [ref=e6275]:
+                            - img "star" [ref=e6277]
+                            - img "star" [ref=e6281]
+                - row [ref=e6284]:
+                  - cell "张军" [ref=e6285]
+                  - cell "-" [ref=e6287]
+                  - cell "10026102175" [ref=e6288]
+                  - cell "男" [ref=e6289]
+                  - cell "29" [ref=e6290]
+                  - cell "-" [ref=e6291]
+                  - cell "2025-09-01" [ref=e6292]
+                  - cell "测试机构" [ref=e6293]
+                  - cell "房颤" [ref=e6294]
+                  - cell "房颤 2025-09-01 20:24:49" [ref=e6298]
+                  - cell [ref=e6303]
+                  - cell "详情 入组 报告 star star" [ref=e6307]:
+                    - generic [ref=e6308]:
+                      - generic [ref=e6309] [cursor=pointer]: 详情
+                      - generic [ref=e6310] [cursor=pointer]: 入组
+                      - generic [ref=e6311] [cursor=pointer]: 报告
+                      - list [ref=e6315] [cursor=pointer]:
+                        - listitem [ref=e6316]:
+                          - radio [ref=e6317]:
+                            - img "star" [ref=e6319]
+                            - img "star" [ref=e6323]
+                - row [ref=e6326]:
+                  - cell "张法真" [ref=e6327]
+                  - cell "-" [ref=e6329]
+                  - cell "10026102004" [ref=e6330]
+                  - cell "女" [ref=e6331]
+                  - cell "65" [ref=e6332]
+                  - cell "-" [ref=e6333]
+                  - cell "2025-08-14" [ref=e6334]
+                  - cell "-" [ref=e6335]
+                  - cell "房颤" [ref=e6336]
+                  - cell "房颤 2025-08-16 23:56:56" [ref=e6340]
+                  - cell "12345" [ref=e6343]
+                  - cell "详情 入组 star star" [ref=e6348]:
+                    - generic [ref=e6349]:
+                      - generic [ref=e6350] [cursor=pointer]: 详情
+                      - generic [ref=e6351] [cursor=pointer]: 入组
+                      - list [ref=e6353] [cursor=pointer]:
+                        - listitem [ref=e6354]:
+                          - radio [ref=e6355]:
+                            - img "star" [ref=e6357]
+                            - img "star" [ref=e6361]
+                - row [ref=e6364]:
+                  - cell "刘光明" [ref=e6365]
+                  - cell "-" [ref=e6367]
+                  - cell "10026102002" [ref=e6368]
+                  - cell "女" [ref=e6369]
+                  - cell "22" [ref=e6370]
+                  - cell "-" [ref=e6371]
+                  - cell "2025-08-12" [ref=e6372]
+                  - cell "-" [ref=e6373]
+                  - cell "房颤" [ref=e6374]
+                  - cell "房颤 2025-08-14 08:55:30" [ref=e6378]
+                  - cell [ref=e6381]
+                  - cell "详情 入组 star star" [ref=e6385]:
+                    - generic [ref=e6386]:
+                      - generic [ref=e6387] [cursor=pointer]: 详情
+                      - generic [ref=e6388] [cursor=pointer]: 入组
+                      - list [ref=e6390] [cursor=pointer]:
+                        - listitem [ref=e6391]:
+                          - radio [ref=e6392]:
+                            - img "star" [ref=e6394]
+                            - img "star" [ref=e6398]
+                - row [ref=e6401]:
+                  - cell "imya0715" [ref=e6402]
+                  - cell "-" [ref=e6404]
+                  - cell "10026101840" [ref=e6405]
+                  - cell "-" [ref=e6406]
+                  - cell "-" [ref=e6407]
+                  - cell "-" [ref=e6408]
+                  - cell "2025-07-15" [ref=e6409]
+                  - cell "测试机构" [ref=e6410]
+                  - cell "房颤" [ref=e6411]
+                  - cell "房颤 2025-07-15 17:31:34" [ref=e6415]
+                  - cell [ref=e6420]
+                  - cell "详情 入组 报告 star star" [ref=e6424]:
+                    - generic [ref=e6425]:
+                      - generic [ref=e6426] [cursor=pointer]: 详情
+                      - generic [ref=e6427] [cursor=pointer]: 入组
+                      - generic [ref=e6428] [cursor=pointer]: 报告
+                      - list [ref=e6432] [cursor=pointer]:
+                        - listitem [ref=e6433]:
+                          - radio [ref=e6434]:
+                            - img "star" [ref=e6436]
+                            - img "star" [ref=e6440]
+                - row [ref=e6443]:
+                  - cell "imya070715" [ref=e6444]
+                  - cell "-" [ref=e6446]
+                  - cell "10026101759" [ref=e6447]
+                  - cell "-" [ref=e6448]
+                  - cell "-" [ref=e6449]
+                  - cell "-" [ref=e6450]
+                  - cell "2025-07-07" [ref=e6451]
+                  - cell "测试机构" [ref=e6452]
+                  - cell "房颤" [ref=e6453]
+                  - cell "房颤 2025-07-07 15:14:56" [ref=e6457]
+                  - cell [ref=e6462]
+                  - cell "详情 入组 报告 star star" [ref=e6466]:
+                    - generic [ref=e6467]:
+                      - generic [ref=e6468] [cursor=pointer]: 详情
+                      - generic [ref=e6469] [cursor=pointer]: 入组
+                      - generic [ref=e6470] [cursor=pointer]: 报告
+                      - list [ref=e6474] [cursor=pointer]:
+                        - listitem [ref=e6475]:
+                          - radio [ref=e6476]:
+                            - img "star" [ref=e6478]
+                            - img "star" [ref=e6482]
+                - row [ref=e6485]:
+                  - cell "123" [ref=e6486]
+                  - cell "-" [ref=e6488]
+                  - cell "13981739035" [ref=e6489]
+                  - cell "-" [ref=e6490]
+                  - cell "-" [ref=e6491]
+                  - cell "-" [ref=e6492]
+                  - cell "2025-06-12" [ref=e6493]
+                  - cell "测试机构" [ref=e6494]
+                  - cell "房颤" [ref=e6495]
+                  - cell "房颤 2025-06-12 20:10:22" [ref=e6499]
+                  - cell "RXD_050A92..." [ref=e6504]
+                  - cell "详情 入组 报告 star star" [ref=e6509]:
+                    - generic [ref=e6510]:
+                      - generic [ref=e6511] [cursor=pointer]: 详情
+                      - generic [ref=e6512] [cursor=pointer]: 入组
+                      - generic [ref=e6513] [cursor=pointer]: 报告
+                      - list [ref=e6517] [cursor=pointer]:
+                        - listitem [ref=e6518]:
+                          - radio [ref=e6519]:
+                            - img "star" [ref=e6521]
+                            - img "star" [ref=e6525]
+                - row [ref=e6528]:
+                  - cell "125" [ref=e6529]
+                  - cell "-" [ref=e6531]
+                  - cell "13981730996" [ref=e6532]
+                  - cell "-" [ref=e6533]
+                  - cell "-" [ref=e6534]
+                  - cell "-" [ref=e6535]
+                  - cell "2025-06-12" [ref=e6536]
+                  - cell "测试机构" [ref=e6537]
+                  - cell "房颤 房速" [ref=e6538]:
+                    - generic [ref=e6539]:
+                      - generic [ref=e6540]: 房颤
+                      - generic [ref=e6542]: 房速
+                  - cell "房颤 2025-07-08 08:39:15" [ref=e6544]
+                  - cell [ref=e6549]
+                  - cell "详情 入组 报告 star star" [ref=e6553]:
+                    - generic [ref=e6554]:
+                      - generic [ref=e6555] [cursor=pointer]: 详情
+                      - generic [ref=e6556] [cursor=pointer]: 入组
+                      - generic [ref=e6557] [cursor=pointer]: 报告
+                      - list [ref=e6561] [cursor=pointer]:
+                        - listitem [ref=e6562]:
+                          - radio [ref=e6563]:
+                            - img "star" [ref=e6565]
+                            - img "star" [ref=e6569]
+                - row [ref=e6572]:
+                  - cell "IMYA0603-3" [ref=e6573]
+                  - cell "-" [ref=e6575]
+                  - cell "10026101573" [ref=e6576]
+                  - cell "-" [ref=e6577]
+                  - cell "-" [ref=e6578]
+                  - cell "-" [ref=e6579]
+                  - cell "2025-06-03" [ref=e6580]
+                  - cell "测试机构" [ref=e6581]
+                  - cell "房颤" [ref=e6582]
+                  - cell "房颤 2025-06-03 20:11:01" [ref=e6586]
+                  - cell [ref=e6591]
+                  - cell "详情 入组 报告 star star" [ref=e6595]:
+                    - generic [ref=e6596]:
+                      - generic [ref=e6597] [cursor=pointer]: 详情
+                      - generic [ref=e6598] [cursor=pointer]: 入组
+                      - generic [ref=e6599] [cursor=pointer]: 报告
+                      - list [ref=e6603] [cursor=pointer]:
+                        - listitem [ref=e6604]:
+                          - radio [ref=e6605]:
+                            - img "star" [ref=e6607]
+                            - img "star" [ref=e6611]
+                - row [ref=e6614]:
+                  - cell "测试0603-2" [ref=e6615]
+                  - cell "-" [ref=e6617]
+                  - cell "10026101572" [ref=e6618]
+                  - cell "-" [ref=e6619]
+                  - cell "-" [ref=e6620]
+                  - cell "-" [ref=e6621]
+                  - cell "2025-06-03" [ref=e6622]
+                  - cell "测试机构" [ref=e6623]
+                  - cell "房颤" [ref=e6624]
+                  - cell "房颤 2025-06-03 19:45:42" [ref=e6628]
+                  - cell [ref=e6633]
+                  - cell "详情 入组 报告 star star" [ref=e6637]:
+                    - generic [ref=e6638]:
+                      - generic [ref=e6639] [cursor=pointer]: 详情
+                      - generic [ref=e6640] [cursor=pointer]: 入组
+                      - generic [ref=e6641] [cursor=pointer]: 报告
+                      - list [ref=e6645] [cursor=pointer]:
+                        - listitem [ref=e6646]:
+                          - radio [ref=e6647]:
+                            - img "star" [ref=e6649]
+                            - img "star" [ref=e6653]
+                - row [ref=e6656]:
+                  - cell "测试0603" [ref=e6657]
+                  - cell "-" [ref=e6659]
+                  - cell "10026101570" [ref=e6660]
+                  - cell "-" [ref=e6661]
+                  - cell "-" [ref=e6662]
+                  - cell "-" [ref=e6663]
+                  - cell "2025-06-03" [ref=e6664]
+                  - cell "测试机构" [ref=e6665]
+                  - cell "房颤" [ref=e6666]
+                  - cell "房颤 2025-06-03 13:59:45" [ref=e6670]
+                  - cell [ref=e6675]
+                  - cell "详情 入组 报告 star star" [ref=e6679]:
+                    - generic [ref=e6680]:
+                      - generic [ref=e6681] [cursor=pointer]: 详情
+                      - generic [ref=e6682] [cursor=pointer]: 入组
+                      - generic [ref=e6683] [cursor=pointer]: 报告
+                      - list [ref=e6687] [cursor=pointer]:
+                        - listitem [ref=e6688]:
+                          - radio [ref=e6689]:
+                            - img "star" [ref=e6691]
+                            - img "star" [ref=e6695]
+                - row [ref=e6698]:
+                  - cell "imya111" [ref=e6699]
+                  - cell "-" [ref=e6701]
+                  - cell "10026101388" [ref=e6702]
+                  - cell "-" [ref=e6703]
+                  - cell "-" [ref=e6704]
+                  - cell "-" [ref=e6705]
+                  - cell "2025-05-08" [ref=e6706]
+                  - cell "测试机构" [ref=e6707]
+                  - cell "房颤" [ref=e6708]
+                  - cell "房颤 2025-05-08 18:53:11" [ref=e6712]
+                  - cell [ref=e6717]
+                  - cell "详情 入组 报告 star star" [ref=e6721]:
+                    - generic [ref=e6722]:
+                      - generic [ref=e6723] [cursor=pointer]: 详情
+                      - generic [ref=e6724] [cursor=pointer]: 入组
+                      - generic [ref=e6725] [cursor=pointer]: 报告
+                      - list [ref=e6729] [cursor=pointer]:
+                        - listitem [ref=e6730]:
+                          - radio [ref=e6731]:
+                            - img "star" [ref=e6733]
+                            - img "star" [ref=e6737]
+                - row [ref=e6740]:
+                  - cell "用户4928(测试）" [ref=e6741]
+                  - cell "-" [ref=e6743]
+                  - cell "18328984928" [ref=e6744]
+                  - cell "女" [ref=e6745]
+                  - cell "-" [ref=e6746]
+                  - cell "贴心集" [ref=e6747]
+                  - cell "2025-04-23" [ref=e6750]
+                  - cell "测试机构" [ref=e6751]
+                  - cell "房颤" [ref=e6752]
+                  - cell "-" [ref=e6756]
+                  - cell [ref=e6757]
+                  - cell "详情 入组 报告 star star" [ref=e6761]:
+                    - generic [ref=e6762]:
+                      - generic [ref=e6763] [cursor=pointer]: 详情
+                      - generic [ref=e6764] [cursor=pointer]: 入组
+                      - generic [ref=e6765] [cursor=pointer]: 报告
+                      - list [ref=e6769] [cursor=pointer]:
+                        - listitem [ref=e6770]:
+                          - radio [ref=e6771]:
+                            - img "star" [ref=e6773]
+                            - img "star" [ref=e6777]
+          - list [ref=e6780]:
+            - listitem [ref=e6781]: 共27条记录
+            - listitem "上一页" [ref=e6782]:
+              - button [disabled] [ref=e6783]:
+                - img "left" [ref=e6784]
+            - listitem "1" [ref=e6787] [cursor=pointer]
+            - listitem "2" [ref=e6789] [cursor=pointer]
+            - listitem "下一页" [ref=e6791] [cursor=pointer]:
+              - button [ref=e6792]:
+                - img "right" [ref=e6793]
+            - listitem [ref=e6796]:
+              - generic "页码" [ref=e6797] [cursor=pointer]:
+                - generic [ref=e6799]:
+                  - combobox "页码" [ref=e6801]
+                  - generic "15 条/页" [ref=e6802]
+              - generic [ref=e6803]:
+                - text: 跳至
+                - textbox "页" [ref=e6804]
+                - text: 页

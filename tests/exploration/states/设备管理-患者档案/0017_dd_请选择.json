@@ -1,0 +1,1286 @@
+{
+  "label": "dd_请选择",
+  "url": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785936551956&oId=c66a8c1b1c54462aa9f7a5de69218fee&tabKey=0",
+  "total_elements": 142,
+  "elements": [
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "header-root flex-shrink-0 flex flex-row items-center justify-between w-full px-4 bg-white border-b-2",
+      "text": "心吉康心血管健康综合管理平台0415New机构2026/08/05  星期三天使布金",
+      "onclick": false,
+      "href": "",
+      "size": "1280x64"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-start",
+      "text": "心吉康心血管健康综合管理平台",
+      "onclick": false,
+      "href": "",
+      "size": "374x38"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-start text-normal333",
+      "text": "2026/08/05  星期三天使布金",
+      "onclick": false,
+      "href": "",
+      "size": "335x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-dropdown-trigger p-1 ml-8 flex flex-row items-center justify-start cursor-pointer rounded-sm hov",
+      "text": "天使布金",
+      "onclick": false,
+      "href": "",
+      "size": "134x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "layout-body w-full flex flex-row",
+      "text": "工作台患者档案设备管理设备列表设备收发问卷管理账号管理数据管理运营配置操作日志随访管理患者档案患者档案导出短程ECG导出统计数据卡片信息设置新增收发新增患者全部",
+      "onclick": false,
+      "href": "",
+      "size": "1280x836"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "工作台",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-selected",
+      "text": "患者档案",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "问卷管理",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "运营配置",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "操作日志",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-breadcrumb-item",
+      "text": "患者档案",
+      "onclick": false,
+      "href": "",
+      "size": "56x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "contianer-root flex flex-col items-start justify-start flex-1 overflow-x-auto ",
+      "text": "患者档案导出短程ECG导出统计数据卡片信息设置新增收发新增患者全部我的患者录入时间编号姓名手机号码性别请选择01男女疾病标签请选择年龄~绑定设备请选择关注请选择",
+      "onclick": false,
+      "href": "",
+      "size": "1080x836"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-between w-full mb-2",
+      "text": "患者档案导出短程ECG导出统计数据卡片信息设置新增收发新增患者",
+      "onclick": false,
+      "href": "",
+      "size": "1052x40"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center",
+      "text": "导出短程ECG导出统计数据卡片信息设置新增收发新增患者",
+      "onclick": false,
+      "href": "",
+      "size": "562x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-default ant-btn-color-default ant-btn-variant-outlined undefined ",
+      "text": "导出短程ECG",
+      "onclick": false,
+      "href": "",
+      "size": "114x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-default ant-btn-color-default ant-btn-variant-outlined undefined ml-3",
+      "text": "导出统计数据",
+      "onclick": false,
+      "href": "",
+      "size": "116x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid border-border-primar",
+      "text": "卡片信息设置",
+      "onclick": false,
+      "href": "",
+      "size": "116x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid border-border-primar",
+      "text": "新增收发",
+      "onclick": false,
+      "href": "",
+      "size": "88x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid undefined ml-3",
+      "text": "新增患者",
+      "onclick": false,
+      "href": "",
+      "size": "88x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-start justify-between w-full pt-6 pl-2 pr-4 bg-white rounded-md",
+      "text": "录入时间编号姓名手机号码性别请选择01男女疾病标签请选择年龄~绑定设备请选择关注请选择随访项目请选择报告类型请选择入组情况请选择重 置查 询收起",
+      "onclick": false,
+      "href": "",
+      "size": "1052x245"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row css-1sdc3xm",
+      "text": "录入时间编号姓名手机号码性别请选择01男女疾病标签请选择年龄~绑定设备请选择关注请选择随访项目请选择报告类型请选择入组情况请选择重 置查 询收起",
+      "onclick": false,
+      "href": "",
+      "size": "1039x224"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row flex flex-row items-start justify-start w-full px-0 css-1sdc3xm",
+      "text": "录入时间编号姓名手机号码性别请选择01男女疾病标签请选择年龄~绑定设备请选择关注请选择随访项目请选择报告类型请选择入组情况请选择重 置查 询收起",
+      "onclick": false,
+      "href": "",
+      "size": "1039x224"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "录入时间",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "录入时间",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "录入时间",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "编号",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "编号",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "编号",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "姓名",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "姓名",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "姓名",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "手机号码",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "手机号码",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "手机号码",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "性别请选择01男女",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "性别请选择01男女",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "性别",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-18 ant-col-md-20 css-1sdc3xm",
+      "text": "请选择01男女",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "请选择01男女",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "请选择01男女",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "请选择01男女",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-item ant-select-item-option ant-pro-filed-search-select-option ant-select-item-option-act",
+      "text": "男",
+      "onclick": false,
+      "href": "",
+      "size": "160x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-item-option-content",
+      "text": "男",
+      "onclick": false,
+      "href": "",
+      "size": "136x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-item ant-select-item-option ant-pro-filed-search-select-option",
+      "text": "女",
+      "onclick": false,
+      "href": "",
+      "size": "160x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-item-option-content",
+      "text": "女",
+      "onclick": false,
+      "href": "",
+      "size": "136x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "疾病标签请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "疾病标签请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "疾病标签",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-18 ant-col-md-20 css-1sdc3xm",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "relative flex flex-col items-start justify-start",
+      "text": "年龄~",
+      "onclick": false,
+      "href": "",
+      "size": "254x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row flex flex-row items-center justify-between w-full css-1sdc3xm",
+      "text": "年龄~",
+      "onclick": false,
+      "href": "",
+      "size": "254x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "年龄",
+      "onclick": false,
+      "href": "",
+      "size": "159x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "年龄",
+      "onclick": false,
+      "href": "",
+      "size": "159x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-col-6 ant-form-item-label css-1sdc3xm",
+      "text": "年龄",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "绑定设备请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "绑定设备请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "绑定设备",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-18 ant-col-md-20 css-1sdc3xm",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "关注请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "关注请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "关注",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-18 ant-col-md-20 css-1sdc3xm",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "随访项目请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "随访项目请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "随访项目",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-18 ant-col-md-20 css-1sdc3xm",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "报告类型请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "报告类型请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "报告类型",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-18 ant-col-md-20 css-1sdc3xm",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "入组情况请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "入组情况请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "入组情况",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-18 ant-col-md-20 css-1sdc3xm",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-start justify-end",
+      "text": "重 置查 询收起",
+      "onclick": false,
+      "href": "",
+      "size": "254x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center",
+      "text": "重 置查 询收起",
+      "onclick": false,
+      "href": "",
+      "size": "209x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-default ant-btn-color-default ant-btn-variant-outlined",
+      "text": "重 置",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid ml-4",
+      "text": "查 询",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ml-6 flex items-center text-text-primary cursor-pointer",
+      "text": "收起",
+      "onclick": false,
+      "href": "",
+      "size": "49x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-has-success ant-form-item-vertical",
+      "text": "姓名编号手机号码性别年龄绑定设备录入时间随访项目疾病标签异常事件备注操作姓名编号手机号码性别年龄绑定设备录入时间随访项目疾病标签异常事件备注操作GDH000-1",
+      "onclick": false,
+      "href": "",
+      "size": "1052x402"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "姓名编号手机号码性别年龄绑定设备录入时间随访项目疾病标签异常事件备注操作姓名编号手机号码性别年龄绑定设备录入时间随访项目疾病标签异常事件备注操作GDH000-1",
+      "onclick": false,
+      "href": "",
+      "size": "1052x402"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control css-1sdc3xm",
+      "text": "姓名编号手机号码性别年龄绑定设备录入时间随访项目疾病标签异常事件备注操作姓名编号手机号码性别年龄绑定设备录入时间随访项目疾病标签异常事件备注操作GDH000-1",
+      "onclick": false,
+      "href": "",
+      "size": "1052x402"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "姓名编号手机号码性别年龄绑定设备录入时间随访项目疾病标签异常事件备注操作姓名编号手机号码性别年龄绑定设备录入时间随访项目疾病标签异常事件备注操作GDH000-1",
+      "onclick": false,
+      "href": "",
+      "size": "1052x402"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "姓名编号手机号码性别年龄绑定设备录入时间随访项目疾病标签异常事件备注操作姓名编号手机号码性别年龄绑定设备录入时间随访项目疾病标签异常事件备注操作GDH000-1",
+      "onclick": false,
+      "href": "",
+      "size": "1052x402"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "GDH000-10065666692---2026-08-04验证TA数据阵发性房颤房颤房颤 2026-08-04 17:33:52详情入组报告",
+      "onclick": false,
+      "href": "",
+      "size": "1940x59"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "text-text-main cursor-pointer hover:underline flex items-center",
+      "text": "房颤 2026-08-04 17:33:52",
+      "onclick": false,
+      "href": "",
+      "size": "208x26"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情入组报告",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "07140098-10065602737---2026-07-14验证TA数据--详情入组报告",
+      "onclick": false,
+      "href": "",
+      "size": "1940x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情入组报告",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "圆滚滚-10065602736女--2026-07-14---详情入组",
+      "onclick": false,
+      "href": "",
+      "size": "1940x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情入组",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "大数据-10065602735男--2026-07-14---详情入组",
+      "onclick": false,
+      "href": "",
+      "size": "1940x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情入组",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "0789433-10065602733男--2026-07-14---详情入组",
+      "onclick": false,
+      "href": "",
+      "size": "1940x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情入组",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "0714666-12590000888女--2026-07-14---详情入组报告",
+      "onclick": false,
+      "href": "",
+      "size": "1940x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情入组报告",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "0714566-10065602732男--2026-07-14---详情入组",
+      "onclick": false,
+      "href": "",
+      "size": "1940x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情入组",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "071403621-10065602731---2026-07-14验证TA数据--详情入组",
+      "onclick": false,
+      "href": "",
+      "size": "1940x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情入组",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "0714050000-10065602730---2026-07-14验证TA数据--详情入组",
+      "onclick": false,
+      "href": "",
+      "size": "1940x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情入组",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "071400082-10065602729---2026-07-14验证TA数据阵发性房颤房颤房颤 2026-07-14 19:29:13详情入组报告",
+      "onclick": false,
+      "href": "",
+      "size": "1940x59"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "text-text-main cursor-pointer hover:underline flex items-center",
+      "text": "房颤 2026-07-14 19:29:13",
+      "onclick": false,
+      "href": "",
+      "size": "208x26"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情入组报告",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "071400055-10065602722---2026-07-14验证TA数据阵发性房颤房颤房颤 2026-07-14 15:39:02详情入组报告",
+      "onclick": false,
+      "href": "",
+      "size": "1940x59"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "text-text-main cursor-pointer hover:underline flex items-center",
+      "text": "房颤 2026-07-14 15:39:02",
+      "onclick": false,
+      "href": "",
+      "size": "208x26"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情入组报告",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "071400004-10065602721---2026-07-14验证TA数据--详情入组",
+      "onclick": false,
+      "href": "",
+      "size": "1940x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情入组",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "071400003-10065602720---2026-07-14验证TA数据--详情入组",
+      "onclick": false,
+      "href": "",
+      "size": "1940x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情入组",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "071400002-10065602719---2026-07-14验证TA数据--详情入组",
+      "onclick": false,
+      "href": "",
+      "size": "1940x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情入组",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "071400001-10065602718---2026-07-14验证TA数据阵发性房颤房颤房颤 2026-07-14 15:37:03详情入组报告",
+      "onclick": false,
+      "href": "",
+      "size": "1940x59"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "text-text-main cursor-pointer hover:underline flex items-center",
+      "text": "房颤 2026-07-14 15:37:03",
+      "onclick": false,
+      "href": "",
+      "size": "208x26"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情入组报告",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-item ant-pagination-item-1 ant-pagination-item-active",
+      "text": "1",
+      "onclick": false,
+      "href": "",
+      "size": "32x32"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-item ant-pagination-item-2",
+      "text": "2",
+      "onclick": false,
+      "href": "",
+      "size": "32x32"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-item ant-pagination-item-3",
+      "text": "3",
+      "onclick": false,
+      "href": "",
+      "size": "32x32"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-item ant-pagination-item-4",
+      "text": "4",
+      "onclick": false,
+      "href": "",
+      "size": "32x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-pagination-options-size-changer css-1sdc3xm ant-select-single ant",
+      "text": "15 条/页",
+      "onclick": false,
+      "href": "",
+      "size": "94x32"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-item",
+      "text": "15 条/页",
+      "onclick": false,
+      "href": "",
+      "size": "70x30"
+    }
+  ],
+  "overlay_elements": []
+}

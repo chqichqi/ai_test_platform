@@ -1,0 +1,40 @@
+uvicorn app.main:app --reload --port 8080
+
+Swagger链接：
+http://localhost:8000/docs
+ReDoc链接（更美观的文档）：
+http://localhost:8000/redoc
+OpenAPI JSON：
+http://localhost:8000/openapi.json
+
+ 启动命令：
+  # 后端 (需激活 venv)
+  cd D:\test-programs\opencode\ai-agent-test-platform\backend
+  venv\Scripts\activate
+  python -m app.main
+
+  # 前端
+  cd D:\test-programs\opencode\ai-agent-test-platform\frontend
+  npm run dev
+
+MCP 预装
+npx @playwright/mcp@latest --version
+
+sk-01effcb636a645168514693aaa296f47
+
+sk-6ab9a9e45bad45618df4efc8b60bf8a7
+
+C:\Users\Lenovo\xwechat_files\wxid_zd5lysrocwsr22_4402\msg\file\2026-07
+
+
+1. "设备管理" 的容器是 <LI class="ant-menu-submenu-open"> — 已经展开了
+2. 子菜单 "设备列表" 和 "设备收发" 是 <LI role="menuitem">，在 <UL class="ant-menu-sub"> 里
+3. 没有任何 <a> 标签！ 子菜单项是 <LI> + <SPAN> 结构，通过 React 点击事件导航，不是 <a href> 链接
+
+1、打开系统并进入到登录页面
+2、输入：帐号
+3、输入：密码
+4、点击：登录按钮
+5、若登录帐号存在多个身份，则会进入到机构选择页面，在这个页面不能选择：租户、服务端等身份；请选择第一个机构，并点击：确定按钮；反之非多个身份则不会出现机构选择页，则请跳过机构选择页
+6、最后进入到工作台页面，即完成登录了。
+

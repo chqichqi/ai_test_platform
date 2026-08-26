@@ -1,0 +1,26 @@
+{
+  "label": "设备管理-疾病统计_d0",
+  "url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786026590755&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+  "total_elements": 2,
+  "elements": [
+    {
+      "tag": "UL",
+      "role": "menu",
+      "cls": "ant-menu ant-menu-root ant-menu-inline ant-menu-light menu___1qUGa css-1sdc3xm",
+      "text": "工作台患者档案设备管理设备列表设备收发问卷管理账号管理数据管理运营配置操作日志随访管理",
+      "onclick": false,
+      "href": "",
+      "size": "199x572"
+    },
+    {
+      "tag": "DIV",
+      "role": "tabpanel",
+      "cls": "ant-tabs-tabpane ant-tabs-tabpane-active",
+      "text": "GDH000ECG93.72%有效时长00:23:53负荷时长00:22:23",
+      "onclick": false,
+      "href": "",
+      "size": "637x521"
+    }
+  ],
+  "overlay_elements": []
+}

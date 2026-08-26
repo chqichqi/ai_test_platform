@@ -1,0 +1,91 @@
+{
+  "module": "指标总览-疾病统计",
+  "total_clicks": 7,
+  "pages": 1,
+  "clicks": [
+    {
+      "seq": 1,
+      "name": "工作台",
+      "actual_text": "工作台",
+      "action": "navigate",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 2,
+      "name": "室早",
+      "actual_text": "室早",
+      "action": "click",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=ventricularPremature",
+      "result": "jump",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 4,
+      "name": "疾病类型",
+      "actual_text": "疾病统计",
+      "action": "validate",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "scored_text(10)",
+      "error": ""
+    },
+    {
+      "seq": 2,
+      "name": "房颤",
+      "actual_text": "房颤",
+      "action": "click",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=atrialFibrillation",
+      "result": "jump",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 5,
+      "name": "页面显示\"暂无数据\"",
+      "actual_text": "暂无数据",
+      "action": "validate",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "scored_info(30)",
+      "error": ""
+    },
+    {
+      "seq": 4,
+      "name": "今日新增过滤，获取列表记录数记为M",
+      "actual_text": "日",
+      "action": "click",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "scored_text(30)",
+      "error": ""
+    },
+    {
+      "seq": 2,
+      "name": "室早",
+      "actual_text": "室早",
+      "action": "validate",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_exact",
+      "error": ""
+    }
+  ]
+}

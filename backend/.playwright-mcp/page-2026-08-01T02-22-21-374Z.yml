@@ -1,0 +1,91 @@
+- generic [ref=e5]:
+  - generic [ref=e6]:
+    - generic [ref=e7]:
+      - img "logo" [ref=e8]
+      - generic [ref=e9]: 心吉康心血管健康综合管理平台
+    - generic [ref=e36]: 测试机构
+    - generic [ref=e10]:
+      - generic [ref=e13]: 2026/08/01 星期
+      - generic [ref=e14]: 六
+      - generic [ref=e15] [cursor=pointer]: 陈强
+  - generic [ref=e19]:
+    - menu [ref=e38]:
+      - menuitem "工作台" [ref=e39] [cursor=pointer]
+      - menuitem "患者档案" [ref=e42] [cursor=pointer]
+      - menuitem "设备管理" [ref=e45] [cursor=pointer]
+      - menuitem "问卷管理" [ref=e48] [cursor=pointer]
+      - menuitem "账号管理" [ref=e51] [cursor=pointer]
+      - menuitem "数据管理" [expanded] [ref=e54] [cursor=pointer]
+      - menu [ref=e17965]:
+        - menuitem "文件审核" [ref=e17966] [cursor=pointer]
+        - menuitem "内部报告" [ref=e17968] [cursor=pointer]
+        - menuitem "健康报告" [ref=e17970] [cursor=pointer]
+        - menuitem "周报审核" [ref=e17972] [cursor=pointer]
+      - menuitem "运营配置" [ref=e57] [cursor=pointer]
+      - menuitem "操作日志" [ref=e60] [cursor=pointer]
+      - menuitem "随访管理" [ref=e63] [cursor=pointer]
+    - generic [ref=e21]:
+      - navigation [ref=e2201]:
+        - list [ref=e2202]:
+          - listitem [ref=e2203]: 文件审核
+      - generic [ref=e17975]:
+        - generic [ref=e17976]: 文件审核
+        - generic [ref=e17978]:
+          - generic [ref=e17979]:
+            - tablist [ref=e17980]:
+              - generic [ref=e17982]:
+                - tab "数据审核" [selected] [ref=e17984] [cursor=pointer]
+                - tab "报告审核" [ref=e17986] [cursor=pointer]
+                - tab "回收站" [ref=e17988] [cursor=pointer]
+            - generic:
+              - generic:
+                - tabpanel "数据审核"
+          - generic [ref=e17993]:
+            - generic [ref=e17997]:
+              - generic "所属项目" [ref=e17999]: "所属项目 :"
+              - generic [ref=e18005] [cursor=pointer]:
+                - combobox "所属项目 :" [ref=e18007]
+                - generic: 请选择
+            - generic [ref=e18011]:
+              - generic "患者编号" [ref=e18013]: "患者编号 :"
+              - textbox "患者编号 :" [ref=e18018]:
+                - /placeholder: 请输入
+            - generic [ref=e18023]:
+              - generic "患者姓名" [ref=e18025]: "患者姓名 :"
+              - textbox "患者姓名 :" [ref=e18030]:
+                - /placeholder: 请输入
+            - generic [ref=e18035]:
+              - generic "设备编号" [ref=e18037]: "设备编号 :"
+              - textbox "设备编号 :" [ref=e18042]:
+                - /placeholder: 请输入
+            - generic [ref=e18047]:
+              - generic "设备类型" [ref=e18049]: "设备类型 :"
+              - generic [ref=e18055] [cursor=pointer]:
+                - combobox "设备类型 :" [ref=e18057]
+                - generic: 请选择
+            - generic [ref=e18060]:
+              - button "重 置" [ref=e18061] [cursor=pointer]
+              - button "查 询" [ref=e18063] [cursor=pointer]
+              - generic [ref=e18065] [cursor=pointer]:
+                - generic [ref=e18066]: 收起
+                - img "up" [ref=e18067]
+        - table [ref=e18078]:
+          - rowgroup [ref=e18091]:
+            - row [ref=e18092]:
+              - columnheader "序号" [ref=e18093]
+              - columnheader "所属项目" [ref=e18094]
+              - columnheader "患者编号" [ref=e18095]
+              - columnheader "患者姓名" [ref=e18096]
+              - columnheader "性别" [ref=e18097]
+              - columnheader "年龄" [ref=e18098]
+              - columnheader "设备类型" [ref=e18099]
+              - columnheader "设备编号" [ref=e18100]
+              - columnheader "最新上传时间" [ref=e18101]
+              - columnheader "待审文件数量" [ref=e18102]
+              - columnheader "操作" [ref=e18103]
+          - rowgroup [ref=e18104]:
+            - row [ref=e18105]:
+              - cell "暂无数据 暂无数据" [ref=e18106]:
+                - generic [ref=e18108]:
+                  - img "暂无数据" [ref=e18110]
+                  - generic [ref=e18116]: 暂无数据

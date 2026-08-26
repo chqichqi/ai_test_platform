@@ -1,0 +1,21 @@
+{
+  "nav": {},
+  "cards": {
+    "待发货数": {
+      "label": "待发货数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/devicesend",
+      "role": "button"
+    },
+    "预约回收数": {
+      "label": "预约回收数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/devicesend",
+      "role": "button"
+    }
+  },
+  "dropdowns": {},
+  "sub_menus": {}
+}

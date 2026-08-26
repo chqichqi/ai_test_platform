@@ -1,0 +1,638 @@
+{
+  "found": true,
+  "parentTag": "DIV",
+  "liTag": "LI.ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-op",
+  "ulTag": "UL.ant-menu ant-menu-root ant-menu-inline ant-menu-light menu__",
+  "tree": {
+    "tag": "UL",
+    "cls": "ant-menu ant-menu-root ant-menu-inline ant-menu-light menu___1qUGa css-1sdc3xm",
+    "text": "工作台患者档案设备管理设备列表设备收发问卷管理账号管理数据管理运营配置操作日志随访管理",
+    "href": "",
+    "role": "menu",
+    "visible": true,
+    "rect": {
+      "x": 0,
+      "y": 99,
+      "w": 199,
+      "h": 572
+    },
+    "children": [
+      {
+        "tag": "LI",
+        "cls": "ant-menu-item ant-menu-item-selected",
+        "text": "工作台",
+        "href": "",
+        "role": "menuitem",
+        "visible": true,
+        "rect": {
+          "x": 0,
+          "y": 99,
+          "w": 198,
+          "h": 40
+        },
+        "children": [
+          {
+            "tag": "I",
+            "cls": "icon icon-workbench-active ant-menu-item-icon",
+            "text": "",
+            "href": "",
+            "role": "",
+            "visible": true,
+            "rect": {
+              "x": 28,
+              "y": 107,
+              "w": 24,
+              "h": 24
+            },
+            "children": []
+          },
+          {
+            "tag": "SPAN",
+            "cls": "ant-menu-title-content",
+            "text": "工作台",
+            "href": "",
+            "role": "",
+            "visible": true,
+            "rect": {
+              "x": 62,
+              "y": 99,
+              "w": 120,
+              "h": 40
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "tag": "LI",
+        "cls": "ant-menu-item",
+        "text": "患者档案",
+        "href": "",
+        "role": "menuitem",
+        "visible": true,
+        "rect": {
+          "x": 0,
+          "y": 151,
+          "w": 198,
+          "h": 40
+        },
+        "children": [
+          {
+            "tag": "I",
+            "cls": "icon icon-patient ant-menu-item-icon",
+            "text": "",
+            "href": "",
+            "role": "",
+            "visible": true,
+            "rect": {
+              "x": 28,
+              "y": 159,
+              "w": 24,
+              "h": 24
+            },
+            "children": []
+          },
+          {
+            "tag": "SPAN",
+            "cls": "ant-menu-title-content",
+            "text": "患者档案",
+            "href": "",
+            "role": "",
+            "visible": true,
+            "rect": {
+              "x": 62,
+              "y": 151,
+              "w": 120,
+              "h": 40
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "tag": "LI",
+        "cls": "ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-open ant-menu-submenu-active",
+        "text": "设备管理设备列表设备收发",
+        "href": "",
+        "role": "none",
+        "visible": true,
+        "rect": {
+          "x": 0,
+          "y": 203,
+          "w": 198,
+          "h": 156
+        },
+        "children": [
+          {
+            "tag": "DIV",
+            "cls": "ant-menu-submenu-title",
+            "text": "设备管理",
+            "href": "",
+            "role": "menuitem",
+            "visible": true,
+            "rect": {
+              "x": 0,
+              "y": 203,
+              "w": 198,
+              "h": 40
+            },
+            "children": [
+              {
+                "tag": "I",
+                "cls": "icon icon-device ant-menu-item-icon",
+                "text": "",
+                "href": "",
+                "role": "",
+                "visible": true,
+                "rect": {
+                  "x": 28,
+                  "y": 211,
+                  "w": 24,
+                  "h": 24
+                },
+                "children": []
+              },
+              {
+                "tag": "SPAN",
+                "cls": "ant-menu-title-content",
+                "text": "设备管理",
+                "href": "",
+                "role": "",
+                "visible": true,
+                "rect": {
+                  "x": 62,
+                  "y": 203,
+                  "w": 102,
+                  "h": 40
+                },
+                "children": []
+              },
+              {
+                "tag": "I",
+                "cls": "ant-menu-submenu-arrow",
+                "text": "",
+                "href": "",
+                "role": "",
+                "visible": true,
+                "rect": {
+                  "x": 172,
+                  "y": 221,
+                  "w": 10,
+                  "h": 0
+                },
+                "children": []
+              }
+            ]
+          },
+          {
+            "tag": "UL",
+            "cls": "ant-menu ant-menu-sub ant-menu-inline",
+            "text": "设备列表设备收发",
+            "href": "",
+            "role": "menu",
+            "visible": true,
+            "rect": {
+              "x": 0,
+              "y": 255,
+              "w": 198,
+              "h": 104
+            },
+            "children": [
+              {
+                "tag": "LI",
+                "cls": "ant-menu-item ant-menu-item-only-child",
+                "text": "设备列表",
+                "href": "",
+                "role": "menuitem",
+                "visible": true,
+                "rect": {
+                  "x": 0,
+                  "y": 255,
+                  "w": 198,
+                  "h": 40
+                },
+                "children": [
+                  {
+                    "tag": "SPAN",
+                    "cls": "ant-menu-title-content",
+                    "text": "设备列表",
+                    "href": "",
+                    "role": "",
+                    "visible": true,
+                    "rect": {
+                      "x": 62,
+                      "y": 255,
+                      "w": 120,
+                      "h": 40
+                    },
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "tag": "LI",
+                "cls": "ant-menu-item ant-menu-item-only-child",
+                "text": "设备收发",
+                "href": "",
+                "role": "menuitem",
+                "visible": true,
+                "rect": {
+                  "x": 0,
+                  "y": 307,
+                  "w": 198,
+                  "h": 40
+                },
+                "children": [
+                  {
+                    "tag": "SPAN",
+                    "cls": "ant-menu-title-content",
+                    "text": "设备收发",
+                    "href": "",
+                    "role": "",
+                    "visible": true,
+                    "rect": {
+                      "x": 62,
+                      "y": 307,
+                      "w": 120,
+                      "h": 40
+                    },
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tag": "LI",
+        "cls": "ant-menu-item",
+        "text": "问卷管理",
+        "href": "",
+        "role": "menuitem",
+        "visible": true,
+        "rect": {
+          "x": 0,
+          "y": 359,
+          "w": 198,
+          "h": 40
+        },
+        "children": [
+          {
+            "tag": "I",
+            "cls": "icon icon-survey ant-menu-item-icon",
+            "text": "",
+            "href": "",
+            "role": "",
+            "visible": true,
+            "rect": {
+              "x": 28,
+              "y": 367,
+              "w": 24,
+              "h": 24
+            },
+            "children": []
+          },
+          {
+            "tag": "SPAN",
+            "cls": "ant-menu-title-content",
+            "text": "问卷管理",
+            "href": "",
+            "role": "",
+            "visible": true,
+            "rect": {
+              "x": 62,
+              "y": 359,
+              "w": 120,
+              "h": 40
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "tag": "LI",
+        "cls": "ant-menu-submenu ant-menu-submenu-inline",
+        "text": "账号管理",
+        "href": "",
+        "role": "none",
+        "visible": true,
+        "rect": {
+          "x": 0,
+          "y": 411,
+          "w": 198,
+          "h": 40
+        },
+        "children": [
+          {
+            "tag": "DIV",
+            "cls": "ant-menu-submenu-title",
+            "text": "账号管理",
+            "href": "",
+            "role": "menuitem",
+            "visible": true,
+            "rect": {
+              "x": 0,
+              "y": 411,
+              "w": 198,
+              "h": 40
+            },
+            "children": [
+              {
+                "tag": "I",
+                "cls": "icon icon-account ant-menu-item-icon",
+                "text": "",
+                "href": "",
+                "role": "",
+                "visible": true,
+                "rect": {
+                  "x": 28,
+                  "y": 419,
+                  "w": 24,
+                  "h": 24
+                },
+                "children": []
+              },
+              {
+                "tag": "SPAN",
+                "cls": "ant-menu-title-content",
+                "text": "账号管理",
+                "href": "",
+                "role": "",
+                "visible": true,
+                "rect": {
+                  "x": 62,
+                  "y": 411,
+                  "w": 102,
+                  "h": 40
+                },
+                "children": []
+              },
+              {
+                "tag": "I",
+                "cls": "ant-menu-submenu-arrow",
+                "text": "",
+                "href": "",
+                "role": "",
+                "visible": true,
+                "rect": {
+                  "x": 172,
+                  "y": 431,
+                  "w": 10,
+                  "h": 0
+                },
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tag": "LI",
+        "cls": "ant-menu-submenu ant-menu-submenu-inline",
+        "text": "数据管理",
+        "href": "",
+        "role": "none",
+        "visible": true,
+        "rect": {
+          "x": 0,
+          "y": 463,
+          "w": 198,
+          "h": 40
+        },
+        "children": [
+          {
+            "tag": "DIV",
+            "cls": "ant-menu-submenu-title",
+            "text": "数据管理",
+            "href": "",
+            "role": "menuitem",
+            "visible": true,
+            "rect": {
+              "x": 0,
+              "y": 463,
+              "w": 198,
+              "h": 40
+            },
+            "children": [
+              {
+                "tag": "I",
+                "cls": "icon icon-datamanage ant-menu-item-icon",
+                "text": "",
+                "href": "",
+                "role": "",
+                "visible": true,
+                "rect": {
+                  "x": 28,
+                  "y": 471,
+                  "w": 24,
+                  "h": 24
+                },
+                "children": []
+              },
+              {
+                "tag": "SPAN",
+                "cls": "ant-menu-title-content",
+                "text": "数据管理",
+                "href": "",
+                "role": "",
+                "visible": true,
+                "rect": {
+                  "x": 62,
+                  "y": 463,
+                  "w": 102,
+                  "h": 40
+                },
+                "children": []
+              },
+              {
+                "tag": "I",
+                "cls": "ant-menu-submenu-arrow",
+                "text": "",
+                "href": "",
+                "role": "",
+                "visible": true,
+                "rect": {
+                  "x": 172,
+                  "y": 483,
+                  "w": 10,
+                  "h": 0
+                },
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tag": "LI",
+        "cls": "ant-menu-item",
+        "text": "运营配置",
+        "href": "",
+        "role": "menuitem",
+        "visible": true,
+        "rect": {
+          "x": 0,
+          "y": 515,
+          "w": 198,
+          "h": 40
+        },
+        "children": [
+          {
+            "tag": "I",
+            "cls": "icon icon-operatorconfiguration ant-menu-item-icon",
+            "text": "",
+            "href": "",
+            "role": "",
+            "visible": true,
+            "rect": {
+              "x": 28,
+              "y": 523,
+              "w": 24,
+              "h": 24
+            },
+            "children": []
+          },
+          {
+            "tag": "SPAN",
+            "cls": "ant-menu-title-content",
+            "text": "运营配置",
+            "href": "",
+            "role": "",
+            "visible": true,
+            "rect": {
+              "x": 62,
+              "y": 515,
+              "w": 120,
+              "h": 40
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "tag": "LI",
+        "cls": "ant-menu-item",
+        "text": "操作日志",
+        "href": "",
+        "role": "menuitem",
+        "visible": true,
+        "rect": {
+          "x": 0,
+          "y": 567,
+          "w": 198,
+          "h": 40
+        },
+        "children": [
+          {
+            "tag": "I",
+            "cls": "icon icon-operatorlog ant-menu-item-icon",
+            "text": "",
+            "href": "",
+            "role": "",
+            "visible": true,
+            "rect": {
+              "x": 28,
+              "y": 575,
+              "w": 24,
+              "h": 24
+            },
+            "children": []
+          },
+          {
+            "tag": "SPAN",
+            "cls": "ant-menu-title-content",
+            "text": "操作日志",
+            "href": "",
+            "role": "",
+            "visible": true,
+            "rect": {
+              "x": 62,
+              "y": 567,
+              "w": 120,
+              "h": 40
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "tag": "LI",
+        "cls": "ant-menu-submenu ant-menu-submenu-inline",
+        "text": "随访管理",
+        "href": "",
+        "role": "none",
+        "visible": true,
+        "rect": {
+          "x": 0,
+          "y": 619,
+          "w": 198,
+          "h": 40
+        },
+        "children": [
+          {
+            "tag": "DIV",
+            "cls": "ant-menu-submenu-title",
+            "text": "随访管理",
+            "href": "",
+            "role": "menuitem",
+            "visible": true,
+            "rect": {
+              "x": 0,
+              "y": 619,
+              "w": 198,
+              "h": 40
+            },
+            "children": [
+              {
+                "tag": "I",
+                "cls": "icon icon-visit-m ant-menu-item-icon",
+                "text": "",
+                "href": "",
+                "role": "",
+                "visible": true,
+                "rect": {
+                  "x": 28,
+                  "y": 627,
+                  "w": 24,
+                  "h": 24
+                },
+                "children": []
+              },
+              {
+                "tag": "SPAN",
+                "cls": "ant-menu-title-content",
+                "text": "随访管理",
+                "href": "",
+                "role": "",
+                "visible": true,
+                "rect": {
+                  "x": 62,
+                  "y": 619,
+                  "w": 102,
+                  "h": 40
+                },
+                "children": []
+              },
+              {
+                "tag": "I",
+                "cls": "ant-menu-submenu-arrow",
+                "text": "",
+                "href": "",
+                "role": "",
+                "visible": true,
+                "rect": {
+                  "x": 172,
+                  "y": 639,
+                  "w": 10,
+                  "h": 0
+                },
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

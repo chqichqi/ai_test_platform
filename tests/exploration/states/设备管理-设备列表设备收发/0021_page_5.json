@@ -1,0 +1,1385 @@
+{
+  "label": "page_5",
+  "url": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785937704774&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+  "total_elements": 153,
+  "elements": [
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "header-root flex-shrink-0 flex flex-row items-center justify-between w-full px-4 bg-white border-b-2",
+      "text": "心吉康心血管健康综合管理平台0415New机构2026/08/05  星期三天使布金",
+      "onclick": false,
+      "href": "",
+      "size": "1280x64"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-start",
+      "text": "心吉康心血管健康综合管理平台",
+      "onclick": false,
+      "href": "",
+      "size": "374x38"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-start text-normal333",
+      "text": "2026/08/05  星期三天使布金",
+      "onclick": false,
+      "href": "",
+      "size": "335x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-dropdown-trigger p-1 ml-8 flex flex-row items-center justify-start cursor-pointer rounded-sm hov",
+      "text": "天使布金",
+      "onclick": false,
+      "href": "",
+      "size": "134x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "layout-body w-full flex flex-row",
+      "text": "工作台患者档案设备管理设备列表设备收发问卷管理账号管理数据管理文件审核内部报告健康报告周报审核文件上传运营配置操作日志随访管理设备收发设备收发发货地址线下快速回",
+      "onclick": false,
+      "href": "",
+      "size": "1280x836"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "工作台",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "患者档案",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "设备列表",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-selected ant-menu-item-only-child",
+      "text": "设备收发",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "问卷管理",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "运营配置",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "操作日志",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-breadcrumb-item",
+      "text": "设备收发",
+      "onclick": false,
+      "href": "",
+      "size": "56x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "contianer-root flex flex-col items-start justify-start flex-1 overflow-x-auto ",
+      "text": "设备收发发货地址线下快速回收全部待发货已发货待回收已预约回收已退回姓名手机号码设备类型请选择02吉康维尔贴心集多通道心电记录仪心电记录仪吉康心识发放方式请选择1",
+      "onclick": false,
+      "href": "",
+      "size": "1080x836"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-between w-full mb-2",
+      "text": "设备收发发货地址线下快速回收",
+      "onclick": false,
+      "href": "",
+      "size": "1052x40"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center",
+      "text": "发货地址线下快速回收",
+      "onclick": false,
+      "href": "",
+      "size": "214x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid undefined ",
+      "text": "发货地址",
+      "onclick": false,
+      "href": "",
+      "size": "88x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid undefined ml-3",
+      "text": "线下快速回收",
+      "onclick": false,
+      "href": "",
+      "size": "116x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-start justify-between w-full pt-6 pl-2 pr-4 bg-white rounded-md",
+      "text": "姓名手机号码设备类型请选择02吉康维尔贴心集多通道心电记录仪心电记录仪吉康心识发放方式请选择12现场佩戴邮寄设备编号物流状态请选择01未启用待发货已发货待回收已",
+      "onclick": false,
+      "href": "",
+      "size": "1052x189"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row css-1sdc3xm",
+      "text": "姓名手机号码设备类型请选择02吉康维尔贴心集多通道心电记录仪心电记录仪吉康心识发放方式请选择12现场佩戴邮寄设备编号物流状态请选择01未启用待发货已发货待回收已",
+      "onclick": false,
+      "href": "",
+      "size": "1039x168"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row flex flex-row items-start justify-start w-full px-0 css-1sdc3xm",
+      "text": "姓名手机号码设备类型请选择02吉康维尔贴心集多通道心电记录仪心电记录仪吉康心识发放方式请选择12现场佩戴邮寄设备编号物流状态请选择01未启用待发货已发货待回收已",
+      "onclick": false,
+      "href": "",
+      "size": "1039x168"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "姓名",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "姓名",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "姓名",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "手机号码",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "手机号码",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "手机号码",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "设备类型请选择02吉康维尔贴心集多通道心电记录仪心电记录仪吉康心识",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "设备类型请选择02吉康维尔贴心集多通道心电记录仪心电记录仪吉康心识",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "设备类型",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-18 ant-col-md-20 css-1sdc3xm",
+      "text": "请选择02吉康维尔贴心集多通道心电记录仪心电记录仪吉康心识",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "请选择02吉康维尔贴心集多通道心电记录仪心电记录仪吉康心识",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "请选择02吉康维尔贴心集多通道心电记录仪心电记录仪吉康心识",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "请选择02吉康维尔贴心集多通道心电记录仪心电记录仪吉康心识",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "发放方式请选择12现场佩戴邮寄",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "发放方式请选择12现场佩戴邮寄",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "发放方式",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-18 ant-col-md-20 css-1sdc3xm",
+      "text": "请选择12现场佩戴邮寄",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "请选择12现场佩戴邮寄",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "请选择12现场佩戴邮寄",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "请选择12现场佩戴邮寄",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "设备编号",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "设备编号",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "设备编号",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "物流状态请选择01未启用待发货已发货待回收已预约回收已退回已取消已关闭",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "物流状态请选择01未启用待发货已发货待回收已预约回收已退回已取消已关闭",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "物流状态",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-18 ant-col-md-20 css-1sdc3xm",
+      "text": "请选择01未启用待发货已发货待回收已预约回收已退回已取消已关闭",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "请选择01未启用待发货已发货待回收已预约回收已退回已取消已关闭",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "请选择01未启用待发货已发货待回收已预约回收已退回已取消已关闭",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "请选择01未启用待发货已发货待回收已预约回收已退回已取消已关闭",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "发货时间",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "发货时间",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "发货时间",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "编号",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "编号",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "编号",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "假日筛选请选择1节假日",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "假日筛选请选择1节假日",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "假日筛选",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-18 ant-col-md-20 css-1sdc3xm",
+      "text": "请选择1节假日",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "请选择1节假日",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "请选择1节假日",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "请选择1节假日",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "发放类型请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "发放类型请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "发放类型",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-18 ant-col-md-20 css-1sdc3xm",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "发货来源请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "发货来源请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "发货来源",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-18 ant-col-md-20 css-1sdc3xm",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-start justify-end",
+      "text": "重 置查 询收起",
+      "onclick": false,
+      "href": "",
+      "size": "254x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center",
+      "text": "重 置查 询收起",
+      "onclick": false,
+      "href": "",
+      "size": "209x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-default ant-btn-color-default ant-btn-variant-outlined",
+      "text": "重 置",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid ml-4",
+      "text": "查 询",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ml-6 flex items-center text-text-primary cursor-pointer",
+      "text": "收起",
+      "onclick": false,
+      "href": "",
+      "size": "49x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "-06290333210065602698正常发货2026-06-27项目发货New项目呵呵第1阶段-邮寄贴心集R020007412502-已退回详情",
+      "onclick": false,
+      "href": "",
+      "size": "2170x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between text-text-red",
+      "text": "2026-06-27",
+      "onclick": false,
+      "href": "",
+      "size": "98x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center text-text-red",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情",
+      "onclick": false,
+      "href": "",
+      "size": "168x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "-06290050310065602693正常发货2026-06-27项目发货New项目呵呵第1阶段-邮寄心电记录仪JKU0004012506-已退回详情",
+      "onclick": false,
+      "href": "",
+      "size": "2170x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between text-text-red",
+      "text": "2026-06-27",
+      "onclick": false,
+      "href": "",
+      "size": "98x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center text-text-red",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情",
+      "onclick": false,
+      "href": "",
+      "size": "168x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "-052000110065602679正常发货2026-05-27项目发货New项目呵呵第1阶段-邮寄贴心集R020007412502-已退回详情",
+      "onclick": false,
+      "href": "",
+      "size": "2170x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between text-text-red",
+      "text": "2026-05-27",
+      "onclick": false,
+      "href": "",
+      "size": "98x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center text-text-red",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情",
+      "onclick": false,
+      "href": "",
+      "size": "168x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "-0521000110065602680正常发货2026-05-26项目发货New项目呵呵第1阶段-邮寄心电记录仪JKU0007012506-已退回详情",
+      "onclick": false,
+      "href": "",
+      "size": "2170x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between text-text-red",
+      "text": "2026-05-26",
+      "onclick": false,
+      "href": "",
+      "size": "98x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center text-text-red",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情",
+      "onclick": false,
+      "href": "",
+      "size": "168x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "-050700110026102266正常发货2026-05-06项目发货0415新随访项目第1阶段-邮寄吉康维尔JK30000112212-已退回详情",
+      "onclick": false,
+      "href": "",
+      "size": "2170x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between text-text-red",
+      "text": "2026-05-06",
+      "onclick": false,
+      "href": "",
+      "size": "98x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center text-text-red",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情",
+      "onclick": false,
+      "href": "",
+      "size": "168x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "贴心集R020007412502-已退回",
+      "onclick": false,
+      "href": "",
+      "size": "2170x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center text-text-red",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "-050112210026102225正常发货2026-04-20档案发货---现场佩戴贴心集R020007412502-已退回详情",
+      "onclick": false,
+      "href": "",
+      "size": "2170x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between text-text-red",
+      "text": "2026-04-20",
+      "onclick": false,
+      "href": "",
+      "size": "98x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center text-text-red",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情",
+      "onclick": false,
+      "href": "",
+      "size": "168x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "-041600310026102222正常发货2026-04-18档案发货---现场佩戴贴心集R020007412502-已退回详情",
+      "onclick": false,
+      "href": "",
+      "size": "2170x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between text-text-red",
+      "text": "2026-04-18",
+      "onclick": false,
+      "href": "",
+      "size": "98x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center text-text-red",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情",
+      "onclick": false,
+      "href": "",
+      "size": "168x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "-041600210026102221正常发货2026-04-18档案发货---现场佩戴贴心集R020007412502-已退回详情",
+      "onclick": false,
+      "href": "",
+      "size": "2170x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between text-text-red",
+      "text": "2026-04-18",
+      "onclick": false,
+      "href": "",
+      "size": "98x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center text-text-red",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情",
+      "onclick": false,
+      "href": "",
+      "size": "168x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "-041600210026102221正常发货2026-04-18档案发货---现场佩戴吉康维尔JK30000112212-已退回详情",
+      "onclick": false,
+      "href": "",
+      "size": "2170x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between text-text-red",
+      "text": "2026-04-18",
+      "onclick": false,
+      "href": "",
+      "size": "98x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center text-text-red",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情",
+      "onclick": false,
+      "href": "",
+      "size": "168x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "-0415000110026102209正常发货2026-04-18项目发货0415新随访项目第3阶段-现场佩戴吉康维尔JK30000112212-已退回详情",
+      "onclick": false,
+      "href": "",
+      "size": "2170x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between text-text-red",
+      "text": "2026-04-18",
+      "onclick": false,
+      "href": "",
+      "size": "98x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center text-text-red",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情",
+      "onclick": false,
+      "href": "",
+      "size": "168x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "-0415000110026102209正常发货2026-04-16项目发货0415新随访项目第2阶段-邮寄心电记录仪JKU0007012506-已退回详情",
+      "onclick": false,
+      "href": "",
+      "size": "2170x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between text-text-red",
+      "text": "2026-04-16",
+      "onclick": false,
+      "href": "",
+      "size": "98x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center text-text-red",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情",
+      "onclick": false,
+      "href": "",
+      "size": "168x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "-0415000310026102211正常发货2026-04-16项目发货0415新随访项目第2阶段-现场佩戴心电记录仪JKU0007012506-已退回详情",
+      "onclick": false,
+      "href": "",
+      "size": "2170x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between text-text-red",
+      "text": "2026-04-16",
+      "onclick": false,
+      "href": "",
+      "size": "98x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center text-text-red",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情",
+      "onclick": false,
+      "href": "",
+      "size": "168x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "-0415000210026102210正常发货2026-04-16项目发货0415新随访项目第2阶段-邮寄心电记录仪JKU0007012506-已退回详情",
+      "onclick": false,
+      "href": "",
+      "size": "2170x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between text-text-red",
+      "text": "2026-04-16",
+      "onclick": false,
+      "href": "",
+      "size": "98x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center text-text-red",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情",
+      "onclick": false,
+      "href": "",
+      "size": "168x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "-0415000310026102211正常发货2026-04-15项目发货0415新随访项目第1阶段-现场佩戴贴心集R020007412502-已退回详情",
+      "onclick": false,
+      "href": "",
+      "size": "2170x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between text-text-red",
+      "text": "2026-04-15",
+      "onclick": false,
+      "href": "",
+      "size": "98x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center text-text-red",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情",
+      "onclick": false,
+      "href": "",
+      "size": "168x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "-0415000210026102210正常发货2026-04-14项目发货0415新随访项目第1阶段-邮寄贴心集R020007412502-已退回详情",
+      "onclick": false,
+      "href": "",
+      "size": "2170x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between text-text-red",
+      "text": "2026-04-14",
+      "onclick": false,
+      "href": "",
+      "size": "98x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center text-text-red",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情",
+      "onclick": false,
+      "href": "",
+      "size": "168x22"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-item ant-pagination-item-1",
+      "text": "1",
+      "onclick": false,
+      "href": "",
+      "size": "32x32"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-item ant-pagination-item-2",
+      "text": "2",
+      "onclick": false,
+      "href": "",
+      "size": "32x32"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-item ant-pagination-item-3",
+      "text": "3",
+      "onclick": false,
+      "href": "",
+      "size": "32x32"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-item ant-pagination-item-4",
+      "text": "4",
+      "onclick": false,
+      "href": "",
+      "size": "32x32"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-item ant-pagination-item-5 ant-pagination-item-active",
+      "text": "5",
+      "onclick": false,
+      "href": "",
+      "size": "32x32"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-pagination-item ant-pagination-item-6",
+      "text": "6",
+      "onclick": false,
+      "href": "",
+      "size": "32x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-pagination-options-size-changer css-1sdc3xm ant-select-single ant",
+      "text": "15 条/页",
+      "onclick": false,
+      "href": "",
+      "size": "94x32"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-item",
+      "text": "15 条/页",
+      "onclick": false,
+      "href": "",
+      "size": "70x30"
+    }
+  ],
+  "overlay_elements": []
+}

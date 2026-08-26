@@ -1,0 +1,161 @@
+{
+  "nav": {
+    "patient": {
+      "label": "患者档案",
+      "click_ok": true,
+      "url_hash": "/patientarchieve",
+      "heading": "",
+      "tabs": [
+        "全部",
+        "我的患者"
+      ]
+    },
+    "device": {
+      "label": "设备管理",
+      "click_ok": true,
+      "url_hash": "/device",
+      "heading": "",
+      "tabs": []
+    },
+    "survey": {
+      "label": "问卷管理",
+      "click_ok": true,
+      "url_hash": "/surveymanage",
+      "heading": "",
+      "tabs": []
+    },
+    "account": {
+      "label": "账号管理",
+      "click_ok": true,
+      "url_hash": "/role",
+      "heading": "",
+      "tabs": []
+    },
+    "data": {
+      "label": "数据管理",
+      "click_ok": true,
+      "url_hash": "/internalreport",
+      "heading": "",
+      "tabs": [
+        "报告查收"
+      ]
+    },
+    "operation": {
+      "label": "运营配置",
+      "click_ok": true,
+      "url_hash": "/operatorconfiguration",
+      "heading": "",
+      "tabs": []
+    },
+    "auditlog": {
+      "label": "操作日志",
+      "click_ok": true,
+      "url_hash": "/operatorlog",
+      "heading": "",
+      "tabs": []
+    },
+    "followup": {
+      "label": "随访管理",
+      "click_ok": true,
+      "url_hash": "/visitpatientmanage",
+      "heading": "",
+      "tabs": [
+        "已入组",
+        "已退组"
+      ]
+    }
+  },
+  "cards": {
+    "数据审核": {
+      "expected_module": "data",
+      "clicked": false,
+      "jumped": false,
+      "url_hash": "/workpanel",
+      "heading": "",
+      "tabs": []
+    },
+    "报告审核": {
+      "expected_module": "data",
+      "clicked": false,
+      "jumped": false,
+      "url_hash": "/workpanel",
+      "heading": "",
+      "tabs": []
+    },
+    "周报审核": {
+      "expected_module": "data",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/weeklyapproval",
+      "heading": "",
+      "tabs": []
+    },
+    "待发货": {
+      "expected_module": "device",
+      "clicked": false,
+      "jumped": false,
+      "url_hash": "/workpanel",
+      "heading": "",
+      "tabs": []
+    },
+    "预约回收": {
+      "expected_module": "device",
+      "clicked": false,
+      "jumped": false,
+      "url_hash": "/workpanel",
+      "heading": "",
+      "tabs": []
+    },
+    "随访项目个数": {
+      "expected_module": "followup",
+      "clicked": false,
+      "jumped": false,
+      "url_hash": "/workpanel",
+      "heading": "",
+      "tabs": []
+    },
+    "入组人数": {
+      "expected_module": "patient",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve",
+      "heading": "",
+      "tabs": [
+        "全部",
+        "我的患者"
+      ]
+    },
+    "随访进行中": {
+      "expected_module": "followup",
+      "clicked": false,
+      "jumped": false,
+      "url_hash": "/workpanel",
+      "heading": "",
+      "tabs": []
+    },
+    "待随访": {
+      "expected_module": "followup",
+      "clicked": false,
+      "jumped": false,
+      "url_hash": "/workpanel",
+      "heading": "",
+      "tabs": []
+    },
+    "随访延期": {
+      "expected_module": "followup",
+      "clicked": false,
+      "jumped": false,
+      "url_hash": "/workpanel",
+      "heading": "",
+      "tabs": []
+    },
+    "随访中止": {
+      "expected_module": "followup",
+      "clicked": false,
+      "jumped": false,
+      "url_hash": "/workpanel",
+      "heading": "",
+      "tabs": []
+    }
+  }
+}

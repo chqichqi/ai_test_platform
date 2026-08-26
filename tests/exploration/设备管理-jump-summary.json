@@ -1,0 +1,12 @@
+{
+  "parent_module": "设备管理",
+  "sub_modules": [
+    "设备管理-疾病统计"
+  ],
+  "element_jumps": {
+    "设备管理-疾病统计": {
+      "url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786026590755&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "elements": []
+    }
+  }
+}

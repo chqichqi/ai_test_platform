@@ -1,0 +1,2550 @@
+{
+  "timestamp": "2026-08-26T13:35:31.028009",
+  "pipeline": "functional_to_ui",
+  "test_cases_total": 63,
+  "exploration": {},
+  "conversions": [
+    {
+      "test_case_id": "179",
+      "case_name": "验证佩戴/测量预警跳转患者姓名一致-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "选择一个预警卡片，如「佩戴预警」卡片，记录患者姓名",
+            "expected": "患者姓名记录成功"
+          },
+          {
+            "step": 2,
+            "action": "点击「佩戴预警」卡片",
+            "expected": "跳转到患者详情页"
+          },
+          {
+            "step": 3,
+            "action": "验证：患者详情页左上角患者姓名与卡片一致",
+            "expected": "患者姓名一致"
+          },
+          {
+            "step": 4,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "180",
+      "case_name": "验证预警下拉筛选接口参数与数据一致性-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 6,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「房颤预警」卡片「筛选」下拉框中选择\"≥20\"",
+            "expected": "筛选生效"
+          },
+          {
+            "step": 2,
+            "action": "捕获加载数据的接口请求参数",
+            "expected": "接口参数中包含筛选条件值\"≥20\"或对应阈值"
+          },
+          {
+            "step": 3,
+            "action": "验证：所有显示的房颤预警数据占比均≥20",
+            "expected": "页面数据符合过滤条件"
+          },
+          {
+            "step": 4,
+            "action": "在「佩戴预警」卡片「筛选」下拉框中选择\"未发送\"",
+            "expected": "筛选生效"
+          },
+          {
+            "step": 5,
+            "action": "捕获加载数据的接口请求参数",
+            "expected": "接口参数中包含状态\"未发送\""
+          },
+          {
+            "step": 6,
+            "action": "验证：所有显示的佩戴预警数据状态均为\"未发送\"",
+            "expected": "页面数据符合过滤条件"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "181",
+      "case_name": "验证卡片跳转后使用go_back返回工作台-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「患者人数」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 2,
+            "action": "完成断言后，调用page.go_back()返回工作台",
+            "expected": "浏览器返回上一页"
+          },
+          {
+            "step": 3,
+            "action": "验证：成功返回工作台页面且页面完整",
+            "expected": "工作台正常显示"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "182",
+      "case_name": "验证直接goto工作台URL导致登录失效-异常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "获取当前工作台URL",
+            "expected": "获取URL成功"
+          },
+          {
+            "step": 2,
+            "action": "打开新标签页，使用page.goto()直接访问该工作台URL",
+            "expected": "页面加载"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面出现登录失效弹窗或跳转登录页",
+            "expected": "登录失效提示出现"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "120",
+      "case_name": "验证工作台区域划分-指标总览与预警信息独立显示",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入工作台页面，验证：页面顶部显示「指标总览」区域",
+            "expected": "指标总览区域可见，展示指标卡片"
+          },
+          {
+            "step": 2,
+            "action": "验证：页面底部显示「预警信息」区域",
+            "expected": "预警信息区域可见，展示预警卡片"
+          },
+          {
+            "step": 3,
+            "action": "验证：两区域上下排列，边界清晰无重叠",
+            "expected": "指标总览在上，预警信息在下，两区域独立展示"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "121",
+      "case_name": "验证患者人数卡片点击跳转-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 7,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「患者人数」卡片，记录「总数」和「今日新增」字段值",
+            "expected": "卡片展示「总数」和「今日新增」两个字段"
+          },
+          {
+            "step": 2,
+            "action": "如果「总数」大于0，点击「患者人数」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL包含patient-profile"
+          },
+          {
+            "step": 4,
+            "action": "验证：列表总记录数等于卡片总数",
+            "expected": "列表总记录数与卡片总数一致"
+          },
+          {
+            "step": 5,
+            "action": "验证：页面今日新增数与卡片「今日新增」一致",
+            "expected": "今日新增数匹配"
+          },
+          {
+            "step": 6,
+            "action": "如果「总数」等于0，验证卡片显示「暂无数据」",
+            "expected": "卡片显示「暂无数据」"
+          },
+          {
+            "step": 7,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "122",
+      "case_name": "验证Smart报告(份)卡片点击跳转-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 6,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「Smart报告(份)」卡片，记录「总数」和「今日新增」字段值",
+            "expected": "卡片展示「总数」和「今日新增」两个字段"
+          },
+          {
+            "step": 2,
+            "action": "如果「总数」大于0，点击「Smart报告(份)」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL包含patient-profile"
+          },
+          {
+            "step": 4,
+            "action": "验证：列表总记录数等于卡片总数",
+            "expected": "列表总记录数与卡片总数一致"
+          },
+          {
+            "step": 5,
+            "action": "如果「总数」等于0，验证卡片显示「暂无数据」",
+            "expected": "卡片显示「暂无数据」"
+          },
+          {
+            "step": 6,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "123",
+      "case_name": "验证室早卡片点击跳转-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 7,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「室早」卡片，记录「总数」和「今日新增」字段值",
+            "expected": "卡片展示「总数」和「今日新增」两个字段"
+          },
+          {
+            "step": 2,
+            "action": "如果「总数」大于0，点击「室早」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL包含patient-profile"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面筛选框已选中\"室早\"",
+            "expected": "筛选框选中疾病名为室早"
+          },
+          {
+            "step": 5,
+            "action": "验证：列表总记录数等于卡片总数",
+            "expected": "列表总记录数与卡片总数一致"
+          },
+          {
+            "step": 6,
+            "action": "如果「总数」等于0，验证卡片显示「暂无数据」",
+            "expected": "卡片显示「暂无数据」"
+          },
+          {
+            "step": 7,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "124",
+      "case_name": "验证室速卡片点击跳转-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 7,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「室速」卡片，记录「总数」和「今日新增」字段值",
+            "expected": "卡片展示「总数」和「今日新增」两个字段"
+          },
+          {
+            "step": 2,
+            "action": "如果「总数」大于0，点击「室速」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL包含patient-profile"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面筛选框已选中\"室速\"",
+            "expected": "筛选框选中疾病名为室速"
+          },
+          {
+            "step": 5,
+            "action": "验证：列表总记录数等于卡片总数",
+            "expected": "列表总记录数与卡片总数一致"
+          },
+          {
+            "step": 6,
+            "action": "如果「总数」等于0，验证卡片显示「暂无数据」",
+            "expected": "卡片显示「暂无数据」"
+          },
+          {
+            "step": 7,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "125",
+      "case_name": "验证房颤卡片点击跳转-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 7,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「房颤」卡片，记录「总数」和「今日新增」字段值",
+            "expected": "卡片展示「总数」和「今日新增」两个字段"
+          },
+          {
+            "step": 2,
+            "action": "如果「总数」大于0，点击「房颤」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL包含patient-profile"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面筛选框已选中\"房颤\"",
+            "expected": "筛选框选中疾病名为房颤"
+          },
+          {
+            "step": 5,
+            "action": "验证：列表总记录数等于卡片总数",
+            "expected": "列表总记录数与卡片总数一致"
+          },
+          {
+            "step": 6,
+            "action": "如果「总数」等于0，验证卡片显示「暂无数据」",
+            "expected": "卡片显示「暂无数据」"
+          },
+          {
+            "step": 7,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "126",
+      "case_name": "验证房扑卡片点击跳转-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 7,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「房扑」卡片，记录「总数」和「今日新增」字段值",
+            "expected": "卡片展示「总数」和「今日新增」两个字段"
+          },
+          {
+            "step": 2,
+            "action": "如果「总数」大于0，点击「房扑」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL包含patient-profile"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面筛选框已选中\"房扑\"",
+            "expected": "筛选框选中疾病名为房扑"
+          },
+          {
+            "step": 5,
+            "action": "验证：列表总记录数等于卡片总数",
+            "expected": "列表总记录数与卡片总数一致"
+          },
+          {
+            "step": 6,
+            "action": "如果「总数」等于0，验证卡片显示「暂无数据」",
+            "expected": "卡片显示「暂无数据」"
+          },
+          {
+            "step": 7,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "127",
+      "case_name": "验证房速卡片点击跳转-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 7,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「房速」卡片，记录「总数」和「今日新增」字段值",
+            "expected": "卡片展示「总数」和「今日新增」两个字段"
+          },
+          {
+            "step": 2,
+            "action": "如果「总数」大于0，点击「房速」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL包含patient-profile"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面筛选框已选中\"房速\"",
+            "expected": "筛选框选中疾病名为房速"
+          },
+          {
+            "step": 5,
+            "action": "验证：列表总记录数等于卡片总数",
+            "expected": "列表总记录数与卡片总数一致"
+          },
+          {
+            "step": 6,
+            "action": "如果「总数」等于0，验证卡片显示「暂无数据」",
+            "expected": "卡片显示「暂无数据」"
+          },
+          {
+            "step": 7,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "128",
+      "case_name": "验证房早卡片点击跳转-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 7,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「房早」卡片，记录「总数」和「今日新增」字段值",
+            "expected": "卡片展示「总数」和「今日新增」两个字段"
+          },
+          {
+            "step": 2,
+            "action": "如果「总数」大于0，点击「房早」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL包含patient-profile"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面筛选框已选中\"房早\"",
+            "expected": "筛选框选中疾病名为房早"
+          },
+          {
+            "step": 5,
+            "action": "验证：列表总记录数等于卡片总数",
+            "expected": "列表总记录数与卡片总数一致"
+          },
+          {
+            "step": 6,
+            "action": "如果「总数」等于0，验证卡片显示「暂无数据」",
+            "expected": "卡片显示「暂无数据」"
+          },
+          {
+            "step": 7,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "129",
+      "case_name": "验证持续性房颤卡片点击跳转-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 7,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「持续性房颤」卡片，记录「总数」和「今日新增」字段值",
+            "expected": "卡片展示「总数」和「今日新增」两个字段"
+          },
+          {
+            "step": 2,
+            "action": "如果「总数」大于0，点击「持续性房颤」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL包含patient-profile"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面筛选框已选中\"持续性房颤\"",
+            "expected": "筛选框选中疾病名为持续性房颤"
+          },
+          {
+            "step": 5,
+            "action": "验证：列表总记录数等于卡片总数",
+            "expected": "列表总记录数与卡片总数一致"
+          },
+          {
+            "step": 6,
+            "action": "如果「总数」等于0，验证卡片显示「暂无数据」",
+            "expected": "卡片显示「暂无数据」"
+          },
+          {
+            "step": 7,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "130",
+      "case_name": "验证阵发性房颤卡片点击跳转-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 7,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「阵发性房颤」卡片，记录「总数」和「今日新增」字段值",
+            "expected": "卡片展示「总数」和「今日新增」两个字段"
+          },
+          {
+            "step": 2,
+            "action": "如果「总数」大于0，点击「阵发性房颤」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL包含patient-profile"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面筛选框已选中\"阵发性房颤\"",
+            "expected": "筛选框选中疾病名为阵发性房颤"
+          },
+          {
+            "step": 5,
+            "action": "验证：列表总记录数等于卡片总数",
+            "expected": "列表总记录数与卡片总数一致"
+          },
+          {
+            "step": 6,
+            "action": "如果「总数」等于0，验证卡片显示「暂无数据」",
+            "expected": "卡片显示「暂无数据」"
+          },
+          {
+            "step": 7,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "131",
+      "case_name": "验证二联律卡片点击跳转-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 7,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「二联律」卡片，记录「总数」和「今日新增」字段值",
+            "expected": "卡片展示「总数」和「今日新增」两个字段"
+          },
+          {
+            "step": 2,
+            "action": "如果「总数」大于0，点击「二联律」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL包含patient-profile"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面筛选框已选中\"二联律\"",
+            "expected": "筛选框选中疾病名为二联律"
+          },
+          {
+            "step": 5,
+            "action": "验证：列表总记录数等于卡片总数",
+            "expected": "列表总记录数与卡片总数一致"
+          },
+          {
+            "step": 6,
+            "action": "如果「总数」等于0，验证卡片显示「暂无数据」",
+            "expected": "卡片显示「暂无数据」"
+          },
+          {
+            "step": 7,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "132",
+      "case_name": "验证三联律卡片点击跳转-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 7,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「三联律」卡片，记录「总数」和「今日新增」字段值",
+            "expected": "卡片展示「总数」和「今日新增」两个字段"
+          },
+          {
+            "step": 2,
+            "action": "如果「总数」大于0，点击「三联律」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL包含patient-profile"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面筛选框已选中\"三联律\"",
+            "expected": "筛选框选中疾病名为三联律"
+          },
+          {
+            "step": 5,
+            "action": "验证：列表总记录数等于卡片总数",
+            "expected": "列表总记录数与卡片总数一致"
+          },
+          {
+            "step": 6,
+            "action": "如果「总数」等于0，验证卡片显示「暂无数据」",
+            "expected": "卡片显示「暂无数据」"
+          },
+          {
+            "step": 7,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "133",
+      "case_name": "验证停搏卡片点击跳转-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 7,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「停搏」卡片，记录「总数」和「今日新增」字段值",
+            "expected": "卡片展示「总数」和「今日新增」两个字段"
+          },
+          {
+            "step": 2,
+            "action": "如果「总数」大于0，点击「停搏」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL包含patient-profile"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面筛选框已选中\"停搏\"",
+            "expected": "筛选框选中疾病名为停搏"
+          },
+          {
+            "step": 5,
+            "action": "验证：列表总记录数等于卡片总数",
+            "expected": "列表总记录数与卡片总数一致"
+          },
+          {
+            "step": 6,
+            "action": "如果「总数」等于0，验证卡片显示「暂无数据」",
+            "expected": "卡片显示「暂无数据」"
+          },
+          {
+            "step": 7,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "134",
+      "case_name": "验证心动过速卡片点击跳转-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 7,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「心动过速」卡片，记录「总数」和「今日新增」字段值",
+            "expected": "卡片展示「总数」和「今日新增」两个字段"
+          },
+          {
+            "step": 2,
+            "action": "如果「总数」大于0，点击「心动过速」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL包含patient-profile"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面筛选框已选中\"心动过速\"",
+            "expected": "筛选框选中疾病名为心动过速"
+          },
+          {
+            "step": 5,
+            "action": "验证：列表总记录数等于卡片总数",
+            "expected": "列表总记录数与卡片总数一致"
+          },
+          {
+            "step": 6,
+            "action": "如果「总数」等于0，验证卡片显示「暂无数据」",
+            "expected": "卡片显示「暂无数据」"
+          },
+          {
+            "step": 7,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "135",
+      "case_name": "验证心动过缓卡片点击跳转-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 7,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「心动过缓」卡片，记录「总数」和「今日新增」字段值",
+            "expected": "卡片展示「总数」和「今日新增」两个字段"
+          },
+          {
+            "step": 2,
+            "action": "如果「总数」大于0，点击「心动过缓」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL包含patient-profile"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面筛选框已选中\"心动过缓\"",
+            "expected": "筛选框选中疾病名为心动过缓"
+          },
+          {
+            "step": 5,
+            "action": "验证：列表总记录数等于卡片总数",
+            "expected": "列表总记录数与卡片总数一致"
+          },
+          {
+            "step": 6,
+            "action": "如果「总数」等于0，验证卡片显示「暂无数据」",
+            "expected": "卡片显示「暂无数据」"
+          },
+          {
+            "step": 7,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "136",
+      "case_name": "验证待审核数据卡片点击跳转-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「待审核数据」卡片，记录「今日新增」字段值",
+            "expected": "卡片展示「今日新增」字段"
+          },
+          {
+            "step": 2,
+            "action": "点击「待审核数据」卡片",
+            "expected": "跳转到数据管理子页"
+          },
+          {
+            "step": 3,
+            "action": "验证：当前页面为「数据管理」子页",
+            "expected": "页面正确显示数据管理子页"
+          },
+          {
+            "step": 4,
+            "action": "验证：列表总记录数等于卡片今日新增数",
+            "expected": "列表总记录数与今日新增数一致"
+          },
+          {
+            "step": 5,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "137",
+      "case_name": "验证待审核报告卡片点击跳转-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「待审核报告」卡片，记录「今日新增」字段值",
+            "expected": "卡片展示「今日新增」字段"
+          },
+          {
+            "step": 2,
+            "action": "点击「待审核报告」卡片",
+            "expected": "跳转到数据管理子页"
+          },
+          {
+            "step": 3,
+            "action": "验证：当前页面为「数据管理」子页",
+            "expected": "页面正确显示数据管理子页"
+          },
+          {
+            "step": 4,
+            "action": "验证：列表总记录数等于卡片今日新增数",
+            "expected": "列表总记录数与今日新增数一致"
+          },
+          {
+            "step": 5,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "138",
+      "case_name": "验证待审核周报卡片点击跳转-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「待审核周报」卡片，记录「今日新增」字段值",
+            "expected": "卡片展示「今日新增」字段"
+          },
+          {
+            "step": 2,
+            "action": "点击「待审核周报」卡片",
+            "expected": "跳转到数据管理子页"
+          },
+          {
+            "step": 3,
+            "action": "验证：当前页面为「数据管理」子页",
+            "expected": "页面正确显示数据管理子页"
+          },
+          {
+            "step": 4,
+            "action": "验证：列表总记录数等于卡片今日新增数",
+            "expected": "列表总记录数与今日新增数一致"
+          },
+          {
+            "step": 5,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "139",
+      "case_name": "验证待发货数卡片点击跳转-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「待发货数」卡片，记录「今日新增」字段值",
+            "expected": "卡片展示「今日新增」字段"
+          },
+          {
+            "step": 2,
+            "action": "点击「待发货数」卡片",
+            "expected": "跳转到设备收发页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：当前页面为「设备收发」页面",
+            "expected": "页面正确显示设备收发页面"
+          },
+          {
+            "step": 4,
+            "action": "验证：列表总记录数等于卡片今日新增数",
+            "expected": "列表总记录数与今日新增数一致"
+          },
+          {
+            "step": 5,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "140",
+      "case_name": "验证预约回收数卡片点击跳转-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「预约回收数」卡片，记录「今日新增」字段值",
+            "expected": "卡片展示「今日新增」字段"
+          },
+          {
+            "step": 2,
+            "action": "点击「预约回收数」卡片",
+            "expected": "跳转到设备收发页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：当前页面为「设备收发」页面",
+            "expected": "页面正确显示设备收发页面"
+          },
+          {
+            "step": 4,
+            "action": "验证：列表总记录数等于卡片今日新增数",
+            "expected": "列表总记录数与今日新增数一致"
+          },
+          {
+            "step": 5,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "141",
+      "case_name": "验证项目个数卡片点击跳转-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「项目个数」卡片，记录「今日新增」字段值",
+            "expected": "卡片展示「今日新增」字段"
+          },
+          {
+            "step": 2,
+            "action": "点击「项目个数」卡片",
+            "expected": "跳转到随访管理子页"
+          },
+          {
+            "step": 3,
+            "action": "验证：当前页面为「随访管理」子页",
+            "expected": "页面正确显示随访管理子页"
+          },
+          {
+            "step": 4,
+            "action": "验证：列表总记录数等于卡片今日新增数",
+            "expected": "列表总记录数与今日新增数一致"
+          },
+          {
+            "step": 5,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "142",
+      "case_name": "验证入组人数卡片点击跳转-URL带joinStatus参数",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「入组人数」卡片，记录「今日新增」字段值",
+            "expected": "卡片展示「今日新增」字段"
+          },
+          {
+            "step": 2,
+            "action": "点击「入组人数」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile且携带joinStatus=1参数",
+            "expected": "URL中joinStatus=1"
+          },
+          {
+            "step": 4,
+            "action": "验证：列表总记录数等于卡片今日新增数",
+            "expected": "列表总记录数与今日新增数一致"
+          },
+          {
+            "step": 5,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "143",
+      "case_name": "验证进行中人数卡片点击跳转-已入组tab",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 6,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「进行中人数」卡片，记录「今日新增」字段值",
+            "expected": "卡片展示「今日新增」字段"
+          },
+          {
+            "step": 2,
+            "action": "点击「进行中人数」卡片",
+            "expected": "跳转到随访管理子页"
+          },
+          {
+            "step": 3,
+            "action": "验证：当前页面为「随访管理」子页",
+            "expected": "页面正确显示随访管理子页"
+          },
+          {
+            "step": 4,
+            "action": "验证：「已入组」tab处于选中状态",
+            "expected": "已入组tab选中"
+          },
+          {
+            "step": 5,
+            "action": "验证：列表总记录数等于卡片今日新增数",
+            "expected": "列表总记录数与今日新增数一致"
+          },
+          {
+            "step": 6,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "144",
+      "case_name": "验证待随访人数卡片点击跳转-已入组tab",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 6,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「待随访人数」卡片，记录「今日新增」字段值",
+            "expected": "卡片展示「今日新增」字段"
+          },
+          {
+            "step": 2,
+            "action": "点击「待随访人数」卡片",
+            "expected": "跳转到随访管理子页"
+          },
+          {
+            "step": 3,
+            "action": "验证：当前页面为「随访管理」子页",
+            "expected": "页面正确显示随访管理子页"
+          },
+          {
+            "step": 4,
+            "action": "验证：「已入组」tab处于选中状态",
+            "expected": "已入组tab选中"
+          },
+          {
+            "step": 5,
+            "action": "验证：列表总记录数等于卡片今日新增数",
+            "expected": "列表总记录数与今日新增数一致"
+          },
+          {
+            "step": 6,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "145",
+      "case_name": "验证延期人数卡片点击跳转-已入组tab",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 6,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「延期人数」卡片，记录「今日新增」字段值",
+            "expected": "卡片展示「今日新增」字段"
+          },
+          {
+            "step": 2,
+            "action": "点击「延期人数」卡片",
+            "expected": "跳转到随访管理子页"
+          },
+          {
+            "step": 3,
+            "action": "验证：当前页面为「随访管理」子页",
+            "expected": "页面正确显示随访管理子页"
+          },
+          {
+            "step": 4,
+            "action": "验证：「已入组」tab处于选中状态",
+            "expected": "已入组tab选中"
+          },
+          {
+            "step": 5,
+            "action": "验证：列表总记录数等于卡片今日新增数",
+            "expected": "列表总记录数与今日新增数一致"
+          },
+          {
+            "step": 6,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "146",
+      "case_name": "验证中止人数卡片点击跳转-已入组tab",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 6,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「中止人数」卡片，记录「今日新增」字段值",
+            "expected": "卡片展示「今日新增」字段"
+          },
+          {
+            "step": 2,
+            "action": "点击「中止人数」卡片",
+            "expected": "跳转到随访管理子页"
+          },
+          {
+            "step": 3,
+            "action": "验证：当前页面为「随访管理」子页",
+            "expected": "页面正确显示随访管理子页"
+          },
+          {
+            "step": 4,
+            "action": "验证：「已入组」tab处于选中状态",
+            "expected": "已入组tab选中"
+          },
+          {
+            "step": 5,
+            "action": "验证：列表总记录数等于卡片今日新增数",
+            "expected": "列表总记录数与今日新增数一致"
+          },
+          {
+            "step": 6,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "147",
+      "case_name": "验证疾病统计卡片跳转后筛选框断言-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "确认一个疾病统计卡片存在，如「室早」卡片",
+            "expected": "找到疾病统计卡片"
+          },
+          {
+            "step": 2,
+            "action": "点击「室早」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL正确"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面筛选框已选中疾病名\"室早\"",
+            "expected": "筛选框疾病名为室早"
+          },
+          {
+            "step": 5,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "148",
+      "case_name": "验证入组人数卡片跳转URL带joinStatus参数-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「入组人数」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 2,
+            "action": "验证：页面URL包含patient-profile且携带joinStatus=1参数",
+            "expected": "URL中joinStatus=1"
+          },
+          {
+            "step": 3,
+            "action": "验证：列表总记录数等于卡片今日新增数",
+            "expected": "列表总记录数与今日新增数一致"
+          },
+          {
+            "step": 4,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "149",
+      "case_name": "验证随访状态类卡片跳转已入组tab-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "确认任一随访状态类卡片存在，如「进行中人数」卡片",
+            "expected": "找到随访状态类卡片"
+          },
+          {
+            "step": 2,
+            "action": "点击「进行中人数」卡片",
+            "expected": "跳转到随访管理子页"
+          },
+          {
+            "step": 3,
+            "action": "验证：当前页面为「随访管理」子页",
+            "expected": "页面正确显示随访管理子页"
+          },
+          {
+            "step": 4,
+            "action": "验证：「已入组」tab处于选中状态",
+            "expected": "已入组tab选中"
+          },
+          {
+            "step": 5,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "150",
+      "case_name": "验证重置按钮仅恢复本次弹窗操作-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「自定义」按钮打开自定义弹窗",
+            "expected": "自定义弹窗打开，展示指标列表"
+          },
+          {
+            "step": 2,
+            "action": "在弹窗中点击「室早」指标右侧的「移除」按钮",
+            "expected": "「室早」指标在弹窗列表中移除"
+          },
+          {
+            "step": 3,
+            "action": "点击「重 置」按钮",
+            "expected": "弹窗恢复初始状态，「室早」指标重新出现在列表中"
+          },
+          {
+            "step": 4,
+            "action": "点击「取消」按钮关闭弹窗",
+            "expected": "弹窗关闭"
+          },
+          {
+            "step": 5,
+            "action": "验证：工作台仍显示上次保存的「室早」卡片",
+            "expected": "工作台卡片保持原样，重置未影响已保存结果"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "151",
+      "case_name": "验证移除所有指标后保存显示空状态-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「自定义」按钮打开自定义弹窗",
+            "expected": "自定义弹窗打开，展示当前所有指标列表"
+          },
+          {
+            "step": 2,
+            "action": "在弹窗中逐个点击每个指标右侧的「移除」按钮，直到列表为空",
+            "expected": "弹窗内指标全部移除，列表显示为空"
+          },
+          {
+            "step": 3,
+            "action": "点击「保存布局」按钮",
+            "expected": "保存成功并关闭弹窗"
+          },
+          {
+            "step": 4,
+            "action": "验证：工作台显示空状态「去添加指标」",
+            "expected": "工作台显示「去添加指标」空状态"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "152",
+      "case_name": "验证添加N个指标后卡片数量恰好为N-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「自定义」按钮打开自定义弹窗",
+            "expected": "自定义弹窗打开，展示可用指标列表"
+          },
+          {
+            "step": 2,
+            "action": "在弹窗中勾选3个指标，如「室早」「房颤」「房扑」",
+            "expected": "3个指标被选中"
+          },
+          {
+            "step": 3,
+            "action": "点击「保存布局」按钮",
+            "expected": "保存成功并关闭弹窗"
+          },
+          {
+            "step": 4,
+            "action": "验证：工作台使用expect(...).to_have_count(3)断言卡片数量恰好为3",
+            "expected": "卡片数量为3，不多不少"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "153",
+      "case_name": "验证自定义按钮存在性判断逻辑-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在工作台页面查找「自定义」按钮",
+            "expected": "能够判断按钮是否存在"
+          },
+          {
+            "step": 2,
+            "action": "如果「自定义」按钮不可见，执行pytest.skip()并跳过后续步骤",
+            "expected": "用例被跳过"
+          },
+          {
+            "step": 3,
+            "action": "如果「自定义」按钮可见，验证按钮可正常点击",
+            "expected": "按钮可见且可点击"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "154",
+      "case_name": "验证房颤预警卡片跳转患者详情-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 8,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「房颤预警」卡片，若显示「暂无数据」则执行pytest.skip()",
+            "expected": "卡片有数据可继续测试"
+          },
+          {
+            "step": 2,
+            "action": "记录卡片左上角患者姓名、进度条右侧占比、底部左侧有效时长、底部右侧负荷时长",
+            "expected": "4个字段均存在且有值"
+          },
+          {
+            "step": 3,
+            "action": "点击「房颤」卡片",
+            "expected": "跳转到患者详情页"
+          },
+          {
+            "step": 4,
+            "action": "验证：页面左上角患者姓名与卡片一致",
+            "expected": "患者姓名一致"
+          },
+          {
+            "step": 5,
+            "action": "验证：页面中间「负荷占比」与卡片占比一致",
+            "expected": "占比一致"
+          },
+          {
+            "step": 6,
+            "action": "验证：页面中间「有效时长」与卡片有效时长完全一致",
+            "expected": "有效时长完全一致"
+          },
+          {
+            "step": 7,
+            "action": "验证：页面中间「持续时间」与卡片负荷时长一致",
+            "expected": "持续时间一致"
+          },
+          {
+            "step": 8,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "155",
+      "case_name": "验证佩戴预警卡片跳转患者详情-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「佩戴预警」卡片，若显示「暂无数据」则执行pytest.skip()",
+            "expected": "卡片有数据可继续测试"
+          },
+          {
+            "step": 2,
+            "action": "记录卡片上的患者姓名",
+            "expected": "患者姓名可见"
+          },
+          {
+            "step": 3,
+            "action": "点击「佩戴预警 (0)」卡片",
+            "expected": "跳转到患者详情页"
+          },
+          {
+            "step": 4,
+            "action": "验证：患者详情页左上角患者姓名与卡片一致",
+            "expected": "患者姓名一致"
+          },
+          {
+            "step": 5,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "156",
+      "case_name": "验证测量预警卡片跳转患者详情-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「测量预警」卡片，若显示「暂无数据」则执行pytest.skip()",
+            "expected": "卡片有数据可继续测试"
+          },
+          {
+            "step": 2,
+            "action": "记录卡片上的患者姓名",
+            "expected": "患者姓名可见"
+          },
+          {
+            "step": 3,
+            "action": "点击「测量预警 (0)」卡片",
+            "expected": "跳转到患者详情页"
+          },
+          {
+            "step": 4,
+            "action": "验证：患者详情页左上角患者姓名与卡片一致",
+            "expected": "患者姓名一致"
+          },
+          {
+            "step": 5,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "157",
+      "case_name": "验证房颤预警4字段映射全断言-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 10,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「房颤预警」卡片，若显示「暂无数据」则执行pytest.skip()",
+            "expected": "卡片有数据可继续测试"
+          },
+          {
+            "step": 2,
+            "action": "记录卡片左上角患者姓名",
+            "expected": "记录成功"
+          },
+          {
+            "step": 3,
+            "action": "记录卡片进度条右侧占比数值",
+            "expected": "记录成功"
+          },
+          {
+            "step": 4,
+            "action": "记录卡片底部左侧有效时长",
+            "expected": "记录成功"
+          },
+          {
+            "step": 5,
+            "action": "记录卡片底部右侧负荷时长",
+            "expected": "记录成功"
+          },
+          {
+            "step": 6,
+            "action": "点击「房颤预警」卡片",
+            "expected": "跳转到患者详情页"
+          },
+          {
+            "step": 7,
+            "action": "验证：页面左上角患者姓名与卡片姓名一致",
+            "expected": "姓名一致"
+          },
+          {
+            "step": 8,
+            "action": "验证：页面中间「负荷占比」与卡片占比一致",
+            "expected": "占比一致"
+          },
+          {
+            "step": 9,
+            "action": "验证：页面中间「有效时长」与卡片有效时长完全一致",
+            "expected": "有效时长完全一致"
+          },
+          {
+            "step": 10,
+            "action": "验证：页面中间「持续时间」与卡片负荷时长一致",
+            "expected": "持续时间一致"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "158",
+      "case_name": "验证房颤预警筛选-全部-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「房颤预警」卡片的「筛选」下拉框",
+            "expected": "展开筛选选项列表"
+          },
+          {
+            "step": 2,
+            "action": "在「筛选」下拉框中选择\"全部\"",
+            "expected": "筛选条件生效，显示全部数据"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面显示所有房颤预警数据，无占比过滤条件",
+            "expected": "显示全部数据"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "159",
+      "case_name": "验证房颤预警筛选-≥10-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「房颤预警」卡片的「筛选」下拉框",
+            "expected": "展开筛选选项列表"
+          },
+          {
+            "step": 2,
+            "action": "在「筛选」下拉框中选择\"≥10\"",
+            "expected": "筛选条件生效"
+          },
+          {
+            "step": 3,
+            "action": "验证：所有显示的房颤预警数据占比均≥10",
+            "expected": "每条数据占比≥10"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "160",
+      "case_name": "验证房颤预警筛选-≥20-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「房颤预警」卡片的「筛选」下拉框",
+            "expected": "展开筛选选项列表"
+          },
+          {
+            "step": 2,
+            "action": "在「筛选」下拉框中选择\"≥20\"",
+            "expected": "筛选条件生效"
+          },
+          {
+            "step": 3,
+            "action": "验证：所有显示的房颤预警数据占比均≥20",
+            "expected": "每条数据占比≥20"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "161",
+      "case_name": "验证房颤预警筛选-≥30-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「房颤预警」卡片的「筛选」下拉框",
+            "expected": "展开筛选选项列表"
+          },
+          {
+            "step": 2,
+            "action": "在「筛选」下拉框中选择\"≥30\"",
+            "expected": "筛选条件生效"
+          },
+          {
+            "step": 3,
+            "action": "验证：所有显示的房颤预警数据占比均≥30",
+            "expected": "每条数据占比≥30"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "162",
+      "case_name": "验证房颤预警筛选-≥40-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「房颤预警」卡片的「筛选」下拉框",
+            "expected": "展开筛选选项列表"
+          },
+          {
+            "step": 2,
+            "action": "在「筛选」下拉框中选择\"≥40\"",
+            "expected": "筛选条件生效"
+          },
+          {
+            "step": 3,
+            "action": "验证：所有显示的房颤预警数据占比均≥40",
+            "expected": "每条数据占比≥40"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "163",
+      "case_name": "验证房颤预警筛选-≥50-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「房颤预警」卡片的「筛选」下拉框",
+            "expected": "展开筛选选项列表"
+          },
+          {
+            "step": 2,
+            "action": "在「筛选」下拉框中选择\"≥50\"",
+            "expected": "筛选条件生效"
+          },
+          {
+            "step": 3,
+            "action": "验证：所有显示的房颤预警数据占比均≥50",
+            "expected": "每条数据占比≥50"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "164",
+      "case_name": "验证佩戴预警筛选-全部-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「佩戴预警」卡片的「筛选」下拉框",
+            "expected": "展开筛选选项列表"
+          },
+          {
+            "step": 2,
+            "action": "在「筛选」下拉框中选择\"全部\"",
+            "expected": "筛选条件生效"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面显示所有佩戴预警数据，无状态过滤",
+            "expected": "显示全部数据"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "165",
+      "case_name": "验证佩戴预警筛选-未发送-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「佩戴预警」卡片的「筛选」下拉框",
+            "expected": "展开筛选选项列表"
+          },
+          {
+            "step": 2,
+            "action": "在「筛选」下拉框中选择\"未发送\"",
+            "expected": "筛选条件生效"
+          },
+          {
+            "step": 3,
+            "action": "验证：所有显示的佩戴预警数据状态均为\"未发送\"",
+            "expected": "数据状态匹配"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "166",
+      "case_name": "验证佩戴预警筛选-已发送-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「佩戴预警」卡片的「筛选」下拉框",
+            "expected": "展开筛选选项列表"
+          },
+          {
+            "step": 2,
+            "action": "在「筛选」下拉框中选择\"已发送\"",
+            "expected": "筛选条件生效"
+          },
+          {
+            "step": 3,
+            "action": "验证：所有显示的佩戴预警数据状态均为\"已发送\"",
+            "expected": "数据状态匹配"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "167",
+      "case_name": "验证测量预警筛选-全部-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「测量预警」卡片的「筛选」下拉框",
+            "expected": "展开筛选选项列表"
+          },
+          {
+            "step": 2,
+            "action": "在「筛选」下拉框中选择\"全部\"",
+            "expected": "筛选条件生效"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面显示所有测量预警数据，无状态过滤",
+            "expected": "显示全部数据"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "168",
+      "case_name": "验证测量预警筛选-未发送-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「测量预警」卡片的「筛选」下拉框",
+            "expected": "展开筛选选项列表"
+          },
+          {
+            "step": 2,
+            "action": "在「筛选」下拉框中选择\"未发送\"",
+            "expected": "筛选条件生效"
+          },
+          {
+            "step": 3,
+            "action": "验证：所有显示的测量预警数据状态均为\"未发送\"",
+            "expected": "数据状态匹配"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "169",
+      "case_name": "验证测量预警筛选-已发送-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「测量预警」卡片的「筛选」下拉框",
+            "expected": "展开筛选选项列表"
+          },
+          {
+            "step": 2,
+            "action": "在「筛选」下拉框中选择\"已发送\"",
+            "expected": "筛选条件生效"
+          },
+          {
+            "step": 3,
+            "action": "验证：所有显示的测量预警数据状态均为\"已发送\"",
+            "expected": "数据状态匹配"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "170",
+      "case_name": "验证预警筛选默认状态为全部-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入工作台页面，不主动操作筛选下拉框",
+            "expected": "页面加载完成"
+          },
+          {
+            "step": 2,
+            "action": "验证：「房颤预警」卡片的「筛选」下拉框默认显示\"全部\"",
+            "expected": "房颤预警筛选为全部"
+          },
+          {
+            "step": 3,
+            "action": "验证：「佩戴预警 (0)」卡片的「筛选」下拉框默认显示\"全部\"",
+            "expected": "佩戴预警筛选为全部"
+          },
+          {
+            "step": 4,
+            "action": "验证：「测量预警 (0)」卡片的「筛选」下拉框默认显示\"全部\"",
+            "expected": "测量预警筛选为全部"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "171",
+      "case_name": "验证预警筛选后数据一致性-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 6,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「房颤预警」卡片「筛选」下拉框中选择\"≥30\"",
+            "expected": "筛选生效"
+          },
+          {
+            "step": 2,
+            "action": "验证：所有显示的房颤预警数据占比均≥30",
+            "expected": "数据占比满足阈值"
+          },
+          {
+            "step": 3,
+            "action": "在「佩戴预警 (0)」卡片「筛选」下拉框中选择\"已发送\"",
+            "expected": "筛选生效"
+          },
+          {
+            "step": 4,
+            "action": "验证：所有显示的佩戴预警数据状态均为\"已发送\"",
+            "expected": "数据状态匹配"
+          },
+          {
+            "step": 5,
+            "action": "在「测量预警」卡片「筛选」下拉框中选择\"已发送\"",
+            "expected": "筛选生效"
+          },
+          {
+            "step": 6,
+            "action": "验证：所有显示的测量预警数据状态均为\"已发送\"",
+            "expected": "数据状态匹配"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "172",
+      "case_name": "验证预警卡片暂无数据时跳过用例-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看某预警卡片，如「房颤预警」卡片",
+            "expected": "卡片可见"
+          },
+          {
+            "step": 2,
+            "action": "如果卡片显示「暂无数据」，执行pytest.skip()跳过用例",
+            "expected": "用例被跳过"
+          },
+          {
+            "step": 3,
+            "action": "如果卡片有数据，验证卡片正常展示患者信息",
+            "expected": "卡片数据正常"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "173",
+      "case_name": "验证指标/预警存在性需动态判断-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "遍历工作台「指标总览」区域的指标卡片",
+            "expected": "卡片列表根据实际显示"
+          },
+          {
+            "step": 2,
+            "action": "验证：测试脚本未硬编码任何指标卡片名称，均通过页面实际显示判断",
+            "expected": "动态识别卡片"
+          },
+          {
+            "step": 3,
+            "action": "遍历工作台「预警信息」区域的预警卡片",
+            "expected": "预警卡片根据实际显示"
+          },
+          {
+            "step": 4,
+            "action": "验证：测试脚本未硬编码任何预警卡片名称，均通过页面实际显示判断",
+            "expected": "动态识别预警"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "174",
+      "case_name": "验证工作台spec至少一次pytest.skip-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "检查工作台自动化spec文件源码",
+            "expected": "源码可访问"
+          },
+          {
+            "step": 2,
+            "action": "验证：spec文件中至少出现一次pytest.skip()调用",
+            "expected": "至少一处pytest.skip()"
+          },
+          {
+            "step": 3,
+            "action": "验证：skip逻辑覆盖指标卡片不存在场景或预警「暂无数据」场景",
+            "expected": "skip逻辑存在"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "175",
+      "case_name": "验证指标名存在性未硬编码-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "检查工作台自动化spec文件源码",
+            "expected": "源码可访问"
+          },
+          {
+            "step": 2,
+            "action": "验证：代码中未硬编码断言某指标名一定存在",
+            "expected": "无硬编码存在性断言"
+          },
+          {
+            "step": 3,
+            "action": "验证：所有指标存在性通过动态查找判断",
+            "expected": "动态判断存在性"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "176",
+      "case_name": "验证普通指标跳转断言矩阵-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 7,
+        "steps": [
+          {
+            "step": 1,
+            "action": "选择一个普通指标卡片，如「患者人数」卡片，记录「总数」和「今日新增」",
+            "expected": "字段记录成功"
+          },
+          {
+            "step": 2,
+            "action": "点击「患者人数」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL正确"
+          },
+          {
+            "step": 4,
+            "action": "验证：列表总记录数等于卡片总数",
+            "expected": "总记录数匹配"
+          },
+          {
+            "step": 5,
+            "action": "验证：页面今日新增数与卡片「今日新增」一致",
+            "expected": "今日新增匹配"
+          },
+          {
+            "step": 6,
+            "action": "如果卡片总数为0，验证卡片显示「暂无数据」",
+            "expected": "0值时显示暂无数据"
+          },
+          {
+            "step": 7,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "177",
+      "case_name": "验证疾病统计跳转断言矩阵-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 7,
+        "steps": [
+          {
+            "step": 1,
+            "action": "选择一个疾病统计卡片，如「房颤」卡片，记录「总数」和「今日新增」",
+            "expected": "字段记录成功"
+          },
+          {
+            "step": 2,
+            "action": "点击「房颤」卡片",
+            "expected": "跳转到患者档案页面"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面URL包含patient-profile",
+            "expected": "URL正确"
+          },
+          {
+            "step": 4,
+            "action": "验证：列表总记录数等于卡片总数",
+            "expected": "总记录数匹配"
+          },
+          {
+            "step": 5,
+            "action": "验证：页面筛选框已选中疾病名\"房颤\"",
+            "expected": "筛选框包含房颤"
+          },
+          {
+            "step": 6,
+            "action": "如果卡片总数为0，验证卡片显示「暂无数据」",
+            "expected": "0值时显示暂无数据"
+          },
+          {
+            "step": 7,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    },
+    {
+      "test_case_id": "178",
+      "case_name": "验证审核/物流/随访卡片跳转断言-正常",
+      "module": "工作台",
+      "mode": "v2",
+      "status": "conversion_failed",
+      "error": "LLM 无响应",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "选择一个卡片，如「待审核数据」卡片，记录「今日新增」数",
+            "expected": "字段记录成功"
+          },
+          {
+            "step": 2,
+            "action": "点击「待审核数据」卡片",
+            "expected": "跳转到对应目标页面（数据管理子页）"
+          },
+          {
+            "step": 3,
+            "action": "验证：当前页面为目标页面",
+            "expected": "页面正确"
+          },
+          {
+            "step": 4,
+            "action": "验证：列表总记录数等于卡片今日新增数",
+            "expected": "今日新增数匹配"
+          },
+          {
+            "step": 5,
+            "action": "使用page.go_back()返回工作台",
+            "expected": "成功返回工作台页面"
+          }
+        ]
+      },
+      "after": null,
+      "diagnostics": {}
+    }
+  ],
+  "summary": {
+    "success": 0,
+    "exploration_insufficient": 0,
+    "exploration_failed": 0,
+    "conversion_failed": 63,
+    "steps_missing": 0
+  }
+}

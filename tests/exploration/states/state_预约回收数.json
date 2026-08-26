@@ -1,0 +1,1808 @@
+{
+  "label": "预约回收数",
+  "url": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785581359799&oId=9ee70b68673b4660af488e86a0112f68&tabKey=3",
+  "total_elements": 200,
+  "elements": [
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "header-root flex-shrink-0 flex flex-row items-center justify-between w-full px-4 bg-white border-b-2",
+      "text": "心吉康心血管健康综合管理平台测试机构2026/08/01  星期六陈强",
+      "onclick": false,
+      "href": "",
+      "size": "1280x64"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-start",
+      "text": "心吉康心血管健康综合管理平台",
+      "onclick": false,
+      "href": "",
+      "size": "374x38"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-start text-normal333",
+      "text": "2026/08/01  星期六陈强",
+      "onclick": false,
+      "href": "",
+      "size": "303x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-dropdown-trigger p-1 ml-8 flex flex-row items-center justify-start cursor-pointer rounded-sm hov",
+      "text": "陈强",
+      "onclick": false,
+      "href": "",
+      "size": "102x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "layout-body w-full flex flex-row",
+      "text": "工作台患者档案设备管理设备列表设备收发问卷管理账号管理数据管理文件审核内部报告健康报告周报审核运营配置操作日志随访管理患者管理随访项目设备收发设备收发线下快速回",
+      "onclick": false,
+      "href": "",
+      "size": "1280x836"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "工作台",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "患者档案",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "none",
+      "cls": "ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-open ant-menu-submenu-selected",
+      "text": "设备管理设备列表设备收发",
+      "onclick": false,
+      "href": "",
+      "size": "193x156"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "设备列表",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-selected ant-menu-item-only-child",
+      "text": "设备收发",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "问卷管理",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "文件审核",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "内部报告",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "健康报告",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "周报审核",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "运营配置",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "操作日志",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "患者管理",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "随访项目",
+      "onclick": false,
+      "href": "",
+      "size": "193x40"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-breadcrumb-item",
+      "text": "设备收发",
+      "onclick": false,
+      "href": "",
+      "size": "56x22"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-breadcrumb-link cursor-pointer",
+      "text": "设备收发",
+      "onclick": false,
+      "href": "",
+      "size": "56x20"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "contianer-root flex flex-col items-start justify-start flex-1 overflow-x-auto ",
+      "text": "设备收发线下快速回收全部待发货已发货待回收已预约回收已退回姓名手机号码设备类型请选择发放方式请选择设备编号物流状态待回收发货时间编号发放类型请选择发货来源请选择",
+      "onclick": false,
+      "href": "",
+      "size": "1080x836"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-between w-full mb-2",
+      "text": "设备收发线下快速回收",
+      "onclick": false,
+      "href": "",
+      "size": "1052x40"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center",
+      "text": "线下快速回收",
+      "onclick": false,
+      "href": "",
+      "size": "116x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid undefined ",
+      "text": "线下快速回收",
+      "onclick": false,
+      "href": "",
+      "size": "116x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-tabs ant-tabs-top ant-tabs-large tabsStyle___YLd5p css-1sdc3xm",
+      "text": "全部待发货已发货待回收已预约回收已退回",
+      "onclick": false,
+      "href": "",
+      "size": "1052x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "tablist",
+      "cls": "ant-tabs-nav",
+      "text": "全部待发货已发货待回收已预约回收已退回",
+      "onclick": false,
+      "href": "",
+      "size": "1052x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-tabs-nav-wrap",
+      "text": "全部待发货已发货待回收已预约回收已退回",
+      "onclick": false,
+      "href": "",
+      "size": "1052x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-tabs-nav-list",
+      "text": "全部待发货已发货待回收已预约回收已退回",
+      "onclick": false,
+      "href": "",
+      "size": "464x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-tabs-tab",
+      "text": "全部",
+      "onclick": false,
+      "href": "",
+      "size": "32x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "tab",
+      "cls": "ant-tabs-tab-btn",
+      "text": "全部",
+      "onclick": false,
+      "href": "",
+      "size": "32x24"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-tabs-tab",
+      "text": "待发货",
+      "onclick": false,
+      "href": "",
+      "size": "48x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "tab",
+      "cls": "ant-tabs-tab-btn",
+      "text": "待发货",
+      "onclick": false,
+      "href": "",
+      "size": "48x24"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-tabs-tab",
+      "text": "已发货",
+      "onclick": false,
+      "href": "",
+      "size": "48x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "tab",
+      "cls": "ant-tabs-tab-btn",
+      "text": "已发货",
+      "onclick": false,
+      "href": "",
+      "size": "48x24"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-tabs-tab ant-tabs-tab-active",
+      "text": "待回收",
+      "onclick": false,
+      "href": "",
+      "size": "48x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "tab",
+      "cls": "ant-tabs-tab-btn",
+      "text": "待回收",
+      "onclick": false,
+      "href": "",
+      "size": "48x24"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-tabs-tab",
+      "text": "已预约回收",
+      "onclick": false,
+      "href": "",
+      "size": "80x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "tab",
+      "cls": "ant-tabs-tab-btn",
+      "text": "已预约回收",
+      "onclick": false,
+      "href": "",
+      "size": "80x24"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-tabs-tab",
+      "text": "已退回",
+      "onclick": false,
+      "href": "",
+      "size": "48x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "tab",
+      "cls": "ant-tabs-tab-btn",
+      "text": "已退回",
+      "onclick": false,
+      "href": "",
+      "size": "48x24"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-start justify-between w-full pt-6 pl-2 pr-4 bg-white rounded-md",
+      "text": "姓名手机号码设备类型请选择发放方式请选择设备编号物流状态待回收发货时间编号发放类型请选择发货来源请选择界面展示非隐藏重 置查 询收起",
+      "onclick": false,
+      "href": "",
+      "size": "1052x189"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row css-1sdc3xm",
+      "text": "姓名手机号码设备类型请选择发放方式请选择设备编号物流状态待回收发货时间编号发放类型请选择发货来源请选择界面展示非隐藏重 置查 询收起",
+      "onclick": false,
+      "href": "",
+      "size": "1039x168"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row flex flex-row items-start justify-start w-full px-0 css-1sdc3xm",
+      "text": "姓名手机号码设备类型请选择发放方式请选择设备编号物流状态待回收发货时间编号发放类型请选择发货来源请选择界面展示非隐藏重 置查 询收起",
+      "onclick": false,
+      "href": "",
+      "size": "1039x168"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "姓名",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "姓名",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "姓名",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "手机号码",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "手机号码",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "手机号码",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "设备类型请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "设备类型请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "设备类型",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-18 ant-col-md-20 css-1sdc3xm",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-selector",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-wrap",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "144x30"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-placeholder",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "144x30"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "发放方式请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "发放方式请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "发放方式",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-18 ant-col-md-20 css-1sdc3xm",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-selector",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-wrap",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "144x30"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-placeholder",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "144x30"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "设备编号",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "设备编号",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "设备编号",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "物流状态待回收",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "物流状态待回收",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "物流状态",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-18 ant-col-md-20 css-1sdc3xm",
+      "text": "待回收",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "待回收",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "待回收",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select ant-pro-filed-sea",
+      "text": "待回收",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-selector",
+      "text": "待回收",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-wrap",
+      "text": "待回收",
+      "onclick": false,
+      "href": "",
+      "size": "144x30"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-item",
+      "text": "待回收",
+      "onclick": false,
+      "href": "",
+      "size": "144x30"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "发货时间",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "发货时间",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "发货时间",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "编号",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "编号",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "编号",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "发放类型请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "发放类型请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "发放类型",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-18 ant-col-md-20 css-1sdc3xm",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-selector",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-wrap",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "144x30"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-placeholder",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "144x30"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "发货来源请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "发货来源请选择",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "发货来源",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-18 ant-col-md-20 css-1sdc3xm",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-selector",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-wrap",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "144x30"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-placeholder",
+      "text": "请选择",
+      "onclick": false,
+      "href": "",
+      "size": "144x30"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item css-1sdc3xm ant-form-item-horizontal",
+      "text": "界面展示非隐藏",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row ant-form-item-row css-1sdc3xm",
+      "text": "界面展示非隐藏",
+      "onclick": false,
+      "href": "",
+      "size": "248x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6 ant-col-md-4 css-1sdc3xm",
+      "text": "界面展示",
+      "onclick": false,
+      "href": "",
+      "size": "80x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-18 ant-col-md-20 css-1sdc3xm",
+      "text": "非隐藏",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input",
+      "text": "非隐藏",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-form-item-control-input-content",
+      "text": "非隐藏",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-outlined ant-select-in-form-item ant-pro-filed-search-select css-1sdc3xm ant-s",
+      "text": "非隐藏",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-selector",
+      "text": "非隐藏",
+      "onclick": false,
+      "href": "",
+      "size": "168x32"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-wrap",
+      "text": "非隐藏",
+      "onclick": false,
+      "href": "",
+      "size": "144x30"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-item",
+      "text": "非隐藏",
+      "onclick": false,
+      "href": "",
+      "size": "144x30"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-start justify-end",
+      "text": "重 置查 询收起",
+      "onclick": false,
+      "href": "",
+      "size": "254x56"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center",
+      "text": "重 置查 询收起",
+      "onclick": false,
+      "href": "",
+      "size": "209x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-default ant-btn-color-default ant-btn-variant-outlined",
+      "text": "重 置",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "",
+      "cls": "ant-btn css-1sdc3xm ant-btn-primary ant-btn-color-primary ant-btn-variant-solid ml-4",
+      "text": "查 询",
+      "onclick": false,
+      "href": "",
+      "size": "63x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ml-6 flex items-center text-text-primary cursor-pointer",
+      "text": "收起",
+      "onclick": false,
+      "href": "",
+      "size": "49x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-table-wrapper table___3Qqbh undefined  css-1sdc3xm",
+      "text": "编号姓名手机号码发放类型发货时间发货来源项目名称项目阶段发货备注发放方式设备类型设备编号异常提示物流状态操作编号姓名手机号码发放类型发货时间发货来源项目名称项目",
+      "onclick": false,
+      "href": "",
+      "size": "1052x334"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-table css-1sdc3xm ant-table-ping-right ant-table-fixed-header ant-table-fixed-column ant-table-s",
+      "text": "编号姓名手机号码发放类型发货时间发货来源项目名称项目阶段发货备注发放方式设备类型设备编号异常提示物流状态操作编号姓名手机号码发放类型发货时间发货来源项目名称项目",
+      "onclick": false,
+      "href": "",
+      "size": "1052x334"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-table-container",
+      "text": "编号姓名手机号码发放类型发货时间发货来源项目名称项目阶段发货备注发放方式设备类型设备编号异常提示物流状态操作编号姓名手机号码发放类型发货时间发货来源项目名称项目",
+      "onclick": false,
+      "href": "",
+      "size": "1052x334"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-table-header",
+      "text": "编号姓名手机号码发放类型发货时间发货来源项目名称项目阶段发货备注发放方式设备类型设备编号异常提示物流状态操作",
+      "onclick": false,
+      "href": "",
+      "size": "1052x55"
+    },
+    {
+      "tag": "THEAD",
+      "role": "",
+      "cls": "ant-table-thead",
+      "text": "编号姓名手机号码发放类型发货时间发货来源项目名称项目阶段发货备注发放方式设备类型设备编号异常提示物流状态操作",
+      "onclick": false,
+      "href": "",
+      "size": "2176x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-ellipsis",
+      "text": "编号",
+      "onclick": false,
+      "href": "",
+      "size": "120x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-ellipsis",
+      "text": "姓名",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "手机号码",
+      "onclick": false,
+      "href": "",
+      "size": "130x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "发放类型",
+      "onclick": false,
+      "href": "",
+      "size": "120x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "发货时间",
+      "onclick": false,
+      "href": "",
+      "size": "130x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "发货来源",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "项目名称",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "项目阶段",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "发货备注",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "发放方式",
+      "onclick": false,
+      "href": "",
+      "size": "120x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "设备类型",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "设备编号",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "异常提示",
+      "onclick": false,
+      "href": "",
+      "size": "180x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "物流状态",
+      "onclick": false,
+      "href": "",
+      "size": "120x55"
+    },
+    {
+      "tag": "TH",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-fix-right ant-table-cell-fix-right-first",
+      "text": "操作",
+      "onclick": false,
+      "href": "",
+      "size": "200x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-table-body",
+      "text": "编号姓名手机号码发放类型发货时间发货来源项目名称项目阶段发货备注发放方式设备类型设备编号异常提示物流状态操作-薛成13333333399正常发货2025-09-",
+      "onclick": false,
+      "href": "",
+      "size": "1052x280"
+    },
+    {
+      "tag": "TBODY",
+      "role": "",
+      "cls": "ant-table-tbody",
+      "text": "编号姓名手机号码发放类型发货时间发货来源项目名称项目阶段发货备注发放方式设备类型设备编号异常提示物流状态操作-薛成13333333399正常发货2025-09-",
+      "onclick": false,
+      "href": "",
+      "size": "2170x274"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "-薛成13333333399正常发货2025-09-30档案发货---邮寄贴心集R020007412502设备从签收超过305...待回收详情回收设备隐藏",
+      "onclick": false,
+      "href": "",
+      "size": "2170x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-ellipsis",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "120x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-ellipsis",
+      "text": "薛成",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "13333333399",
+      "onclick": false,
+      "href": "",
+      "size": "130x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "正常发货",
+      "onclick": false,
+      "href": "",
+      "size": "120x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "2025-09-30",
+      "onclick": false,
+      "href": "",
+      "size": "130x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between text-text-red",
+      "text": "2025-09-30",
+      "onclick": false,
+      "href": "",
+      "size": "98x22"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "档案发货",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "邮寄",
+      "onclick": false,
+      "href": "",
+      "size": "120x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "贴心集",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "R020007412502",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "设备从签收超过305...",
+      "onclick": false,
+      "href": "",
+      "size": "180x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center text-text-red",
+      "text": "设备从签收超过305...",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "待回收",
+      "onclick": false,
+      "href": "",
+      "size": "120x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-fix-right ant-table-cell-fix-right-first",
+      "text": "详情回收设备隐藏",
+      "onclick": false,
+      "href": "",
+      "size": "200x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情回收设备隐藏",
+      "onclick": false,
+      "href": "",
+      "size": "168x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "-111111111113981739395正常发货2025-09-25档案发货---邮寄吉康维尔JK30000112212设备从签收超过310...待回收详情",
+      "onclick": false,
+      "href": "",
+      "size": "2170x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-ellipsis",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "120x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-ellipsis",
+      "text": "1111111111",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "13981739395",
+      "onclick": false,
+      "href": "",
+      "size": "130x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "正常发货",
+      "onclick": false,
+      "href": "",
+      "size": "120x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "2025-09-25",
+      "onclick": false,
+      "href": "",
+      "size": "130x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between text-text-red",
+      "text": "2025-09-25",
+      "onclick": false,
+      "href": "",
+      "size": "98x22"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "档案发货",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "邮寄",
+      "onclick": false,
+      "href": "",
+      "size": "120x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "吉康维尔",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "JK30000112212",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "设备从签收超过310...",
+      "onclick": false,
+      "href": "",
+      "size": "180x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center text-text-red",
+      "text": "设备从签收超过310...",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "待回收",
+      "onclick": false,
+      "href": "",
+      "size": "120x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-fix-right ant-table-cell-fix-right-first",
+      "text": "详情回收设备隐藏",
+      "onclick": false,
+      "href": "",
+      "size": "200x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center",
+      "text": "详情回收设备隐藏",
+      "onclick": false,
+      "href": "",
+      "size": "168x22"
+    },
+    {
+      "tag": "TR",
+      "role": "",
+      "cls": "ant-table-row ant-table-row-level-0",
+      "text": "-张法真10026102004正常发货2025-08-14档案发货---邮寄吉康维尔JK30035912005设备从签收超过352...待回收详情回收设备隐藏",
+      "onclick": false,
+      "href": "",
+      "size": "2170x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-ellipsis",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "120x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell ant-table-cell-ellipsis",
+      "text": "张法真",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "10026102004",
+      "onclick": false,
+      "href": "",
+      "size": "130x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "正常发货",
+      "onclick": false,
+      "href": "",
+      "size": "120x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "2025-08-14",
+      "onclick": false,
+      "href": "",
+      "size": "130x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between text-text-red",
+      "text": "2025-08-14",
+      "onclick": false,
+      "href": "",
+      "size": "98x22"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "档案发货",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "-",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "邮寄",
+      "onclick": false,
+      "href": "",
+      "size": "120x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "吉康维尔",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "JK30035912005",
+      "onclick": false,
+      "href": "",
+      "size": "150x55"
+    },
+    {
+      "tag": "TD",
+      "role": "",
+      "cls": "ant-table-cell",
+      "text": "设备从签收超过352...",
+      "onclick": false,
+      "href": "",
+      "size": "180x55"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center text-text-red",
+      "text": "设备从签收超过352...",
+      "onclick": false,
+      "href": "",
+      "size": "148x22"
+    }
+  ],
+  "overlay_elements": []
+}

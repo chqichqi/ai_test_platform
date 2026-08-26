@@ -1,0 +1,742 @@
+{
+  "module": "工作台",
+  "base_url": "https://hospitalweb.xinjikang.cn",
+  "pages_visited": [
+    "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68"
+  ],
+  "explored": [
+    {
+      "name": "患者概览",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "患者人数",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "疾病统计",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "室早室性",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "室速室性",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "室颤室性",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "房颤房性",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "房速房性",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "房扑房性",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "房早房性",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "心动过速",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "心动过缓",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "停搏窦性",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "审核任务",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "物流看板",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "待发货数",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "随访监控",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "入组人数",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "项目个数",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "延期人数",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "中止人数",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "房颤预警",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "持续性房颤",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "阵发性房颤",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "二联律节律",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "三联律节律",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "待审核数据",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "待审核报告",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "待审核周报",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "预约回收数",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "待随访人数",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "进行中人数",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "指标总览自定义",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "佩戴预警 (0)",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "测量预警 (0)",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "Smart 报告(份)",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "心吉康心血管健康综合管理平台",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "2026/08/01  星期六陈强",
+      "interaction_type": "static",
+      "navigated": false
+    }
+  ],
+  "stats": {
+    "total_nav_items": 9,
+    "total_elements": 38,
+    "navigated_elements": 28,
+    "dropdowns_explored": 1,
+    "modals_found": 0,
+    "tables_found": 0,
+    "visited_states": 0,
+    "elapsed_seconds": 209.4
+  },
+  "site_map": {
+    "modules": [
+      {
+        "name": "工作台",
+        "href": "",
+        "source": "nav"
+      },
+      {
+        "name": "患者档案",
+        "href": "",
+        "source": "nav"
+      },
+      {
+        "name": "设备管理",
+        "href": "",
+        "source": "nav"
+      },
+      {
+        "name": "问卷管理",
+        "href": "",
+        "source": "nav"
+      },
+      {
+        "name": "账号管理",
+        "href": "",
+        "source": "nav"
+      },
+      {
+        "name": "数据管理",
+        "href": "",
+        "source": "nav"
+      },
+      {
+        "name": "运营配置",
+        "href": "",
+        "source": "nav"
+      },
+      {
+        "name": "操作日志",
+        "href": "",
+        "source": "nav"
+      },
+      {
+        "name": "随访管理",
+        "href": "",
+        "source": "nav"
+      }
+    ]
+  },
+  "element_jumps": {
+    "_main": {
+      "url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+      "elements": [
+        {
+          "name": "患者概览",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "患者人数",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+          "diff": {
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "疾病统计",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "室早室性",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=ventricularPremature",
+          "diff": {
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=ventricularPremature"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "室速室性",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=ventricularTachycardia",
+          "diff": {
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=ventricularTachycardia"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "室颤室性",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=ventricularFibrillation",
+          "diff": {
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=ventricularFibrillation"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "房颤房性",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=atrialFibrillation",
+          "diff": {
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=atrialFibrillation"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "房速房性",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=atrialTachycardia",
+          "diff": {
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=atrialTachycardia"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "房扑房性",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=atrialFlutter",
+          "diff": {
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=atrialFlutter"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "房早房性",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=atrialPremature",
+          "diff": {
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=atrialPremature"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "心动过速",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=tachycardia",
+          "diff": {
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=tachycardia"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "心动过缓",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=bradycardia",
+          "diff": {
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=bradycardia"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "停搏窦性",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=stopBeat",
+          "diff": {
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=stopBeat"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "审核任务",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "物流看板",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "待发货数",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+          "diff": {
+            "menus": {
+              "before": 1,
+              "after": 2
+            },
+            "expanded": {
+              "before": 0,
+              "after": 1
+            },
+            "tabs": {
+              "before": 2,
+              "after": 0
+            },
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "随访监控",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "入组人数",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&joinStatus=1",
+          "diff": {
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&joinStatus=1"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "项目个数",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/visitproject?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+          "diff": {
+            "menus": {
+              "before": 2,
+              "after": 3
+            },
+            "expanded": {
+              "before": 1,
+              "after": 2
+            },
+            "tabs": {
+              "before": 2,
+              "after": 0
+            },
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/visitproject?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "延期人数",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/visitpatientmanage?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&visitStatus=4",
+          "diff": {
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/visitpatientmanage?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&visitStatus=4"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "中止人数",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/visitpatientmanage?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&visitStatus=11",
+          "diff": {
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/visitpatientmanage?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&visitStatus=11"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "房颤预警",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "持续性房颤",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=persistent_af",
+          "diff": {
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=persistent_af"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "阵发性房颤",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=paroxysmal_af",
+          "diff": {
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=paroxysmal_af"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "二联律节律",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=bigeminy",
+          "diff": {
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=bigeminy"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "三联律节律",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=trigeminy",
+          "diff": {
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&exceptionType=trigeminy"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "待审核数据",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/fileaudit?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&tabKey=0",
+          "diff": {
+            "menus": {
+              "before": 3,
+              "after": 4
+            },
+            "expanded": {
+              "before": 2,
+              "after": 3
+            },
+            "tabs": {
+              "before": 2,
+              "after": 3
+            },
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/fileaudit?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&tabKey=0"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "待审核报告",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/fileaudit?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+          "diff": {
+            "tabs": {
+              "before": 2,
+              "after": 3
+            },
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/fileaudit?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "待审核周报",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/weeklyapproval?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+          "diff": {
+            "tabs": {
+              "before": 2,
+              "after": 0
+            },
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/weeklyapproval?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "预约回收数",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&tabKey=3",
+          "diff": {
+            "tabs": {
+              "before": 2,
+              "after": 6
+            },
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&tabKey=3"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "待随访人数",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/visitpatientmanage?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&visitStatus=0",
+          "diff": {
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/visitpatientmanage?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&visitStatus=0"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "进行中人数",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/visitpatientmanage?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&visitStatus=1",
+          "diff": {
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/visitpatientmanage?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&visitStatus=1"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "指标总览自定义",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/workpanel/customCard?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68"
+        },
+        {
+          "name": "佩戴预警 (0)",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "测量预警 (0)",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "Smart 报告(份)",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&reportType=2",
+          "diff": {
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68",
+              "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785580412409&oId=9ee70b68673b4660af488e86a0112f68&reportType=2"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "心吉康心血管健康综合管理平台",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "2026/08/01  星期六陈强",
+          "clicked": true,
+          "navigated": false
+        }
+      ]
+    }
+  },
+  "deep_dive": {
+    "dropdowns": {
+      "全部": {
+        "options": [
+          "10",
+          "-1",
+          "全部",
+          "≥10",
+          "≥20",
+          "≥30",
+          "≥40",
+          "≥50",
+          "未发送",
+          "已发送"
+        ],
+        "option_count": 10
+      }
+    },
+    "modals": [],
+    "tables": [],
+    "api_endpoints": []
+  }
+}

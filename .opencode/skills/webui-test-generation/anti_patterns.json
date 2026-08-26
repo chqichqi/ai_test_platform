@@ -1,0 +1,22 @@
+{
+  "generation_anti_patterns": [
+    {"id": "GEN001", "pattern": "time.sleep() / wait_for_timeout()", "severity": "block"},
+    {"id": "GEN002", "pattern": "CSS selector / XPath in spec", "severity": "block"},
+    {"id": "GEN003", "pattern": "登录步骤写在spec中", "severity": "block"},
+    {"id": "GEN004", "pattern": "测试函数无expect/assert", "severity": "block"},
+    {"id": "GEN005", "pattern": "硬编码测试数据值", "severity": "block", "reason": "必须从页面运行时提取→save_as→$变量引用"},
+    {"id": "GEN006", "pattern": "凭空编造不存在的元素名或选项值", "severity": "block"},
+    {"id": "GEN007", "pattern": "下拉选项值不在filter_options中", "severity": "block"},
+    {"id": "GEN008", "pattern": "生成前未完成探索预检(G0)", "severity": "block"},
+    {"id": "GEN009", "pattern": "探索结果有error仍继续生成", "severity": "block"},
+    {"id": "GEN010", "pattern": "过滤前不判断数据是否存在就断言", "severity": "block", "reason": "若数据恰好不存在，断言会失败或假通过"},
+    {"id": "GEN011", "pattern": "过滤不存在的值场景与正向场景合并为一条用例", "severity": "block", "reason": "正向+负向必须拆为独立用例"},
+    {"id": "GEN012", "pattern": "用固定次数循环(for range)替代foreach处理动态列表", "severity": "block", "reason": "设计时不知道列表长度"},
+    {"id": "GEN013", "pattern": "foreach循环内使用save_as或assert", "severity": "block", "reason": "save_as/assert应在循环外层"},
+    {"id": "GEN014", "pattern": "滚动加载列表后不重新获取数据", "severity": "block", "reason": "滚动前的旧列表不包含全部数据"},
+    {"id": "GEN015", "pattern": "foreach结束后无断言验证操作结果", "severity": "block", "reason": "循环操作的最终结果必须验证"},
+    {"id": "GEN016", "pattern": "动态列表无空值判断直接遍历", "severity": "block", "reason": "列表为空时foreach可能报错或空跑"},
+    {"id": "GEN017", "pattern": "goto() → go_back() 用错", "severity": "warn"},
+    {"id": "GEN018", "pattern": "多个功能点合并在一个函数中", "severity": "block"}
+  ]
+}

@@ -1,0 +1,1538 @@
+{
+  "label": "dd_全部_1",
+  "url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785937469038&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+  "total_elements": 170,
+  "elements": [
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "header-root flex-shrink-0 flex flex-row items-center justify-between w-full px-4 bg-white border-b-2",
+      "text": "心吉康心血管健康综合管理平台0415New机构2026/08/05  星期三天使布金",
+      "onclick": false,
+      "href": "",
+      "size": "1280x64"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-start",
+      "text": "心吉康心血管健康综合管理平台",
+      "onclick": false,
+      "href": "",
+      "size": "374x38"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-start text-normal333",
+      "text": "2026/08/05  星期三天使布金",
+      "onclick": false,
+      "href": "",
+      "size": "335x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-dropdown-trigger p-1 ml-8 flex flex-row items-center justify-start cursor-pointer rounded-sm hov",
+      "text": "天使布金",
+      "onclick": false,
+      "href": "",
+      "size": "134x39"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "layout-body w-full flex flex-row",
+      "text": "工作台患者档案设备管理设备列表设备收发问卷管理账号管理数据管理运营配置操作日志随访管理工作台指标总览自定义患者概览患者人数59今日新增+0Smart 报告(份)",
+      "onclick": false,
+      "href": "",
+      "size": "1280x836"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-selected",
+      "text": "工作台",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "患者档案",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "设备列表",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item ant-menu-item-only-child",
+      "text": "设备收发",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "问卷管理",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "运营配置",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "menuitem",
+      "cls": "ant-menu-item",
+      "text": "操作日志",
+      "onclick": false,
+      "href": "",
+      "size": "198x40"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-breadcrumb-item",
+      "text": "工作台",
+      "onclick": false,
+      "href": "",
+      "size": "42x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "contianer-root flex flex-col items-start justify-start flex-1 overflow-x-auto ",
+      "text": "指标总览自定义患者概览患者人数59今日新增+0Smart 报告(份)21今日新增+0疾病统计室早室性0今日新增+0室速室性0今日新增+0室颤室性0今日新增+0房",
+      "onclick": false,
+      "href": "",
+      "size": "1080x836"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "workBenchTitle___12T4A flex justify-between items-center",
+      "text": "指标总览自定义",
+      "onclick": false,
+      "href": "",
+      "size": "1046x31"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "newCardContent___TWIa3",
+      "text": "患者概览患者人数59今日新增+0Smart 报告(份)21今日新增+0疾病统计室早室性0今日新增+0室速室性0今日新增+0室颤室性0今日新增+0房颤房性11今日",
+      "onclick": false,
+      "href": "",
+      "size": "1046x798"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardSubTitle___1WFm5",
+      "text": "患者概览",
+      "onclick": false,
+      "href": "",
+      "size": "1046x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row mb-3 css-1sdc3xm",
+      "text": "患者人数59今日新增+0Smart 报告(份)21今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "1054x82"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "patientCardContent___2XHfP ",
+      "text": "患者人数59今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "343x82"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "患者人数59今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "326x64"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardLeft___32GMg",
+      "text": "患者人数59今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "128x64"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "患者人数",
+      "onclick": false,
+      "href": "",
+      "size": "128x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "patientCardContent___2XHfP ",
+      "text": "Smart 报告(份)21今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "343x82"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "Smart 报告(份)21今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "326x64"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardLeft___32GMg",
+      "text": "Smart 报告(份)21今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "128x64"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "Smart 报告(份)",
+      "onclick": false,
+      "href": "",
+      "size": "128x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardSubTitle___1WFm5",
+      "text": "疾病统计",
+      "onclick": false,
+      "href": "",
+      "size": "1046x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row mb-3 css-1sdc3xm",
+      "text": "室早室性0今日新增+0室速室性0今日新增+0室颤室性0今日新增+0房颤房性11今日新增+0房速房性0今日新增+0房扑房性0今日新增+0房早房性0今日新增+0持续",
+      "onclick": false,
+      "href": "",
+      "size": "1054x257"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "diseaseCardContent___6u9yc ",
+      "text": "室早室性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "室早室性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitleBox___2-nlU",
+      "text": "室早室性",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "室早",
+      "onclick": false,
+      "href": "",
+      "size": "32x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTag___G2Rro",
+      "text": "室性",
+      "onclick": false,
+      "href": "",
+      "size": "40x20"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "diseaseCardContent___6u9yc ",
+      "text": "室速室性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "室速室性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitleBox___2-nlU",
+      "text": "室速室性",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "室速",
+      "onclick": false,
+      "href": "",
+      "size": "32x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTag___G2Rro",
+      "text": "室性",
+      "onclick": false,
+      "href": "",
+      "size": "40x20"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "diseaseCardContent___6u9yc ",
+      "text": "室颤室性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "室颤室性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitleBox___2-nlU",
+      "text": "室颤室性",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "室颤",
+      "onclick": false,
+      "href": "",
+      "size": "32x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTag___G2Rro",
+      "text": "室性",
+      "onclick": false,
+      "href": "",
+      "size": "40x20"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "diseaseCardContent___6u9yc ",
+      "text": "房颤房性11今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "房颤房性11今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitleBox___2-nlU",
+      "text": "房颤房性",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "房颤",
+      "onclick": false,
+      "href": "",
+      "size": "32x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTag___G2Rro",
+      "text": "房性",
+      "onclick": false,
+      "href": "",
+      "size": "40x20"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "diseaseCardContent___6u9yc ",
+      "text": "房速房性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "房速房性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitleBox___2-nlU",
+      "text": "房速房性",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "房速",
+      "onclick": false,
+      "href": "",
+      "size": "32x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTag___G2Rro",
+      "text": "房性",
+      "onclick": false,
+      "href": "",
+      "size": "40x20"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "diseaseCardContent___6u9yc ",
+      "text": "房扑房性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "房扑房性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitleBox___2-nlU",
+      "text": "房扑房性",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "房扑",
+      "onclick": false,
+      "href": "",
+      "size": "32x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTag___G2Rro",
+      "text": "房性",
+      "onclick": false,
+      "href": "",
+      "size": "40x20"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "diseaseCardContent___6u9yc ",
+      "text": "房早房性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "房早房性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitleBox___2-nlU",
+      "text": "房早房性",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "房早",
+      "onclick": false,
+      "href": "",
+      "size": "32x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTag___G2Rro",
+      "text": "房性",
+      "onclick": false,
+      "href": "",
+      "size": "40x20"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "diseaseCardContent___6u9yc ",
+      "text": "持续性房颤房性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "持续性房颤房性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitleBox___2-nlU",
+      "text": "持续性房颤房性",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "持续性房颤",
+      "onclick": false,
+      "href": "",
+      "size": "80x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTag___G2Rro",
+      "text": "房性",
+      "onclick": false,
+      "href": "",
+      "size": "40x20"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "diseaseCardContent___6u9yc ",
+      "text": "阵发性房颤房性8今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "阵发性房颤房性8今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitleBox___2-nlU",
+      "text": "阵发性房颤房性",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "阵发性房颤",
+      "onclick": false,
+      "href": "",
+      "size": "80x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTag___G2Rro",
+      "text": "房性",
+      "onclick": false,
+      "href": "",
+      "size": "40x20"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "diseaseCardContent___6u9yc ",
+      "text": "二联律节律0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "二联律节律0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitleBox___2-nlU",
+      "text": "二联律节律",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "二联律",
+      "onclick": false,
+      "href": "",
+      "size": "48x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTag___G2Rro",
+      "text": "节律",
+      "onclick": false,
+      "href": "",
+      "size": "40x20"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "diseaseCardContent___6u9yc ",
+      "text": "三联律节律0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "三联律节律0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitleBox___2-nlU",
+      "text": "三联律节律",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "三联律",
+      "onclick": false,
+      "href": "",
+      "size": "48x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTag___G2Rro",
+      "text": "节律",
+      "onclick": false,
+      "href": "",
+      "size": "40x20"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "diseaseCardContent___6u9yc ",
+      "text": "停搏窦性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "停搏窦性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitleBox___2-nlU",
+      "text": "停搏窦性",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "停搏",
+      "onclick": false,
+      "href": "",
+      "size": "32x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTag___G2Rro",
+      "text": "窦性",
+      "onclick": false,
+      "href": "",
+      "size": "40x20"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "diseaseCardContent___6u9yc ",
+      "text": "心动过速窦性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "心动过速窦性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitleBox___2-nlU",
+      "text": "心动过速窦性",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "心动过速",
+      "onclick": false,
+      "href": "",
+      "size": "64x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTag___G2Rro",
+      "text": "窦性",
+      "onclick": false,
+      "href": "",
+      "size": "40x20"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "diseaseCardContent___6u9yc ",
+      "text": "心动过缓窦性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "心动过缓窦性0今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitleBox___2-nlU",
+      "text": "心动过缓窦性",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "心动过缓",
+      "onclick": false,
+      "href": "",
+      "size": "64x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTag___G2Rro",
+      "text": "窦性",
+      "onclick": false,
+      "href": "",
+      "size": "40x20"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardSubTitle___1WFm5",
+      "text": "审核任务",
+      "onclick": false,
+      "href": "",
+      "size": "1046x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row mb-3 css-1sdc3xm",
+      "text": "待审核数据15去处理待审核报告15去处理待审核周报0去处理",
+      "onclick": false,
+      "href": "",
+      "size": "1054x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "taskCardContent___2-kfJ approval_orange___29HsF ",
+      "text": "待审核数据15去处理",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "待审核数据15去处理",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "待审核数据",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "taskCardContent___2-kfJ approval_orange___29HsF ",
+      "text": "待审核报告15去处理",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "待审核报告15去处理",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "待审核报告",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "taskCardContent___2-kfJ approval_orange___29HsF ",
+      "text": "待审核周报0去处理",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "待审核周报0去处理",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "待审核周报",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardSubTitle___1WFm5",
+      "text": "物流看板",
+      "onclick": false,
+      "href": "",
+      "size": "1046x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row mb-3 css-1sdc3xm",
+      "text": "待发货数16去处理预约回收数1",
+      "onclick": false,
+      "href": "",
+      "size": "1054x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "taskCardContent___2-kfJ logistics_orange___1x_Su ",
+      "text": "待发货数16去处理",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "待发货数16去处理",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "待发货数",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "taskCardContent___2-kfJ logistics_green___2u3qF ",
+      "text": "预约回收数1",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "预约回收数1",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "预约回收数",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardSubTitle___1WFm5",
+      "text": "随访监控",
+      "onclick": false,
+      "href": "",
+      "size": "1046x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-row mb-3 css-1sdc3xm",
+      "text": "入组人数36今日新增+0项目个数3待随访人数13去处理延期人数35进行中人数5中止人数0",
+      "onclick": false,
+      "href": "",
+      "size": "1054x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "taskCardContent___2-kfJ visit_green___1w5bO ",
+      "text": "入组人数36今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "入组人数36今日新增+0",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "入组人数",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "taskCardContent___2-kfJ visit_green___1w5bO ",
+      "text": "项目个数3",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "项目个数3",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "项目个数",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "taskCardContent___2-kfJ visit_orange___2ijUC ",
+      "text": "待随访人数13去处理",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "待随访人数13去处理",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "待随访人数",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "taskCardContent___2-kfJ visit_red___1dFVd ",
+      "text": "延期人数35",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "延期人数35",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "延期人数",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "taskCardContent___2-kfJ visit_green___1w5bO ",
+      "text": "进行中人数5",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "进行中人数5",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "进行中人数",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "taskCardContent___2-kfJ visit_red___1dFVd ",
+      "text": "中止人数0",
+      "onclick": false,
+      "href": "",
+      "size": "168x80"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardContent___2fs2D",
+      "text": "中止人数0",
+      "onclick": false,
+      "href": "",
+      "size": "150x63"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "cardTitle___3hSJ7",
+      "text": "中止人数",
+      "onclick": false,
+      "href": "",
+      "size": "150x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex-1 flex flex-row items-start justify-between workbenchContentStyle___37-hG",
+      "text": "房颤预警全部GDH000ECG93.72%有效时长00:23:53负荷时长00:22:23>佩戴预警 (1)全部GDH000佩戴时长9小时15分测量预警 (0)",
+      "onclick": false,
+      "href": "",
+      "size": "1046x600"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ml-1 font-medium text-base flex items-center",
+      "text": "房颤预警",
+      "onclick": false,
+      "href": "",
+      "size": "86x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-sm ant-select-outlined w-24 mr-3.5 workbench-select css-1sdc3xm ant-select-foc",
+      "text": "全部",
+      "onclick": false,
+      "href": "",
+      "size": "84x24"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-item",
+      "text": "全部",
+      "onclick": false,
+      "href": "",
+      "size": "68x22"
+    },
+    {
+      "tag": "UL",
+      "role": "",
+      "cls": "ant-list-items",
+      "text": "GDH000ECG93.72%有效时长00:23:53负荷时长00:22:23",
+      "onclick": false,
+      "href": "",
+      "size": "623x200"
+    },
+    {
+      "tag": "LI",
+      "role": "",
+      "cls": "ant-list-item",
+      "text": "GDH000ECG93.72%有效时长00:23:53负荷时长00:22:23",
+      "onclick": false,
+      "href": "",
+      "size": "623x200"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "mb-1.5 flex flex-row items-center justify-between",
+      "text": "GDH000",
+      "onclick": false,
+      "href": "",
+      "size": "581x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex flex-row items-center justify-start",
+      "text": "GDH000",
+      "onclick": false,
+      "href": "",
+      "size": "86x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "-mb-0.5 flex items-center justify-between",
+      "text": "ECG93.72%",
+      "onclick": false,
+      "href": "",
+      "size": "581x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "flex items-center justify-between divide divide-x divide-gray-100",
+      "text": "有效时长00:23:53负荷时长00:22:23",
+      "onclick": false,
+      "href": "",
+      "size": "581x19"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "mb-2.5 flex items-center justify-between",
+      "text": "佩戴预警 (1)全部",
+      "onclick": false,
+      "href": "",
+      "size": "392x58"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ml-1 font-medium text-base flex items-center",
+      "text": "佩戴预警 (1)",
+      "onclick": false,
+      "href": "",
+      "size": "110x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-sm ant-select-outlined w-24 mr-3.5 workbench-select css-1sdc3xm ant-select-sin",
+      "text": "全部",
+      "onclick": false,
+      "href": "",
+      "size": "84x24"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-item",
+      "text": "全部",
+      "onclick": false,
+      "href": "",
+      "size": "68x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "px-2 grid grid-cols-4 justify-items-stretch items-center justify-between gap-2 border p-2",
+      "text": "GDH000佩戴时长9小时15分",
+      "onclick": false,
+      "href": "",
+      "size": "378x64"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": " col-span-2 flex items-center",
+      "text": "佩戴时长9小时15分",
+      "onclick": false,
+      "href": "",
+      "size": "178x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": " mb-2.5 flex items-center justify-between",
+      "text": "测量预警 (0)全部",
+      "onclick": false,
+      "href": "",
+      "size": "392x58"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ml-1 font-medium text-base flex items-center",
+      "text": "测量预警 (0)",
+      "onclick": false,
+      "href": "",
+      "size": "110x25"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select ant-select-sm ant-select-outlined w-24 mr-3.5 workbench-select css-1sdc3xm ant-select-sin",
+      "text": "全部",
+      "onclick": false,
+      "href": "",
+      "size": "84x24"
+    },
+    {
+      "tag": "SPAN",
+      "role": "",
+      "cls": "ant-select-selection-item",
+      "text": "全部",
+      "onclick": false,
+      "href": "",
+      "size": "68x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "w-full flex items-center justify-center ",
+      "text": "暂无数据暂无数据",
+      "onclick": false,
+      "href": "",
+      "size": "392x236"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-item ant-select-item-option ant-select-item-option-active ant-select-item-option-selected",
+      "text": "全部",
+      "onclick": false,
+      "href": "",
+      "size": "76x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-item-option-content",
+      "text": "全部",
+      "onclick": false,
+      "href": "",
+      "size": "52x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-item ant-select-item-option",
+      "text": "≥10",
+      "onclick": false,
+      "href": "",
+      "size": "76x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-item-option-content",
+      "text": "≥10",
+      "onclick": false,
+      "href": "",
+      "size": "52x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-item ant-select-item-option",
+      "text": "≥20",
+      "onclick": false,
+      "href": "",
+      "size": "76x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-item-option-content",
+      "text": "≥20",
+      "onclick": false,
+      "href": "",
+      "size": "52x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-item ant-select-item-option",
+      "text": "≥30",
+      "onclick": false,
+      "href": "",
+      "size": "76x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-item-option-content",
+      "text": "≥30",
+      "onclick": false,
+      "href": "",
+      "size": "52x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-item ant-select-item-option",
+      "text": "≥40",
+      "onclick": false,
+      "href": "",
+      "size": "76x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-item-option-content",
+      "text": "≥40",
+      "onclick": false,
+      "href": "",
+      "size": "52x22"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-item ant-select-item-option",
+      "text": "≥50",
+      "onclick": false,
+      "href": "",
+      "size": "76x32"
+    },
+    {
+      "tag": "DIV",
+      "role": "",
+      "cls": "ant-select-item-option-content",
+      "text": "≥50",
+      "onclick": false,
+      "href": "",
+      "size": "52x22"
+    }
+  ],
+  "overlay_elements": []
+}

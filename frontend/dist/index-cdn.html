@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Test Platform - Demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/5.12.8/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/5.12.8/antd.min.css">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background: #f0f2f5;
+        }
+        
+        .app-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            background: #001529;
+            color: white;
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .dashboard-card {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1890ff;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+        
+        .stat-card {
+            background: #fafafa;
+            border-radius: 6px;
+            padding: 16px;
+            text-align: center;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1890ff;
+        }
+        
+        .stat-label {
+            color: #666;
+            margin-top: 8px;
+        }
+        
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .login-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #001529;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d9d9d9;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background: #1890ff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .login-button:hover {
+            background: #40a9ff;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 24px;
+        }
+        
+        .nav-item {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        .nav-item:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        const { useState } = React;
+        
+        function LoginPage() {
+            const [email, setEmail] = useState('');
+            const [password, setPassword] = useState('');
+            
+            const handleLogin = (e) => {
+                e.preventDefault();
+                alert(`Logging in with email: ${email}`);
+                // In real app, this would redirect to dashboard
+                window.location.href = '#dashboard';
+            };
+            
+            return (
+                <div className="login-container">
+                    <h2 className="login-title">AI Agent Test Platform</h2>
+                    <form onSubmit={handleLogin}>
+                        <div className="form-group">
+                            <label className="form-label">Email</label>
+                            <input
+                                type="email"
+                                className="form-input"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="Enter your email"
+                                required
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label className="form-label">Password</label>
+                            <input
+                                type="password"
+                                className="form-input"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder="Enter your password"
+                                required
+                            />
+                        </div>
+                        <button type="submit" className="login-button">
+                            Login
+                        </button>
+                    </form>
+                    <p style={{ textAlign: 'center', marginTop: '20px', color: '#666' }}>
+                        Demo: Use any email/password to login
+                    </p>
+                </div>
+            );
+        }
+        
+        function DashboardPage() {
+            return (
+                <div className="app-container">
+                    <header className="header">
+                        <div className="logo">AI Agent Test Platform</div>
+                        <nav className="nav-menu">
+                            <a href="#dashboard" className="nav-item">Dashboard</a>
+                            <a href="#rag" className="nav-item">RAG Testing</a>
+                            <a href="#skills" className="nav-item">SKILLS</a>
+                            <a href="#tests" className="nav-item">Tests</a>
+                            <a href="#reports" className="nav-item">Reports</a>
+                            <a href="#settings" className="nav-item">Settings</a>
+                        </nav>
+                    </header>
+                    
+                    <main className="main-content">
+                        <div className="dashboard-card">
+                            <h2 className="card-title">Welcome to AI Agent Test Platform</h2>
+                            <p>This is a comprehensive platform for testing AI agents with RAG capabilities, SKILLS management, and automated testing workflows.</p>
+                            
+                            <div className="stats-grid">
+                                <div className="stat-card">
+                                    <div className="stat-value">12</div>
+                                    <div className="stat-label">Active Tests</div>
+                                </div>
+                                <div className="stat-card">
+                                    <div className="stat-value">8</div>
+                                    <div className="stat-label">SKILLS Available</div>
+                                </div>
+                                <div className="stat-card">
+                                    <div className="stat-value">156</div>
+                                    <div className="stat-label">Documents Processed</div>
+                                </div>
+                                <div className="stat-card">
+                                    <div className="stat-value">94%</div>
+                                    <div className="stat-label">Success Rate</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div className="dashboard-card">
+                            <h2 className="card-title">Quick Actions</h2>
+                            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+                                <button style={{
+                                    padding: '12px 24px',
+                                    background: '#1890ff',
+                                    color: 'white',
+                                    border: 'none',
+                                    borderRadius: '4px',
+                                    cursor: 'pointer'
+                                }}>
+                                    Start RAG Test
+                                </button>
+                                <button style={{
+                                    padding: '12px 24px',
+                                    background: '#52c41a',
+                                    color: 'white',
+                                    border: 'none',
+                                    borderRadius: '4px',
+                                    cursor: 'pointer'
+                                }}>
+                                    Manage SKILLS
+                                </button>
+                                <button style={{
+                                    padding: '12px 24px',
+                                    background: '#fa8c16',
+                                    color: 'white',
+                                    border: 'none',
+                                    borderRadius: '4px',
+                                    cursor: 'pointer'
+                                }}>
+                                    View Reports
+                                </button>
+                                <button style={{
+                                    padding: '12px 24px',
+                                    background: '#722ed1',
+                                    color: 'white',
+                                    border: 'none',
+                                    borderRadius: '4px',
+                                    cursor: 'pointer'
+                                }}>
+                                    API Testing
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div className="dashboard-card">
+                            <h2 className="card-title">Recent Activity</h2>
+                            <ul style={{ listStyle: 'none', padding: 0 }}>
+                                <li style={{ padding: '12px 0', borderBottom: '1px solid #f0f0f0' }}>
+                                    ✅ RAG test completed on "Technical Documentation"
+                                </li>
+                                <li style={{ padding: '12px 0', borderBottom: '1px solid #f0f0f0' }}>
+                                    🔄 SKILL "webapp-testing" is being validated
+                                </li>
+                                <li style={{ padding: '12px 0', borderBottom: '1px solid #f0f0f0' }}>
+                                    📊 Report generated for API test suite
+                                </li>
+                                <li style={{ padding: '12px 0', borderBottom: '1px solid #f0f0f0' }}>
+                                    📁 5 new documents uploaded to knowledge base
+                                </li>
+                            </ul>
+                        </div>
+                    </main>
+                </div>
+            );
+        }
+        
+        function App() {
+            const [currentPage, setCurrentPage] = useState('login');
+            
+            // Simple routing based on hash
+            React.useEffect(() => {
+                const handleHashChange = () => {
+                    const hash = window.location.hash.substring(1);
+                    setCurrentPage(hash || 'login');
+                };
+                
+                window.addEventListener('hashchange', handleHashChange);
+                handleHashChange(); // Initial check
+                
+                return () => window.removeEventListener('hashchange', handleHashChange);
+            }, []);
+            
+            switch(currentPage) {
+                case 'dashboard':
+                    return <DashboardPage />;
+                case 'login':
+                default:
+                    return <LoginPage />;
+            }
+        }
+        
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>

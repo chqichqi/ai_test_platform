@@ -1,0 +1,14 @@
+{
+  "nav": {},
+  "cards": {
+    "待审核报告": {
+      "label": "待审核报告",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/fileaudit",
+      "role": "button"
+    }
+  },
+  "dropdowns": {},
+  "sub_menus": {}
+}

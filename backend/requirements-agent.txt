@@ -1,0 +1,10 @@
+# LangChain Agent框架依赖
+langchain>=0.1.0
+langchain-openai>=0.0.5
+langchain-community>=0.0.10
+
+# Playwright浏览器自动化（用于系统探索Agent）
+playwright>=1.40.0
+
+# 其他Agent相关依赖
+asyncio>=3.4.3

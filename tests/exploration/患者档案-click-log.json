@@ -1,0 +1,373 @@
+{
+  "module": "患者档案",
+  "total_clicks": 61,
+  "pages": 2,
+  "clicks": [
+    {
+      "name": "新增患者",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "overlay"
+    },
+    {
+      "name": "我的患者",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static"
+    },
+    {
+      "name": "录入时间",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "static"
+    },
+    {
+      "name": "手机号码",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "static"
+    },
+    {
+      "name": "疾病标签",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "static"
+    },
+    {
+      "name": "绑定设备",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "static"
+    },
+    {
+      "name": "随访项目",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "static"
+    },
+    {
+      "name": "报告类型",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "static"
+    },
+    {
+      "name": "入组情况",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "static"
+    },
+    {
+      "name": "详情入组",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "static"
+    },
+    {
+      "name": "新朝澎湃",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "static"
+    },
+    {
+      "name": "性别请选择",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "overlay"
+    },
+    {
+      "name": "关注请选择",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "overlay"
+    },
+    {
+      "name": "心电记录仪",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "static"
+    },
+    {
+      "name": "导出统计数据",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "static"
+    },
+    {
+      "name": "卡片信息设置",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "overlay"
+    },
+    {
+      "name": "CX-心脑科",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "static"
+    },
+    {
+      "name": "15 条/页",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "static"
+    },
+    {
+      "name": "王明慧2.10",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "static"
+    },
+    {
+      "name": "CQ-房颤患者",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "static"
+    },
+    {
+      "name": "重 置查 询收起",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "static"
+    },
+    {
+      "name": "心吉康心血管健康综合管理平台",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "static"
+    },
+    {
+      "name": "2026/08/01  星期六陈强",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "static"
+    },
+    {
+      "name": "房颤 2026-02-10 14:58:12",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "static"
+    },
+    {
+      "name": "勾小倩-13668336190女61-2026-02-10---详情入组",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "static"
+    },
+    {
+      "name": "汤津津-15167111716女39-2026-02-10---详情入组报告",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&tabKey=1",
+      "result": "static"
+    },
+    {
+      "name": "0520002-10065602649---2026-05-20---详情入组",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static"
+    },
+    {
+      "name": "设备列表",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/device?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "jump"
+    },
+    {
+      "name": "设备收发",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "jump"
+    },
+    {
+      "name": "文件审核",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/fileaudit?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "jump"
+    },
+    {
+      "name": "内部报告",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/internalreport?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "jump"
+    },
+    {
+      "name": "健康报告",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/weeklyreport?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "jump"
+    },
+    {
+      "name": "周报审核",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/weeklyapproval?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "jump"
+    },
+    {
+      "name": "档案详情",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "result": "static"
+    },
+    {
+      "name": "基本数据",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "result": "static"
+    },
+    {
+      "name": "原始数据",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "result": "static"
+    },
+    {
+      "name": "个人报告",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "result": "static"
+    },
+    {
+      "name": "身体状态",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "result": "static"
+    },
+    {
+      "name": "就诊记录",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "result": "static"
+    },
+    {
+      "name": "患者问卷",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "result": "static"
+    },
+    {
+      "name": "房颤负荷",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "result": "static"
+    },
+    {
+      "name": "全部数据",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "result": "overlay"
+    },
+    {
+      "name": "全部状态",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "result": "overlay"
+    },
+    {
+      "name": "知情同意书",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "result": "static"
+    },
+    {
+      "name": "患者卡片打印",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "result": "static"
+    },
+    {
+      "name": "患者病史编辑",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "result": "static"
+    },
+    {
+      "name": "随访项目查看",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "result": "static"
+    },
+    {
+      "name": "20 条/页",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "result": "static"
+    },
+    {
+      "name": "PPG事件次数",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "result": "static"
+    },
+    {
+      "name": "ECG事件次数",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "result": "static"
+    },
+    {
+      "name": "ECG事件列表",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "result": "static"
+    },
+    {
+      "name": "PPG事件列表",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "result": "static"
+    },
+    {
+      "name": "患者疾病标签编辑",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "result": "static"
+    },
+    {
+      "name": "05280001编辑",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "result": "static"
+    },
+    {
+      "name": "心吉康心血管健康综合管理平台",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "result": "static"
+    },
+    {
+      "name": "2026/08/01  星期六陈强",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "result": "static"
+    },
+    {
+      "name": "工作台患者档案设备管理设备列表设备收发问卷管理账号管理数据管理文件审核内部报告健康报告周报审核运营配置操作日志随访管理患",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+      "result": "static"
+    },
+    {
+      "name": "0520001-10065602648---2026-05-20---详情入组",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static"
+    },
+    {
+      "name": "05280001-10065602678---2026-05-28CX-心脑科-",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static"
+    },
+    {
+      "name": "工作台患者档案设备管理问卷管理账号管理数据管理运营配置操作日志随访管理患者档案患者档案导出统计数据卡片信息设置新增患者全",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static"
+    },
+    {
+      "name": "姓名编号手机号码性别年龄绑定设备录入时间随访项目疾病标签异常事件备注操作姓名编号手机号码性别年龄绑定设备录入时间随访项目",
+      "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785595717541&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static"
+    }
+  ]
+}

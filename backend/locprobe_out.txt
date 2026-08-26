@@ -1,0 +1,10 @@
+﻿URL: https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1&oId=9ee70b68673b4660af488e86a0112f68
+[32m2026-08-23 20:21:14[0m | [1mINFO    [0m | [36mapp.core.services.element_locator[0m:[36m_try_scoring_match[0m:[36m717[0m - [1m[ElementLocator] Scoring: 393 candidates, best='工作台' score=3 ctTag=li ctCls=ant-menu-item ant-menu-item-selected[0m
+[32m2026-08-23 20:21:15[0m | [33m[1mWARNING [0m | [36mapp.core.services.element_locator[0m:[36mlocate[0m:[36m188[0m - [33m[1m[ElementLocator] 未找到元素: target='重置', role='button', ui_pattern='', context='' | page_text_len=527, url=https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1&oId=9ee70b68673b4660af488[0m
+[drawer 关] 重置 → found=False strategy=not_found actual=""
+drawer 已打开
+[32m2026-08-23 20:21:17[0m | [1mINFO    [0m | [36mapp.core.services.element_locator[0m:[36m_try_js_treewalker[0m:[36m384[0m - [1m[ElementLocator] TreeWalker found: tag=div, text='重 置', role=''[0m
+[32m2026-08-23 20:21:17[0m | [1mINFO    [0m | [36mapp.core.services.element_locator[0m:[36mlocate[0m:[36m171[0m - [1m[ElementLocator] ✓ '重置' found via L5-treewalker_text[0m
+[drawer 开] 重置 → found=True strategy=treewalker_text actual="重 置"
+[32m2026-08-23 20:21:18[0m | [1mINFO    [0m | [36mapp.core.services.element_locator[0m:[36mlocate[0m:[36m144[0m - [1m[ElementLocator] ✓ '保存布局' found via L1-text_exact[0m
+[drawer 开] 保存布局 → found=True strategy=text_exact actual="保存布局"

@@ -1,0 +1,28 @@
+{
+  "nav": {},
+  "cards": {
+    "患者人数": {
+      "label": "患者人数",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve",
+      "role": "button"
+    },
+    "登记日期": {
+      "label": "登记日期",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/workpanel",
+      "role": "combobox"
+    },
+    "Smart报告(份)": {
+      "label": "Smart报告(份)",
+      "clicked": true,
+      "jumped": true,
+      "url_hash": "/patientarchieve",
+      "role": "button"
+    }
+  },
+  "dropdowns": {},
+  "sub_menus": {}
+}

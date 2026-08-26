@@ -1,0 +1,827 @@
+{
+  "module": "患者档案",
+  "base_url": "https://hospitalweb.xinjikang.cn",
+  "pages_visited": [
+    "/patientarchieve/detail",
+    "/patientarchieve"
+  ],
+  "explored": [
+    {
+      "name": "设备列表",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "设备收发",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "文件审核",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "内部报告",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "健康报告",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "周报审核",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "档案详情",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "基本数据",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "原始数据",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "个人报告",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "身体状态",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "就诊记录",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "患者问卷",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "房颤负荷",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "全部数据",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "全部状态",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "知情同意书",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "患者卡片打印",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "患者病史编辑",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "随访项目查看",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "20 条/页",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "PPG事件次数",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "ECG事件次数",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "ECG事件列表",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "PPG事件列表",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "患者疾病标签编辑",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "05280001编辑",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "心吉康心血管健康综合管理平台",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "2026/08/01  星期六陈强",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "工作台患者档案设备管理设备列表设备收发问卷管理账号管理数据管理文件审核内部报告健康报告周报审核运营配置操作日志随访管理患",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "姓名\n\t\n编号\n\t\n手机号码\n\t\n性别\n\t\n年龄\n\t\n绑定设备\n\t\n录入时间\n\t\n随访项目\n\t\n疾病标签\n\t\n异常事件\n",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "新增患者",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "我的患者",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "录入时间",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "手机号码",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "疾病标签",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "绑定设备",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "随访项目",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "报告类型",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "入组情况",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "详情入组",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "新朝澎湃",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "性别请选择",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "关注请选择",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "心电记录仪",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "导出统计数据",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "卡片信息设置",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "CX-心脑科",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "15 条/页",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "王明慧2.10",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "CQ-房颤患者",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "重 置查 询收起",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "心吉康心血管健康综合管理平台",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "2026/08/01  星期六陈强",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "房颤 2026-02-10 14:58:12",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "勾小倩-13668336190女61-2026-02-10---详情入组",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "汤津津-15167111716女39-2026-02-10---详情入组报告",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "0520002-10065602649---2026-05-20---详情入组",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "0520001-10065602648---2026-05-20---详情入组",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "05280001-10065602678---2026-05-28CX-心脑科-",
+      "interaction_type": "navigation",
+      "navigated": true
+    },
+    {
+      "name": "工作台患者档案设备管理问卷管理账号管理数据管理运营配置操作日志随访管理患者档案患者档案导出统计数据卡片信息设置新增患者全",
+      "interaction_type": "static",
+      "navigated": false
+    },
+    {
+      "name": "姓名编号手机号码性别年龄绑定设备录入时间随访项目疾病标签异常事件备注操作姓名编号手机号码性别年龄绑定设备录入时间随访项目",
+      "interaction_type": "static",
+      "navigated": false
+    }
+  ],
+  "stats": {
+    "total_elements": 61,
+    "navigated_elements": 18,
+    "pages_explored": 2,
+    "visited_states": 0,
+    "elapsed_seconds": 435.9
+  },
+  "site_map": {
+    "modules": []
+  },
+  "element_jumps": {
+    "_main": {
+      "url": "https://hospitalweb.xinjikang.cn/#/patientarchieve?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68",
+      "elements": [
+        {
+          "name": "设备列表",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/device?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68",
+          "diff": {
+            "tabs": {
+              "before": 8,
+              "after": 0
+            },
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+              "after": "https://hospitalweb.xinjikang.cn/#/device?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "设备收发",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68",
+          "diff": {
+            "tabs": {
+              "before": 8,
+              "after": 6
+            },
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+              "after": "https://hospitalweb.xinjikang.cn/#/devicesend?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "文件审核",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/fileaudit?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68",
+          "diff": {
+            "tabs": {
+              "before": 8,
+              "after": 3
+            },
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+              "after": "https://hospitalweb.xinjikang.cn/#/fileaudit?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "内部报告",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/internalreport?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68",
+          "diff": {
+            "tabs": {
+              "before": 8,
+              "after": 1
+            },
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+              "after": "https://hospitalweb.xinjikang.cn/#/internalreport?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "健康报告",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/weeklyreport?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68",
+          "diff": {
+            "tabs": {
+              "before": 8,
+              "after": 0
+            },
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+              "after": "https://hospitalweb.xinjikang.cn/#/weeklyreport?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "周报审核",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/weeklyapproval?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68",
+          "diff": {
+            "tabs": {
+              "before": 8,
+              "after": 0
+            },
+            "url": {
+              "before": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173",
+              "after": "https://hospitalweb.xinjikang.cn/#/weeklyapproval?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68"
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "档案详情",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "基本数据",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "原始数据",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "个人报告",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/internalreport?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68"
+        },
+        {
+          "name": "身体状态",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "就诊记录",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "患者问卷",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/surveymanage?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68"
+        },
+        {
+          "name": "房颤负荷",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "全部数据",
+          "clicked": true,
+          "navigated": true,
+          "interaction_type": "overlay",
+          "diff": {
+            "listboxes": {
+              "before": 0,
+              "after": 1
+            },
+            "dropdowns": {
+              "before": 0,
+              "after": 1
+            },
+            "expanded": {
+              "before": 2,
+              "after": 3
+            },
+            "bodyChildren": {
+              "before": 8,
+              "after": 9
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "全部状态",
+          "clicked": true,
+          "navigated": true,
+          "interaction_type": "overlay",
+          "diff": {
+            "listboxes": {
+              "before": 1,
+              "after": 2
+            },
+            "dropdowns": {
+              "before": 0,
+              "after": 1
+            },
+            "bodyChildren": {
+              "before": 9,
+              "after": 10
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "知情同意书",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "患者卡片打印",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "患者病史编辑",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "随访项目查看",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "20 条/页",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "PPG事件次数",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "ECG事件次数",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "ECG事件列表",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "PPG事件列表",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "患者疾病标签编辑",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "05280001编辑",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "心吉康心血管健康综合管理平台",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "2026/08/01  星期六陈强",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "工作台患者档案设备管理设备列表设备收发问卷管理账号管理数据管理文件审核内部报告健康报告周报审核运营配置操作日志随访管理患",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "姓名\n\t\n编号\n\t\n手机号码\n\t\n性别\n\t\n年龄\n\t\n绑定设备\n\t\n录入时间\n\t\n随访项目\n\t\n疾病标签\n\t\n异常事件\n",
+          "clicked": false,
+          "navigated": false,
+          "error": "Page.evaluate: SyntaxError: Invalid or unexpected token\n    at eval (<anonymous>)\n    at UtilityScri"
+        },
+        {
+          "name": "新增患者",
+          "clicked": true,
+          "navigated": true,
+          "interaction_type": "overlay",
+          "diff": {
+            "dialogs": {
+              "before": 0,
+              "after": 2
+            },
+            "tabs": {
+              "before": 2,
+              "after": 4
+            },
+            "bodyChildren": {
+              "before": 7,
+              "after": 8
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "我的患者",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "录入时间",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "手机号码",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "疾病标签",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "绑定设备",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "随访项目",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "报告类型",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "入组情况",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "详情入组",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "新朝澎湃",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "性别请选择",
+          "clicked": true,
+          "navigated": true,
+          "interaction_type": "overlay",
+          "diff": {
+            "listboxes": {
+              "before": 0,
+              "after": 1
+            },
+            "dropdowns": {
+              "before": 0,
+              "after": 1
+            },
+            "expanded": {
+              "before": 1,
+              "after": 2
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "关注请选择",
+          "clicked": true,
+          "navigated": true,
+          "interaction_type": "overlay",
+          "diff": {
+            "listboxes": {
+              "before": 1,
+              "after": 2
+            },
+            "dropdowns": {
+              "before": 0,
+              "after": 1
+            },
+            "expanded": {
+              "before": 1,
+              "after": 2
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "心电记录仪",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "导出统计数据",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "卡片信息设置",
+          "clicked": true,
+          "navigated": true,
+          "interaction_type": "overlay",
+          "diff": {
+            "dialogs": {
+              "before": 0,
+              "after": 2
+            },
+            "bodyChildren": {
+              "before": 9,
+              "after": 10
+            }
+          },
+          "console_errors": []
+        },
+        {
+          "name": "CX-心脑科",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "15 条/页",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "王明慧2.10",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "CQ-房颤患者",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "重 置查 询收起",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "心吉康心血管健康综合管理平台",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "2026/08/01  星期六陈强",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "房颤 2026-02-10 14:58:12",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "勾小倩-13668336190女61-2026-02-10---详情入组",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "汤津津-15167111716女39-2026-02-10---详情入组报告",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/internalreport?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68"
+        },
+        {
+          "name": "0520002-10065602649---2026-05-20---详情入组",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173"
+        },
+        {
+          "name": "0520001-10065602648---2026-05-20---详情入组",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173"
+        },
+        {
+          "name": "05280001-10065602678---2026-05-28CX-心脑科-",
+          "clicked": true,
+          "navigated": true,
+          "jump_url": "https://hospitalweb.xinjikang.cn/#/patientarchieve/detail?refresh=1785594174511&oId=9ee70b68673b4660af488e86a0112f68&id=e37004ee9fc3494b87db7e76e2f11173"
+        },
+        {
+          "name": "工作台患者档案设备管理问卷管理账号管理数据管理运营配置操作日志随访管理患者档案患者档案导出统计数据卡片信息设置新增患者全",
+          "clicked": true,
+          "navigated": false
+        },
+        {
+          "name": "姓名编号手机号码性别年龄绑定设备录入时间随访项目疾病标签异常事件备注操作姓名编号手机号码性别年龄绑定设备录入时间随访项目",
+          "clicked": true,
+          "navigated": false
+        }
+      ]
+    }
+  },
+  "deep_dive": {
+    "dropdowns": {},
+    "modals": [],
+    "tables": []
+  }
+}

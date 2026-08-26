@@ -1,0 +1,388 @@
+- generic [ref=e5]:
+  - generic [ref=e6]:
+    - generic [ref=e7]:
+      - img "logo" [ref=e8]
+      - generic [ref=e9]: 心吉康心血管健康综合管理平台
+    - generic [ref=e36]: 测试机构
+    - generic [ref=e10]:
+      - generic [ref=e13]: 2026/08/01 星期
+      - generic [ref=e14]: 六
+      - generic [ref=e15] [cursor=pointer]: 陈强
+  - generic [ref=e19]:
+    - menu [ref=e38]:
+      - menuitem "工作台" [ref=e39] [cursor=pointer]
+      - menuitem "患者档案" [ref=e42] [cursor=pointer]
+      - menuitem "设备管理" [expanded] [ref=e45] [cursor=pointer]
+      - menu [ref=e19499]:
+        - menuitem "设备列表" [ref=e19500] [cursor=pointer]
+        - menuitem "设备收发" [ref=e19502] [cursor=pointer]
+      - menuitem "问卷管理" [ref=e48] [cursor=pointer]
+      - menuitem "账号管理" [ref=e51] [cursor=pointer]
+      - menuitem "数据管理" [expanded] [ref=e54] [cursor=pointer]
+      - menu [ref=e17965]:
+        - menuitem "文件审核" [ref=e17966] [cursor=pointer]
+        - menuitem "内部报告" [ref=e17968] [cursor=pointer]
+        - menuitem "健康报告" [ref=e17970] [cursor=pointer]
+        - menuitem "周报审核" [ref=e17972] [cursor=pointer]
+      - menuitem "运营配置" [ref=e57] [cursor=pointer]
+      - menuitem "操作日志" [ref=e60] [cursor=pointer]
+      - menuitem "随访管理" [ref=e63] [cursor=pointer]
+    - generic [ref=e21]:
+      - navigation [ref=e2201]:
+        - list [ref=e2202]:
+          - listitem [ref=e2203]: 设备收发
+      - generic [ref=e19505]:
+        - generic [ref=e19506]:
+          - generic [ref=e19507]: 设备收发
+          - button "线下快速回收" [ref=e19509] [cursor=pointer]
+        - generic [ref=e19511]:
+          - generic [ref=e19512]:
+            - tablist [ref=e19513]:
+              - generic [ref=e19515]:
+                - tab "全部" [ref=e19517] [cursor=pointer]
+                - tab "待发货" [selected] [ref=e19519] [cursor=pointer]
+                - tab "已发货" [ref=e19521] [cursor=pointer]
+                - tab "待回收" [ref=e19523] [cursor=pointer]
+                - tab "已预约回收" [ref=e19525] [cursor=pointer]
+                - tab "已退回" [ref=e19527] [cursor=pointer]
+            - generic:
+              - generic:
+                - tabpanel "待发货"
+          - generic [ref=e19532]:
+            - generic [ref=e19536]:
+              - generic "姓名" [ref=e19538]: "姓名 :"
+              - textbox "姓名 :" [ref=e19543]:
+                - /placeholder: 请输入
+            - generic [ref=e19548]:
+              - generic "手机号码" [ref=e19550]: "手机号码 :"
+              - textbox "手机号码 :" [ref=e19555]:
+                - /placeholder: 请输入
+            - generic [ref=e19560]:
+              - generic "设备类型" [ref=e19562]: "设备类型 :"
+              - generic [ref=e19568] [cursor=pointer]:
+                - combobox "设备类型 :" [ref=e19570]
+                - generic: 请选择
+            - generic [ref=e19574]:
+              - generic "发放方式" [ref=e19576]: "发放方式 :"
+              - generic [ref=e19582] [cursor=pointer]:
+                - combobox "发放方式 :" [ref=e19584]
+                - generic: 请选择
+            - generic [ref=e19588]:
+              - generic "设备编号" [ref=e19590]: "设备编号 :"
+              - textbox "设备编号 :" [ref=e19595]:
+                - /placeholder: 请输入
+            - generic [ref=e19600]:
+              - generic "物流状态" [ref=e19602]: "物流状态 :"
+              - generic [ref=e19608]:
+                - combobox "物流状态 :" [disabled] [ref=e19610]
+                - generic "已退回" [ref=e20415]
+            - generic [ref=e19615]:
+              - generic "发货时间" [ref=e19617]: "发货时间 :"
+              - generic [ref=e19622]:
+                - textbox "发货时间 :" [ref=e19623]:
+                  - /placeholder: 请选择
+                - generic:
+                  - img "calendar"
+            - generic [ref=e19627]:
+              - generic "编号" [ref=e19629]: "编号 :"
+              - textbox "编号 :" [ref=e19634]:
+                - /placeholder: 请输入
+            - generic [ref=e19639]:
+              - generic "发放类型" [ref=e19641]: "发放类型 :"
+              - generic [ref=e19647] [cursor=pointer]:
+                - combobox "发放类型 :" [ref=e19649]
+                - generic: 请选择
+            - generic [ref=e19653]:
+              - generic "发货来源" [ref=e19655]: "发货来源 :"
+              - generic [ref=e19661] [cursor=pointer]:
+                - combobox "发货来源 :" [ref=e19663]
+                - generic: 请选择
+            - generic [ref=e19685]:
+              - button "重 置" [ref=e19686] [cursor=pointer]
+              - button "查 询" [ref=e19688] [cursor=pointer]
+              - generic [ref=e19690] [cursor=pointer]:
+                - generic [ref=e19691]: 收起
+                - img "up" [ref=e19692]
+        - generic [ref=e19696]:
+          - generic [ref=e19701]:
+            - table [ref=e20441]:
+              - rowgroup [ref=e20461]:
+                - row [ref=e20969]:
+                  - columnheader "编号" [ref=e20463]
+                  - columnheader "姓名" [ref=e20464]
+                  - columnheader "手机号码" [ref=e20465]
+                  - columnheader "发放类型" [ref=e20466]
+                  - columnheader "发货时间" [ref=e20467]
+                  - columnheader "发货来源" [ref=e20468]
+                  - columnheader "项目名称" [ref=e20469]
+                  - columnheader "项目阶段" [ref=e20470]
+                  - columnheader "发货备注" [ref=e20471]
+                  - columnheader "发放方式" [ref=e20472]
+                  - columnheader "设备类型" [ref=e20473]
+                  - columnheader "设备编号" [ref=e20474]
+                  - columnheader "异常提示" [ref=e20475]
+                  - columnheader "物流状态" [ref=e20476]
+                  - columnheader "操作" [ref=e20479]
+                  - columnheader [ref=e20480]
+            - table [ref=e20482]:
+              - rowgroup [ref=e20501]:
+                - row [ref=e20970]:
+                  - cell "-" [ref=e20503]
+                  - cell "测试账号正式服" [ref=e20504]
+                  - cell "17311204007" [ref=e20505]
+                  - cell "正常发货" [ref=e20506]
+                  - cell "2026-04-15" [ref=e20507]
+                  - cell "档案发货" [ref=e20510]
+                  - cell "-" [ref=e20512]
+                  - cell "-" [ref=e20514]
+                  - cell "-" [ref=e20516]
+                  - cell "现场佩戴" [ref=e20518]
+                  - cell "吉康维尔" [ref=e20519]
+                  - cell "JK30000112212" [ref=e20521]
+                  - cell "-" [ref=e20522]
+                  - cell [ref=e20525]
+                  - cell "详情" [ref=e20530]
+                - row [ref=e20971]:
+                  - cell "-" [ref=e20534]
+                  - cell "测试mobay" [ref=e20535]
+                  - cell "17360207056" [ref=e20536]
+                  - cell "正常发货" [ref=e20537]
+                  - cell "2026-04-15" [ref=e20538]
+                  - cell "档案发货" [ref=e20541]
+                  - cell "-" [ref=e20543]
+                  - cell "-" [ref=e20545]
+                  - cell "-" [ref=e20547]
+                  - cell "现场佩戴" [ref=e20549]
+                  - cell "吉康维尔" [ref=e20550]
+                  - cell "JK30001912403" [ref=e20552]
+                  - cell "-" [ref=e20553]
+                  - cell [ref=e20556]
+                  - cell "详情" [ref=e20561]
+                - row [ref=e20972]:
+                  - cell "-" [ref=e20565]
+                  - cell "王强" [ref=e20566]
+                  - cell "10026102176" [ref=e20567]
+                  - cell "正常发货" [ref=e20568]
+                  - cell "2025-09-01" [ref=e20569]
+                  - cell "项目发货" [ref=e20572]
+                  - cell "测试机构" [ref=e20574]
+                  - cell "第1阶段" [ref=e20576]
+                  - cell "-" [ref=e20578]
+                  - cell "邮寄" [ref=e20580]
+                  - cell "贴心集" [ref=e20581]
+                  - cell "RXD_050A92B8C" [ref=e20583]
+                  - cell "-" [ref=e20584]
+                  - cell [ref=e20587]
+                  - cell "详情" [ref=e20592]
+                - row [ref=e20973]:
+                  - cell "-" [ref=e20596]
+                  - cell "张军" [ref=e20597]
+                  - cell "10026102175" [ref=e20598]
+                  - cell "正常发货" [ref=e20599]
+                  - cell "2025-09-01" [ref=e20600]
+                  - cell "项目发货" [ref=e20603]
+                  - cell "测试机构" [ref=e20605]
+                  - cell "第1阶段" [ref=e20607]
+                  - cell "-" [ref=e20609]
+                  - cell "邮寄" [ref=e20611]
+                  - cell "贴心集" [ref=e20612]
+                  - cell "RXD_050A92B8C" [ref=e20614]
+                  - cell "-" [ref=e20615]
+                  - cell [ref=e20618]
+                  - cell "详情" [ref=e20623]
+                - row [ref=e20974]:
+                  - cell "-" [ref=e20627]
+                  - cell "赵贵群" [ref=e20628]
+                  - cell "10026102003" [ref=e20629]
+                  - cell "正常发货" [ref=e20630]
+                  - cell "2025-08-14" [ref=e20631]
+                  - cell "档案发货" [ref=e20634]
+                  - cell "-" [ref=e20636]
+                  - cell "-" [ref=e20638]
+                  - cell "-" [ref=e20640]
+                  - cell "邮寄" [ref=e20642]
+                  - cell "吉康维尔" [ref=e20643]
+                  - cell "JK30035912005" [ref=e20645]
+                  - cell "-" [ref=e20646]
+                  - cell [ref=e20649]
+                  - cell "详情" [ref=e20654]
+                - row [ref=e20975]:
+                  - cell "-" [ref=e20658]
+                  - cell "imya0715" [ref=e20659]
+                  - cell "10026101840" [ref=e20660]
+                  - cell "正常发货" [ref=e20661]
+                  - cell "2025-07-15" [ref=e20662]
+                  - cell "项目发货" [ref=e20665]
+                  - cell "测试机构" [ref=e20667]
+                  - cell "第1阶段" [ref=e20669]
+                  - cell "-" [ref=e20671]
+                  - cell "邮寄" [ref=e20673]
+                  - cell "贴心集" [ref=e20674]
+                  - cell "RXD_050A92B8C" [ref=e20676]
+                  - cell "-" [ref=e20677]
+                  - cell [ref=e20680]
+                  - cell "详情" [ref=e20685]
+                - row [ref=e20976]:
+                  - cell "-" [ref=e20689]
+                  - cell "imya070715" [ref=e20690]
+                  - cell "10026101759" [ref=e20691]
+                  - cell "正常发货" [ref=e20692]
+                  - cell "2025-07-07" [ref=e20693]
+                  - cell "项目发货" [ref=e20696]
+                  - cell "测试机构" [ref=e20698]
+                  - cell "第1阶段" [ref=e20700]
+                  - cell "-" [ref=e20702]
+                  - cell "邮寄" [ref=e20704]
+                  - cell "贴心集" [ref=e20705]
+                  - cell "RXD_050A92B8C" [ref=e20707]
+                  - cell "-" [ref=e20708]
+                  - cell [ref=e20711]
+                  - cell "详情" [ref=e20716]
+                - row [ref=e20977]:
+                  - cell "-" [ref=e20720]
+                  - cell "125" [ref=e20721]
+                  - cell "13981730996" [ref=e20722]
+                  - cell "正常发货" [ref=e20723]
+                  - cell "2025-06-14" [ref=e20724]
+                  - cell "项目发货" [ref=e20727]
+                  - cell "测试机构" [ref=e20729]
+                  - cell "第2阶段" [ref=e20731]
+                  - cell "-" [ref=e20733]
+                  - cell "邮寄" [ref=e20735]
+                  - cell "贴心集" [ref=e20736]
+                  - cell "RXD_050A92B8C" [ref=e20738]
+                  - cell "-" [ref=e20739]
+                  - cell [ref=e20742]
+                  - cell "详情" [ref=e20747]
+                - row [ref=e20978]:
+                  - cell "-" [ref=e20751]
+                  - cell "125" [ref=e20752]
+                  - cell "13981730996" [ref=e20753]
+                  - cell "正常发货" [ref=e20754]
+                  - cell "2025-06-13" [ref=e20755]
+                  - cell "项目发货" [ref=e20758]
+                  - cell "测试机构" [ref=e20760]
+                  - cell "第1阶段" [ref=e20762]
+                  - cell "-" [ref=e20764]
+                  - cell "邮寄" [ref=e20766]
+                  - cell "贴心集" [ref=e20767]
+                  - cell "RXD_050A92B8C" [ref=e20769]
+                  - cell "-" [ref=e20770]
+                  - cell [ref=e20773]
+                  - cell "详情" [ref=e20778]
+                - row [ref=e20979]:
+                  - cell "-" [ref=e20782]
+                  - cell "123" [ref=e20783]
+                  - cell "13981739035" [ref=e20784]
+                  - cell "正常发货" [ref=e20785]
+                  - cell "2025-06-12" [ref=e20786]
+                  - cell "项目发货" [ref=e20789]
+                  - cell "测试机构" [ref=e20791]
+                  - cell "第1阶段" [ref=e20793]
+                  - cell "-" [ref=e20795]
+                  - cell "邮寄" [ref=e20797]
+                  - cell "贴心集" [ref=e20798]
+                  - cell "RXD_050A92B8C" [ref=e20800]
+                  - cell "-" [ref=e20801]
+                  - cell [ref=e20804]
+                  - cell "详情" [ref=e20809]
+                - row [ref=e20980]:
+                  - cell "-" [ref=e20813]
+                  - cell "imya0612" [ref=e20814]
+                  - cell "10026101729" [ref=e20815]
+                  - cell "正常发货" [ref=e20816]
+                  - cell "2025-06-12" [ref=e20817]
+                  - cell "项目发货" [ref=e20820]
+                  - cell "测试机构" [ref=e20822]
+                  - cell "第1阶段" [ref=e20824]
+                  - cell "-" [ref=e20826]
+                  - cell "邮寄" [ref=e20828]
+                  - cell "贴心集" [ref=e20829]
+                  - cell "RXD_050A92B8C" [ref=e20831]
+                  - cell "-" [ref=e20832]
+                  - cell [ref=e20835]
+                  - cell "详情" [ref=e20840]
+                - row [ref=e20981]:
+                  - cell "-" [ref=e20844]
+                  - cell "IMYA0603-3" [ref=e20845]
+                  - cell "10026101573" [ref=e20846]
+                  - cell "正常发货" [ref=e20847]
+                  - cell "2025-06-03" [ref=e20848]
+                  - cell "项目发货" [ref=e20851]
+                  - cell "测试机构" [ref=e20853]
+                  - cell "第1阶段" [ref=e20855]
+                  - cell "-" [ref=e20857]
+                  - cell "邮寄" [ref=e20859]
+                  - cell "贴心集" [ref=e20860]
+                  - cell "RXD_050A92B8C" [ref=e20862]
+                  - cell "-" [ref=e20863]
+                  - cell [ref=e20866]
+                  - cell "详情" [ref=e20871]
+                - row [ref=e20982]:
+                  - cell "-" [ref=e20875]
+                  - cell "测试0603-2" [ref=e20876]
+                  - cell "10026101572" [ref=e20877]
+                  - cell "正常发货" [ref=e20878]
+                  - cell "2025-06-03" [ref=e20879]
+                  - cell "项目发货" [ref=e20882]
+                  - cell "测试机构" [ref=e20884]
+                  - cell "第1阶段" [ref=e20886]
+                  - cell "-" [ref=e20888]
+                  - cell "邮寄" [ref=e20890]
+                  - cell "贴心集" [ref=e20891]
+                  - cell "RXD_050A92B8C" [ref=e20893]
+                  - cell "-" [ref=e20894]
+                  - cell [ref=e20897]
+                  - cell "详情" [ref=e20902]
+                - row [ref=e20983]:
+                  - cell "-" [ref=e20906]
+                  - cell "测试0603" [ref=e20907]
+                  - cell "10026101570" [ref=e20908]
+                  - cell "正常发货" [ref=e20909]
+                  - cell "2025-06-03" [ref=e20910]
+                  - cell "项目发货" [ref=e20913]
+                  - cell "测试机构" [ref=e20915]
+                  - cell "第1阶段" [ref=e20917]
+                  - cell "-" [ref=e20919]
+                  - cell "邮寄" [ref=e20921]
+                  - cell "贴心集" [ref=e20922]
+                  - cell "RXD_050A92B8C" [ref=e20924]
+                  - cell "-" [ref=e20925]
+                  - cell [ref=e20928]
+                  - cell "详情" [ref=e20933]
+                - row [ref=e20984]:
+                  - cell "-" [ref=e20937]
+                  - cell "1111111111" [ref=e20938]
+                  - cell "13981739395" [ref=e20939]
+                  - cell "正常发货" [ref=e20940]
+                  - cell "2025-05-08" [ref=e20941]
+                  - cell "项目发货" [ref=e20944]
+                  - cell "测试机构" [ref=e20946]
+                  - cell "第1阶段" [ref=e20948]
+                  - cell "-" [ref=e20950]
+                  - cell "邮寄" [ref=e20952]
+                  - cell "贴心集" [ref=e20953]
+                  - cell "RXD_050A92B8C" [ref=e20955]
+                  - cell "-" [ref=e20956]
+                  - cell [ref=e20959]
+                  - cell "详情" [ref=e20964]
+          - list [ref=e20390]:
+            - listitem [ref=e20391]: 共34条记录
+            - listitem "上一页" [ref=e20392]:
+              - button [disabled] [ref=e20393]:
+                - img "left" [ref=e20394]
+            - listitem "1" [ref=e20397] [cursor=pointer]
+            - listitem "2" [ref=e20399] [cursor=pointer]
+            - listitem "3" [ref=e20967] [cursor=pointer]
+            - listitem "下一页" [ref=e20401] [cursor=pointer]:
+              - button [ref=e20402]:
+                - img "right" [ref=e20403]
+            - listitem [ref=e20406]:
+              - generic "页码" [ref=e20407] [cursor=pointer]:
+                - generic [ref=e20409]:
+                  - combobox "页码" [ref=e20411]
+                  - generic "15 条/页" [ref=e20412]
+              - generic [ref=e20413]:
+                - text: 跳至
+                - textbox "页" [ref=e20414]
+                - text: 页

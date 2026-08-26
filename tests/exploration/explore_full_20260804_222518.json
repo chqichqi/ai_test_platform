@@ -1,0 +1,89 @@
+{
+  "module": "设备管理",
+  "base_url": "https://hospitalweb.xinjikang.cn",
+  "pages_visited": [
+    "/workpanel"
+  ],
+  "explored": [],
+  "stats": {
+    "total_elements": 0,
+    "navigated_elements": 0,
+    "pages_explored": 0,
+    "visited_states": 0,
+    "elapsed_seconds": 3.0,
+    "errors": 1
+  },
+  "site_map": {
+    "modules": [
+      {
+        "name": "工作台",
+        "href": "",
+        "source": "nav"
+      },
+      {
+        "name": "患者档案",
+        "href": "",
+        "source": "nav"
+      },
+      {
+        "name": "设备管理",
+        "href": "",
+        "source": "nav"
+      },
+      {
+        "name": "设备列表",
+        "href": "",
+        "source": "nav"
+      },
+      {
+        "name": "设备收发",
+        "href": "",
+        "source": "nav"
+      },
+      {
+        "name": "问卷管理",
+        "href": "",
+        "source": "nav"
+      },
+      {
+        "name": "账号管理",
+        "href": "",
+        "source": "nav"
+      },
+      {
+        "name": "数据管理",
+        "href": "",
+        "source": "nav"
+      },
+      {
+        "name": "运营配置",
+        "href": "",
+        "source": "nav"
+      },
+      {
+        "name": "操作日志",
+        "href": "",
+        "source": "nav"
+      },
+      {
+        "name": "随访管理",
+        "href": "",
+        "source": "nav"
+      }
+    ]
+  },
+  "element_jumps": {
+    "_main": {
+      "url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1785853499074&oId=c66a8c1b1c54462aa9f7a5de69218fee",
+      "elements": []
+    }
+  },
+  "deep_dive": {
+    "dropdowns": {},
+    "modals": [],
+    "tables": [],
+    "pagination": [],
+    "forms": [],
+    "api_endpoints": []
+  }
+}

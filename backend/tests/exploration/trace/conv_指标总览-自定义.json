@@ -1,0 +1,193 @@
+{
+  "timestamp": "2026-08-23T13:01:42.887486",
+  "pipeline": "functional_to_ui",
+  "test_cases_total": 1,
+  "exploration": {},
+  "conversions": [
+    {
+      "test_case_id": "35",
+      "case_name": "自定义-重置无法恢复上次保存结果",
+      "module": "指标总览-自定义",
+      "mode": "v2",
+      "status": "steps_missing",
+      "error": "",
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "进入「工作台」页面，确认工作台无指标A",
+            "expected": "工作台未显示指标A"
+          },
+          {
+            "step": 2,
+            "action": "点击「自定义」按钮",
+            "expected": "弹出自定义弹窗"
+          },
+          {
+            "step": 3,
+            "action": "点击「重置」按钮",
+            "expected": "弹窗状态保持上次保存结果，指标A仍为未选中状态"
+          },
+          {
+            "step": 4,
+            "action": "点击「保存布局」按钮",
+            "expected": "弹窗关闭，布局保存成功"
+          },
+          {
+            "step": 5,
+            "action": "验证：返回工作台后指标A仍未显示",
+            "expected": "重置未恢复上次保存已移除的指标A"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 8,
+        "title": "自定义-重置无法恢复上次保存结果",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "goto",
+            "desc": "进入工作台页面",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_visible",
+            "desc": "确认工作台页面可见，工作台未显示指标A",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击自定义按钮，弹出自定义弹窗",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "click",
+            "desc": "点击重置按钮，弹窗状态保持上次保存结果，指标A仍为未选中状态",
+            "args": {
+              "locator": "重置"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "click",
+            "desc": "点击保存布局按钮，弹窗关闭，布局保存成功",
+            "args": {
+              "locator": "保存布局"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "wait_for_render",
+            "desc": "等待返回工作台页面渲染完成",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "assert_visible",
+            "desc": "验证工作台可见，指标A仍未显示",
+            "args": {
+              "locator": "工作台"
+            }
+          },
+          {
+            "seq": 8,
+            "action": "goto",
+            "desc": "返回起始页",
+            "args": {
+              "url": "https://hospitalweb.xinjikang.cn/#/login"
+            }
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 5,
+        "found_steps": 2,
+        "missing_steps": [
+          {
+            "seq": 3,
+            "target": "重置",
+            "action": "click",
+            "actual_text": "",
+            "status": "not_found",
+            "strategy": "",
+            "message": "✗ 未找到「重置」— element_not_found"
+          },
+          {
+            "seq": 4,
+            "target": "保存布局",
+            "action": "click",
+            "actual_text": "",
+            "status": "not_found",
+            "strategy": "",
+            "message": "✗ 未找到「保存布局」— element_not_found"
+          }
+        ],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "工作台",
+            "action": "navigate",
+            "actual_text": "工作台",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「工作台」(text_exact)"
+          },
+          {
+            "seq": 2,
+            "target": "自定义",
+            "action": "click",
+            "actual_text": "自定义",
+            "status": "success",
+            "strategy": "text_exact",
+            "message": "✓ 已定位「自定义」(text_exact)"
+          },
+          {
+            "seq": 3,
+            "target": "重置",
+            "action": "click",
+            "actual_text": "",
+            "status": "not_found",
+            "strategy": "",
+            "message": "✗ 未找到「重置」— element_not_found"
+          },
+          {
+            "seq": 4,
+            "target": "保存布局",
+            "action": "click",
+            "actual_text": "",
+            "status": "not_found",
+            "strategy": "",
+            "message": "✗ 未找到「保存布局」— element_not_found"
+          },
+          {
+            "seq": 5,
+            "step_raw": "{'step': 5, 'action': '验证：返回工作台后指标A仍未显示', 'expected': '重置未恢复上次保存已移除的指标A'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": "2/5 步已定位"
+      }
+    }
+  ],
+  "summary": {
+    "success": 0,
+    "exploration_insufficient": 0,
+    "exploration_failed": 0,
+    "conversion_failed": 0,
+    "steps_missing": 1
+  }
+}

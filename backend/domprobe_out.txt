@@ -1,0 +1,99 @@
+﻿URL: https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1&oId=9ee70b68673b4660af488e86a0112f68
+点击后 URL: https://hospitalweb.xinjikang.cn/#/workpanel/customCard?refresh=1&oId=9ee70b68673b4660af488e86a0112f68
+  <li> '运营配置' display=flex vis=visible offsetParent=True viewport=True rect=(0,411,198x40) children=2 cls=ant-menu-item
+  <span> '运营配置' display=block vis=visible offsetParent=True viewport=True rect=(62,411,120x40) children=0 cls=ant-menu-title-content
+  <div> '指标总览自定义' display=flex vis=visible offsetParent=True viewport=True rect=(214,78,1692x31) children=1 cls=workBenchTitle___12T4A flex justify-betw
+  <div> '自定义' display=flex vis=visible offsetParent=True viewport=True rect=(1821,80,85x28) children=2 cls=customBtn___3JUat
+  <span> '自定义' display=block vis=visible offsetParent=True viewport=True rect=(1852,80,54x28) children=0 cls=ml-2
+  <div> '患者概览' display=flex vis=visible offsetParent=True viewport=True rect=(214,125,1692x25) children=1 cls=cardSubTitle___1WFm5
+  <div> '待审核数据0去处理' display=block vis=visible offsetParent=True viewport=True rect=(210,493,243x89) children=1 cls=
+  <div> '待审核数据0去处理' display=block vis=visible offsetParent=True viewport=True rect=(210,493,243x81) children=1 cls=ant-col css-1sdc3xm
+  <div> '待审核数据0去处理' display=block vis=visible offsetParent=True viewport=True rect=(214,493,235x81) children=1 cls=ant-list-item
+  <div> '待审核数据0去处理' display=block vis=visible offsetParent=True viewport=True rect=(214,493,235x81) children=1 cls=ant-spin-nested-loading css-1sdc3xm
+  <div> '待审核数据0去处理' display=flex vis=visible offsetParent=True viewport=True rect=(214,493,235x81) children=1 cls=ant-spin-container
+  <div> '待审核数据0去处理' display=flex vis=visible offsetParent=True viewport=True rect=(214,493,235x81) children=3 cls=taskCardContent___2-kfJ approval_orange_
+  <div> '待审核数据0去处理' display=flex vis=visible offsetParent=True viewport=True rect=(223,502,217x63) children=2 cls=cardContent___2fs2D
+  <div> '0去处理' display=block vis=visible offsetParent=True viewport=True rect=(223,527,217x38) children=2 cls=countContent___1-Ybs
+  <div> '去处理' display=inline-block vis=visible offsetParent=True viewport=True rect=(253,539,58x22) children=1 cls=jumpText___zf5Sg
+  <div> '待审核报告14去处理' display=block vis=visible offsetParent=True viewport=True rect=(453,493,243x89) children=1 cls=
+  <div> '待审核报告14去处理' display=block vis=visible offsetParent=True viewport=True rect=(453,493,243x81) children=1 cls=ant-col css-1sdc3xm
+  <div> '待审核报告14去处理' display=block vis=visible offsetParent=True viewport=True rect=(457,493,235x81) children=1 cls=ant-list-item
+  <div> '待审核报告14去处理' display=block vis=visible offsetParent=True viewport=True rect=(457,493,235x81) children=1 cls=ant-spin-nested-loading css-1sdc3xm
+  <div> '待审核报告14去处理' display=flex vis=visible offsetParent=True viewport=True rect=(457,493,235x81) children=1 cls=ant-spin-container
+  <div> '待审核报告14去处理' display=flex vis=visible offsetParent=True viewport=True rect=(457,493,235x81) children=3 cls=taskCardContent___2-kfJ approval_orange_
+  <div> '待审核报告14去处理' display=flex vis=visible offsetParent=True viewport=True rect=(466,502,217x63) children=2 cls=cardContent___2fs2D
+  <div> '14去处理' display=block vis=visible offsetParent=True viewport=True rect=(466,527,217x38) children=2 cls=countContent___1-Ybs
+  <div> '去处理' display=inline-block vis=visible offsetParent=True viewport=True rect=(510,539,58x22) children=1 cls=jumpText___zf5Sg
+  <div> '待审核周报2去处理' display=block vis=visible offsetParent=True viewport=True rect=(696,493,243x89) children=1 cls=
+  <div> '待审核周报2去处理' display=block vis=visible offsetParent=True viewport=True rect=(696,493,243x81) children=1 cls=ant-col css-1sdc3xm
+  <div> '待审核周报2去处理' display=block vis=visible offsetParent=True viewport=True rect=(700,493,235x81) children=1 cls=ant-list-item
+  <div> '待审核周报2去处理' display=block vis=visible offsetParent=True viewport=True rect=(700,493,235x81) children=1 cls=ant-spin-nested-loading css-1sdc3xm
+  <div> '待审核周报2去处理' display=flex vis=visible offsetParent=True viewport=True rect=(700,493,235x81) children=1 cls=ant-spin-container
+  <div> '待审核周报2去处理' display=flex vis=visible offsetParent=True viewport=True rect=(700,493,235x81) children=3 cls=taskCardContent___2-kfJ approval_orange_
+  <div> '待审核周报2去处理' display=flex vis=visible offsetParent=True viewport=True rect=(709,502,217x63) children=2 cls=cardContent___2fs2D
+  <div> '2去处理' display=block vis=visible offsetParent=True viewport=True rect=(709,527,217x38) children=2 cls=countContent___1-Ybs
+  <div> '去处理' display=inline-block vis=visible offsetParent=True viewport=True rect=(739,539,58x22) children=1 cls=jumpText___zf5Sg
+  <div> '待发货数24去处理预约回收数5' display=block vis=visible offsetParent=True viewport=True rect=(214,615,1692x89) children=1 cls=ant-list ant-list-split ant-list-grid li
+  <div> '待发货数24去处理预约回收数5' display=block vis=visible offsetParent=True viewport=True rect=(214,615,1692x89) children=1 cls=ant-spin-nested-loading css-1sdc3xm
+  <div> '待发货数24去处理预约回收数5' display=flex vis=visible offsetParent=True viewport=True rect=(214,615,1692x89) children=1 cls=ant-spin-container
+  <div> '待发货数24去处理预约回收数5' display=flex vis=visible offsetParent=True viewport=True rect=(210,615,1700x89) children=2 cls=ant-row css-1sdc3xm
+  <div> '待发货数24去处理' display=block vis=visible offsetParent=True viewport=True rect=(210,615,243x89) children=1 cls=
+  <div> '待发货数24去处理' display=block vis=visible offsetParent=True viewport=True rect=(210,615,243x81) children=1 cls=ant-col css-1sdc3xm
+  <div> '待发货数24去处理' display=block vis=visible offsetParent=True viewport=True rect=(214,615,235x81) children=1 cls=ant-list-item
+  <div> '待发货数24去处理' display=block vis=visible offsetParent=True viewport=True rect=(214,615,235x81) children=1 cls=ant-spin-nested-loading css-1sdc3xm
+  <div> '待发货数24去处理' display=flex vis=visible offsetParent=True viewport=True rect=(214,615,235x81) children=1 cls=ant-spin-container
+  <div> '待发货数24去处理' display=flex vis=visible offsetParent=True viewport=True rect=(214,615,235x81) children=3 cls=taskCardContent___2-kfJ logistics_orange
+  <div> '待发货数24去处理' display=flex vis=visible offsetParent=True viewport=True rect=(223,624,217x63) children=2 cls=cardContent___2fs2D
+  <div> '24去处理' display=block vis=visible offsetParent=True viewport=True rect=(223,649,217x38) children=2 cls=countContent___1-Ybs
+  <div> '去处理' display=inline-block vis=visible offsetParent=True viewport=True rect=(267,661,58x22) children=1 cls=jumpText___zf5Sg
+  <div> '预约回收数5' display=block vis=visible offsetParent=True viewport=True rect=(453,615,243x89) children=1 cls=
+  <div> '预约回收数5' display=block vis=visible offsetParent=True viewport=True rect=(453,615,243x81) children=1 cls=ant-col css-1sdc3xm
+  <div> '预约回收数5' display=block vis=visible offsetParent=True viewport=True rect=(457,615,235x81) children=1 cls=ant-list-item
+  <div> '预约回收数5' display=block vis=visible offsetParent=True viewport=True rect=(457,615,235x81) children=1 cls=ant-spin-nested-loading css-1sdc3xm
+  <div> '预约回收数5' display=flex vis=visible offsetParent=True viewport=True rect=(457,615,235x81) children=1 cls=ant-spin-container
+  <div> '预约回收数5' display=flex vis=visible offsetParent=True viewport=True rect=(457,615,235x81) children=3 cls=taskCardContent___2-kfJ logistics_green_
+  <div> '预约回收数5' display=flex vis=visible offsetParent=True viewport=True rect=(466,624,217x63) children=2 cls=cardContent___2fs2D
+  <div> '预约回收数' display=block vis=visible offsetParent=True viewport=True rect=(466,624,217x25) children=0 cls=cardTitle___3hSJ7
+  <div> '待随访人数3去处理' display=block vis=visible offsetParent=True viewport=True rect=(696,737,243x89) children=1 cls=
+  <div> '待随访人数3去处理' display=block vis=visible offsetParent=True viewport=True rect=(696,737,243x81) children=1 cls=ant-col css-1sdc3xm
+  <div> '待随访人数3去处理' display=block vis=visible offsetParent=True viewport=True rect=(700,737,235x81) children=1 cls=ant-list-item
+  <div> '待随访人数3去处理' display=block vis=visible offsetParent=True viewport=True rect=(700,737,235x81) children=1 cls=ant-spin-nested-loading css-1sdc3xm
+  <div> '待随访人数3去处理' display=flex vis=visible offsetParent=True viewport=True rect=(700,737,235x81) children=1 cls=ant-spin-container
+  <div> '待随访人数3去处理' display=flex vis=visible offsetParent=True viewport=True rect=(700,737,235x81) children=3 cls=taskCardContent___2-kfJ visit_orange___2
+  <div> '待随访人数3去处理' display=flex vis=visible offsetParent=True viewport=True rect=(709,746,217x63) children=2 cls=cardContent___2fs2D
+  <div> '3去处理' display=block vis=visible offsetParent=True viewport=True rect=(709,771,217x38) children=2 cls=countContent___1-Ybs
+  <div> '去处理' display=inline-block vis=visible offsetParent=True viewport=True rect=(739,783,58x22) children=1 cls=jumpText___zf5Sg
+  <div> '取 消保存布局' display=flex vis=visible offsetParent=True viewport=True rect=(200,1016,1720x64) children=1 cls=pageFooter___3Glbe
+  <div> '取 消保存布局' display=flex vis=visible offsetParent=True viewport=True rect=(1737,1032,159x32) children=2 cls=ant-space css-1sdc3xm ant-space-horizont
+  <div> '取 消' display=block vis=visible offsetParent=True viewport=True rect=(1737,1032,63x32) children=1 cls=ant-space-item
+  <button> '取 消' display=inline-flex vis=visible offsetParent=True viewport=True rect=(1737,1032,63x32) children=1 cls=ant-btn css-1sdc3xm ant-btn-default ant-
+  <span> '取 消' display=block vis=visible offsetParent=True viewport=True rect=(1753,1037,31x22) children=0 cls=
+  <div> '保存布局' display=block vis=visible offsetParent=True viewport=True rect=(1808,1032,88x32) children=1 cls=ant-space-item
+  <button> '保存布局' display=inline-flex vis=visible offsetParent=True viewport=True rect=(1808,1032,88x32) children=1 cls=ant-btn css-1sdc3xm ant-btn-primary ant-
+  <span> '保存布局' display=block vis=visible offsetParent=True viewport=True rect=(1824,1037,56x22) children=0 cls=
+  <div> '自定义' display=flex vis=visible offsetParent=True viewport=True rect=(1560,0,360x57) children=2 cls=ant-drawer-header
+  <div> '自定义' display=flex vis=visible offsetParent=True viewport=True rect=(1584,16,280x24) children=1 cls=ant-drawer-header-title
+  <div> '自定义' display=block vis=visible offsetParent=True viewport=True rect=(1584,16,280x24) children=0 cls=ant-drawer-title
+  <div> '患者概览' display=flex vis=visible offsetParent=True viewport=True rect=(1585,82,310x46) children=2 cls=ant-collapse-header
+  <span> '患者概览' display=block vis=visible offsetParent=True viewport=True rect=(1625,94,254x22) children=1 cls=ant-collapse-header-text
+  <div> '患者概览' display=block vis=visible offsetParent=True viewport=True rect=(1625,94,254x22) children=0 cls=text-sm font-medium
+  <div> '物流看板待发货数移除预约回收数移除' display=block vis=visible offsetParent=True viewport=False rect=(1584,1506,312x158) children=1 cls=ant-collapse ant-collapse-icon-position-
+  <div> '物流看板待发货数移除预约回收数移除' display=block vis=visible offsetParent=True viewport=False rect=(1585,1507,310x156) children=2 cls=ant-collapse-item ant-collapse-item-acti
+  <div> '待发货数移除预约回收数移除' display=block vis=visible offsetParent=True viewport=False rect=(1585,1553,310x110) children=1 cls=ant-collapse-content ant-collapse-conten
+  <div> '待发货数移除预约回收数移除' display=block vis=visible offsetParent=True viewport=False rect=(1585,1554,310x109) children=1 cls=ant-collapse-content-box
+  <div> '待发货数移除预约回收数移除' display=block vis=visible offsetParent=True viewport=False rect=(1585,1554,310x109) children=1 cls=ant-list ant-list-split css-1sdc3xm
+  <div> '待发货数移除预约回收数移除' display=block vis=visible offsetParent=True viewport=False rect=(1585,1554,310x109) children=1 cls=ant-spin-nested-loading css-1sdc3xm
+  <div> '待发货数移除预约回收数移除' display=block vis=visible offsetParent=True viewport=False rect=(1585,1554,310x109) children=1 cls=ant-spin-container
+  <ul> '待发货数移除预约回收数移除' display=block vis=visible offsetParent=True viewport=False rect=(1585,1554,310x109) children=2 cls=ant-list-items
+  <li> '预约回收数移除' display=flex vis=visible offsetParent=True viewport=False rect=(1585,1609,310x54) children=1 cls=ant-list-item
+  <div> '预约回收数移除' display=flex vis=visible offsetParent=True viewport=False rect=(1585,1609,310x54) children=1 cls=secondItem___1mgAZ text-sm  
+  <div> '重 置去预览' display=block vis=visible offsetParent=True viewport=True rect=(1560,1031,360x49) children=1 cls=ant-drawer-footer
+  <div> '重 置去预览' display=flex vis=visible offsetParent=True viewport=True rect=(1576,1040,328x32) children=1 cls=footerBox___2faRl
+  <div> '重 置去预览' display=flex vis=visible offsetParent=True viewport=True rect=(1759,1040,145x32) children=2 cls=ant-space css-1sdc3xm ant-space-horizont
+  <div> '重 置' display=block vis=visible offsetParent=True viewport=True rect=(1759,1040,63x32) children=1 cls=ant-space-item
+  <button> '重 置' display=inline-flex vis=visible offsetParent=True viewport=True rect=(1759,1040,63x32) children=1 cls=ant-btn css-1sdc3xm ant-btn-default ant-
+  <span> '重 置' display=block vis=visible offsetParent=True viewport=True rect=(1775,1046,31x21) children=0 cls=
+  <div> '去预览' display=block vis=visible offsetParent=True viewport=True rect=(1830,1040,74x32) children=1 cls=ant-space-item
+  <button> '去预览' display=inline-flex vis=visible offsetParent=True viewport=True rect=(1830,1040,74x32) children=1 cls=ant-btn css-1sdc3xm ant-btn-primary ant-
+  <span> '去预览' display=block vis=visible offsetParent=True viewport=True rect=(1846,1046,42x21) children=0 cls=
+滚动高度: {'doc': 1080, 'win': 1080, 'footer': {'y': 1040, 'top': 1040, 'bottom': 1072, 'display': 'flex'}}

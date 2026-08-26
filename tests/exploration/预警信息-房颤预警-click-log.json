@@ -1,0 +1,151 @@
+{
+  "module": "预警信息-房颤预警",
+  "total_clicks": 12,
+  "pages": 1,
+  "clicks": [
+    {
+      "seq": 1,
+      "name": "工作台",
+      "actual_text": "工作台",
+      "action": "navigate",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 2,
+      "name": "房颤预警",
+      "actual_text": "房颤预警",
+      "action": "click",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 1,
+      "name": "房颤预警",
+      "actual_text": "房颤预警",
+      "action": "fill",
+      "status": "failed",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 1,
+      "name": "房颤预警",
+      "actual_text": "房颤预警",
+      "action": "fill",
+      "status": "failed",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 3,
+      "name": "负荷占比",
+      "actual_text": "",
+      "action": "validate",
+      "status": "not_found",
+      "result": "static",
+      "error": "element_not_found",
+      "strategy": "",
+      "current_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "message": "步骤 3: 未找到「负荷占比」— 请检查用例描述是否与当前页面匹配"
+    },
+    {
+      "seq": 1,
+      "name": "房颤预警",
+      "actual_text": "房颤预警",
+      "action": "fill",
+      "status": "failed",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 3,
+      "name": "有效时长",
+      "actual_text": "",
+      "action": "validate",
+      "status": "not_found",
+      "result": "static",
+      "error": "element_not_found",
+      "strategy": "",
+      "current_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "message": "步骤 3: 未找到「有效时长」— 请检查用例描述是否与当前页面匹配"
+    },
+    {
+      "seq": 1,
+      "name": "房颤预警",
+      "actual_text": "房颤预警",
+      "action": "fill",
+      "status": "failed",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 3,
+      "name": "持续时间",
+      "actual_text": "持续性房颤房性0今日新增+0",
+      "action": "validate",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "scored_text(10)",
+      "error": ""
+    },
+    {
+      "seq": 1,
+      "name": "房颤预警",
+      "actual_text": "房颤预警",
+      "action": "select",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 2,
+      "name": "房颤预警",
+      "actual_text": "房颤预警",
+      "action": "validate",
+      "status": "success",
+      "before": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "after": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "result": "static",
+      "strategy": "text_exact",
+      "error": ""
+    },
+    {
+      "seq": 3,
+      "name": "筛选",
+      "actual_text": "",
+      "action": "validate",
+      "status": "not_found",
+      "result": "static",
+      "error": "element_not_found",
+      "strategy": "",
+      "current_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1786893094157&oId=9ee70b68673b4660af488e86a0112f68",
+      "message": "步骤 3: 未找到「筛选」— 请检查用例描述是否与当前页面匹配"
+    }
+  ]
+}
