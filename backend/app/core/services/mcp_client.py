@@ -21,28 +21,33 @@ class MCPClient:
     # =====================================================
 
     def click(self, element):
+        """真实点击优先；JS fallback 仅在配置允许时使用。
+
+        注意：返回 True 只代表 Playwright 点击调用成功，业务效果必须由 EffectValidator
+        在动作后再次验证，避免“JS dispatch 成功=业务成功”的假阳性。
+        """
         try:
             element.scroll_into_view_if_needed()
-            element.click(force=True)
+        except Exception:
+            pass
+        try:
+            element.click(timeout=4000)
             return True
         except Exception:
             pass
         try:
-            element.evaluate("el => el.click()")
-            return True
+            if bool(getattr(self.config, 'allow_force_click', True)):
+                element.click(force=True, timeout=2500)
+                return True
         except Exception:
             pass
-        try:
-            element.evaluate("""
-                el => {
-                    ['mousedown','mouseup','click'].forEach(t => {
-                        el.dispatchEvent(new MouseEvent(t, {bubbles:true, cancelable:true}));
-                    });
-                }
-            """)
-            return True
-        except Exception:
-            return False
+        if bool(getattr(self.config, 'allow_js_click_fallback', False)):
+            try:
+                element.evaluate("el => el.click()")
+                return True
+            except Exception:
+                pass
+        return False
 
     # =====================================================
     # hover / 右键（V5 新增）
@@ -194,61 +199,36 @@ class MCPClient:
     # =====================================================
 
     def get_fingerprint(self):
-        """用 config.fingerprint_selectors 做状态指纹（MD5）。"""
+        """基于参数化 CSS selector 计算页面状态指纹。"""
         try:
-            sel = self._fingerprint_selector_js()
-            result = self.page.evaluate(f"""
-                () => {{
-                    function count(sel) {{ return document.querySelectorAll(sel).length; }}
-                    return {{
-                        url: location.href,
-                        hash: location.hash || '',
-                        nodes: count('{sel}'),
-                        expanded: count('[aria-expanded="true"]'),
-                        tabs: count('[role="tab"]'),
-                        bodyChildren: document.body ? document.body.children.length : 0,
-                    }};
-                }}
-            """)
-            raw = json.dumps(result, ensure_ascii=False, sort_keys=True)
-            return hashlib.md5(raw.encode("utf-8")).hexdigest()
+            result = self.page.evaluate(
+                """(sel) => {
+                    const count = s => { try { return document.querySelectorAll(s).length; } catch(e) { return 0; } };
+                    return {url:location.href||'', hash:location.hash||'', nodes:count(sel),
+                            expanded:count('[aria-expanded="true"]'), tabs:count('[role="tab"]'),
+                            bodyChildren:document.body ? document.body.children.length : 0};
+                }""", self._fingerprint_selector_js())
+            raw=json.dumps(result or {},ensure_ascii=False,sort_keys=True)
+            return hashlib.md5(raw.encode('utf-8')).hexdigest()
         except Exception:
-            return ""
+            return ''
 
     def get_fingerprint_dict(self):
-        """返回指纹字典（未哈希），用于变化检测。"""
         try:
-            sel = self._fingerprint_selector_js()
-            result = self.page.evaluate(f"""
-                () => {{
-                    function count(sel) {{ return document.querySelectorAll(sel).length; }}
-                    return {{
-                        url: location.href || '',
-                        hash: location.hash || '',
-                        nodes: count('{sel}'),
-                        expanded: count('[aria-expanded="true"]'),
-                        tabs: count('[role="tab"]'),
-                        bodyChildren: document.body ? document.body.children.length : 0,
-                    }};
-                }}
-            """)
-            return result or {"url": self.get_url(), "nodes": 0, "expanded": 0,
-                              "tabs": 0, "bodyChildren": 0, "hash": ""}
+            result = self.page.evaluate(
+                """(sel) => {
+                    const count = s => { try { return document.querySelectorAll(s).length; } catch(e) { return 0; } };
+                    return {url:location.href||'', hash:location.hash||'', nodes:count(sel),
+                            expanded:count('[aria-expanded="true"]'), tabs:count('[role="tab"]'),
+                            bodyChildren:document.body ? document.body.children.length : 0};
+                }""", self._fingerprint_selector_js())
+            return result or {'url':self.get_url(),'nodes':0,'expanded':0,'tabs':0,'bodyChildren':0,'hash':''}
         except Exception:
-            return {"url": self.get_url(), "nodes": 0, "expanded": 0,
-                    "tabs": 0, "bodyChildren": 0, "hash": ""}
+            return {'url':self.get_url(),'nodes':0,'expanded':0,'tabs':0,'bodyChildren':0,'hash':''}
 
     def _fingerprint_selector_js(self):
-        """从 config 读取 fingerprint_selectors，安全转义后在 JS 中使用。"""
-        if self.config and hasattr(self.config, 'fingerprint_selectors'):
-            raw = self.config.fingerprint_selectors
-        else:
-            # 回退：通用 ARIA 角色
-            raw = ('[role="dialog"]:not([style*="display: none"]), '
-                   '[role="listbox"]:not([style*="display: none"]), '
-                   '[role="menu"]:not([style*="display: none"])')
-        # 转义单引号，去掉换行和多余空格
-        return raw.replace("'", "\\'").replace("\n", " ").strip()
+        raw = getattr(self.config, 'fingerprint_selectors', None) if self.config else None
+        return str(raw or '[role="dialog"],[role="listbox"],[role="menu"]').strip()
 
     # =====================================================
     # 扫描页面组件（通用实现，已框架无关）
@@ -287,29 +267,18 @@ class MCPClient:
     # =====================================================
 
     def get_overlay_state(self):
-        """检测弹窗/下拉/菜单是否打开。选择器从 config 读取。"""
         try:
             sel = self._overlay_selector_js()
-            return self.page.evaluate(f"""
-                () => {{
-                    function count(sel) {{ return document.querySelectorAll(sel).length; }}
-                    return {{
-                        overlay: count('{sel}'),
-                    }};
-                }}
-            """)
+            return self.page.evaluate("""(sel) => {
+                try { return {overlay: document.querySelectorAll(sel).length}; }
+                catch(e) { return {overlay:0}; }
+            }""", sel) or {'overlay':0}
         except Exception:
-            return {}
+            return {'overlay':0}
 
     def _overlay_selector_js(self):
-        """从 config 读取浮层检测选择器。"""
-        if self.config and hasattr(self.config, 'modal_selectors'):
-            raw = self.config.modal_selectors
-        else:
-            raw = ('[role="dialog"]:not([style*="display: none"]), '
-                   '[role="listbox"]:not([style*="display: none"]), '
-                   '[class*="modal"]:not([style*="display: none"])')
-        return raw.replace("'", "\\'").replace("\n", " ").strip()
+        raw = getattr(self.config, 'modal_selectors', None) if self.config else None
+        return str(raw or '[role="dialog"],dialog[open],[role="listbox"],[role="menu"]').strip()
 
     # =====================================================
     # Console error 捕获（注入一次，后续 collect）
@@ -361,6 +330,17 @@ class MCPClient:
     # =====================================================
     # V5 新增: iframe 穿透
     # =====================================================
+
+    def get_iframe_frames(self):
+        """返回真实 Playwright Frame 对象；需要操作 frame 时使用此方法。"""
+        out = []
+        try:
+            for frame in self.page.frames:
+                if frame != self.page.main_frame:
+                    out.append(frame)
+        except Exception:
+            pass
+        return out
 
     def scan_iframes(self):
         """遍历所有 frame，返回每个 iframe 的 URL 和可交互元素数量。"""

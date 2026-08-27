@@ -27,7 +27,7 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional
 from sqlalchemy.orm import Session
 
-from app.core.models.knowledge_graph import KnowledgeGraph, ExplorationPageSnapshot
+from app.core.models.knowledge_graph import KnowledgeGraph, ExplorationPageSnapshot, ElementLocator, NavigationFlow, APICallRecord
 from app.core.logger import logger
 
 # stale-running 死任务判定阈值：探索进程崩溃后行会永远停在 running，
@@ -249,7 +249,18 @@ class KGPopulator:
             kg.api_calls = new_api_calls
             logger.info(f"[KGPopulator] 全量替换模式: {len(kg.pages)} pages, {len(kg.elements)} elements")
 
-        kg.dependencies = self._infer_dependencies(kg, module_name, guided_steps)
+        _new_dependencies = self._infer_dependencies(kg, module_name, guided_steps)
+        if do_merge:
+            _old_deps = list(kg.dependencies or [])
+            _dep_keys = {(d.get('from',''), d.get('to',''), d.get('type','')) for d in _old_deps if isinstance(d, dict)}
+            for d in _new_dependencies:
+                if isinstance(d, dict):
+                    k = (d.get('from',''), d.get('to',''), d.get('type',''))
+                    if k not in _dep_keys:
+                        _old_deps.append(d); _dep_keys.add(k)
+            kg.dependencies = _old_deps
+        else:
+            kg.dependencies = _new_dependencies
 
         # 3. 更新计数器
         kg.page_count = len(kg.pages)
@@ -306,11 +317,14 @@ class KGPopulator:
                 except Exception as e:
                     logger.warning(f"[KGPopulator] 合并模式清理快照失败: {e}")
         else:
-            # 全量替换：清空全部旧快照
+            # 全量替换：JSON、页面快照及结构化 locator/flow/API 必须一起清理，
+            # 防止旧探索事实残留。
             try:
+                for _model in (ElementLocator, NavigationFlow, APICallRecord):
+                    self.db.query(_model).filter(_model.graph_id == kg.id).delete(synchronize_session=False)
                 old_snapshots = self.db.query(ExplorationPageSnapshot).filter(
                     ExplorationPageSnapshot.graph_id == kg.id
-                ).delete()
+                ).delete(synchronize_session=False)
                 if old_snapshots:
                     logger.info(f"[KGPopulator] 全量替换清理 {old_snapshots} 条旧快照")
             except Exception as e:
@@ -409,9 +423,9 @@ class KGPopulator:
                             seen_urls.add(jump_url)
                             pages.append({
                                 'page_url': jump_url,
-                                'page_name': self._url_to_page_name(jump_url, mod_name),
+                                'page_name': self._url_to_page_name(jump_url, module_name),
                                 'page_title': '',
-                                'module': mod_name,
+                                'module': module_name,
                             })
 
         return pages
@@ -496,29 +510,33 @@ class KGPopulator:
                 if name and actual and actual != name:
                     actual_text_map[name] = actual
 
-        # 从 guided_steps 提取（最精确的来源）
-        if guided_steps:
-            for gs in guided_steps:
-                if hasattr(gs, 'target_text'):
-                    key = (gs.target_text, gs.role_hint)
-                elif isinstance(gs, dict):
-                    key = (gs.get('target_text', ''), gs.get('role_hint', ''))
-                else:
-                    continue
-                if key[0] and key not in seen:
-                    seen.add(key)
-                    _loc_text = actual_text_map.get(key[0], key[0])
-                    elements.append({
-                        'element_name': key[0],
-                        'name': key[0],
-                        'type': key[1] or 'button',
-                        'role': key[1] or 'button',
-                        'text': key[0],
-                        'locator_text': _loc_text,
-                        'locator_role': key[1] or 'button',
-                        'source': 'guided_step',
-                        'located': True,
-                    })
+        # GuidedStep 只是“计划”，不是“事实”。只有 Evidence/step_diagnostics 中
+        # 明确验证成功的步骤才能进入可信 elements。这样不会把未执行/未定位的
+        # target 错误写成 located=True。
+        for diag in result.get('step_diagnostics', []) or []:
+            if not isinstance(diag, dict) or diag.get('status') != 'success':
+                continue
+            name = (diag.get('target') or '').strip()
+            if not name:
+                continue
+            loc = diag.get('locator') or {}
+            role = (loc.get('role') or diag.get('role') or '').strip()
+            actual = (diag.get('actual_text') or loc.get('actual_text') or name).strip()
+            key = (name, role, diag.get('before_state_id', ''), loc.get('selector', ''))
+            if key in seen:
+                continue
+            seen.add(key)
+            elements.append({
+                'element_name': name, 'name': name, 'type': role or 'button',
+                'role': role or 'button', 'text': actual, 'locator_text': actual,
+                'locator_role': role or 'button',
+                'selector': loc.get('selector', ''),
+                'primary_locator': loc.get('primary_locator', ''),
+                'locator_strategy': loc.get('strategy', ''),
+                'located': True, 'validated': bool((diag.get('effect') or {}).get('valid', True)),
+                'case_id': diag.get('case_id', ''), 'state_id': diag.get('before_state_id', ''),
+                'confidence': diag.get('confidence', 0.0), 'source': 'evidence',
+            })
 
         # 从 element_jumps 补充跳转过的元素
         jumps = result.get('element_jumps', {})
@@ -527,6 +545,9 @@ class KGPopulator:
                 if isinstance(mod_data, dict):
                     for el in mod_data.get('elements', []):
                         if not isinstance(el, dict):
+                            continue
+                        # 兼容旧结果：没有明确 located/success 标记的 jump 不能当可信元素。
+                        if el.get('located') is False or el.get('status') in ('failed', 'not_found'):
                             continue
                         name = el.get('name', '')
                         role = el.get('role', 'button')
@@ -782,24 +803,55 @@ class KGPopulator:
             )
             self.db.add(snapshot)
         except Exception as e:
+            # 不在单页失败时 rollback 整个 Session：前面的快照/图谱更新可能已经
+            # 是有效数据。调用方统一决定事务回滚。
             logger.warning(f"[KGPopulator] 保存页面快照失败 ({url[:60]}): {e}")
-            self.db.rollback()
 
     def _get_page_elements(self, url: str, result: Dict) -> List[Dict]:
-        """获取指定页面的元素列表。"""
+        """按 Evidence 的 before/after 页面归属提取可信元素。"""
         elements = []
+        seen = set()
+        for ev in result.get('evidence', []) or []:
+            if not isinstance(ev, dict) or ev.get('status') != 'success':
+                continue
+            if not (ev.get('effect') or {}).get('valid', False):
+                continue
+            if url not in (ev.get('before_url', ''), ev.get('after_url', '')):
+                continue
+            loc = ev.get('locator') or {}
+            key = (ev.get('target',''), loc.get('role',''), ev.get('before_state_id',''))
+            if key in seen or not key[0]:
+                continue
+            seen.add(key)
+            elements.append({
+                'name': ev.get('target',''),
+                'role': loc.get('role','') or ev.get('role',''),
+                'tag': loc.get('tag',''),
+                'text': loc.get('actual_text','') or ev.get('target',''),
+                'selector': loc.get('selector',''),
+                'locator_strategy': loc.get('strategy',''),
+                'primary_locator': loc.get('primary_locator',''),
+                'located': True,
+                'validated': True,
+                'case_id': ev.get('case_id',''),
+                'state_id': ev.get('before_state_id',''),
+                'confidence': ev.get('confidence',0.0),
+                'navigated': (ev.get('effect') or {}).get('effect') == 'navigation',
+            })
+        if elements:
+            return elements
+        # 兼容旧探索结果
         jumps = result.get('element_jumps', {})
         if isinstance(jumps, dict):
             for mod_data in jumps.values():
-                if isinstance(mod_data, dict) and mod_data.get('url', '') == url:
-                    for el in mod_data.get('elements', []):
-                        if not isinstance(el, dict):
-                            continue
-                        elements.append({
-                            'name': el.get('name', ''),
-                            'role': el.get('role', ''),
-                            'navigated': el.get('navigated', False),
-                        })
+                if not isinstance(mod_data, dict) or mod_data.get('url','') != url:
+                    continue
+                for el in mod_data.get('elements',[]) or []:
+                    if not isinstance(el, dict) or not el.get('name'): continue
+                    elements.append({
+                        'name': el.get('name',''), 'role': el.get('role',''),
+                        'navigated': bool(el.get('navigated')), 'selector': el.get('selector',''),
+                    })
         return elements
 
     def _get_page_state(self, url: str, result: Dict) -> Optional[Dict]:

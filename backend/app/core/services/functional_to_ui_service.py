@@ -1391,6 +1391,11 @@ class FunctionalToUIService:
                                 _tgt = getattr(_gs, 'target_text', '')
                                 if not _tgt:
                                     continue
+                                try:
+                                    setattr(_gs, '_case_id', str(tc_id))
+                                    setattr(_gs, '_case_index', 0)
+                                except Exception:
+                                    pass
                                 _slist = _supple_steps.setdefault(module, [])
                                 _k = (getattr(_gs, 'action_type', ''), _tgt)
                                 if not any(
@@ -1410,6 +1415,30 @@ class FunctionalToUIService:
                                           "phase_detail": f"补充探索缺失步骤 {_miss_cnt} 个（模块：{'、'.join(_mods)}）"})
                             except Exception:
                                 pass
+                        # 将补充步骤保持为 Case-aware batch，避免补充探索退化成 legacy-1。
+                        try:
+                            from app.core.services.case_explorer import CaseStepBatch, CasePlan
+                            for _sm, _steps in list(_supple_steps.items()):
+                                _plans = []
+                                _by_case = {}
+                                for _gs in _steps:
+                                    _cid = str(getattr(_gs, '_case_id', '') or '')
+                                    if _cid:
+                                        _by_case.setdefault(_cid, []).append(_gs)
+                                for _cid, _csteps in _by_case.items():
+                                    _tc = next((x for x in test_cases if str(getattr(x, 'id', '')) == _cid), None)
+                                    if _tc:
+                                        _plans.append(CasePlan(
+                                            case_id=_cid, case_name=getattr(_tc, 'name', None) or getattr(_tc, 'title', None) or _cid,
+                                            module=_sm, preconditions=getattr(_tc, 'preconditions', '') or '',
+                                            expected_result=getattr(_tc, 'expected_result', '') or '', steps=_csteps,
+                                            test_case_id=_cid, logical_case_id=str(getattr(_tc, 'logical_case_id', '') or _cid),
+                                            revision_no=int(getattr(_tc, 'revision_no', 1) or 1), version_id=getattr(_tc, 'version_id', None),
+                                            project_id=getattr(_tc, 'project_id', None),
+                                        ))
+                                _supple_steps[_sm] = CaseStepBatch(_steps, case_plans=_plans)
+                        except Exception as _batch_e:
+                            logger.warning(f"[FunctionalToUI] 补充探索 CasePlan 构建失败，继续兼容模式: {_batch_e}")
                         _supple_results, _ = await self._explore_by_steps(
                             module_steps=_supple_steps,
                             base_url=explore_base_url,
@@ -1791,66 +1820,99 @@ class FunctionalToUIService:
     # ========================================================================
 
     def _parse_and_group_steps(self, test_cases: list) -> Dict[str, List]:
-        """从测试用例中解析步骤并按模块分组。
+        """解析步骤并按模块分组，同时保留“用例 -> 步骤”的一一对应关系。
 
-        Returns:
-            {"模块名": [GuidedStep, ...], ...}
+        旧实现先把同模块所有用例步骤 flatten，再做全局去重，导致：
+        1. Case A 的“搜索”把 Case B 的“搜索”吃掉；
+        2. 不同页面状态的同名元素被错误合并；
+        3. GuidedExplorationAgent 无法知道某一步属于哪个 TestCase。
+
+        新实现仍返回 dict[str, list]，保持所有旧调用方兼容；每个 list 是
+        CaseStepBatch，并额外携带 case_plans。CasePlan 才是探索的执行边界。
         """
         from app.core.services.step_parser import parse_steps
+        from app.core.services.case_explorer import CasePlan, CaseStepBatch
 
-        module_steps = {}
-        for tc in test_cases:
+        module_steps: Dict[str, CaseStepBatch] = {}
+        llm = self._get_llm()
+
+        for tc_index, tc in enumerate(test_cases or []):
             module = getattr(tc, 'module', '') or '通用'
             if module not in module_steps:
-                module_steps[module] = []
+                module_steps[module] = CaseStepBatch()
+            batch = module_steps[module]
 
-            steps = getattr(tc, 'test_steps', None)
-            if not steps:
-                continue
+            raw_steps = getattr(tc, 'test_steps', None)
+            if isinstance(raw_steps, str):
+                try:
+                    raw_steps = json.loads(raw_steps)
+                except Exception:
+                    raw_steps = [raw_steps]
+            if not isinstance(raw_steps, list):
+                raw_steps = []
 
-            guided = parse_steps(steps, llm_service=self._get_llm())
-            if guided:
-                module_steps[module].extend(guided)
+            guided = parse_steps(raw_steps, llm_service=llm)
+            case_id = str(getattr(tc, 'id', '') or getattr(tc, 'case_id', '') or tc_index)
+            case_steps = []
+            for gs in guided:
+                # GuidedStep 本身保持兼容；附加私有归属信息，不改变 dataclass 契约。
+                try:
+                    setattr(gs, '_case_id', case_id)
+                    setattr(gs, '_case_index', tc_index)
+                except Exception:
+                    pass
+                case_steps.append(gs)
+                batch.append(gs)
 
-        # 去重：同模块内相同 (action_type, target_text, value) 的步骤只保留一条
-        # fill/select 步骤要包含值，避免不同值的同类操作被误删
-        # ── 2026-08-25 修复：按「页面段」去重，不跨页面状态合并 ──
-        # 历史 bug（用户反馈「强制探索只探索了部分功能或用例」）：navigate/go_back 前后
-        # 属于不同页面状态，同名元素（每页都有的「搜索」「保存」「新增」）是不同元素——
-        # 全局去重把跨页面同名元素合并为一条，只探索第一个页面状态里的那个，其他页面
-        # 状态的对象从未被探索；而 _check_case_steps 按 target 匹配又会误命中第一页诊断，
-        # 转化时以为已定位 → 执行时元素不存在 → 执行失败。
-        # 修复：以 navigate/go_back 为页面边界切段，段内去重（同一页面同一对象只探一次，
-        # 不浪费），段间不去重（跨页面同名对象全部保留）。validate 不消耗页面边界
-        # （纯断言不改页面），仅作段内去重依据。
-        _PAGE_BOUNDARY_ACTIONS = ('navigate', 'go_back', 'NAVIGATE', 'GO_BACK')
-        _raw_counts = {m: len(v) for m, v in module_steps.items()}
-        for module in module_steps:
-            seen = set()
-            unique = []
-            for gs in module_steps[module]:
-                at = getattr(gs, 'action_type', '')
-                if at in _PAGE_BOUNDARY_ACTIONS:
-                    # 页面状态边界：清空去重记忆——进入新页面后同名元素重新探索
-                    seen = set()
-                    unique.append(gs)
-                    continue
-                tt = getattr(gs, 'target_text', '')
-                if at in ('fill', 'select', 'FILL', 'SELECT'):
-                    val = getattr(gs, 'fill_value', '') or getattr(gs, 'select_option', '')
-                    key = (at, tt, val)
-                else:
-                    key = (at, tt)
-                if key not in seen:
-                    seen.add(key)
-                    unique.append(gs)
-            module_steps[module] = unique
+            plan = CasePlan(
+                case_id=case_id,
+                case_name=getattr(tc, 'name', None) or getattr(tc, 'title', None) or f'用例{tc_index + 1}',
+                module=module,
+                preconditions=getattr(tc, 'preconditions', '') or '',
+                expected_result=getattr(tc, 'expected_result', '') or '',
+                start_url='',
+                steps=case_steps,
+                test_case_id=case_id,
+                logical_case_id=str(getattr(tc, 'logical_case_id', '') or case_id),
+                revision_no=int(getattr(tc, 'revision_no', 1) or 1),
+                version_id=getattr(tc, 'version_id', None),
+                project_id=getattr(tc, 'project_id', None),
+            )
+            batch.case_plans.append(plan)
 
-        # 覆盖可观测性：日志明确报告「用例步骤数 → 去重后探索对象数」（2026-08-25 用户
-        # 反馈「只探索了部分用例」——去重后的对象数 ≠ 丢失，探 1 次即可覆盖所有用例引用；
-        # 但用户需要看到 raw vs unique 的换算，避免误读为「探索不完整」）
-        _summary = {m: f"{_raw_counts.get(m, 0)}步→{len(v)}对象" for m, v in module_steps.items()}
-        logger.info(f"[FunctionalToUI] 步骤解析完成: {_summary}")
+        # 只在“同一个 Case、同一个页面段”内去重。
+        # 页面边界由 navigate/go_back/reload 标记；不同 Case 永不互相去重。
+        boundary = {'navigate', 'go_back', 'reload'}
+        for module, batch in module_steps.items():
+            case_plans = list(batch.case_plans)
+            rebuilt = CaseStepBatch(case_plans=case_plans)
+            for plan in case_plans:
+                seen = set()
+                unique_steps = []
+                for gs in plan.steps:
+                    at = str(getattr(gs, 'action_type', '') or '').lower()
+                    target = str(getattr(gs, 'target_text', '') or '').strip()
+                    if at in boundary:
+                        seen.clear()
+                        unique_steps.append(gs)
+                        rebuilt.append(gs)
+                        continue
+                    if at in ('fill', 'select'):
+                        value = (getattr(gs, 'fill_value', '') or getattr(gs, 'select_option', '') or '').strip()
+                        key = (at, target, value)
+                    else:
+                        key = (at, target)
+                    if key not in seen:
+                        seen.add(key)
+                        unique_steps.append(gs)
+                        rebuilt.append(gs)
+                plan.steps = unique_steps
+            module_steps[module] = rebuilt
+            logger.info(
+                f"[FunctionalToUI] Case-aware步骤解析: 模块={module}, "
+                f"cases={len(case_plans)}, raw={len(batch)}, unique={len(rebuilt)}"
+            )
+
         return module_steps
 
     @staticmethod
@@ -2051,7 +2113,7 @@ class FunctionalToUIService:
         from playwright.sync_api import sync_playwright
         from app.core.services.guided_exploration_agent import GuidedExplorationAgent
         from app.core.services.mcp_client import MCPClient
-        from app.core.services.kg_populator import KGPopulator
+        from app.core.services.evidence_kg_writer import EvidenceKGWriter
         from app.core.services.api_flow_capture import ApiFlowCapture
         from app.core.models.knowledge_graph import KnowledgeGraph
 
@@ -2082,7 +2144,7 @@ class FunctionalToUIService:
                 max_rounds=config.spa_render_max_rounds,
                 interval=config.spa_render_interval)
 
-            populator = KGPopulator(db)
+            populator = EvidenceKGWriter(db)
             all_exploration_results = {}
             all_guided_steps = {}
 
@@ -2169,9 +2231,10 @@ class FunctionalToUIService:
                     logger.warning(f"[FunctionalToUI] 模块 '{module_name}' 页面复位失败: {_nav_e}")
 
                 try:
-                    client = MCPClient(page_sync)
+                    client = MCPClient(page_sync, config)
                     agent = GuidedExplorationAgent(client, config, llm_service=None,
                                                    module_name=module_name, platform_type=platform_type)
+                    agent.set_case_contexts(test_cases or [])
 
                     def _step_cb(ev: dict):
                         if phase_cb:
@@ -2489,10 +2552,8 @@ class FunctionalToUIService:
             if snap.page_url:
                 pages.append(snap.page_url)
 
-        # 如果模块 snapshot 没有元素，回退到 KG 级别的 elements
-        if not elements and kg.elements:
-            elements = kg.elements if isinstance(kg.elements, list) else []
-
+        # 不再回退到项目级 kg.elements：该列表可能包含其他模块元素，
+        # 一旦回退会造成跨模块 locator 污染。缺元素应触发补充探索。
         if not pages:
             pages = [kg.base_url] if kg.base_url else []
 
@@ -2531,43 +2592,52 @@ class FunctionalToUIService:
 
     @staticmethod
     def _coverage_sufficient(kg_result: Dict, required_elements: List[str]) -> bool:
-        """
-        覆盖度检查：模块级别的严格检查。
+        """严格按“步骤可验证覆盖”判断缓存是否可复用。
 
-        必须满足以下条件之一：
-        1. 该模块有专属的 ExplorationPageSnapshot 数据（snapshot_count > 0）
-        2. 或者有该模块的元素/页面数据
-
-        不再做"只要有任意数据就通过"的宽松检查——那是版本迭代场景下的 bug 根源。
-        新增模块必须有专属探索数据才会被标记为"覆盖足够"。
+        仅有 page/snapshot 不能代表某个 TestCase 的元素已经探索过；否则版本新增
+        用例会误命中旧模块缓存，最终 UI 转化得到 locator 但执行时找不到。
         """
         if not kg_result:
             return False
+        elements = kg_result.get("elements", []) if isinstance(kg_result, dict) else []
+        diagnostics = kg_result.get("step_diagnostics", []) if isinstance(kg_result, dict) else []
+        if not isinstance(elements, list): elements = []
+        if not isinstance(diagnostics, list): diagnostics = []
 
-        snapshot_count = kg_result.get("snapshot_count", 0)
-        elements = kg_result.get("elements", [])
-        pages = kg_result.get("pages", [])
+        targets = []
+        for step in required_elements or []:
+            if isinstance(step, str):
+                t = step.strip()
+            else:
+                t = str(getattr(step, "target_text", "") or "").strip()
+            if t and t not in targets:
+                targets.append(t)
+        # 纯验证/空步骤没有 locator 要求；只要模块有真实 snapshot 即可。
+        if not targets:
+            return bool(kg_result.get("snapshot_count", 0) or kg_result.get("pages"))
 
-        # 有该模块的专属 snapshot → 覆盖足够
-        if snapshot_count > 0:
-            # 抽查: 至少要有实际元素数据才认为覆盖足够
-            elements = kg_result.get("elements", [])
-            if isinstance(elements, list) and len(elements) > 0:
-                return True
-            logger.info(f"[FunctionalToUI] 模块 '{kg_result.get('module')}' 有 snapshot 但元素为空, 覆盖不足")
+        def norm(v):
+            return "".join(str(v or "").split()).lower()
+        element_texts = []
+        for e in elements:
+            if not isinstance(e, dict): continue
+            for k in ("name", "element_name", "text", "locator_text", "actual_text"):
+                if e.get(k): element_texts.append(norm(e.get(k)))
+        success_targets = {norm(d.get("target")) for d in diagnostics if isinstance(d, dict) and d.get("status") == "success"}
+        success_actual = {norm(d.get("actual_text")) for d in diagnostics if isinstance(d, dict) and d.get("status") == "success" and d.get("actual_text")}
 
-        # 没有专属 snapshot，但有元素/页面数据 → 勉强可用
-        has_elements = isinstance(elements, list) and len(elements) > 0
-        has_pages = isinstance(pages, list) and len(pages) > 0
-
-        if has_elements or has_pages:
-            logger.info(f"[FunctionalToUI] 模块 '{kg_result.get('module')}' 无专属 snapshot，"
-                        f"但 KG 中有 {len(elements)} 组元素数据，勉强可用")
-            return True
-
-        # 完全没有该模块的数据 → 覆盖不足，需要探索
-        logger.info(f"[FunctionalToUI] 模块 '{kg_result.get('module')}' 覆盖不足（无 snapshot、无元素、无页面）")
-        return False
+        missing = []
+        for target in targets:
+            nt = norm(target)
+            covered = nt in success_targets or nt in success_actual
+            if not covered:
+                covered = any(nt == x or nt in x or x in nt for x in element_texts if x)
+            if not covered:
+                missing.append(target)
+        if missing:
+            logger.info(f"[FunctionalToUI] 模块 '{kg_result.get('module','')}' 缓存缺失步骤元素: {missing[:10]}")
+            return False
+        return True
 
     @staticmethod
     def _exploration_has_usable_data(exploration_result) -> bool:

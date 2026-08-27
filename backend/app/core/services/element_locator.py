@@ -118,110 +118,114 @@ class ElementLocator:
                context_hint: str = '',
                ui_pattern: str = '',
                scope_element=None) -> LocateResult:
-        """定位目标元素。
+        """按动作语义定位真实可交互元素。
 
-        Args:
-            target: 目标元素文本（如 "新增"、"患者姓名"）
-            role: 角色提示（button/textbox/combobox/link/tab）
-            context_hint: 上下文提示（modal/table_row/form/sidebar）
-            scope_element: 限定范围的 ElementHandle（如 <main>）
-
-        Returns:
-            LocateResult(found, locator, strategy)
+        重要原则：如果调用方给了 role，role 是约束而不是提示。
+        例如“患者姓名”+textbox 不能先命中页面上的 label/div；
+        click 也不能因为容器包含目标文本就把容器当成按钮。
         """
-        if not target or not target.strip():
+        if not target or not str(target).strip():
             return LocateResult(False, strategy='empty_target')
-
-        target = target.strip()
+        target = str(target).strip()
         normalized_role = _normalize_role(role) if role else ''
-
-        # 上下文感知：在指定区域内搜索
         search_root = self._resolve_scope(context_hint, scope_element)
 
-        # ── 第 1 层：精确文本匹配 ──
-        result = self._try_get_by_text(target, search_root)
-        if result.found:
-            logger.info(f"[ElementLocator] ✓ '{target}' found via L1-{result.strategy}")
-            return result
-
-        # ── 第 2 层：角色 + 文本 ──
+        # 1. 明确 role 时先 role；这是最高可信路径。
         if normalized_role:
             result = self._try_get_by_role(target, normalized_role, search_root)
-            if result.found:
-                logger.info(f"[ElementLocator] ✓ '{target}' found via L2-{result.strategy}")
+            if result.found and result.locator:
                 return result
 
-        # ── 第 3 层：标签关联（表单控件）──
-        if role in ('textbox', 'combobox', 'searchbox', 'textbox', ''):
-            result = self._try_get_by_label(target, search_root)
-            if result.found:
-                logger.info(f"[ElementLocator] ✓ '{target}' found via L3-{result.strategy}")
-                return result
+        # 2. 表单控件：label/placeholder 是真实控件语义，不应先走 text。
+        if normalized_role in ('textbox', 'searchbox', 'combobox'):
+            for fn, name in (
+                (self._try_get_by_label, 'label'),
+                (self._try_get_by_placeholder, 'placeholder'),
+            ):
+                result = fn(target, search_root)
+                if result.found and result.locator:
+                    return result
 
-        # ── 第 4 层：placeholder 匹配 ──
-        if role in ('textbox', 'searchbox', 'combobox', ''):
-            result = self._try_get_by_placeholder(target, search_root)
-            if result.found:
-                logger.info(f"[ElementLocator] ✓ '{target}' found via L4-{result.strategy}")
-                return result
+        # 3. 精确文本，只接受可见且可操作元素；容器文本不直接作为成功。
+        result = self._try_get_by_text(target, search_root, require_actionable=bool(normalized_role or ui_pattern in ('button','link','card','icon','tab','menu','menuitem','row','table_row')))
+        if result.found and result.locator:
+            return result
 
-        # ── 第 5 层：JS TreeWalker 全页文本扫描 ──
+        # 4. 表单控件再允许通用 role fallback。
+        if normalized_role in ('textbox', 'searchbox'):
+            for r in ('textbox', 'searchbox'):
+                result = self._try_get_by_role(target, r, search_root)
+                if result.found and result.locator:
+                    return result
+
+        # 5. JS TreeWalker 只作为证据发现；必须能够重新构造可操作 locator 才算 found。
         result = self._try_js_treewalker(target, normalized_role, scope_element)
-        if result.found:
-            logger.info(f"[ElementLocator] ✓ '{target}' found via L5-{result.strategy}")
+        if result.found and result.locator:
             return result
 
-        # ── 第 6 层：全量扫描 + 评分排序（替代旧的关键词/同义词回退）──
+        # 6. 评分兜底必须存在文本/ARIA/同义词关联，禁止纯 UI class 假阳性。
         result = self._try_scoring_match(target, normalized_role, ui_pattern, scope_element)
-        if result.found:
-            logger.info(f"[ElementLocator] ✓ '{target}' found via L6-{result.strategy}")
+        if result.found and result.locator:
             return result
 
-        # ── 全部失败 ──
-        # 诊断：输出页面基本信息帮助排查
-        try:
-            _body_len = self.page.evaluate("() => document.body ? document.body.innerText.length : 0")
-            _url = self.page.url[:80] if hasattr(self.page, 'url') else '?'
-        except Exception:
-            _body_len = -1
-            _url = '??'
-        logger.warning(
-            f"[ElementLocator] 未找到元素: target='{target}', role='{role}', "
-            f"ui_pattern='{ui_pattern}', context='{context_hint}' | "
-            f"page_text_len={_body_len}, url={_url}"
-        )
+        logger.warning(f"[ElementLocator] 未找到可执行元素: target={target!r}, role={role!r}, context={context_hint!r}")
         return LocateResult(False, strategy='not_found')
 
     # ═══════════════════════════════════════════════════════════
     # 各层策略
     # ═══════════════════════════════════════════════════════════
 
-    def _try_get_by_text(self, target: str, scope=None) -> LocateResult:
-        """第 1 层: get_by_text 精确匹配 → 模糊匹配"""
+    def _try_get_by_text(self, target: str, scope=None, require_actionable: bool = False) -> LocateResult:
+        """文本定位：优先最小可见节点，并在需要时提升到可交互祖先。"""
         try:
-            scope_locator = scope or self.page
-
-            # 精确匹配
-            loc = scope_locator.get_by_text(target, exact=True).first
-            try:
-                if loc.is_visible():
-                    return LocateResult(True, loc, 'text_exact',
-                                        self._describe(loc))
-            except Exception:
-                pass
-
-            # 包含匹配（取最小的可见元素）
-            candidates = scope_locator.get_by_text(target, exact=False)
-            count = candidates.count()
-            if count > 0:
-                best = self._pick_best(candidates, count)
+            root = scope or self.page
+            exact = root.get_by_text(target, exact=True)
+            count = exact.count()
+            candidates = []
+            for i in range(min(count, 20)):
+                try:
+                    loc = exact.nth(i)
+                    if not loc.is_visible():
+                        continue
+                    candidate = self._actionable_ancestor(loc) if require_actionable else loc
+                    if candidate is not None and candidate.is_visible():
+                        candidates.append(candidate)
+                except Exception:
+                    continue
+            if candidates:
+                # 去重 locator 不可靠，按 DOM 面积选择最小者。
+                best = self._pick_best(candidates, len(candidates))
                 if best:
-                    return LocateResult(True, best, 'text_contains',
-                                        self._describe(best))
+                    return LocateResult(True, best, 'text_exact', self._describe(best))
+
+            partial = root.get_by_text(target, exact=False)
+            count = partial.count()
+            for i in range(min(count, 20)):
+                try:
+                    loc = partial.nth(i)
+                    if not loc.is_visible():
+                        continue
+                    candidate = self._actionable_ancestor(loc) if require_actionable else loc
+                    if candidate is not None and candidate.is_visible():
+                        return LocateResult(True, candidate, 'text_contains', self._describe(candidate))
+                except Exception:
+                    continue
         except Exception as e:
             logger.debug(f"[ElementLocator] get_by_text failed: {e}")
-
         return LocateResult(False, strategy='text')
+
+    def _actionable_ancestor(self, locator):
+        """把 span/div 文本提升到最近真实交互祖先。"""
+        try:
+            return locator.locator(
+                'xpath=ancestor-or-self::*['
+                'self::button or self::a or self::input or self::textarea or self::select or '
+                '@role="button" or @role="link" or @role="tab" or @role="checkbox" or '
+                '@role="radio" or @role="switch" or @role="combobox" or @onclick or @tabindex="0"'
+                '][1]'
+            ).first
+        except Exception:
+            return locator
 
     def _try_get_by_role(self, target: str, role: str, scope=None) -> LocateResult:
         """第 2 层: get_by_role(name=target)"""
@@ -268,7 +272,7 @@ class ElementLocator:
             candidates = scope_locator.get_by_label(target, exact=False)
             count = candidates.count()
             if count > 0:
-                return LocateResult(True, candidates.first, 'label_contains')
+                return LocateResult(True, candidates.first, 'label_contains', self._describe(candidates.first))
         except Exception as e:
             logger.debug(f"[ElementLocator] get_by_label failed: {e}")
 
@@ -291,7 +295,7 @@ class ElementLocator:
             candidates = scope_locator.get_by_placeholder(target)
             count = candidates.count()
             if count > 0:
-                return LocateResult(True, candidates.first, 'placeholder_partial')
+                return LocateResult(True, candidates.first, 'placeholder_partial', self._describe(candidates.first))
         except Exception as e:
             logger.debug(f"[ElementLocator] get_by_placeholder failed: {e}")
 
@@ -814,50 +818,54 @@ class ElementLocator:
         return None
 
     def _pick_best(self, candidates, count: int):
-        """从多个候选中选最佳（取面积最小、最准确的）。"""
+        """从 Locator 集合或 Python list 中选择可见面积最小的候选。"""
         best = None
         best_area = float('inf')
         limit = min(count, 10)
-
         for i in range(limit):
             try:
-                loc = candidates.nth(i)
+                loc = candidates[i] if isinstance(candidates, (list, tuple)) else candidates.nth(i)
                 if not loc.is_visible():
                     continue
                 box = loc.bounding_box()
                 if box:
-                    area = box['width'] * box['height']
+                    area = box.get('width', 0) * box.get('height', 0)
                     if area > 0 and area < best_area:
-                        best_area = area
-                        best = loc
+                        best_area, best = area, loc
             except Exception:
                 continue
-
         if best is None and limit > 0:
             try:
-                best = candidates.first
+                best = candidates[0] if isinstance(candidates, (list, tuple)) else candidates.first
             except Exception:
                 pass
-
         return best
 
     def _describe(self, locator) -> Dict[str, Any]:
-        """提取元素描述信息"""
-        try:
-            tag = locator.evaluate("el => el.tagName.toLowerCase()")
-        except Exception:
-            tag = ''
-        try:
-            role_attr = locator.get_attribute('role') or ''
-        except Exception:
-            role_attr = ''
-        try:
-            text = locator.inner_text()
-        except Exception:
-            text = ''
-
+        """提取可用于 Evidence/脚本生成的真实元素信息。"""
+        def attr(name):
+            try: return locator.get_attribute(name) or ''
+            except Exception: return ''
+        try: tag = locator.evaluate("el => el.tagName.toLowerCase()")
+        except Exception: tag = ''
+        try: text = (locator.inner_text() or '').strip()
+        except Exception: text = ''
+        role = attr('role')
+        aria = attr('aria-label')
+        title = attr('title')
+        elem_id = attr('id')
+        name = attr('name')
+        placeholder = attr('placeholder')
+        href = attr('href')
+        selector = ''
+        if elem_id:
+            selector = f'#{elem_id}'
+        elif name:
+            selector = f'[name="{name.replace(chr(34), chr(92)+chr(34))}"]'
+        elif aria:
+            selector = f'[aria-label="{aria.replace(chr(34), chr(92)+chr(34))}"]'
         return {
-            'tag': tag,
-            'role': role_attr,
-            'text': (text or '')[:80],
+            'tag': tag, 'role': role, 'text': text[:120], 'aria_label': aria,
+            'title': title, 'id': elem_id, 'name': name, 'placeholder': placeholder,
+            'href': href, 'selector': selector,
         }

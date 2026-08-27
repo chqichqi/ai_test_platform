@@ -48,6 +48,9 @@ class Action:
     target_selector: str = ""      # CSS 选择器（回退用）
     href: str = ""                 # 链接目标（NAVIGATE 类型）
     source: str = ""               # 发现来源: a11y / css_fallback / row_locator
+    context_hint: str = ""         # modal/table/form 等上下文
+    ui_pattern: str = ""            # button/input/dropdown/card/tab 等 UI 模式
+    value: str = ""                 # fill/select 的值（可选）
 
 
 @dataclass
@@ -412,8 +415,6 @@ class MCPExplorationAgent:
             logger.warning(f"[DFS] BLOCKED: {url[-80:]} is outside module /{self._module_url_root}")
             return
 
-        self._visited_urls.add(url_key)
-
         c = self.config
         logger.info(f"[DFS d={depth}] exploring: {url[-60:]}")
 
@@ -426,6 +427,8 @@ class MCPExplorationAgent:
             if cur_key != url_key_check:
                 logger.error(f"[DFS d={depth}] Wrong page! expected={url[-60:]} actual={cur[-60:]} — skipping")
                 return
+        # 只有确认已进入目标页面后才标记 visited；goto 失败不能吞掉后续重试机会。
+        self._visited_urls.add(url_key)
         # 智能等待 SPA 渲染完成（替代固定 render_wait，防止慢页面卡死）
         pt = getattr(c, 'page_ready_timeout', 12.0)
         ready = self.client.wait_for_page_ready(max_wait=pt)
@@ -486,40 +489,30 @@ class MCPExplorationAgent:
     # ═══════════════════════════════════════════════════════════
 
     def _phase_iframe_scan(self, start_url, depth):
-        """扫描 iframe 内的可交互元素，点击并记录跳转。"""
-        frames = self.client.scan_iframes()
-        if not frames:
-            return
-        logger.info(f"[iframe] Found {len(frames)} iframe(s): {[f['url'][:50] for f in frames]}")
-
-        for fi, frame_info in enumerate(frames):
+        """安全扫描 iframe。旧版 scan_iframes 返回 dict，却把 dict 当 Frame 使用，
+        导致 iframe 探索永远静默失败。这里直接取得真实 Frame 对象。"""
+        try:
+            frames = self.client.get_iframe_frames()
+        except Exception:
+            frames = []
+        for fi, frame in enumerate(frames):
             try:
-                frame = self.page.frames[fi + 1]
-                if frame == self.page.main_frame:
-                    continue
                 elements = self.client.get_iframe_elements(frame)
                 if not elements:
                     continue
-                self._capture_state(f"iframe_{fi}", frame.url)
-                logger.info(f"[iframe] frame#{fi}: {len(elements)} elements at {frame.url[:60]}")
-                # 点击 iframe 内元素并检测跳转
+                logger.info(f"[iframe] frame#{fi}: {len(elements)} elements at {(frame.url or '')[:60]}")
+                # iframe 内部导航通常不会改变主 frame URL，因此这里只记录元素发现，
+                # 不把 frame 内点击错误地当成主页面 jump。
                 for elem in elements[:10]:
-                    try:
-                        name = elem.get("name", "")
-                        if not name: continue
-                        before_u = self.client.get_url()
-                        el = frame.get_by_text(name, exact=True).first
-                        if el.is_visible(timeout=500):
-                            el.click(force=True, timeout=2000)
-                            self.client.wait(self.config.click_wait)
-                            after_u = self.client.get_url()
-                            if after_u and after_u != before_u:
-                                logger.info(f"[iframe] frame#{fi} click '{name[:30]}' → jump")
-                                self.action_count += 1
-                    except Exception:
-                        pass
-            except Exception as e:
-                logger.debug(f"[iframe] frame#{fi} error: {e}")
+                    name = (elem.get('name') or '').strip()
+                    if not name:
+                        continue
+                    self._click_log.append({
+                        'name': name, 'action': 'iframe_discovery', 'status': 'discovered',
+                        'frame_url': (frame.url or '')[:200], 'depth': depth,
+                    })
+            except Exception as exc:
+                logger.debug(f"[iframe] frame#{fi} error: {exc}")
 
     # ═══════════════════════════════════════════════════════════
     # Phase 1: 站点地图 + 无障碍树元素发现（V5 ARIA-first）
@@ -1560,7 +1553,7 @@ class MCPExplorationAgent:
                     const results = [];
                     document.querySelectorAll('{pag_sel}').forEach(el => {{
                         const t = (el.textContent || '').trim();
-                        if (t && t.length < 10 && /^\d+$/.test(t)) results.push(t);
+                        if (t && t.length < 10 && /^[0-9]+$/.test(t)) results.push(t);
                     }});
                     return [...new Set(results)].slice(0, 20);
                 }}
@@ -1982,7 +1975,7 @@ class MCPExplorationAgent:
                     const apis = new Set();
                     document.querySelectorAll('script').forEach(s => {
                         const t = s.textContent || '';
-                        const m = t.match(/['\"]\/([a-zA-Z][a-zA-Z0-9_\/-]*\??[a-zA-Z0-9_=&-]*)['\"]/g);
+                        const m = t.match(/['"][/]([a-zA-Z][a-zA-Z0-9_/-]*[?]?[a-zA-Z0-9_=&-]*)['"]/g);
                         if (m) m.forEach(x => apis.add(x.replace(/['\"]/g, '')));
                     });
                     return [...apis].filter(a => a.length > 3).slice(0, 30);

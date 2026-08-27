@@ -85,6 +85,7 @@ class KnowledgeGraphService:
         self.db = db
         self.browser = None
         self.page = None
+        self.playwright = None
         self.network_logs = []
         self.knowledge_graph: Optional[KnowledgeGraph] = None
 
@@ -117,7 +118,11 @@ class KnowledgeGraphService:
             try:
                 self.db.query(ExplorationPageSnapshot).filter(
                     ExplorationPageSnapshot.graph_id == kg.id
-                ).delete()
+                ).delete(synchronize_session=False)
+                # JSON KG 之外还有结构化定位器/流程/API表，重置时必须同步清理，
+                # 否则旧版本 locator 会在新探索后继续被 UI 生成器命中。
+                for _model in (ElementLocator, NavigationFlow, APICallRecord):
+                    self.db.query(_model).filter(_model.graph_id == kg.id).delete(synchronize_session=False)
             except Exception as e:
                 logger.warning(f"[知识图谱] 重置时清理旧快照失败: {e}")
             _list_cols = ('pages', 'menus', 'elements', 'forms', 'tables',
@@ -524,8 +529,8 @@ class KnowledgeGraphService:
         try:
             from playwright.async_api import async_playwright
             
-            playwright = await async_playwright().start()
-            self.browser = await playwright.chromium.launch(headless=False)
+            self.playwright = await async_playwright().start()
+            self.browser = await self.playwright.chromium.launch(headless=False)
             self.page = await self.browser.new_page()
             
             # 设置网络监听
@@ -621,13 +626,23 @@ class KnowledgeGraphService:
         logger.info(f"[知识图谱] 页面爬取完成，共{len(pages_data)}个页面")
     
     async def _navigate_to_page(self, href: str):
-        """导航到指定页面"""
+        """导航到指定页面，正确处理绝对 URL、相对 URL 和 hash 路由。"""
         try:
-            full_url = self.knowledge_graph.base_url.rstrip('/') + href
-            await self.page.goto(full_url, wait_until='networkidle', timeout=10000)
+            from urllib.parse import urljoin
+            base = self.knowledge_graph.base_url or ''
+            full_url = urljoin(base.rstrip('/') + '/', str(href or ''))
+            if not full_url:
+                return False
+            await self.page.goto(full_url, wait_until='domcontentloaded', timeout=15000)
+            try:
+                await self.page.wait_for_timeout(800)
+            except Exception:
+                pass
             logger.info(f"[知识图谱] 导航到页面：{full_url}")
+            return True
         except Exception as e:
             logger.warning(f"[知识图谱] 页面导航失败：{href}, {str(e)}")
+            return False
     
     async def _bfs_explore_all_modules(self, menus: list, strategy: str, base_url: str):
         """使用 BFS Explorer 对所有菜单模块进行深度探索（P1-P9）"""
@@ -878,13 +893,32 @@ class KnowledgeGraphService:
         self.knowledge_graph.dependencies = dependencies
     
     async def _validate_locators(self):
-        """验证元素定位器有效性"""
-        logger.info("[知识图谱] 验证定位器有效性")
-        
-        # 简化实现：随机选择10个元素验证
-        validation_success = 0
-        
-        self.knowledge_graph.locator_validation_rate = validation_success / 10 if validation_success > 0 else 0.5
+        """验证当前快照中的 locator，不能用固定 0.5 假装成功。"""
+        logger.info("[知识图谱] 验证元素定位器")
+        total = 0
+        success = 0
+        try:
+            for snap in self.db.query(ExplorationPageSnapshot).filter(
+                ExplorationPageSnapshot.graph_id == self.knowledge_graph.id
+            ).all():
+                for item in (snap.elements if isinstance(snap.elements, list) else []):
+                    if not isinstance(item, dict):
+                        continue
+                    selector = item.get('selector') or item.get('primary_locator') or item.get('locator_text')
+                    if not selector:
+                        continue
+                    total += 1
+                    try:
+                        if selector.startswith(('#', '.', '[', 'button', 'a')):
+                            count = await self.page.locator(selector).count()
+                            if count > 0:
+                                success += 1
+                    except Exception:
+                        continue
+        except Exception as exc:
+            logger.warning(f"[知识图谱] locator 验证过程异常: {exc}")
+        self.knowledge_graph.locator_validation_rate = (success / total) if total else 0.0
+        self.db.commit()
     
     def _fold_snapshots_into_columns(self):
         """将 ExplorationPageSnapshot 行折叠回 JSON 列（仅当列为空时）。
@@ -965,10 +999,21 @@ class KnowledgeGraphService:
             logger.info(f"[知识图谱] 进度：{percentage}% - {current_page}")
     
     async def _close_browser(self):
-        """关闭浏览器"""
+        """关闭浏览器及 Playwright driver。"""
         if self.browser:
-            await self.browser.close()
-            logger.info("[知识图谱] 浏览器已关闭")
+            try:
+                await self.browser.close()
+            except Exception:
+                pass
+            self.browser = None
+        if self.playwright:
+            try:
+                await self.playwright.stop()
+            except Exception:
+                pass
+            self.playwright = None
+        self.page = None
+        logger.info("[知识图谱] 浏览器已关闭")
     
     def _capture_request(self, request):
         """捕获API请求"""

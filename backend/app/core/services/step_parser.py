@@ -53,6 +53,8 @@ class GuidedStep:
 # ═══════════════════════════════════════════════════════════════
 _VERB_PATTERNS: List[Tuple[str, str, str]] = [
     # (regex_pattern, action_type, default_role)
+    # navigate 必须先于 click："点击进入XX页面"不能被 click 前缀吞掉。
+    (r'^(点击进入|点击打开|进入|打开|跳转|访问|导航)', 'navigate', 'link'),
     # click 类
     (r'^(点击|单击|点选|点)', 'click', 'button'),
     (r'^(按下|按)', 'click', 'button'),
@@ -66,8 +68,6 @@ _VERB_PATTERNS: List[Tuple[str, str, str]] = [
     (r'^(右键|右击)', 'right_click', 'button'),
     # tab_switch
     (r'^(切换|点Tab|切换到.*(?:页|标签|Tab))', 'tab_switch', 'tab'),
-    # navigate
-    (r'^(进入|打开|跳转|访问|导航|点击进入|点击打开)', 'navigate', 'link'),
     # go_back / 返回
     (r'^(返回|回到|go_back|page\.go_back)', 'go_back', ''),
     # wait
@@ -795,6 +795,7 @@ def _llm_parse_natural_language(steps_raw: List[dict], llm_service) -> List[Guid
         logger.error(f"[StepParser] LLM 解析失败: {e}")
         return []
 
+    raw_by_seq = {int(s.get('seq', 0)): s.get('raw', '') for s in steps_raw if isinstance(s, dict)}
     results = []
     for item in parsed:
         if not isinstance(item, dict):
@@ -830,7 +831,7 @@ def _llm_parse_natural_language(steps_raw: List[dict], llm_service) -> List[Guid
             role_hint=role,
             fill_value=value if action_type == 'fill' else '',
             select_option=value if action_type == 'select' else '',
-            raw_action=steps_raw[seq - 1]['raw'] if 0 < seq <= len(steps_raw) else '',
+            raw_action=raw_by_seq.get(seq, ''),
             source='llm',
         ))
 
@@ -883,7 +884,7 @@ def _llm_refine_steps(unclear: List[GuidedStep], all_steps: List[GuidedStep],
     import json
     try:
         # 提取 JSON
-        json_match = re.search(r'\[.*?\]', response, re.DOTALL)
+        json_match = re.search(r'\[.*\]', response or '', re.DOTALL)
         if json_match:
             refined = json.loads(json_match.group(0))
             for i, gs in enumerate(unclear):
