@@ -34,3 +34,6 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+启动命令.txt
+*.txt
