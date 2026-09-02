@@ -530,6 +530,7 @@ class KGPopulator:
                 'element_name': name, 'name': name, 'type': role or 'button',
                 'role': role or 'button', 'text': actual, 'locator_text': actual,
                 'locator_role': role or 'button',
+                'clickable': bool(loc.get('clickable', diag.get('clickable', role in ('button','link','tab','menuitem','combobox','listbox')))),
                 'selector': loc.get('selector', ''),
                 'primary_locator': loc.get('primary_locator', ''),
                 'locator_strategy': loc.get('strategy', ''),
@@ -550,7 +551,7 @@ class KGPopulator:
                         if el.get('located') is False or el.get('status') in ('failed', 'not_found'):
                             continue
                         name = el.get('name', '')
-                        role = el.get('role', 'button')
+                        role = el.get('role', 'unknown')
                         key = (name, role)
                         if name and key not in seen:
                             seen.add(key)
@@ -563,6 +564,7 @@ class KGPopulator:
                                 'text': name,
                                 'locator_text': _loc_text,
                                 'locator_role': role,
+                                'clickable': bool(el.get('clickable', role in ('button','link','tab','menuitem','combobox','listbox','table-row'))),
                                 'href': el.get('jump_url', ''),
                                 'navigated': el.get('navigated', False),
                                 'source': 'element_jump',
@@ -581,6 +583,7 @@ class KGPopulator:
                     'name': tname,
                     'type': 'table',
                     'role': 'table',
+                    'clickable': False,
                     'text': tname,
                     'source': 'deep_dive',
                     'located': False,

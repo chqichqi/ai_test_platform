@@ -35,8 +35,6 @@ _SENSITIVE_KEY_RE = re.compile(
 )
 # 数字路径段（去重键用：/orders/123 → /orders/{id}）
 _PATH_SEG_RE = re.compile(r"/\d+")
-# 「不存在资源」变体用的必不存在 ID（数字参数替换目标，生成后执行 4xx）
-_NOT_FOUND_ID = 999999999
 # 非 JSON body 原文保留截断上限（字符数；防巨表单撑爆库，非业务值）
 _RAW_BODY_MAX_CHARS = 10000
 
@@ -48,7 +46,7 @@ def _sanitize(value: Any) -> Any:
     """
     if isinstance(value, dict):
         return {
-            k: ("***" if _SENSITIVE_KEY_RE.search(k) else _sanitize(v))
+            k: ("${%s}" % k if _SENSITIVE_KEY_RE.search(k) else _sanitize(v))
             for k, v in value.items()
         }
     if isinstance(value, list):
@@ -128,125 +126,19 @@ def _truncate_json(value: Any, max_bytes: int, depth: int = 0) -> Any:
     return value
 
 
-def _collect_field_paths(body: Any, depth: int = 2, max_fields: int = 8) -> List[Dict[str, Any]]:
-    """从实际响应体收集字段路径（a.b.c）及实际值，用于生成断言。
-
-    业务码/消息类字段（code/status/message/msg/success）收集实际值 → 值断言；
-    其余关键字段（data 及常规业务字段）只收集路径 → 存在性断言。
-    """
-    collected: List[Dict[str, Any]] = []
-
-    def walk(node: Any, prefix: str, d: int) -> None:
-        if not isinstance(node, dict) or d > depth or len(collected) >= max_fields:
-            return
-        for k, v in node.items():
-            cur = f"{prefix}.{k}" if prefix else str(k)
-            last = cur.rsplit(".", 1)[-1]  # 末段字段名：顶层与嵌套（data.code）同规则
-            if last in ("code", "status", "message", "msg", "success"):
-                # 业务码值断言（用户诉求：不只断 HTTP 状态，断实际返回的 code）
-                if v is not None and isinstance(v, (int, float, str)):
-                    collected.append({"field": cur, "value": v, "is_biz_code": True})
-                else:
-                    collected.append({"field": cur, "value": None, "is_biz_code": False})
-            elif cur == "data" or last in ("total", "count", "id", "list", "rows", "records"):
-                collected.append({"field": cur, "value": None, "is_biz_code": False})
-            walk(v, cur, d + 1)
-            if len(collected) >= max_fields:
-                break
-
-    walk(body, "", 0)
-    return collected[:max_fields]
-
-
-def _build_assert_rules(body: Any, expected_status: int) -> List[Dict[str, Any]]:
-    """从捕获的实际响应体构建断言规则：HTTP 状态码 + 非空 + 业务码值断言 + 关键字段存在。
-
-    - 顶层 code/status（常见 result.code）：status_eq 值断言（执行器取 body.code/status 比较）
-    - 嵌套业务码（如 data.code）：json_value_eq 值断言（jsonpath 取值比较）
-    - 其余关键字段：json_contains 存在性断言（skip_if_missing 兜底）
-    """
-    rules: List[Dict[str, Any]] = [
-        {"type": "http_status", "value": [expected_status], "description": "HTTP状态码"}
-    ]
-    if body:
-        rules.append({"type": "response_not_empty", "value": None, "description": "响应体非空"})
-        for item in _collect_field_paths(body):
-            field = item["field"]
-            val = item["value"]
-            if not item["is_biz_code"]:
-                rules.append({
-                    "type": "json_contains", "field": field, "value": None,
-                    "skip_if_missing": True,
-                    "description": f"响应包含字段 {field}",
-                })
-            elif field in ("code", "status") and val is not None:
-                # 顶层业务码：值断言（= 探索期捕获的真实成功值，稳定可固化）
-                rules.append({
-                    "type": "status_eq", "field": field, "value": val,
-                    "description": f"业务码 {field} == {val}",
-                })
-            elif val is not None and field.rsplit(".", 1)[-1] in ("code", "status"):
-                # 嵌套业务码（data.code 等）：jsonpath 值断言——仅 code/status 可固化
-                # （F27 修复 2026-08-25：message/msg 文本是动态内容，带时间戳/随机数/
-                # 环境信息，固化值断言执行必败；success 标志同理只做存在性断言）
-                rules.append({
-                    "type": "json_value_eq", "field": field, "value": val,
-                    "description": f"业务码 {field} == {val}",
-                })
-            else:
-                # message/msg（动态文本）与 success 标志：仅存在性断言，不固化值
-                rules.append({
-                    "type": "json_contains", "field": field, "value": None,
-                    "skip_if_missing": True,
-                    "description": f"响应包含字段 {field}",
-                })
-    return rules
-
-
-def _build_test_steps(method: str, path: str, assert_rules: List[Dict[str, Any]],
-                      variant_desc: str = "") -> List[Dict[str, Any]]:
-    """构造 API 用例的测试步骤（请求 + 断言映射）——详情页「测试步骤及预期结果」。
-
-    F28 修复（2026-08-25）：此前 test_steps 从未填充 → 详情页「测试步骤及预期结果」
-    恒空白（用户反馈）。步骤语义与执行器（api_tests.py _execute_* 实际断言）一一对应，
-    避免「写一套做一套」：http_status → 状态码断言，status_eq/json_value_eq → 字段值
-    断言，json_contains → 字段存在性断言。
-    """
-    steps: List[Dict[str, Any]] = []
-    if variant_desc:
-        steps.append({
-            "step": 1,
-            "action": f"发送 {method} 请求 {path}（{variant_desc}）",
-            "expected": "响应为 4xx 错误",
-        })
-    else:
-        steps.append({
-            "step": 1,
-            "action": f"发送 {method} 请求 {path}",
-            "expected": "请求成功，获取响应",
-        })
-    for i, rule in enumerate(assert_rules or [], start=2):
-        rtype = rule.get("type")
-        field = rule.get("field")
-        value = rule.get("value")
-        if rtype == "http_status":
-            statuses = value if isinstance(value, list) else [value]
-            status_text = " / ".join(str(s) for s in statuses)
-            steps.append({"step": i, "action": f"断言 HTTP 状态码为 {status_text}",
-                          "expected": f"响应状态码在预期区间 [{status_text}]"})
-        elif rtype in ("status_eq", "json_value_eq"):
-            steps.append({"step": i, "action": f"断言响应字段 {field} 等于 {value}",
-                          "expected": f"字段 {field} == {value}"})
-        elif rtype == "json_contains":
-            steps.append({"step": i, "action": f"断言响应包含字段 {field}",
-                          "expected": f"响应体包含字段 {field}"})
-        elif rtype == "response_not_empty":
-            steps.append({"step": i, "action": "断言响应体非空",
-                          "expected": "响应体有内容"})
-        else:
-            text = rule.get("description") or f"断言 {rtype}"
-            steps.append({"step": i, "action": text, "expected": text})
-    return steps
+def _build_api_data_plan(rec: Dict[str, Any], variant: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    from app.core.services.test_data_plan import build_api_test_data_plan
+    variant = variant or {}
+    return build_api_test_data_plan(
+        query_params=variant.get("query", rec.get("query_params") or {}),
+        path_params=variant.get("path_params", rec.get("path_params") or {}),
+        request_body=variant.get("body", rec.get("request_body") if isinstance(rec.get("request_body"), dict) else {}),
+        headers=variant.get("headers", rec.get("headers") or {}),
+        mutation_key=variant.get("mutation_key", ""),
+        mutation=variant.get("mutation", ""),
+        observed=True,
+        metadata={"source": "exploration", "observed_request": True, "mutation": variant.get("mutation") or None},
+    )
 
 
 class ApiFlowCapture:
@@ -270,7 +162,7 @@ class ApiFlowCapture:
         self._max_body = int(getattr(config, "api_capture_max_body_bytes", 50000))
         self._base_url = base_url or ""
         self._login_url = self._load_login_url(db, project_id)
-        self._module_name = ""
+        self._module_name = "通用模块"
         self._captured: List[Dict[str, Any]] = []
         self._by_key: Dict[tuple, int] = {}
         self._module_counts: Dict[str, int] = {}  # 每模块已捕获条数（配额按模块独立生效）
@@ -368,7 +260,7 @@ class ApiFlowCapture:
             # query / body（脱敏：password/token 类字段不落明文）
             query_params = {
                 k: v[0] if len(v) == 1 else v
-                for k, v in parse_qs(parsed.query).items()
+                for k, v in parse_qs(parsed.query, keep_blank_values=True).items()
             } or None
             request_body = None
             if request.post_data:
@@ -480,34 +372,50 @@ class ApiFlowCapture:
                     )
                     continue
 
-                # 去重：与库内已有用例（含 Swagger 生成）按 (method, path) 查重
-                # ——/orders/123 与库中 /orders/{id}（Swagger 模板形）或探索期另一 id
-                # 视为同一接口，跳过（存储仍保留实际 path 便于直接运行）
-                # 审计 L4：两侧不同形（库内原始 path vs 归一化 rec path）永远匹配不上，
-                # 需双形态比较——原始精确命中（重复探索）+ 归一化命中（Swagger 模板形）
+                # 去重改为“用例类型/变体级”去重：同一接口已有 normal 用例时，仍允许
+                # 探索补充 wrong_type/missing/no_auth 等异常用例。
                 from sqlalchemy import or_
-                exists = db.query(ApiTestCase).filter(
+                existing_cases = db.query(ApiTestCase).filter(
                     ApiTestCase.project_id == project_id,
                     ApiTestCase.method == rec["method"],
                     or_(
                         ApiTestCase.path == rec.get("path", ""),
                         ApiTestCase.path == _normalize_path(rec.get("path", "")),
                     ),
-                ).first()
-                if exists:
-                    stats["skipped"] += 1
-                    continue
+                ).all()
 
-                module = rec.get("module") or "探索"
-                # A5 修复 2026-08-25：逐用例 base_url——跨域项目（前端域名与 API 域名
-                # 不同）每个捕获请求的 origin 才是该用例的真实基址；全局只取第一个
-                # origin 会让其他域接口全部打到错误基址（单域场景 rec.origin == 全局第一个）
+                # 未处于具体模块探索阶段的网络请求（例如首屏公共用户/组织接口）
+                # 不再伪装成“探索”；使用稳定的通用模块名称，且后续模块请求会被
+                # capture.set_module() 正确归属。
+                module = rec.get("module") or "通用模块"
+                # 每个捕获请求使用自己的 origin，避免跨域 API 被错误拼到前端域名。
                 rec_base = rec.get("origin") or default_base
-                cases = [self._build_normal_case(rec, project_id, rec_base, module, version_id)]
-                cases.extend(self._build_error_cases(rec, project_id, rec_base, module, version_id))
-                for c in cases:
+                candidates = []
+                if not any(c.case_type == "normal" for c in existing_cases):
+                    candidates.append(self._build_normal_case(rec, project_id, rec_base, module, version_id))
+                candidates.extend(self._build_error_cases(rec, project_id, rec_base, module, version_id))
+
+                for c in candidates:
+                    c_tags = set(c.tags or [])
+                    duplicate = False
+                    for old_case in existing_cases:
+                        old_tags = set(old_case.tags or [])
+                        if c.case_type == "normal":
+                            duplicate = old_case.case_type == "normal"
+                        else:
+                            # 探索异常变体用唯一 tag 区分；允许同一接口同时存在多个异常场景。
+                            variant_tags = c_tags.intersection({"no_auth", "missing_param", "wrong_type", "not_found"})
+                            duplicate = bool(variant_tags.intersection(old_tags)) and "exploration" in old_tags
+                        if duplicate:
+                            break
+                    if duplicate:
+                        stats["skipped"] += 1
+                        continue
                     db.add(c)
+                    db.flush()
+                    existing_cases.append(c)
                     stats["generated"] += 1
+
             db.commit()
             logger.info(
                 f"[ApiFlowCapture] 探索生成 API 用例: 生成 {stats['generated']} 条, "
@@ -522,187 +430,62 @@ class ApiFlowCapture:
     def _build_normal_case(self, rec: Dict[str, Any], project_id: int,
                            base_url: str, module: str,
                            version_id: Optional[int] = None):
-        """成功接口 → normal 用例（鉴权头写占位符，执行时由 api_auth 实时 token 替换）。"""
+        """探索正常用例：委托统一 OpenApiTestGenerator，避免探索与 Swagger 两套规则。"""
+        from app.core.services.openapi_test_generator import OpenApiTestGenerator
         from app.core.models.api_test import ApiTestCase
 
-        headers = dict(rec.get("headers") or {})
-        shape = rec.get("auth_shape") or {}
-        if shape.get("type") == "bearer":
-            # 占位符 {{auth_token}}：执行器 env_auth_vars 有 token 时替换为实时值。
-            # 裸占位符不带前缀——前缀统一由执行侧 token_injection.prefix（默认 "Bearer "）
-            # 注入，生成侧写前缀会造成「Bearer Bearer」双前缀（审计 H1）。
-            headers[shape.get("header_name") or "Authorization"] = "{{auth_token}}"
-
-        # F28：断言规则先算（test_steps 按规则逐条映射，保证详情页步骤与执行断言同源）
-        assert_rules = _build_assert_rules(rec.get("response_body"), rec.get("status") or 200)
+        generator = OpenApiTestGenerator()
+        data = generator.generate_observed_cases(
+            rec, module=module, include_normal=True, include_error=False, include_boundary=False, include_auth=False, max_cases=1
+        )
+        if not data:
+            return None
+        case_data = data[0]
         return ApiTestCase(
-            project_id=project_id,
-            version_id=version_id,
-            endpoint_id=None,
-            name=f"[探索] {module} - {rec['method']} {rec['path']}",
-            description=f"探索自动生成（模块：{module}）：{rec['method']} {rec['full_path']}",
-            method=rec["method"],
-            path=rec["path"],
-            base_url=base_url,
-            headers=headers or None,
-            query_params=rec.get("query_params"),
-            path_params=None,
-            request_body=rec.get("request_body"),
-            expected_status=rec.get("status") or 200,
-            # 预期响应体：探索期捕获的真实响应快照（截断后），详情页可见、执行可对照
-            expected_body=rec.get("response_body"),
-            preconditions=("需有效登录：执行时按项目 api_auth 配置自动调登录接口注入实时 Token"
-                           "（请求头 {{auth_token}} 占位符自动替换，不落明文）"),
-            assert_rules=assert_rules,
-            test_steps=_build_test_steps(rec["method"], rec.get("path", ""), assert_rules),
-            case_type="normal",
-            priority="P2",
-            status="draft",
-            tags=["exploration", f"module:{module}"],
-            generated_by="ai",
+            project_id=project_id, version_id=version_id, endpoint_id=None,
+            name=case_data["name"], description=case_data["description"],
+            method=rec["method"], path=rec["path"], base_url=base_url,
+            headers=case_data.get("headers") or None, query_params=case_data.get("query_params") or None,
+            path_params=case_data.get("path_params") or None, request_body=case_data.get("request_body") or None,
+            test_data=_build_api_data_plan(rec), expected_status=case_data.get("expected_status"),
+            expected_body=rec.get("response_body"), preconditions=case_data.get("preconditions", ""),
+            assert_rules=case_data.get("assert_rules", []), test_steps=case_data.get("test_steps", []),
+            expected_result=case_data.get("expected_result", ""), case_type="normal", priority="P2",
+            status="draft", tags=["exploration", f"module:{module}"], generated_by="ai"
         )
 
     def _build_error_cases(self, rec: Dict[str, Any], project_id: int,
                            base_url: str, module: str,
                            version_id: Optional[int] = None):
-        """做法 B：以捕获的成功接口为模板，主动构造异常请求变体（真构造，非空壳）。
-
-        变体（最多 4 种，no_auth 优先保证不被截断）：
-          1. 无鉴权     —— tags 标记 no_auth，执行器跳过鉴权注入 → 期望 4xx(401/403)
-          2. 缺参数     —— 删 query/body 第一个非敏感参数 → 期望 4xx
-          3. 类型错误   —— 第一个标量值改类型（数字→字符串）→ 期望 4xx
-          4. 不存在资源 —— path/query/body 数字值 → 999999999 → 期望 4xx
-
-        头部策略：业务头（rec.headers 已脱敏，无鉴权原文）全部保留——缺参数/类型错误/
-        不存在资源变体本意是「带鉴权但参数错」，保留 Content-Type 等才能稳定复现 4xx；
-        no_auth 变体只用无鉴权业务头。正常用例的鉴权占位符由执行器实时替换注入。
-
-        expected_status 不设精确码：断言规则用 4xx 区间列表
-        （执行器 http_status value 支持列表，api_tests.py L1455 in 判断）。
-        """
+        """探索异常用例：与 Swagger 共用 OpenApiTestGenerator 的变体策略。"""
+        from app.core.services.openapi_test_generator import OpenApiTestGenerator
         from app.core.models.api_test import ApiTestCase
 
-        query = dict(rec.get("query_params") or {})
-        body = dict(rec.get("request_body") or {}) if isinstance(rec.get("request_body"), dict) else {}
-        # 业务头（已脱敏）；with_auth=False 的 no_auth 变体不加鉴权占位符
-        plain_headers = dict(rec.get("headers") or {})
-        shape = rec.get("auth_shape") or {}
-        auth_headers = dict(plain_headers)
-        if shape.get("type") == "bearer":
-            # 裸占位符（前缀归执行侧 token_injection.prefix 注入，防双前缀，见 _build_normal_case）
-            auth_headers[shape.get("header_name") or "Authorization"] = "{{auth_token}}"
+        generator = OpenApiTestGenerator()
+        generated = generator.generate_observed_cases(
+            rec, module=module, include_normal=False, include_error=True, include_boundary=False, include_auth=True, max_cases=5
+        )
         cases = []
-        variants: List[Dict[str, Any]] = []
-
-        # 1. 无鉴权：执行器对 no_auth 标签用例跳过鉴权注入（用户核心诉求，排最前防截断）
-        if rec.get("auth_shape"):
-            variants.append({
-                "desc": "无鉴权访问",
-                "tag": "no_auth",
-                "query": dict(query), "body": dict(body),
-                "headers": plain_headers,
-            })
-
-        # 2. 缺参数：删第一个非敏感 key（body 优先，其次 query）
-        built = False  # 本次变体是否构造成功——不能用 variants 判定（no_auth 前置已非空，污染 break）
-        for src_name, src in (("body", body), ("query", query)):
-            for k in list(src.keys()):
-                if _SENSITIVE_KEY_RE.search(k):
-                    continue
-                variants.append({
-                    "desc": "缺参数",
-                    "tag": "missing_param",
-                    "query": dict(query), "body": dict(body),
-                    "headers": auth_headers,
-                })
-                variants[-1][src_name].pop(k, None)
-                built = True
-                break
-            if built:
-                break
-
-        # 3. 类型错误：第一个标量值改类型（数字→字符串 / 字符串→数组）
-        built = False  # 同缺参数：用本次构造标志判定，防 no_auth 前置污染
-        for src_name, src in (("body", body), ("query", query)):
-            for k, v in src.items():
-                if not isinstance(v, (int, float, str)) or _SENSITIVE_KEY_RE.search(k):
-                    continue
-                variants.append({
-                    "desc": "参数类型错误",
-                    "tag": "wrong_type",
-                    "query": dict(query), "body": dict(body),
-                    "headers": auth_headers,
-                })
-                if isinstance(v, bool):
-                    variants[-1][src_name][k] = "not_bool"
-                elif isinstance(v, (int, float)):
-                    variants[-1][src_name][k] = str(v) + "not_number"
-                else:
-                    variants[-1][src_name][k] = [v, "extra"]
-                built = True
-                break
-            if built:
-                break
-
-        # 4. 不存在资源：数字值参数 → 999999999（覆盖 path 与 query/body 数字）
-        for src_name, src in (("path", None), ("body", body), ("query", query)):
-            if src_name == "path":
-                path_v = rec.get("path", "")
-                if re.search(r"/\d+", path_v):
-                    variants.append({
-                        "desc": "资源不存在",
-                        "tag": "not_found",
-                        "query": dict(query), "body": dict(body),
-                        "path": re.sub(r"/\d+", f"/{_NOT_FOUND_ID}", path_v, count=1),
-                        "headers": auth_headers,
-                    })
-                continue
-            for k, v in src.items():
-                if isinstance(v, int) and not _SENSITIVE_KEY_RE.search(k):
-                    variants.append({
-                        "desc": "资源不存在",
-                        "tag": "not_found",
-                        "query": dict(query), "body": dict(body),
-                        "headers": auth_headers,
-                    })
-                    variants[-1][src_name][k] = _NOT_FOUND_ID
-                    break
-            # 已有任一 not_found 变体（path 或 body）即不再构造 query 重复变体
-            if any(v["tag"] == "not_found" for v in variants):
-                break
-
-        # F28：error 变体断言规则（4xx 区间）——test_steps 按此映射，与执行器一致
-        error_rules = [
-            {"type": "http_status", "value": [400, 401, 403, 404, 422],
-             "description": "HTTP状态码为 4xx"},
-        ]
-        for v in variants[:4]:
+        for data in generated:
+            tag = "no_auth" if "无鉴权" in data.get("name", "") else "api_error"
+            mutation = data.get("mutation", "")
+            mutation_key = data.get("mutation_key", "")
+            variant = {
+                "query": data.get("query_params") or {},
+                "path_params": data.get("path_params") or {},
+                "body": data.get("request_body") or {},
+                "headers": data.get("headers") or {},
+                "mutation_key": mutation_key, "mutation": mutation,
+            }
             cases.append(ApiTestCase(
-                project_id=project_id,
-                version_id=version_id,
-                endpoint_id=None,
-                name=f"[探索-异常] {module} - {rec['method']} {rec['path']} - {v['desc']}",
-                description=f"探索自动生成异常变体（{v['desc']}）：{rec['method']} "
-                            f"{v.get('path') or rec['path']}",
-                method=rec["method"],
-                path=v.get("path") or rec.get("path", ""),
-                base_url=base_url,
-                headers=v.get("headers") or None,  # no_auth 变体仅业务头，其余含鉴权占位符
-                query_params=v.get("query") or None,
-                path_params=None,
-                request_body=v.get("body") or None,
-                expected_status=None,  # 4xx 区间由 assert_rules 表达
-                preconditions=("无需鉴权：验证未授权访问被拦截（4xx）"
-                               if v["tag"] == "no_auth"
-                               else "需有效登录：执行时自动注入鉴权 Token（{{auth_token}} 占位符替换）"),
-                assert_rules=error_rules,
-                test_steps=_build_test_steps(
-                    rec["method"], v.get("path") or rec.get("path", ""),
-                    error_rules, variant_desc=v["desc"]),
-                case_type="error",
-                priority="P3",
-                status="draft",
-                tags=["exploration", f"module:{module}", v["tag"]],
-                generated_by="ai",
+                project_id=project_id, version_id=version_id, endpoint_id=None,
+                name=data["name"], description=data["description"], method=rec["method"], path=rec["path"], base_url=base_url,
+                headers=data.get("headers") or None, query_params=data.get("query_params") or None,
+                path_params=data.get("path_params") or None, request_body=data.get("request_body") or None,
+                test_data=_build_api_data_plan(rec, variant), expected_status=None,
+                preconditions=data.get("preconditions", ""), assert_rules=data.get("assert_rules", []),
+                test_steps=data.get("test_steps", []), expected_result=data.get("expected_result", ""),
+                case_type="error", priority="P3", status="draft",
+                tags=["exploration", f"module:{module}", tag], generated_by="ai"
             ))
         return cases

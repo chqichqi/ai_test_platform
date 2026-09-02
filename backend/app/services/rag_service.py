@@ -12,7 +12,7 @@ from typing import List, Dict, Any, Optional, Tuple
 from pathlib import Path
 
 from sqlalchemy.orm import Session
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import (
     PyPDFLoader, 
     TextLoader,
@@ -20,9 +20,9 @@ from langchain_community.document_loaders import (
 )
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
-from langchain.schema import Document as LangchainDocument
-from langchain.chains import RetrievalQA
-from langchain.prompts import PromptTemplate
+from langchain_core.documents import Document as LangchainDocument
+from langchain_classic.chains import RetrievalQA
+from langchain_core.prompts import PromptTemplate
 from langchain_community.llms import OpenAI
 
 

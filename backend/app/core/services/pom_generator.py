@@ -233,7 +233,11 @@ def _build_pom_class(
             or elem.get("css_selector")
             or ""
         )
-        elem_type = elem.get("type", elem.get("element_type", "button"))
+        elem_type = elem.get("type", elem.get("element_type", "unknown"))
+        # clickable 语义：探索如实记录不可点击元素（heading/static/table 等）——
+        # 不为其生成 click 方法（POM 生成侧防线，与执行守卫/转化改写同源）
+        if elem.get("clickable") is False or elem.get("role") in ("heading", "static", "paragraph", "table"):
+            continue
 
         if not name or not selector:
             continue
@@ -270,7 +274,11 @@ def _build_pom_class(
             or elem.get("css_selector")
             or ""
         )
-        elem_type = elem.get("type", elem.get("element_type", "button"))
+        elem_type = elem.get("type", elem.get("element_type", "unknown"))
+        # clickable 语义：探索如实记录不可点击元素（heading/static/table 等）——
+        # 不为其生成 click 方法（POM 生成侧防线，与执行守卫/转化改写同源）
+        if elem.get("clickable") is False or elem.get("role") in ("heading", "static", "paragraph", "table"):
+            continue
         var_name = _to_snake_case(name)
 
         if not name or var_name not in locator_names:

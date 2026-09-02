@@ -9,6 +9,11 @@ node_modules/
 logs/
 *.log
 
+# Allure 测试报告输出目录（运行时产物，不入库）
+test-reports/
+allure-results/
+allure-report/
+
 # 临时文件、压缩包
 *.rar
 *.zip

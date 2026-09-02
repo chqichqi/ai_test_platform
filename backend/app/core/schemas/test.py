@@ -139,7 +139,8 @@ class TestExecutionBase(BaseModel):
     os: Optional[str] = Field(default=None, max_length=50, description="操作系统")
     device: Optional[str] = Field(default=None, max_length=50, description="设备")
     duration: Optional[int] = Field(default=None, ge=0, description="执行时长（秒）")
-    
+    execution_type: str = Field(default="scenario", max_length=30, description="执行类型: scenario=执行中心场景测试, ui_verify=UI用例临时验证")
+
     model_config = ConfigDict(from_attributes=True)
 
 

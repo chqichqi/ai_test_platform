@@ -474,7 +474,7 @@ def test_api_auth_config(
         if matched:
             base_url = matched[0].get("url", "") or ""
     if not base_url:
-        raise HTTPException(status_code=400, detail="项目未配置目标系统 URL（base_url），请先在项目设置中配置")
+        raise HTTPException(status_code=400, detail="项目未配置目标系统 URL（base_url），请先在项目卡片的「项目配置」中配置")
 
     # 2. 校验鉴权配置完整性
     login_url = auth.get("login_url", "") or ""
@@ -490,7 +490,7 @@ def test_api_auth_config(
     username = web.get("username", "") or ""
     password = web.get("password", "") or ""
     if not username or not password:
-        raise HTTPException(status_code=400, detail="项目未配置登录用户名/密码，请先在项目设置中配置")
+        raise HTTPException(status_code=400, detail="项目未配置登录用户名/密码，请先在项目卡片的「项目配置」中配置")
 
     # 4. 构造登录请求
     full_url = login_url if login_url.startswith("http") else base_url.rstrip("/") + "/" + login_url.lstrip("/")

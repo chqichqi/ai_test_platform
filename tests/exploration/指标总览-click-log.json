@@ -1,0 +1,1233 @@
+{
+  "module": "指标总览",
+  "evidence": [
+    {
+      "case_id": "256",
+      "case_name": "验证物流看板-待发货数卡片跳转到设备管理待发货tab",
+      "module": "指标总览",
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "expected_result": "点击待发货卡片后进入设备管理待发货tab",
+      "seq": 1,
+      "target": "待发货数",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "e7fe9db66a99980e6c3f",
+      "after_state_id": "9c7d477bd118f3c4c5e9",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "待发货数",
+        "role": "",
+        "tag": "div",
+        "selector": "div.cardTitle___3hSJ7",
+        "primary_locator": "div.cardTitle___3hSJ7",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_3": "",
+                "rc_select_4": "",
+                "rc_select_5": ""
+              },
+              "after": {
+                "rc_select_9": "",
+                "rc_select_10": "",
+                "rc_select_11": ""
+              }
+            },
+            "body_text": true
+          },
+          "before_state_id": "e7fe9db66a99980e6c3f",
+          "after_state_id": "9c7d477bd118f3c4c5e9"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "256",
+      "case_name": "验证物流看板-待发货数卡片跳转到设备管理待发货tab",
+      "module": "指标总览",
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "expected_result": "点击待发货卡片后进入设备管理待发货tab",
+      "seq": 2,
+      "target": "",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "9c7d477bd118f3c4c5e9",
+      "after_state_id": "9c7d477bd118f3c4c5e9",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "256",
+      "case_name": "验证物流看板-待发货数卡片跳转到设备管理待发货tab",
+      "module": "指标总览",
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "expected_result": "点击待发货卡片后进入设备管理待发货tab",
+      "seq": 3,
+      "target": "待发货",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "9c7d477bd118f3c4c5e9",
+      "after_state_id": "9c7d477bd118f3c4c5e9",
+      "locator": {
+        "strategy": "text_contains",
+        "actual_text": "待发货数",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "9c7d477bd118f3c4c5e9",
+          "after_state_id": "9c7d477bd118f3c4c5e9"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "257",
+      "case_name": "验证随访监控-项目个数卡片跳转到随访管理",
+      "module": "指标总览",
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "expected_result": "点击项目个数卡片后进入随访管理页面",
+      "seq": 1,
+      "target": "项目个数",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "9c7d477bd118f3c4c5e9",
+      "after_state_id": "e554996b3e24171703d9",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "项目个数",
+        "role": "",
+        "tag": "div",
+        "selector": "div.cardTitle___3hSJ7",
+        "primary_locator": "div.cardTitle___3hSJ7",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_9": "",
+                "rc_select_10": "",
+                "rc_select_11": ""
+              },
+              "after": {
+                "rc_select_15": "",
+                "rc_select_16": "",
+                "rc_select_17": ""
+              }
+            },
+            "body_text": true
+          },
+          "before_state_id": "9c7d477bd118f3c4c5e9",
+          "after_state_id": "e554996b3e24171703d9"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "257",
+      "case_name": "验证随访监控-项目个数卡片跳转到随访管理",
+      "module": "指标总览",
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "expected_result": "点击项目个数卡片后进入随访管理页面",
+      "seq": 2,
+      "target": "",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "e554996b3e24171703d9",
+      "after_state_id": "e554996b3e24171703d9",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "258",
+      "case_name": "验证随访监控-入组人数卡片跳转到患者档案",
+      "module": "指标总览",
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "expected_result": "入组人数卡片点击跳转到患者档案页",
+      "seq": 1,
+      "target": "入组人数",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "e554996b3e24171703d9",
+      "after_state_id": "a3300f80dd943130ce45",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "入组人数",
+        "role": "",
+        "tag": "div",
+        "selector": "div.cardTitle___3hSJ7",
+        "primary_locator": "div.cardTitle___3hSJ7",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_15": "",
+                "rc_select_16": "",
+                "rc_select_17": ""
+              },
+              "after": {
+                "rc_select_21": "",
+                "rc_select_22": "",
+                "rc_select_23": ""
+              }
+            }
+          },
+          "before_state_id": "e554996b3e24171703d9",
+          "after_state_id": "a3300f80dd943130ce45"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "258",
+      "case_name": "验证随访监控-入组人数卡片跳转到患者档案",
+      "module": "指标总览",
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "expected_result": "入组人数卡片点击跳转到患者档案页",
+      "seq": 2,
+      "target": "",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "a3300f80dd943130ce45",
+      "after_state_id": "a3300f80dd943130ce45",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "258",
+      "case_name": "验证随访监控-入组人数卡片跳转到患者档案",
+      "module": "指标总览",
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "expected_result": "入组人数卡片点击跳转到患者档案页",
+      "seq": 3,
+      "target": "全部",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "a3300f80dd943130ce45",
+      "after_state_id": "a3300f80dd943130ce45",
+      "locator": {
+        "strategy": "text_exact",
+        "actual_text": "全部",
+        "role": "",
+        "tag": "span",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "a3300f80dd943130ce45",
+          "after_state_id": "a3300f80dd943130ce45"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "259",
+      "case_name": "验证卡片跳转后列表数量与卡片数量相差过大时不展示异常页面",
+      "module": "指标总览",
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "expected_result": "指标数字即使很小或为0也能正常完成页面跳转，不会导致前端异常",
+      "seq": 1,
+      "target": "SMART报告",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "table_row",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "a3300f80dd943130ce45",
+      "after_state_id": "881e5cfc7d32596e1ce3",
+      "locator": {
+        "strategy": "scored_text(15)",
+        "actual_text": "Smart 报告(份)35今日新增+0",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_21": "",
+                "rc_select_22": "",
+                "rc_select_23": ""
+              },
+              "after": {
+                "rc_select_34": "",
+                "rc_select_35": "",
+                "rc_select_36": ""
+              }
+            }
+          },
+          "before_state_id": "a3300f80dd943130ce45",
+          "after_state_id": "881e5cfc7d32596e1ce3"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "259",
+      "case_name": "验证卡片跳转后列表数量与卡片数量相差过大时不展示异常页面",
+      "module": "指标总览",
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "expected_result": "指标数字即使很小或为0也能正常完成页面跳转，不会导致前端异常",
+      "seq": 3,
+      "target": "",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "881e5cfc7d32596e1ce3",
+      "after_state_id": "881e5cfc7d32596e1ce3",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "260",
+      "case_name": "进行中人数卡片跳转至随访管理-已入组tab",
+      "module": "指标总览",
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "expected_result": "进行中人数卡片应跳转到随访管理-已入组 tab",
+      "seq": 1,
+      "target": "进行中人数",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "table_row",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "881e5cfc7d32596e1ce3",
+      "after_state_id": "36dc1355c382b89fa1fd",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "进行中人数",
+        "role": "",
+        "tag": "div",
+        "selector": "div.cardTitle___3hSJ7",
+        "primary_locator": "div.cardTitle___3hSJ7",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_34": "",
+                "rc_select_35": "",
+                "rc_select_36": ""
+              },
+              "after": {
+                "rc_select_40": "",
+                "rc_select_41": "",
+                "rc_select_42": ""
+              }
+            }
+          },
+          "before_state_id": "881e5cfc7d32596e1ce3",
+          "after_state_id": "36dc1355c382b89fa1fd"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "260",
+      "case_name": "进行中人数卡片跳转至随访管理-已入组tab",
+      "module": "指标总览",
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "expected_result": "进行中人数卡片应跳转到随访管理-已入组 tab",
+      "seq": 2,
+      "target": "",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "36dc1355c382b89fa1fd",
+      "after_state_id": "36dc1355c382b89fa1fd",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "260",
+      "case_name": "进行中人数卡片跳转至随访管理-已入组tab",
+      "module": "指标总览",
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "expected_result": "进行中人数卡片应跳转到随访管理-已入组 tab",
+      "seq": 3,
+      "target": "已入组",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "36dc1355c382b89fa1fd",
+      "after_state_id": "36dc1355c382b89fa1fd",
+      "locator": {
+        "strategy": "scored_text(10)",
+        "actual_text": "入组人数30今日新增+0",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "36dc1355c382b89fa1fd",
+          "after_state_id": "36dc1355c382b89fa1fd"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "253",
+      "case_name": "验证患者总览-患者人数卡片点击跳转及总数一致性",
+      "module": "指标总览",
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "expected_result": "患者人数卡片能跳转到患者档案页，且列表总数与卡片总数保持一致",
+      "seq": 1,
+      "target": "患者人数",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "table_row",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "36dc1355c382b89fa1fd",
+      "after_state_id": "25888c571270d1093fe1",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "患者人数",
+        "role": "",
+        "tag": "div",
+        "selector": "div.cardTitle___3hSJ7",
+        "primary_locator": "div.cardTitle___3hSJ7",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_40": "",
+                "rc_select_41": "",
+                "rc_select_42": ""
+              },
+              "after": {
+                "rc_select_54": "",
+                "rc_select_55": "",
+                "rc_select_56": ""
+              }
+            }
+          },
+          "before_state_id": "36dc1355c382b89fa1fd",
+          "after_state_id": "25888c571270d1093fe1"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "253",
+      "case_name": "验证患者总览-患者人数卡片点击跳转及总数一致性",
+      "module": "指标总览",
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "expected_result": "患者人数卡片能跳转到患者档案页，且列表总数与卡片总数保持一致",
+      "seq": 3,
+      "target": "",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "25888c571270d1093fe1",
+      "after_state_id": "25888c571270d1093fe1",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "253",
+      "case_name": "验证患者总览-患者人数卡片点击跳转及总数一致性",
+      "module": "指标总览",
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "expected_result": "患者人数卡片能跳转到患者档案页，且列表总数与卡片总数保持一致",
+      "seq": 4,
+      "target": "全部",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "25888c571270d1093fe1",
+      "after_state_id": "b1ebf2ea769d811c1f80",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "全部",
+        "role": "",
+        "tag": "div",
+        "selector": "div.ant-tabs-extra-content",
+        "primary_locator": "div.ant-tabs-extra-content",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "body_text": true
+          },
+          "before_state_id": "25888c571270d1093fe1",
+          "after_state_id": "b1ebf2ea769d811c1f80"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "253",
+      "case_name": "验证患者总览-患者人数卡片点击跳转及总数一致性",
+      "module": "指标总览",
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "expected_result": "患者人数卡片能跳转到患者档案页，且列表总数与卡片总数保持一致",
+      "seq": 5,
+      "target": "患者人数",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "b1ebf2ea769d811c1f80",
+      "after_state_id": "b1ebf2ea769d811c1f80",
+      "locator": {
+        "strategy": "text_exact",
+        "actual_text": "患者人数",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "b1ebf2ea769d811c1f80",
+          "after_state_id": "b1ebf2ea769d811c1f80"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "254",
+      "case_name": "验证疾病统计-室早卡片跳转并携带疾病筛选",
+      "module": "指标总览",
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "expected_result": "任意疾病统计卡片跳转后应带对应疾病code并自动筛选出该类患者",
+      "seq": 1,
+      "target": "室早",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "b1ebf2ea769d811c1f80",
+      "after_state_id": "83d5d1747719f47ded5a",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "室早",
+        "role": "",
+        "tag": "div",
+        "selector": "div.cardTitle___3hSJ7",
+        "primary_locator": "div.cardTitle___3hSJ7",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_54": "",
+                "rc_select_55": "",
+                "rc_select_56": ""
+              },
+              "after": {
+                "rc_select_68": "",
+                "rc_select_69": "",
+                "rc_select_70": ""
+              }
+            },
+            "body_text": true
+          },
+          "before_state_id": "b1ebf2ea769d811c1f80",
+          "after_state_id": "83d5d1747719f47ded5a"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "254",
+      "case_name": "验证疾病统计-室早卡片跳转并携带疾病筛选",
+      "module": "指标总览",
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "expected_result": "任意疾病统计卡片跳转后应带对应疾病code并自动筛选出该类患者",
+      "seq": 2,
+      "target": "",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "83d5d1747719f47ded5a",
+      "after_state_id": "83d5d1747719f47ded5a",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "255",
+      "case_name": "验证审核任务-待审核数据卡片跳转到报告查收",
+      "module": "指标总览",
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "expected_result": "点击待审核数据卡片后进入数据管理-报告查收页面",
+      "seq": 1,
+      "target": "待审核数据",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "83d5d1747719f47ded5a",
+      "after_state_id": "46d07e012362afa482b3",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "待审核数据",
+        "role": "",
+        "tag": "div",
+        "selector": "div.cardTitle___3hSJ7",
+        "primary_locator": "div.cardTitle___3hSJ7",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_68": "",
+                "rc_select_69": "",
+                "rc_select_70": ""
+              },
+              "after": {
+                "rc_select_74": "",
+                "rc_select_75": "",
+                "rc_select_76": ""
+              }
+            },
+            "body_text": true
+          },
+          "before_state_id": "83d5d1747719f47ded5a",
+          "after_state_id": "46d07e012362afa482b3"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "255",
+      "case_name": "验证审核任务-待审核数据卡片跳转到报告查收",
+      "module": "指标总览",
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "expected_result": "点击待审核数据卡片后进入数据管理-报告查收页面",
+      "seq": 2,
+      "target": "",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "46d07e012362afa482b3",
+      "after_state_id": "46d07e012362afa482b3",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "255",
+      "case_name": "验证审核任务-待审核数据卡片跳转到报告查收",
+      "module": "指标总览",
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "expected_result": "点击待审核数据卡片后进入数据管理-报告查收页面",
+      "seq": 3,
+      "target": "报告查收",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "46d07e012362afa482b3",
+      "after_state_id": "46d07e012362afa482b3",
+      "locator": {
+        "strategy": "scored(13)",
+        "actual_text": "内部报告",
+        "role": "menuitem",
+        "tag": "li",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "46d07e012362afa482b3",
+          "after_state_id": "46d07e012362afa482b3"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    }
+  ],
+  "case_results": [
+    {
+      "case_id": "256",
+      "case_name": "验证物流看板-待发货数卡片跳转到设备管理待发货tab",
+      "module": "指标总览",
+      "test_case_id": "256",
+      "logical_case_id": "256",
+      "revision_no": 1,
+      "version_id": 121,
+      "project_id": 11,
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "e7fe9db66a99980e6c3f",
+      "data_set_id": "acabe9fe-d9bf-46b4-9f8a-47ae1c6567c4",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788341118.0222225,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "257",
+      "case_name": "验证随访监控-项目个数卡片跳转到随访管理",
+      "module": "指标总览",
+      "test_case_id": "257",
+      "logical_case_id": "257",
+      "revision_no": 1,
+      "version_id": 121,
+      "project_id": 11,
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "9c7d477bd118f3c4c5e9",
+      "data_set_id": "66840e8a-7f74-42f3-a87f-6cb932cb3d0c",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788341119.2074587,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "258",
+      "case_name": "验证随访监控-入组人数卡片跳转到患者档案",
+      "module": "指标总览",
+      "test_case_id": "258",
+      "logical_case_id": "258",
+      "revision_no": 1,
+      "version_id": 121,
+      "project_id": 11,
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "e554996b3e24171703d9",
+      "data_set_id": "ee9338db-5546-4c07-94e1-349ae5bd56c4",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788341120.7194688,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "259",
+      "case_name": "验证卡片跳转后列表数量与卡片数量相差过大时不展示异常页面",
+      "module": "指标总览",
+      "test_case_id": "259",
+      "logical_case_id": "259",
+      "revision_no": 1,
+      "version_id": 121,
+      "project_id": 11,
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "a3300f80dd943130ce45",
+      "data_set_id": "d4c1463d-a4ad-4e4e-9b31-a00e3bf671e6",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788341122.0926867,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "260",
+      "case_name": "进行中人数卡片跳转至随访管理-已入组tab",
+      "module": "指标总览",
+      "test_case_id": "260",
+      "logical_case_id": "260",
+      "revision_no": 1,
+      "version_id": 121,
+      "project_id": 11,
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "881e5cfc7d32596e1ce3",
+      "data_set_id": "0ae32a3a-88e5-43f5-8ab0-ddc4973be73a",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788341124.0146265,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "253",
+      "case_name": "验证患者总览-患者人数卡片点击跳转及总数一致性",
+      "module": "指标总览",
+      "test_case_id": "253",
+      "logical_case_id": "253",
+      "revision_no": 1,
+      "version_id": 121,
+      "project_id": 11,
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "36dc1355c382b89fa1fd",
+      "data_set_id": "747419ea-359a-44b5-8d42-86c564057945",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788341126.2263634,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "254",
+      "case_name": "验证疾病统计-室早卡片跳转并携带疾病筛选",
+      "module": "指标总览",
+      "test_case_id": "254",
+      "logical_case_id": "254",
+      "revision_no": 1,
+      "version_id": 121,
+      "project_id": 11,
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "8051f5950a1cc199a14d",
+      "data_set_id": "e0eff869-91e4-42b3-9499-914b01084141",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788341127.5361917,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "255",
+      "case_name": "验证审核任务-待审核数据卡片跳转到报告查收",
+      "module": "指标总览",
+      "test_case_id": "255",
+      "logical_case_id": "255",
+      "revision_no": 1,
+      "version_id": 121,
+      "project_id": 11,
+      "preconditions": "已登录并进入工作台页面\n按需求文档说明，本次用例执行前已将全部指标添加到工作台",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "83d5d1747719f47ded5a",
+      "data_set_id": "de9f5177-76eb-476f-b112-4a06218cdbcb",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788341129.1147385,
+      "data_cleanup": []
+    }
+  ]
+}

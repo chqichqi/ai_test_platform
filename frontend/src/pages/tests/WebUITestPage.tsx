@@ -71,6 +71,7 @@ interface WebUITestCase {
   title?: string;
   status?: string;
   lastExecuted?: string;
+  precondition_plan?: any;
 }
 
 interface FunctionalTestCase {
@@ -111,7 +112,7 @@ const WebUITestPage: React.FC = () => {
   const [batchExecuting, setBatchExecuting] = useState(false);
   const [execResultVisible, setExecResultVisible] = useState(false);
   const [execResult, setExecResult] = useState<{
-    total: number; ok: number; fail: number; results: any[];
+    total: number; ok: number; skipped: number; fail: number; results: any[];
   } | null>(null);
 
   // 浏览器选项
@@ -309,7 +310,7 @@ const WebUITestPage: React.FC = () => {
           );
           setExecResult(response.data);
           setExecResultVisible(true);
-          message.success(`执行完成: ${response.data.ok} 成功, ${response.data.fail} 失败`);
+          message.success(`执行完成: ${response.data.ok} 成功, ${response.data.skipped || 0} 跳过, ${response.data.fail} 失败`);
         } catch (error: any) {
           message.error(`执行失败: ${error.response?.data?.detail || error.message}`);
         } finally {
@@ -377,9 +378,14 @@ const WebUITestPage: React.FC = () => {
       key: 'test_data',
       render: (testData) => {
         const text = testData?.preconditions || '';
-        return text
-          ? <Text type="secondary" ellipsis={{ tooltip: text }} style={{ maxWidth: 200 }}>{text.replace(/\n/g, ' / ')}</Text>
-          : <Text type="secondary">-</Text>;
+        const plan = testData?.precondition_plan;
+        const dynamic = plan?.conditions?.find((c: any) => c?.type === 'dynamic_data');
+        return text ? (
+          <Space direction="vertical" size={2}>
+            <Text type="secondary" ellipsis={{ tooltip: text }} style={{ maxWidth: 200 }}>{text.replace(/\n/g, ' / ')}</Text>
+            {dynamic && <Tag color="orange">动态数据为空时跳过</Tag>}
+          </Space>
+        ) : <Text type="secondary">-</Text>;
       },
     },
     {
@@ -822,12 +828,12 @@ const WebUITestPage: React.FC = () => {
         {execResult && (
           <Space direction="vertical" style={{ width: '100%' }}>
             <Row gutter={16}>
-              <Col span={8}>
+              <Col span={6}>
                 <Card>
                   <Statistic title="用例总数" value={execResult.total} />
                 </Card>
               </Col>
-              <Col span={8}>
+              <Col span={6}>
                 <Card>
                   <Statistic
                     title="成功"
@@ -837,7 +843,12 @@ const WebUITestPage: React.FC = () => {
                   />
                 </Card>
               </Col>
-              <Col span={8}>
+              <Col span={6}>
+                <Card>
+                  <Statistic title="跳过" value={execResult.skipped || 0} />
+                </Card>
+              </Col>
+              <Col span={6}>
                 <Card>
                   <Statistic
                     title="失败"
@@ -871,7 +882,7 @@ const WebUITestPage: React.FC = () => {
               </>
             )}
             {execResult.fail === 0 && (
-              <Alert type="success" showIcon message={`全部 ${execResult.total} 条用例执行成功`} />
+              <Alert type="success" showIcon message={`执行完成：${execResult.ok} 成功，${execResult.skipped || 0} 跳过`} />
             )}
           </Space>
         )}

@@ -526,6 +526,36 @@ class InvalidValueGenerator:
         return invalid_cases
 
 
+def _collect_field_paths(body: Any, depth: int = 2, max_fields: int = 8) -> List[Dict[str, Any]]:
+    """从实际响应体收集字段路径（a.b.c）及实际值，用于生成断言（F26/F27 本地修复并入）。
+
+    业务码/消息类字段（code/status/message/msg/success）收集实际值 → 值断言；
+    其余关键字段（data 及常规业务字段）只收集路径 → 存在性断言。
+    """
+    collected: List[Dict[str, Any]] = []
+
+    def walk(node: Any, prefix: str, d: int) -> None:
+        if not isinstance(node, dict) or d > depth or len(collected) >= max_fields:
+            return
+        for k, v in node.items():
+            cur = f"{prefix}.{k}" if prefix else str(k)
+            last = cur.rsplit(".", 1)[-1]  # 末段字段名：顶层与嵌套（data.code）同规则
+            if last in ("code", "status", "message", "msg", "success"):
+                # 业务码值断言（用户诉求：不只断 HTTP 状态，断实际返回的 code）
+                if v is not None and isinstance(v, (int, float, str)):
+                    collected.append({"field": cur, "value": v, "is_biz_code": True})
+                else:
+                    collected.append({"field": cur, "value": None, "is_biz_code": False})
+            elif cur == "data" or last in ("total", "count", "id", "list", "rows", "records"):
+                collected.append({"field": cur, "value": None, "is_biz_code": False})
+            walk(v, cur, d + 1)
+            if len(collected) >= max_fields:
+                break
+
+    walk(body, "", 0)
+    return collected[:max_fields]
+
+
 class OpenApiTestGenerator:
     """OpenAPI 测试用例生成器 - 基于 Provider-Rule 架构"""
     
@@ -536,8 +566,14 @@ class OpenApiTestGenerator:
         self.example_generator = ExampleValueGenerator()
         self.invalid_generator = InvalidValueGenerator()
     
-    def generate_test_cases(self, endpoint: Dict[str, Any]) -> List[Dict[str, Any]]:
-        """为单个接口生成测试用例"""
+    def generate_test_cases(self, endpoint: Dict[str, Any], include_normal: bool = True,
+                            include_error: bool = True, include_boundary: bool = False,
+                            include_auth: bool = True, max_cases: int = 10) -> List[Dict[str, Any]]:
+        """为单个 OpenAPI 接口生成测试用例。
+
+        Swagger、探索捕获、手工接口生成均应进入这里；不同入口只负责提供 endpoint 数据，
+        不再各自维护“正常/缺参数/类型错误/无鉴权”的规则。
+        """
         cases = []
         
         method = endpoint.get("method", "GET")
@@ -566,26 +602,254 @@ class OpenApiTestGenerator:
         logger.info(f"解析接口 {method} {path}: body={body_schema}, query={query_schema}, has_params={has_params}, is_login={is_login}, is_simple_get={is_simple_get}")
         
         # 1. 正常场景用例
-        normal_case = self._generate_normal_case(endpoint, body_schema, query_schema, path_schema)
-        cases.append(normal_case)
+        if include_normal:
+            normal_case = self._generate_normal_case(endpoint, body_schema, query_schema, path_schema)
+            cases.append(normal_case)
         
         # 2. 参数校验异常用例（仅对有参数的接口）
-        if has_params and not is_simple_get:
+        if include_error and has_params and not is_simple_get:
             error_cases = self._generate_error_cases(endpoint, body_schema, query_schema, path_schema)
             cases.extend(error_cases)
         
-        # 3. 认证用例
-        if not is_login and endpoint.get("requires_auth"):
+        # 3. 边界值
+        if include_boundary and has_params:
+            cases.extend(self.generate_boundary_cases(endpoint, max_cases=2))
+
+        # 4. 认证用例
+        if include_auth and not is_login and endpoint.get("requires_auth"):
             auth_case = self._generate_auth_case(endpoint)
             cases.append(auth_case)
-        
-        # 简单GET接口只生成认证用例
-        if is_simple_get and endpoint.get("requires_auth"):
-            auth_case = self._generate_auth_case(endpoint)
-            cases.append(auth_case)
-        
-        return cases
+
+        # 简单 GET 没有参数错误变体，但如果接口需要鉴权，仍生成无鉴权用例。
+        return cases[:max_cases]
     
+    def generate_boundary_cases(self, endpoint: Dict[str, Any], max_cases: int = 4) -> List[Dict[str, Any]]:
+        """统一生成有真实参数变异的边界用例。"""
+        body = self.schema_parser.parse_request_body(endpoint)
+        query = self.schema_parser.parse_query_params(endpoint)
+        path = self.schema_parser.parse_path_params(endpoint)
+        if not (body or query or path):
+            return []
+        base_body = {k: self.example_generator.generate_valid_value(v) for k, v in body.items()}
+        base_query = {k: self.example_generator.generate_valid_value(v) for k, v in query.items()}
+        base_path = {k: self.example_generator.generate_valid_value(v) for k, v in path.items()}
+        target_loc, target_name, target_schema = None, None, None
+        for loc, source in (("body", body), ("query", query), ("path", path)):
+            if source:
+                target_name, target_schema = next(iter(source.items()))
+                target_loc = loc
+                break
+        if not target_name: return []
+        values = []
+        typ = (target_schema or {}).get("type", "string")
+        if typ in ("integer", "number"):
+            minimum = (target_schema or {}).get("minimum")
+            maximum = (target_schema or {}).get("maximum")
+            values = [minimum if minimum is not None else 0, maximum if maximum is not None else 999999]
+        elif typ == "string":
+            min_len = (target_schema or {}).get("minLength")
+            max_len = (target_schema or {}).get("maxLength")
+            values = ["" if min_len in (0, None) else "a" * max(1, int(min_len) - 1),
+                      "a" * (int(max_len) + 1) if max_len else "a" * 256]
+        elif typ == "array":
+            values = [[], [self.example_generator.generate_valid_value({"type": "string"})] * 10]
+        else:
+            values = [None]
+        cases = []
+        for idx, value in enumerate(values[:max_cases]):
+            q, b, pp = dict(base_query), dict(base_body), dict(base_path)
+            if target_loc == "query": q[target_name] = value
+            elif target_loc == "path": pp[target_name] = value
+            else: b[target_name] = value
+            desc = "边界值" if idx == 0 else "超出边界"
+            rules = self._generate_smart_assert_rules(endpoint.get("responses", {}) or {}, "error")
+            cases.append({
+                "name": f"{endpoint.get('method','GET')} {endpoint.get('path','/')} - {target_name}{desc}",
+                "case_type": "boundary", "priority": "P3", "description": f"边界场景：{target_name}{desc}",
+                "preconditions": "API服务正常运行",
+                "test_steps": self._observed_test_steps(endpoint.get("method","GET"), endpoint.get("path","/"), rules, desc),
+                "expected_status": None, "expected_result": "响应符合接口对边界参数的处理约束",
+                "assert_rules": rules, "query_params": q, "path_params": pp, "request_body": b, "headers": {},
+            })
+        return cases
+
+    def generate_observed_cases(self, record: Dict[str, Any], module: str = "通用模块",
+                                include_normal: bool = True, include_error: bool = True,
+                                include_boundary: bool = False, include_auth: bool = True,
+                                max_cases: int = 6) -> List[Dict[str, Any]]:
+        """从探索捕获的真实请求生成 API 用例。
+
+        探索与 Swagger 的入口不同，但测试变体规则统一：
+        - 有真实请求参数才生成缺参数/类型错误；
+        - 有可识别 ID 才生成不存在资源；
+        - 有鉴权形态才生成无鉴权；
+        - 不机械生成“缺参数”给无参数 GET。
+        """
+        rec = record or {}
+        method = str(rec.get("method") or "GET").upper()
+        path = str(rec.get("path") or "/")
+        endpoint = {
+            "method": method, "path": path, "summary": rec.get("summary", ""),
+            "parameters": [], "request_body": rec.get("request_body") or {},
+            "responses": rec.get("responses") or {},
+            "requires_auth": bool(rec.get("auth_shape")),
+        }
+        query = dict(rec.get("query_params") or {})
+        # F21（2026-08-25 本地修复并入）：非 JSON body 保留原文（str）不丢弃——
+        # 执行侧按类型分派（dict→json= / str→data=），丢弃会导致 form 接口用例无 body
+        raw_body = rec.get("request_body")
+        body = dict(raw_body) if isinstance(raw_body, dict) else (raw_body or {})
+        headers = dict(rec.get("headers") or {})
+        auth_shape = rec.get("auth_shape") or {}
+        cases: List[Dict[str, Any]] = []
+
+        if include_normal:
+            observed_status = int(rec.get("status") or 200)
+            # F26/F27（2026-08-25 本地修复并入）：完整断言规则——http_status + 非空 +
+            # 顶层/嵌套业务码值断言（status_eq/json_value_eq）+ message/msg 动态文本仅存在性
+            rules = self._observed_assert_rules(rec.get("response_body"), observed_status)
+            cases.append({
+                "name": f"[探索] {module} - {method} {path}", "case_type": "normal", "priority": "P2",
+                "description": f"探索自动生成正常用例：{method} {path}",
+                "preconditions": "需有效登录：执行时按项目 api_auth 自动注入实时 Token" if auth_shape else "API服务正常运行",
+                "test_steps": self._observed_test_steps(method, path, rules),
+                "expected_status": observed_status, "expected_result": f"HTTP状态码{observed_status}，响应结构正确",
+                "assert_rules": rules, "query_params": query, "path_params": rec.get("path_params") or {},
+                "request_body": body, "headers": self._observed_auth_headers(headers, auth_shape),
+            })
+
+        if include_error:
+            variants = []
+            # no_auth 与缺参数是不同测试意图；只有真的观察到鉴权才生成 no_auth。
+            if auth_shape and include_auth:
+                variants.append(("无鉴权访问", "no_auth", "", query, body, headers))
+
+            # 变体只记录变异契约（mutation_key/mutation），请求参数保持探索期原始值——
+            # 错误值在执行时由 TestDataManager.mutate_value 生成（与 Swagger 路径同源，
+            # 缺参数=删除参数，绝不从持久化请求物理删值；mutation 值域与执行侧一致）
+            target = self._first_mutable_param(query, body)
+            if target:
+                loc, name, value = target
+                variants.append(("缺参数", "missing", f"{loc}.{name}", dict(query), dict(body), self._observed_auth_headers(headers, auth_shape)))
+                variants.append(("参数类型错误", "type_mismatch", f"{loc}.{name}", dict(query), dict(body), self._observed_auth_headers(headers, auth_shape)))
+
+            id_target = self._first_id_param(query, body)
+            if id_target:
+                loc, name = id_target
+                variants.append(("资源不存在", "not_found", f"{loc}.{name}", dict(query), dict(body), self._observed_auth_headers(headers, auth_shape)))
+
+            for desc, tag, mutation_key, q, b, h in variants[:max(0, max_cases - len(cases))]:
+                rules = [{"type": "http_status", "value": [400, 401, 403, 404, 422], "description": "HTTP状态码为4xx"}]
+                cases.append({
+                    "name": f"[探索-异常] {module} - {method} {path} - {desc}", "case_type": "error", "priority": "P3",
+                    "description": f"探索自动生成异常变体（{desc}）：{method} {path}",
+                    "preconditions": "无需鉴权：验证未授权访问被拦截（4xx）" if tag == "no_auth" else "需有效登录：执行时自动注入鉴权 Token（{{auth_token}} 占位符替换）",
+                    "test_steps": self._observed_test_steps(method, path, rules, desc),
+                    "expected_status": None, "expected_result": "响应状态码在 4xx 预期范围内",
+                    "assert_rules": rules, "query_params": q, "path_params": rec.get("path_params") or {},
+                    "request_body": b, "headers": h,
+                    "mutation_key": mutation_key, "mutation": "" if tag == "no_auth" else tag,
+                })
+        return cases[:max_cases]
+
+    def _observed_auth_headers(self, headers: Dict[str, Any], auth_shape: Dict[str, Any]) -> Dict[str, Any]:
+        out = dict(headers or {})
+        if auth_shape:
+            out[auth_shape.get("header_name") or "Authorization"] = "{{auth_token}}"
+        return out
+
+    def _first_mutable_param(self, query: Dict[str, Any], body: Dict[str, Any]):
+        # 与 api_flow_capture._SENSITIVE_KEY_RE 同源（含 api_key 变体，防变异敏感字段）
+        sensitive = re.compile(r"(?i)password|passwd|secret|token|apikey|api_key|authorization|cookie")
+        for loc, source in (("body", body), ("query", query)):
+            for name, value in source.items():
+                if not sensitive.search(str(name)):
+                    return loc, str(name), value
+        return None
+
+    def _first_id_param(self, query: Dict[str, Any], body: Dict[str, Any]):
+        for loc, source in (("query", query), ("body", body)):
+            for name in source:
+                n = str(name).lower()
+                if n == "id" or n.endswith("id") or n in ("patientid", "userid", "caseid"):
+                    return loc, str(name)
+        return None
+
+    def _observed_assert_rules(self, body: Any, expected_status: int = 200) -> List[Dict[str, Any]]:
+        """从捕获的实际响应体构建断言规则（F26/F27 本地修复并入统一生成器）。
+
+        - 顶层 code/status（常见 result.code）：status_eq 值断言（执行器取 body.code/status 比较）
+        - 嵌套业务码（如 data.code）：json_value_eq 值断言（jsonpath 取值比较）
+        - message/msg（动态文本，带时间戳/随机数/环境信息）与 success 标志：仅存在性断言，
+          固化值断言执行必败（F27 修复）
+        - 其余关键字段：json_contains 存在性断言（skip_if_missing 兜底）
+        """
+        rules: List[Dict[str, Any]] = [
+            {"type": "http_status", "value": [expected_status], "description": "HTTP状态码"}
+        ]
+        if body:
+            rules.append({"type": "response_not_empty", "value": None, "description": "响应体非空"})
+            for item in _collect_field_paths(body):
+                field = item["field"]
+                val = item["value"]
+                if not item["is_biz_code"]:
+                    rules.append({
+                        "type": "json_contains", "field": field, "value": None,
+                        "skip_if_missing": True,
+                        "description": f"响应包含字段 {field}",
+                    })
+                elif field in ("code", "status") and val is not None:
+                    # 顶层业务码：值断言（= 探索期捕获的真实成功值，稳定可固化）
+                    rules.append({
+                        "type": "status_eq", "field": field, "value": val,
+                        "description": f"业务码 {field} == {val}",
+                    })
+                elif val is not None and field.rsplit(".", 1)[-1] in ("code", "status"):
+                    # 嵌套业务码（data.code 等）：jsonpath 值断言——仅 code/status 可固化
+                    rules.append({
+                        "type": "json_value_eq", "field": field, "value": val,
+                        "description": f"业务码 {field} == {val}",
+                    })
+                else:
+                    # message/msg（动态文本）与 success 标志：仅存在性断言，不固化值
+                    rules.append({
+                        "type": "json_contains", "field": field, "value": None,
+                        "skip_if_missing": True,
+                        "description": f"响应包含字段 {field}",
+                    })
+        return rules
+
+    def _observed_test_steps(self, method: str, path: str, rules: List[Dict[str, Any]], variant: str = "") -> List[Dict[str, Any]]:
+        """构造 API 用例的测试步骤（F28 本地修复并入统一生成器）。
+
+        步骤语义与执行器实际断言一一对应，避免「写一套做一套」：
+        http_status → 状态码断言，status_eq/json_value_eq → 字段值断言，json_contains → 存在性断言。
+        """
+        steps = [{"step": 1, "action": f"发送 {method} 请求 {path}" + (f"（{variant}）" if variant else ""),
+                  "expected": "响应为4xx错误" if variant else "请求成功，获取响应"}]
+        for i, rule in enumerate(rules or [], 2):
+            typ = rule.get("type")
+            field = rule.get("field")
+            value = rule.get("value")
+            if typ == "http_status":
+                vals = value if isinstance(value, list) else [value]
+                status_text = " / ".join(str(s) for s in vals)
+                steps.append({"step": i, "action": f"断言 HTTP 状态码为 {status_text}",
+                              "expected": f"响应状态码在预期区间 [{status_text}]"})
+            elif typ in ("status_eq", "json_value_eq"):
+                steps.append({"step": i, "action": f"断言响应字段 {field} 等于 {value}",
+                              "expected": f"字段 {field} == {value}"})
+            elif typ == "json_contains":
+                steps.append({"step": i, "action": f"断言响应包含字段 {field}",
+                              "expected": f"响应体包含字段 {field}"})
+            elif typ == "response_not_empty":
+                steps.append({"step": i, "action": "断言响应体非空",
+                              "expected": "响应体有内容"})
+            else:
+                text = rule.get("description") or f"断言 {typ}"
+                steps.append({"step": i, "action": text, "expected": text})
+        return steps
+
     def _is_login_endpoint(self, path: str, method: str) -> bool:
         """判断是否是登录接口"""
         path_lower = path.lower()
@@ -1097,89 +1361,84 @@ class OpenApiTestGenerator:
         query_schema: Dict[str, Any],
         path_schema: Dict[str, Any]
     ) -> List[Dict[str, Any]]:
-        """生成参数校验异常用例 - 每个参数生成多个异常场景"""
-        cases = []
-        
+        """统一参数异常策略：每个接口只选择最有价值的代表性变体。
+
+        不再“每个参数×多个异常”无限膨胀；优先：缺必填参数、类型错误、资源不存在。
+        """
         method = endpoint.get("method", "GET")
         path = endpoint.get("path", "/")
-        
-        # 为每个 body 参数生成异常用例
-        for prop_name, prop_schema in body_schema.items():
-            invalid_values = self.invalid_generator.generate_invalid_values(prop_schema)
-            
-            # 只取前2个最典型的异常场景（避免用例过多）
-            for invalid_case in invalid_values[:2]:
-                # 构建请求体：只修改当前参数，其他参数使用有效值
-                error_body = {}
-                for other_name, other_schema in body_schema.items():
-                    if other_name == prop_name:
-                        if invalid_case["value"] is None:
-                            continue  # 缺少参数时不包含该字段
-                        error_body[other_name] = invalid_case["value"]
-                    else:
-                        error_body[other_name] = self.example_generator.generate_valid_value(other_schema)
-                
-                error_case = {
-                    "name": f"{method} {path} - {prop_name}{invalid_case['name_suffix']}",
-                    "case_type": "error",
-                    "priority": "P2",
-                    "description": f"异常场景测试: {invalid_case['description']}",
-                    "preconditions": "API服务正常运行",
-                    "test_steps": [
-                        {"step": 1, "action": f"发送{method}请求到{path}，请求体: {json.dumps(error_body, ensure_ascii=False)}", "expected": "HTTP状态码400/422，业务返回错误码"}
-                    ],
-                    "expected_status": 400,
-                    "expected_result": "业务返回错误码，错误信息明确",
-                    "assert_rules": [
-                        {"type": "http_status", "value": [400, 401, 403, 404, 422, 500, 200], "description": "HTTP状态码可能为错误状态"},
-                        {"type": "json_in", "field": "code", "value": [10001, 40001, 40002, 40003, 50001, -1, 400, 401, 403, 404, 422, 500], "description": "业务返回码应为错误状态", "skip_if_missing": True}
-                    ],
-                    "query_params": {},
-                    "request_body": error_body,
-                    "headers": {},
-                    "rule": invalid_case["rule"]
-                }
-                cases.append(error_case)
-        
-        # 为每个 query 参数生成异常用例
-        for param_name, param_schema in query_schema.items():
-            invalid_values = self.invalid_generator.generate_invalid_values(param_schema)
-            
-            for invalid_case in invalid_values[:2]:
-                error_query = {}
-                for other_name, other_schema in query_schema.items():
-                    if other_name == param_name:
-                        if invalid_case["value"] is None:
-                            continue
-                        error_query[other_name] = invalid_case["value"]
-                    else:
-                        error_query[other_name] = self.example_generator.generate_valid_value(other_schema)
-                
-                error_case = {
-                    "name": f"{method} {path} - {param_name}{invalid_case['name_suffix']}",
-                    "case_type": "error",
-                    "priority": "P2",
-                    "description": f"异常场景测试: {invalid_case['description']}",
-                    "preconditions": "API服务正常运行",
-                    "test_steps": [
-                        {"step": 1, "action": f"发送{method}请求到{path}，查询参数: {json.dumps(error_query, ensure_ascii=False)}", "expected": "HTTP状态码400/422，业务返回错误码"}
-                    ],
-                    "expected_status": 400,
-                    "expected_result": "业务返回错误码",
-                    "assert_rules": [
-                        {"type": "http_status", "value": [400, 401, 403, 404, 422, 500, 200]},
-                        {"type": "json_in", "field": "code", "value": [10001, 40001, 40002, 40003, 50001, -1, 400, 401, 403, 404, 422, 500], "skip_if_missing": True}
-                    ],
-                    "query_params": error_query,
-                    "request_body": {},
-                    "headers": {},
-                    "rule": invalid_case["rule"]
-                }
-                cases.append(error_case)
-        
-        # 限制异常用例数量，避免过多
-        return cases[:6]  # 每个接口最多6个异常用例
-    
+        cases: List[Dict[str, Any]] = []
+        base_body = {k: self.example_generator.generate_valid_value(v) for k, v in body_schema.items()}
+        base_query = {k: self.example_generator.generate_valid_value(v) for k, v in query_schema.items()}
+        base_path = {k: self.example_generator.generate_valid_value(v) for k, v in path_schema.items()}
+
+        def add_case(desc, target_loc, target_name, mutation, mutated_body, mutated_query, mutated_path):
+            rule = {"type": "http_status", "value": [400, 401, 403, 404, 422], "description": "HTTP状态码为4xx"}
+            cases.append({
+                "name": f"{method} {path} - {target_name or desc}{desc}",
+                "case_type": "error", "priority": "P2", "description": f"异常场景测试：{desc}",
+                "preconditions": "API服务正常运行",
+                "test_steps": [{"step": 1, "action": f"发送{method}请求到{path}（{desc}）", "expected": "HTTP状态码在400/401/403/404/422范围内"},
+                                {"step": 2, "action": "断言 HTTP 状态码", "expected": "响应状态码属于预期4xx范围"}],
+                "expected_status": None, "expected_result": "响应状态码在预期4xx范围内",
+                "assert_rules": [rule], "query_params": mutated_query, "path_params": mutated_path,
+                "request_body": mutated_body, "headers": {}, "rule": mutation,
+                "mutation_key": f"{target_loc}.{target_name}" if target_name else "",
+                "mutation": mutation,
+            })
+
+        # 1) 缺少必填参数：优先 required，只有没有 required 时才选第一个参数。
+        target = None
+        for loc, source in (("body", body_schema), ("query", query_schema), ("path", path_schema)):
+            for name, spec in source.items():
+                if loc == "path" or spec.get("required") is True:
+                    target = (loc, name, spec); break
+            if target: break
+        if target is None:
+            for loc, source in (("body", body_schema), ("query", query_schema)):
+                if source:
+                    name, spec = next(iter(source.items())); target=(loc,name,spec); break
+        if target:
+            loc, name, spec = target
+            b, q, pp = dict(base_body), dict(base_query), dict(base_path)
+            if loc == "body": b.pop(name, None)
+            elif loc == "query": q.pop(name, None)
+            else: pp.pop(name, None)
+            add_case("缺参数", loc, name, "missing", b, q, pp)
+
+        # 2) 类型错误：优先简单标量字段。
+        target = None
+        for loc, source in (("body", body_schema), ("query", query_schema), ("path", path_schema)):
+            for name, spec in source.items():
+                if spec.get("type") in ("string", "integer", "number", "boolean"):
+                    target=(loc,name,spec); break
+            if target: break
+        if target:
+            loc, name, spec = target
+            typ = spec.get("type")
+            wrong = {"string": 123456789, "integer": "not-a-number", "number": "not-a-number", "boolean": "not-a-boolean"}.get(typ, "invalid")
+            b, q, pp = dict(base_body), dict(base_query), dict(base_path)
+            if loc == "body": b[name]=wrong
+            elif loc == "query": q[name]=wrong
+            else: pp[name]=wrong
+            add_case("参数类型错误", loc, name, "type_mismatch", b, q, pp)
+
+        # 3) 不存在资源：只在存在 ID 参数时生成。
+        target = None
+        for loc, source in (("path", path_schema), ("body", body_schema), ("query", query_schema)):
+            for name in source:
+                n=str(name).lower()
+                if n == "id" or n.endswith("id") or n in ("patientid","userid","caseid"):
+                    target=(loc,name); break
+            if target: break
+        if target:
+            loc,name=target; b,q,pp=dict(base_body),dict(base_query),dict(base_path)
+            if loc=="body": b[name]=999999999
+            elif loc=="query": q[name]=999999999
+            else: pp[name]=999999999
+            add_case("资源不存在", loc, name, "not_found", b, q, pp)
+        return cases[:3]
+
     def _generate_auth_case(self, endpoint: Dict[str, Any]) -> Dict[str, Any]:
         """生成认证错误用例
         

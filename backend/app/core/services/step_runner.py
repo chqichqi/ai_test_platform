@@ -229,6 +229,10 @@ class StepRunner:
             self._do_scroll_to_bottom(args)
         elif action == "skip_if_empty":
             self._do_skip_if_empty(args)
+        elif action == "guard_dynamic_data":
+            self._do_guard_dynamic_data(args)
+        elif action == "click_dynamic_item":
+            self._do_click_dynamic_item(args, desc)
         elif action == "skip_if_not_exists":
             self._do_skip_if_not_exists(args)
         elif action == "handle_org_selection":
@@ -378,9 +382,26 @@ class StepRunner:
     # 交互操作
     # ═══════════════════════════════════════════════
     def _do_click(self, args: dict, desc: str) -> None:
+        explicit_role = str(args.get("role") or "").lower()
+        if explicit_role in {"heading", "text", "paragraph", "table", "region", "card", "static"}:
+            raise StepRunError(f"不可点击元素(role={explicit_role}): {args.get('locator', desc)}")
         loc = self._resolve_locator(args)
-        loc.click(timeout=5000)
-        logger.info(f"[StepRunner] click ✓ {desc[:30]}")
+        try:
+            loc.wait_for(state="visible", timeout=5000)
+            try:
+                semantic = loc.evaluate("e => ({tag:e.tagName.toLowerCase(), role:e.getAttribute('role') || '', disabled:e.disabled === true})")
+                if semantic.get('role') in ('heading', 'presentation') or semantic.get('tag') in ('h1','h2','h3','h4','h5','h6'):
+                    raise StepRunError(f"不可点击元素: {args.get('locator', desc)} ({semantic})")
+            except StepRunError:
+                raise
+            except Exception:
+                pass
+            loc.click(timeout=5000)
+            logger.info(f"[StepRunner] click ✓ {desc[:30]}")
+        except StepRunError:
+            raise
+        except Exception as e:
+            raise StepRunError(str(e))
 
     def _do_dblclick(self, args: dict, desc: str) -> None:
         loc = self._resolve_locator(args)
@@ -418,7 +439,8 @@ class StepRunner:
             self._do_click(trigger_args, desc)
         else:
             self._do_click(args, desc)
-        self.page.wait_for_timeout(800)
+        # 下拉展开等待（用户 2026-09-02 建议缩短到 500ms）
+        self.page.wait_for_timeout(500)
 
         # ── 第2步：在打开的下拉面板中点击目标选项 ──
         option_clicked = False
@@ -477,6 +499,22 @@ class StepRunner:
     def _do_assert_text(self, args: dict, desc: str) -> None:
         expected = args.get("expected", args.get("text", ""))
         loc = self._resolve_locator(args)
+        import re as _re
+        # 生成侧 LLM 常产出动态/正则断言：未解析模板变量（'共 ${total} 条'）或
+        # 正则转义（'佩戴预警 \(\d+\)'）。此类若按字面匹配必然误判失败。
+        # 含 ${...} 模板 → 把占位符转通配 .*?；含反斜杠/正则特征 → 按正则匹配页面实际文本。
+        has_template = '${' in expected
+        has_regex_feature = ('\\' in expected) or ('.?' in expected)
+        if has_template or has_regex_feature:
+            pattern = '.*?'.join(_re.escape(p) for p in _re.split(r'\$\{[^}]*\}', expected)) if has_template else expected
+            try:
+                text = loc.first.inner_text(timeout=5000)
+            except Exception:
+                text = ''
+            if not _re.search(pattern, text):
+                raise StepRunError(f"assert_text 不匹配: {desc} (期望 {pattern!r}, 实际 {text[:60]!r})")
+            logger.info(f"[StepRunner] assert_text(正则) ✓ {desc[:30]}")
+            return
         from playwright.sync_api import expect
         expect(loc.first).to_contain_text(expected, timeout=5000)
         logger.info(f"[StepRunner] assert_text ✓ {desc[:30]}")
@@ -693,6 +731,176 @@ class StepRunner:
             items = list_var
         if not items or (isinstance(items, list) and len(items) == 0):
             raise SkipTestError("列表为空，无可操作项，跳过本用例")
+
+    def _section_container(self, section: str):
+        """返回 section 标题对应的数据容器。
+
+        不依赖具体前端框架：先找精确文本，再沿祖先向上寻找包含明显数据内容的
+        容器。这样既适配 Ant Design，也适配普通 div/card 布局。
+        """
+        if not section:
+            return None
+        heading = self.page.get_by_text(str(section), exact=True).first
+        try:
+            heading.wait_for(state="visible", timeout=2000)
+        except Exception:
+            return None
+        # 优先语义区域，其次向上尝试 1~5 层。
+        for xp in (
+            'xpath=ancestor::*[@role="region"][1]',
+            'xpath=ancestor::section[1]',
+            'xpath=ancestor::*[contains(@class,"card")][1]',
+            'xpath=ancestor::div[1]',
+            'xpath=ancestor::div[2]',
+            'xpath=ancestor::div[3]',
+            'xpath=ancestor::div[4]',
+        ):
+            try:
+                loc = heading.locator(xp).first
+                if loc.count() and loc.is_visible():
+                    text = (loc.inner_text() or '').strip()
+                    if len(text) > len(str(section)):
+                        return loc
+            except Exception:
+                continue
+        return heading
+
+    def _section_has_data(self, section: str, empty_indicators=None) -> bool:
+        """判断一个动态数据区是否有可操作数据。"""
+        container = self._section_container(section)
+        if container is None:
+            return False
+        empty_indicators = [str(x).strip() for x in (empty_indicators or []) if str(x).strip()]
+        try:
+            text = (container.inner_text() or '').strip()
+        except Exception:
+            return False
+        if not text:
+            return False
+        # 空态文案命中且没有其它明显内容 → 视为空。
+        if any(ind in text for ind in empty_indicators):
+            # 去掉标题和空态后仍有实质文本，认为有数据；否则为空。
+            residue = text
+            for token in [section] + empty_indicators:
+                residue = residue.replace(token, '')
+            if not residue.strip():
+                return False
+
+        # 有交互数据优先：链接、button、表格行、cursor:pointer 元素。
+        for selector in (
+            'a:visible', '[role="link"]:visible', '[role="button"]:visible',
+            'button:visible', 'tbody tr:visible', '[onclick]:visible',
+        ):
+            try:
+                if container.locator(selector).count() > 0:
+                    return True
+            except Exception:
+                pass
+
+        # 某些业务页面患者姓名是 div/span + click handler，不能靠 tag 判断。
+        try:
+            candidates = container.locator('div,span,p,td').all()
+            for el in candidates[:80]:
+                try:
+                    if not el.is_visible():
+                        continue
+                    t = (el.inner_text() or '').strip()
+                    if not t or t == section or t in empty_indicators or len(t) > 80:
+                        continue
+                    cursor = el.evaluate("e => getComputedStyle(e).cursor")
+                    if cursor == 'pointer':
+                        return True
+                except Exception:
+                    continue
+        except Exception:
+            pass
+        # 没有空态且容器存在额外文本，也可以视为有数据；后续 click_dynamic_item
+        # 仍会再次寻找真正可点击元素，避免把标题当作数据。
+        residue = text.replace(section, '').strip()
+        return bool(residue and not any(ind in residue for ind in empty_indicators))
+
+    def _do_guard_dynamic_data(self, args: dict) -> None:
+        """动态数据前置守卫：没有数据时 Skip，而不是 Failed。"""
+        sections = args.get('sections') or args.get('targets') or []
+        if isinstance(sections, str):
+            sections = [sections]
+        normalized = []
+        for item in sections:
+            if isinstance(item, str):
+                normalized.append({'section': item})
+            elif isinstance(item, dict) and item.get('section'):
+                normalized.append(item)
+        empty = args.get('empty_indicators') or ['暂无数据', '无数据']
+        match = (args.get('match') or 'any').lower()
+        states = []
+        for item in normalized:
+            section = str(item.get('section'))
+            states.append(self._section_has_data(section, empty))
+        has_data = any(states) if match == 'any' else all(states) if states else False
+        logger.info(f"[StepRunner] dynamic_data_guard sections={normalized} states={states} match={match}")
+        if not has_data:
+            raise SkipTestError("动态数据为空，无可操作数据，跳过本用例")
+
+    def _do_click_dynamic_item(self, args: dict, desc: str) -> None:
+        """点击动态数据区中的真实可操作项，严禁点击 section 标题本身。"""
+        section = args.get('section') or args.get('container') or ''
+        empty = args.get('empty_indicators') or ['暂无数据', '无数据']
+        if not self._section_has_data(section, empty):
+            raise SkipTestError(f"「{section}」没有动态数据，跳过本用例")
+        container = self._section_container(section)
+        if container is None:
+            raise StepRunError(f"动态数据区不存在: {section}")
+
+        item_role = args.get('item_role') or ''
+        item_text = args.get('item_text') or ''
+        selectors = []
+        if item_role in ('link', 'button', 'tab'):
+            selectors.append(f'[role="{item_role}"]:visible')
+            if item_role == 'link': selectors.append('a:visible')
+            if item_role == 'button': selectors.append('button:visible')
+        selectors.extend(['a:visible', '[role="link"]:visible', 'button:visible', '[role="button"]:visible',
+                          '[onclick]:visible', 'tbody tr:visible'])
+        if item_text:
+            selectors.insert(0, f'text={item_text}')
+
+        # 排除标题和空态文本。
+        exclude = set([section] + [str(x) for x in empty])
+        for selector in selectors:
+            try:
+                loc = container.locator(selector)
+                count = min(loc.count(), 50)
+                for i in range(count):
+                    el = loc.nth(i)
+                    if not el.is_visible():
+                        continue
+                    txt = (el.inner_text() or el.get_attribute('aria-label') or '').strip()
+                    if txt in exclude:
+                        continue
+                    if item_text and item_text not in txt:
+                        continue
+                    el.click(force=True, timeout=5000)
+                    logger.info(f"[StepRunner] click_dynamic_item ✓ {section} -> {txt[:80]}")
+                    return
+            except Exception:
+                continue
+        # 最后尝试 cursor:pointer 的数据项。
+        try:
+            candidates = container.locator('div,span,p,td').all()
+            for el in candidates[:100]:
+                try:
+                    if not el.is_visible(): continue
+                    txt = (el.inner_text() or '').strip()
+                    if not txt or txt in exclude or len(txt) > 80: continue
+                    if el.evaluate("e => getComputedStyle(e).cursor") != 'pointer': continue
+                    if item_text and item_text not in txt: continue
+                    el.click(force=True, timeout=5000)
+                    logger.info(f"[StepRunner] click_dynamic_item ✓ {section} -> {txt[:80]}")
+                    return
+                except Exception:
+                    continue
+        except Exception:
+            pass
+        raise StepRunError(f"「{section}」存在数据，但未找到可点击的数据项")
 
     def _do_handle_org_selection(self, args: dict, desc: str) -> None:
         """条件性处理机构选择页——与 LoginEngine._h_handle_org_selection 同源策略。
@@ -1367,6 +1575,7 @@ class StepRunner:
             "get_dropdown_options": self._do_dropdown_opts, "get_selected_items": self._do_selected,
             "get_all_items": self._do_all_items, "check_data_exists": self._do_check_exists,
             "skip_if_not_exists": self._do_skip_not_exists, "skip_if_empty": self._do_skip_empty,
+            "guard_dynamic_data": self._do_guard_dynamic_data, "click_dynamic_item": self._do_click_dynamic_item,
             "foreach": self._do_foreach,
         }
 
@@ -1456,6 +1665,66 @@ class StepRunner:
         try: exists = self.page.locator(f"text={v}").first.is_visible(timeout=2000)
         except: exists = False
         if "save_as" in step: self.vars[step["save_as"]] = exists
+
+    def _section_container(self, section):
+        if not section: return None
+        try:
+            h = self.page.get_by_text(str(section), exact=True).first
+            h.wait_for(state="visible", timeout=2000)
+            for xp in ('xpath=ancestor::*[@role="region"][1]', 'xpath=ancestor::section[1]', 'xpath=ancestor::div[1]', 'xpath=ancestor::div[2]', 'xpath=ancestor::div[3]'):
+                try:
+                    loc=h.locator(xp).first
+                    if loc.count() and loc.is_visible() and len((loc.inner_text() or '').strip()) > len(str(section)):
+                        return loc
+                except Exception: pass
+            return h
+        except Exception: return None
+
+    def _section_has_data(self, section, empty):
+        c=self._section_container(section)
+        if c is None: return False
+        try: text=(c.inner_text() or '').strip()
+        except Exception: return False
+        if not text: return False
+        residue=text.replace(str(section),'')
+        if any(str(x) in residue for x in empty) and not residue.strip().replace('暂无数据','').replace('无数据','').strip(): return False
+        for sel in ('a:visible','[role="link"]:visible','button:visible','[role="button"]:visible','tbody tr:visible','[onclick]:visible'):
+            try:
+                if c.locator(sel).count()>0: return True
+            except Exception: pass
+        return bool(residue.strip())
+
+    def _do_guard_dynamic_data(self, args, step=None):
+        sections=args.get('sections') or args.get('targets') or []
+        if isinstance(sections,str): sections=[sections]
+        sections=[x.get('section') if isinstance(x,dict) else x for x in sections]
+        empty=args.get('empty_indicators') or ['暂无数据','无数据']
+        states=[self._section_has_data(x,empty) for x in sections if x]
+        ok=any(states) if (args.get('match') or 'any')=='any' else all(states)
+        if not ok: raise SkipTestError('动态数据为空，无可操作数据，跳过本用例')
+
+    def _do_click_dynamic_item(self, args, step=None):
+        section=args.get('section') or ''
+        empty=args.get('empty_indicators') or ['暂无数据','无数据']
+        if not self._section_has_data(section,empty): raise SkipTestError(f'「{section}」没有动态数据，跳过本用例')
+        c=self._section_container(section)
+        if c is None: raise StepRunError(f'动态数据区不存在: {section}')
+        role=args.get('item_role') or ''
+        selectors=[]
+        if role: selectors.append(f'[role="{role}"]:visible')
+        selectors += ['a:visible','[role="link"]:visible','button:visible','[role="button"]:visible','[onclick]:visible','tbody tr:visible']
+        exclude={section,*[str(x) for x in empty]}
+        for sel in selectors:
+            try:
+                loc=c.locator(sel)
+                for i in range(min(loc.count(),50)):
+                    el=loc.nth(i)
+                    if not el.is_visible(): continue
+                    txt=(el.inner_text() or el.get_attribute('aria-label') or '').strip()
+                    if not txt or txt in exclude: continue
+                    el.click(force=True,timeout=5000); return
+            except Exception: pass
+        raise StepRunError(f'「{section}」存在数据，但未找到可点击的数据项')
 
     def _do_skip_not_exists(self, args):
         if not args.get("condition", True): raise SkipTestError("无可用的测试数据")

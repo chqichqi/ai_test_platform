@@ -131,6 +131,9 @@ export interface WebExplorationConfig {
   password?: string;
   login_rules?: LoginRulesConfig;
   convert_batch_size?: number;
+  /** 多环境管理：环境列表 + 当前激活环境（base_url 由激活环境同步） */
+  environments?: {name: string; url: string}[];
+  active_environment?: string;
 }
 
 export interface AppExplorationConfig {
@@ -143,6 +146,8 @@ export interface AppExplorationConfig {
 export interface ExplorationConfig {
   web?: WebExplorationConfig;
   app?: AppExplorationConfig;
+  // 登录模块业务流内容（项目级资产：同一项目同一套登录逻辑，跨版本共享）
+  login_module_content?: string;
 }
 
 export interface ProjectSetting {

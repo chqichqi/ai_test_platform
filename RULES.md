@@ -2,6 +2,7 @@
 
 > **本文件是编码规则的强制来源**。所有代码改动前必读，按此严格执行，违反即返工。
 > 用户要求（2026-08-16 定）：「所有的代码不要硬编码，所有的功能都得做到通用性，不要换了项目就全挂了。」
+> 用户重申（2026-09-02 固化）：「创建项目后，每个项目的登录模块都必须是通用的。不要将来重新创建了一个新项目，其登录业务流变化，也应该能正常登录。」
 > 与 CLAUDE.md 硬性规则 1/2 配套：CLAUDE.md 定原则，本文件定**判定标准、反例清单、执行机制**。
 
 ## 一、核心定义
@@ -19,6 +20,21 @@
 
 **反例的正确形态**：上述内容出现在**数据位**——步骤数据（`args`）、`exploration_config.explore` 配置段、项目设置。数据位可按项目覆盖，代码位永远不能变。
 
+## 一·五、登录模块跨项目通用性铁律（2026-09-02 用户重申固化）
+
+> 铁律：每个项目的登录模块必须**跨项目通用**——换一个新项目、登录业务流完全不同，只要**重新导入该项目的登录模块业务流**，就必须能正常登录，**平台代码零改动**。违反即返工。
+
+**验收标准（换项目场景，必须通过）**：
+1. 新建任意项目 → 配置 base_url/登录账号/密码 → 导入该项目的登录模块业务流 → 自动识别真实登录页元素 → 登录成功（含机构选择等后续流程）→ **平台代码零改动**
+2. 换一个登录流程完全不同的新项目 → 再次走上述流程 → 依然能正常登录
+3. 全仓检索不到具体被测系统的登录相关选择器/按钮文字/路由/URL 关键字（豁免清单除外）
+4. 登录元素识别 / 执行 / 探索 / API 鉴权联动全部**数据驱动**（步骤 args / `exploration_config`），兜底只用**通用机制**（如 `normalize_ws` 去空白），绝不针对具体文案
+
+**实现机制**（细则见「二、通用性设计原则」+ `docs/需求档案_登录通用鉴权与通用性规则.md` R-01/R-02/R-03/R-04）：
+- 步骤数据自包含 + 反射分发 + 自学习回填（换项目 = 重新导入 = 数据自动更新）
+- 元素识别 / 文本匹配统一去空白归一化 `normalize_ws`（同源），不针对任何具体文案
+- 登录步骤的定位参数全部来自真实页面收集（placeholder/locator/文本），不臆造、不写死
+
 ## 二、通用性设计原则（实现方式）
 
 1. **步骤数据自包含**：执行器只读步骤 `args` 里的参数执行，不自己造定位参数。生成步骤时参数必须写入 args。
@@ -27,6 +43,7 @@
 4. **配置驱动**：业务词、按钮文字、URL 关键字等一切项目特征走 `exploration_config`（如 `login_username_keywords`/`login_button_keywords`/`login_org_marker_keywords`），代码引用配置变量。
 5. **兜底只能是「通用候选」**：兜底选择器必须是跨系统通用的框架特征（如 antd 的 `.ant-select-dropdown`），且优先级低于步骤参数——先读参数，参数缺失才走兜底（服务旧数据），兜底不能是某个具体系统的精确选择器。
 6. **同源策略**：同一 action 的多个执行器（StepRunner / login_with_ui_case / LoginEngine）必须共用同一套「参数优先 → 通用兜底」逻辑，禁止各自实现导致分叉。
+7. **pytest 参数化 + 反射执行（执行引擎统一技术路线，用户 2026-09-02 强调固化）**：所有测试执行统一走「pytest 参数化 + 反射分发」——在线执行（`run_parametrized_specs`，spec 全量参数化含 preconditions）与生成的 pytest 工程（`build_pytest_project` → `@pytest.mark.parametrize("spec", load_all_specs())`）必须**同构同源**；步骤执行按 action 名从 dispatch 表反射取 handler（StepRunner `builtins`/`_do_*` 表、login_engine `_LOGIN_HANDLERS`），**新增 action 类型只注册 handler，主循环不改**。禁止为每条用例写死独立函数或线性脚本，禁止执行器各自分叉。
 
 ## 三、执行机制（每次改动强制）
 
@@ -50,6 +67,10 @@
 | 2026-08-16 | login_engine.py 修复机构选择时写死医院卡片选择器/「确 认」按钮 | 步骤数据参数化（cards_selector/confirm_text 回填 args）+ 反射分发 `_LOGIN_HANDLERS` + StepRunner 自学习 `_org_meta` | 生成步骤时 args 必须承载参数；执行器只读 args |
 | 2026-08-16 | 批量转化 `max_tokens=8000` 硬编码——推理模型（deepseek-v4-pro）推理写入 reasoning_content，8000 只够推理、正文未开始就 finish_reason=length（配置 160000 的 5%） | 全部 LLM 调用点统一 `get_scaled_max_tokens(ratio, cap)` 百分比预算 | LLM 调用点禁止裸数字；预算 = 配置 max_tokens 的百分比 |
 | 2026-08-16 | 默认 50%/cap 32000 过保守——配置 160000 时 min(0.5×160000, 32000)=32000 封顶，50% 与 70% 同值，比例实际失效 | 默认 0.7（70%，留 30% 余量）/cap 100000（日志实证 API 上限：17:50 deepseek-v4-flash max_tokens=100000 成功，无 400） | 比例与 cap 必须同时生效——cap 小于 ratio×配置时比例形同虚设；cap 定值前查日志实证，不猜 |
+| 2026-09-02 | `functional_to_ui_service._rule_pick_login_elements` 关键词匹配未去空白：真实登录按钮文案「登 录」（Ant Design 汉字间自动加空格）匹配关键词「登录」失败 → 三要素识别返回 None → 登录步骤退化为业务流原始文本定位 → 无法点击登录（用户报告：账号密码已填但登录按钮未点击） | 识别侧匹配统一 `normalize_ws` 去空白归一化（与执行侧 StepRunner `_ws_fallback` 同源，复用现有工具） | **任何文本/关键词子串比较前必须先 `normalize_ws` 去空白**；登录元素识别侧、执行侧必须用同一归一化工具，避免识别侧漏网 |
+| 2026-09-02 | 功能→UI 批量转化探索失败 + UI 用例执行登录失败（同一根因：**`__login__` 执行路径对 goto 处理不一致**）：① `login_with_ui_case`（login_engine）执行 `__login__` 未过滤后续 goto，点击登录后 seq5 goto 导航回 base_url → 登录失败；② `_explore_by_steps` 返回结构不一致（成功 2 元组/失败单 dict）→ 解包崩溃；③ **`ui_test_executor._login_sync_visible` 执行 `__login__` 也未过滤 goto** → 点击登录后回 #/login → 回退到硬编码登录（违背项目级登录） | ① login_engine **跳过首个之后 goto**；② `_explore_by_steps` **所有返回路径统一 2 元组 `(results, {})`**；③ **ui_test_executor 执行 `__login__` 时过滤全部 goto**（已手动导航 base_url）——三条路径（StepRunner 导入 / login_engine / ui_test_executor）同源 | **`__login__` 的所有执行路径必须同源处理 goto**（导入过滤 / login_engine 跳过后续 / ui_test_executor 过滤全部）——漏任一路径即点击登录后被残留 goto 导航回登录页；**函数返回契约必须全路径一致**（成功/失败/异常返回结构相同） |
+| 2026-09-02 | 探索/转化把页面动态文本（统计数字）写成 `${total}` 伪变量占位符，执行侧 `assert_text` 按字面匹配 `'共 ${total} 条'` 必然失败（页面实际是"共 100 条"） | 执行侧 `_do_assert_text` 检测 `expected` 含 `${...}` 未解析占位符 → 把 `${...}` 转正则通配 `.*?` 匹配页面实际文本（`re.split` + `re.escape` 实现） | 生成侧勿把动态文本写成 `${...}` 伪变量占位符；执行侧对 `${...}` 占位符做通配容错，避免动态文本断言误判失败 |
+| 2026-09-02 | 全选批量转化误报「1 条未审核」：登录模块功能用例 status=`published`（业务流导入自动发布，非人工审核 approved/active），批量循环先执行 `_ensure_case_convertible` 审核守卫（只认 approved/active），published 在此抛 400 被标「未审核通过」，**永远走不到后面的「登录模块排除」分支**（该分支判断 module=='登录模块' 但被审核校验抢先拦截）；**前端 `FunctionalTestPage.resolveConvertibleCases` 预检同样误判**（只收集 id/status 无 module，published 直接算「未审核」） | 后端把登录模块排除**提前到审核判定之前**（先 `_load_case_meta` 判 module=='登录模块' 再调审核守卫），排除理由改为「已随业务流导入转化」；**前端 `resolveConvertibleCases` 全选/手动勾选两分支都带上 module，统计前过滤 `module!=='登录模块'`**（登录模块不参与审核→转化预检） | 凡是对某类用例有「先排除再校验」需求，**前后端转化预检/守卫必须同源排除登录模块**；排除判断放在前置校验（如审核 status 守卫）之前，否则 published 不在 approved/active 会被抢先拦截导致误报 |
 
 ## 六、LLM max_tokens 百分比规则（2026-08-16 固化，08-16 修订 70%/100000）
 

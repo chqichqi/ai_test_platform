@@ -21,11 +21,16 @@ class MCPClient:
     # =====================================================
 
     def click(self, element):
-        """真实点击优先；JS fallback 仅在配置允许时使用。
+        """一次点击语义：普通 click 失败后，只有确认页面没有发生变化才允许 force click。
 
-        注意：返回 True 只代表 Playwright 点击调用成功，业务效果必须由 EffectValidator
-        在动作后再次验证，避免“JS dispatch 成功=业务成功”的假阳性。
+        Playwright 的 TimeoutError 可能发生在 click 已经派发之后（例如等待事件/导航
+        阶段超时）。再次 click 会把一次性卡片、链接等动作真正触发两次。
         """
+        before_url = self.get_url()
+        try:
+            before_fp = self.get_fingerprint_dict()
+        except Exception:
+            before_fp = {}
         try:
             element.scroll_into_view_if_needed()
         except Exception:
@@ -35,13 +40,25 @@ class MCPClient:
             return True
         except Exception:
             pass
+
+        # 第一次调用可能已经完成 click，只是在等待后续事件时超时；此时禁止二次点击。
+        try:
+            after_url = self.get_url()
+            after_fp = self.get_fingerprint_dict()
+            if (after_url and after_url != before_url) or (before_fp and after_fp and after_fp != before_fp):
+                return True
+        except Exception:
+            pass
+
         try:
             if bool(getattr(self.config, 'allow_force_click', True)):
                 element.click(force=True, timeout=2500)
                 return True
         except Exception:
             pass
+
         if bool(getattr(self.config, 'allow_js_click_fallback', False)):
+            # JS fallback 同样只允许在前一次点击没有产生任何可观察变化时执行。
             try:
                 element.evaluate("el => el.click()")
                 return True
@@ -105,11 +122,30 @@ class MCPClient:
         except Exception:
             # 页面可能已部分加载
             pass
-        try:
-            self.page.wait_for_timeout(1000)
-        except Exception:
-            pass
         return success
+
+    def wait_for_page_ready_fast(self, max_wait=3.0, min_body_len=120):
+        """Case 间短等待：只确认 DOM 有内容并短暂稳定。"""
+        deadline = time.time() + max_wait
+        last_len = -1
+        stable = 0
+        while time.time() < deadline:
+            try:
+                cur_len = self.page.evaluate("() => document.body ? document.body.innerText.length : 0")
+            except Exception:
+                cur_len = 0
+            if cur_len >= min_body_len and cur_len == last_len:
+                stable += 1
+                if stable >= 2:
+                    return True
+            else:
+                stable = 0
+            last_len = cur_len
+            try:
+                self.page.wait_for_timeout(120)
+            except Exception:
+                time.sleep(0.12)
+        return False
 
     def wait_for_page_ready(self, max_wait=10.0, min_body_len=200):
         """轮询等待 SPA 渲染完成（body 内容长度稳定）。最长等待 max_wait 秒。"""
@@ -134,7 +170,7 @@ class MCPClient:
             self.page.wait_for_timeout(500)
         return False  # 超时未稳定，页面可能仍在加载中
 
-    def back(self, wait=0.8):
+    def back(self, wait=0.25):
         """简单返回。SPA 场景用 back_safe。"""
         try:
             self.page.go_back()

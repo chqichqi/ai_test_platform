@@ -23,39 +23,13 @@ router = APIRouter()
 
 
 def _require_login_module(db: Session, project_id: int = None) -> None:
-    """检查登录模块是否已导入（按项目校验）；未导入则拒绝"""
-    from app.core.models.web_ui_test import WebUITestCase
-    from app.core.models.requirement import RequirementDocument
-    from app.core.models.project import Version
-
-    _login_q = db.query(WebUITestCase).filter(
-        WebUITestCase.test_case_id == '__login__',
-        WebUITestCase.deleted_at.is_(None)
-    )
-    if project_id:
-        _login_q = _login_q.filter(WebUITestCase.project_id == str(project_id))
-    login = _login_q.first()
-    if not login:
+    """检查登录模块是否已配置（项目级）；未配置则拒绝"""
+    from app.core.services.login_module_store import has_login_module_configured
+    if not has_login_module_configured(db, project_id):
         raise HTTPException(
             status_code=400,
-            detail="请先导入登录模块：在「项目配置 → 登录模块」中导入登录流程后再进行操作"
+            detail="请先在项目卡片「项目配置」的「登录模块」页签导入并验证登录流程后再进行操作"
         )
-
-    if project_id:
-        login_doc = db.query(RequirementDocument).join(
-            Version, RequirementDocument.version_id == Version.id
-        ).filter(
-            Version.project_id == project_id,
-            RequirementDocument.type == 'business_flow',
-            RequirementDocument.name == '登录模块',
-            RequirementDocument.content != '',
-            RequirementDocument.status != 'pending',
-        ).first()
-        if not login_doc:
-            raise HTTPException(
-                status_code=400,
-                detail="请先在「项目配置 → 登录模块」中导入并验证登录流程后再进行操作"
-            )
 
 
 @router.post("/", response_model=RequirementDocumentResponse, status_code=status.HTTP_201_CREATED)

@@ -597,8 +597,11 @@ class MCPExplorationAgent:
             )
             a11y_names = {(e["name"], e.get("role", "")) for e in elements}
             for item in css_items:
-                if (item["name"], "button") not in a11y_names and (item["name"], "link") not in a11y_names:
-                    elements.append({"name": item["name"], "selector": item["selector"], "role": "button", "source": "css_fallback"})
+                item_role = item.get("role", "") or "unknown"
+                if (item["name"], item_role) not in a11y_names:
+                    elements.append({"name": item["name"], "selector": item["selector"],
+                                     "role": item_role, "clickable": bool(item.get("clickable", False)),
+                                     "source": "css_fallback"})
 
         # ── 第三回退: 行为扫描（cursor:pointer + 可见文本）──
         # 当 a11y 和 CSS 都失败时，用 getComputedStyle 找可点击元素
@@ -606,7 +609,9 @@ class MCPExplorationAgent:
         if a11y_count + css_count == 0:
             behavior_items = self._js_find_behaviour(scope_element=scope_element)
             for item in behavior_items:
-                elements.append({"name": item["name"], "selector": item.get("selector", ""), "role": "button", "source": "behavior"})
+                elements.append({"name": item["name"], "selector": item.get("selector", ""),
+                                 "role": item.get("role", "unknown"),
+                                 "clickable": True, "source": "behavior"})
 
         # ── 表格行补充（Playwright row locator——表格通常无 ARIA role）──
         try:
@@ -640,9 +645,14 @@ class MCPExplorationAgent:
         # 侧边栏导航项永远不点击 —— 跨模块导航由 API 层统一调度
         # （scope 限定已天然排除大部分侧边栏元素；这里做 name-based 兜底过滤）
         nav_items = [e for e in unique if self._is_nav(e) or self._norm(e["name"]) in self._nav_names]
-        plan = [e for e in unique if e not in nav_items]
+        plan = [e for e in unique if e not in nav_items and e.get("clickable", True) and e.get("role") not in ("heading", "paragraph", "static", "unknown")]
 
-        logger.info(f"[Phase 1] plan: {len(plan)} clickable + {len(nav_items)} nav(skipped, inter-module nav handled by API)")
+        # 某些探索结果来自旧缓存，没有 clickable 字段；保守保留已知交互 role，
+        # 但绝不把 heading/card/static 文本升级成 button。
+        if not plan:
+            plan = [e for e in unique if e not in nav_items and e.get("role") in ("button", "link", "tab", "menuitem", "combobox", "listbox", "input", "textbox", "form", "table-row")]
+
+        logger.info(f"[Phase 1] plan: {len(plan)} actionable + {len(nav_items)} nav(skipped, inter-module nav handled by API)")
         return plan
 
     def _walk_a11y_tree(self, node, results, action_roles, depth):
@@ -666,6 +676,7 @@ class MCPExplorationAgent:
                         "name": name[:80],
                         "selector": "",
                         "role": mapped_role,
+                        "clickable": mapped_role in ("button", "link", "tab", "menuitem", "combobox", "listbox", "input", "textbox", "form"),
                         "source": "a11y",
                         "a11y_depth": depth,
                     })
@@ -745,7 +756,7 @@ class MCPExplorationAgent:
                         const leafText = (leaf.textContent || '').trim().substring(0, 80);
                         if (leafText && !seen.has(leafText)) {
                             seen.add(leafText);
-                            found.push({n: leafText, s: leaf.tagName.toLowerCase()});
+                            found.push({n: leafText, s: leaf.tagName.toLowerCase(), role: (() => { const r=(leaf.getAttribute('role')||'').toLowerCase(); if(r) return r; const t=leaf.tagName.toLowerCase(); if(t==='a') return 'link'; if(t==='button') return 'button'; return 'unknown'; })()});
                         }
                     }
                     return found.slice(0, 100);
@@ -758,7 +769,7 @@ class MCPExplorationAgent:
                 if len(n) < 2: continue
                 if re.match(r'^[\d\s\.\+\-\/\%\:]+$', n): continue
                 if any(kw in n for kw in self._noise_kw): continue
-                out.append({"name": n, "selector": i.get("s", "")})
+                out.append({"name": n, "selector": i.get("s", ""), "role": i.get("role", "unknown")})
             return out
         except Exception:
             return []
@@ -791,7 +802,22 @@ class MCPExplorationAgent:
                             const c = el.className.split(/\\s+/).filter(x => x && x.length > 1 && x.length < 40 && /^[a-zA-Z_-]/.test(x) && /^[a-zA-Z0-9_-]+$/.test(x))[0];
                             if (c) css = el.tagName.toLowerCase() + '.' + c;
                         }}
-                        found.push({{n: t.substring(0, 80), s: css}});
+                        const explicitRole = (el.getAttribute('role') || '').toLowerCase();
+                        const tag = el.tagName.toLowerCase();
+                        let role = explicitRole;
+                        if (!role) {{
+                            if (tag === 'button') role = 'button';
+                            else if (tag === 'a' && el.getAttribute('href')) role = 'link';
+                            else if (tag === 'input' || tag === 'textarea') role = 'textbox';
+                            else if (tag === 'select') role = 'combobox';
+                            else if (tag === 'option') role = 'option';
+                            else if (tag === 'tr') role = 'table-row';
+                            else if (/^h[1-6]$/.test(tag)) role = 'heading';
+                            else role = 'unknown';
+                        }}
+                        const clickable = ['button','link','tab','menuitem','combobox','listbox'].includes(role) ||
+                                          !!el.onclick || !!el.getAttribute('onclick') || getComputedStyle(el).cursor === 'pointer';
+                        found.push({{n: t.substring(0, 80), s: css, role, clickable}});
                     }});
                     return found;
                 }}
@@ -806,7 +832,7 @@ class MCPExplorationAgent:
             if re.match(r'^[\d\s\.\+\-\/\%\:]+$', n): continue
             if any(kw in n for kw in self._noise_kw): continue
             if any(kw in n for kw in self._danger_kw): continue
-            out.append({"name": n, "selector": i.get("s", "")})
+            out.append({"name": n, "selector": i.get("s", ""), "role": i.get("role", "unknown"), "clickable": bool(i.get("clickable", False))})
         return out
 
     def _is_nav(self, item):

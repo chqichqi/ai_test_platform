@@ -1,0 +1,1497 @@
+{
+  "module": "自定义页面",
+  "evidence": [
+    {
+      "case_id": "245",
+      "case_name": "验证点击右上角自定义按钮打开自定义面板",
+      "module": "自定义页面",
+      "preconditions": "使用账号 18113011002 登录 tt 环境，并进入工作台页面",
+      "expected_result": "点击自定义按钮后，右侧能正常打开包含五个指标分类的自定义页面",
+      "seq": 1,
+      "target": "自定义",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "e7fe9db66a99980e6c3f",
+      "after_state_id": "dc0894d338123ba9a647",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "自定义",
+        "role": "",
+        "tag": "div",
+        "selector": "div.customBtn___3JUat",
+        "primary_locator": "div.customBtn___3JUat",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_3": "",
+                "rc_select_4": "",
+                "rc_select_5": ""
+              },
+              "after": {
+                "rc_select_9": "",
+                "rc_select_10": "",
+                "rc_select_11": ""
+              }
+            }
+          },
+          "before_state_id": "e7fe9db66a99980e6c3f",
+          "after_state_id": "dc0894d338123ba9a647"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "245",
+      "case_name": "验证点击右上角自定义按钮打开自定义面板",
+      "module": "自定义页面",
+      "preconditions": "使用账号 18113011002 登录 tt 环境，并进入工作台页面",
+      "expected_result": "点击自定义按钮后，右侧能正常打开包含五个指标分类的自定义页面",
+      "seq": 2,
+      "target": "患者概览",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "dc0894d338123ba9a647",
+      "after_state_id": "dc0894d338123ba9a647",
+      "locator": {
+        "strategy": "text_exact",
+        "actual_text": "患者概览",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "dc0894d338123ba9a647",
+          "after_state_id": "dc0894d338123ba9a647"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "246",
+      "case_name": "验证自定义页面分类的收起与展开",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面\n点击「自定义」按钮打开自定义页面",
+      "expected_result": "自定义面板各分类支持收起和展开，且收起/展开状态与右侧指示按钮交互一致",
+      "seq": 1,
+      "target": "患者概览",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "dc0894d338123ba9a647",
+      "after_state_id": "dc0894d338123ba9a647",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "患者概览",
+        "role": "",
+        "tag": "div",
+        "selector": "div.cardSubTitle___1WFm5",
+        "primary_locator": "div.cardSubTitle___1WFm5",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "dc0894d338123ba9a647",
+          "after_state_id": "dc0894d338123ba9a647"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "247",
+      "case_name": "验证自定义页面中对指标执行添加与移除",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面\n点击「自定义」按钮打开自定义页面",
+      "expected_result": "每个指标项的添加/移除状态可被正确切换，且按钮文字随状态变化",
+      "seq": 1,
+      "target": "疾病统计",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "dc0894d338123ba9a647",
+      "after_state_id": "dc0894d338123ba9a647",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "疾病统计",
+        "role": "",
+        "tag": "div",
+        "selector": "div.cardSubTitle___1WFm5",
+        "primary_locator": "div.cardSubTitle___1WFm5",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "dc0894d338123ba9a647",
+          "after_state_id": "dc0894d338123ba9a647"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "247",
+      "case_name": "验证自定义页面中对指标执行添加与移除",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面\n点击「自定义」按钮打开自定义页面",
+      "expected_result": "每个指标项的添加/移除状态可被正确切换，且按钮文字随状态变化",
+      "seq": 2,
+      "target": "室早",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "dc0894d338123ba9a647",
+      "after_state_id": "ce08876dc90a7363d486",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "室早",
+        "role": "",
+        "tag": "div",
+        "selector": "div.cardTitle___3hSJ7",
+        "primary_locator": "div.cardTitle___3hSJ7",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_9": "",
+                "rc_select_10": "",
+                "rc_select_11": ""
+              },
+              "after": {
+                "rc_select_22": "",
+                "rc_select_23": "",
+                "rc_select_24": ""
+              }
+            }
+          },
+          "before_state_id": "dc0894d338123ba9a647",
+          "after_state_id": "ce08876dc90a7363d486"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "247",
+      "case_name": "验证自定义页面中对指标执行添加与移除",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面\n点击「自定义」按钮打开自定义页面",
+      "expected_result": "每个指标项的添加/移除状态可被正确切换，且按钮文字随状态变化",
+      "seq": 3,
+      "target": "室速",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "ce08876dc90a7363d486",
+      "after_state_id": "99bd3bdb36a094aa38c7",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "室速",
+        "role": "",
+        "tag": "div",
+        "selector": "div.cardTitle___3hSJ7",
+        "primary_locator": "div.cardTitle___3hSJ7",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_22": "",
+                "rc_select_23": "",
+                "rc_select_24": ""
+              },
+              "after": {
+                "rc_select_35": "",
+                "rc_select_36": "",
+                "rc_select_37": ""
+              }
+            }
+          },
+          "before_state_id": "ce08876dc90a7363d486",
+          "after_state_id": "99bd3bdb36a094aa38c7"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "248",
+      "case_name": "验证自定义页面的重置功能恢复所有操作",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面\n点击「自定义」按钮打开自定义页面",
+      "expected_result": "在进行添加或移除操作后，点击重置可将所有指标恢复至操作前状态",
+      "seq": 1,
+      "target": "患者概览",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "99bd3bdb36a094aa38c7",
+      "after_state_id": "99bd3bdb36a094aa38c7",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "患者概览",
+        "role": "",
+        "tag": "div",
+        "selector": "div.cardSubTitle___1WFm5",
+        "primary_locator": "div.cardSubTitle___1WFm5",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "99bd3bdb36a094aa38c7",
+          "after_state_id": "99bd3bdb36a094aa38c7"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "248",
+      "case_name": "验证自定义页面的重置功能恢复所有操作",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面\n点击「自定义」按钮打开自定义页面",
+      "expected_result": "在进行添加或移除操作后，点击重置可将所有指标恢复至操作前状态",
+      "seq": 2,
+      "target": "患者人数",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "99bd3bdb36a094aa38c7",
+      "after_state_id": "16ef2472fdf10f5af104",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "患者人数",
+        "role": "",
+        "tag": "div",
+        "selector": "div.cardTitle___3hSJ7",
+        "primary_locator": "div.cardTitle___3hSJ7",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_35": "",
+                "rc_select_36": "",
+                "rc_select_37": ""
+              },
+              "after": {
+                "rc_select_48": "",
+                "rc_select_49": "",
+                "rc_select_50": ""
+              }
+            }
+          },
+          "before_state_id": "99bd3bdb36a094aa38c7",
+          "after_state_id": "16ef2472fdf10f5af104"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "248",
+      "case_name": "验证自定义页面的重置功能恢复所有操作",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面\n点击「自定义」按钮打开自定义页面",
+      "expected_result": "在进行添加或移除操作后，点击重置可将所有指标恢复至操作前状态",
+      "seq": 3,
+      "target": "自定义",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "16ef2472fdf10f5af104",
+      "after_state_id": "454c7920dff8280169dd",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "自定义",
+        "role": "",
+        "tag": "div",
+        "selector": "div.customBtn___3JUat",
+        "primary_locator": "div.customBtn___3JUat",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_48": "",
+                "rc_select_49": "",
+                "rc_select_50": ""
+              },
+              "after": {
+                "rc_select_54": "",
+                "rc_select_55": "",
+                "rc_select_56": ""
+              }
+            }
+          },
+          "before_state_id": "16ef2472fdf10f5af104",
+          "after_state_id": "454c7920dff8280169dd"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "249",
+      "case_name": "验证点击去预览后通过保存布局生效并提示保存成功",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面\n工作台尚未添加「物流看板」分类下的「预约回收数」指标",
+      "expected_result": "添加指标后必须点击去预览并保存布局，工作台卡片才会最终生效",
+      "seq": 1,
+      "target": "自定义",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "454c7920dff8280169dd",
+      "after_state_id": "8131059eace0f0a31fb1",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "自定义",
+        "role": "",
+        "tag": "div",
+        "selector": "div.customBtn___3JUat",
+        "primary_locator": "div.customBtn___3JUat",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_54": "",
+                "rc_select_55": "",
+                "rc_select_56": ""
+              },
+              "after": {
+                "rc_select_60": "",
+                "rc_select_61": "",
+                "rc_select_62": ""
+              }
+            }
+          },
+          "before_state_id": "454c7920dff8280169dd",
+          "after_state_id": "8131059eace0f0a31fb1"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "249",
+      "case_name": "验证点击去预览后通过保存布局生效并提示保存成功",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面\n工作台尚未添加「物流看板」分类下的「预约回收数」指标",
+      "expected_result": "添加指标后必须点击去预览并保存布局，工作台卡片才会最终生效",
+      "seq": 2,
+      "target": "物流看板",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "8131059eace0f0a31fb1",
+      "after_state_id": "8131059eace0f0a31fb1",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "物流看板",
+        "role": "",
+        "tag": "div",
+        "selector": "div.cardSubTitle___1WFm5",
+        "primary_locator": "div.cardSubTitle___1WFm5",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "8131059eace0f0a31fb1",
+          "after_state_id": "8131059eace0f0a31fb1"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "249",
+      "case_name": "验证点击去预览后通过保存布局生效并提示保存成功",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面\n工作台尚未添加「物流看板」分类下的「预约回收数」指标",
+      "expected_result": "添加指标后必须点击去预览并保存布局，工作台卡片才会最终生效",
+      "seq": 3,
+      "target": "预约回收数",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "8131059eace0f0a31fb1",
+      "after_state_id": "50ab55d01844d36bf789",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "预约回收数",
+        "role": "",
+        "tag": "div",
+        "selector": "div.cardTitle___3hSJ7",
+        "primary_locator": "div.cardTitle___3hSJ7",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_60": "",
+                "rc_select_61": "",
+                "rc_select_62": ""
+              },
+              "after": {
+                "rc_select_72": "",
+                "rc_select_73": "",
+                "rc_select_74": ""
+              }
+            },
+            "body_text": true
+          },
+          "before_state_id": "8131059eace0f0a31fb1",
+          "after_state_id": "50ab55d01844d36bf789"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "249",
+      "case_name": "验证点击去预览后通过保存布局生效并提示保存成功",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面\n工作台尚未添加「物流看板」分类下的「预约回收数」指标",
+      "expected_result": "添加指标后必须点击去预览并保存布局，工作台卡片才会最终生效",
+      "seq": 4,
+      "target": "去预览",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "50ab55d01844d36bf789",
+      "after_state_id": "50ab55d01844d36bf789",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "249",
+      "case_name": "验证点击去预览后通过保存布局生效并提示保存成功",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面\n工作台尚未添加「物流看板」分类下的「预约回收数」指标",
+      "expected_result": "添加指标后必须点击去预览并保存布局，工作台卡片才会最终生效",
+      "seq": 5,
+      "target": "保存布局",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "50ab55d01844d36bf789",
+      "after_state_id": "50ab55d01844d36bf789",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "250",
+      "case_name": "验证取消按钮不保存工作台布局",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面",
+      "expected_result": "点击取消按钮后，刚执行的添加/移除操作不会保存到工作台",
+      "seq": 1,
+      "target": "自定义",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "50ab55d01844d36bf789",
+      "after_state_id": "c0c1235e45980a30bfa4",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "自定义",
+        "role": "",
+        "tag": "div",
+        "selector": "div.customBtn___3JUat",
+        "primary_locator": "div.customBtn___3JUat",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_72": "",
+                "rc_select_73": "",
+                "rc_select_74": ""
+              },
+              "after": {
+                "rc_select_78": "",
+                "rc_select_79": "",
+                "rc_select_80": ""
+              }
+            }
+          },
+          "before_state_id": "50ab55d01844d36bf789",
+          "after_state_id": "c0c1235e45980a30bfa4"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "250",
+      "case_name": "验证取消按钮不保存工作台布局",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面",
+      "expected_result": "点击取消按钮后，刚执行的添加/移除操作不会保存到工作台",
+      "seq": 2,
+      "target": "患者概览",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "c0c1235e45980a30bfa4",
+      "after_state_id": "c0c1235e45980a30bfa4",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "患者概览",
+        "role": "",
+        "tag": "div",
+        "selector": "div.cardSubTitle___1WFm5",
+        "primary_locator": "div.cardSubTitle___1WFm5",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "c0c1235e45980a30bfa4",
+          "after_state_id": "c0c1235e45980a30bfa4"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "250",
+      "case_name": "验证取消按钮不保存工作台布局",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面",
+      "expected_result": "点击取消按钮后，刚执行的添加/移除操作不会保存到工作台",
+      "seq": 3,
+      "target": "患者人数",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "c0c1235e45980a30bfa4",
+      "after_state_id": "6b27b2563b7f0acc3b50",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "患者人数",
+        "role": "",
+        "tag": "div",
+        "selector": "div.cardTitle___3hSJ7",
+        "primary_locator": "div.cardTitle___3hSJ7",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_78": "",
+                "rc_select_79": "",
+                "rc_select_80": ""
+              },
+              "after": {
+                "rc_select_92": "",
+                "rc_select_93": "",
+                "rc_select_94": ""
+              }
+            }
+          },
+          "before_state_id": "c0c1235e45980a30bfa4",
+          "after_state_id": "6b27b2563b7f0acc3b50"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "250",
+      "case_name": "验证取消按钮不保存工作台布局",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面",
+      "expected_result": "点击取消按钮后，刚执行的添加/移除操作不会保存到工作台",
+      "seq": 4,
+      "target": "去预览",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "6b27b2563b7f0acc3b50",
+      "after_state_id": "6b27b2563b7f0acc3b50",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "250",
+      "case_name": "验证取消按钮不保存工作台布局",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面",
+      "expected_result": "点击取消按钮后，刚执行的添加/移除操作不会保存到工作台",
+      "seq": 5,
+      "target": "取消",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "6b27b2563b7f0acc3b50",
+      "after_state_id": "6b27b2563b7f0acc3b50",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "251",
+      "case_name": "验证所有指标都移除后工作台展示去添加指标",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面\n已通过自定义页面将所有指标添加到工作台",
+      "expected_result": "当所有指标均被移除后，工作台应展示“去添加指标”，且点击可再次打开自定义面板",
+      "seq": 1,
+      "target": "自定义",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "6b27b2563b7f0acc3b50",
+      "after_state_id": "2c3fb42c3c6fb0ecd114",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "自定义",
+        "role": "",
+        "tag": "div",
+        "selector": "div.customBtn___3JUat",
+        "primary_locator": "div.customBtn___3JUat",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_92": "",
+                "rc_select_93": "",
+                "rc_select_94": ""
+              },
+              "after": {
+                "rc_select_98": "",
+                "rc_select_99": "",
+                "rc_select_100": ""
+              }
+            }
+          },
+          "before_state_id": "6b27b2563b7f0acc3b50",
+          "after_state_id": "2c3fb42c3c6fb0ecd114"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "251",
+      "case_name": "验证所有指标都移除后工作台展示去添加指标",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面\n已通过自定义页面将所有指标添加到工作台",
+      "expected_result": "当所有指标均被移除后，工作台应展示“去添加指标”，且点击可再次打开自定义面板",
+      "seq": 2,
+      "target": "移除",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "2c3fb42c3c6fb0ecd114",
+      "after_state_id": "2c3fb42c3c6fb0ecd114",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "251",
+      "case_name": "验证所有指标都移除后工作台展示去添加指标",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面\n已通过自定义页面将所有指标添加到工作台",
+      "expected_result": "当所有指标均被移除后，工作台应展示“去添加指标”，且点击可再次打开自定义面板",
+      "seq": 3,
+      "target": "去预览",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "2c3fb42c3c6fb0ecd114",
+      "after_state_id": "2c3fb42c3c6fb0ecd114",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "251",
+      "case_name": "验证所有指标都移除后工作台展示去添加指标",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面\n已通过自定义页面将所有指标添加到工作台",
+      "expected_result": "当所有指标均被移除后，工作台应展示“去添加指标”，且点击可再次打开自定义面板",
+      "seq": 4,
+      "target": "保存布局",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "2c3fb42c3c6fb0ecd114",
+      "after_state_id": "2c3fb42c3c6fb0ecd114",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "251",
+      "case_name": "验证所有指标都移除后工作台展示去添加指标",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面\n已通过自定义页面将所有指标添加到工作台",
+      "expected_result": "当所有指标均被移除后，工作台应展示“去添加指标”，且点击可再次打开自定义面板",
+      "seq": 5,
+      "target": "去添加指标",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "2c3fb42c3c6fb0ecd114",
+      "after_state_id": "2c3fb42c3c6fb0ecd114",
+      "locator": {
+        "strategy": "scored_text(10)",
+        "actual_text": "指标总览自定义",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "2c3fb42c3c6fb0ecd114",
+          "after_state_id": "2c3fb42c3c6fb0ecd114"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "251",
+      "case_name": "验证所有指标都移除后工作台展示去添加指标",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面\n已通过自定义页面将所有指标添加到工作台",
+      "expected_result": "当所有指标均被移除后，工作台应展示“去添加指标”，且点击可再次打开自定义面板",
+      "seq": 6,
+      "target": "去添加指标",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "2c3fb42c3c6fb0ecd114",
+      "after_state_id": "2c3fb42c3c6fb0ecd114",
+      "locator": {
+        "strategy": "scored_text(10)",
+        "actual_text": "指标总览自定义",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "2c3fb42c3c6fb0ecd114",
+          "after_state_id": "2c3fb42c3c6fb0ecd114"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "252",
+      "case_name": "验证自定义面板内容过多时可纵向滚动",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面\n当前屏幕高度为常规分辨率（如 1920x1080 或 1366x768）",
+      "expected_result": "所有分类展开且自定义页面展示不完整时，应可通过鼠标滚轮完整浏览面板内容",
+      "seq": 1,
+      "target": "自定义",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "2c3fb42c3c6fb0ecd114",
+      "after_state_id": "2ff3947517f463e56444",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "自定义",
+        "role": "",
+        "tag": "div",
+        "selector": "div.customBtn___3JUat",
+        "primary_locator": "div.customBtn___3JUat",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_98": "",
+                "rc_select_99": "",
+                "rc_select_100": ""
+              },
+              "after": {
+                "rc_select_104": "",
+                "rc_select_105": "",
+                "rc_select_106": ""
+              }
+            }
+          },
+          "before_state_id": "2c3fb42c3c6fb0ecd114",
+          "after_state_id": "2ff3947517f463e56444"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "252",
+      "case_name": "验证自定义面板内容过多时可纵向滚动",
+      "module": "自定义页面",
+      "preconditions": "已登录并进入工作台页面\n当前屏幕高度为常规分辨率（如 1920x1080 或 1366x768）",
+      "expected_result": "所有分类展开且自定义页面展示不完整时，应可通过鼠标滚轮完整浏览面板内容",
+      "seq": 2,
+      "target": "∧",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "2ff3947517f463e56444",
+      "after_state_id": "2ff3947517f463e56444",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    }
+  ],
+  "case_results": [
+    {
+      "case_id": "245",
+      "case_name": "验证点击右上角自定义按钮打开自定义面板",
+      "module": "自定义页面",
+      "test_case_id": "245",
+      "logical_case_id": "245",
+      "revision_no": 1,
+      "version_id": 121,
+      "project_id": 11,
+      "preconditions": "使用账号 18113011002 登录 tt 环境，并进入工作台页面",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "e7fe9db66a99980e6c3f",
+      "data_set_id": "cb8b06f9-1a32-4977-930b-55e26aa1fefc",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788341142.524864,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "246",
+      "case_name": "验证自定义页面分类的收起与展开",
+      "module": "自定义页面",
+      "test_case_id": "246",
+      "logical_case_id": "246",
+      "revision_no": 1,
+      "version_id": 121,
+      "project_id": 11,
+      "preconditions": "已登录并进入工作台页面\n点击「自定义」按钮打开自定义页面",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "dc0894d338123ba9a647",
+      "data_set_id": "5389fa3c-c510-4ba4-ad10-64e56ea3dbdc",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788341143.2231379,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "247",
+      "case_name": "验证自定义页面中对指标执行添加与移除",
+      "module": "自定义页面",
+      "test_case_id": "247",
+      "logical_case_id": "247",
+      "revision_no": 1,
+      "version_id": 121,
+      "project_id": 11,
+      "preconditions": "已登录并进入工作台页面\n点击「自定义」按钮打开自定义页面",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "dc0894d338123ba9a647",
+      "data_set_id": "9c692950-5254-4622-8594-dfcf363e047d",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788341146.0907354,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "248",
+      "case_name": "验证自定义页面的重置功能恢复所有操作",
+      "module": "自定义页面",
+      "test_case_id": "248",
+      "logical_case_id": "248",
+      "revision_no": 1,
+      "version_id": 121,
+      "project_id": 11,
+      "preconditions": "已登录并进入工作台页面\n点击「自定义」按钮打开自定义页面",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "99bd3bdb36a094aa38c7",
+      "data_set_id": "d1287ec1-0ee9-4540-a9b5-b1d8be618d6a",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788341149.6007698,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "249",
+      "case_name": "验证点击去预览后通过保存布局生效并提示保存成功",
+      "module": "自定义页面",
+      "test_case_id": "249",
+      "logical_case_id": "249",
+      "revision_no": 1,
+      "version_id": 121,
+      "project_id": 11,
+      "preconditions": "已登录并进入工作台页面\n工作台尚未添加「物流看板」分类下的「预约回收数」指标",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "454c7920dff8280169dd",
+      "data_set_id": "c90ee5c7-ff5e-4315-8948-cd6fd9e60782",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788341154.2357507,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "250",
+      "case_name": "验证取消按钮不保存工作台布局",
+      "module": "自定义页面",
+      "test_case_id": "250",
+      "logical_case_id": "250",
+      "revision_no": 1,
+      "version_id": 121,
+      "project_id": 11,
+      "preconditions": "已登录并进入工作台页面",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "50ab55d01844d36bf789",
+      "data_set_id": "f51a6c27-3ced-4556-85ff-ea782f5dc63e",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788341159.2336502,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "251",
+      "case_name": "验证所有指标都移除后工作台展示去添加指标",
+      "module": "自定义页面",
+      "test_case_id": "251",
+      "logical_case_id": "251",
+      "revision_no": 1,
+      "version_id": 121,
+      "project_id": 11,
+      "preconditions": "已登录并进入工作台页面\n已通过自定义页面将所有指标添加到工作台",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "6b27b2563b7f0acc3b50",
+      "data_set_id": "d8c78856-f3d4-4175-9f8c-ad585d65474f",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788341163.8665264,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "252",
+      "case_name": "验证自定义面板内容过多时可纵向滚动",
+      "module": "自定义页面",
+      "test_case_id": "252",
+      "logical_case_id": "252",
+      "revision_no": 1,
+      "version_id": 121,
+      "project_id": 11,
+      "preconditions": "已登录并进入工作台页面\n当前屏幕高度为常规分辨率（如 1920x1080 或 1366x768）",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788341098621&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "2c3fb42c3c6fb0ecd114",
+      "data_set_id": "3dcbe312-5104-4391-ba22-a53a2bff07c6",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788341166.0563657,
+      "data_cleanup": []
+    }
+  ]
+}

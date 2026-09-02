@@ -25,7 +25,6 @@ import { logout } from '../../store/slices/authSlice';
 import { openProgressModal } from '../../store/slices/taskProgressSlice';
 import { RootState } from '../../store';
 import type { MenuProps } from 'antd';
-import GenerationTaskNotifier from '../common/GenerationTaskNotifier';
 import { generationTaskApi, GenerationTask } from '../../api/generationTaskApi';
 
 const { Header, Sider, Content } = Layout;
@@ -294,7 +293,6 @@ const menuStyles = useMemo(() => `
 
   return (
     <>
-      <GenerationTaskNotifier />
       <style>{menuStyles}</style>
       <Layout style={{ minHeight: '100vh', background: `linear-gradient(135deg, ${colors.colorBgLayout} 0%, ${colors.pageBgTint} 100%)` }}>
       <ConfigProvider

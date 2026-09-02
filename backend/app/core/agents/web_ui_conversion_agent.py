@@ -14,8 +14,8 @@ import json
 import re
 from uuid import uuid4
 
-from langchain.tools import Tool
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.tools import Tool
+from langchain_core.prompts import ChatPromptTemplate
 
 from app.core.agents.base_agent import BaseAgent
 from app.core.logger import logger

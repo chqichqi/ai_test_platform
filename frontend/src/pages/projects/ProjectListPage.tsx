@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   Card, Button, Input, Space, Tag, Modal, Form, message,
   Popconfirm, Select, Typography, Row, Col, Avatar, Spin, Radio,
-  Table,
-  DatePicker, Empty, Tooltip, Divider, Alert
+  DatePicker, Empty, Tooltip, Alert
 } from 'antd';
 import {
   PlusOutlined, EditOutlined, DeleteOutlined, SettingOutlined,
@@ -24,6 +23,7 @@ import type { Project, ProjectCreate, ProjectUpdate } from '../../types/project'
 import type { Version } from '../../api/projectApi';
 import { selectUser } from '../../store/slices/authSlice';
 import GenerateKnowledgeGraphModal from '../../components/knowledgeGraph/GenerateKnowledgeGraphModal';
+import ProjectSettings from '../../components/projects/ProjectSettings';
 
 const { Text } = Typography;
 
@@ -48,22 +48,15 @@ const ProjectListPage: React.FC = () => {
   // 生成弹窗当前项目（null=关闭）
   const [kgModalProjectId, setKgModalProjectId] = useState<number | null>(null);
 
+  // 项目前置配置状态：按项目ID（项目级，{login: 登录模块已导入, web: 项目配置已填 URL}）
+  const [configStatusMap, setConfigStatusMap] = useState<Record<number, {login: boolean; web: boolean}>>({});
+  // 项目配置弹窗（唯一入口：内含项目配置/登录模块/测试/执行/通知全部页签）
+  const [settingsModalProject, setSettingsModalProject] = useState<Project | null>(null);
+
   // 项目弹窗
   const [createModalVisible, setCreateModalVisible] = useState(false);
   const [editModalVisible, setEditModalVisible] = useState(false);
   const [editingProject, setEditingProject] = useState<Project | null>(null);
-
-  // 项目配置弹窗
-  const [exploreConfigVisible, setExploreConfigVisible] = useState(false);
-  const [exploreConfigProject, setExploreConfigProject] = useState<Project | null>(null);
-  const [exploreConfigForm] = Form.useForm();
-  const [exploreConfigInit, setExploreConfigInit] = useState<Record<string, any>>({});
-  // 环境管理
-  const [environments, setEnvironments] = useState<{name: string; url: string}[]>([]);
-  const [activeEnv, setActiveEnv] = useState('');
-  const [envModalVisible, setEnvModalVisible] = useState(false);
-  const [editingEnv, setEditingEnv] = useState<{name: string; url: string} | null>(null);
-  const [envForm] = Form.useForm();
 
   // 版本弹窗
   const [versionModalVisible, setVersionModalVisible] = useState(false);
@@ -71,11 +64,12 @@ const ProjectListPage: React.FC = () => {
 
   useEffect(() => { fetchProjects(); }, []);
 
-  // 项目列表加载后，获取所有项目的版本 + 知识图谱状态
+  // 项目列表加载后，获取所有项目的版本 + 知识图谱状态 + 项目前置配置状态
   useEffect(() => {
     if (projects.length > 0) {
       fetchAllVersions();
       fetchAllKg();
+      fetchAllConfigStatus();
     }
   }, [projects]);
 
@@ -186,6 +180,61 @@ const ProjectListPage: React.FC = () => {
       }),
     );
     setKgMap(map);
+  };
+
+  // ===== 项目前置配置状态（项目级：项目配置 + 登录模块，创建版本双前置） =====
+  const fetchAllConfigStatus = async () => {
+    const map: Record<number, {login: boolean; web: boolean}> = {};
+    await Promise.all(
+      projects.map(async (p) => {
+        try {
+          const res = await axiosInstance.get('/web-ui-tests/check-login-module', {
+            params: { project_id: p.id },
+          });
+          map[p.id] = {
+            login: !!res.data?.has_login_module,
+            web: !!res.data?.has_web_config,
+          };
+        } catch {
+          map[p.id] = { login: false, web: false };
+        }
+      }),
+    );
+    setConfigStatusMap(map);
+  };
+
+  const refreshConfigStatus = async (projectId: number) => {
+    try {
+      const res = await axiosInstance.get('/web-ui-tests/check-login-module', {
+        params: { project_id: projectId },
+      });
+      setConfigStatusMap(prev => ({
+        ...prev,
+        [projectId]: {
+          login: !!res.data?.has_login_module,
+          web: !!res.data?.has_web_config,
+        },
+      }));
+    } catch (e) {
+      // 不静默：状态刷新失败留日志（2026-09-01 根因=后端判定源对 dict test_data 抛异常 → 500 被吞 → 卡片恒「待配置」）
+      console.error(`[ProjectListPage] refreshConfigStatus(project ${projectId}) failed:`, e);
+    }
+  };
+
+  const handleAddVersionClick = (record: Project) => {
+    setSelectedProjectId(record.id);
+    // 创建版本门控的前端引导：项目配置（URL）+ 登录模块两项都齐才能创建（后端 400 兜底）
+    const cfg = configStatusMap[record.id] || { login: false, web: false };
+    if (!cfg.web) {
+      message.warning('创建版本前必须先完成项目配置：请先点击卡片「项目配置」填写目标系统 URL');
+      return;
+    }
+    if (!cfg.login) {
+      message.warning('创建版本前必须先配置登录鉴权：请先点击卡片「项目配置」，在「登录模块」页签导入并验证登录流程');
+      return;
+    }
+    versionForm.setFieldsValue({ _project_id: record.id });
+    openVersionModal();
   };
 
   const handleOpenKg = (record: Project) => {
@@ -307,92 +356,6 @@ const ProjectListPage: React.FC = () => {
     setVersionModalVisible(true);
   };
 
-  const openExploreConfig = async (project: Project) => {
-    setExploreConfigProject(project);
-    setExploreConfigInit({});  // 先清空触发 Form 重建
-    setExploreConfigVisible(true);
-    try {
-      const res = await axiosInstance.get(`/projects/${project.id}/settings?_t=${Date.now()}`);
-      const web = (res.data?.exploration_config || {}).web || {};
-      const envs = web.environments || [];
-      // 兼容旧格式：base_url 转为单环境
-      if (!envs.length && web.base_url) {
-        envs.push({name: '默认环境', url: web.base_url});
-      }
-      setEnvironments(envs);
-      setActiveEnv(web.active_environment || (envs[0]?.name || ''));
-      setExploreConfigInit({
-        base_url: web.active_environment ? (envs.find((e: any) => e.name === web.active_environment)?.url || '') : (web.base_url || ''),
-        web_username: web.username || '',
-        web_password: web.password || '',
-      });
-    } catch { /* ignore */ }
-  };
-
-  const saveExploreConfig = async () => {
-    const values = exploreConfigForm.getFieldsValue();
-    const existing = await axiosInstance.get(`/projects/${exploreConfigProject?.id}/settings?_t=${Date.now()}`);
-    const oldWeb = (existing.data?.exploration_config || {}).web || {};
-    // 从当前 active environment 同步 base_url
-    const activeEnvUrl = activeEnv ? (environments.find((e: any) => e.name === activeEnv)?.url || '') : '';
-    const config = {
-      web: {
-        ...oldWeb,  // 保留 environments 等已即时保存的字段
-        base_url: activeEnvUrl || values.base_url || oldWeb.base_url || '',
-        username: values.web_username,
-        password: values.web_password,
-      },
-    };
-    try {
-      await axiosInstance.patch(`/projects/${exploreConfigProject?.id}/settings/exploration`, config);
-      message.success('项目配置已保存');
-      setExploreConfigVisible(false);
-    } catch (e: any) { message.error('保存失败'); }
-  };
-
-  const saveEnvToServer = async (envs: {name: string; url: string}[], active: string) => {
-    const existing = await axiosInstance.get(`/projects/${exploreConfigProject?.id}/settings?_t=${Date.now()}`);
-    const oldCfg = existing.data?.exploration_config || {};
-    const oldWeb = oldCfg.web || {};
-    await axiosInstance.patch(`/projects/${exploreConfigProject?.id}/settings/exploration`, {
-      web: { ...oldWeb, environments: envs, active_environment: active },
-    });
-  };
-
-  const handleDeleteEnv = async (name: string) => {
-    const updated = environments.filter(e => e.name !== name);
-    const newActive = activeEnv === name ? (updated[0]?.name || '') : activeEnv;
-    setEnvironments(updated);
-    setActiveEnv(newActive);
-    await saveEnvToServer(updated, newActive);
-    message.success('环境已删除');
-  };
-
-  const handleEnvSave = async () => {
-    const vals = envForm.getFieldsValue();
-    if (!vals.env_name?.trim() || !vals.env_url?.trim()) return;
-    const newEnv = {name: vals.env_name.trim(), url: vals.env_url.trim()};
-    let updated: {name: string; url: string}[];
-    if (editingEnv) {
-      updated = environments.map(e => e.name === editingEnv.name ? newEnv : e);
-    } else {
-      updated = [...environments, newEnv];
-    }
-    const newActive = editingEnv ? (activeEnv === editingEnv.name ? newEnv.name : activeEnv) : (activeEnv || newEnv.name);
-    setEnvironments(updated);
-    setActiveEnv(newActive);
-    await saveEnvToServer(updated, newActive);
-    setEnvModalVisible(false);
-    setEditingEnv(null);
-    envForm.resetFields();
-    message.success(editingEnv ? '环境已更新' : '环境已添加');
-  };
-  const handleEnvChange = (name: string) => {
-    setActiveEnv(name);
-    const env = environments.find(e => e.name === name);
-    if (env) exploreConfigForm.setFieldsValue({ base_url: env.url });
-  };
-
   return (
     <div style={{ padding: 6, height: 'calc(100vh - 120px)', display: 'flex', flexDirection: 'column' }}>
       <Card
@@ -456,14 +419,25 @@ const ProjectListPage: React.FC = () => {
                                 {kg && kg.exploration_status === 'failed' && (
                                   <Tag color="red" style={{ fontSize: 11 }}>图谱失败</Tag>
                                 )}
+                                {(() => {
+                                  const cfg = configStatusMap[record.id] || { login: false, web: false };
+                                  const cfgReady = cfg.login && cfg.web;
+                                  return (
+                                    <Tooltip title={cfgReady ? '项目配置与登录模块均已完成' : (cfg.web ? '待导入登录模块（项目配置 → 登录模块）' : '待完成项目配置（项目配置 → 目标系统 URL）')}>
+                                      <Tag color={cfgReady ? 'blue' : 'orange'} style={{ fontSize: 11 }}>
+                                        {cfgReady ? '已配置' : '待配置'}
+                                      </Tag>
+                                    </Tooltip>
+                                  );
+                                })()}
                               </div>
                             </div>
                           </div>
                           <Space size={2} style={{ flexShrink: 0 }} onClick={(e) => e.stopPropagation()}>
                             <Tooltip title="知识图谱（基于已探索结果生成）"><Button size="small" icon={<ApartmentOutlined />}
                               onClick={() => handleOpenKg(record)} /></Tooltip>
-                            <Tooltip title="项目配置"><Button size="small" icon={<SettingOutlined />}
-                              onClick={() => openExploreConfig(record)} /></Tooltip>
+                            <Tooltip title="项目配置（项目配置/登录模块/测试/执行/通知）"><Button size="small" icon={<SettingOutlined />}
+                              onClick={() => setSettingsModalProject(record)} /></Tooltip>
                             <Tooltip title="编辑项目"><Button size="small" icon={<EditOutlined />}
                               onClick={() => openEditModal(record)} /></Tooltip>
                             <Popconfirm title="确定删除此项目？" onConfirm={() => handleDelete(record.id)}>
@@ -478,9 +452,9 @@ const ProjectListPage: React.FC = () => {
                             <Text type="secondary" style={{ fontSize: 11 }}>
                               {loadingVersions ? '加载中...' : `版本 (${projectVersions.length})`}
                             </Text>
-                            <Tooltip title="添加版本">
+                            <Tooltip title="添加版本（创建版本前必须先完成项目配置与登录模块）">
                               <Button size="small" type="dashed" icon={<PlusOutlined />}
-                                onClick={(e) => { e.stopPropagation(); setSelectedProjectId(record.id); versionForm.setFieldsValue({ _project_id: record.id }); openVersionModal(); }} />
+                                onClick={(e) => { e.stopPropagation(); handleAddVersionClick(record); }} />
                             </Tooltip>
                           </div>
                           {loadingVersions ? (
@@ -731,86 +705,28 @@ const ProjectListPage: React.FC = () => {
         </Form>
       </Modal>
 
-      {/* ===== 项目配置弹窗 ===== */}
-      <Modal title={`项目配置 - ${exploreConfigProject?.name || ''}`} open={exploreConfigVisible}
-        onCancel={() => setExploreConfigVisible(false)} onOk={saveExploreConfig} width={560} okText="保存" maskClosable={false}>
-        <Form form={exploreConfigForm} layout="vertical"
-          key={JSON.stringify(exploreConfigInit)}
-          initialValues={exploreConfigInit}>
-          <Form.Item label="目标环境" required>
-            <div style={{ display: 'flex', gap: 8 }}>
-              <Select
-                value={activeEnv || undefined}
-                onChange={handleEnvChange}
-                placeholder="选择环境"
-                style={{ flex: 1 }}
-              >
-                {environments.map(env => (
-                  <Select.Option key={env.name} value={env.name}>{env.name} — {env.url}</Select.Option>
-                ))}
-              </Select>
-              <Button icon={<SettingOutlined />} onClick={() => { setEditingEnv(null); envForm.resetFields(); setEnvModalVisible(true); }}>管理环境</Button>
-            </div>
-          </Form.Item>
-          <Form.Item name="base_url" hidden><Input /></Form.Item>
-          <Row gutter={12}>
-            <Col span={12}>
-              <Form.Item name="web_username" label="登录用户名">
-                <Input placeholder="手机号 / 用户名" autoComplete="new-password" />
-              </Form.Item>
-            </Col>
-            <Col span={12}>
-              <Form.Item name="web_password" label="登录密码">
-                <Input.Password placeholder="密码" autoComplete="new-password" />
-              </Form.Item>
-            </Col>
-          </Row>
-        </Form>
-      </Modal>
-
-      {/* ===== 环境管理弹窗 ===== */}
-      <Modal title="管理环境" open={envModalVisible}
-        onCancel={() => setEnvModalVisible(false)} footer={null} width={560}>
-        {/* 已有环境列表 */}
-        {environments.length > 0 && (
-          <Table dataSource={environments.map((e, i) => ({...e, key: i}))} pagination={false} size="small"
-            style={{ marginBottom: 16 }}
-            columns={[
-              { title: '名称', dataIndex: 'name', width: 120 },
-              { title: 'URL', dataIndex: 'url', ellipsis: true },
-              { title: '', width: 100, render: (_: any, r: any) => (
-                <Space size={2}>
-                  <Button type="link" size="small" onClick={() => { setEditingEnv(r); envForm.setFieldsValue(r); }}>编辑</Button>
-                  <Button type="link" size="small" danger onClick={() => handleDeleteEnv(r.name)}>删除</Button>
-                </Space>
-              )},
-            ]}
+      {/* ===== 项目配置弹窗（唯一入口：项目配置/登录模块/测试/执行/通知全部页签） ===== */}
+      <Modal
+        title={`项目配置 - ${settingsModalProject?.name || ''}`}
+        open={settingsModalProject !== null}
+        onCancel={() => {
+          // 关闭项目配置弹窗时刷新卡片状态（配置可能刚保存/登录刚导入，保证返回后立即看到最新 Tag）
+          if (settingsModalProject) {
+            refreshConfigStatus(settingsModalProject.id);
+          }
+          setSettingsModalProject(null);
+        }}
+        footer={null}
+        width={760}
+        maskClosable={false}
+      >
+        {settingsModalProject && (
+          <ProjectSettings
+            projectId={settingsModalProject.id}
+            onLoginImported={() => refreshConfigStatus(settingsModalProject.id)}
+            onWebConfigSaved={() => refreshConfigStatus(settingsModalProject.id)}
           />
         )}
-        {/* 添加/编辑表单 */}
-        <Divider>{editingEnv ? '编辑环境' : '添加环境'}</Divider>
-        <Form form={envForm} layout="vertical">
-          <Row gutter={12} align="middle">
-            <Col span={6}>
-              <Form.Item name="env_name" label="名称" rules={[{ required: true }]} style={{ marginBottom: 0 }}>
-                <Input placeholder="环境名称" />
-              </Form.Item>
-            </Col>
-            <Col span={12}>
-              <Form.Item name="env_url" label="URL" rules={[{ required: true }]} style={{ marginBottom: 0 }}>
-                <Input placeholder="https://..." />
-              </Form.Item>
-            </Col>
-            <Col span={6}>
-              <Form.Item label=" " style={{ marginBottom: 0 }}>
-                <Space>
-                  <Button type="primary" onClick={handleEnvSave}>{editingEnv ? '保存' : '添加'}</Button>
-                  {editingEnv && <Button onClick={() => { setEditingEnv(null); envForm.resetFields(); }}>取消编辑</Button>}
-                </Space>
-              </Form.Item>
-            </Col>
-          </Row>
-        </Form>
       </Modal>
 
       {/* ===== 创建/编辑版本弹窗 ===== */}
@@ -857,6 +773,7 @@ const ProjectListPage: React.FC = () => {
         onCancel={() => setKgModalProjectId(null)}
         onGenerate={handleGenerateKg}
       />
+
     </div>
   );
 };

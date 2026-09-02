@@ -14,52 +14,20 @@ from sqlalchemy.orm import Session
 
 from app.core.database import get_db
 from app.core.logger import logger
-from app.core.models.project import Version
+from app.core.models.project import Project, Version
 from app.core.services.business_flow_ui_service import BusinessFlowUIService
 
 router = APIRouter()
 
 
 def _require_login_module(db: Session, project_id: int = None) -> None:
-    """检查登录模块是否已导入（按项目校验）；未导入则拒绝"""
-    from app.core.models.web_ui_test import WebUITestCase
-    from app.core.models.requirement import RequirementDocument
-    from app.core.models.project import Version
-
-    _login_q = db.query(WebUITestCase).filter(
-        WebUITestCase.test_case_id == '__login__',
-        WebUITestCase.deleted_at.is_(None)
-    )
-    if project_id:
-        _login_q = _login_q.filter(WebUITestCase.project_id == str(project_id))
-    login = _login_q.first()
-    if not login:
+    """检查登录模块是否已配置（项目级）；未配置则拒绝"""
+    from app.core.services.login_module_store import has_login_module_configured
+    if not has_login_module_configured(db, project_id):
         raise HTTPException(
             status_code=400,
-            detail="请先导入登录模块：在「项目配置 → 登录模块」中导入登录流程后再进行操作"
+            detail="请先在项目卡片「登录模块」中导入并验证登录流程后再进行操作"
         )
-    ts = (login.test_script or '').strip()
-    if not ts or ts.startswith('#'):
-        raise HTTPException(
-            status_code=400,
-            detail="登录模块未完成配置（步骤为空），请重新导入登录模块"
-        )
-
-    if project_id:
-        login_doc = db.query(RequirementDocument).join(
-            Version, RequirementDocument.version_id == Version.id
-        ).filter(
-            Version.project_id == project_id,
-            RequirementDocument.type == 'business_flow',
-            RequirementDocument.name == '登录模块',
-            RequirementDocument.content != '',
-            RequirementDocument.status != 'pending',
-        ).first()
-        if not login_doc:
-            raise HTTPException(
-                status_code=400,
-                detail="请先在「项目配置 → 登录模块」中导入并验证登录流程后再进行操作"
-            )
 
 # ── 进度存储（内存，单进程） ──
 _explore_progress: dict = {}
@@ -172,7 +140,8 @@ def get_explore_progress(project_id: int, version_id: int):
 
 
 class ImportLoginModuleRequest(BaseModel):
-    version_id: int = Field(..., description="版本ID")
+    project_id: Optional[int] = Field(None, description="项目ID（项目级入口，与 version_id 二选一）")
+    version_id: Optional[int] = Field(None, description="版本ID（兼容旧入口，与 project_id 二选一）")
     login_content: str = Field(default="", description="登录模块业务流内容（用户手工编辑后传入）")
 
 
@@ -189,26 +158,35 @@ async def import_login_module(
     4. 失败 → 不保存，返回错误，用户可修改重试
     """
     from app.core.models.project import Version
-    from app.core.models.requirement import RequirementDocument
-    from app.core.services.step_parser import parse_steps
 
-    version = db.query(Version).filter(Version.id == request.version_id).first()
-    if not version:
-        raise HTTPException(status_code=404, detail=f"版本 {request.version_id} 不存在")
-    project = version.project
-    if not project:
-        raise HTTPException(status_code=404, detail="关联项目不存在")
+    # 登录模块是项目级资产：project_id 与 version_id 二选一。
+    # 项目级入口（项目卡片）只传 project_id → 有版本时取最新版本作为落库版本；
+    # 项目尚无版本时允许先行导入（version_id=None，登录模块项目级资产不依赖版本，
+    # 与「创建版本前必须先配置登录鉴权」的门控配套——先配登录，再建版本）。
+    # 旧入口（版本详情页）仍传 version_id，逻辑不变。
+    if not request.project_id and not request.version_id:
+        raise HTTPException(status_code=400, detail="project_id 与 version_id 至少传一个")
+    if request.project_id:
+        project = db.query(Project).filter(Project.id == request.project_id).first()
+        if not project:
+            raise HTTPException(status_code=404, detail=f"项目 {request.project_id} 不存在")
+        version = db.query(Version).filter(
+            Version.project_id == project.id
+        ).order_by(Version.id.desc()).first()
+    else:
+        version = db.query(Version).filter(Version.id == request.version_id).first()
+        if not version:
+            raise HTTPException(status_code=404, detail=f"版本 {request.version_id} 不存在")
+        project = version.project
+        if not project:
+            raise HTTPException(status_code=404, detail="关联项目不存在")
+    version_id = version.id if version else None
 
     login_content = request.login_content.strip()
     if not login_content:
-        # 没传内容 → 尝试读已有文档
-        login_doc = db.query(RequirementDocument).filter(
-            RequirementDocument.version_id == request.version_id,
-            RequirementDocument.type == 'business_flow',
-            RequirementDocument.name == '登录模块'
-        ).first()
-        if login_doc:
-            login_content = (login_doc.content or '').strip()
+        # 没传内容 → 尝试读已有文档（登录模块是项目级：读项目配置，空时回退旧版本文档）
+        from app.core.services.login_module_store import get_login_module_content
+        login_content = get_login_module_content(db, project.id)
     if not login_content:
         raise HTTPException(status_code=400, detail="请填写登录模块的业务流描述")
 
@@ -223,11 +201,11 @@ async def import_login_module(
     if _pt == 'app':
         _cfg = _ec.get('app', {})
         if not _cfg.get('apk_package'):
-            raise HTTPException(status_code=400, detail="请先在「项目设置 → APP 配置」中上传 APK 安装包后再导入登录模块")
+            raise HTTPException(status_code=400, detail="请先在项目卡片的「项目配置」中上传 APK 安装包后再导入登录模块")
         if not _cfg.get('username'):
-            raise HTTPException(status_code=400, detail="请先在「项目设置 → 探索配置」中配置登录用户名后再导入登录模块")
+            raise HTTPException(status_code=400, detail="请先在项目卡片的「项目配置」中配置登录用户名后再导入登录模块")
         if not _cfg.get('password'):
-            raise HTTPException(status_code=400, detail="请先在「项目设置 → 探索配置」中配置登录密码后再导入登录模块")
+            raise HTTPException(status_code=400, detail="请先在项目卡片的「项目配置」中配置登录密码后再导入登录模块")
     else:
         _cfg = _ec.get('web', {})
         # 解析有效的 base_url：优先用 base_url 字段，为空时回退到 active_environment 对应环境的 URL
@@ -240,11 +218,11 @@ async def import_login_module(
                 if _matched:
                     _effective_base_url = _matched[0].get('url', '') or ''
         if not _effective_base_url:
-            raise HTTPException(status_code=400, detail="请先在「项目设置 → 探索配置」中配置目标系统 URL（base_url）后再导入登录模块")
+            raise HTTPException(status_code=400, detail="请先在项目卡片的「项目配置」中配置目标系统 URL（base_url）后再导入登录模块")
         if not _cfg.get('username'):
-            raise HTTPException(status_code=400, detail="请先在「项目设置 → 探索配置」中配置登录用户名（username）后再导入登录模块")
+            raise HTTPException(status_code=400, detail="请先在项目卡片的「项目配置」中配置登录用户名（username）后再导入登录模块")
         if not _cfg.get('password'):
-            raise HTTPException(status_code=400, detail="请先在「项目设置 → 探索配置」中配置登录密码（password）后再导入登录模块")
+            raise HTTPException(status_code=400, detail="请先在项目卡片的「项目配置」中配置登录密码（password）后再导入登录模块")
 
     # 内容校验：必须包含登录相关描述（防止用户误导入非登录模块的业务流）
     # 业务词参数化：关键词从 exploration_config.explore 段可覆盖（build_web_exploration_config）
@@ -263,32 +241,19 @@ async def import_login_module(
         service = FunctionalToUIService(db)
 
         result = await service.import_login_module(
-            version_id=request.version_id,
+            version_id=version_id,
             login_content=login_content,
             project_id=project.id,
         )
 
-        # 成功 → 保存/更新业务流文档
+        # 成功 → 保存/更新登录模块业务流内容（项目级：同一项目同一套登录逻辑，跨版本共享）
         if result.get("success"):
-            from app.core.models.requirement import RequirementDocument, DocumentType
-            existing_doc = db.query(RequirementDocument).filter(
-                RequirementDocument.version_id == request.version_id,
-                RequirementDocument.type == 'business_flow',
-                RequirementDocument.name == '登录模块'
-            ).first()
-            if existing_doc:
-                existing_doc.content = login_content
+            from app.core.services.login_module_store import save_login_module_content
+            _saved = save_login_module_content(db, project.id, login_content)
+            if not _saved:
+                logger.warning("[import-login-module] 项目无配置记录，登录模块内容未落库（项目设置初始化后再导入）")
             else:
-                new_doc = RequirementDocument(
-                    version_id=request.version_id,
-                    name='登录模块',
-                    type='business_flow',
-                    content=login_content,
-                    status='parsed'
-                )
-                db.add(new_doc)
-            db.commit()
-            logger.info(f"[import-login-module] 登录模块验证成功，已保存业务流文档")
+                logger.info("[import-login-module] 登录模块验证成功，已保存项目级业务流内容")
 
         return result
     except HTTPException:
@@ -343,7 +308,7 @@ async def explore_workbench(
     password = web_cfg.get("password", "")
 
     if not base_url:
-        raise HTTPException(status_code=400, detail="请先在项目设置中配置目标系统 URL")
+        raise HTTPException(status_code=400, detail="请先在项目卡片的「项目配置」中配置目标系统 URL")
 
     def _do_explore():
         """Windows: 必须用 ProactorEventLoop 才能跑 Playwright async"""

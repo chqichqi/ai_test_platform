@@ -107,7 +107,7 @@ class ActionExecutor:
             return ActionResult(action=action, success=False, error="locator_not_available")
 
         try:
-            if not loc.is_visible(timeout=1000):
+            if not loc.is_visible(timeout=300):
                 return ActionResult(action=action, success=False, error="locator_not_visible")
         except Exception:
             pass
@@ -127,11 +127,11 @@ class ActionExecutor:
                 return ActionResult(action=action, success=True)
 
             if typ == "right_click":
-                loc.click(button="right", timeout=4000)
+                loc.click(button="right", timeout=1500)
                 return ActionResult(action=action, success=True)
 
             if typ == "tab_switch":
-                loc.click(timeout=4000)
+                loc.click(timeout=1500)
                 return ActionResult(action=action, success=True)
 
             if typ == "key_press":
@@ -142,15 +142,44 @@ class ActionExecutor:
                 return ActionResult(action=action, success=True)
 
             if typ in ("click", "navigate", "table_row"):
+                # 强证据表明动态区域无数据时不允许真实点击。
+                empty_reason = self._detect_empty_dynamic_state(loc)
+                if empty_reason:
+                    return ActionResult(action=action, success=False, error=f"skipped_empty_dynamic_state:{empty_reason}")
+
+                unsafe = self._unsafe_navigation_reason(loc)
+                if unsafe:
+                    return ActionResult(action=action, success=False, error=f"skipped_unsafe_navigation:{unsafe}")
+
+                # 一次点击语义：第一次 click 抛 Timeout 也绝不自动 force-click/JS-click。
+                # Timeout 可能发生在事件已派发之后，二次点击会真正触发业务两次。
+                before_url = self.client.get_url()
                 try:
-                    loc.click(timeout=4000)
-                except Exception as first:
-                    # force 仅作为明确的第二尝试，仍然需要后续 EffectValidator 验证。
+                    before_fp = self.client.get_fingerprint_dict()
+                except Exception:
+                    before_fp = {}
+                try:
+                    loc.click(timeout=1500)
+                    # 空白 popup 由 GuidedAgent handler 关闭；这里再做一次零等待清理。
                     try:
-                        loc.click(force=True, timeout=2500)
+                        for popup in list(self.page.context.pages):
+                            if popup != self.page and str(getattr(popup, "url", "") or "").strip() in ("", "about:blank"):
+                                popup.close()
                     except Exception:
-                        return ActionResult(action=action, success=False, error=f"click_failed:{first}")
-                return ActionResult(action=action, success=True)
+                        pass
+                    return ActionResult(action=action, success=True)
+                except Exception as first:
+                    try:
+                        after_url = self.client.get_url()
+                        after_fp = self.client.get_fingerprint_dict()
+                        url_changed = bool(after_url and after_url != before_url)
+                        fp_changed = bool(before_fp and after_fp and after_fp != before_fp)
+                        if url_changed or fp_changed:
+                            return ActionResult(action=action, success=True,
+                                                navigated=url_changed, jump_url=after_url or "")
+                    except Exception:
+                        pass
+                    return ActionResult(action=action, success=False, error=f"click_failed:{first}")
 
             return ActionResult(action=action, success=False, error=f"unsupported_action:{typ}")
         except Exception as exc:
@@ -167,15 +196,70 @@ class ActionExecutor:
                 return ActionResult(action=action, success=True)
             if typ == "go_back":
                 self.page.go_back()
-                self.client.wait_for_page_ready(max_wait=getattr(self.config, "page_ready_timeout_fast", 8.0))
+                if hasattr(self.client, "wait_for_page_ready_fast"):
+                    self.client.wait_for_page_ready_fast(max_wait=getattr(self.config, "case_reset_ready_timeout", 3.0))
+                else:
+                    self.client.wait_for_page_ready(max_wait=getattr(self.config, "case_reset_ready_timeout", 3.0))
                 return ActionResult(action=action, success=True)
         except Exception as exc:
             return ActionResult(action=action, success=False, error=f"{typ}_failed:{exc}")
         return ActionResult(action=action, success=False, error=f"unsupported_non_element:{typ}")
 
+    def _unsafe_navigation_reason(self, loc) -> str:
+        """在真实点击前检查目标及其祖先的最终导航属性。"""
+        try:
+            data = loc.evaluate("""el => {
+                const nodes = [];
+                let n = el;
+                for (let i = 0; n && i < 12; i++, n = n.parentElement) nodes.push(n);
+                for (const x of nodes) {
+                    const hrefAttr = String(x.getAttribute('href') || '').trim().toLowerCase();
+                    const hrefProp = String(x.href || '').trim().toLowerCase();
+                    const onclick = String(x.getAttribute('onclick') || '').replace(/\s+/g, '').toLowerCase();
+                    const target = String(x.getAttribute('target') || '').trim().toLowerCase();
+                    const disabled = !!x.disabled || x.getAttribute('aria-disabled') === 'true';
+                    if (hrefAttr.startsWith('about:blank') || hrefProp === 'about:blank' || hrefProp.startsWith('about:blank#')) return {reason:'href_about_blank'};
+                    if (onclick.includes("window.open('about:blank'") || onclick.includes('window.open(\"about:blank\"')) return {reason:'onclick_about_blank'};
+                    if (target === '_blank' && !hrefAttr && !hrefProp) return {reason:'blank_target_without_href'};
+                    if (disabled) return {reason:'disabled'};
+                }
+                return {reason:''};
+            }""") or {}
+            return str(data.get('reason') or '')
+        except Exception:
+            return ''
+
+    def _detect_empty_dynamic_state(self, loc) -> str:
+        """只在强证据下识别动态区域的空数据状态。"""
+        try:
+            payload = loc.evaluate("""(el) => {
+                const visible = e => { if (!e) return false; const r=e.getBoundingClientRect(); const st=getComputedStyle(e); return r.width>0 && r.height>0 && st.display!=='none' && st.visibility!=='hidden'; };
+                let node=el;
+                for(let i=0;i<10 && node;i++,node=node.parentElement){
+                    const tag=(node.tagName||'').toLowerCase();
+                    const cls=String(node.className||'').toLowerCase();
+                    if(tag==='body') break;
+                    if(tag==='article' || tag==='li' || node.getAttribute('role')==='group' || /card|panel|stat|metric|warning|alert/.test(cls)) {
+                        if(visible(node)) return {text:String(node.innerText||'').slice(0,1200)};
+                    }
+                }
+                return {text:String(el.innerText||'').slice(0,600)};
+            }""") or {}
+            text = str(payload.get("text", ""))
+            compact = "".join(text.split())
+            for kw in ("暂无数据", "无数据", "暂无记录", "没有数据", "没有记录", "No data", "No results"):
+                if kw.lower() in compact.lower():
+                    return kw
+            import re
+            if re.search(r"(?:总数|数量|人数|记录数|记录|total|count)\s*[:：=]?\s*0(?:\D|$)", compact, re.I):
+                return "count_zero"
+        except Exception:
+            pass
+        return ""
+
     def _select(self, action, loc, option):
         if not option:
-            loc.click(timeout=4000)
+            loc.click(timeout=1500)
             return ActionResult(action=action, success=True)
         try:
             tag = loc.evaluate("el => el.tagName.toLowerCase()")
@@ -193,7 +277,7 @@ class ActionExecutor:
                     return ActionResult(action=action, success=False, error=f"native_select_failed:{exc}")
 
         # 自定义下拉：先打开，再只在可见 option/listbox 中找目标。
-        loc.click(timeout=4000)
+        loc.click(timeout=1500)
         self.client.wait(float(getattr(self.config, "dropdown_wait", 0.8) or 0.8))
         option_loc = self._find_visible_option(option)
         if option_loc is None:
@@ -203,7 +287,7 @@ class ActionExecutor:
                 pass
             return ActionResult(action=action, success=False, error=f"select_option_not_found:{option}")
         try:
-            option_loc.click(timeout=4000)
+            option_loc.click(timeout=1500)
             return ActionResult(action=action, success=True)
         except Exception as exc:
             return ActionResult(action=action, success=False, error=f"select_option_click_failed:{exc}")

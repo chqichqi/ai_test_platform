@@ -78,45 +78,18 @@ def _load_case_meta(db: Session, test_case_id: str) -> Dict:
     return {
         "name": getattr(tc, 'name', '') or getattr(tc, 'title', '') or str(test_case_id),
         "status": (getattr(tc, 'status', '') or '').strip(),
+        "module": (getattr(tc, 'module', '') or '').strip(),
     }
 
 
 def _require_login_module(db: Session, project_id: int = None) -> None:
-    """检查登录模块是否已导入（按项目校验）；未导入则拒绝"""
-    from app.core.models.web_ui_test import WebUITestCase
-    from app.core.models.requirement import RequirementDocument
-    from app.core.models.project import Version
-
-    # 先检查 __login__ UI 用例是否存在（按项目过滤，避免跨项目误判）
-    _login_q = db.query(WebUITestCase).filter(
-        WebUITestCase.test_case_id == '__login__',
-        WebUITestCase.deleted_at.is_(None)
-    )
-    if project_id:
-        _login_q = _login_q.filter(WebUITestCase.project_id == str(project_id))
-    login = _login_q.first()
-    if not login:
+    """检查登录模块是否已配置（项目级）；未配置则拒绝"""
+    from app.core.services.login_module_store import has_login_module_configured
+    if not has_login_module_configured(db, project_id):
         raise HTTPException(
             status_code=400,
-            detail="请先导入登录模块：在「项目配置 → 登录模块」中导入登录流程后再进行操作"
+            detail="请先在项目卡片「登录模块」中导入并验证登录流程后再进行操作"
         )
-
-    # 如果有 project_id，进一步校验该项目下的登录模块文档已导入
-    if project_id:
-        login_doc = db.query(RequirementDocument).join(
-            Version, RequirementDocument.version_id == Version.id
-        ).filter(
-            Version.project_id == project_id,
-            RequirementDocument.type == 'business_flow',
-            RequirementDocument.name == '登录模块',
-            RequirementDocument.content != '',
-            RequirementDocument.status != 'pending',
-        ).first()
-        if not login_doc:
-            raise HTTPException(
-                status_code=400,
-                detail="请先在「项目配置 → 登录模块」中导入并验证登录流程后再进行操作"
-            )
 
 
 @router.get("/check-login-module")
@@ -124,37 +97,19 @@ def check_login_module(
     db: Session = Depends(get_db),
     project_id: int = Query(None, description="项目ID（按项目校验）"),
 ):
-    """前端检查登录模块是否已导入（按项目校验）"""
-    from app.core.models.web_ui_test import WebUITestCase
-    from app.core.models.requirement import RequirementDocument
-    from app.core.models.project import Version
+    """前端检查项目前置配置状态（项目级，与 _require_login_module/创建版本门控同一判定源）。
 
-    _login_q = db.query(WebUITestCase).filter(
-        WebUITestCase.test_case_id == '__login__',
-        WebUITestCase.deleted_at.is_(None)
+    返回 has_login_module（登录模块已导入验证）与 has_web_config（项目配置已填目标系统 URL）
+    两项——创建版本门控要求两项均满足，前端卡片状态/「添加版本」引导按缺项提示。
+    """
+    from app.core.services.login_module_store import (
+        has_login_module_configured,
+        has_project_web_configured,
     )
-    if project_id:
-        _login_q = _login_q.filter(WebUITestCase.project_id == str(project_id))
-    login = _login_q.first()
-    # 判定与 _require_login_module 同源：存在未软删 __login__ 且已有步骤数据即为已导入。
-    # 不能以是否含 handle_org_selection 判定——该步骤仅在业务流文本命中机构标记关键词时追加，
-    # 无机构选择流程的项目会永远误判「未导入」→ 前端批量转化按钮被禁。
-    has_login = bool(login and login.test_script and login.test_data)
-
-    # 按项目进一步校验
-    if has_login and project_id:
-        login_doc = db.query(RequirementDocument).join(
-            Version, RequirementDocument.version_id == Version.id
-        ).filter(
-            Version.project_id == project_id,
-            RequirementDocument.type == 'business_flow',
-            RequirementDocument.name == '登录模块',
-            RequirementDocument.content != '',
-            RequirementDocument.status != 'pending',
-        ).first()
-        has_login = bool(login_doc)
-
-    return {"has_login_module": has_login}
+    return {
+        "has_login_module": has_login_module_configured(db, project_id),
+        "has_web_config": has_project_web_configured(db, project_id),
+    }
 
 
 # ========== 请求/响应模型 ==========
@@ -508,20 +463,21 @@ async def convert_batch_functional_to_web_ui(
                     "reason": "已转化为UI用例",
                 })
                 continue
+            # 登录模块提前排除（平台内部约定名）：业务流导入时已生成 __login__ 用例，
+            # find_existing_wui 按逻辑 id 匹配不到它（WUI 绑定 __login__），且其 status 为
+            # published（业务流导入自动发布，非人工审核 approved/active）——若放到审核守卫
+            # (_ensure_case_convertible) 之后会被误判「未审核通过」。提前到审核判定之前，理由更准确。
+            _probe_meta = _load_case_meta(db, _tid)
+            if _probe_meta.get("module") == "登录模块":
+                skipped_cases.append({
+                    "id": _tid,
+                    "name": _probe_meta.get("name") or _tid,
+                    "status": _probe_meta.get("status") or "",
+                    "reason": "登录模块已随业务流导入转化，无需重复转化",
+                })
+                continue
             try:
                 _guard_tc = _ensure_case_convertible(db, _tid)
-                # 排除登录模块（平台内部约定名）：业务流导入时已生成 __login__ 用例，
-                # find_existing_wui 按逻辑 id 匹配不到它（WUI 绑定 __login__），不排除会
-                # 在全选批量转化时被误带入
-                if (getattr(_guard_tc, 'module', '') or '') == '登录模块':
-                    _meta = _load_case_meta(db, _tid)
-                    skipped_cases.append({
-                        "id": _tid,
-                        "name": _meta.get("name") or _tid,
-                        "status": _meta.get("status") or "",
-                        "reason": "登录模块已随业务流导入转化，无需重复转化",
-                    })
-                    continue
                 # 同项目校验：批量转化按首条用例的项目推导探索配置/保存归属，
                 # 混入跨项目用例会按错误项目过滤与落库——显式跳过（前端按项目选择，此为 API 直调防护）
                 _tc_pid = getattr(_guard_tc, 'project_id', None)
@@ -1010,6 +966,10 @@ async def get_web_ui_test_cases(
                 if td.get('module'):
                     case_module = td['module']
             resp.test_case = {"name": str(case_name), "module": str(case_module)}
+            # 前置条件以功能用例为权威来源；存量 UI 用例即使 test_data 没有该字段，
+            # 这里也能正常展示。新生成用例则优先使用 test_data 中的同一份原文。
+            _td_pre = td.get("preconditions", "") if isinstance(td, dict) else ""
+            resp.preconditions = _td_pre or (getattr(related_case, "preconditions", "") if related_case else "") or ""
             result_items.append(resp)
 
         return WebUITestCaseListResponse(
@@ -1065,6 +1025,7 @@ async def get_web_ui_test_case(
             if td.get('module'):
                 case_module = td['module']
         resp.test_case = {"name": str(case_name), "module": str(case_module)}
+        resp.preconditions = (td.get("preconditions", "") if isinstance(td, dict) else "") or (getattr(related_case, "preconditions", "") if related_case else "") or ""
         return resp
 
     except HTTPException:
@@ -1099,8 +1060,12 @@ async def get_all_ui_test_case_ids(
     """返回所有 UI 用例的 ID 列表（无分页，供批量操作使用）。"""
     try:
         from app.core.models.web_ui_test import WebUITestCase as WebUITestCaseModel
-        rows = db.query(WebUITestCaseModel.id).all()
-        return {"ids": [r[0] for r in rows], "count": len(rows)}
+        # 排除登录模块用例（__login__）：它是前置条件不可删除、也不参与普通批量执行，
+        # 全选删除/执行若含它会因 403/无意义而干扰（用户 2026-09-02）。
+        rows = db.query(WebUITestCaseModel).filter(
+            WebUITestCaseModel.test_case_id != '__login__'
+        ).all()
+        return {"ids": [str(r.id) for r in rows], "count": len(rows)}
     except Exception as e:
         return {"ids": [], "count": 0}
 
@@ -1161,15 +1126,18 @@ async def delete_web_ui_test_case(
         if getattr(item, 'test_case_id', '') == '__login__':
             raise HTTPException(status_code=403, detail="登录用例是所有用例的前置条件，不可删除")
 
-        # 检查是否有关联的执行记录（通过 test_execution 表）
+        # 检查是否有关联的执行记录——只阻止「执行中心场景测试(scenario)」记录。
+        # UI 用例页的临时执行(ui_verify)只是验证转化后的用例是否正确，对结果无要求，
+        # 不应阻塞删除（用户 2026-09-02：UI 用例验证结果落库不阻断删除）。
         from app.core.models.test_simple import TestExecution
         exec_count = db.query(TestExecution).filter(
-            TestExecution.test_case_id == str(test_case_id)
+            TestExecution.test_case_id == str(test_case_id),
+            TestExecution.execution_type == 'scenario',
         ).count()
         if exec_count > 0:
             raise HTTPException(
                 status_code=409,
-                detail=f"该UI用例已添加到执行中心（{exec_count} 条执行记录），请先从执行中心移除后再删除"
+                detail=f"该UI用例已添加到执行中心（{exec_count} 条场景执行记录），请先从执行中心移除后再删除"
             )
 
         # 同时删除关联的元素选择器（WebUIElementSelector 有 ondelete=CASCADE，但显式处理更安全）
@@ -1246,6 +1214,30 @@ async def execute_web_ui_test(
 
         duration = int((time.time() - start_time) * 1000)
 
+        # 落库：UI 用例单条临时执行（ui_verify），与执行中心场景测试(scenario)区分。
+        # UI 用例页的执行仅验证转化后的用例是否正确，对测试结果无过多要求。落库失败不影响执行。
+        try:
+            from app.core.models.test_simple import TestExecution
+            _st = str(exec_result.get("status") or "")
+            if _st in ("completed", "passed", "success"):
+                _exec_status = "passed"
+            elif _st == "skipped":
+                _exec_status = "skipped"
+            else:
+                _exec_status = "failed"
+            db.add(TestExecution(
+                test_case_id=str(wui.id),
+                project_id=str(wui.project_id) if getattr(wui, 'project_id', None) else None,
+                status=_exec_status,
+                executed_by=str(current_user.id),
+                execution_type='ui_verify',
+                duration=duration // 1000,
+                failure_reason=exec_result.get("error") or None,
+            ))
+            db.commit()
+        except Exception as _e:
+            logger.warning(f"[Execute] 执行结果落库失败(不影响执行): {_e}")
+
         return WebUITestExecutionResult(
             execution_id=uuid4(),
             status=exec_result.get("status", "failed"),
@@ -1280,6 +1272,7 @@ async def execute_batch_web_ui(
     req: BatchExecuteRequest,
     headless: bool = Query(False, description="无头模式"),
     db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user),
 ):
     """批量执行：浏览器开一次，登录一次，依次执行全部用例。有头+复用模式。"""
     try:
@@ -1305,12 +1298,49 @@ async def execute_batch_web_ui(
         executor = UITestExecutor(config)
         results = await executor.execute_batch(cases)
 
-        ok = sum(1 for r in results if r.get("status") == "completed")
-        fail = len(results) - ok
+        # ── 落库：UI 用例临时执行（ui_verify）──
+        # 用户 2026-09-02：UI 用例页的批量执行只是「验证转化后的用例是否正确」，
+        # 对测试结果无过多要求。execution_type='ui_verify'，与执行中心场景测试(scenario)严格区分。
+        # 落库失败不影响执行结果返回。
+        try:
+            from app.core.models.test_simple import TestExecution
+            case_map = {str(w.id): w for w in cases}
+            for r in results:
+                cid = r.get("test_case_id")
+                if not cid or cid not in case_map:
+                    continue
+                _skipped = r.get("status") == "completed" and r.get("skipped")
+                if r.get("status") == "completed" and not _skipped:
+                    _st = "passed"
+                elif _skipped:
+                    _st = "skipped"
+                else:
+                    _st = "failed"
+                _w = case_map[cid]
+                db.add(TestExecution(
+                    test_case_id=str(_w.id),
+                    project_id=str(_w.project_id) if getattr(_w, 'project_id', None) else None,
+                    status=_st,
+                    executed_by=str(current_user.id),
+                    execution_type='ui_verify',
+                    duration=int(r.get("duration_ms") or 0) // 1000,
+                    failure_reason=r.get("error") or None,
+                    actual_results=json.dumps(r, ensure_ascii=False),
+                ))
+            db.commit()
+        except Exception as _e:
+            logger.warning(f"[ExecuteBatch] 执行结果落库失败(不影响执行): {_e}")
+
+        # P0-2（2026-09-01 迁移）：批量执行结果三分统计——completed 且 skipped=True
+        # 的执行视为「动态数据为空跳过」而非成功/失败（guard_dynamic_data 抛 SkipTestError）
+        skipped = sum(1 for r in results if r.get("status") == "completed" and r.get("skipped"))
+        ok = sum(1 for r in results if r.get("status") == "completed" and not r.get("skipped"))
+        fail = len(results) - ok - skipped
         return {
             "success": True,
             "total": len(cases),
             "ok": ok,
+            "skipped": skipped,
             "fail": fail,
             "results": results,
         }

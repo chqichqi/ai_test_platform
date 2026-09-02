@@ -11,8 +11,8 @@ from typing import Dict, Any, List
 import json
 import re
 
-from langchain.tools import Tool
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.tools import Tool
+from langchain_core.prompts import ChatPromptTemplate
 
 from app.core.agents.base_agent import BaseAgent
 from app.core.logger import logger
@@ -99,7 +99,7 @@ class APITestGenerationAgent(BaseAgent):
 重要规则：
 - 认证接口（登录）必须第一个执行
 - 创建资源的接口必须在查询/更新/删除接口之前
-- 每个接口至少生成3个用例（正常、异常、边界）
+- 不机械固定数量：按接口是否有参数、参数类型、资源ID、鉴权要求生成有意义的正常/异常/边界/鉴权变体；无参数GET不要伪造“缺参数”
 - 断言规则必须验证HTTP状态码和业务状态码
 - OAuth2接口使用application/x-www-form-urlencoded格式
 - 其他接口使用application/json格式
@@ -226,71 +226,21 @@ JSON对象，包含：
             return endpoints_json  # 返回原始列表
     
     def _generate_cases_for_endpoint(self, endpoint_json: str) -> str:
-        """
-        为单个接口生成测试用例
-        
-        Args:
-            endpoint_json: 接口详情JSON字符串
-        
-        Returns:
-            测试用例列表JSON字符串
-        """
-        logger.info(f"[Tool] 为接口生成测试用例")
-        
+        """统一调用 OpenApiTestGenerator，Agent 不再维护第二套变体规则。"""
+        logger.info("[Tool] 为接口生成测试用例（统一 OpenAPI Generator）")
         try:
             endpoint = json.loads(endpoint_json)
-            
-            # 简化的用例生成逻辑
-            test_cases = []
-            
-            # 正常场景用例
-            normal_case = {
-                'name': f"{endpoint['path']} - 正常场景",
-                'case_type': 'normal',
-                'priority': 'P0',
-                'description': f"测试{endpoint['summary']}正常执行",
-                'request': self._generate_request_params(json.dumps(endpoint)),
-                'assertions': [
-                    {'type': 'http_status', 'expected': [200, 201, 204]},
-                    {'type': 'response_time', 'expected': '< 1000ms'}
-                ]
-            }
-            test_cases.append(normal_case)
-            
-            # 异常场景用例（参数缺失）
-            error_case = {
-                'name': f"{endpoint['path']} - 参数缺失",
-                'case_type': 'error',
-                'priority': 'P1',
-                'description': f"测试{endpoint['summary']}参数缺失场景",
-                'request': {'headers': {}, 'query_params': {}, 'body': {}},
-                'assertions': [
-                    {'type': 'http_status', 'expected': [400, 422]}
-                ]
-            }
-            test_cases.append(error_case)
-            
-            # 边界值用例
-            boundary_case = {
-                'name': f"{endpoint['path']} - 边界值",
-                'case_type': 'boundary',
-                'priority': 'P2',
-                'description': f"测试{endpoint['summary']}边界值场景",
-                'request': {'headers': {}, 'query_params': {}, 'body': {}},
-                'assertions': [
-                    {'type': 'http_status', 'expected': [200, 400]}
-                ]
-            }
-            test_cases.append(boundary_case)
-            
-            logger.info(f"[Tool] 测试用例生成完成，数量={len(test_cases)}")
-            
-            return json.dumps(test_cases, ensure_ascii=False)
-            
+            from app.core.services.openapi_test_generator import OpenApiTestGenerator
+            generator = OpenApiTestGenerator()
+            cases = generator.generate_test_cases(
+                endpoint, include_normal=True, include_error=True, include_boundary=True,
+                include_auth=True, max_cases=10
+            )
+            return json.dumps(cases, ensure_ascii=False)
         except Exception as e:
-            logger.error(f"[Tool] 测试用例生成失败: {str(e)}")
+            logger.error(f"[Tool] 统一 API 用例生成失败: {e}")
             return json.dumps([], ensure_ascii=False)
-    
+
     def _generate_request_params(self, endpoint_json: str) -> str:
         """
         智能生成请求参数

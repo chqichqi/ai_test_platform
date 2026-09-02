@@ -12,6 +12,10 @@ import {
 } from '../../store/slices/taskProgressSlice';
 import { RootState } from '../../store';
 
+// 模块级共享防重：组件历史遗留被多处挂载（App/MainLayout），各实例的 useRef 相互独立，
+// 会导致后端恢复通知重复弹出（每次重启后端弹 2 次）。用模块级变量跨实例共享，无论几个实例都只弹一次。
+let moduleHasNotifiedRecovery = false;
+
 const GenerationTaskNotifier: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -21,7 +25,6 @@ const GenerationTaskNotifier: React.FC = () => {
   const notifiedCompletedRef = useRef<Set<number>>(new Set());
   const notifiedFailedRef = useRef<Set<number>>(new Set());
   const lastRunningTaskIdsRef = useRef<string>('');
-  const hasNotifiedRecovery = useRef(false);  // 防止反复弹恢复通知
 
   const { backendHealthy, runningTasks, taskId: trackedTaskId } = useSelector(
     (state: RootState) => state.taskProgress
@@ -68,8 +71,8 @@ const GenerationTaskNotifier: React.FC = () => {
       dispatch(setBackendHealthy(true));
       dispatch(setRunningTasks(taskList.tasks));
 
-      if (!hasNotifiedRecovery.current) {
-        hasNotifiedRecovery.current = true;
+      if (!moduleHasNotifiedRecovery) {
+        moduleHasNotifiedRecovery = true;
         notification.success({
           message: '后端服务已恢复',
           description: '连接正常',
@@ -83,7 +86,7 @@ const GenerationTaskNotifier: React.FC = () => {
 
       if (backendHealthy) {
         dispatch(setBackendHealthy(false));
-        hasNotifiedRecovery.current = false;  // 重置，下次恢复时再通知
+        moduleHasNotifiedRecovery = false;  // 重置，下次恢复时再通知
 
         notification.warning({
           message: '后端服务异常',

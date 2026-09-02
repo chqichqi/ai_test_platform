@@ -1,0 +1,2892 @@
+{
+  "timestamp": "2026-09-02T09:26:09.168794",
+  "pipeline": "functional_to_ui",
+  "test_cases_total": 24,
+  "exploration": {},
+  "conversions": [
+    {
+      "test_case_id": "256",
+      "case_name": "验证物流看板-待发货数卡片跳转到设备管理待发货tab",
+      "module": "指标总览",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「待发货数」卡片",
+            "expected": "页面跳转到设备管理页"
+          },
+          {
+            "step": 2,
+            "action": "验证：页面 URL 中包含 device",
+            "expected": "跳转 URL 正确"
+          },
+          {
+            "step": 3,
+            "action": "验证：「待发货」tab 处于激活状态",
+            "expected": "自动定位到待发货列表"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "验证物流看板-待发货数卡片跳转到设备管理待发货tab",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「待发货数」卡片，页面跳转到设备管理页",
+            "args": {
+              "locator": "待发货数"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_url",
+            "desc": "验证页面 URL 中包含 device",
+            "args": {
+              "expected": "device"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证「待发货」tab 处于激活状态",
+            "args": {
+              "locator": "待发货"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 0,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "待审核数据",
+            "action": "click",
+            "actual_text": "待审核数据",
+            "status": "failed",
+            "strategy": "treewalker_text",
+            "message": "✗ 未找到「待审核数据」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：页面 URL 中包含 device', 'expected': '跳转 URL 正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "target": "报告查收",
+            "action": "validate",
+            "status": "skipped",
+            "strategy": "",
+            "message": "「报告查收」为纯断言目标，探索不探索断言步骤（不计缺失）"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "257",
+      "case_name": "验证随访监控-项目个数卡片跳转到随访管理",
+      "module": "指标总览",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 2,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「项目个数」卡片",
+            "expected": "页面跳转到随访管理页"
+          },
+          {
+            "step": 2,
+            "action": "验证：页面 URL 中包含 visitmanage",
+            "expected": "跳转 URL 正确"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 3,
+        "title": "验证随访监控-项目个数卡片跳转到随访管理",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「项目个数」卡片，页面跳转到随访管理页",
+            "args": {
+              "locator": "项目个数"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_url",
+            "desc": "验证页面 URL 中包含 visitmanage",
+            "args": {
+              "expected": "visitmanage"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 2,
+        "found_steps": 0,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "待审核数据",
+            "action": "click",
+            "actual_text": "待审核数据",
+            "status": "failed",
+            "strategy": "treewalker_text",
+            "message": "✗ 未找到「待审核数据」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：页面 URL 中包含 visitmanage', 'expected': '跳转 URL 正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "258",
+      "case_name": "验证随访监控-入组人数卡片跳转到患者档案",
+      "module": "指标总览",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「入组人数」卡片",
+            "expected": "页面跳转到患者档案页"
+          },
+          {
+            "step": 2,
+            "action": "验证：页面 URL 中包含 patientarchieve",
+            "expected": "跳转 URL 正确"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面展示「全部」「我的患者」等 tab",
+            "expected": "患者档案页正常打开"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 5,
+        "title": "验证随访监控-入组人数卡片跳转到患者档案",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「入组人数」卡片，页面跳转到患者档案页",
+            "args": {
+              "locator": "入组人数"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_url",
+            "desc": "验证页面 URL 中包含 patientarchieve",
+            "args": {
+              "expected": "patientarchieve"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证「全部」tab 可见",
+            "args": {
+              "locator": "全部"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证「我的患者」tab 可见",
+            "args": {
+              "locator": "我的患者"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 0,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "待审核数据",
+            "action": "click",
+            "actual_text": "待审核数据",
+            "status": "failed",
+            "strategy": "treewalker_text",
+            "message": "✗ 未找到「待审核数据」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：页面 URL 中包含 patientarchieve', 'expected': '跳转 URL 正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "target": "报告查收",
+            "action": "validate",
+            "status": "skipped",
+            "strategy": "",
+            "message": "「报告查收」为纯断言目标，探索不探索断言步骤（不计缺失）"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "259",
+      "case_name": "验证卡片跳转后列表数量与卡片数量相差过大时不展示异常页面",
+      "module": "指标总览",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在当前「SMART报告」卡片上记录展示数字为 M",
+            "expected": "成功获取到数目 M"
+          },
+          {
+            "step": 2,
+            "action": "点击「SMART报告」卡片",
+            "expected": "页面跳转到患者档案页"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面能正常加载出新页面，无白屏或空页面",
+            "expected": "数量 M=0 时同样能展示空状态或可识别的内容，而不出现错误异常页"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 5,
+        "title": "验证卡片跳转后列表数量与卡片数量相差过大时不展示异常页面",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "assert_visible",
+            "desc": "在「SMART报告」卡片上记录展示数字 M，确认卡片可见可读取",
+            "args": {
+              "locator": "SMART报告"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "click",
+            "desc": "点击「SMART报告」卡片，页面跳转到患者档案页",
+            "args": {
+              "locator": "SMART报告"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_url",
+            "desc": "验证患者档案页正常加载",
+            "args": {
+              "expected": "patientarchieve"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证患者档案页非白屏/异常页；M=0 时仍展示可识别内容或空状态",
+            "args": {
+              "locator": "全部"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 0,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "待审核数据",
+            "action": "click",
+            "actual_text": "待审核数据",
+            "status": "failed",
+            "strategy": "treewalker_text",
+            "message": "✗ 未找到「待审核数据」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "target": "SMART报告",
+            "action": "click",
+            "actual_text": "Smart 报告(份)35今日新增+0",
+            "status": "failed",
+            "strategy": "scored_text(15)",
+            "message": "✗ 未找到「SMART报告」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 3,
+            "target": "报告查收",
+            "action": "validate",
+            "status": "skipped",
+            "strategy": "",
+            "message": "「报告查收」为纯断言目标，探索不探索断言步骤（不计缺失）"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "260",
+      "case_name": "进行中人数卡片跳转至随访管理-已入组tab",
+      "module": "指标总览",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「进行中人数」卡片",
+            "expected": "页面跳转到随访患者管理页"
+          },
+          {
+            "step": 2,
+            "action": "验证：页面 URL 中包含 visitpatientmanage",
+            "expected": "跳转 URL 正确"
+          },
+          {
+            "step": 3,
+            "action": "验证：当前激活 tab 为「已入组」",
+            "expected": "自动定位到已入组列表"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "进行中人数卡片跳转至随访管理-已入组tab",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「进行中人数」卡片，页面跳转到随访患者管理页",
+            "args": {
+              "locator": "进行中人数"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_url",
+            "desc": "验证页面 URL 中包含 visitpatientmanage",
+            "args": {
+              "expected": "visitpatientmanage"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证当前激活 tab 为「已入组」",
+            "args": {
+              "locator": "已入组"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 0,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "待审核数据",
+            "action": "click",
+            "actual_text": "待审核数据",
+            "status": "failed",
+            "strategy": "treewalker_text",
+            "message": "✗ 未找到「待审核数据」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：页面 URL 中包含 visitpatientmanage', 'expected': '跳转 URL 正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "target": "报告查收",
+            "action": "validate",
+            "status": "skipped",
+            "strategy": "",
+            "message": "「报告查收」为纯断言目标，探索不探索断言步骤（不计缺失）"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "253",
+      "case_name": "验证患者总览-患者人数卡片点击跳转及总数一致性",
+      "module": "指标总览",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「患者人数」卡片上记录数字为 N",
+            "expected": "成功获取当前展示总数 N，N≥0"
+          },
+          {
+            "step": 2,
+            "action": "点击「患者人数」卡片",
+            "expected": "页面跳转到患者档案页"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面 URL 中包含 patientarchieve",
+            "expected": "跳转 URL 正确"
+          },
+          {
+            "step": 4,
+            "action": "点击「全部」tab",
+            "expected": "展示全部患者列表"
+          },
+          {
+            "step": 5,
+            "action": "验证：列表区显示的“共N条”记录数与「患者人数」卡片上的 N 一致",
+            "expected": "列表总数等于卡片总数，数据一致；N=0 时列表区显示暂无数据，但仍一致"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 6,
+        "title": "验证患者总览-患者人数卡片点击跳转及总数一致性",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "assert_visible",
+            "desc": "在「患者人数」卡片上记录展示总数 N（N≥0），确认卡片可见",
+            "args": {
+              "locator": "患者人数"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "click",
+            "desc": "点击「患者人数」卡片，页面跳转到患者档案页",
+            "args": {
+              "locator": "患者人数"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_url",
+            "desc": "验证页面 URL 中包含 patientarchieve",
+            "args": {
+              "expected": "patientarchieve"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "click",
+            "desc": "点击「全部」tab",
+            "args": {
+              "locator": "全部"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证列表区“共N条”与患者人数卡片 N 一致；N=0 时列表区展示空状态但仍一致",
+            "args": {
+              "locator": "共${N}条"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 5,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "待审核数据",
+            "action": "click",
+            "actual_text": "待审核数据",
+            "status": "failed",
+            "strategy": "treewalker_text",
+            "message": "✗ 未找到「待审核数据」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "target": "患者人数",
+            "action": "click",
+            "actual_text": "患者人数",
+            "status": "failed",
+            "strategy": "treewalker_text",
+            "message": "✗ 未找到「患者人数」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 3,
+            "target": "报告查收",
+            "action": "validate",
+            "status": "skipped",
+            "strategy": "",
+            "message": "「报告查收」为纯断言目标，探索不探索断言步骤（不计缺失）"
+          },
+          {
+            "seq": 4,
+            "target": "全部",
+            "action": "click",
+            "actual_text": "全部",
+            "status": "failed",
+            "strategy": "treewalker_text",
+            "message": "✗ 未找到「全部」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 5,
+            "target": "患者人数",
+            "action": "validate",
+            "actual_text": "患者人数",
+            "status": "success",
+            "strategy": "treewalker_text",
+            "message": "✓ 已定位「患者人数」（断言目标由交互步骤覆盖）"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "254",
+      "case_name": "验证疾病统计-室早卡片跳转并携带疾病筛选",
+      "module": "指标总览",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「室早」卡片",
+            "expected": "页面跳转到患者档案页"
+          },
+          {
+            "step": 2,
+            "action": "验证：页面 URL 中包含 exceptionType 参数",
+            "expected": "跳转 URL 携带疾病类型参数"
+          },
+          {
+            "step": 3,
+            "action": "验证：筛选区出现疾病名标签“室早”",
+            "expected": "患者档案列表按“室早”进行筛选并展示疾病标签"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "验证疾病统计-室早卡片跳转并携带疾病筛选",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「室早」卡片，页面跳转到患者档案页",
+            "args": {
+              "locator": "室早"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_url",
+            "desc": "验证页面 URL 中包含 exceptionType 参数",
+            "args": {
+              "expected": "exceptionType"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证筛选区出现疾病名标签“室早”",
+            "args": {
+              "locator": "室早"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 0,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "待审核数据",
+            "action": "click",
+            "actual_text": "待审核数据",
+            "status": "failed",
+            "strategy": "treewalker_text",
+            "message": "✗ 未找到「待审核数据」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：页面 URL 中包含 exceptionType 参数', 'expected': '跳转 URL 携带疾病类型参数'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "target": "报告查收",
+            "action": "validate",
+            "status": "skipped",
+            "strategy": "",
+            "message": "「报告查收」为纯断言目标，探索不探索断言步骤（不计缺失）"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "255",
+      "case_name": "验证审核任务-待审核数据卡片跳转到报告查收",
+      "module": "指标总览",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「待审核数据」卡片",
+            "expected": "页面跳转到内部报告页"
+          },
+          {
+            "step": 2,
+            "action": "验证：页面 URL 中包含 internalreport",
+            "expected": "跳转 URL 正确"
+          },
+          {
+            "step": 3,
+            "action": "验证：「报告查收」tab 处于激活或可访问状态",
+            "expected": "自动定位到报告查收列表页"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "验证审核任务-待审核数据卡片跳转到报告查收",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「待审核数据」卡片，页面跳转到内部报告页",
+            "args": {
+              "locator": "待审核数据"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_url",
+            "desc": "验证页面 URL 中包含 internalreport",
+            "args": {
+              "expected": "internalreport"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证「报告查收」tab 处于激活或可访问状态",
+            "args": {
+              "locator": "报告查收"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 0,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "待审核数据",
+            "action": "click",
+            "actual_text": "待审核数据",
+            "status": "failed",
+            "strategy": "treewalker_text",
+            "message": "✗ 未找到「待审核数据」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：页面 URL 中包含 internalreport', 'expected': '跳转 URL 正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "target": "报告查收",
+            "action": "validate",
+            "status": "skipped",
+            "strategy": "",
+            "message": "「报告查收」为纯断言目标，探索不探索断言步骤（不计缺失）"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "261",
+      "case_name": "验证房颤预警卡片标题不带(N)计数",
+      "module": "预警信息",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 2,
+        "steps": [
+          {
+            "step": 1,
+            "action": "验证：页面左侧展示「房颤预警」卡片",
+            "expected": "房颤预警卡片位于左侧较宽区域"
+          },
+          {
+            "step": 2,
+            "action": "验证：「房颤预警」标题中无“(数字)”格式计数文本",
+            "expected": "房颤预警标题纯文本展示，不带有(N)计数字样"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 3,
+        "title": "验证房颤预警卡片标题不带(N)计数",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "assert_visible",
+            "desc": "验证页面左侧展示房颤预警卡片",
+            "args": {
+              "locator": "房颤预警"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_text",
+            "desc": "验证房颤预警标题中无“(数字)”计数文本，标题为纯文本“房颤预警”",
+            "args": {
+              "locator": "房颤预警",
+              "expected": "房颤预警"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 2,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "房颤预警",
+            "action": "validate",
+            "actual_text": "房颤预警",
+            "status": "success",
+            "strategy": "treewalker_text",
+            "message": "✓ 已定位「房颤预警」（断言目标由交互步骤覆盖）"
+          },
+          {
+            "seq": 2,
+            "target": "房颤预警",
+            "action": "validate",
+            "actual_text": "房颤预警",
+            "status": "success",
+            "strategy": "treewalker_text",
+            "message": "✓ 已定位「房颤预警」（断言目标由交互步骤覆盖）"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "262",
+      "case_name": "验证佩戴预警与测量预警标题带正确(N)计数",
+      "module": "预警信息",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "验证：页面右侧展示「佩戴预警 (0)全部暂无数据暂无数据」卡片和「测量预警」卡片",
+            "expected": "右侧纵向并列展示佩戴预警与测量预警两个卡片"
+          },
+          {
+            "step": 2,
+            "action": "获取「佩戴预警」卡片标题中的数字 N1",
+            "expected": "标题格式为“佩戴预警 (N1)”，且 N1≥0"
+          },
+          {
+            "step": 3,
+            "action": "获取「测量预警」卡片标题中的数字 N2",
+            "expected": "标题格式为“测量预警 (N2)”，且 N2≥0"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 5,
+        "title": "验证佩戴预警与测量预警标题带正确(N)计数",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "assert_visible",
+            "desc": "验证页面右侧纵向展示佩戴预警卡片",
+            "args": {
+              "locator": "佩戴预警"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_visible",
+            "desc": "验证页面右侧纵向展示测量预警卡片",
+            "args": {
+              "locator": "测量预警"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证佩戴预警卡片标题存在，格式为“佩戴预警 (N1)”",
+            "args": {
+              "locator": "佩戴预警"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证测量预警卡片标题存在，格式为“测量预警 (N2)”",
+            "args": {
+              "locator": "测量预警"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "佩戴预警",
+            "action": "validate",
+            "actual_text": "佩戴预警 (0)全部暂无数据暂无数据",
+            "status": "success",
+            "strategy": "scored_text(40)",
+            "message": "✓ 已定位「佩戴预警」（断言目标由交互步骤覆盖）"
+          },
+          {
+            "seq": 2,
+            "target": "佩戴预警",
+            "action": "click",
+            "actual_text": "佩戴预警 (0)全部暂无数据暂无数据",
+            "status": "failed",
+            "strategy": "scored_text(40)",
+            "message": "✗ 未找到「佩戴预警」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 3,
+            "target": "自定义",
+            "action": "validate",
+            "status": "skipped",
+            "strategy": "",
+            "message": "「自定义」为纯断言目标，探索不探索断言步骤（不计缺失）"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "263",
+      "case_name": "验证预警数量为0时列表区显示暂无数据",
+      "module": "预警信息",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "验证：佩戴预警卡片标题显示“佩戴预警 (0)”",
+            "expected": "当前计数为0"
+          },
+          {
+            "step": 2,
+            "action": "验证：佩戴预警卡片的列表区显示“暂无数据”占位图",
+            "expected": "展示空数据占位图和“暂无数据”文本，且列表无异常报错"
+          },
+          {
+            "step": 3,
+            "action": "验证：测量预警卡片标题也显示“测量预警 (0)”",
+            "expected": "当前计数为0，列表区显示“暂无数据”占位图"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 5,
+        "title": "验证预警数量为0时列表区显示暂无数据",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "assert_text",
+            "desc": "验证佩戴预警卡片标题显示“佩戴预警 (0)”",
+            "args": {
+              "locator": "佩戴预警",
+              "expected": "佩戴预警 (0)"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_visible",
+            "desc": "验证佩戴预警卡片列表区显示“暂无数据”占位图",
+            "args": {
+              "locator": "暂无数据"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_text",
+            "desc": "验证测量预警卡片标题显示“测量预警 (0)”",
+            "args": {
+              "locator": "测量预警",
+              "expected": "测量预警 (0)"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证测量预警卡片列表区显示“暂无数据”占位图",
+            "args": {
+              "locator": "暂无数据"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 0,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "step_raw": "{'step': 1, 'action': '验证：佩戴预警卡片标题显示“佩戴预警 (0)”', 'expected': '当前计数为0'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：佩戴预警卡片的列表区显示“暂无数据”占位图', 'expected': '展示空数据占位图和“暂无数据”文本，且列表无异常报错'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "target": "自定义",
+            "action": "validate",
+            "status": "skipped",
+            "strategy": "",
+            "message": "「自定义」为纯断言目标，探索不探索断言步骤（不计缺失）"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "264",
+      "case_name": "验证右侧并行预警卡片翻页控件切换",
+      "module": "预警信息",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "记录当前右侧展示的卡片顺序为“佩戴预警、测量预警”",
+            "expected": "右侧展示前两个并行卡片"
+          },
+          {
+            "step": 2,
+            "action": "点击右侧卡片组左侧的「>」翻页控件",
+            "expected": "右侧并行卡片发生平移，切换后仍展示佩戴预警与测量预警两个卡片，但卡片位置或展示顺序发生左右偏移"
+          },
+          {
+            "step": 3,
+            "action": "点击右侧卡片组左侧的「<」翻页控件",
+            "expected": "页面布局恢复至点击「>」之前的状态，无报错"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 9,
+        "title": "验证右侧并行预警卡片翻页控件切换",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "assert_visible",
+            "desc": "验证右侧展示佩戴预警卡片",
+            "args": {
+              "locator": "佩戴预警"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_visible",
+            "desc": "验证右侧展示测量预警卡片",
+            "args": {
+              "locator": "测量预警"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击右侧卡片组左侧的“>”翻页控件",
+            "args": {
+              "locator": ">"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证翻页后佩戴预警卡片仍展示",
+            "args": {
+              "locator": "佩戴预警"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证翻页后测量预警卡片仍展示",
+            "args": {
+              "locator": "测量预警"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "click",
+            "desc": "点击右侧卡片组左侧的“<”翻页控件恢复布局",
+            "args": {
+              "locator": "<"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "assert_visible",
+            "desc": "验证恢复后佩戴预警卡片展示",
+            "args": {
+              "locator": "佩戴预警"
+            }
+          },
+          {
+            "seq": 8,
+            "action": "assert_visible",
+            "desc": "验证恢复后测量预警卡片展示",
+            "args": {
+              "locator": "测量预警"
+            }
+          },
+          {
+            "seq": 9,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 0,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "step_raw": "{'step': 1, 'action': '记录当前右侧展示的卡片顺序为“佩戴预警、测量预警”', 'expected': '右侧展示前两个并行卡片'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 2,
+            "target": ">",
+            "action": "click",
+            "actual_text": ">",
+            "status": "failed",
+            "strategy": "treewalker_text",
+            "message": "✗ 未找到「>」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 3,
+            "target": "自定义",
+            "action": "validate",
+            "status": "skipped",
+            "strategy": "",
+            "message": "「自定义」为纯断言目标，探索不探索断言步骤（不计缺失）"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "265",
+      "case_name": "验证佩戴预警卡片过滤下拉框可选并可刷新列表",
+      "module": "预警信息",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「佩戴预警」卡片上的「筛选」下拉框",
+            "expected": "下拉框展开，展示过滤选项"
+          },
+          {
+            "step": 2,
+            "action": "在「筛选」下拉框中选择“全部”或“已处理”等可见选项",
+            "expected": "下拉选项被选中，列表刷新后判断列表是否存在数据变化"
+          },
+          {
+            "step": 3,
+            "action": "验证：列表返回结果为符合过滤条件的数据，无报错",
+            "expected": "过滤下拉选择后预警记录能正常刷新"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 5,
+        "title": "验证佩戴预警卡片过滤下拉框可选并可刷新列表",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击佩戴预警卡片上的“筛选”下拉框",
+            "args": {
+              "locator": "筛选"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "select",
+            "desc": "在筛选下拉框中选择“全部”选项",
+            "args": {
+              "locator": "全部"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "wait_for_load_state",
+            "desc": "等待列表按过滤条件刷新完成且无报错",
+            "args": {
+              "state": "networkidle"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证佩戴预警卡片过滤后仍正常展示无报错",
+            "args": {
+              "locator": "佩戴预警"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 0,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "佩戴预警",
+            "action": "click",
+            "actual_text": "佩戴预警 (0)全部暂无数据暂无数据",
+            "status": "failed",
+            "strategy": "scored_text(40)",
+            "message": "✗ 未找到「佩戴预警」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "target": "筛选",
+            "action": "select",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「筛选」— element_not_found"
+          },
+          {
+            "seq": 3,
+            "target": "自定义",
+            "action": "validate",
+            "status": "skipped",
+            "strategy": "",
+            "message": "「自定义」为纯断言目标，探索不探索断言步骤（不计缺失）"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "266",
+      "case_name": "验证测量预警卡片过滤下拉框可用",
+      "module": "预警信息",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 2,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「测量预警」卡片上的「筛选」下拉框",
+            "expected": "下拉框展开"
+          },
+          {
+            "step": 2,
+            "action": "选择其中一个过滤条件",
+            "expected": "测量预警列表区按条件刷新"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "验证测量预警卡片过滤下拉框可用",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击测量预警卡片上的“筛选”下拉框",
+            "args": {
+              "locator": "筛选"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "select",
+            "desc": "在测量预警筛选下拉框中选择其中一个过滤条件",
+            "args": {
+              "locator": "${filter_condition}"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证测量预警卡片过滤后列表正常刷新无报错",
+            "args": {
+              "locator": "测量预警"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 2,
+        "found_steps": 0,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "测量预警",
+            "action": "click",
+            "actual_text": "测量预警 (0)全部暂无数据暂无数据",
+            "status": "failed",
+            "strategy": "scored_text(40)",
+            "message": "✗ 未找到「测量预警」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "target": "其中一个过滤条件",
+            "action": "select",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「其中一个过滤条件」— element_not_found"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "267",
+      "case_name": "验证房颤预警卡片可点击进入详情",
+      "module": "预警信息",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 2,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「房颤预警」卡片",
+            "expected": "页面跳转到对应预警详情或列表页，不再是工作台原页面"
+          },
+          {
+            "step": 2,
+            "action": "验证：页面加载无异常，能正常返回工作台",
+            "expected": "跳转目标可达且可正常返回"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 5,
+        "title": "验证房颤预警卡片可点击进入详情",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击房颤预警卡片进入预警详情或列表页",
+            "args": {
+              "locator": "房颤预警"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "wait_for_load_state",
+            "desc": "等待跳转目标页面加载完成，验证无异常",
+            "args": {
+              "state": "domcontentloaded"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "go_back",
+            "desc": "返回工作台页面",
+            "args": {}
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证能正常返回工作台页面",
+            "args": {
+              "locator": "房颤预警"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 2,
+        "found_steps": 0,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "房颤预警",
+            "action": "click",
+            "actual_text": "房颤预警",
+            "status": "failed",
+            "strategy": "treewalker_text",
+            "message": "✗ 未找到「房颤预警」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：页面加载无异常，能正常返回工作台', 'expected': '跳转目标可达且可正常返回'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "268",
+      "case_name": "验证预警卡片列表展示异常时不阻断整体页面",
+      "module": "预警信息",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "验证：工作台下方预警区能整体渲染出来",
+            "expected": "页面加载完成，不会因为预警数据缺失导致工作台空白"
+          },
+          {
+            "step": 2,
+            "action": "验证：预警卡片区域显示对应占位内容或已有数据内容",
+            "expected": "无论数据是否存在均展示正常占位符或列表内容"
+          },
+          {
+            "step": 3,
+            "action": "验证：页面右上角「自定义」按钮仍可点击",
+            "expected": "预警展示异常不影响顶部指标自定义操作"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 4,
+        "title": "验证预警卡片列表展示异常时不阻断整体页面",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "assert_visible",
+            "desc": "验证工作台下方预警区能整体渲染出来",
+            "args": {
+              "locator": "房颤预警"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_visible",
+            "desc": "验证预警卡片区域显示对应卡片内容或占位内容，无空白报错",
+            "args": {
+              "locator": "佩戴预警"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击页面右上角“自定义”按钮，验证仍可点击",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 0,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "step_raw": "{'step': 1, 'action': '验证：工作台下方预警区能整体渲染出来', 'expected': '页面加载完成，不会因为预警数据缺失导致工作台空白'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 2,
+            "step_raw": "{'step': 2, 'action': '验证：预警卡片区域显示对应占位内容或已有数据内容', 'expected': '无论数据是否存在均展示正常占位符或列表内容'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 3,
+            "target": "自定义",
+            "action": "validate",
+            "status": "skipped",
+            "strategy": "",
+            "message": "「自定义」为纯断言目标，探索不探索断言步骤（不计缺失）"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "245",
+      "case_name": "验证点击右上角自定义按钮打开自定义面板",
+      "module": "自定义页面",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 2,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「自定义」按钮",
+            "expected": "右侧固定打开自定义页面"
+          },
+          {
+            "step": 2,
+            "action": "验证：自定义页面中显示分类「患者概览」「疾病统计」「审核任务」「物流看板」「随访监控」",
+            "expected": "五个分类在自定义页面中均可见"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 7,
+        "title": "验证点击右上角自定义按钮打开自定义页面",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「自定义」按钮",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_visible",
+            "desc": "验证自定义页面中显示分类「患者概览」",
+            "args": {
+              "locator": "患者概览"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证自定义页面中显示分类「疾病统计」",
+            "args": {
+              "locator": "疾病统计"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证自定义页面中显示分类「审核任务」",
+            "args": {
+              "locator": "审核任务"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证自定义页面中显示分类「物流看板」",
+            "args": {
+              "locator": "物流看板"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "assert_visible",
+            "desc": "验证自定义页面中显示分类「随访监控」",
+            "args": {
+              "locator": "随访监控"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 2,
+        "found_steps": 0,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "自定义",
+            "action": "click",
+            "actual_text": "自定义",
+            "status": "failed",
+            "strategy": "treewalker_text",
+            "message": "✗ 未找到「自定义」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "target": "∧",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「∧」— element_not_found"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "246",
+      "case_name": "验证自定义页面分类的收起与展开",
+      "module": "自定义页面",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「患者概览」分类右侧的「∨」按钮",
+            "expected": "「患者概览」分类被收起，下方指标项隐藏"
+          },
+          {
+            "step": 2,
+            "action": "点击「患者概览」分类右侧的「∧」按钮",
+            "expected": "「患者概览」分类被展开，下方展示指标项「患者人数」「SMART报告」"
+          },
+          {
+            "step": 3,
+            "action": "向下滚动自定义页面",
+            "expected": "页面可滚动浏览全部指标分类，无元素遮挡异常"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 6,
+        "title": "验证自定义页面分类的收起与展开",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "收起「患者概览」分类",
+            "args": {
+              "locator": "患者概览"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "click",
+            "desc": "展开「患者概览」分类",
+            "args": {
+              "locator": "患者概览"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证「患者概览」分类下展示指标项「患者人数」",
+            "args": {
+              "locator": "患者人数"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证「患者概览」分类下展示指标项「SMART报告」",
+            "args": {
+              "locator": "SMART报告"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "scroll_to_bottom",
+            "desc": "向下滚动自定义页面",
+            "args": {}
+          },
+          {
+            "seq": 6,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 0,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "自定义",
+            "action": "click",
+            "actual_text": "自定义",
+            "status": "failed",
+            "strategy": "treewalker_text",
+            "message": "✗ 未找到「自定义」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "target": "∧",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「∧」— element_not_found"
+          },
+          {
+            "seq": 3,
+            "target": "去预览",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「去预览」— element_not_found"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "247",
+      "case_name": "验证自定义页面中对指标执行添加与移除",
+      "module": "自定义页面",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「疾病统计」分类右侧的「∧」按钮",
+            "expected": "「疾病统计」分类展开，展示「室早」「室速」「室颤」等指标项"
+          },
+          {
+            "step": 2,
+            "action": "点击「室早」指标右侧的「添加」按钮",
+            "expected": "「室早」指标右侧变为「移除」"
+          },
+          {
+            "step": 3,
+            "action": "点击「室速」指标右侧的「添加」按钮",
+            "expected": "「室速」指标右侧变为「移除」"
+          },
+          {
+            "step": 4,
+            "action": "点击「室早」指标右侧的「移除」按钮",
+            "expected": "「室早」指标右侧恢复为「添加」"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 11,
+        "title": "验证自定义页面中对指标执行添加与移除",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "展开「疾病统计」分类",
+            "args": {
+              "locator": "疾病统计"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_visible",
+            "desc": "验证「疾病统计」分类下展示「室早」",
+            "args": {
+              "locator": "室早"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证「疾病统计」分类下展示「室速」",
+            "args": {
+              "locator": "室速"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证「疾病统计」分类下展示「室颤」",
+            "args": {
+              "locator": "室颤"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "click",
+            "desc": "点击「室早」指标右侧的「添加」按钮",
+            "args": {
+              "locator": "添加"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "assert_visible",
+            "desc": "验证「室早」指标右侧变为「移除」",
+            "args": {
+              "locator": "移除"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "click",
+            "desc": "点击「室速」指标右侧的「添加」按钮",
+            "args": {
+              "locator": "添加"
+            }
+          },
+          {
+            "seq": 8,
+            "action": "assert_visible",
+            "desc": "验证「室速」指标右侧变为「移除」",
+            "args": {
+              "locator": "移除"
+            }
+          },
+          {
+            "seq": 9,
+            "action": "click",
+            "desc": "点击「室早」指标右侧的「移除」按钮",
+            "args": {
+              "locator": "移除"
+            }
+          },
+          {
+            "seq": 10,
+            "action": "assert_visible",
+            "desc": "验证「室早」指标右侧恢复为「添加」",
+            "args": {
+              "locator": "添加"
+            }
+          },
+          {
+            "seq": 11,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 0,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "自定义",
+            "action": "click",
+            "actual_text": "自定义",
+            "status": "failed",
+            "strategy": "treewalker_text",
+            "message": "✗ 未找到「自定义」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "target": "∧",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「∧」— element_not_found"
+          },
+          {
+            "seq": 3,
+            "target": "去预览",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「去预览」— element_not_found"
+          },
+          {
+            "seq": 4,
+            "target": "保存布局",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「保存布局」— element_not_found"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "248",
+      "case_name": "验证自定义页面的重置功能恢复所有操作",
+      "module": "自定义页面",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「患者概览」分类右侧的「∧」按钮",
+            "expected": "「患者概览」分类展开，展示「患者人数」「SMART报告」"
+          },
+          {
+            "step": 2,
+            "action": "点击「患者人数」指标右侧的「移除」按钮",
+            "expected": "「患者人数」右侧变为「添加」"
+          },
+          {
+            "step": 3,
+            "action": "点击「自定义」页面底部的「重置」按钮",
+            "expected": "所有添加/移除操作被撤销，恢复到打开面板时的初始状态"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 7,
+        "title": "验证自定义页面的重置功能恢复所有操作",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "展开「患者概览」分类",
+            "args": {
+              "locator": "患者概览"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_visible",
+            "desc": "验证「患者概览」分类下展示「患者人数」",
+            "args": {
+              "locator": "患者人数"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证「患者概览」分类下展示「SMART报告」",
+            "args": {
+              "locator": "SMART报告"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "click",
+            "desc": "点击「患者人数」指标右侧的「移除」按钮",
+            "args": {
+              "locator": "移除"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证「患者人数」右侧变为「添加」",
+            "args": {
+              "locator": "添加"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "click",
+            "desc": "点击自定义页面底部的「重置」按钮",
+            "args": {
+              "locator": "重置"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 0,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "自定义",
+            "action": "click",
+            "actual_text": "自定义",
+            "status": "failed",
+            "strategy": "treewalker_text",
+            "message": "✗ 未找到「自定义」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "target": "∧",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「∧」— element_not_found"
+          },
+          {
+            "seq": 3,
+            "target": "去预览",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「去预览」— element_not_found"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "249",
+      "case_name": "验证点击去预览后通过保存布局生效并提示保存成功",
+      "module": "自定义页面",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「自定义」按钮",
+            "expected": "右侧打开自定义页面"
+          },
+          {
+            "step": 2,
+            "action": "点击「物流看板」分类右侧的「∧」按钮",
+            "expected": "「物流看板」分类展开，展示「待发货数」「预约回收数」"
+          },
+          {
+            "step": 3,
+            "action": "点击「预约回收数」指标右侧的「添加」按钮",
+            "expected": "「预约回收数」右侧变为「移除」"
+          },
+          {
+            "step": 4,
+            "action": "点击「去预览」按钮",
+            "expected": "自定义页面关闭，工作台页面底部展示「取消」和「保存布局」按钮"
+          },
+          {
+            "step": 5,
+            "action": "点击「保存布局」按钮",
+            "expected": "toast提示“保存成功”，操作生效"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 12,
+        "title": "验证点击去预览后通过保存布局生效并提示保存成功",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「自定义」按钮",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "click",
+            "desc": "展开「物流看板」分类",
+            "args": {
+              "locator": "物流看板"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证「物流看板」分类下展示「待发货数」",
+            "args": {
+              "locator": "待发货数"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证「物流看板」分类下展示「预约回收数」",
+            "args": {
+              "locator": "预约回收数"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "click",
+            "desc": "点击「预约回收数」指标右侧的「添加」按钮",
+            "args": {
+              "locator": "添加"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "assert_visible",
+            "desc": "验证「预约回收数」右侧变为「移除」",
+            "args": {
+              "locator": "移除"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "click",
+            "desc": "点击「去预览」按钮",
+            "args": {
+              "locator": "去预览"
+            }
+          },
+          {
+            "seq": 8,
+            "action": "assert_visible",
+            "desc": "验证工作台页面底部展示「取消」按钮",
+            "args": {
+              "locator": "取消"
+            }
+          },
+          {
+            "seq": 9,
+            "action": "assert_visible",
+            "desc": "验证工作台页面底部展示「保存布局」按钮",
+            "args": {
+              "locator": "保存布局"
+            }
+          },
+          {
+            "seq": 10,
+            "action": "click",
+            "desc": "点击「保存布局」按钮",
+            "args": {
+              "locator": "保存布局"
+            }
+          },
+          {
+            "seq": 11,
+            "action": "assert_visible",
+            "desc": "验证toast提示“保存成功”",
+            "args": {
+              "locator": "保存成功"
+            }
+          },
+          {
+            "seq": 12,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 5,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "自定义",
+            "action": "click",
+            "actual_text": "自定义",
+            "status": "failed",
+            "strategy": "treewalker_text",
+            "message": "✗ 未找到「自定义」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "target": "∧",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「∧」— element_not_found"
+          },
+          {
+            "seq": 3,
+            "target": "去预览",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「去预览」— element_not_found"
+          },
+          {
+            "seq": 4,
+            "target": "保存布局",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「保存布局」— element_not_found"
+          },
+          {
+            "seq": 5,
+            "target": "去添加指标",
+            "action": "validate",
+            "actual_text": "指标总览自定义",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「去添加指标」（断言目标由交互步骤覆盖）"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "250",
+      "case_name": "验证取消按钮不保存工作台布局",
+      "module": "自定义页面",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「自定义」按钮",
+            "expected": "右侧打开自定义页面"
+          },
+          {
+            "step": 2,
+            "action": "点击「患者概览」分类右侧的「∧」按钮",
+            "expected": "「患者概览」分类展开"
+          },
+          {
+            "step": 3,
+            "action": "点击「患者人数」指标右侧的「移除」按钮",
+            "expected": "「患者人数」右侧变为「添加」"
+          },
+          {
+            "step": 4,
+            "action": "点击「去预览」按钮",
+            "expected": "自定义页面关闭，工作台底部展示「取消」和「保存布局」按钮"
+          },
+          {
+            "step": 5,
+            "action": "点击「取消」按钮",
+            "expected": "底部按钮消失，工作台上未移除「患者人数」卡片，本次操作未生效"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 11,
+        "title": "验证取消按钮不保存工作台布局",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「自定义」按钮",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "click",
+            "desc": "展开「患者概览」分类",
+            "args": {
+              "locator": "患者概览"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证「患者概览」分类下展示「患者人数」",
+            "args": {
+              "locator": "患者人数"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "click",
+            "desc": "点击「患者人数」指标右侧的「移除」按钮",
+            "args": {
+              "locator": "移除"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证「患者人数」右侧变为「添加」",
+            "args": {
+              "locator": "添加"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "click",
+            "desc": "点击「去预览」按钮",
+            "args": {
+              "locator": "去预览"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "assert_visible",
+            "desc": "验证工作台页面底部展示「取消」按钮",
+            "args": {
+              "locator": "取消"
+            }
+          },
+          {
+            "seq": 8,
+            "action": "assert_visible",
+            "desc": "验证工作台页面底部展示「保存布局」按钮",
+            "args": {
+              "locator": "保存布局"
+            }
+          },
+          {
+            "seq": 9,
+            "action": "click",
+            "desc": "点击「取消」按钮",
+            "args": {
+              "locator": "取消"
+            }
+          },
+          {
+            "seq": 10,
+            "action": "assert_visible",
+            "desc": "验证工作台上未移除「患者人数」卡片",
+            "args": {
+              "locator": "患者人数"
+            }
+          },
+          {
+            "seq": 11,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 5,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "自定义",
+            "action": "click",
+            "actual_text": "自定义",
+            "status": "failed",
+            "strategy": "treewalker_text",
+            "message": "✗ 未找到「自定义」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "target": "∧",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「∧」— element_not_found"
+          },
+          {
+            "seq": 3,
+            "target": "去预览",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「去预览」— element_not_found"
+          },
+          {
+            "seq": 4,
+            "target": "保存布局",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「保存布局」— element_not_found"
+          },
+          {
+            "seq": 5,
+            "target": "去添加指标",
+            "action": "validate",
+            "actual_text": "指标总览自定义",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「去添加指标」（断言目标由交互步骤覆盖）"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "251",
+      "case_name": "验证所有指标都移除后工作台展示去添加指标",
+      "module": "自定义页面",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 6,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「自定义」按钮",
+            "expected": "右侧打开自定义页面"
+          },
+          {
+            "step": 2,
+            "action": "依次展开所有分类，并点击每个指标右侧的「移除」按钮",
+            "expected": "所有指标右侧均变为「添加」"
+          },
+          {
+            "step": 3,
+            "action": "点击「去预览」按钮",
+            "expected": "自定义页面关闭，工作台页面底部展示「取消」「保存布局」按钮"
+          },
+          {
+            "step": 4,
+            "action": "点击「保存布局」按钮",
+            "expected": "toast提示“保存成功”，工作台卡片已全部移除"
+          },
+          {
+            "step": 5,
+            "action": "验证：工作台页面展示「指标总览自定义」区域",
+            "expected": "工作台上显示「去添加指标」引导入口，而非指标卡片列表"
+          },
+          {
+            "step": 6,
+            "action": "点击「去添加指标」",
+            "expected": "右侧重新打开自定义页面，可以再次执行指标添加操作"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 12,
+        "title": "验证所有指标都移除后工作台展示去添加指标",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「自定义」按钮",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "click",
+            "desc": "依次展开所有分类，并点击每个指标右侧的「移除」按钮",
+            "args": {
+              "locator": "移除"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击「去预览」按钮",
+            "args": {
+              "locator": "去预览"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证工作台页面底部展示「取消」按钮",
+            "args": {
+              "locator": "取消"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证工作台页面底部展示「保存布局」按钮",
+            "args": {
+              "locator": "保存布局"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "click",
+            "desc": "点击「保存布局」按钮",
+            "args": {
+              "locator": "保存布局"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "assert_visible",
+            "desc": "验证toast提示“保存成功”",
+            "args": {
+              "locator": "保存成功"
+            }
+          },
+          {
+            "seq": 8,
+            "action": "assert_visible",
+            "desc": "验证工作台页面展示「指标总览自定义」区域",
+            "args": {
+              "locator": "指标总览自定义"
+            }
+          },
+          {
+            "seq": 9,
+            "action": "assert_visible",
+            "desc": "验证工作台显示「去添加指标」引导入口",
+            "args": {
+              "locator": "去添加指标"
+            }
+          },
+          {
+            "seq": 10,
+            "action": "click",
+            "desc": "点击「去添加指标」",
+            "args": {
+              "locator": "去添加指标"
+            }
+          },
+          {
+            "seq": 11,
+            "action": "assert_visible",
+            "desc": "验证右侧重新打开自定义页面",
+            "args": {
+              "locator": "患者概览"
+            }
+          },
+          {
+            "seq": 12,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 6,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "自定义",
+            "action": "click",
+            "actual_text": "自定义",
+            "status": "failed",
+            "strategy": "treewalker_text",
+            "message": "✗ 未找到「自定义」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "target": "∧",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「∧」— element_not_found"
+          },
+          {
+            "seq": 3,
+            "target": "去预览",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「去预览」— element_not_found"
+          },
+          {
+            "seq": 4,
+            "target": "保存布局",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「保存布局」— element_not_found"
+          },
+          {
+            "seq": 5,
+            "target": "去添加指标",
+            "action": "validate",
+            "actual_text": "指标总览自定义",
+            "status": "success",
+            "strategy": "scored_text(10)",
+            "message": "✓ 已定位「去添加指标」（断言目标由交互步骤覆盖）"
+          },
+          {
+            "seq": 6,
+            "target": "去添加指标",
+            "action": "click",
+            "actual_text": "指标总览自定义",
+            "status": "failed",
+            "strategy": "scored_text(10)",
+            "message": "✗ 未找到「去添加指标」— cross_module_navigation_blocked"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "252",
+      "case_name": "验证自定义面板内容过多时可纵向滚动",
+      "module": "自定义页面",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 4,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击「自定义」按钮",
+            "expected": "右侧打开自定义页面"
+          },
+          {
+            "step": 2,
+            "action": "依次点击所有分类右侧的「∧」按钮",
+            "expected": "所有分类全部展开，指标列表超出可视区域"
+          },
+          {
+            "step": 3,
+            "action": "在自定义页面区域使用鼠标滚轮向下滚动",
+            "expected": "可以正常滚动到底部，看到「去预览」与「重置」按钮"
+          },
+          {
+            "step": 4,
+            "action": "在自定义页面区域使用鼠标滚轮向上滚动",
+            "expected": "可以正常滚动到顶部，看到「患者概览」分类"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 12,
+        "title": "验证自定义面板内容过多时可纵向滚动",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击「自定义」按钮",
+            "args": {
+              "locator": "自定义"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "click",
+            "desc": "展开「患者概览」分类",
+            "args": {
+              "locator": "患者概览"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "展开「疾病统计」分类",
+            "args": {
+              "locator": "疾病统计"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "click",
+            "desc": "展开「审核任务」分类",
+            "args": {
+              "locator": "审核任务"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "click",
+            "desc": "展开「物流看板」分类",
+            "args": {
+              "locator": "物流看板"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "click",
+            "desc": "展开「随访监控」分类",
+            "args": {
+              "locator": "随访监控"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "scroll_to_bottom",
+            "desc": "在自定义页面区域向下滚动到底部",
+            "args": {}
+          },
+          {
+            "seq": 8,
+            "action": "assert_visible",
+            "desc": "验证可以看到「去预览」按钮",
+            "args": {
+              "locator": "去预览"
+            }
+          },
+          {
+            "seq": 9,
+            "action": "assert_visible",
+            "desc": "验证可以看到「重置」按钮",
+            "args": {
+              "locator": "重置"
+            }
+          },
+          {
+            "seq": 10,
+            "action": "press",
+            "desc": "在自定义页面区域向上滚动到顶部",
+            "args": {
+              "key": "Home"
+            }
+          },
+          {
+            "seq": 11,
+            "action": "assert_visible",
+            "desc": "验证可以看到「患者概览」分类",
+            "args": {
+              "locator": "患者概览"
+            }
+          },
+          {
+            "seq": 12,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 4,
+        "found_steps": 0,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "自定义",
+            "action": "click",
+            "actual_text": "自定义",
+            "status": "failed",
+            "strategy": "treewalker_text",
+            "message": "✗ 未找到「自定义」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "target": "∧",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「∧」— element_not_found"
+          },
+          {
+            "seq": 3,
+            "target": "去预览",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「去预览」— element_not_found"
+          },
+          {
+            "seq": 4,
+            "target": "保存布局",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「保存布局」— element_not_found"
+          }
+        ],
+        "warning": null
+      }
+    }
+  ],
+  "summary": {
+    "success": 24,
+    "exploration_insufficient": 0,
+    "exploration_failed": 0,
+    "conversion_failed": 0,
+    "steps_missing": 0
+  }
+}

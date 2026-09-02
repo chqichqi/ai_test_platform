@@ -32,6 +32,41 @@ STEP1_SYSTEM_PROMPT = """你是需求分析专家。请仔细阅读以下业务�
 每个功能点=独立feature。不要合并、不要省略。直接输出JSON。"""
 
 
+def _robust_loads(text: str) -> dict:
+    """把 LLM 输出稳健地解析为 JSON 对象（对齐 version_generator._parse_llm_response）。
+
+    依次尝试：```json 代码块 → 最大花括号包裹内容 → 整个字符串；
+    只要解析出 dict 即返回。全部失败则抛 ValueError，交由调用方明确记录，
+    而不是静默把解析失败当成"无功能点"（那样上层会降级自由生成、漏掉卡片）。
+    """
+    import re as _re
+
+    content = (text or "").strip()
+    candidates = []
+
+    m = _re.search(r"```(?:json)?\s*(.*?)\s*```", content, _re.DOTALL | _re.IGNORECASE)
+    if m:
+        candidates.append(m.group(1).strip())
+
+    if not candidates:
+        m = _re.search(r"\{.*\}", content, _re.DOTALL)
+        if m:
+            candidates.append(m.group(0))
+
+    candidates.append(content)
+
+    for cand in candidates:
+        if not cand:
+            continue
+        try:
+            obj = _json.loads(cand)
+            if isinstance(obj, dict):
+                return obj
+        except Exception:
+            continue
+    raise ValueError("无法将 Step1 LLM 输出解析为 JSON 对象")
+
+
 async def extract_features(llm_service, requirement_text: str) -> dict:
     """Step1: LLM + CoT 提取结构化特征列表"""
     llm_config = llm_service.get_active_config()
@@ -46,25 +81,25 @@ async def extract_features(llm_service, requirement_text: str) -> dict:
             prompt=user_prompt,
             system_prompt=STEP1_SYSTEM_PROMPT,
             temperature=0,
+            # json_mode=False：与 Step2 成功路径同源。deepseek 等模型在 json_mode=True 下
+            # 仍可能产出非法/截断 JSON（如 "Unterminated string"），裸 json.loads 解析失败后
+            # 被静默降级成"0 个功能点"，上层据此回退到"按模块自由生成"→ 同类卡片被合并漏掉。
             max_tokens=min(llm_config.max_tokens or 8192, 16000),
-            json_mode=True,   # Step1 需要结构化JSON输出
+            json_mode=False,
         )
         if not response:
             raise ValueError("LLM返回空")
 
-        # 解析JSON
-        content = response.strip()
-        if content.startswith("```"):
-            content = content.split("\n", 1)[-1].rsplit("```", 1)[0]
-        result = _json.loads(content)
-        features = result.get("features", [])
-        module = result.get("module", "通用模块")
+        # 健壮解析（对齐 version_generator._parse_llm_response：代码块 → 花括号 → 整体）
+        result = _robust_loads(response)
+        features = result.get("features", []) or []
+        module = result.get("module", "通用模块") or "通用模块"
 
         logger.info(f"[Step1] 提取到 {len(features)} 个功能点, 模块: {module}")
         return {"module": module, "features": features}
 
     except Exception as e:
-        logger.warning(f"[Step1] 特征提取失败(回退正则): {e}")
+        logger.error(f"[Step1] 功能点提取失败，将回退到按模块自由生成(可能合并/漏卡片)：{e}")
         return {"module": "通用模块", "features": []}
 
 
@@ -89,7 +124,9 @@ def build_step2_prompt(project_name: str, version_number: str,
             f"  1. 共 {n} 个功能点 → 必须恰好输出 {n} 条用例（不允许多，不允许少）\n"
             f"  2. 每条用例聚焦该功能点的核心操作场景\n"
             f"  3. 编号从 TC001 到 TC{n:03d}\n"
-            f"  4. test_steps 中每条 action 必须遵循 UI 元素命名约定（「」标记元素，\"\" 标记值，验证：开头）\n\n"
+            f"  4. test_steps 中每条 action 必须遵循 UI 元素命名约定（「」标记元素，\"\" 标记值，验证：开头）\n"
+            f"  5. 所有字符串值内禁止出现裸 ASCII 双引号（步骤文本中的引号一律用中文「」或转义 \\\"），"
+            f"字段间必须用英文逗号分隔，JSON 必须整体合法可被 json.loads 直接解析\n\n"
             f"输出格式（严格按照以下 JSON 结构，直接输出，不要 markdown 代码块）：\n"
             f'{{"test_cases": [\n'
             f'  {{"id": "TC001", "title": "验证室早卡片点击跳转-正常", "module": "{module}",\n'

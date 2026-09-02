@@ -22,6 +22,31 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from app.core.logger import logger
+from app.core.services.test_data_manager import TestDataManager
+
+
+def _materialize_runtime_test_data(test_data: dict, case_id: str = ""):
+    """执行阶段实例化 DataPlan；返回渲染后的 spec 与数据审计信息。"""
+    from types import SimpleNamespace
+    raw = test_data if isinstance(test_data, dict) else {}
+    tc = SimpleNamespace(id=case_id, test_data=raw, logical_case_id=case_id, revision_no=1)
+    manager = TestDataManager()
+    plan = manager.build_plan(tc)
+    dataset = manager.materialize(plan)
+
+    def render_obj(obj):
+        if isinstance(obj, dict):
+            return {k: render_obj(v) for k, v in obj.items()}
+        if isinstance(obj, list):
+            return [render_obj(v) for v in obj]
+        return manager.render(obj, dataset.values) if isinstance(obj, str) else obj
+
+    rendered = render_obj(raw)
+    for req in plan.requirements:
+        if req.data_type == "consumable":
+            # 一个 Case Run 内实例唯一；真正是否被步骤消费由执行结果决定。
+            pass
+    return rendered, dataset, plan, manager
 from app.core.services.execution_config import ExecutionConfig, BrowserMode
 from app.core.services.allure_reporter import AllureReporter, AllureStatus
 
@@ -64,6 +89,7 @@ def _run_v2_steps_sync(
     base_url: str,
     timeout_ms: int,
     skip_goto: bool = False,
+    case_id: str = "",
 ) -> dict:
     """在给定 sync page 上执行 V2 JSON 步骤（单用例便捷入口）。
 
@@ -76,11 +102,22 @@ def _run_v2_steps_sync(
     from app.core.services.step_runner import run_parametrized_specs
 
     try:
+        runtime_spec, dataset, plan, data_manager = _materialize_runtime_test_data(test_data, case_id)
         pom = _compile_pom_classes(page_objects or {}, page)
         results = run_parametrized_specs(
-            [test_data], page, pom, base_url, timeout_ms, skip_goto=skip_goto
+            [runtime_spec], page, pom, base_url, timeout_ms, skip_goto=skip_goto
         )
-        return results[0] if results else {"status": "error", "error": "无执行结果"}
+        result = results[0] if results else {"status": "error", "error": "无执行结果"}
+        # 执行成功后，消费型数据只在本次实例上结束生命周期；默认不 DELETE 数据库。
+        if result.get("success"):
+            for req in plan.requirements:
+                if req.data_type == "consumable":
+                    data_manager.mark_consumed(dataset, req.key, {"case_id": case_id, "execution_status": result.get("status", "completed")})
+        result["data_cleanup"] = data_manager.complete(dataset, plan)
+        result["data_set_id"] = dataset.run_id
+        result["runtime_test_data"] = dataset.values
+        result["test_data_plan"] = plan.to_dict()
+        return result
     except Exception as e:
         import traceback
         logger.error(f"[Execute] V2 执行异常: {e}\n{traceback.format_exc()}")
@@ -169,6 +206,17 @@ class UITestExecutor:
         if not test_cases:
             return []
 
+        # 过滤登录模块用例（__login__，平台内部约定名）：其账号/密码的 value 注入在
+        # 项目级 exploration_config（login_engine 负责），作为普通 UI 用例执行会因
+        # fill 缺 value 失败（12:07 实证「系统登录」失败）；批量执行的登录阶段已完成登录。
+        # 登录模块的验证由「导入并验证」/ login_engine 承担，不在此处普通执行。
+        test_cases = [
+            tc for tc in test_cases
+            if (str(getattr(tc, 'test_case_id', None) or '') != '__login__')
+        ]
+        if not test_cases:
+            return []
+
         if self.config.browser_mode == BrowserMode.REUSE:
             return await self._execute_reuse(test_cases, progress_callback)
         else:
@@ -251,14 +299,14 @@ class UITestExecutor:
 
                 # 导航到 base_url，检测是否被重定向到登录页
                 _page.goto(base_url, wait_until="domcontentloaded", timeout=15000)
-                _page.wait_for_timeout(1000)
+                _page.wait_for_timeout(500)
                 _cur = _page.url
                 if '/login' in _cur or '/auth' in _cur:
                     return {"status": "error", "error": "登录态过期，请使用批量执行(有头+复用)"}
 
                 if mode == "pom_data_driven":
                     _result = _run_v2_steps_sync(
-                        _page, test_data, page_objects, base_url, config.timeout_ms, skip_goto=True
+                        _page, test_data, page_objects, base_url, config.timeout_ms, skip_goto=True, case_id=str(getattr(tc, 'id', ''))
                     )
                 else:
                     _state_path = _ctx.storage_state()
@@ -449,7 +497,12 @@ class UITestExecutor:
             runner = StepRunner(page, {})
             runner.set_var('username', username)
             runner.set_var('password', password)
-            result = runner.run(login_steps)
+            # 过滤 goto 步骤：导航登录页已由上方手动 goto base_url 完成；seq5「点击登录后回 base_url」
+            # 的残留 goto 会把页面重新导航回登录页，破坏登录流程（真实场景：点击登录后回到 #/login）。
+            # 与 import 时 _verify_steps 过滤 goto、login_engine 跳过后续 goto 三路径同源（RULES.md 二.6/7）。
+            result = runner.run(
+                [s for s in login_steps if (s.get('action') or '').strip() != 'goto']
+            )
 
             if not result.get('success'):
                 logger.warning(f"[Execute] __login__ 步骤执行失败: {result.get('error')}")
@@ -623,15 +676,21 @@ class UITestExecutor:
             # 策略1: storage_state 已加载 → 直接验证（导航到 base_url 看是否被重定向到登录页）
             if storage_state:
                 from app.core.services.step_runner import _looks_like_login_url as _is_login
-                _page.goto(base_url, wait_until="domcontentloaded", timeout=15000)
-                _page.wait_for_timeout(1000)
-                _cur = _page.url or ''
-                if not _is_login(_cur):
-                    logger.info("[ExecuteBatch] storage_state 有效，跳过重登录")
-                    fresh_state = storage_state
-                    wb_url = _cur
-                else:
-                    logger.info("[ExecuteBatch] storage_state 已过期，需要重新登录")
+                try:
+                    _page.goto(base_url, wait_until="domcontentloaded", timeout=15000)
+                    _page.wait_for_timeout(500)
+                    _cur = _page.url or ''
+                    if not _is_login(_cur):
+                        logger.info("[ExecuteBatch] storage_state 有效，跳过重登录")
+                        fresh_state = storage_state
+                        wb_url = _cur
+                    else:
+                        logger.info("[ExecuteBatch] storage_state 已过期，需要重新登录")
+                except Exception as _g:
+                    # 目标系统瞬时导航超时/网络波动（11:33 实证：goto 15s 超时整批中止）：
+                    # 不整批失败，回退策略2 用项目级登录模块在可见浏览器重新登录；重登录失败才报错。
+                    logger.warning(f"[ExecuteBatch] storage_state 验证导航超时({_g})，回退可见浏览器重新登录")
+                    fresh_state = None
 
             # 策略2: 在可见浏览器中执行登录
             if not fresh_state:
@@ -696,7 +755,7 @@ class UITestExecutor:
                         # 步骤中的 goto/navigate 步骤）→ 直接按用例执行；
                         # 无导航步骤的旧用例由 _run_v2_steps_sync 兜底跳 base_url。
                         # 不依赖知识图谱复位——用例自身的步骤就是它的前置条件导航。
-                        r = _run_v2_steps_sync(_page, td, po, base_url, config.timeout_ms)
+                        r = _run_v2_steps_sync(_page, td, po, base_url, config.timeout_ms, case_id=cid)
                     else:
                         r = _run_v1_subprocess(ts, None, config.timeout_ms / 1000)
                 except Exception as e:

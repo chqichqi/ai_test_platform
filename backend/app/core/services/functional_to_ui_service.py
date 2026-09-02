@@ -88,11 +88,12 @@ def _generate_login_steps_via_llm(login_content: str, llm_service) -> list:
         return []
 
 
-def _dump_login_import_stage(project_id: int, version_id: int, stage: str, payload: dict):
+def _dump_login_import_stage(project_id: int, version_id: Optional[int], stage: str, payload: dict):
     """将登录模块导入的分阶段结果写入临时文件，便于分别查看三个阶段的数据处理结果。
 
     stage: stage1_功能用例 / stage2_探索结果 / stage3_UI用例
     文件写入 logs/login_import/（与 app.log 同目录，路径由 settings.LOG_FILE 驱动）
+    version_id 可空（项目无版本时先行导入，登录模块是项目级资产）
     """
     import json as _json
     from pathlib import Path
@@ -101,7 +102,7 @@ def _dump_login_import_stage(project_id: int, version_id: int, stage: str, paylo
         _dir = Path(settings.LOG_FILE).parent / "login_import"
         _dir.mkdir(parents=True, exist_ok=True)
         _ts = datetime.now().strftime("%Y%m%d_%H%M%S")
-        _fp = _dir / f"{stage}_v{version_id}_{_ts}.json"
+        _fp = _dir / f"{stage}_v{version_id or 0}_{_ts}.json"
         _fp.write_text(_json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
         logger.info(f"[LoginImport] {stage} 结果已保存: {_fp}")
     except Exception as _e:
@@ -193,16 +194,22 @@ def _llm_pick_login_elements(elements: list, llm, cfg) -> dict:
 
 
 def _rule_pick_login_elements(elements: list, cfg) -> dict:
-    """规则兜底（LLM 失败时）：type=password → 密码；placeholder 关键词 → 用户名；按钮文本关键词 → 登录按钮。"""
-    _user_kws = [k.strip().lower() for k in cfg.login_username_keywords.split(',') if k.strip()]
-    _pwd_kws = [k.strip().lower() for k in cfg.login_password_keywords.split(',') if k.strip()]
-    _btn_kws = [k.strip().lower() for k in cfg.login_button_keywords.split(',') if k.strip()]
+    """规则兜底（LLM 失败时）：type=password → 密码；placeholder 关键词 → 用户名；按钮文本关键词 → 登录按钮。
+
+    文本匹配统一去空白归一化（normalize_ws）——应用侧按钮文案可能带空格（真机实证
+    「登 录」/「重 置」），子串匹配会因空格失配（2026-09-02 在登录元素识别侧的同类漏网：
+    「登录」not in「登 录」→ 按钮识别为 None → 登录步骤退化为文本定位 → 无法点击登录）。
+    关键词与元素文本各自 normalize_ws 后再比较，与探索侧/执行侧同源。
+    """
+    _user_kws = [normalize_ws(k).lower() for k in cfg.login_username_keywords.split(',') if k.strip()]
+    _pwd_kws = [normalize_ws(k).lower() for k in cfg.login_password_keywords.split(',') if k.strip()]
+    _btn_kws = [normalize_ws(k).lower() for k in cfg.login_button_keywords.split(',') if k.strip()]
 
     _password = None
     for _el in elements:
         if _el['group'] != 'input':
             continue
-        _blob = f"{_el.get('type','')} {_el.get('placeholder','')} {_el.get('name','')}".lower()
+        _blob = normalize_ws(f"{_el.get('type','')} {_el.get('placeholder','')} {_el.get('name','')}").lower()
         if _el.get('type', '').lower() == 'password' or any(k in _blob for k in _pwd_kws):
             _password = _el
             break
@@ -210,7 +217,7 @@ def _rule_pick_login_elements(elements: list, cfg) -> dict:
     for _el in elements:
         if _el['group'] != 'input' or _el is _password:
             continue
-        _blob = f"{_el.get('placeholder','')} {_el.get('name','')} {_el.get('id','')} {_el.get('aria-label','')}".lower()
+        _blob = normalize_ws(f"{_el.get('placeholder','')} {_el.get('name','')} {_el.get('id','')} {_el.get('aria-label','')}").lower()
         if any(k in _blob for k in _user_kws):
             _username = _el
             break
@@ -223,7 +230,7 @@ def _rule_pick_login_elements(elements: list, cfg) -> dict:
     for _el in elements:
         if _el['group'] != 'button':
             continue
-        _blob = f"{_el.get('text','')} {_el.get('value','')} {_el.get('aria-label','')} {_el.get('title','')}".lower()
+        _blob = normalize_ws(f"{_el.get('text','')} {_el.get('value','')} {_el.get('aria-label','')} {_el.get('title','')}").lower()
         if any(k in _blob for k in _btn_kws):
             _button = _el
             break
@@ -384,15 +391,19 @@ class FunctionalToUIService:
     # ========================================================================
 
     async def import_login_module(
-        self, version_id: int, login_content: str, project_id: int,
+        self, version_id: Optional[int], login_content: str, project_id: int,
         force_headless: bool = False,
     ) -> dict:
         """
-        导入登录模块：
+        导入登录模块（项目级资产，跨版本共享）：
 
         步骤一：LLM 生成标准化功能用例（复用业务流→功能用例管线）
         步骤二：有头浏览器探索 + ElementLocator 定位真实元素 → UI 用例（复用已有定位器）
         步骤三：StepRunner 验证 → 成功则保存三件套
+
+        version_id 可空：项目尚无版本时允许先行导入（登录模块项目级资产不依赖版本，
+        与「创建版本前必须先配置登录鉴权」门控配套）；有版本时传入最新版本 id 用于
+        功能用例（test_cases 表）关联，便于版本内可见。
 
         换项目只需修改业务流文本，无需改代码。
         """
@@ -411,11 +422,11 @@ class FunctionalToUIService:
         if _pt == 'app':
             _cfg = _ec.get('app', {})
             if not _cfg.get('apk_package'):
-                return {"success": False, "error": "请先在「项目设置 → APP 配置」中上传 APK 安装包后再导入登录模块"}
+                return {"success": False, "error": "请先在项目卡片的「项目配置」中上传 APK 安装包后再导入登录模块"}
             if not _cfg.get('username'):
-                return {"success": False, "error": "请先在「项目设置 → 探索配置」中配置登录用户名后再导入登录模块"}
+                return {"success": False, "error": "请先在项目卡片的「项目配置」中配置登录用户名后再导入登录模块"}
             if not _cfg.get('password'):
-                return {"success": False, "error": "请先在「项目设置 → 探索配置」中配置登录密码后再导入登录模块"}
+                return {"success": False, "error": "请先在项目卡片的「项目配置」中配置登录密码后再导入登录模块"}
             base_url = ''
         else:
             _cfg = _ec.get('web', {})
@@ -428,11 +439,11 @@ class FunctionalToUIService:
                     if _matched:
                         base_url = _matched[0].get('url', '') or ''
             if not base_url:
-                return {"success": False, "error": "请先在「项目设置 → 探索配置」中配置目标系统 URL（base_url）后再导入登录模块"}
+                return {"success": False, "error": "请先在项目卡片的「项目配置」中配置目标系统 URL（base_url）后再导入登录模块"}
             if not _cfg.get('username'):
-                return {"success": False, "error": "请先在「项目设置 → 探索配置」中配置登录用户名（username）后再导入登录模块"}
+                return {"success": False, "error": "请先在项目卡片的「项目配置」中配置登录用户名（username）后再导入登录模块"}
             if not _cfg.get('password'):
-                return {"success": False, "error": "请先在「项目设置 → 探索配置」中配置登录密码（password）后再导入登录模块"}
+                return {"success": False, "error": "请先在项目卡片的「项目配置」中配置登录密码（password）后再导入登录模块"}
 
         _uname = _cfg.get('username', '')
         _pwd = _cfg.get('password', '')
@@ -1196,7 +1207,7 @@ class FunctionalToUIService:
         password = explore_cfg.get("password", "")
 
         if not explore_base_url:
-            return {"success": False, "error": "未配置目标系统 URL，请先在项目设置中配置探索参数", "results": []}
+            return {"success": False, "error": "未配置目标系统 URL，请先在项目卡片的「项目配置」中配置目标环境 URL", "results": []}
 
         # 4. 确定平台类型（Web / APP）
         from app.core.models.project import Project
@@ -1319,7 +1330,10 @@ class FunctionalToUIService:
                 logger.info("[FunctionalToUI] ⛔ 客户端已断开，跳过 POM 预生成")
         else:
             _c = False
-        if not _c:
+        # POM 是可选优化，不是 Guided Evidence -> UI Case 的必要环节。
+        # 默认关闭，避免每次转化前额外触发一次大 Prompt LLM；项目可显式配置 generate_shared_pom=true。
+        _generate_shared_pom = bool(explore_cfg.get("generate_shared_pom", False))
+        if not _c and _generate_shared_pom:
             try:
                 for _mod_name, _mod_kg in all_exploration.items():
                     if isinstance(_mod_kg, dict) and _mod_kg.get("elements"):
@@ -1355,7 +1369,11 @@ class FunctionalToUIService:
         #       复查时重查 KG 刷新该模块数据）；force_explore 已全量重探索，跳过；
         #       补充探索异常不阻塞主流程。
         _supplemented_cases: set = set()  # 经历过补充探索的用例 id（用于失败信息标注）
-        if not force_explore:
+        # 默认禁止第二轮真实点击。第一轮探索已经是 TestCase -> CasePlan 的完整事务；
+        # 自动补充探索会重新打开浏览器并再次执行同一目标，是重复点击和长耗时的主要来源。
+        # 通用平台仍保留能力，但必须由项目配置显式开启。
+        _enable_supplement = bool(explore_cfg.get("enable_supplement_exploration", False))
+        if not force_explore and _enable_supplement:
             try:
                 _missing_by_module: Dict[str, list] = {}
                 _case_missing: Dict[str, list] = {}
@@ -2068,7 +2086,7 @@ class FunctionalToUIService:
                     logger.error("[FunctionalToUI] Login failed for step-driven exploration")
                     for m in module_steps:
                         results[m] = {"error": "登录失败——请先导入登录模块", "module": m}
-                    return results
+                    return results, {}
 
                 # 导出登录态供 sync 浏览器复用
                 state = await page.context.storage_state()
@@ -2093,7 +2111,7 @@ class FunctionalToUIService:
         except Exception as e:
             import traceback as _tb
             logger.error(f"[FunctionalToUI] Step-driven exploration error: {type(e).__name__}: {e}\n{_tb.format_exc()}")
-            return results
+            return results, {}
         finally:
             db.close()
 
@@ -2133,10 +2151,13 @@ class FunctionalToUIService:
                 storage_state=state_dict,
             )
             page_sync = ctx_sync.new_page()
-            page_sync.goto(workbench_url, wait_until="domcontentloaded", timeout=config.page_goto_timeout)
 
-            # 探索期 API 接口捕获（登录后监听：探索全程的 XHR/fetch 请求都带真实鉴权）
+            # 首屏 workbench 加载会立即触发组织/用户等 XHR。先绑定首个实际模块，
+            # 避免这些接口被错误命名为“探索”。
+            _initial_module = next((str(m) for m, steps in module_steps.items() if steps and str(m).strip()), "")
             capture = ApiFlowCapture(ctx_sync, config, project_id, base_url, db)
+            capture.set_module(_initial_module)
+            page_sync.goto(workbench_url, wait_until="domcontentloaded", timeout=config.page_goto_timeout)
 
             # 等待 SPA 渲染
             FunctionalToUIService._wait_spa_render_sync(
@@ -2233,7 +2254,7 @@ class FunctionalToUIService:
                 try:
                     client = MCPClient(page_sync, config)
                     agent = GuidedExplorationAgent(client, config, llm_service=None,
-                                                   module_name=module_name, platform_type=platform_type)
+                                                   module_name=module_name, platform_type=platform_type, db=db)
                     agent.set_case_contexts(test_cases or [])
 
                     def _step_cb(ev: dict):
@@ -2952,10 +2973,18 @@ class FunctionalToUIService:
             # 的 test_data 无 preconditions 键 → 28 条批量转化全部前置条件丢失，执行时
             # 无法按前置条件导航。与单条链路 _build_generation_prompt 同源）
             _pre = getattr(tc, 'preconditions', '') or ''
+            _td = getattr(tc, 'test_data', None)
+            if isinstance(_td, str):
+                try: _td = json.loads(_td)
+                except Exception: _td = {}
+            _data_plan = _td.get('data_plan', {}) if isinstance(_td, dict) else {}
+            _data_requirements = _data_plan.get('requirements', []) if isinstance(_data_plan, dict) else []
+            _data_text = json.dumps(_data_requirements, ensure_ascii=False) if _data_requirements else '（未定义；生成脚本时不得擅自编造固定测试值，输入步骤可保留 ${key} 占位符）'
             cases_text.append(
                 f"### 用例 {tc.id if hasattr(tc, 'id') else '?'}: {case_name}\n"
                 f"模块: {module}\n"
                 f"前置条件: {_pre or '无'}\n"
+                f"测试数据计划: {_data_text}\n"
                 f"步骤:\n{steps_str}\n"
             )
 
@@ -2985,6 +3014,12 @@ class FunctionalToUIService:
 
 ## 用例列表
 {"".join(cases_text)}
+
+## 测试数据规则
+- TestDataPlan 是功能用例的正式数据契约；UI 脚本不要把一次运行的随机值固化进脚本。
+- 对 generated/consumable 数据，脚本参数保留为 ${{key}} 占位符，由执行阶段 TestDataManager 提供本次运行实例。
+- consumable 每次 Case Run 必须使用新的实例；不要依赖上一次运行的值。
+- static/shared 可以直接使用其 value；seeded/factory 只引用工厂产生的数据，不允许 LLM 猜数据库 ID。
 
 ## 每条用例输出一个 JSON（不含 markdown）:
 {{
@@ -3091,34 +3126,40 @@ class FunctionalToUIService:
                                "status_key": "conversion_failed", "tc": tc})
                 continue
 
-            # ── 自动补尾：最后一步不是 goto/go_back 时追加返回起始页 ──
-            # 零硬编码：不回写业务词（如「工作台」）；URL 用起始页（KG 推导的登录后落地页，
-            # 不用 base_url——SPA 的 web.base_url 可能是 #/login，goto 会登出会话）
+            # ── 自动补尾：最后一步不是 goto/go_back 时追加 go_back ──
+            # 所有“卡片/链接点击后返回”统一使用浏览器历史返回，避免 SPA 项目
+            # 通过 goto 起始 URL 丢失 organization 等运行态参数。
             steps = spec.get("steps", [])
             if steps and isinstance(steps, list):
                 last_action = steps[-1].get("action", "") if steps else ""
                 if last_action not in ("goto", "go_back"):
-                    if start_url:
-                        steps.append({
-                            "seq": len(steps) + 1,
-                            "action": "goto",
-                            "desc": "返回起始页",
-                            "args": {"url": start_url},
-                        })
-                        spec["steps"] = steps
-                    else:
-                        # 无起始页可返（KG 无非登录页可推导）→ 不追加 goto：
-                        # 回退 base_url 可能是 #/login（登出会话）或非真实落地页，
-                        # 宁缺毋滥——保持当前页由执行器继续（2026-08-24 全局盘点发现）
-                        logger.warning(
-                            f"[FunctionalToUI] 批量补尾跳过: 无起始页 URL 可返"
-                            f"（KG 无页可推导），用例 {tc_id} 不追加返回起始页")
+                    steps.append({
+                        "seq": len(steps) + 1,
+                        "action": "go_back",
+                        "desc": "返回起始页",
+                        "args": {},
+                    })
+                    spec["steps"] = steps
 
             # 前置条件兜底（2026-08-25：LLM 漏输出 preconditions 时用功能用例原文补齐，
             # 与单条链路 _parse_json_spec 的 setdefault 同源——preconditions 丢失即
             # 执行器无法按前置条件导航，历史 28 条批量转化全部丢失）
             if not spec.get("preconditions"):
                 spec["preconditions"] = getattr(tc, 'preconditions', '') or ''
+
+            # 落库前把功能用例的 TestDataPlan 作为 UI 用例正式数据契约透传。
+            # 不能只把计划写进 prompt：LLM 输出格式没有强制返回 test_data，若不在代码层补齐，
+            # 执行阶段 TestDataManager 看不到原始计划，${key} 会原样留在页面上。
+            try:
+                from app.core.services.test_data_manager import TestDataManager as _TDM
+                _tdm = _TDM(self.db)
+                _td_plan = _tdm.build_plan(tc)
+                spec["test_data"] = {
+                    "data_plan": _td_plan.to_dict(),
+                    "preconditions": spec.get("preconditions") or getattr(tc, "preconditions", "") or "",
+                }
+            except Exception as _td_e:
+                logger.warning(f"[FunctionalToUI] TestDataPlan 透传失败 case={tc_id}: {_td_e}")
 
             # 落库前 goto 步骤有效性校验/补全（与单条链路同源——LLM 编造的 goto
             # 坏形态在此兜底修正，防止坏数据落库；2026-08-24 审计 H1）

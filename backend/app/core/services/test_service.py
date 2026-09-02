@@ -470,13 +470,14 @@ class TestRunService:
         if not test_run or not test_case:
             return False
         
-        # 创建测试执行记录
+        # 创建测试执行记录（执行中心场景测试类型）
         execution = TestExecution(
             test_case_id=test_case_id,
             project_id=test_case.project_id,
             test_run_id=test_run_id,
             executed_by=test_run.started_by,
-            status=ExecutionStatus.PENDING
+            status=ExecutionStatus.PENDING,
+            execution_type='scenario',
         )
         
         db.add(execution)

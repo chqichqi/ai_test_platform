@@ -543,7 +543,7 @@ const FunctionalTestPage: React.FC = () => {
   // 解析本次待转化用例并分类（入口预检 / 开始转化共用同一口径，保证提示时机一致）
   const resolveConvertibleCases = async () => {
     const axiosInstance = (await import('../../api/axiosConfig')).default;
-    let allCases: { id: string; status: string }[] = [];
+    let allCases: { id: string; status: string; module?: string }[] = [];
     if (selectAllMode) {
       // 跨页全选：分页拉取全部 ID 和状态
       let p = 1;
@@ -557,18 +557,22 @@ const FunctionalTestPage: React.FC = () => {
           }
         });
         const items = data.items || [];
-        allCases.push(...items.map((c: any) => ({ id: String(c.id), status: c.status || 'draft' })));
+        allCases.push(...items.map((c: any) => ({ id: String(c.id), status: c.status || 'draft', module: c.module || '' })));
         if (allCases.length >= data.total || items.length === 0) break;
         p++;
       }
     } else {
-      // 手动勾选：从当前页数据获取状态
+      // 手动勾选：从当前页数据获取状态和模块
       const statusMap = new Map(testCases.map(c => [c.id, c.status]));
-      allCases = selectedTests.map(id => ({ id, status: statusMap.get(id) || 'draft' }));
+      const moduleMap = new Map(testCases.map(c => [c.id, c.module || '']));
+      allCases = selectedTests.map(id => ({ id, status: statusMap.get(id) || 'draft', module: moduleMap.get(id) || '' }));
     }
+    // 排除登录模块（平台内部约定名）：登录模块用例由业务流导入自动生成/发布(published)，
+    // 不参与普通用例的「审核→转化」预检，避免其 published 状态被误判为「未审核」。
+    const nonLoginCases = allCases.filter(c => c.module !== '登录模块');
     // 只转换已通过(approved/active，与后端守卫同源) + 未转化的用例
-    const approvedCases = allCases.filter(c => c.status === 'approved' || c.status === 'active');
-    const notApprovedSkipped = allCases.length - approvedCases.length;
+    const approvedCases = nonLoginCases.filter(c => c.status === 'approved' || c.status === 'active');
+    const notApprovedSkipped = nonLoginCases.length - approvedCases.length;
     const toConvert = approvedCases.filter(c => !convertedIds.has(String(c.id)));
     const alreadyConvertedSkipped = approvedCases.length - toConvert.length;
     return { approvedCases, notApprovedSkipped, alreadyConvertedSkipped, toConvert };

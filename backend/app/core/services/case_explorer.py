@@ -26,6 +26,10 @@ class CasePlan:
     revision_no: int = 1
     version_id: Optional[int] = None
     project_id: Optional[int] = None
+    # Test Data 生命周期：计划与本次运行实例均属于当前 Case，不跨 Case 共享。
+    test_data_plan: Dict[str, Any] = field(default_factory=dict)
+    runtime_data: Dict[str, Any] = field(default_factory=dict)
+    data_set_id: str = ""
 
 
 class CaseStepBatch(list):
@@ -85,10 +89,12 @@ class CaseExplorer:
                 break
 
             plan.start_url = plan.start_url or start_url
+            case_t0 = __import__('time').time()
             logger.info(f"[CaseExplorer] START case={plan.case_id} name={plan.case_name!r} steps={len(plan.steps)}")
 
-            # 每个 Case 都强制恢复到干净起始页，而不是仅检查 URL。
-            if not self.agent.state_manager.reset_to(plan.start_url, hard_reset=True):
+            # 首个 Case / 上个 Case 改过表单或未回到起始页才硬复位。
+            hard_reset = (plan_index == 0) or bool(getattr(self.agent, "_case_needs_hard_reset", True))
+            if not self.agent.state_manager.reset_to(plan.start_url, hard_reset=hard_reset):
                 ev = self.agent.make_case_error(plan, "case_start_restore_failed")
                 evidence.append(ev)
                 self.agent.finish_case(plan, "failed", ev.get("error", ""))
@@ -96,6 +102,13 @@ class CaseExplorer:
 
             self.agent.record_case_start(plan, self.agent.state_manager.current_state)
             case_failed = False
+            # 一个 TestCase 是一个探索事务：同一 Case 内同一个语义动作只允许真实执行一次。
+            # 这是“测试用例 -> 探索对象列表 -> foreach”原则的执行层保证。
+            # 注意：这是探索去重，不影响最终 UI 用例执行语义；同一对象即使出现在不同
+            # 页面/不同 Case，也允许分别探索。
+            case_needs_hard_reset = False
+            executed_actions = set()
+            _segment_key = 0
 
             for step_index, gs in enumerate(plan.steps):
                 if cancel_check and cancel_check():
@@ -115,17 +128,49 @@ class CaseExplorer:
                     except Exception:
                         pass
 
-                ev = self.agent.explore_one_step(plan, step_index, gs)
+                _seq, _target, _role, _action, _fill, _select, _ctx, _pattern = self.agent._unpack_step(gs)
+                _atype = str(_action or "").lower()
+                _norm_target = "".join(str(_target or "").split()).lower()
+                # 探索去重 key 故意不包含页面段：探索目标列表的语义是“本 Case 中这个对象
+                # 只需要真实操作一次”。否则 click -> go_back -> click 会再次触发同一个业务动作。
+                # fill/select 保留 value，因此“同一控件选择不同选项”仍可分别探索。
+                _action_value = str(_fill or _select or "").strip()
+                _action_key = (_atype, _norm_target, str(_role or "").lower(), _action_value)
+                _dedup_types = ("click", "navigate", "table_row", "fill", "select",
+                                "hover", "tab_switch", "right_click", "key_press")
+                if _atype in _dedup_types and _action_key in executed_actions:
+                    ev = self.agent.make_skipped_evidence(plan, gs, "duplicate_exploration_target_skipped")
+                    logger.info(
+                        f"[CaseExplorer] SKIP duplicate exploration target "
+                        f"case={plan.case_id} seq={_seq} target={_target!r} action={_atype}"
+                    )
+                else:
+                    ev = self.agent.explore_one_step(plan, step_index, gs)
+                    if _atype in _dedup_types:
+                        executed_actions.add(_action_key)
+                    if _atype in ("fill", "select") and ev.get("status") == "success":
+                        case_needs_hard_reset = True
+                if _atype in ("go_back", "navigate", "reload") and ev.get("status") in ("success", "skipped"):
+                    _segment_key += 1
+                if ev.get("status") == "success" and _atype in ("click", "table_row"):
+                    if (ev.get("effect") or {}).get("effect") == "navigation":
+                        _segment_key += 1
                 evidence.append(ev)
                 all_pages.extend(ev.get("pages_touched", []) or [])
-                if ev.get("status") != "success":
+                if ev.get("status") not in ("success", "skipped"):
                     case_failed = True
+
+            self.agent._case_needs_hard_reset = case_needs_hard_reset or (
+                self.agent.state_manager.normalize_url(self.agent.client.get_url()) !=
+                self.agent.state_manager.normalize_url(plan.start_url)
+            )
 
             if interrupted:
                 self.agent.finish_case(plan, "cancelled", "exploration_cancelled")
                 break
 
             self.agent.finish_case(plan, "failed" if case_failed else "success", "" if not case_failed else "one_or_more_steps_failed")
+            logger.info(f"[CaseExplorer] END case={plan.case_id} status={'failed' if case_failed else 'success'} elapsed={__import__('time').time()-case_t0:.2f}s")
 
         return {
             "case_plans": plans,

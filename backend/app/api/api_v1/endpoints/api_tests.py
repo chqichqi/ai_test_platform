@@ -42,6 +42,8 @@ from app.core.middleware.permission_middleware import Permissions
 # 非 JSON 原文 body 截断上限（与生成侧 api_flow_capture 同源——A3 修复 2026-08-25：
 # 生成侧已截断，执行侧为手工录入超长 body 的防御；常量同源防漂移）
 from app.core.services.api_flow_capture import _RAW_BODY_MAX_CHARS
+from app.core.services.test_data_manager import TestDataManager
+from app.core.services.test_data_plan import build_api_test_data_plan
 
 router = APIRouter()
 
@@ -709,6 +711,7 @@ def create_test_case(
         query_params=case_in.query_params,
         path_params=case_in.path_params,
         request_body=case_in.request_body,
+        test_data=case_in.test_data,
         expected_status=case_in.expected_status,
         expected_headers=case_in.expected_headers,
         expected_body=case_in.expected_body,
@@ -817,84 +820,84 @@ def generate_test_cases(
 
 
 def _generate_normal_case(endpoint: ApiEndpoint, definition: ApiDefinition, user_id: int) -> ApiTestCase:
-    """生成正常场景测试用例"""
+    """统一 OpenAPI 生成器：单接口正常场景。"""
+    from app.core.services.openapi_test_generator import OpenApiTestGenerator
+    ep = {"method": endpoint.method, "path": endpoint.path, "summary": endpoint.summary or "",
+          "description": endpoint.description or "", "parameters": endpoint.parameters or [],
+          "request_body": endpoint.request_body or {}, "responses": endpoint.responses or {},
+          "security": endpoint.security, "requires_auth": bool(endpoint.security)}
+    gen = OpenApiTestGenerator()
+    data = gen.generate_test_cases(ep, include_normal=True, include_error=False, include_boundary=False,
+                                   include_auth=False, max_cases=1)[0]
     return ApiTestCase(
-        project_id=definition.project_id,
-        endpoint_id=endpoint.id,
-        name=f"【正常】{endpoint.summary or endpoint.path}",
-        description=f"正常场景测试: {endpoint.method} {endpoint.path}",
-        method=endpoint.method,
-        path=endpoint.path,
-        base_url=definition.base_url,
-        expected_status=200 if endpoint.method != "POST" else 201,
-        case_type="normal",
-        priority="P1",
-        generated_by="ai",
-        created_by=user_id
+        project_id=definition.project_id, endpoint_id=endpoint.id,
+        name=data["name"], description=data.get("description", ""), method=endpoint.method, path=endpoint.path,
+        base_url=definition.base_url, query_params=data.get("query_params") or None,
+        path_params=data.get("path_params") or None, request_body=data.get("request_body") or None,
+        headers=data.get("headers") or None,
+        test_data=build_api_test_data_plan(data.get("query_params"), data.get("path_params"), data.get("request_body"), data.get("headers"),
+                                           metadata={"source":"unified_openapi_generator","variant":"normal"}),
+        expected_status=data.get("expected_status", 200), assert_rules=data.get("assert_rules", []),
+        test_steps=data.get("test_steps", []), expected_result=data.get("expected_result", ""),
+        preconditions=data.get("preconditions", ""), case_type="normal", priority="P1",
+        status="draft", generated_by="ai", created_by=user_id
     )
 
 
 def _generate_error_cases(endpoint: ApiEndpoint, definition: ApiDefinition, user_id: int) -> List[ApiTestCase]:
-    """生成异常场景测试用例"""
-    cases = []
-    
-    error_scenarios = [
-        {"status": 400, "desc": "参数错误"},
-        {"status": 401, "desc": "未授权"},
-        {"status": 403, "desc": "禁止访问"},
-        {"status": 404, "desc": "资源不存在"},
-        {"status": 500, "desc": "服务器错误"},
-    ]
-    
-    for scenario in error_scenarios:
-        case = ApiTestCase(
-            project_id=definition.project_id,
-            endpoint_id=endpoint.id,
-            name=f"【异常】{endpoint.summary or endpoint.path} - {scenario['desc']}",
-            description=f"异常场景测试: {scenario['desc']}",
-            method=endpoint.method,
-            path=endpoint.path,
-            base_url=definition.base_url,
-            expected_status=scenario["status"],
-            case_type="error",
-            priority="P2",
-            generated_by="ai",
-            created_by=user_id
+    """统一 OpenAPI 生成器：只生成接口实际具备意义的异常变体。"""
+    from app.core.services.openapi_test_generator import OpenApiTestGenerator
+    ep = {"method": endpoint.method, "path": endpoint.path, "summary": endpoint.summary or "",
+          "description": endpoint.description or "", "parameters": endpoint.parameters or [],
+          "request_body": endpoint.request_body or {}, "responses": endpoint.responses or {},
+          "security": endpoint.security, "requires_auth": bool(endpoint.security)}
+    gen = OpenApiTestGenerator()
+    data_list = gen.generate_test_cases(ep, include_normal=False, include_error=True, include_boundary=False,
+                                        include_auth=True, max_cases=6)
+    out = []
+    for data in data_list:
+        test_data = build_api_test_data_plan(
+            data.get("query_params"), data.get("path_params"), data.get("request_body"), data.get("headers"),
+            mutation_key=data.get("mutation_key", ""), mutation=data.get("mutation", ""),
+            metadata={"source":"unified_openapi_generator", "variant":data.get("case_type","error")}
         )
-        cases.append(case)
-    
-    return cases
+        out.append(ApiTestCase(
+            project_id=definition.project_id, endpoint_id=endpoint.id, name=data["name"],
+            description=data.get("description", ""), method=endpoint.method, path=endpoint.path, base_url=definition.base_url,
+            headers=data.get("headers") or None, query_params=data.get("query_params") or None,
+            path_params=data.get("path_params") or None, request_body=data.get("request_body") or None,
+            test_data=test_data, expected_status=data.get("expected_status"), assert_rules=data.get("assert_rules", []),
+            test_steps=data.get("test_steps", []), expected_result=data.get("expected_result", ""),
+            preconditions=data.get("preconditions", ""), case_type="error", priority="P2", status="draft",
+            tags=["api_generated", "unified"], generated_by="ai", created_by=user_id
+        ))
+    return out
 
 
 def _generate_boundary_cases(endpoint: ApiEndpoint, definition: ApiDefinition, user_id: int) -> List[ApiTestCase]:
-    """生成边界值测试用例"""
-    cases = []
-    
-    boundary_scenarios = [
-        {"desc": "空值参数"},
-        {"desc": "超长字符串"},
-        {"desc": "特殊字符"},
-        {"desc": "边界数值"},
-    ]
-    
-    for scenario in boundary_scenarios:
-        case = ApiTestCase(
-            project_id=definition.project_id,
-            endpoint_id=endpoint.id,
-            name=f"【边界】{endpoint.summary or endpoint.path} - {scenario['desc']}",
-            description=f"边界值测试: {scenario['desc']}",
-            method=endpoint.method,
-            path=endpoint.path,
-            base_url=definition.base_url,
-            expected_status=400,
-            case_type="boundary",
-            priority="P3",
-            generated_by="ai",
-            created_by=user_id
-        )
-        cases.append(case)
-    
-    return cases
+    """统一 OpenAPI 生成器：边界场景。"""
+    from app.core.services.openapi_test_generator import OpenApiTestGenerator
+    ep = {"method": endpoint.method, "path": endpoint.path, "summary": endpoint.summary or "",
+          "description": endpoint.description or "", "parameters": endpoint.parameters or [],
+          "request_body": endpoint.request_body or {}, "responses": endpoint.responses or {},
+          "security": endpoint.security, "requires_auth": bool(endpoint.security)}
+    gen = OpenApiTestGenerator()
+    data_list = gen.generate_boundary_cases(ep, max_cases=4)
+    out=[]
+    for data in data_list:
+        out.append(ApiTestCase(
+            project_id=definition.project_id, endpoint_id=endpoint.id, name=data["name"],
+            description=data.get("description", ""), method=endpoint.method, path=endpoint.path, base_url=definition.base_url,
+            query_params=data.get("query_params") or None, path_params=data.get("path_params") or None,
+            request_body=data.get("request_body") or None, headers=data.get("headers") or None,
+            test_data=build_api_test_data_plan(data.get("query_params"), data.get("path_params"), data.get("request_body"), data.get("headers"),
+                                               metadata={"source":"unified_openapi_generator", "variant":"boundary"}),
+            expected_status=data.get("expected_status"), assert_rules=data.get("assert_rules", []),
+            test_steps=data.get("test_steps", []), expected_result=data.get("expected_result", ""),
+            preconditions=data.get("preconditions", ""), case_type="boundary", priority="P3", status="draft",
+            tags=["api_generated", "boundary", "unified"], generated_by="ai", created_by=user_id
+        ))
+    return out
 
 
 async def _execute_precondition_cases(
@@ -1175,6 +1178,55 @@ def _topological_sort_cases(
     return sorted_cases, selected_ids
 
 
+def _render_runtime_structure(obj, values: Dict[str, Any]):
+    """递归替换 ${var}/{{var}}，同时支持 API 前置用例提取变量。"""
+    if isinstance(obj, dict):
+        return {k: _render_runtime_structure(v, values) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_render_runtime_structure(v, values) for v in obj]
+    if isinstance(obj, str):
+        text = obj
+        for key, value in (values or {}).items():
+            text = text.replace("${" + str(key) + "}", str(value))
+            text = text.replace("{{" + str(key) + "}}", str(value))
+        return text
+    return obj
+
+
+def _resolve_api_runtime_request(test_case):
+    """统一实例化 API TestDataPlan。
+
+    对普通历史用例允许兼容回退；对带 mutation 的异常/边界用例绝不回退到
+    原始请求，否则“参数类型错误”会悄悄变成正常参数，造成严重假阴性。
+    """
+    try:
+        manager = TestDataManager()
+        resolved = manager.materialize_api_case(test_case)
+        return resolved, manager
+    except Exception as exc:
+        raw = getattr(test_case, "test_data", None)
+        if isinstance(raw, str):
+            try:
+                raw = json.loads(raw)
+            except Exception:
+                raw = {}
+        raw = raw if isinstance(raw, dict) else {}
+        requirements = raw.get("requirements", []) if raw else []
+        has_mutation = any(isinstance(r, dict) and (r.get("mutation") or r.get("data_type") == "mutation")
+                           for r in (requirements or []))
+        if has_mutation:
+            logger.error(f"API测试数据计划实例化失败，禁止回退原请求: case={getattr(test_case, 'id', '')}, error={exc}")
+            return {"error": f"测试数据计划实例化失败: {exc}", "dataset": None, "plan": None}, None
+        logger.warning(f"API测试数据计划实例化失败，用原请求继续: case={getattr(test_case, 'id', '')}, error={exc}")
+        return {
+            "query_params": dict(test_case.query_params or {}) if isinstance(test_case.query_params, dict) else {},
+            "path_params": dict(test_case.path_params or {}) if isinstance(test_case.path_params, dict) else {},
+            "headers": dict(test_case.headers or {}) if isinstance(test_case.headers, dict) else {},
+            "request_body": test_case.request_body,
+            "dataset": None, "plan": None,
+        }, None
+
+
 async def _execute_single_case_with_cache(
     test_case: ApiTestCase,
     base_url: str,
@@ -1227,6 +1279,22 @@ async def _execute_single_case_with_cache(
             else:
                 logger.warning(f"前置用例 {dep_id_int} 未在缓存中")
     
+    runtime_request, data_manager = _resolve_api_runtime_request(test_case)
+    if runtime_request and runtime_request.get("error"):
+        return {
+            "case_id": test_case.id, "name": test_case.name, "status": "error",
+            "message": runtime_request["error"], "error_message": runtime_request["error"],
+            "skipped": False, "extracted_vars": {},
+        }
+    runtime_dataset = runtime_request.get("dataset") if runtime_request else None
+    runtime_plan = runtime_request.get("plan") if runtime_request else None
+    _runtime_values = dict(runtime_request.get("dataset").values if runtime_request.get("dataset") else {})
+    _runtime_values.update(extracted_vars)
+    runtime_request["query_params"] = _render_runtime_structure(runtime_request.get("query_params") or {}, _runtime_values)
+    runtime_request["path_params"] = _render_runtime_structure(runtime_request.get("path_params") or {}, _runtime_values)
+    runtime_request["headers"] = _render_runtime_structure(runtime_request.get("headers") or {}, _runtime_values)
+    runtime_request["request_body"] = _render_runtime_structure(runtime_request.get("request_body"), _runtime_values)
+
     if is_selected:
         execution = ApiTestExecution(
             case_id=test_case.id,
@@ -1238,14 +1306,10 @@ async def _execute_single_case_with_cache(
         db.commit()
     
     path = test_case.path or "/"
-    
-    if test_case.path_params:
-        path_params_dict = {}
-        if isinstance(test_case.path_params, dict):
-            path_params_dict = dict(test_case.path_params)
-        for key, value in path_params_dict.items():
-            path = path.replace(f"{{{key}}}", str(value))
-    else:
+    path_params_dict = runtime_request.get("path_params") or {}
+    for key, value in path_params_dict.items():
+        path = path.replace(f"{{{key}}}", str(value))
+    if not path_params_dict:
         path = path.replace("{project_id}", "1")
         path = path.replace("{version_id}", "1")
         path = path.replace("{user_id}", "1")
@@ -1254,10 +1318,7 @@ async def _execute_single_case_with_cache(
     
     url = f"{base_url}{path}"
     
-    headers = {}
-    if test_case.headers:
-        if isinstance(test_case.headers, dict):
-            headers = dict(test_case.headers)
+    headers = dict(runtime_request.get("headers") or {})
 
     # 探索生成的 no_auth 变体用例：刻意不带鉴权（验证 401/403），跳过全部鉴权注入
     # ——定义在占位符替换之前，守卫语义完整覆盖下方全部注入分支（审计 H2）
@@ -1321,13 +1382,12 @@ async def _execute_single_case_with_cache(
         user_token = credentials.credentials
         headers["Authorization"] = f"Bearer {user_token}"
     
-    params = {}
-    if test_case.query_params:
-        if isinstance(test_case.query_params, dict):
-            params = dict(test_case.query_params)
+    params = dict(runtime_request.get("query_params") or {})
     
-    body = None
-    if test_case.request_body:
+    body = runtime_request.get("request_body")
+    if isinstance(body, dict) and not body:
+        body = None
+    elif body is None and test_case.request_body:
         if isinstance(test_case.request_body, dict):
             body = dict(test_case.request_body)
         elif isinstance(test_case.request_body, str):
@@ -1573,6 +1633,17 @@ async def _execute_single_case_with_cache(
             execution.duration = max(0, int((execution.end_time - execution.start_time).total_seconds() * 1000))
             db.commit()
     
+    if data_manager and runtime_dataset and runtime_plan:
+        try:
+            if result.get("status") in ("passed", "failed"):
+                for req in runtime_plan.requirements:
+                    if req.data_type == "consumable":
+                        data_manager.lifecycle.mark_consumed(runtime_dataset, req.key, {"case_id": test_case.id, "status": result.get("status")})
+            result["data_set_id"] = runtime_dataset.run_id
+            result["test_data_plan"] = runtime_plan.to_dict()
+            result["data_cleanup"] = data_manager.lifecycle.complete(runtime_dataset, runtime_plan, data_manager)
+        except Exception as _data_e:
+            logger.warning(f"API测试数据生命周期处理失败 case={test_case.id}: {_data_e}")
     execution_cache[test_case.id] = result
     
     return result
@@ -1646,13 +1717,26 @@ async def execute_test(
         except Exception as e:
             logger.warning(f"Failed to execute precondition cases: {str(e)}")
 
+    runtime_request, data_manager = _resolve_api_runtime_request(test_case)
+    if runtime_request and runtime_request.get("error"):
+        return {
+            "case_id": test_case.id, "name": test_case.name, "status": "error",
+            "message": runtime_request["error"], "error_message": runtime_request["error"],
+            "skipped": False, "extracted_vars": {},
+        }
+    runtime_dataset = runtime_request.get("dataset") if runtime_request else None
+    runtime_plan = runtime_request.get("plan") if runtime_request else None
+    _runtime_values = dict(runtime_request.get("dataset").values if runtime_request.get("dataset") else {})
+    _runtime_values.update(extracted_vars)
+    runtime_request["query_params"] = _render_runtime_structure(runtime_request.get("query_params") or {}, _runtime_values)
+    runtime_request["path_params"] = _render_runtime_structure(runtime_request.get("path_params") or {}, _runtime_values)
+    runtime_request["headers"] = _render_runtime_structure(runtime_request.get("headers") or {}, _runtime_values)
+    runtime_request["request_body"] = _render_runtime_structure(runtime_request.get("request_body"), _runtime_values)
+
     path = test_case.path or "/"
     
-    if test_case.path_params:
-        path_params_dict = {}
-        if isinstance(test_case.path_params, dict):
-            path_params_dict = dict(test_case.path_params)
-        for key, value in path_params_dict.items():
+    if runtime_request.get("path_params"):
+        for key, value in (runtime_request.get("path_params") or {}).items():
             path = path.replace(f"{{{key}}}", str(value))
     else:
         path = path.replace("{project_id}", "1")
@@ -1663,10 +1747,7 @@ async def execute_test(
     
     url = f"{base_url}{path}"
     
-    headers = {}
-    if test_case.headers:
-        if isinstance(test_case.headers, dict):
-            headers = dict(test_case.headers)
+    headers = dict(runtime_request.get("headers") or {})
 
     # 探索生成的 no_auth 变体用例：刻意不带鉴权（验证 401/403），跳过全部鉴权注入
     # ——定义在占位符替换之前，守卫语义完整覆盖下方全部注入分支（审计 H2）
@@ -1726,13 +1807,10 @@ async def execute_test(
         user_token = credentials.credentials
         headers["Authorization"] = f"Bearer {user_token}"
     
-    params = {}
-    if test_case.query_params:
-        if isinstance(test_case.query_params, dict):
-            params = dict(test_case.query_params)
+    params = dict(runtime_request.get("query_params") or {})
     
-    body = None
-    request_body_raw = test_case.request_body
+    body = runtime_request.get("request_body")
+    request_body_raw = body if body is not None else test_case.request_body
     logger.info(f"request_body from database: {request_body_raw}, type: {type(request_body_raw)}")
 
     if request_body_raw:
@@ -1832,6 +1910,17 @@ async def execute_test(
     duration_ms = int((execution.end_time - execution.start_time).total_seconds() * 1000)
     execution.duration = max(0, duration_ms)  # 确保duration不为负数
     
+    if data_manager and runtime_dataset and runtime_plan:
+        try:
+            if execution.status in ("passed", "failed"):
+                for req in runtime_plan.requirements:
+                    if req.data_type == "consumable":
+                        data_manager.lifecycle.mark_consumed(runtime_dataset, req.key, {"case_id": test_case.id, "status": execution.status})
+            db.commit()
+            data_manager.lifecycle.complete(runtime_dataset, runtime_plan, data_manager)
+        except Exception as _data_e:
+            logger.warning(f"API测试数据生命周期处理失败 case={test_case.id}: {_data_e}")
+
     db.commit()
     db.refresh(execution)
     
@@ -1925,6 +2014,7 @@ async def auto_generate_from_swagger(
                     headers=tc.headers,
                     query_params=tc.query_params,
                     request_body=tc.request_body,
+                    test_data=getattr(tc, "test_data", None),
                     expected_status=tc.expected_status,
                     assert_rules=tc.assert_rules
                 ))

@@ -128,6 +128,9 @@ class WebUITestCaseInDB(WebUITestCaseBase):
 class WebUITestCaseResponse(WebUITestCaseInDB):
     """WEB UI测试用例响应模式"""
     test_case: Optional[Dict[str, Any]] = None
+    # 功能用例前置条件：由 endpoint 从原功能用例原文兜底，
+    # 不依赖 LLM 是否把它写进 test_data。
+    preconditions: Optional[str] = None
     # 声明 ORM 字段供 model_validate 透传（前端详情展示按生成模式区分 V1/V2）
     generation_mode: Optional[str] = None
 
@@ -197,6 +200,10 @@ class WebUITestCaseResponse(WebUITestCaseInDB):
                         step['expected'] = '滚动至页面底部'
                     elif tech == 'skip_if_empty':
                         step['expected'] = '数据为空时跳过后续步骤'
+                    elif tech == 'guard_dynamic_data':
+                        step['expected'] = '动态数据为空时跳过本用例'
+                    elif tech == 'click_dynamic_item':
+                        step['expected'] = '点击动态数据区中的真实可操作数据项'
                     elif tech == 'foreach':
                         step['expected'] = '遍历列表，每项执行子步骤'
                     elif desc:

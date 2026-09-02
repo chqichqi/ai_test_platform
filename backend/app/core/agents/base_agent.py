@@ -10,10 +10,33 @@ import json
 import asyncio
 import time
 
-from langchain.agents import AgentExecutor, create_structured_chat_agent
-from langchain_community.chat_models import ChatOpenAI
-from langchain.tools import Tool
-from langchain.prompts import ChatPromptTemplate
+# ── langchain 兼容导入 ──
+# 新版 langchain(1.x) 把组件移到了 langchain_openai / langchain_core；旧位置（langchain_community /
+# langchain.prompts / langchain.tools）仅作回退。AgentExecutor / create_structured_chat_agent 属旧式
+# Agent 运行时，新版已移除；BaseAgent 多数子类直接调 LLMService（如 convert_functional_to_web_ui_ai
+# 明确不依赖 Agent 运行时），故 AgentExecutor 不可用时降级为 None，create_agent 跳过创建 agent_executor。
+try:
+    from langchain_openai import ChatOpenAI
+except ImportError:
+    from langchain_community.chat_models import ChatOpenAI
+
+try:
+    from langchain_core.tools import Tool
+except ImportError:
+    from langchain.tools import Tool
+
+try:
+    from langchain_core.prompts import ChatPromptTemplate
+except ImportError:
+    from langchain.prompts import ChatPromptTemplate
+
+try:
+    from langchain.agents import AgentExecutor, create_structured_chat_agent
+    _LANGOCHAIN_HAS_AGENT_EXECUTOR = True
+except Exception as _lc_err:  # 新版 langchain 已移除 AgentExecutor / create_structured_chat_agent
+    AgentExecutor = None
+    create_structured_chat_agent = None
+    _LANGOCHAIN_HAS_AGENT_EXECUTOR = False
 
 from app.core.logger import logger
 from app.core.models.llm_config import LLMConfig
@@ -103,7 +126,12 @@ class BaseAgent(ABC):
         
         # 构建提示词
         prompt = self.build_prompt()
-        
+
+        if not _LANGOCHAIN_HAS_AGENT_EXECUTOR:
+            logger.warning(f"[{self.agent_name}] 当前 langchain 版本无旧 Agent API（AgentExecutor），"
+                           "跳过 agent_executor 创建；子类多用 LLMService 直调，如需 Agent 运行时请迁移到 langchain 1.x 的 create_agent")
+            return
+
         # 创建Agent
         agent = create_structured_chat_agent(
             llm=self.llm,
@@ -140,6 +168,11 @@ class BaseAgent(ABC):
         logger.debug(f"[{self.agent_name}] 输入参数：{json.dumps(task_input, ensure_ascii=False)[:200]}")
         
         try:
+            if self.agent_executor is None:
+                logger.error(f"[{self.agent_name}] agent_executor 未创建（langchain 旧 Agent API 在新版本不可用）")
+                return {"success": False,
+                        "error": "agent_executor 未创建：当前 langchain 版本不支持旧式 Agent 运行时",
+                        "stats": self.execution_stats, "agent_name": self.agent_name}
             # Agent执行（自动处理：任务拆分、截断续写、失败重试）
             result = await self.agent_executor.arun(**task_input)
             

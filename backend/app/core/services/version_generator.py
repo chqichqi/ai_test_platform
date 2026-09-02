@@ -1042,7 +1042,13 @@ class VersionGeneratorService:
                         f.write(f"Error: {e}\n")
                         f.write(f"Response Length: {len(llm_response)}\n")
                         f.write(f"JSON String Length: {len(json_str)}\n")
-                        f.write(f"\n=== First 5000 chars of JSON ===\n")
+                        # 错误点上下文（2026-09-01 教训：只存首尾看不到错误位置，无法定位幻觉类型）
+                        _pos = getattr(e, 'pos', None)
+                        if _pos is not None:
+                            f.write(f"Error Position: {_pos}\n")
+                            f.write(f"\n=== Context around error (char {_pos}) ===\n")
+                            f.write(json_str[max(0, _pos - 800):_pos + 800])
+                        f.write(f"\n\n=== First 5000 chars of JSON ===\n")
                         f.write(json_str[:5000])
                         f.write(f"\n\n=== Last 500 chars of JSON ===\n")
                         f.write(json_str[-500:])
@@ -1201,45 +1207,55 @@ class VersionGeneratorService:
             
             test_cases = []
             
-            # 策略1：提取完整的测试用例对象（即使JSON整体不完整）
-            # 匹配模式：{ "id": "TC001", ... }
-            case_pattern = r'\{\s*"id":\s*"TC\d+"\s*,.*?\}'
-            matches = re.findall(case_pattern, llm_response, re.DOTALL)
-            
-            for match in matches:
-                case_str = match.strip()  # 先定义，避免未绑定错误
+            # 策略1：平衡括号逐条提取顶层用例对象（一条出错只丢一条，不拖垮整批）
+            # 2026-09-01 根因：LLM 60KB 大 JSON 中部语法错误（char 38743 缺逗号/未转义引号）
+            # → 整体解析失败 → 旧正则 `\{\s*"id":\s*"TC\d+"\s*,.*?\}` 非贪婪匹配到嵌套对象
+            # 内部第一个 } → 逐条提取必然失败 → 兜底只保 title（无 test_steps）→
+            # 57 条全部「跳过无步骤用例」→ 0 条。改为字符串感知的括号平衡扫描。
+            for _idm in re.finditer(r'"id"\s*:\s*"TC\d+"', llm_response):
+                _obj_start = llm_response.rfind('{', 0, _idm.start())
+                if _obj_start == -1:
+                    continue
+                _depth = 0
+                _in_str = False
+                _esc = False
+                _obj_end = -1
+                for _i in range(_obj_start, len(llm_response)):
+                    _ch = llm_response[_i]
+                    if _in_str:
+                        if _esc:
+                            _esc = False
+                        elif _ch == '\\':
+                            _esc = True
+                        elif _ch == '"':
+                            _in_str = False
+                    else:
+                        if _ch == '"':
+                            _in_str = True
+                        elif _ch == '{':
+                            _depth += 1
+                        elif _ch == '}':
+                            _depth -= 1
+                            if _depth == 0:
+                                _obj_end = _i
+                                break
+                if _obj_end == -1:
+                    continue
+                _case_str = llm_response[_obj_start:_obj_end + 1]
+                _case = None
                 try:
-                    # 尝试解析单个测试用例对象
-                    
-                    # 确保对象闭合
-                    if not case_str.endswith('}'):
-                        case_str += '}'
-                    
-                    # 尝试修复常见错误
-                    case_str = re.sub(r',(\s*})', r'}', case_str)  # 移除末尾逗号
-                    
-                    case = json.loads(case_str)
-                    if case and case.get("title"):
-                        test_cases.append(case)
-                        logger.info(f"提取到部分用例: {case.get('title')[:30]}")
+                    _case = json.loads(_case_str)
                 except json.JSONDecodeError:
-                    # 尝试修复并重新解析
+                    # 单条失败：常见修复（末尾逗号/控制字符）后重试；仍失败只丢此条
+                    _fixed = re.sub(r',(\s*})', r'}', _case_str)
+                    _fixed = re.sub(r'[\x00-\x1f\x7f-\x9f]', '', _fixed)
                     try:
-                        # 策略2：截断到最后一个完整字段
-                        if '"expected_result"' in case_str:
-                            # 截断到expected_result字段
-                            truncated = case_str[:case_str.rfind('"expected_result"')]
-                            # 闭合JSON
-                            truncated = truncated.rstrip(',')
-                            truncated += '}'
-                            
-                            # 尝试再次解析
-                            case = json.loads(truncated)
-                            if case and case.get("title"):
-                                test_cases.append(case)
-                                logger.info(f"修复后提取到部分用例: {case.get('title')[:30]}")
+                        _case = json.loads(_fixed)
                     except Exception:
-                        continue
+                        logger.warning(f"单条用例解析失败(仅丢此条): {_case_str[:60]!r}...")
+                if _case and _case.get("title"):
+                    test_cases.append(_case)
+                    logger.info(f"提取到部分用例: {_case.get('title')[:30]}")
             
             # 策略3：如果还是提取不到，使用正则提取关键字段
             if not test_cases:

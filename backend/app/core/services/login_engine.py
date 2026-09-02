@@ -441,10 +441,21 @@ async def login_with_ui_case(page, base_url: str = '', username: str = '', passw
 
         logger.info(f"[LoginViaUI] 执行 __login__ 步骤（{len(steps)}步）user={username}")
         _ctx = {"base_url": base_url, "username": username, "password": password}
+        _goto_consumed = False
         for step in steps:
             action = (step.get('action') or '').strip()
             args = step.get('args', {}) or {}
             desc = step.get('desc', action)
+            # 仅执行首个 goto（导航到登录页）；后续 goto 必须跳过——
+            # 登录业务流里「点击登录后回到 base_url」的残留 goto 步骤会把页面
+            # 重新导航回 base_url，破坏登录流程（真实场景：seq5 goto 在点击登录后
+            # 把页面带回 #/login，导致批量转化登录失败）。
+            # 与 StepRunner 执行时过滤 goto 的语义一致（两路径同源）。
+            if action == 'goto':
+                if _goto_consumed:
+                    logger.debug(f"[LoginViaUI] 跳过后续 goto: {desc[:30]}")
+                    continue
+                _goto_consumed = True
             # 反射分发：按 action 名查 dispatch 表取 handler 执行——步骤数据驱动，
             # 定位参数全部来自步骤 args，不把具体系统的选择器写死在代码中；
             # 新增 action 类型只需注册 handler，主循环不再改动

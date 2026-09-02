@@ -60,11 +60,29 @@ async def create_version(
             Version.project_id == version_in.project_id,
             Version.version_number == version_in.version_number
         ).first()
-        
+
         if existing:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 detail=f"版本号 '{version_in.version_number}' 在该项目中已存在"
+            )
+
+        # 项目前置配置门控（2026-09-01 用户定性）：创建项目后，必须先完成
+        # ①项目配置（目标系统 URL）②登录模块（导入并验证登录流程），才能创建版本。
+        # 两项判定与业务流校验/前端状态查询同源（login_module_store 统一判定源）。
+        from app.core.services.login_module_store import (
+            has_login_module_configured,
+            has_project_web_configured,
+        )
+        if not has_project_web_configured(db, project.id):
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="创建版本前必须先完成项目配置：请在项目卡片点击「项目配置」，填写目标系统 URL 后再创建版本"
+            )
+        if not has_login_module_configured(db, project.id):
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="创建版本前必须先配置登录鉴权：请在项目卡片点击「项目配置」，在「登录模块」页签导入并验证登录流程后再创建版本"
             )
         
         version = Version(
@@ -85,28 +103,8 @@ async def create_version(
 
         version_id_value = version.id
 
-        # 自动创建登录模块业务流文档（空内容——用户需手动编辑并导入验证后才能使用）
-        try:
-            from app.core.models.requirement import RequirementDocument, DocumentType
-            _existing_login = db.query(RequirementDocument).filter(
-                RequirementDocument.version_id == version_id_value,
-                RequirementDocument.type == 'business_flow',
-                RequirementDocument.name == '登录模块'
-            ).first()
-            if not _existing_login:
-                _login_doc = RequirementDocument(
-                    version_id=version_id_value,
-                    name='登录模块',
-                    type='business_flow',
-                    content='',
-                    status='pending',
-                )
-                db.add(_login_doc)
-                db.flush()
-                logger.info(f"[Version] 自动创建登录模块业务流文档: version={version_id_value}")
-        except Exception as e:
-            logger.warning(f"[Version] 自动创建登录模块失败（可忽略）: {e}")
-
+        # 登录模块业务流内容已迁至项目级（ProjectSetting.exploration_config.login_module_content，
+        # 同一项目同一套登录逻辑，跨版本共享）——创建版本不再自动创建登录模块版本文档。
         if version_in.requirement_doc:
             from app.core.models.requirement import RequirementDocument, DocumentType
             req_doc = RequirementDocument(

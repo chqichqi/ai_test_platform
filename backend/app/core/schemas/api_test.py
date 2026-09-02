@@ -80,6 +80,7 @@ class ApiTestCaseCreate(BaseModel):
     query_params: Optional[Dict[str, Any]] = None
     path_params: Optional[Dict[str, str]] = None
     request_body: Optional[Dict[str, Any]] = None
+    test_data: Optional[Dict[str, Any]] = None
     expected_status: Optional[int] = None
     expected_headers: Optional[Dict[str, str]] = None
     expected_body: Optional[Dict[str, Any]] = None
@@ -101,6 +102,7 @@ class ApiTestCaseUpdate(BaseModel):
     query_params: Optional[Dict[str, Any]] = None
     path_params: Optional[Dict[str, str]] = None
     request_body: Optional[Dict[str, Any]] = None
+    test_data: Optional[Dict[str, Any]] = None
     expected_status: Optional[int] = None
     expected_headers: Optional[Dict[str, str]] = None
     expected_body: Optional[Dict[str, Any]] = None
@@ -127,6 +129,7 @@ class ApiTestCaseResponse(BaseModel):
     query_params: Optional[Dict[str, Any]]
     path_params: Optional[Dict[str, str]]
     request_body: Optional[Dict[str, Any]]
+    test_data: Optional[Dict[str, Any]]
     expected_status: Optional[int]
     expected_headers: Optional[Dict[str, str]]
     expected_body: Optional[Dict[str, Any]]
@@ -319,6 +322,7 @@ class GeneratedApiTestCase(BaseModel):
     headers: Optional[Dict[str, str]]
     query_params: Optional[Dict[str, Any]]
     request_body: Optional[Dict[str, Any]]
+    test_data: Optional[Dict[str, Any]] = None
     expected_status: Optional[int]
     assert_rules: Optional[List[Dict[str, Any]]]
 

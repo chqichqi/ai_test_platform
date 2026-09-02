@@ -10,14 +10,14 @@ import uuid
 import chromadb
 from chromadb.config import Settings as ChromaSettings
 from chromadb.utils import embedding_functions
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.document_loaders import (
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_community.document_loaders import (
     PyPDFLoader,
     TextLoader,
     Docx2txtLoader,
     UnstructuredMarkdownLoader,
 )
-from langchain.schema import Document as LangchainDocument
+from langchain_core.documents import Document as LangchainDocument
 
 from app.core.config import settings
 from app.core.logger import logger

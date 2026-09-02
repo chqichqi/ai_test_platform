@@ -119,13 +119,25 @@ def convert_functional_to_web_ui_v2(
 
     # 6. 解析 JSON 测试定义（preconditions 随用例原文落 test_data——执行器前置条件导航信息来源）
     test_spec = _parse_json_spec(llm_response, case_name, steps, module, preconditions)
+    # 将功能用例的数据契约透传到 UI 用例。LLM 只负责步骤，不负责产生运行时数据。
+    try:
+        from app.core.services.test_data_manager import TestDataManager
+        _tdm = TestDataManager(db)
+        _td_plan = _tdm.build_plan(test_case)
+        test_spec["test_data"] = {"data_plan": _td_plan.to_dict(), "preconditions": preconditions or ""}
+    except Exception as _td_e:
+        logger.warning(f"[ConvertV2] 测试数据计划透传失败: {_td_e}")
     # F30（2026-08-25）：LLM 响应解析失败 → 回退 spec 是纯等待占位（什么都没测）。
     # 显式上报 warning 而非静默成功，防止用户看到「转化成功」的假象。
     _parse_fallback = bool(test_spec.get("parse_fallback"))
     if _parse_fallback:
         logger.warning(f"[ConvertV2] 用例 '{case_name}' LLM 响应解析失败，回退为等待渲染步骤"
                        f"（未产出实际操作断言），请检查 LLM 返回质量")
-    # 6.1 goto 步骤有效性校验/补全（LLM 不遵守约束时兜底修正，防坏步骤落库）
+    # 6.1 结构化前置条件 + 动态数据语义校验：先编译，再把 guard/动态点击写入 spec。
+    precondition_plan = _build_precondition_plan(preconditions, module)
+    test_spec = _enrich_and_sanitize_ui_steps(test_spec, precondition_plan, kg_data)
+
+    # 6.2 goto 步骤有效性校验/补全（LLM 不遵守约束时兜底修正，防坏步骤落库）
     test_spec = _sanitize_spec_steps(test_spec, page_url_map=page_url_map, start_url=start_url)
 
     # 7. 生成完整的 pytest 项目文件
@@ -284,6 +296,117 @@ def _build_url_prompt_sections(page_url_map: Optional[Dict[str, str]], start_url
 {pom_keys}"""
 
 
+def _build_precondition_plan(preconditions: str, module: str = "") -> Dict[str, Any]:
+    """统一编译功能用例前置条件；不让 LLM 独自决定动态数据 Skip 语义。"""
+    from app.core.services.ui_precondition_plan import compile_precondition_plan
+    return compile_precondition_plan(preconditions or "", module=module)
+
+
+def _dynamic_section_names(precondition_plan: Dict[str, Any]) -> List[str]:
+    names = []
+    for cond in (precondition_plan or {}).get("conditions", []):
+        if not isinstance(cond, dict) or cond.get("type") != "dynamic_data":
+            continue
+        for target in cond.get("targets", []):
+            if isinstance(target, str): name = target
+            elif isinstance(target, dict): name = target.get("section", "")
+            else: name = ""
+            if name and name not in names: names.append(name)
+    return names
+
+
+def _is_same_ui_text(a: str, b: str) -> bool:
+    def n(x):
+        return re.sub(r"[\s「」『』【】\\[\\]（）()\"'“”‘’]", "", str(x or "")).lower()
+    return bool(n(a) and n(a) == n(b))
+
+
+def _enrich_and_sanitize_ui_steps(spec: Dict[str, Any], precondition_plan: Dict[str, Any], kg_data: Dict[str, Any]) -> Dict[str, Any]:
+    """把结构化动态前置条件编译成执行步骤，并阻止标题/静态元素被点击。
+
+    规则：
+    1. dynamic_data 必须在第一个业务操作前执行 guard；
+    2. click 的目标如果恰好是动态 section 标题，改成 click_dynamic_item；
+    3. KG 明确 clickable=false/role=heading 的目标禁止生成普通 click；
+    4. guard 失败由 StepRunner 返回 skipped，不计为 failed。
+    """
+    steps = spec.get("steps") or []
+    if not isinstance(steps, list):
+        steps = []
+    sections = _dynamic_section_names(precondition_plan)
+    conditions = [c for c in (precondition_plan or {}).get("conditions", []) if isinstance(c, dict)]
+    dyn = next((c for c in conditions if c.get("type") == "dynamic_data"), None)
+    fixed = []
+
+    if dyn and dyn.get("skip_when_empty") and sections:
+        guard = {
+            "seq": 0,
+            "action": "guard_dynamic_data",
+            "desc": "动态数据前置检查：无数据时跳过本用例",
+            "args": {
+                "sections": sections,
+                "match": dyn.get("match", "any"),
+                "empty_indicators": dyn.get("empty_indicators") or ["暂无数据", "无数据"],
+            },
+        }
+        # 避免重复插入
+        if not any((s.get("action") == "guard_dynamic_data") for s in steps if isinstance(s, dict)):
+            fixed.append(guard)
+
+    # 建立 KG 目标索引：同名目标优先使用可信 evidence 元素。
+    elem_index = {}
+    all_elements = []
+    if isinstance(kg_data, dict):
+        all_elements.extend(kg_data.get("elements", []) or [])
+        for page in kg_data.get("pages", []) or []:
+            if isinstance(page, dict): all_elements.extend(page.get("elements", []) or [])
+    for e in all_elements:
+        if not isinstance(e, dict): continue
+        name = e.get("name") or e.get("element_name") or e.get("text") or ""
+        if name:
+            elem_index.setdefault(str(name), []).append(e)
+
+    for s in steps:
+        if not isinstance(s, dict): continue
+        action = s.get("action") or ""
+        args = s.get("args") if isinstance(s.get("args"), dict) else {}
+        locator = args.get("locator") or args.get("text") or args.get("label") or ""
+        if action == "click":
+            # 动态 section 标题不可点击：点击 section 内真实数据项。
+            section = next((sec for sec in sections if _is_same_ui_text(locator, sec) or _is_same_ui_text(s.get("desc", ""), sec)), None)
+            if section:
+                s["action"] = "click_dynamic_item"
+                s["desc"] = f"点击「{section}」数据中的可操作患者/数据项"
+                s["args"] = {
+                    "section": section,
+                    "item_role": "link",
+                    "empty_indicators": (dyn or {}).get("empty_indicators") or ["暂无数据", "无数据"],
+                }
+                fixed.append(s)
+                continue
+
+            # 如果 KG 明确知道该文本是 heading/static，则不要生成 click。
+            matches = elem_index.get(str(locator), [])
+            bad = any((e.get("clickable") is False or e.get("role") in ("heading", "static", "paragraph", "table")) for e in matches)
+            good = any(e.get("clickable") is True or e.get("role") in ("button", "link", "tab", "menuitem") for e in matches)
+            if bad and not good:
+                s["action"] = "assert_visible"
+                s["desc"] = f"验证「{locator}」可见（该元素为静态标题，不执行点击）"
+                s["args"] = {"locator": locator}
+                fixed.append(s)
+                continue
+        fixed.append(s)
+
+    for i, s in enumerate(fixed, 1):
+        if isinstance(s, dict): s["seq"] = i
+    spec["steps"] = fixed
+    spec["precondition_plan"] = precondition_plan
+    spec.setdefault("metadata", {})["precondition_compiler"] = "ui_precondition_plan_v1"
+    if dyn:
+        spec["metadata"]["dynamic_data_policy"] = "skip_when_empty"
+    return spec
+
+
 def _build_generation_prompt(
     case_name, case_desc, preconditions, module,
     steps, page_objects, kg_data, base_url,
@@ -312,6 +435,8 @@ def _build_generation_prompt(
     anti_rules = _get_anti_pattern_rules()
     pom_keys = "、".join(page_objects.keys()) if page_objects else "（无）"
     url_sections = _build_url_prompt_sections(page_url_map, start_url, pom_keys)
+    precondition_plan = _build_precondition_plan(preconditions, module)
+    precondition_plan_text = json.dumps(precondition_plan, ensure_ascii=False, indent=2)
 
     return f"""你是WebUI自动化测试专家。将功能测试用例转换为 JSON 数据驱动测试步骤。
 
@@ -320,6 +445,11 @@ def _build_generation_prompt(
 - 描述: {case_desc}
 - 前置条件: {preconditions or '无'}
 - 模块: {module}
+
+## 结构化前置条件（系统编译结果，优先级高于自然语言）
+{precondition_plan_text}
+
+动态数据规则：若 dynamic_data.skip_when_empty=true，必须把动态数据检查放在所有业务操作之前；检查不到数据时必须返回 skipped，禁止继续点击标题。
 
 ## 测试步骤
 {steps_text}
@@ -364,7 +494,7 @@ def _build_generation_prompt(
 断言: assert_visible, assert_text, assert_value, assert_url
 导航: goto, go_back, reload
 等待: wait_for_render, wait_for_url, wait_for_load_state
-数据: get_all_items, scroll_to_bottom, skip_if_empty
+数据: get_all_items, scroll_to_bottom, skip_if_empty, guard_dynamic_data, click_dynamic_item
 
 ### 2. args 定位器（必须提供至少一种）：
   - locator: 从页面元素列表的"页面真实文本(LOCATOR)"取值 → get_by_text
@@ -408,8 +538,15 @@ def _build_generation_prompt(
   - 负向场景拆为独立用例
   - press 用 args.key = "Enter"/"Escape"/"Tab"
 
-### 7. 每条用例最后一步必须是返回起始页：
-  {{"seq": 99, "action": "goto", "desc": "返回起始页", "args": {{"url": "{start_url or '（无起始页 URL 数据，保持当前页：不输出 goto，用 wait_for_render'}"}}}}
+### 7. 动态数据/不可点击元素硬约束：
+  - 「佩戴预警」「测量预警」等数据区标题不是数据项；若探索 role=heading 或 clickable=false，禁止 click。
+  - 当动态数据区有数据时，点击区内真正可操作的数据项（优先 link/button/真实 click handler），不要点击 section 标题。
+  - 当动态数据区为空（如「暂无数据」）时，必须由 guard_dynamic_data 直接 SKIP，不能产生定位超时。
+  - 不得因为“点击卡片”字样就假定标题可点击；以探索 Evidence 的 role/clickable 为准。
+
+### 8. 每条用例最后一步必须返回起始页：
+  优先输出 {{"seq": 99, "action": "go_back", "desc": "返回起始页", "args": {{}}}}。
+  禁止用 goto 起始页代替浏览器历史返回；禁止 goto 登录页。
   URL **固定取上方「起始页」的值，禁止编造、绝不使用登录页 URL（跳登录页=登出会话）**
 
 ### 其他
@@ -462,12 +599,15 @@ def _summarize_elements(kg_data: Dict[str, Any]) -> str:
             locator_text = item.get("locator_text", "")
             if name and role:
                 role_label = {"button": "按钮", "link": "链接", "textbox": "输入框",
-                              "combobox": "下拉框", "tab": "标签页", "table": "表格"}.get(role, role)
+                              "combobox": "下拉框", "tab": "标签页", "table": "表格",
+                              "heading": "标题", "static": "静态文本", "table-row": "表格行"}.get(role, role)
+                clickable = item.get("clickable")
+                click_label = "可点击" if clickable is True else ("不可点击" if clickable is False else "可点击性未知")
                 # 当探索找到了不同的实际文本时，显式标注 LOCATOR
                 if locator_text and locator_text != name:
-                    lines.append(f"- [{role_label}] 描述名={name} | 页面真实文本(LOCATOR)={locator_text}")
+                    lines.append(f"- [{role_label}/{click_label}] 描述名={name} | 页面真实文本(LOCATOR)={locator_text}")
                 else:
-                    lines.append(f"- [{role_label}] {name}")
+                    lines.append(f"- [{role_label}/{click_label}] {name}")
                 count += 1
                 continue
 
@@ -483,10 +623,12 @@ def _summarize_elements(kg_data: Dict[str, Any]) -> str:
                             name = elem.get("name", elem.get("element_name", elem.get("text", "?")))
                             selector = elem.get("selector", elem.get("css", elem.get("primary_locator", "")))
                             lt = elem.get("locator_text", "")
+                            clickable = elem.get("clickable") if isinstance(elem, dict) else None
+                            click_label = "可点击" if clickable is True else ("不可点击" if clickable is False else "可点击性未知")
                             if lt and lt != name:
-                                lines.append(f"- [{role_label}] 描述名={name} | LOCATOR={lt}" + (f" ({selector})" if selector else ""))
+                                lines.append(f"- [{role_label}/{click_label}] 描述名={name} | LOCATOR={lt}" + (f" ({selector})" if selector else ""))
                             else:
-                                lines.append(f"- [{role_label}] {name}" + (f" ({selector})" if selector else ""))
+                                lines.append(f"- [{role_label}/{click_label}] {name}" + (f" ({selector})" if selector else ""))
                             count += 1
                         elif isinstance(elem, str):
                             lines.append(f"- [{role_label}] {elem}")
@@ -689,8 +831,7 @@ def _sanitize_spec_steps(spec: Dict[str, Any], page_url_map: Optional[Dict[str, 
        page_url_map（中文模块名/英文路由名）补全 args.url；匹配不到 → 转 wait_for_render
     2. goto 只有 page 无 url → 映射中存在该页 → 补 args.url
        （POM navigate 内嵌 full_url 对 hash 路由项目拼接错误，显式 URL 最稳）
-    3. goto 目标为登录页：desc 含「返回/起始」（「返回起始页」误译）→ 替换为 goto(url=start_url)；
-       其他 → 转 wait_for_render
+    3. goto 目标为登录页：返回/起始语义 → 转 go_back；其他 → 转 wait_for_render。
     """
     from app.core.services.step_runner import _looks_like_login_page, _looks_like_login_url
 
@@ -736,15 +877,14 @@ def _sanitize_spec_steps(spec: Dict[str, Any], page_url_map: Optional[Dict[str, 
         #    2026-08-24 审计 M1 封堵，与执行侧 _do_goto 同源）
         _page = (s.get("args") or {}).get("page") or (s.get("args") or {}).get("page_name")
         if _looks_like_login_url(url) or _looks_like_login_page(_page):
-            if start_url and ("返回" in desc or "起始" in desc):
-                s.setdefault("args", {})["url"] = start_url
-                logger.warning(f"[Conversion] 步骤修正: 返回起始页 URL 替换"
-                               f"（原 {str(url)[:50]}）→ {start_url[:60]}")
+            if "返回" in desc or "起始" in desc:
+                s["action"] = "go_back"
+                s["args"] = {}
+                logger.warning("[Conversion] 步骤修正: 返回起始页禁止 goto，改为 go_back")
             else:
                 s["action"] = "wait_for_render"
                 s.setdefault("args", {})["ms"] = 500
-                logger.warning(f"[Conversion] 步骤修正: goto 目标为登录页"
-                               f"（desc={desc[:30]}）→ wait_for_render")
+                logger.warning(f"[Conversion] 步骤修正: goto 目标为登录页（desc={desc[:30]}）→ wait_for_render")
             fixed += 1
             continue
     if fixed:

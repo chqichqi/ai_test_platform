@@ -26,12 +26,13 @@ from app.core.services.element_locator import ElementLocator, LocateResult
 from app.core.services.state_manager import StateManager
 from app.core.services.action_executor import ActionResolver, ActionExecutor, EffectValidator
 from app.core.services.case_explorer import CaseExplorer, CasePlan
+from app.core.services.test_data_manager import TestDataManager
 
 
 class GuidedExplorationAgent(MCPExplorationAgent):
     """按测试用例独立探索，保留原 Agent 的 Phase 1/3/4 能力。"""
 
-    def __init__(self, client, config, llm_service=None, module_name="", platform_type="web"):
+    def __init__(self, client, config, llm_service=None, module_name="", platform_type="web", db=None):
         super().__init__(client, config, llm_service, module_name)
         self.platform_type = platform_type
         self._locator = ElementLocator(client.page, config)
@@ -47,10 +48,17 @@ class GuidedExplorationAgent(MCPExplorationAgent):
         self._trace = None
         self._cancelled = False
         self._case_contexts = {}
+        self.test_data_manager = TestDataManager(db)
+        self._runtime_datasets = {}
+        # 跨 Case 的“真实导航转移”缓存：只复用已验证的导航结果，不复用表单/弹窗动作。
+        self._transition_cache = {}
 
     def set_case_contexts(self, test_cases):
         """注入 TestCase 元数据，供补充探索在没有 CaseStepBatch 时恢复 CasePlan。"""
         self._case_contexts = {}
+        self.test_data_manager = TestDataManager(self.test_data_manager.db)
+        self._runtime_datasets = {}
+        self._transition_cache = {}
         for tc in test_cases or []:
             cid = str(getattr(tc, 'id', '') or getattr(tc, 'case_id', '') or '')
             if cid:
@@ -100,9 +108,11 @@ class GuidedExplorationAgent(MCPExplorationAgent):
         try:
             self._restore_first_page(start_url)
             self._scope_element = self.client.get_main_content()
-            deep_dive = self._phase3_deep_dive(
-                interactive=getattr(self.config, "guided_p3_interactive", False)
-            ) or {}
+            # Guided 探索已经严格按 TestCase/CasePlan 执行动作。Phase 3 只能做静态扫描，
+            # 绝不能再点击下拉、分页、弹窗触发器，否则会把同一对象第二次真实操作，
+            # 甚至把动态空数据组件带到 about:blank。即使项目配置误设为 true，
+            # Guided 模式也必须保持非交互。
+            deep_dive = self._phase3_deep_dive(interactive=False) or {}
         except Exception as exc:
             logger.warning(f"[GuidedAgent] phase3 failed: {exc}")
 
@@ -121,11 +131,11 @@ class GuidedExplorationAgent(MCPExplorationAgent):
             "pages_explored": len(self._visited_urls),
             "visited_states": len(self.state_manager.states),
             "elapsed_seconds": round(elapsed, 1),
-            "errors": len(self._error_events) + sum(1 for e in self._evidence if e.get("status") != "success"),
+            "errors": len(self._error_events) + sum(1 for e in self._evidence if e.get("status") == "failed"),
             "guided_steps_total": sum(len(p.steps) for p in self._case_plans),
             "guided_steps_executed": len(successful),
             "guided_steps_successful": len(successful),
-            "guided_steps_failed": sum(1 for e in self._evidence if e.get("status") != "success"),
+            "guided_steps_failed": sum(1 for e in self._evidence if e.get("status") == "failed"),
             "cases_total": len(self._case_plans),
             "cases_explored": len([c for c in self._case_results if c.get("status") != "not_started"]),
             "exploration_mode": "case_state_guided",
@@ -133,9 +143,11 @@ class GuidedExplorationAgent(MCPExplorationAgent):
             "interrupted": "cancelled" if self._cancelled else None,
         }
 
-        # 保留 Phase 4 能力，但只给它真实 evidence。
+        # Guided → UI Case 的主链路不依赖 Phase-4 LLM 文档综合。
+        # 旧逻辑这里连续调用 3 次 LLM（文档/站点图/POM），会让一次 3 用例转化额外耗时数分钟。
+        # 默认关闭；确需生成文档时可在 exploration_config.explore.guided_phase4_synthesis=true 开启。
         phase4 = {}
-        if self.llm:
+        if self.llm and getattr(self.config, "guided_phase4_synthesis", False):
             try:
                 phase4 = self._phase4_synthesis(
                     start_url, self._site_map, self._build_element_jumps(), deep_dive
@@ -216,10 +228,29 @@ class GuidedExplorationAgent(MCPExplorationAgent):
         result = self.action_executor.execute(
             action, locate_result, fill_value=fill_value, select_option=select_option
         )
-        self.client.wait(getattr(self.config, "click_wait", 0.8))
+        # 轻量等待：先给 click/fill 一个极短的事件循环窗口；真正的页面就绪由状态变化决定。
+        post_wait = float(getattr(self.config, "action_post_wait",
+                                  getattr(self.config, "click_wait", 0.25)) or 0)
+        if post_wait > 0 and action_type not in ("validate", "wait_for"):
+            self.client.wait(post_wait)
         self._close_extra_pages()
-        self._recover_about_blank(before_url)
+        # about:blank 是探索中的非法中间状态：一旦出现，立即恢复到动作前页面，
+        # 不允许它继续进入 Evidence/KG，也不让下一条 Case 从空白页开始。
+        blank_recovered = self._recover_about_blank(before_url)
         current_after_url = self.client.get_url()
+        if current_after_url == "about:blank":
+            try:
+                self.state_manager.restore(before_url, hard_reset=False,
+                                           max_wait=getattr(self.config, "case_reset_ready_timeout", 3.0))
+            except Exception:
+                pass
+            current_after_url = self.client.get_url()
+            result = ActionResult(action=action, success=False,
+                                  error="about_blank_after_action")
+        elif blank_recovered:
+            # 已经从 about:blank 恢复；这次动作不能被当成成功导航。
+            result = ActionResult(action=action, success=False,
+                                  error="about_blank_recovered")
         # 模块边界是安全约束：跨模块导航不进入探索图，也不作为成功证据。
         if current_after_url and hasattr(self, "_is_within_module") and not self._is_within_module(current_after_url):
             logger.warning(f"[GuidedAgent] block cross-module navigation: {current_after_url}")
@@ -241,7 +272,25 @@ class GuidedExplorationAgent(MCPExplorationAgent):
         )
         self._record_trace(plan, gs, locate_result, result, effect, before, after)
         self._update_state_graph(plan, target, before, after, effect)
+        if final_ok:
+            self._mark_consumable_step(plan, gs)
         return ev
+
+    def _mark_consumable_step(self, plan: CasePlan, gs):
+        dataset = self._runtime_datasets.get(str(plan.case_id))
+        if dataset is None:
+            return
+        seq, target, role, action_type, fill_value, select_option, context, ui_pattern = self._unpack_step(gs)
+        candidates = {str(target or ""), str(fill_value or ""), str(select_option or "")}
+        try:
+            data_plan = self._plan_data_object(plan)
+            for req in data_plan.requirements:
+                if req.data_type != "consumable":
+                    continue
+                if str(dataset.get(req.key, "")) in candidates:
+                    self.test_data_manager.mark_consumed(dataset, req.key, {"step": seq, "action": action_type})
+        except Exception as exc:
+            logger.warning(f"[GuidedAgent] mark consumable failed case={plan.case_id}: {exc}")
 
     def record_case_start(self, plan: CasePlan, state: Dict[str, Any]):
         self._case_results.append({
@@ -256,20 +305,41 @@ class GuidedExplorationAgent(MCPExplorationAgent):
             "preconditions": plan.preconditions,
             "start_url": plan.start_url,
             "start_state_id": state.get("state_id", ""),
+            "data_set_id": getattr(plan, "data_set_id", ""),
+            "runtime_data": getattr(plan, "runtime_data", {}),
             "status": "started",
         })
 
     def finish_case(self, plan: CasePlan, status: str, error: str = ""):
+        dataset = self._runtime_datasets.get(str(plan.case_id))
+        cleanup = []
+        if dataset is not None:
+            try:
+                cleanup = self.test_data_manager.complete(dataset, self._plan_data_object(plan))
+            except Exception as exc:
+                cleanup = [{"status": "failed", "error": str(exc)}]
         for item in reversed(self._case_results):
             if item.get("case_id") == plan.case_id:
-                item["status"] = status
-                item["error"] = error or ""
-                item["finished_at"] = time.time()
+                item.update({
+                    "status": status, "error": error or "", "finished_at": time.time(),
+                    "data_set_id": getattr(plan, "data_set_id", ""),
+                    "runtime_data": getattr(plan, "runtime_data", {}),
+                    "data_cleanup": cleanup,
+                })
                 return
         self._case_results.append({
             "case_id": plan.case_id, "case_name": plan.case_name, "module": plan.module,
             "start_url": plan.start_url, "status": status, "error": error or "",
-            "finished_at": time.time(),
+            "data_set_id": getattr(plan, "data_set_id", ""),
+            "runtime_data": getattr(plan, "runtime_data", {}),
+            "data_cleanup": cleanup, "finished_at": time.time(),
+        })
+
+    def _plan_data_object(self, plan):
+        from app.core.services.test_data_plan import TestDataPlan
+        return TestDataPlan.from_dict(getattr(plan, "test_data_plan", {}) or {}, {
+            "case_id": plan.case_id, "logical_case_id": plan.logical_case_id,
+            "revision_no": plan.revision_no, "version_id": plan.version_id, "project_id": plan.project_id,
         })
 
     def make_case_error(self, plan: CasePlan, error: str) -> Dict[str, Any]:
@@ -283,6 +353,45 @@ class GuidedExplorationAgent(MCPExplorationAgent):
     # ------------------------------------------------------------------
     # Evidence
     # ------------------------------------------------------------------
+    def make_replayed_evidence(self, plan, gs, before_state, after_state, cache) -> Dict[str, Any]:
+        """为跨 Case 复用的已验证导航生成证据。
+
+        replay 不再次点击浏览器，而是恢复到此前已经验证过的目标 URL。
+        只有“发生导航”的 click/navigate/table_row 才允许走这里，因此不会把
+        modal、toggle、表单等具有局部状态的动作错误地缓存。
+        """
+        seq, target, role, action_type, fill_value, select_option, context, ui_pattern = self._unpack_step(gs)
+        loc = cache.get("locator") or {}
+        effect = {
+            "valid": True,
+            "effect": "navigation",
+            "replayed": True,
+            "confidence": min(0.98, max(0.80, float(cache.get("confidence", 0.90) or 0.90))),
+            "diff": self.state_manager.diff(before_state or {}, after_state or {}),
+        }
+        evidence = {
+            "case_id": plan.case_id, "case_name": plan.case_name, "module": plan.module,
+            "preconditions": plan.preconditions, "expected_result": plan.expected_result,
+            "seq": seq, "target": target, "action": action_type, "role": role,
+            "context": context, "ui_pattern": ui_pattern, "status": "success",
+            "error": "", "before_url": (before_state or {}).get("url", ""),
+            "after_url": (after_state or {}).get("url", ""),
+            "before_state_id": (before_state or {}).get("state_id", ""),
+            "after_state_id": (after_state or {}).get("state_id", ""),
+            "locator": dict(loc), "effect": effect,
+            "confidence": effect["confidence"],
+            "execution_mode": "cached_transition_replay",
+            "pages_touched": list(dict.fromkeys([(before_state or {}).get("url", ""), (after_state or {}).get("url", "")])),
+        }
+        self._evidence.append(evidence)
+        return evidence
+
+    def make_skipped_evidence(self, plan, gs, reason: str) -> Dict[str, Any]:
+        seq, target, role, action_type, fill_value, select_option, context, ui_pattern = self._unpack_step(gs)
+        state = self.state_manager.current_state or self.state_manager.capture_and_record(f"skipped_case_{plan.case_id}_step_{seq}")
+        return self._make_evidence(plan, gs, seq, target, action_type, state, state, None, False, reason,
+                                   effect={"valid": False, "effect": "skipped", "confidence": 1.0, "reason": reason})
+
     def _make_evidence(self, plan, gs, seq, target, action_type, before, after,
                        locate_result, success, error, effect=None):
         info = locate_result.element_info if locate_result else {}
@@ -298,7 +407,7 @@ class GuidedExplorationAgent(MCPExplorationAgent):
             "role": self._unpack_step(gs)[2],
             "context": self._unpack_step(gs)[6],
             "ui_pattern": self._unpack_step(gs)[7],
-            "status": "success" if success else "failed",
+            "status": ("success" if success else ("skipped" if str(error or "").startswith(("skipped_", "duplicate_action_skipped")) else "failed")),
             "error": error or "",
             "before_url": before.get("url", ""),
             "after_url": after.get("url", ""),
@@ -404,7 +513,28 @@ class GuidedExplorationAgent(MCPExplorationAgent):
             plans = [CasePlan(case_id="legacy-1", case_name="兼容模式", module=self._module, start_url=start_url, steps=list(self._guided_steps))]
         for p in plans:
             p.start_url = p.start_url or start_url
+            tc = self._case_contexts.get(str(p.case_id))
+            try:
+                data_plan = self.test_data_manager.build_plan(tc) if tc is not None else None
+                if data_plan is not None:
+                    p.test_data_plan = data_plan.to_dict()
+                    dataset = self.test_data_manager.materialize(data_plan)
+                    self.test_data_manager.apply_to_case_plan(p, dataset)
+                    self._runtime_datasets[p.case_id] = dataset
+                    logger.info(f"[GuidedAgent] TestData prepared case={p.case_id} run={dataset.run_id} keys={list(dataset.values.keys())}")
+            except Exception as exc:
+                # 数据需求无法满足时，不静默改成随机值；让该 Case 产生明确 evidence。
+                logger.error(f"[GuidedAgent] TestData prepare failed case={p.case_id}: {exc}")
+                p.test_data_plan = p.test_data_plan or {"error": str(exc)}
+                p.runtime_data = {}
         self._case_plans = plans
+
+    def _plan_data_object(self, plan):
+        from app.core.services.test_data_plan import TestDataPlan
+        return TestDataPlan.from_dict(getattr(plan, "test_data_plan", {}) or {}, {
+            "case_id": plan.case_id, "logical_case_id": plan.logical_case_id,
+            "revision_no": plan.revision_no, "version_id": plan.version_id, "project_id": plan.project_id,
+        })
 
     def _reset_runtime(self):
         self._visited_urls = set()
@@ -425,8 +555,11 @@ class GuidedExplorationAgent(MCPExplorationAgent):
 
     def _go_back_to_case_start(self, plan: CasePlan, before_url: str) -> bool:
         try:
-            self.client.back()
-            self.client.wait_for_page_ready(max_wait=getattr(self.config, "page_ready_timeout_fast", 8.0))
+            self.client.back(wait=0.15)
+            if hasattr(self.client, "wait_for_page_ready_fast"):
+                self.client.wait_for_page_ready_fast(max_wait=getattr(self.config, "case_reset_ready_timeout", 3.0))
+            else:
+                self.client.wait_for_page_ready(max_wait=getattr(self.config, "case_reset_ready_timeout", 3.0))
             cur = self.client.get_url()
             if self.state_manager.normalize_url(cur) == self.state_manager.normalize_url(plan.start_url):
                 return True
@@ -435,18 +568,45 @@ class GuidedExplorationAgent(MCPExplorationAgent):
         return self.state_manager.restore(plan.start_url, hard_reset=True)
 
     def _recover_about_blank(self, before_url: str):
+        """发现动作把主页面送到 about:blank 时立即恢复。
+
+        不能只依赖 goto(before_url)：某些站点的点击会先创建/切换空白文档，
+        此时浏览器历史记录里的上一页反而是最可靠的恢复路径；历史失败才使用
+        StateManager 的目标 URL 复位。整个过程禁止把 about:blank 写入有效 Evidence。
+        """
         try:
             cur = self.client.get_url()
-            if cur == "about:blank" and before_url and before_url != "about:blank":
-                self.client.goto(before_url)
-                self.client.wait_for_page_ready(max_wait=5.0)
-        except Exception:
-            pass
+            if self.state_manager.normalize_url(cur) != "about:blank":
+                return False
+            if not before_url or self.state_manager.normalize_url(before_url) == "about:blank":
+                return False
+
+            logger.warning(f"[GuidedAgent] about:blank detected; recovering -> {before_url[-100:]}")
+            recovered = False
+            try:
+                self.page.go_back()
+                if hasattr(self.client, "wait_for_page_ready_fast"):
+                    self.client.wait_for_page_ready_fast(max_wait=getattr(self.config, "case_reset_ready_timeout", 3.0))
+                recovered = self.state_manager.normalize_url(self.client.get_url()) != "about:blank"
+            except Exception:
+                recovered = False
+
+            if not recovered or self.state_manager.normalize_url(self.client.get_url()) != self.state_manager.normalize_url(before_url):
+                recovered = self.state_manager.restore(
+                    before_url, hard_reset=False,
+                    max_wait=getattr(self.config, "case_reset_ready_timeout", 3.0)
+                )
+            return bool(recovered and self.state_manager.normalize_url(self.client.get_url()) != "about:blank")
+        except Exception as exc:
+            logger.warning(f"[GuidedAgent] about:blank recovery failed: {exc}")
+            return False
 
     def _wait_for_target_text(self, target: str, max_wait=None) -> bool:
         if not target:
             return True
-        max_wait = max_wait if max_wait is not None else getattr(self.config, "target_wait_timeout", 6.0)
+        max_wait = max_wait if max_wait is not None else min(
+            float(getattr(self.config, "target_wait_timeout", 0.6) or 0.6), 0.8
+        )
         import re as _re
         needle = _re.sub(r"\s+", "", target)
         deadline = time.time() + max_wait
@@ -461,7 +621,7 @@ class GuidedExplorationAgent(MCPExplorationAgent):
                     return True
             except Exception:
                 pass
-            self.client.wait(0.35)
+            self.client.wait(0.15)
         return False
 
     def _update_state_graph(self, plan, target, before, after, effect):
@@ -513,9 +673,24 @@ class GuidedExplorationAgent(MCPExplorationAgent):
                 window.confirm = () => false;
                 window.prompt = () => null;
             }""")
+            # 某些业务卡片/链接通过 window.open('', ...) 或 target=_blank 先创建
+            # about:blank popup。探索不需要新窗口：空白 popup 立即关闭，主页面继续保持。
+            try:
+                self.page.on("popup", lambda popup: self._handle_popup(popup))
+            except Exception:
+                pass
             self._observer_injected = True
         except Exception:
             pass
+
+    def _handle_popup(self, popup):
+        try:
+            url = self.state_manager.normalize_url(popup.url or "")
+            if url in ("", "about:blank"):
+                popup.close()
+                logger.info("[GuidedAgent] closed blank popup created by exploratory action")
+        except Exception as exc:
+            logger.debug(f"[GuidedAgent] popup handler ignored: {exc}")
 
     def _close_extra_pages(self):
         try:
@@ -597,9 +772,16 @@ class GuidedExplorationAgent(MCPExplorationAgent):
     @staticmethod
     def _plan_dict(plan):
         return {
-            "case_id": plan.case_id, "case_name": plan.case_name, "module": plan.module,
+            "case_id": plan.case_id, "test_case_id": plan.test_case_id,
+            "logical_case_id": plan.logical_case_id, "revision_no": plan.revision_no,
+            "version_id": plan.version_id, "project_id": plan.project_id,
+            "case_name": plan.case_name, "module": plan.module,
             "preconditions": plan.preconditions, "expected_result": plan.expected_result,
-            "start_url": plan.start_url, "steps": [GuidedExplorationAgent._step_dict(x) for x in plan.steps]
+            "start_url": plan.start_url,
+            "test_data_plan": getattr(plan, "test_data_plan", {}),
+            "runtime_data": getattr(plan, "runtime_data", {}),
+            "data_set_id": getattr(plan, "data_set_id", ""),
+            "steps": [GuidedExplorationAgent._step_dict(x) for x in plan.steps]
         }
 
     @staticmethod

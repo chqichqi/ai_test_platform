@@ -17,7 +17,10 @@ from app.core.models.user import User
 from app.core.services.allure_reporter import ReportManager
 from app.core.logger import logger
 
-router = APIRouter(prefix="/test-reports", tags=["test-reports"])
+# 注意：prefix 统一在 app.api.api_v1.api.include_router 处加（prefix="/test-reports"），
+# 此处不能再写 prefix，否则与全站其它模块风格不一致且会双前缀叠加，
+# 导致真实路径变成 /api/v1/test-reports/test-reports/...，前端请求 /test-reports/list 404。
+router = APIRouter(tags=["test-reports"])
 
 
 # ═══════════════════════════════════════════════════════════

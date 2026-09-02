@@ -162,6 +162,32 @@ def _apply_schema_migrations(db_engine):
         db_url = str(settings.DATABASE_URL) if hasattr(settings, 'DATABASE_URL') else ""
         is_mysql = "mysql" in db_url.lower()
 
+        # 0. api_test_cases 表添加统一测试数据契约字段。
+        # TestDataPlan 以前只存在 UI 用例；API 探索/Swagger 用例现在也共享同一数据生命周期。
+        if is_mysql:
+            result = conn.execute(text(
+                "SELECT COUNT(*) FROM information_schema.COLUMNS "
+                "WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'api_test_cases' "
+                "AND COLUMN_NAME = 'test_data'"
+            ))
+        else:
+            result = conn.execute(text(
+                "SELECT COUNT(*) FROM pragma_table_info('api_test_cases') WHERE name = 'test_data'"
+            ))
+        if result.scalar() == 0:
+            logger.info("添加 api_test_cases.test_data 测试数据契约列...")
+            try:
+                if is_mysql:
+                    conn.execute(text("ALTER TABLE api_test_cases ADD COLUMN test_data JSON NULL COMMENT 'API测试数据计划/运行时数据契约'"))
+                else:
+                    conn.execute(text("ALTER TABLE api_test_cases ADD COLUMN test_data JSON"))
+                conn.commit()
+                logger.info("api_test_cases.test_data 添加成功")
+            except Exception as e:
+                logger.warning(f"添加 api_test_cases.test_data 失败（可能已存在）: {e}")
+        else:
+            logger.info("api_test_cases.test_data 已存在，跳过迁移")
+
         # 1. api_test_cases 表添加审批字段
         if is_mysql:
             # MySQL: 使用 INFORMATION_SCHEMA
@@ -390,7 +416,7 @@ def _apply_schema_migrations(db_engine):
             try:
                 # SQLite: 检测 version_id 是否仍为 NOT NULL
                 result = conn.execute(text(
-                    "SELECT notnull FROM pragma_table_info('system_exploration_graphs') WHERE name = 'version_id'"
+                    "SELECT \"notnull\" FROM pragma_table_info(\'system_exploration_graphs\') WHERE name = \'version_id\'"
                 ))
                 if result.scalar() == 1:
                     conn.execute(text("ALTER TABLE system_exploration_graphs RENAME COLUMN version_id TO version_id_old"))

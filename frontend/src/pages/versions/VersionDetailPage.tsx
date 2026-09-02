@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import {
   Card, Tag, Button, Space, Tabs, Typography, message, Empty, Spin, Modal,
   Upload, Input, Popconfirm, Progress, Table, Select, Row, Col,
-  Alert, Divider, Form, Descriptions, Radio, Collapse, Statistic
+  Alert, Divider, Form, Descriptions, Radio, Collapse, Statistic, Tooltip
 } from 'antd';
 const { Dragger } = Upload;
 const { Panel } = Collapse;
@@ -61,10 +61,10 @@ const VersionDetailPage: React.FC = () => {
   const [tcTotal, setTcTotal] = useState(0);
   const [tcFilters] = useState({ search: '', priority: '', status: '', module: '' });
   const [sourceTab, setSourceTab] = useState('ai');
-  const [hasLoginModule, setHasLoginModule] = useState(true);
+  // 项目前置配置状态（与项目卡片状态 Tag 同一判定源 check-login-module 双字段；初始 false 保守拦截，加载后放开）
+  const [hasLoginModule, setHasLoginModule] = useState(false); // 登录模块已导入并验证（项目级）
+  const [hasWebConfig, setHasWebConfig] = useState(false); // 项目配置（web.base_url）已填写
   const [projectConfigReady, setProjectConfigReady] = useState(false); // 项目是否已配置 base_url+username+password
-  const [loginModuleContent, setLoginModuleContent] = useState('');
-  const [loginModuleSaved, setLoginModuleSaved] = useState(false); // 已成功导入并固化
 
   // 导入业务流/需求弹窗（统一入口）
   const [showImport, setShowImport] = useState(false);
@@ -155,12 +155,15 @@ const VersionDetailPage: React.FC = () => {
 
   useEffect(() => {
     if (id) { fetchVersionDetail(); loadOriginalDocs(); }
-    // 检查登录模块是否已导入
+    // 检查项目前置配置状态（登录模块 + 项目配置双字段，与项目卡片状态 Tag 同一判定源）
     axiosInstance.get('/web-ui-tests/check-login-module', {
       params: { project_id: projectId }
     }).then(
-      (res: any) => setHasLoginModule(!!res.data?.has_login_module)
-    ).catch(() => setHasLoginModule(true));
+      (res: any) => {
+        setHasLoginModule(!!res.data?.has_login_module);
+        setHasWebConfig(!!res.data?.has_web_config);
+      }
+    ).catch(() => { /* 后端不可达：保持初始 false 保守拦截 */ });
     // 检查项目是否已配置 base_url + username + password
     if (projectId) {
       axiosInstance.get(`/projects/${projectId}/settings`).then((res: any) => {
@@ -175,6 +178,12 @@ const VersionDetailPage: React.FC = () => {
   useEffect(() => {
     if (sourceTab === 'swagger_import' && projectId) {
       loadApiAuthConfig();
+      // 同步刷新登录模块/项目配置状态（API 鉴权联动来源展示与引导需要）
+      axiosInstance.get('/web-ui-tests/check-login-module', { params: { project_id: projectId } })
+        .then((res: any) => {
+          setHasLoginModule(!!res.data?.has_login_module);
+          setHasWebConfig(!!res.data?.has_web_config);
+        }).catch(() => {});
     }
     // 任意 Tab 切换时刷新项目配置就绪状态（凭证可能在另一 Tab 被更新）
     if (projectId) {
@@ -217,12 +226,6 @@ const VersionDetailPage: React.FC = () => {
         items = items.filter(d => !toDelete.includes(d.id));
       }
 
-      // 加载已保存的登录模块内容
-      const loginDoc = items.find((d: any) => d.type === 'business_flow' && d.name === '登录模块' && d.content?.trim());
-      if (loginDoc && loginDoc.content) {
-        setLoginModuleContent(loginDoc.content.trim());
-        setLoginModuleSaved(true);
-      }
       setOriginalDocs(items);
     } catch { setOriginalDocs([]); }
   };
@@ -449,54 +452,6 @@ const VersionDetailPage: React.FC = () => {
       setGenError(e.response?.data?.detail || e.message || '未知错误');
       setGenLogs(prev => [...prev, `   ❌ 异常: ${e.response?.data?.detail || e.message}`]);
     } finally { setImportGen(false); }
-  };
-
-  // ===== 导入登录模块（专用——有头探索+立即验证）=====
-  const [loginImporting, setLoginImporting] = useState(false);
-  const [loginImportError, setLoginImportError] = useState('');
-  const handleImportLoginModule = async () => {
-    setLoginImportError('');  // 重新尝试时清除旧错误
-    if (!loginModuleContent.trim()) {
-      message.warning('请先填写登录模块的业务流描述');
-      return;
-    }
-    setLoginImporting(true);
-    // 导入含真实浏览器探索+登录验证（约1-2分钟），axios 默认 120s 超时接近耗时上限，专用 600s
-    message.info('正在导入登录模块并验证登录流程（含浏览器探索，约 1-2 分钟），请勿关闭页面…', 6);
-    try {
-      const { data } = await axiosInstance.post('/business-flow/import-login-module', {
-        version_id: versionId,
-        login_content: loginModuleContent.trim(),
-      }, { timeout: 600000 });
-      if (data.success) {
-        // API 鉴权自动联动结果（登录模块导入成功后自动检测/验证 Swagger 登录接口）
-        const authStatus = data.api_auth_auto?.status;
-        const authMsg = authStatus === 'success'
-          ? `；API 鉴权已自动联动验证通过（${data.api_auth_auto.login_url} → ${data.api_auth_auto.token_path}）`
-          : authStatus === 'partial'
-            ? `；API 鉴权已自动填充配置但验证未通过（${data.api_auth_auto.reason}），可到 Swagger Tab 手动测试`
-            : authStatus === 'failed'
-              ? `；API 鉴权自动联动失败（${data.api_auth_auto.reason}），可到 Swagger Tab 手动配置`
-              : authStatus === 'skipped'
-                ? `；API 鉴权自动联动跳过（${data.api_auth_auto.reason}）`
-                : '';
-        message.success(`登录模块验证成功！已固化业务流文档 + 生成UI用例 + 执行通过${authMsg}`, 8);
-        setLoginModuleSaved(true);
-        setHasLoginModule(true);
-        fetchTestCases(); refreshModuleList();
-        // 联动可能已写入 api_auth（已验证/待验证），刷新 Swagger Tab 的鉴权配置卡片状态
-        loadApiAuthConfig();
-      } else {
-        const errMsg = data.execution_result?.error || data.error || '验证未通过';
-        message.warning(`登录模块验证失败：${errMsg}。请修改业务流描述后重试。`);
-      }
-    } catch (e: any) {
-      const errDetail = e.response?.data?.message || e.response?.data?.detail || '登录模块导入失败，请修改后重试';
-      setLoginImportError(errDetail);
-      message.error(errDetail);
-    } finally {
-      setLoginImporting(false);
-    }
   };
 
   // ===== API 鉴权配置 =====
@@ -962,10 +917,10 @@ const VersionDetailPage: React.FC = () => {
       {/* ===== 操作栏 ===== */}
       {!projectConfigReady ? (
         <Alert type="warning" showIcon style={{ marginBottom: 8 }}
-          message="项目尚未配置连接信息。请先在「项目设置 → 项目配置」中填写目标系统 URL、登录用户名和密码。" />
+          message="项目尚未配置连接信息。请先在项目卡片的「项目配置」中填写目标系统 URL、登录用户名和密码。" />
       ) : !hasLoginModule ? (
         <Alert type="info" showIcon style={{ marginBottom: 8 }}
-          message="请先导入「登录模块」相关业务流并点击「导入并验证」通过后，方能导入后续的「业务流/需求」。" />
+          message="请先到项目卡片「项目配置」→「登录模块」页签导入业务流并点击「导入并验证」通过后（项目级，跨版本共享），方能导入后续的「业务流/需求」。" />
       ) : null}
       {sourceTab === 'swagger_import' && (
         <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginBottom: 8, gap: 12 }}>
@@ -975,57 +930,23 @@ const VersionDetailPage: React.FC = () => {
         </div>
       )}
 
-      {/* ===== 登录模块（前置）===== */}
-      {sourceTab === 'ai' && (
-        <Card size="small" style={{ marginBottom: 12, border: `1px solid ${loginModuleSaved ? '#b7eb8f' : '#ffd591'}` }}
-          title={<Space>
-            <Tag color="gold">🔑 前置</Tag>
-            <Text strong style={{ fontSize: 13 }}>登录模块</Text>
-            {loginModuleSaved ? <Tag color="success">已导入验证</Tag> : <Tag color="warning">待导入验证</Tag>}
-          </Space>}
-          extra={loginModuleSaved ? (
-            <Text type="success" style={{ fontSize: 12 }}>✅ 登录验证已通过</Text>
-          ) : (
-            <Button type="primary" size="small" danger icon={<ThunderboltOutlined />}
-              loading={loginImporting}
-              onClick={handleImportLoginModule}>
-              导入并验证
-            </Button>
-          )}>
-          {!loginModuleSaved && (
-            <Alert type="info" showIcon style={{ marginBottom: 8 }}
-              message="请根据实际系统登录流程修改以下描述，点击「导入并验证」确认登录可用。验证通过后才会固化保存。" />
-          )}
-          {loginImportError && (
-            <Alert type="error" showIcon closable style={{ marginBottom: 8 }}
-              message="导入失败"
-              description={loginImportError}
-              onClose={() => setLoginImportError('')} />
-          )}
-          <Input.TextArea
-            rows={6}
-            value={loginModuleContent}
-            onChange={e => { setLoginModuleContent(e.target.value); setLoginImportError(''); }}
-            disabled={loginModuleSaved}
-            placeholder="请描述系统登录流程（每步一行）..."
-            style={{ fontFamily: 'monospace', fontSize: 12 }}
-          />
-        </Card>
-      )}
-
-      {/* ===== 导入操作区（登录模块下方）===== */}
+      {/* ===== 导入操作区（登录模块为项目级资产，入口在项目卡片「项目配置」）===== */}
       {sourceTab === 'ai' && (
         <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginBottom: 12, gap: 12 }}>
-          <Button type="primary" size="small" icon={<ImportOutlined />}
-            disabled={!hasLoginModule}
-            onClick={() => setShowImport(true)}>
-            导入 业务流/需求
-          </Button>
-          <Button size="small" icon={<SyncOutlined />}
-            disabled={!hasLoginModule || aiOriginalDocs.length === 0}
-            onClick={() => setShowChange(true)}>
-            补充变更
-          </Button>
+          <Tooltip title={(!hasLoginModule || !hasWebConfig) ? '创建版本前必须先完成项目配置与登录模块（项目卡片 → 项目配置）后才能导入' : undefined}>
+            <Button type="primary" size="small" icon={<ImportOutlined />}
+              disabled={!hasLoginModule || !hasWebConfig}
+              onClick={() => setShowImport(true)}>
+              导入 业务流/需求
+            </Button>
+          </Tooltip>
+          <Tooltip title={(!hasLoginModule || !hasWebConfig) ? '创建版本前必须先完成项目配置与登录模块（项目卡片 → 项目配置）后才能操作' : undefined}>
+            <Button size="small" icon={<SyncOutlined />}
+              disabled={!hasLoginModule || !hasWebConfig || aiOriginalDocs.length === 0}
+              onClick={() => setShowChange(true)}>
+              补充变更
+            </Button>
+          </Tooltip>
         </div>
       )}
 
@@ -1035,6 +956,11 @@ const VersionDetailPage: React.FC = () => {
           title={<Space>
             <Tag color="gold">🔑 API 鉴权</Tag>
             <Text strong style={{ fontSize: 13 }}>登录接口配置</Text>
+            {apiAuth?.capture_source === 'browser_login' && (
+              <Tooltip title="登录模块导入时从浏览器真实登录请求自动生成（Token 已验证），项目级共享。如需修改在此手动配置即可">
+                <Tag color="geekblue">由登录模块联动生成</Tag>
+              </Tooltip>
+            )}
             {apiAuth?.verified ? <Tag color="success">已验证</Tag> : <Tag color="warning">待验证</Tag>}
           </Space>}
           extra={<Space>
@@ -1047,6 +973,16 @@ const VersionDetailPage: React.FC = () => {
               </Button>
             )}
           </Space>}>
+          {!hasLoginModule && (
+            <Alert type="info" showIcon style={{ marginBottom: 8 }}
+              message="登录模块尚未导入。请先到项目卡片「项目配置」→「登录模块」页签导入并验证登录流程，API 鉴权将随导入自动联动生成（浏览器登录时自动捕获真实登录接口与 Token）。" />
+          )}
+          {hasLoginModule && !apiAuth?.verified && (
+            <Alert type="warning" showIcon style={{ marginBottom: 8 }}
+              message={apiAuth?.login_url
+                ? "登录模块已导入，但 API 鉴权联动验证未通过。可点击「测试鉴权」重新验证，或修改下方配置后保存。"
+                : "登录模块已导入，但未联动生成 API 鉴权（未捕获到登录接口且无 Swagger 候选）。可在此手动配置，或重新导入登录模块。"} />
+          )}
           {!apiAuth?.verified && (
             <Alert type="info" showIcon style={{ marginBottom: 8 }}
               message="配置登录鉴权接口后，所有 API 用例执行前会自动获取 Token 并注入请求。" />
@@ -1054,7 +990,7 @@ const VersionDetailPage: React.FC = () => {
           {/* 凭证状态 */}
           {apiCredentialReady ? (
             <Alert type="success" showIcon style={{ marginBottom: 8 }}
-              message={<span>✅ 凭证已配置（来自项目设置）— 用户名：<Text code>{apiCredUser}</Text>，密码已隐藏。修改凭证请前往「项目设置 → 项目配置」。</span>} />
+              message={<span>✅ 凭证已配置（来自项目设置）— 用户名：<Text code>{apiCredUser}</Text>，密码已隐藏。修改凭证请前往项目卡片的「项目配置」。</span>} />
           ) : (
             <Alert type="warning" showIcon style={{ marginBottom: 8 }}
               message="⚠️ 尚未配置登录凭证。请在下方填写，或前往「项目设置 → 项目配置」统一配置（WEB 和 API 共用）。" />
@@ -1084,7 +1020,7 @@ const VersionDetailPage: React.FC = () => {
           {/* 目标系统 URL 展示 */}
           <div style={{ marginBottom: 8 }}>
             <Text type="secondary" style={{ fontSize: 11 }}>目标系统：</Text>
-            <Text code style={{ fontSize: 11 }}>{apiAuthBaseUrl || '（未配置，请在项目设置中填写 base_url）'}</Text>
+            <Text code style={{ fontSize: 11 }}>{apiAuthBaseUrl || '（未配置，请在项目卡片的「项目配置」中填写 base_url）'}</Text>
           </div>
           {/* 候选登录接口检测 */}
           {authCandidates.length > 0 && (

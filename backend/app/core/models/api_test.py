@@ -42,6 +42,7 @@ class ApiEndpoint(Base):
     description = Column(Text, comment="详细描述")
     parameters = Column(JSON, comment="请求参数")
     request_body = Column(JSON, comment="请求体")
+    test_data = Column(JSON, default=dict, comment="API测试数据计划/运行时数据契约")
     responses = Column(JSON, comment="响应定义")
     security = Column(JSON, comment="安全配置")
     deprecated = Column(Boolean, default=False, comment="是否废弃")
@@ -69,6 +70,7 @@ class ApiTestCase(Base):
     query_params = Column(JSON, comment="查询参数")
     path_params = Column(JSON, comment="路径参数")
     request_body = Column(JSON, comment="请求体")
+    test_data = Column(JSON, default=dict, comment="API测试数据计划/运行时数据契约")
     
     expected_status = Column(Integer, comment="预期状态码")
     expected_headers = Column(JSON, comment="预期响应头")

@@ -16,9 +16,23 @@ class ExplorationConfig:
     # ═══════════════════════════════════════════════════════════
     # 时延
     # ═══════════════════════════════════════════════════════════
-    click_wait: float = 0.8
-    dropdown_wait: float = 1.0
-    modal_wait: float = 1.0
+    # 动作后的最小稳定等待；探索不再对每一步固定睡眠 0.8~1.0s。
+    click_wait: float = 0.12
+    dropdown_wait: float = 0.20
+    modal_wait: float = 0.4
+    # Case 间复位后的快速就绪等待。只有页面确实未稳定时才继续等待。
+    case_reset_ready_timeout: float = 2.0
+    # 引导步骤定位失败时的等待上限；目标已在 DOM 中时不会等待。
+    target_wait_timeout: float = 0.6
+    # 引导动作发生后是否额外等待；默认只做轻量等待，导航/异步页面由状态验证决定。
+    action_post_wait: float = 0.08
+    # Guided 模式是否执行昂贵的 Phase-4 LLM 文档/POM 综合。UI 用例转化不依赖它，默认关闭。
+    guided_phase4_synthesis: bool = False
+    # 功能用例→UI 用例是否预生成共享 POM。默认关闭，避免在已有 KG locator 时额外产生一次 LLM 请求。
+    generate_shared_pom: bool = False
+    # 缺失步骤补充探索默认关闭：补充探索会重新执行同一业务动作，容易造成重复点击。
+    # 需要时可在项目 exploration_config.explore 中显式设为 true。
+    enable_supplement_exploration: bool = False
 
     # ═══════════════════════════════════════════════════════════
     # DFS 控制
@@ -39,10 +53,9 @@ class ExplorationConfig:
     page_ready_timeout: float = 12.0
     page_ready_timeout_fast: float = 8.0
     page_goto_timeout: int = 15000         # page.goto() 超时 (ms)
-    target_wait_timeout: float = 6.0       # 定位失败恢复后等待目标文本渲染出现（SPA 异步数据）
     spa_render_min_len: int = 200           # SPA 渲染检测最小 body 文本长度
-    spa_render_max_rounds: int = 15         # SPA 渲染检测最大轮询次数
-    spa_render_interval: int = 1000         # SPA 渲染检测轮询间隔 (ms)
+    spa_render_max_rounds: int = 8         # SPA 渲染检测最大轮询次数
+    spa_render_interval: int = 250         # SPA 渲染检测轮询间隔 (ms)
 
     # ═══════════════════════════════════════════════════════════
     # 子名重试（末尾N字 + 分隔符拆解）

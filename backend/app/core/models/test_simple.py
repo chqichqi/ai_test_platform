@@ -174,6 +174,12 @@ class TestExecution(BaseModel):
     executed_by = Column(String(36), nullable=False, index=True)
     executed_at = Column(DateTime, default=datetime.utcnow, nullable=False)
     duration = Column(Integer)
+    # 执行类型（用户 2026-09-02）：区分「UI用例临时验证」与「执行中心场景测试」。
+    # scenario=执行中心场景测试（默认）；ui_verify=UI用例页临时执行（仅验证转化用例是否正确，对结果无过多要求）
+    execution_type = Column(
+        String(30), nullable=False, default='scenario', server_default='scenario',
+        comment="执行类型: scenario=执行中心场景测试, ui_verify=UI用例临时验证"
+    )
     
     # 执行详情
     actual_results = Column(Text)

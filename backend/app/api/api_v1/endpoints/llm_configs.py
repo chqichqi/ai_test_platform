@@ -173,6 +173,12 @@ async def create_llm_config(
                 detail=f"配置名称已存在: {config_data.name}"
             )
         
+        # 第一条 LLM 配置自动激活（用户 2026-09-02 需求：仅只有第一个 LLM 时自动激活，
+        # 后续新建配置不自动激活，需手动「切换使用」或编辑保存后激活，避免覆盖现有活跃配置）
+        is_first = db.query(LLMConfig).filter(
+            LLMConfig.deleted_at.is_(None)
+        ).count() == 0
+
         new_config = LLMConfig(
             name=config_data.name,
             provider=config_data.provider,
@@ -181,7 +187,7 @@ async def create_llm_config(
             model=config_data.model,
             temperature=config_data.temperature,
             max_tokens=config_data.max_tokens,
-            is_active=False,
+            is_active=is_first,
             status="pending",
         )
         
@@ -263,11 +269,19 @@ async def update_llm_config(
             config.max_tokens = config_data.max_tokens
         
         config.updated_at = datetime.utcnow()
-        
+
+        # 用户修改配置保存后自动激活该配置（用户 2026-09-02 需求）
+        # 唯一活跃原则：先将其余未删除配置置非活跃，再激活当前配置
+        db.query(LLMConfig).filter(
+            LLMConfig.id != config.id,
+            LLMConfig.deleted_at.is_(None),
+        ).update({"is_active": False})
+        config.is_active = True
+
         db.commit()
         db.refresh(config)
-        
-        logger.info(f"更新LLM配置成功: {config.name}")
+
+        logger.info(f"更新LLM配置成功: {config.name}（已自动激活）")
         
         return LLMConfigResponse(
             id=config.id,

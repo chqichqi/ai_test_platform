@@ -184,11 +184,23 @@ class StateManager:
         expected = self.normalize_url(target_url)
         current = self.client.get_url()
 
+        # about:blank 不能作为有效状态；优先回退历史页，失败再 goto 目标。
+        if self.normalize_url(current) == "about:blank":
+            try:
+                self.page.go_back(wait_until="domcontentloaded", timeout=getattr(self.config, "page_goto_timeout", 15000))
+            except Exception:
+                pass
+            current = self.client.get_url()
+
         try:
-            if hard_reset or self.normalize_url(current) != expected:
+            if hard_reset:
+                if self.normalize_url(current) == expected:
+                    # 同 URL 的 SPA 页面，goto 往往复用当前文档/状态；硬复位必须显式 reload。
+                    self.page.reload(wait_until="domcontentloaded", timeout=getattr(self.config, "page_goto_timeout", 15000))
+                else:
+                    self.client.goto(target_url, timeout=getattr(self.config, "page_goto_timeout", 15000))
+            elif self.normalize_url(current) != expected:
                 self.client.goto(target_url, timeout=getattr(self.config, "page_goto_timeout", 15000))
-            elif hard_reset:
-                self.page.reload(wait_until="domcontentloaded", timeout=getattr(self.config, "page_goto_timeout", 15000))
         except Exception as exc:
             logger.warning(f"[StateManager] restore navigation failed: {exc}")
             try:
@@ -196,10 +208,18 @@ class StateManager:
             except Exception:
                 return False
 
-        timeout = max_wait if max_wait is not None else getattr(self.config, "page_ready_timeout_fast", 8.0)
+        if max_wait is not None:
+            timeout = max_wait
+        elif hard_reset:
+            timeout = getattr(self.config, "case_reset_ready_timeout",
+                              getattr(self.config, "page_ready_timeout_fast", 8.0))
+        else:
+            timeout = getattr(self.config, "page_ready_timeout_fast", 8.0)
         try:
-            self.client.wait_for_page_ready(max_wait=timeout)
-            self.client.scroll_to_load()
+            if hasattr(self.client, "wait_for_page_ready_fast"):
+                self.client.wait_for_page_ready_fast(max_wait=timeout)
+            else:
+                self.client.wait_for_page_ready(max_wait=timeout)
         except Exception:
             pass
 
@@ -210,8 +230,10 @@ class StateManager:
         return True
 
     def reset_to(self, start_url: str, hard_reset: bool = True) -> bool:
+        if not start_url or self.normalize_url(start_url) == "about:blank":
+            return False
         ok = self.restore(start_url, hard_reset=hard_reset)
-        if not ok:
+        if not ok or self.normalize_url(self.client.get_url()) == "about:blank":
             return False
         # 清理浏览器层面的浮层/焦点；不清理业务数据，避免误伤登录态。
         try:

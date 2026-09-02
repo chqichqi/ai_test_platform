@@ -15,6 +15,7 @@ from app.core.logger import logger
 from app.core.models.api_test import ApiDefinition, ApiEndpoint, ApiTestCase
 from app.core.models.project import Version
 from app.core.services.llm_service import LLMService
+from app.core.services.test_data_plan import build_api_test_data_plan
 
 
 class ApiTestGeneratorService:
@@ -1382,6 +1383,13 @@ class ApiTestGeneratorService:
             headers=case_data.get("headers", {}),
             query_params=case_data.get("query_params", {}),
             request_body=case_data.get("request_body", {}),
+            test_data=build_api_test_data_plan(
+                query_params=case_data.get("query_params", {}),
+                path_params=case_data.get("path_params", {}),
+                request_body=case_data.get("request_body", {}),
+                headers=case_data.get("headers", {}),
+                metadata={"source": "swagger"}
+            ),
             expected_status=case_data.get("expected_status", 200),
             assert_rules=case_data.get("assert_rules", []),
             preconditions=case_data.get("preconditions", ""),
@@ -1675,6 +1683,13 @@ class ApiTestGeneratorService:
                         headers=case_data.get("headers", {}),
                         query_params=case_data.get("query_params", {}),
                         request_body=case_data.get("request_body", {}),
+                        test_data=build_api_test_data_plan(
+                            query_params=case_data.get("query_params", {}),
+                            path_params=case_data.get("path_params", {}),
+                            request_body=case_data.get("request_body", {}),
+                            headers=case_data.get("headers", {}),
+                            metadata={"source": "swagger"}
+                        ),
                         expected_status=case_data.get("expected_status", 200),
                         assert_rules=case_data.get("assert_rules", []),
                         preconditions=case_data.get("preconditions", ""),
