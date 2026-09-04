@@ -21,6 +21,8 @@ from sqlalchemy.orm import Session
 
 from app.core.database import get_db
 from app.core.logger import logger
+from app.core.auth import get_current_active_user
+from app.core.models.user import User
 from app.core.models.scene import Scene, SceneItem, SceneType, SceneStatus
 
 router = APIRouter()
@@ -97,8 +99,43 @@ def get_scene(scene_id: int, db: Session = Depends(get_db)):
     if not scene:
         raise HTTPException(404, "场景不存在")
     result = scene.to_dict()
-    result["items"] = [item.to_dict() for item in (scene.items or [])]
+    items_out = []
+    for item in (scene.items or []):
+        d = item.to_dict()
+        # 注入每条用例展示名与模块（第3项）：UI 条目经 wui_id/case_id 解析，避免只见 id
+        if item.case_type == "ui":
+            nm, mod = _resolve_ui_case_meta(db, item)
+            d["case_name"] = nm
+            d["case_module"] = mod
+        else:
+            d["case_name"] = d.get("case_name", "")
+            d["case_module"] = d.get("case_module", "")
+        items_out.append(d)
+    result["items"] = items_out
     return result
+
+
+def _resolve_ui_case_meta(db: Session, item):
+    """解析场景里 UI 条目的展示名与模块（第3项）。
+
+    优先按绑定的 WUI 实例(wui_id)取 test_data 的 title/module；回退按逻辑 id(case_id)
+    找最新 WUI。拿不到返回空串，由前端回退显示功能用例名/id。
+    返回 (name, module)。
+    """
+    from app.core.models.web_ui_test import WebUITestCase as _W
+    wui = None
+    if getattr(item, "wui_id", None):
+        wui = db.query(_W).filter(_W.id == str(item.wui_id)).first()
+    if wui is None and getattr(item, "case_id", None):
+        wui = (db.query(_W)
+               .filter(_W.test_case_id == str(item.case_id), _W.deleted_at.is_(None))
+               .order_by(_W.created_at.desc()).first())
+    if wui is None:
+        return "", ""
+    td = wui.test_data if isinstance(wui.test_data, dict) else {}
+    name = str(td.get("title") or td.get("name") or "")
+    module = str(td.get("module") or getattr(wui, "module", "") or "")
+    return name, module
 
 
 @router.put("/{scene_id}")
@@ -232,6 +269,7 @@ async def execute_scene(
     browser_mode: Optional[str] = Query(None, description="浏览器模式: isolated | reuse"),
     slow_mo: Optional[int] = Query(None, description="Playwright slow_mo（毫秒）"),
     db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user),
 ):
     """执行场景：按 sort_order 串行执行已启用的用例。
 
@@ -260,7 +298,18 @@ async def execute_scene(
 
     # ── 创建 Allure 报告目录（每次运行不覆盖） ──
     import re
-    project_key = re.sub(r'[^a-zA-Z0-9_-]', '_', scene.name or 'unknown')[:30]
+    # project_key 用真实项目名（可读，中文保留；只去掉 Windows 路径非法字符），
+    # 避免用场景名导致中文全部被替换成 __ 乱码（报告列表项目列正确展示）
+    _proj_name = scene.name or "unknown"
+    if getattr(scene, "project_id", None):
+        try:
+            from app.core.models.project import Project
+            _p = db.query(Project).filter(Project.id == scene.project_id).first()
+            if _p and getattr(_p, "name", None):
+                _proj_name = _p.name
+        except Exception:
+            pass
+    project_key = re.sub(r'[\\/:*?"<>|]', '_', str(_proj_name))[:80]
     version_key = str(version_id or 'latest')
     run_dir = ReportManager.create_run_dir(project_key, version_key)
     allure = AllureReporter(
@@ -380,9 +429,14 @@ async def execute_scene(
                 "re_resolved": _entry["re_resolved"] if _entry else False,
             })
 
-    # ── 非 UI 用例（API / 性能测试）标记跳过 ──
+    # ── API 场景条目：调用 API 执行链路（拓扑 + 运行时鉴权 + httpx 单条执行）──
+    # 收集场景中已启用的 API 用例条目（item.case_id = ApiTestCase.id）
+    api_results = await _execute_api_items(db, items, current_user)
+    results.extend(api_results)
+
+    # ── 其它类型（performance 等）尚未接入执行器，标记跳过 ──
     for item in items:
-        if item.case_type != "ui":
+        if item.case_type not in ("ui", "api"):
             results.append({
                 "item_id": item.id, "case_id": item.case_id,
                 "case_type": item.case_type, "sort_order": item.sort_order,
@@ -392,9 +446,9 @@ async def execute_scene(
     # 按 sort_order 排序结果
     results.sort(key=lambda r: r.get("sort_order", 0))
 
-    # ── 汇总 ──
+    # ── 汇总（兼容 UI 的 completed / API 的 passed）──
     total_ms = int((_time.time() - total_start) * 1000)
-    passed = sum(1 for r in results if r.get("status") == "completed")
+    passed = sum(1 for r in results if r.get("status") in ("completed", "passed"))
     failed = sum(1 for r in results if r.get("status") in ("failed", "error"))
     skipped = sum(1 for r in results if r.get("status") in ("skipped", "pending"))
 
@@ -433,3 +487,88 @@ async def execute_scene(
         "duration_ms": total_ms,
         "results": results,
     }
+
+
+async def _execute_api_items(db: Session, items: List[SceneItem], current_user) -> List[dict]:
+    """执行场景中的 API 用例条目。
+
+    复用 api_tests 的同一套执行链路（拓扑排序 + 项目环境/项目级鉴权 + httpx 单条执行
+    + 变量缓存），与 API 测试独立入口同源同行为。item.case_id = ApiTestCase.id。
+    返回与场景 results 结构一致（含 sort_order 供排序）。
+    """
+    from app.core.models.api_test import ApiTestCase, ApiEnvironment
+    from app.api.api_v1.endpoints.api_tests import (
+        _topological_sort_cases, _execute_env_auth, _execute_single_case_with_cache)
+
+    api_items = [i for i in (items or []) if i.case_type == "api"]
+    if not api_items:
+        return []
+
+    # 解析场景条目 → ApiTestCase
+    sel_cases = []
+    for it in api_items:
+        c = db.query(ApiTestCase).filter(ApiTestCase.id == it.case_id).first()
+        if c:
+            sel_cases.append(c)
+    if not sel_cases:
+        return [{
+            "item_id": it.id, "case_id": it.case_id, "case_type": "api",
+            "sort_order": it.sort_order, "status": "error",
+            "error": f"API 用例不存在或已删除: {it.case_id}",
+        } for it in api_items]
+
+    project_ids = {c.project_id for c in sel_cases if c.project_id}
+
+    # 拓扑排序（与 API 批量执行一致：自动把 depends_on 的前置如登录也纳入执行）
+    all_cases = (db.query(ApiTestCase)
+                 .filter(ApiTestCase.project_id.in_(project_ids)).all()) if project_ids else []
+    all_map = {c.id: c for c in all_cases}
+    sorted_cases, selected_ids = _topological_sort_cases(sel_cases, all_map)
+
+    # 环境/鉴权（env 为 None 时 _execute_env_auth 回退项目级 api_auth）
+    env = None
+    if project_ids:
+        env = db.query(ApiEnvironment).filter(
+            ApiEnvironment.project_id.in_(project_ids),
+            ApiEnvironment.is_default.is_(True),
+        ).first()
+    env_auth = await _execute_env_auth(
+        env, env.base_url if env else None, db=db,
+        project_id=sorted(project_ids)[0] if project_ids else None,
+    )
+
+    execution_cache: dict = {}
+    out = []
+    item_by_case = {it.case_id: it for it in api_items}
+    for c in sorted_cases:
+        is_sel = c.id in selected_ids
+        base_url = (c.base_url or (env.base_url if env else None) or "http://localhost:8000")
+        try:
+            r = await _execute_single_case_with_cache(
+                test_case=c, base_url=base_url, db=db, current_user=current_user,
+                credentials=None, execution_cache=execution_cache,
+                is_selected=is_sel, env_auth_vars=env_auth,
+            )
+        except Exception as e:
+            logger.warning(f"[场景-API] 执行异常 {c.id}: {e}")
+            r = {"status": "error", "message": str(e), "error_message": str(e)}
+
+        st = r.get("status", "error")
+        if r.get("skipped"):
+            st = "skipped"
+        it = item_by_case.get(c.id)
+        out.append({
+            "item_id": it.id if it else None,
+            "case_id": c.id,
+            "case_type": "api",
+            "sort_order": it.sort_order if it else 0,
+            "status": st,
+            "name": c.name,
+            "duration_ms": (r.get("duration") or 0) * 1000 if r.get("duration") else 0,
+            "error": r.get("error_message") or r.get("message") or "",
+            "message": r.get("message", ""),
+            "actual_status": r.get("actual_status"),
+            "method": c.method,
+            "request_url": r.get("request_url"),
+        })
+    return out

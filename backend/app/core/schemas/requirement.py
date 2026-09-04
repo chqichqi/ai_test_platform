@@ -67,6 +67,8 @@ class TestCaseCreate(BaseModel):
     execution_type: str = Field(default="manual", description="执行方式")
     sort_order: Optional[int] = Field(default=0, description="执行顺序(10间隔递增)")
     tags: Optional[List[str]] = Field(None, description="标签列表")
+    depends_on: Optional[List[int]] = Field(None, description="前置用例 logical_case_id 列表（执行前先跑）")
+    is_setup: Optional[int] = Field(0, description="是否共享准备/setup 用例(1=是)")
 
 
 class TestCaseUpdate(BaseModel):
@@ -82,6 +84,8 @@ class TestCaseUpdate(BaseModel):
     execution_type: Optional[str] = None
     sort_order: Optional[int] = None
     tags: Optional[List[str]] = None
+    depends_on: Optional[List[int]] = None
+    is_setup: Optional[int] = None
     status: Optional[str] = None
 
 
@@ -113,6 +117,8 @@ class TestCaseResponse(BaseModel):
     logical_case_id: Optional[int] = None
     revision_no: Optional[int] = None
     derived_from_id: Optional[int] = None
+    depends_on: Optional[List[int]] = None
+    is_setup: Optional[int] = 0
 
     @field_validator('test_steps', mode='before')
     @classmethod

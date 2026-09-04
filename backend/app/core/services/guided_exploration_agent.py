@@ -48,6 +48,10 @@ class GuidedExplorationAgent(MCPExplorationAgent):
         self._trace = None
         self._cancelled = False
         self._case_contexts = {}
+        # 引导探索的“已允许导航根”集合：初始含起点页根，后续用例步骤发生真实站内导航
+        # 时并入新页根（如从工作台点「患者档案」菜单抵达 patientarchieve）。模块边界由此
+        # 动态扩张——只放行用例真实导航到达的站内页，非同站/危险跳转仍被边界拦截。
+        self._allowed_roots: set = set()
         self.test_data_manager = TestDataManager(db)
         self._runtime_datasets = {}
         # 跨 Case 的“真实导航转移”缓存：只复用已验证的导航结果，不复用表单/弹窗动作。
@@ -75,6 +79,10 @@ class GuidedExplorationAgent(MCPExplorationAgent):
         self._trace = trace_logger
         start_url = start_url or self.client.get_url()
         self._set_module_boundary(start_url)
+        # 基准站点（origin）：引导探索只在本站内导航；跨站/登出跳转仍被边界拦截。
+        self._base_origin = self._extract_origin(start_url)
+        if start_url:
+            self._allowed_roots.add(self._url_root_key(start_url) or "")
         self.client.inject_console_hook()
         self._setup_dialog_handlers()
 
@@ -252,13 +260,21 @@ class GuidedExplorationAgent(MCPExplorationAgent):
             result = ActionResult(action=action, success=False,
                                   error="about_blank_recovered")
         # 模块边界是安全约束：跨模块导航不进入探索图，也不作为成功证据。
-        if current_after_url and hasattr(self, "_is_within_module") and not self._is_within_module(current_after_url):
-            logger.warning(f"[GuidedAgent] block cross-module navigation: {current_after_url}")
-            try:
-                self.state_manager.restore(before_url)
-            except Exception:
-                pass
-            result = ActionResult(action=action, success=False, error="cross_module_navigation_blocked")
+        # 边界=白名单(见 _is_within_module)：起点根 ∪ 本模块入口导航真实抵达的页根。
+        # 首步(step_index==0)发生真实站内导航 → 视为用例入口导航，目标页并入白名单(模块主根)；
+        # 后续步骤跳出白名单(如误点到角色管理 /role) → 拦截并拉回。
+        if current_after_url and hasattr(self, "_is_within_module"):
+            if not self._is_within_module(current_after_url):
+                # 尝试把“入口导航目标”并入白名单：仅当这是本用例第 1 步且产生了真实站内导航。
+                if self._try_admit_entry_navigation(before_url, current_after_url, step_index):
+                    logger.info(f"[GuidedAgent] 入口导航并入白名单: {current_after_url}")
+                else:
+                    logger.warning(f"[GuidedAgent] block cross-module navigation: {current_after_url}")
+                    try:
+                        self.state_manager.restore(before_url)
+                    except Exception:
+                        pass
+                    result = ActionResult(action=action, success=False, error="cross_module_navigation_blocked")
         after = self.state_manager.capture_and_record(f"after_case_{plan.case_id}_step_{seq}")
         self._visited_urls.add(after.get("url", ""))
 
@@ -552,6 +568,8 @@ class GuidedExplorationAgent(MCPExplorationAgent):
         self._case_results = []
         self.state_manager.states = {}
         self.state_manager.current_state = None
+        self._allowed_roots = set()
+        self._base_origin = ""
 
     def _go_back_to_case_start(self, plan: CasePlan, before_url: str) -> bool:
         try:
@@ -721,6 +739,78 @@ class GuidedExplorationAgent(MCPExplorationAgent):
             from urllib.parse import urlparse
             path = urlparse(url).path.strip("/")
             self._module_url_root = path.split("/")[0] if path else key
+
+    @staticmethod
+    def _extract_origin(url: str) -> str:
+        """提取站点 origin（scheme://netloc），无则空串。用于引导探索的同源边界判定。"""
+        if not url:
+            return ""
+        from urllib.parse import urlparse
+        try:
+            p = urlparse(url)
+            if p.scheme and p.netloc:
+                return f"{p.scheme}://{p.netloc}"
+        except Exception:
+            pass
+        return ""
+
+    def _url_root_key(self, url: str) -> str:
+        """提取 hash 路由的首页面根（如 #/patientarchieve 的根 patientarchieve），
+        无 hash 则取 pathname 首段。用于 allowed 边界集记录。"""
+        if not url:
+            return ""
+        norm = self._norm_url_key(url)  # 纯 hash 路径或纯 path
+        if norm.startswith("/"):
+            parts = norm.strip("/").split("/")
+            return parts[0] if parts else norm
+        return norm
+
+    def _is_within_module(self, url):
+        """引导探索的模块边界（白名单版，2026-09-03 修复"探索乱跑/进不到目标页"两难）。
+
+        早期父类把边界锁死为起点页(workpanel) → 用例入口导航进 patientarchieve 被误拦；
+        一度放开为"同源全放行" → 又让误点(角色管理 /role)也乱跑。最终取"白名单"：
+        _allowed_roots 初始含起点根，仅当用例首步入口导航真实抵达某站内页时并入该页根，
+        此后只允许在 起点根 ∪ 已并入页根 内导航；其它站内页(误点 /role)与跨站都拦截。
+        """
+        if not url or url == "about:blank":
+            return False
+        root = self._url_root_key(url)
+        # 无 hash 的路径取不到根的(如纯站首页) —— 退回父类保守判定
+        if not root:
+            return super()._is_within_module(url)
+        return root in getattr(self, "_allowed_roots", set())
+
+    def _try_admit_entry_navigation(self, before_url: str, after_url: str, step_index: int) -> bool:
+        """把"用例真实导航到达的同源站内页"并入白名单。
+
+        判据（通用、非硬编码，2026-09-03 放宽原"仅 step0"限制）：
+        模块入口导航不总是首步——很多用例先在中转/列表页操作，中后步才经业务跳转
+        （卡片/菜单）进入本模块主操作页。若仅放行 step0，会把这些合法跨模块业务跳转
+        误判越界、反复拉回起点（工作台/卡片点进去→被拦→重来），正是用户看到的
+        "反复卡在工作台 / 探索进不到模块真实页"的另一半根因。
+
+        因此凡满足以下条件的真实站内导航都并入 _allowed_roots（白名单持续扩张）：
+        1. after 是真实站内页（非 about:blank / 非同源登出跳转）；
+        2. after 与 before 不同根（确实换了页面）。
+        误点其它模块(如 /role)的兜底由两条上游防线承担：①生成规则#10 禁止步骤对象
+        写它模块名词；②探索校正 _correct_case_steps 不再把跨模块/容器命中固化成步骤。
+        """
+        try:
+            if not after_url or after_url == "about:blank":
+                return False
+            after_origin = self._extract_origin(after_url)
+            base = getattr(self, "_base_origin", "") or ""
+            if base and after_origin and after_origin != base:
+                return False  # 跨站/登出，绝不并入
+            after_root = self._url_root_key(after_url)
+            before_root = self._url_root_key(before_url or "")
+            if not after_root or after_root == before_root:
+                return False  # 无根或未真正换页
+            self._allowed_roots.add(after_root)
+            return True
+        except Exception:
+            return False
 
     def _clean_state_dir(self):
         state_dir = os.path.abspath(os.path.join(

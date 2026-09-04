@@ -1289,6 +1289,21 @@ async def execute_batch_web_ui(
         if not cases:
             return {"success": False, "error": "无有效用例"}
 
+        selected_ids = {str(w.id) for w in cases}
+
+        # ── 依赖展开 + 拓扑排序（执行层 · 通用，2026-09-03）──
+        # 当选中用例里有 depends_on（指向共享准备/setup 前置 UI 用例）时：
+        #   1) 从 DB 补加载前置用例，排到前面先执行；
+        #   2) 同一前置在调度序里只出现一次 → 首条执行后，后续依赖用例不再重复执行它（共享去重）；
+        #   3) 前置未通过时，依赖它的用例在执行器里被标记 skipped，不再空跑。
+        # 无 depends_on 的用例不展开，行为与历史完全一致。
+        from app.core.services.ui_dependency import resolve_execution_order
+        dep_map: dict = {}
+        if any(getattr(w, 'depends_on', None) for w in cases):
+            def _dep_loader(cid: str):
+                return db.query(WUI).filter(WUI.id == cid).first()
+            cases, dep_map = resolve_execution_order(cases, loader=_dep_loader)
+
         config = ExecutionConfig(
             headless=headless,
             browser_mode=BrowserMode.REUSE,
@@ -1296,7 +1311,7 @@ async def execute_batch_web_ui(
         )
 
         executor = UITestExecutor(config)
-        results = await executor.execute_batch(cases)
+        results = await executor.execute_batch(cases, dep_map=dep_map)
 
         # ── 落库：UI 用例临时执行（ui_verify）──
         # 用户 2026-09-02：UI 用例页的批量执行只是「验证转化后的用例是否正确」，
@@ -1309,12 +1324,11 @@ async def execute_batch_web_ui(
                 cid = r.get("test_case_id")
                 if not cid or cid not in case_map:
                     continue
-                _skipped = r.get("status") == "completed" and r.get("skipped")
-                if r.get("status") == "completed" and not _skipped:
-                    _st = "passed"
-                elif _skipped:
-                    _st = "skipped"
-                else:
+                # 状态归一：completed(+skipped) → passed/skipped；依赖前置失败显式 skipped → skipped；其余 failed/error
+                _st = r.get("status")
+                if _st == "completed":
+                    _st = "skipped" if r.get("skipped") else "passed"
+                elif _st != "skipped":
                     _st = "failed"
                 _w = case_map[cid]
                 db.add(TestExecution(
@@ -1331,18 +1345,22 @@ async def execute_batch_web_ui(
         except Exception as _e:
             logger.warning(f"[ExecuteBatch] 执行结果落库失败(不影响执行): {_e}")
 
-        # P0-2（2026-09-01 迁移）：批量执行结果三分统计——completed 且 skipped=True
-        # 的执行视为「动态数据为空跳过」而非成功/失败（guard_dynamic_data 抛 SkipTestError）
-        skipped = sum(1 for r in results if r.get("status") == "completed" and r.get("skipped"))
-        ok = sum(1 for r in results if r.get("status") == "completed" and not r.get("skipped"))
-        fail = len(results) - ok - skipped
+        # 统计仅针对用户选中的用例（前置/setup 用例是内部调度，已落库但不计入本次响应统计，
+        # 避免依赖共享前置的批量把 setup 算进 total 造成误解）。test_case_id 为不透明字符串。
+        sel_res = [r for r in results if r.get("test_case_id") in selected_ids]
+        # P0-2（2026-09-01 迁移）：三分统计——completed 且 skipped=True（动态数据为空跳过）、
+        # 以及 status=="skipped"（前置依赖失败跳过）均计 skipped，不计失败。
+        skipped = sum(1 for r in sel_res if r.get("status") == "skipped"
+                      or (r.get("status") == "completed" and r.get("skipped")))
+        ok = sum(1 for r in sel_res if r.get("status") == "completed" and not r.get("skipped"))
+        fail = len(sel_res) - ok - skipped
         return {
             "success": True,
-            "total": len(cases),
+            "total": len(sel_res),
             "ok": ok,
             "skipped": skipped,
             "fail": fail,
-            "results": results,
+            "results": sel_res,
         }
     except Exception as e:
         logger.error(f"[ExecuteBatch] 失败: {e}")

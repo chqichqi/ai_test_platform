@@ -1,0 +1,121 @@
+{
+  "timestamp": "2026-09-03T07:30:52.164832",
+  "pipeline": "functional_to_ui",
+  "test_cases_total": 0,
+  "exploration": {
+    "module": "患者列表页面",
+    "steps_total": 16,
+    "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+    "steps": [
+      {
+        "seq": 1,
+        "target": "患者姓名",
+        "action": "click",
+        "role": "button",
+        "ui_pattern": "table_row",
+        "found": true,
+        "actual_text": "患者档案",
+        "strategy": "scored(13)",
+        "page_text_len": 569,
+        "current_url": "jikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+        "clicked": false,
+        "url_changed": false
+      },
+      {
+        "seq": 2,
+        "target": "患者姓名",
+        "action": "fill",
+        "role": "textbox",
+        "ui_pattern": "table_row",
+        "found": true,
+        "actual_text": "患者档案",
+        "strategy": "scored(13)",
+        "page_text_len": 569,
+        "current_url": "jikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+        "clicked": false,
+        "url_changed": false
+      },
+      {
+        "seq": 1,
+        "target": "患者姓名",
+        "action": "fill",
+        "role": "textbox",
+        "ui_pattern": "",
+        "found": true,
+        "actual_text": "患者档案",
+        "strategy": "scored(13)",
+        "page_text_len": 569,
+        "current_url": "jikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+        "clicked": false,
+        "url_changed": false
+      },
+      {
+        "seq": 6,
+        "target": "患者姓名",
+        "action": "validate",
+        "role": "",
+        "ui_pattern": "",
+        "found": true,
+        "actual_text": "患者档案",
+        "strategy": "scored(13)",
+        "page_text_len": 569,
+        "current_url": "jikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+        "clicked": false,
+        "url_changed": false
+      },
+      {
+        "seq": 1,
+        "target": "新增患者",
+        "action": "click",
+        "role": "button",
+        "ui_pattern": "table_row",
+        "found": true,
+        "actual_text": "患者人数107今日新增+0",
+        "strategy": "scored_text(20)",
+        "page_text_len": 569,
+        "current_url": "jikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+        "clicked": false,
+        "url_changed": false
+      },
+      {
+        "seq": 2,
+        "target": "新增",
+        "action": "validate",
+        "role": "",
+        "ui_pattern": "",
+        "found": true,
+        "actual_text": "今日新增+0",
+        "strategy": "text_contains",
+        "page_text_len": 569,
+        "current_url": "jikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+        "clicked": false,
+        "url_changed": false
+      }
+    ],
+    "summary": {
+      "found": 6,
+      "clicked": 0,
+      "navigated": 0,
+      "missed": 0
+    },
+    "stats": {
+      "total_elements": 0,
+      "navigated_elements": 0,
+      "pages_explored": 1,
+      "visited_states": 3,
+      "elapsed_seconds": 12.0,
+      "errors": 16,
+      "guided_steps_total": 16,
+      "guided_steps_executed": 0,
+      "guided_steps_successful": 0,
+      "guided_steps_failed": 16,
+      "cases_total": 3,
+      "cases_explored": 3,
+      "exploration_mode": "case_state_guided",
+      "platform_type": "web",
+      "interrupted": null
+    }
+  },
+  "conversions": [],
+  "summary": {}
+}

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Card, Typography, Table, Space, Tag, Button, Modal, message, Input, Popconfirm,
-  Tooltip, Row, Col, Statistic, Empty, Divider
+  Card, Typography, Table, Space, Tag, Button, Modal, message, Popconfirm,
+  Tooltip, Row, Col, Statistic, Empty
 } from 'antd';
 import {
   DownloadOutlined, EyeOutlined, DeleteOutlined, ReloadOutlined,
-  CheckCircleOutlined, CloseCircleOutlined, ExclamationCircleOutlined,
+  CheckCircleOutlined, CloseCircleOutlined,
   MinusCircleOutlined, FileTextOutlined, BarChartOutlined
 } from '@ant-design/icons';
 import type { ColumnsType } from 'antd/es/table';
@@ -32,7 +32,7 @@ const ReportsPage: React.FC = () => {
   const [viewingReport, setViewingReport] = useState<ReportItem | null>(null);
   const [detailVisible, setDetailVisible] = useState(false);
   const [detailData, setDetailData] = useState<any>(null);
-  const [deleteConfirmText, setDeleteConfirmText] = useState('');
+  const [deleteTarget, setDeleteTarget] = useState<ReportItem | null>(null);
 
   useEffect(() => { loadReports(); }, []);
 
@@ -50,9 +50,9 @@ const ReportsPage: React.FC = () => {
   // ─── 查看报告 ───
   const handleView = async (record: ReportItem) => {
     if (record.has_html) {
-      // 在新窗口打开 Allure HTML 报告
+      // 直接打开静态 Allure HTML（/reports 为 test-reports 静态挂载，资源自动分发）
       window.open(
-        `${axiosInstance.defaults.baseURL}/test-reports/serve/${record.project}/${record.version}/${record.run_id}`,
+        `${axiosInstance.defaults.baseURL}/reports/${encodeURIComponent(record.project)}/${encodeURIComponent(record.version)}/${encodeURIComponent(record.run_id)}/allure-report/index.html`,
         '_blank'
       );
     } else {
@@ -76,61 +76,28 @@ const ReportsPage: React.FC = () => {
   // ─── 下载 ───
   const handleDownload = (record: ReportItem) => {
     window.open(
-      `${axiosInstance.defaults.baseURL}/test-reports/download/${record.project}/${record.version}/${record.run_id}`,
+      `${axiosInstance.defaults.baseURL}/test-reports/download/${encodeURIComponent(record.project)}/${encodeURIComponent(record.version)}/${encodeURIComponent(record.run_id)}`,
       '_blank'
     );
   };
 
-  // ─── 删除（三重确认） ───
-  const handleDelete = async (record: ReportItem) => {
-    // 第一重：Popconfirm
-    Modal.confirm({
-      title: <span style={{ color: '#ff4d4f' }}>⚠️ 确认删除测试报告</span>,
-      icon: <ExclamationCircleOutlined />,
-      content: (
-        <div>
-          <p>即将删除以下报告：</p>
-          <p><strong>项目：</strong>{record.project}</p>
-          <p><strong>版本：</strong>{record.version}</p>
-          <p><strong>时间：</strong>{record.run_ts}</p>
-          <Divider />
-          <p style={{ color: '#ff4d4f', fontWeight: 'bold' }}>
-            ⚠️ 此操作仅删除测试报告文件，不会影响项目源代码和测试用例！
-          </p>
-          <p style={{ color: '#ff4d4f', fontWeight: 'bold' }}>
-            ⚠️ 删除后无法恢复！请确认您要删除的是报告文件，而非项目文件！
-          </p>
-          <p style={{ color: '#ff4d4f', fontWeight: 'bold' }}>
-            ⚠️ 第三次提醒：确认删除的是 TEST-REPORTS 目录下的报告，不是项目源文件！
-          </p>
-          <Divider />
-          <p>请输入 <code>DELETE</code> 以确认：</p>
-          <Input
-            placeholder="输入 DELETE"
-            onChange={e => setDeleteConfirmText(e.target.value)}
-            style={{ marginTop: 8 }}
-          />
-        </div>
-      ),
-      okText: '确认删除报告',
-      okButtonProps: {
-        danger: true,
-        disabled: deleteConfirmText !== 'DELETE',
-      },
-      cancelText: '取消',
-      onOk: async () => {
-        try {
-          await axiosInstance.delete(
-            `/test-reports/delete/${record.project}/${record.version}/${record.run_id}?confirm=DELETE`
-          );
-          message.success('报告已删除（源文件未受影响）');
-          loadReports();
-        } catch (e: any) {
-          message.error(e.response?.data?.message || '删除失败');
-        }
-      },
-      onCancel: () => setDeleteConfirmText(''),
-    });
+  // ─── 删除（二次确认弹窗） ───
+  // 受控 Modal：点「确定」执行删除，点「取消」关闭。不做输入 DELETE 之类的繁琐二次校验。
+  const handleDelete = (record: ReportItem) => setDeleteTarget(record);
+
+  // 受控确认弹窗真正执行的删除
+  const confirmDelete = async () => {
+    if (!deleteTarget) return;
+    try {
+      await axiosInstance.delete(
+        `/test-reports/delete/${deleteTarget.project}/${deleteTarget.version}/${deleteTarget.run_id}?confirm=DELETE`
+      );
+      message.success('报告已删除（源文件未受影响）');
+      setDeleteTarget(null);
+      loadReports();
+    } catch (e: any) {
+      message.error(e.response?.data?.message || '删除失败');
+    }
   };
 
   const columns: ColumnsType<ReportItem> = [
@@ -276,6 +243,29 @@ const ReportsPage: React.FC = () => {
                 </Card>
               );
             })}
+          </div>
+        )}
+      </Modal>
+
+      {/* 删除确认弹窗（二次确认） */}
+      <Modal
+        title="删除测试报告"
+        open={!!deleteTarget}
+        onCancel={() => setDeleteTarget(null)}
+        okText="确定删除"
+        okButtonProps={{ danger: true }}
+        cancelText="取消"
+        onOk={confirmDelete}
+        width={440}
+      >
+        {deleteTarget && (
+          <div>
+            <p>确定要删除以下测试报告吗？删除后无法恢复。</p>
+            <p style={{ marginTop: 8 }}>
+              <strong>项目：</strong>{deleteTarget.project}<br />
+              <strong>版本：</strong>{deleteTarget.version}<br />
+              <strong>时间：</strong>{deleteTarget.run_ts}
+            </p>
           </div>
         )}
       </Modal>

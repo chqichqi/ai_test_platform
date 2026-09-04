@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-09-03T09:09:10.077499",
+  "pipeline": "functional_to_ui",
+  "test_cases_total": 0,
+  "exploration": {},
+  "conversions": [],
+  "summary": {
+    "success": 0,
+    "exploration_insufficient": 0,
+    "exploration_failed": 0,
+    "conversion_failed": 0,
+    "steps_missing": 0
+  }
+}

@@ -1,0 +1,766 @@
+{
+  "module": "患者列表页面",
+  "evidence": [
+    {
+      "case_id": "534",
+      "case_name": "验证患者列表各搜索框输入查询条件后列表结果与搜索条件匹配",
+      "module": "患者列表页面",
+      "preconditions": "已登录系统并处于患者档案列表页面",
+      "expected_result": "患者列表上方各搜索框均能按输入的搜索条件查询出匹配的患者记录；有结果时各条记录对应字段与输入一致，无结果时列表为空且无异常报错",
+      "seq": 1,
+      "target": "患者姓名",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "table_row",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "ac848c2fa72cb9b88945",
+      "after_state_id": "e935b1b3499b7545af33",
+      "locator": {
+        "strategy": "scored(13)",
+        "actual_text": "患者档案",
+        "role": "menuitem",
+        "tag": "li",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_3": "",
+                "rc_select_4": "",
+                "rc_select_5": ""
+              },
+              "after": {
+                "rc_select_16": "",
+                "rc_select_17": "",
+                "rc_select_18": ""
+              }
+            }
+          },
+          "before_state_id": "ac848c2fa72cb9b88945",
+          "after_state_id": "e935b1b3499b7545af33"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "534",
+      "case_name": "验证患者列表各搜索框输入查询条件后列表结果与搜索条件匹配",
+      "module": "患者列表页面",
+      "preconditions": "已登录系统并处于患者档案列表页面",
+      "expected_result": "患者列表上方各搜索框均能按输入的搜索条件查询出匹配的患者记录；有结果时各条记录对应字段与输入一致，无结果时列表为空且无异常报错",
+      "seq": 2,
+      "target": "患者姓名",
+      "action": "fill",
+      "role": "textbox",
+      "context": "",
+      "ui_pattern": "table_row",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "e935b1b3499b7545af33",
+      "after_state_id": "e935b1b3499b7545af33",
+      "locator": {
+        "strategy": "scored(13)",
+        "actual_text": "患者档案",
+        "role": "menuitem",
+        "tag": "li",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "e935b1b3499b7545af33",
+          "after_state_id": "e935b1b3499b7545af33"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "534",
+      "case_name": "验证患者列表各搜索框输入查询条件后列表结果与搜索条件匹配",
+      "module": "患者列表页面",
+      "preconditions": "已登录系统并处于患者档案列表页面",
+      "expected_result": "患者列表上方各搜索框均能按输入的搜索条件查询出匹配的患者记录；有结果时各条记录对应字段与输入一致，无结果时列表为空且无异常报错",
+      "seq": 3,
+      "target": "查询",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "e935b1b3499b7545af33",
+      "after_state_id": "e935b1b3499b7545af33",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "534",
+      "case_name": "验证患者列表各搜索框输入查询条件后列表结果与搜索条件匹配",
+      "module": "患者列表页面",
+      "preconditions": "已登录系统并处于患者档案列表页面",
+      "expected_result": "患者列表上方各搜索框均能按输入的搜索条件查询出匹配的患者记录；有结果时各条记录对应字段与输入一致，无结果时列表为空且无异常报错",
+      "seq": 4,
+      "target": "",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "e935b1b3499b7545af33",
+      "after_state_id": "e935b1b3499b7545af33",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "534",
+      "case_name": "验证患者列表各搜索框输入查询条件后列表结果与搜索条件匹配",
+      "module": "患者列表页面",
+      "preconditions": "已登录系统并处于患者档案列表页面",
+      "expected_result": "患者列表上方各搜索框均能按输入的搜索条件查询出匹配的患者记录；有结果时各条记录对应字段与输入一致，无结果时列表为空且无异常报错",
+      "seq": 5,
+      "target": "重置",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "e935b1b3499b7545af33",
+      "after_state_id": "e935b1b3499b7545af33",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "534",
+      "case_name": "验证患者列表各搜索框输入查询条件后列表结果与搜索条件匹配",
+      "module": "患者列表页面",
+      "preconditions": "已登录系统并处于患者档案列表页面",
+      "expected_result": "患者列表上方各搜索框均能按输入的搜索条件查询出匹配的患者记录；有结果时各条记录对应字段与输入一致，无结果时列表为空且无异常报错",
+      "seq": 6,
+      "target": "手机号",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "table_row",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "e935b1b3499b7545af33",
+      "after_state_id": "e935b1b3499b7545af33",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "534",
+      "case_name": "验证患者列表各搜索框输入查询条件后列表结果与搜索条件匹配",
+      "module": "患者列表页面",
+      "preconditions": "已登录系统并处于患者档案列表页面",
+      "expected_result": "患者列表上方各搜索框均能按输入的搜索条件查询出匹配的患者记录；有结果时各条记录对应字段与输入一致，无结果时列表为空且无异常报错",
+      "seq": 7,
+      "target": "手机号",
+      "action": "fill",
+      "role": "textbox",
+      "context": "",
+      "ui_pattern": "table_row",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "e935b1b3499b7545af33",
+      "after_state_id": "e935b1b3499b7545af33",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "535",
+      "case_name": "验证患者列表重置按钮清空搜索条件",
+      "module": "患者列表页面",
+      "preconditions": "已登录系统并处于患者档案列表页面",
+      "expected_result": "存在搜索输入数据时点击重置，所有搜索框中的结果或条件均被清空，患者列表恢复为未筛选状态",
+      "seq": 1,
+      "target": "患者姓名",
+      "action": "fill",
+      "role": "textbox",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "e935b1b3499b7545af33",
+      "after_state_id": "e935b1b3499b7545af33",
+      "locator": {
+        "strategy": "scored(13)",
+        "actual_text": "患者档案",
+        "role": "menuitem",
+        "tag": "li",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "e935b1b3499b7545af33",
+          "after_state_id": "e935b1b3499b7545af33"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "535",
+      "case_name": "验证患者列表重置按钮清空搜索条件",
+      "module": "患者列表页面",
+      "preconditions": "已登录系统并处于患者档案列表页面",
+      "expected_result": "存在搜索输入数据时点击重置，所有搜索框中的结果或条件均被清空，患者列表恢复为未筛选状态",
+      "seq": 2,
+      "target": "手机号",
+      "action": "fill",
+      "role": "textbox",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "e935b1b3499b7545af33",
+      "after_state_id": "e935b1b3499b7545af33",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "535",
+      "case_name": "验证患者列表重置按钮清空搜索条件",
+      "module": "患者列表页面",
+      "preconditions": "已登录系统并处于患者档案列表页面",
+      "expected_result": "存在搜索输入数据时点击重置，所有搜索框中的结果或条件均被清空，患者列表恢复为未筛选状态",
+      "seq": 3,
+      "target": "查询",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "e935b1b3499b7545af33",
+      "after_state_id": "e935b1b3499b7545af33",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "535",
+      "case_name": "验证患者列表重置按钮清空搜索条件",
+      "module": "患者列表页面",
+      "preconditions": "已登录系统并处于患者档案列表页面",
+      "expected_result": "存在搜索输入数据时点击重置，所有搜索框中的结果或条件均被清空，患者列表恢复为未筛选状态",
+      "seq": 4,
+      "target": "",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "e935b1b3499b7545af33",
+      "after_state_id": "e935b1b3499b7545af33",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "535",
+      "case_name": "验证患者列表重置按钮清空搜索条件",
+      "module": "患者列表页面",
+      "preconditions": "已登录系统并处于患者档案列表页面",
+      "expected_result": "存在搜索输入数据时点击重置，所有搜索框中的结果或条件均被清空，患者列表恢复为未筛选状态",
+      "seq": 5,
+      "target": "重置",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "button",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "e935b1b3499b7545af33",
+      "after_state_id": "e935b1b3499b7545af33",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "535",
+      "case_name": "验证患者列表重置按钮清空搜索条件",
+      "module": "患者列表页面",
+      "preconditions": "已登录系统并处于患者档案列表页面",
+      "expected_result": "存在搜索输入数据时点击重置，所有搜索框中的结果或条件均被清空，患者列表恢复为未筛选状态",
+      "seq": 6,
+      "target": "患者姓名",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "e935b1b3499b7545af33",
+      "after_state_id": "e935b1b3499b7545af33",
+      "locator": {
+        "strategy": "scored(13)",
+        "actual_text": "患者档案",
+        "role": "menuitem",
+        "tag": "li",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "e935b1b3499b7545af33",
+          "after_state_id": "e935b1b3499b7545af33"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "535",
+      "case_name": "验证患者列表重置按钮清空搜索条件",
+      "module": "患者列表页面",
+      "preconditions": "已登录系统并处于患者档案列表页面",
+      "expected_result": "存在搜索输入数据时点击重置，所有搜索框中的结果或条件均被清空，患者列表恢复为未筛选状态",
+      "seq": 7,
+      "target": "手机号",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "e935b1b3499b7545af33",
+      "after_state_id": "e935b1b3499b7545af33",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "536",
+      "case_name": "验证点击新增患者按钮打开弹窗且默认选中新增Tab",
+      "module": "患者列表页面",
+      "preconditions": "已登录系统并处于患者档案列表页面",
+      "expected_result": "点击新增患者后成功打开新增患者弹窗，且默认选中新增Tab",
+      "seq": 1,
+      "target": "新增患者",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "table_row",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "e935b1b3499b7545af33",
+      "after_state_id": "871ff3a95626b5073c59",
+      "locator": {
+        "strategy": "scored_text(20)",
+        "actual_text": "患者人数107今日新增+0",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_16": "",
+                "rc_select_17": "",
+                "rc_select_18": ""
+              },
+              "after": {
+                "rc_select_30": "",
+                "rc_select_31": "",
+                "rc_select_32": ""
+              }
+            }
+          },
+          "before_state_id": "e935b1b3499b7545af33",
+          "after_state_id": "871ff3a95626b5073c59"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "536",
+      "case_name": "验证点击新增患者按钮打开弹窗且默认选中新增Tab",
+      "module": "患者列表页面",
+      "preconditions": "已登录系统并处于患者档案列表页面",
+      "expected_result": "点击新增患者后成功打开新增患者弹窗，且默认选中新增Tab",
+      "seq": 2,
+      "target": "新增",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "871ff3a95626b5073c59",
+      "after_state_id": "871ff3a95626b5073c59",
+      "locator": {
+        "strategy": "text_contains",
+        "actual_text": "今日新增+0",
+        "role": "",
+        "tag": "span",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "871ff3a95626b5073c59",
+          "after_state_id": "871ff3a95626b5073c59"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    }
+  ],
+  "case_results": [
+    {
+      "case_id": "534",
+      "case_name": "验证患者列表各搜索框输入查询条件后列表结果与搜索条件匹配",
+      "module": "患者列表页面",
+      "test_case_id": "534",
+      "logical_case_id": "534",
+      "revision_no": 1,
+      "version_id": 121,
+      "project_id": 11,
+      "preconditions": "已登录系统并处于患者档案列表页面",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "ac848c2fa72cb9b88945",
+      "data_set_id": "53d3cf5f-b121-492b-9a6e-0947606db672",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788420658.0836854,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "535",
+      "case_name": "验证患者列表重置按钮清空搜索条件",
+      "module": "患者列表页面",
+      "test_case_id": "535",
+      "logical_case_id": "535",
+      "revision_no": 1,
+      "version_id": 121,
+      "project_id": 11,
+      "preconditions": "已登录系统并处于患者档案列表页面",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "e935b1b3499b7545af33",
+      "data_set_id": "affb845c-3c5b-49af-8b60-c32de6092d1f",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788420662.231624,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "536",
+      "case_name": "验证点击新增患者按钮打开弹窗且默认选中新增Tab",
+      "module": "患者列表页面",
+      "test_case_id": "536",
+      "logical_case_id": "536",
+      "revision_no": 1,
+      "version_id": 121,
+      "project_id": 11,
+      "preconditions": "已登录系统并处于患者档案列表页面",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "e935b1b3499b7545af33",
+      "data_set_id": "40768180-be49-45bf-9a78-ba689f1500a1",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788420663.9103653,
+      "data_cleanup": []
+    }
+  ]
+}

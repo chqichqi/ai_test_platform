@@ -265,7 +265,9 @@ class TestCaseAuditor:
 1. 为每个功能点生成**恰好 1 条**用例
 2. 聚焦该功能点的核心操作场景
 3. test_steps 中 action 遵循 UI 命名约定（「」标记元素, "" 标记值, 验证：开头）
-4. 输出纯 JSON: {{"test_cases": [{{"title": "...", "module": "...", "priority": "P1", "test_type": "positive", "preconditions": [], "test_steps": [{{"step_no": 1, "action": "点击「元素」按钮", "expected_result": "..."}}], "expected_result": "...", "tags": []}}]}}"""
+4. 输出纯 JSON: {{"test_cases": [{{"title": "...", "module": "...", "priority": "P1", "test_type": "positive", "preconditions": [], "test_steps": [{{"step_no": 1, "action": "点击「元素」按钮", "expected_result": "..."}}], "expected_result": "...", "tags": []}}]}}
+
+"""
 
         try:
             response = await self.llm_service.async_call_llm(

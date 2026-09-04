@@ -101,6 +101,13 @@ static_dir = os.path.join(settings.PROJECT_ROOT, "static")
 os.makedirs(static_dir, exist_ok=True)
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
+# Allure 测试报告静态资源（/reports/{project}/{version}/{run_id}/allure-report/...）
+# 与 ReportManager.BASE_DIR(backend/test-reports) 一致，供浏览器直接加载 allure HTML
+# 及其相对资源(css/js)，否则 serve 端点无法分发子资源导致报告打不开。
+_reports_dir = os.path.join(settings.PROJECT_ROOT, "test-reports")
+os.makedirs(_reports_dir, exist_ok=True)
+app.mount("/reports", StaticFiles(directory=_reports_dir), name="reports")
+
 # 添加中间件
 @app.middleware("http")
 async def log_requests(request: Request, call_next):

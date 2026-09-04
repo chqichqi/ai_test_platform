@@ -331,7 +331,7 @@ const ExecutionCenterPage: React.FC = () => {
                   </Tooltip>
                   <Select
                     value={execBrowserMode} onChange={setExecBrowserMode}
-                    size="small" style={{ width: 90 }}
+                    size="small" style={{ width: 128 }}
                   >
                     <Select.Option value="reuse">浏览器复用</Select.Option>
                     <Select.Option value="isolated">浏览器隔离</Select.Option>
@@ -383,8 +383,20 @@ const ExecutionCenterPage: React.FC = () => {
                     <HolderOutlined style={{ color: '#bbb', cursor: 'grab' }} />
                     <Text strong style={{ width: 32, textAlign: 'center', color: '#999' }}>{idx + 1}</Text>
                     <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
+                        {item.case_module ? (
+                          <Tag color="cyan" style={{ marginRight: 0, fontSize: 10 }}>
+                            {item.case_module}
+                          </Tag>
+                        ) : (
+                          <Tag color="default" style={{ marginRight: 0, fontSize: 10 }}>-</Tag>
+                        )}
+                        <Tag color={item.case_type === 'ui' ? 'blue' : 'purple'} style={{ marginRight: 0, fontSize: 10 }}>
+                          {item.case_type.toUpperCase()}
+                        </Tag>
+                      </div>
                       <Text style={{ fontSize: 13 }} ellipsis>
-                        {`用例 #${item.case_id} (${item.case_type.toUpperCase()})`}
+                        {item.case_name || `用例 #${item.case_id}`}
                       </Text>
                     </div>
                     <Switch size="small" checked={item.enabled}

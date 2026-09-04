@@ -128,6 +128,11 @@ class TestCase(Base):
     auto_script = Column(Text, comment="自动化脚本")
     generated_by = Column(String(20), default="manual", comment="生成方式: ai/manual")
     source_feature = Column(String(200), comment="Step1特征名, 用于变更去重")
+    # ── 用例前置依赖（共享准备/setup 机制 2026-09-03）──
+    # depends_on: 本用例执行前必须先执行的前置用例 logical_case_id 列表（如"把所有指标添加到工作台"准备用例）
+    # is_setup: 1 = 该用例是共享准备/setup 用例，其它用例可通过 depends_on 依赖它
+    depends_on = Column(JSON, default=list, comment="前置用例 logical_case_id 列表（执行前先跑，共享去重）")
+    is_setup = Column(Integer, default=0, comment="是否为共享准备/setup 用例(1=是)")
     reviewer_id = Column(String(36), comment="审核人ID")
     reviewed_at = Column(DateTime, comment="审核时间")
     review_comment = Column(Text, comment="审核意见")

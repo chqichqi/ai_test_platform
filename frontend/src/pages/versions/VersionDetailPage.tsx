@@ -378,16 +378,24 @@ const VersionDetailPage: React.FC = () => {
     }, 1500);
 
     try {
-      // 1) 保存文档（同版本唯一：新文档替换旧文档）
+      // ── 1) 保存文档：按日期标记追加到尾部（累加，不覆盖）──
+      // 导入新模块=追加；同一份需求文档内容不断累积，保留历史各次导入。
       // 排除登录模块：业务流内容不得写入「登录模块」文档（会被原始文档列表过滤且污染登录模块）
+      const deltaText = importText.trim();
       const existingDoc = originalDocs.find(d => d.type !== 'swagger' && d.name !== '登录模块');
+      // 本次导入的日期标记块（追加到已有内容尾部）
+      const tsDisp = new Date(now.getTime() + 8 * 3600000).toISOString()
+        .slice(0, 19).replace('T', ' ').replace(/-/g, '.');
+      const datedBlock = `\n\n### 【导入 ${tsDisp}】\n${deltaText}`;
+      const prevContent = (existingDoc?.content || '').trim();
+      const newFullContent = prevContent ? `${prevContent}${datedBlock}` : deltaText;
       let savedDocName: string;
       if (existingDoc) {
-        // 已有文档 → 更新内容（不创建新的）
+        // 已有文档 → 内容累加（在其尾部追加本次日期块）
         savedDocName = existingDoc.name;
         try {
           await requirementApi.updateAndRegenerate(existingDoc.id, {
-            content: importText.trim(),
+            content: newFullContent,
             name: savedDocName,
           }, false);  // regenerate=false, 下面手动调用 generateAssets
         } catch {
@@ -395,30 +403,31 @@ const VersionDetailPage: React.FC = () => {
           await requirementApi.deleteDocument(existingDoc.id);
           await requirementApi.createDocument({
             version_id: versionId, name: savedDocName,
-            type: 'text', content: importText.trim(),
+            type: 'text', content: newFullContent,
           });
         }
-        setGenLogs(prev => [...prev, `   ✅ 文档已更新: ${savedDocName}`]);
+        setGenLogs(prev => [...prev, `   ✅ 文档已按日期追加: ${savedDocName}`]);
       } else {
         savedDocName = importFile
           ? `需求文档_${importFile.name}_${ts}`
           : `需求文档_${ts}`;
         await requirementApi.createDocument({
           version_id: versionId, name: savedDocName,
-          type: 'text', content: importText.trim(),
+          type: 'text', content: newFullContent,
         });
         setGenLogs(prev => [...prev, `   ✅ 文档已保存: ${savedDocName}`]);
       }
 
-      // 2) 更新版本
-      await versionApi.update(versionId, { requirement_doc: importText.trim() } as any);
+      // 2) 更新版本需求文档内容（同样累加，供记录/整份重生成）
+      await versionApi.update(versionId, { requirement_doc: newFullContent } as any);
       setGenLogs(prev => [...prev,
         `📋 步骤 2/5 — 提取功能点 (Step1)...`,
-        `   🤖 LLM 分析文档，提取可测试的功能点...`,
+        `   🤖 LLM 分析本次导入块，提取可测试的功能点...`,
       ]);
 
-      // 3) 调用后端生成（Step1→Step2→Auditor→Save）
-      const genResult = await versionApi.generateAssets(versionId, 'ai');
+      // 3) 调用后端生成——只传本次新导入块(deltaText) → 增量语义：
+      //    新模块=追加用例；同模块(需求更新)=只更新该模块；其它模块旧用例一律不动、不删
+      const genResult = await versionApi.generateAssets(versionId, 'ai', deltaText);
       const data = (genResult as any)?.data || genResult;
       if (!data?.success && data?.success !== undefined) {
         setGenStatus('failed');

@@ -2208,17 +2208,22 @@ class FunctionalToUIService:
                     try:
                         # sync 版 evaluate 只接受单个参数——参数必须合并成 dict
                         # （此前分传 2 个位置参数必抛 TypeError，模块导航一直静默失败降级）
-                        nav_clicked = page_sync.evaluate("""
+                        nav_clicked = page_sync.evaluate("""\
                             (params) => {
-                                const name = params.name;
+                                const name = (params.name || '').replace(/\\s+/g, '');
+                                if (!name) return false;  // 空模块名不导航，避免乱点
                                 const maxChildren = params.maxChildren;
                                 const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT);
                                 let best = null, bestLen = Infinity;
                                 while (walker.nextNode()) {
                                     const el = walker.currentNode;
                                     if (el.offsetParent === null || el.children.length > maxChildren) continue;
-                                    const t = (el.textContent || '').trim();
-                                    if (t === name && t.length < bestLen) { best = el; bestLen = t.length; }
+                                    const t = (el.textContent || '').replace(/\\s+/g, '');
+                                    if (!t) continue;
+                                    // 归一化后模糊匹配：模块名可能带“模块/管理”等通用后缀而菜单文本不带
+                                    // （“患者档案模块” vs 菜单“患者档案”），或反向带前缀。用“互相包含”判定。
+                                    const hit = (t === name) || (name && name.includes(t)) || (t && t.includes(name));
+                                    if (hit && t.length < bestLen && t.length >= Math.min(2, name.length)) { best = el; bestLen = t.length; }
                                 }
                                 if (best) { (best.closest('li') || best.closest('[onclick]') || best).click(); return true; }
                                 return false;
@@ -2237,6 +2242,11 @@ class FunctionalToUIService:
                             else:
                                 logger.warning(f"[FunctionalToUI] 导航 '{module_name}' 后 URL 未变化"
                                                f"（仍为 {workbench_url}），继续在当前页探索")
+                        else:
+                            # 精确/模糊匹配均未命中：显式告警（此前静默降级停 workpanel，
+                            # 是“反复卡工作台、元素大量 not_found”的直接诱因之一）
+                            logger.warning(f"[FunctionalToUI] 预导航未找到模块 '{module_name}' 菜单项，"
+                                           f"将从工作台起步（靠用例入口导航步骤进入）")
                     except Exception as e:
                         logger.warning(f"[FunctionalToUI] Navigate to module '{module_name}' failed: {e}")
 
@@ -2906,11 +2916,28 @@ class FunctionalToUIService:
             # 关联性安全阀（见 docstring）——防旧评分引擎容器污染数据
             n_target = normalize_ws(target)
             n_actual = normalize_ws(actual)
+            # ── 硬化护栏（2026-09-03 修复“探索乱跑到账号管理/角色管理”）──
+            # (a) actual 是多行/含换行的“容器整块文本”（如侧边栏整条菜单被当成命中文本）
+            #     绝不写回——它不是单个可操作元素的真实文本，写回会把整条菜单固化进步骤。
+            if "\n" in actual or "\r" in actual:
+                logger.info(f"[FunctionalToUI] 探索校正跳过: 用例{getattr(tc, 'id', '?')} "
+                            f"step{int(d.get('seq') or 0)} actual 含换行(容器整块文本)，不固化")
+                continue
+            # (b) actual 过长（> 40 归一化字符，明显是容器拼接文本而非单元素文案）不写回
+            if len(n_actual) > 40:
+                logger.info(f"[FunctionalToUI] 探索校正跳过: 用例{getattr(tc, 'id', '?')} "
+                            f"step{int(d.get('seq') or 0)} actual 过长({len(n_actual)} 字符)，不固化")
+                continue
+            # (c) 关联强度收紧：仅“相等”或“target 是 actual 子串”才认校正；
+            #     LCS≥2 的同前缀不同物（新增收发→新增角色）不再作为关联依据，
+            #     它会把语义不同的对象（跨模块误命中）错误固化。
             _m = SequenceMatcher(None, n_target, n_actual).find_longest_match(
                 0, len(n_target), 0, len(n_actual))
-            if not (n_actual == n_target
-                    or (n_target and n_target in n_actual)
-                    or _m.size >= 2):
+            _allow = (n_actual == n_target
+                      or (n_target and n_target in n_actual))
+            if not _allow:
+                logger.info(f"[FunctionalToUI] 探索校正跳过: 用例{getattr(tc, 'id', '?')} "
+                            f"step{int(d.get('seq') or 0)}「{target}」→「{actual}」仅弱关联(LCS={_m.size})，不固化")
                 continue
             try:
                 idx = int(d.get("seq") or 0) - 1
@@ -3043,7 +3070,8 @@ class FunctionalToUIService:
 - **「进入/打开/跳转/点击进入 XX 页面」类步骤必须输出为 goto（不是 click 文本）**——
   按步骤中页面名在「页面 URL 映射」匹配 URL（F34 修复 2026-08-25，与单条链路
   web_ui_conversion_v2 的 goto 规则同源）；「验证：页面URL包含」必须输出 assert_url
-- goto 步骤：args.url 必须从「页面 URL 映射」中取（禁止编造 URL！）；「返回起始页」固定取「起始页」的值；绝不使用登录页 URL（跳登录页=登出会话）
+- goto 步骤：args.url 必须从「页面 URL 映射」中取（禁止编造 URL！）；绝不使用登录页 URL（跳登录页=登出会话）
+- **「返回工作台/返回起始页/回到原页面」等返回语义步骤一律输出 {{"action": "go_back", "desc": "返回...", "args": {{}}}}，禁止用 goto 起始 URL 代替浏览器历史返回、禁止 goto 登录页**——SPA 项目 goto 起始 URL（尤其 base 根地址）会整页重载并丢失会话、落到登录页；返回只能走浏览器历史 go_back
 - args.page 仅允许「可用的 POM 页面 key」中的值，且仅在映射无匹配时使用
 - locator 来源：①「页面元素」列表的 LOCATOR 值 ②「下拉筛选控件」的选项文本 ③ 功能用例原文中「」标记的 UI 元素名
 - select 操作的 locator 用下拉选项文本（如 "男"、"全部"），trigger 用「页面元素」中对应的控件名

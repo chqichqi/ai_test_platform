@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API 测试能力说明 · 实现与现状</title>
+<style>
+  :root{
+    --bg:#fdf7f3; --ink:#4a2f2a; --sub:#8a6f63; --card:#ffffff;
+    --orange:#f08a3c; --orange-deep:#d96a1d; --orange-soft:#fdeee0;
+    --purple:#8d6cc4; --purple-deep:#6d4aa8; --purple-soft:#f0e9fb;
+    --green:#34b27a; --green-deep:#1e8a56; --green-soft:#e7f6ee;
+    --red:#d64545; --red-deep:#b23434; --red-soft:#fdeaea;
+    --line:#f3e3d6; --amber:#b45309;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Segoe UI','PingFang SC','Microsoft YaHei',-apple-system,sans-serif;color:var(--ink);line-height:1.7;
+    background:radial-gradient(1100px 500px at 8% -6%, rgba(240,138,60,.13), transparent 60%),
+      radial-gradient(1000px 520px at 100% -4%, rgba(141,108,196,.16), transparent 60%),
+      linear-gradient(180deg,#fef9f4,#fbf3ec);background-attachment:fixed;min-height:100vh}
+  .wrap{max-width:1120px;margin:0 auto;padding:2.6rem 1.7rem 4.5rem}
+  .hero{background:linear-gradient(120deg,rgba(255,255,255,.92),rgba(253,243,237,.75));border:1px solid var(--line);border-radius:1.1rem;padding:1.9rem 2rem 1.5rem;box-shadow:0 10px 30px rgba(180,100,50,.06);position:relative;overflow:hidden}
+  .hero::after{content:'';position:absolute;right:-40px;top:-40px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(141,108,196,.18),transparent 70%)}
+  .hero .dot{display:inline-block;width:11px;height:11px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--purple));margin-right:10px;box-shadow:0 0 14px rgba(52,178,122,.5);vertical-align:2px}
+  .hero h1{font-size:1.9rem;font-weight:800;letter-spacing:-.01em;background:linear-gradient(90deg,var(--green-deep),var(--purple-deep));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero .lede{color:var(--sub);margin-top:.8rem;font-size:1rem;max-width:960px;position:relative;z-index:1}
+  .hero .lede b{color:var(--ink)}
+  .motto{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.1rem;position:relative;z-index:1}
+  .pill{font-size:.78rem;padding:.26rem .85rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--sub);box-shadow:0 2px 6px rgba(0,0,0,.02)}
+  .pill b{color:var(--green-deep)}
+  .toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:.6rem;margin:1.5rem 0 2.2rem}
+  .toc a{display:block;text-align:center;padding:.6rem .3rem;border-radius:.7rem;background:rgba(255,255,255,.75);border:1px solid var(--line);color:var(--sub);text-decoration:none;font-size:.84rem;font-weight:600;transition:.2s}
+  .toc a:hover{color:#fff;background:linear-gradient(120deg,var(--green),var(--purple));border-color:transparent;box-shadow:0 6px 16px rgba(52,160,110,.25)}
+  section{margin-bottom:2.4rem}
+  h2{font-size:1.35rem;font-weight:800;display:flex;align-items:center;gap:.65rem;margin-bottom:.5rem}
+  h2 .n{display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border-radius:9px;font-size:.85rem;color:#fff;background:linear-gradient(135deg,var(--green),var(--purple));box-shadow:0 4px 10px rgba(52,160,110,.25)}
+  h3{font-size:1rem;font-weight:700;margin:1.1rem 0 .5rem;color:#5b4036}
+  p{color:var(--sub);font-size:.94rem;margin-bottom:.5rem}
+  p b{color:var(--ink)}
+  .lead{color:#6b5246;font-size:.97rem}
+  .mono{font-family:'Cascadia Code',Consolas,monospace}
+  .grid{display:grid;gap:1.1rem}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .card{background:rgba(255,255,255,.85);border:1px solid var(--line);border-radius:1rem;padding:1.15rem 1.25rem;box-shadow:0 4px 14px rgba(180,100,50,.05);transition:.2s}
+  .card:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(180,100,50,.1)}
+  .card .ic{font-size:1.3rem}
+  .card h4{font-size:.98rem;font-weight:800;display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem}
+  .card ul{list-style:none}
+  .card li{color:#6b5246;font-size:.87rem;margin-bottom:.45rem;padding-left:1.1rem;position:relative}
+  .card li::before{content:'›';position:absolute;left:0;font-weight:800;color:var(--green-deep)}
+  .card li b{color:var(--ink)}
+  .card.o h4{color:var(--orange-deep)}.card.p h4{color:var(--purple-deep)}.card.g h4{color:var(--green-deep)}
+  table{width:100%;border-collapse:collapse;font-size:.87rem;background:rgba(255,255,255,.9);border-radius:.8rem;overflow:hidden;box-shadow:0 4px 14px rgba(180,100,50,.05);border:1px solid var(--line)}
+  th,td{padding:.6rem .85rem;text-align:left;border-bottom:1px solid #f4e5d8;vertical-align:top}
+  th{background:linear-gradient(90deg,rgba(52,178,122,.1),rgba(141,108,196,.1));font-weight:700;color:#5b4036;white-space:nowrap}
+  td{color:#6b5246} td b{color:var(--ink)}
+  tr:last-child td{border-bottom:none}
+  .tag{display:inline-block;font-size:.7rem;padding:.08rem .55rem;border-radius:999px;font-weight:700;white-space:nowrap}
+  .tag.ok{background:var(--green-soft);color:var(--green-deep)}
+  .tag.no{background:var(--red-soft);color:var(--red-deep)}
+  .tag.part{background:var(--purple-soft);color:var(--purple-deep)}
+  .callout{border-radius:.8rem;background:linear-gradient(120deg,var(--green-soft),var(--purple-soft));padding:.85rem 1.1rem;margin:.9rem 0;font-size:.92rem;color:#5b4036;border-left:4px solid var(--green)}
+  .callout b{color:#4a2f2a}
+  .callout.warn{border-left-color:var(--purple);background:linear-gradient(120deg,var(--orange-soft),var(--purple-soft))}
+  .footer{color:#b39b8c;font-size:.78rem;text-align:center;margin-top:2.6rem;padding-top:1.4rem;border-top:1px solid var(--line)}
+  @media(max-width:620px){.hero h1{font-size:1.35rem}.hero{padding:1.4rem 1.1rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <h1><span class="dot"></span>AI 测试管理平台 · API 测试能力说明</h1>
+    <p class="lede">讲清楚这个项目里 <b>API 测试</b>是怎么实现的——从 <b>Swagger/OpenAPI 导入</b>、<b>AI 生成用例</b>、到 <b>httpx 执行 + 运行时鉴权注入</b>的完整链路，以及它的真实完成度与边界。</p>
+    <div class="motto">
+      <span class="pill">导入 <b>Swagger / OpenAPI</b></span>
+      <span class="pill">执行 <b>httpx</b></span>
+      <span class="pill">鉴权 <b>项目级 api_auth</b></span>
+      <span class="pill">数据 <b>TestDataManager 共用</b></span>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#overview">定位总览</a>
+    <a href="#cap">能力全景</a>
+    <a href="#flow">实现链路</a>
+    <a href="#auth">鉴权与数据</a>
+    <a href="#scene">执行中心·API场景</a>
+  </div>
+
+  <!-- 1 定位 -->
+  <section id="overview">
+    <h2><span class="n">1</span>API 测试定位</h2>
+    <p class="lead">面向后端接口的自动化测试：把接口文档变成<b>能跑、跑得对、带鉴权</b>的接口用例，覆盖 正常/异常/边界 场景，并随探索、登录模块联动。</p>
+    <div class="grid g3">
+      <div class="card g"><div class="ic">📥</div><h4>从文档来</h4><ul><li>支持 <b>URL 或文件</b> 导入 Swagger/OpenAPI，解析出接口、参数、响应 schema。</li><li>接口列表、Tag 分类、用例与版本、环境管理一应俱全。</li></ul></div>
+      <div class="card p"><div class="ic">🧠</div><h4>AI 生成用例</h4><ul><li>识别接口<b>依赖关系</b>，自动识别业务流（request→confirm 等）建立前置依赖。</li><li>生成 <b>正常 / 异常 / 边界</b> 场景，断言规则智能生成。</li></ul></div>
+      <div class="card o"><div class="ic">🔐</div><h4>鉴权联动</h4><ul><li>执行时取<b>项目级 api_auth</b>（登录模块/探索捕获联动保存），运行时注入 token。</li><li>不把口令明文落库——只记鉴权形态，执行时实时取 token。</li></ul></div>
+    </div>
+  </section>
+
+  <!-- 2 能力全景 -->
+  <section id="cap">
+    <h2><span class="n">2</span>能力全景（按真实接入标注）</h2>
+    <table>
+      <tr><th>能力</th><th>说明</th><th>状态</th></tr>
+      <tr><td><b>导入</b></td><td>Swagger URL / 文件导入、解析接口定义与端点</td><td><span class="tag ok">已实现</span></td></tr>
+      <tr><td><b>用例生成</b></td><td>AI 生成（正常/异常/边界）、业务流程依赖识别、拓扑依赖</td><td><span class="tag ok">已实现</span></td></tr>
+      <tr><td><b>执行</b></td><td>httpx 单条 / 批量执行、断言规则执行、响应解析</td><td><span class="tag ok">已实现</span></td></tr>
+      <tr><td><b>鉴权</b></td><td>项目级 api_auth 运行时注入 token/header/cookie；测试鉴权</td><td><span class="tag ok">已实现</span></td></tr>
+      <tr><td><b>用例治理</b></td><td>审批流（提交审核/审核）、分类/版本、批量删除、导出</td><td><span class="tag ok">已实现</span></td></tr>
+      <tr><td><b>执行报告</b></td><td>单次执行报告生成 / 导出</td><td><span class="tag ok">已实现</span></td></tr>
+      <tr><td><b>环境管理</b></td><td>多环境配置、版本管理</td><td><span class="tag ok">已实现</span></td></tr>
+      <tr><td><b>执行中心 · API 场景</b></td><td>把 API 用例编排成场景、在执行中心执行（复用 API 执行链路）</td><td><span class="tag ok">已支持</span></td></tr>
+    </table>
+  </section>
+
+  <!-- 3 实现链路 -->
+  <section id="flow">
+    <h2><span class="n">3</span>实现链路与机制</h2>
+    <p class="lead">主链路四段：<b>导入 → 解析 → 生成 → 执行</b>。</p>
+    <h3>① 导入与解析</h3>
+    <ul class="card" style="list-style:none;padding:1rem 1.2rem">
+      <li style="padding-left:1.1rem;position:relative;color:#6b5246;font-size:.9rem;margin-bottom:.4rem">◗ 支持 Swagger URL / 上传文件；解析出<b>接口、请求/响应 schema、Tag、参数类型</b>。</li>
+      <li style="padding-left:1.1rem;position:relative;color:#6b5246;font-size:.9rem">◗ 解析时处理 <b>$ref 引用、可选字段(anyOf/null)、表单格式</b> 等 OpenAPI 细节，避免字段缺失。</li>
+    </ul>
+    <h3>② AI 生成（关键机制）</h3>
+    <div class="grid g2">
+      <div class="card g"><h4>依赖识别</h4><ul>
+        <li>识别接口路径中的<b>业务流模式</b>（request→confirm、send→verify…）自动建立<b>前置依赖</b>。</li>
+        <li>对<b>前置接口</b>配置变量提取（token/code/id…），<b>后续接口</b>用 <span class="mono">${var}</span> 引用。</li>
+        <li>执行时<b>拓扑排序</b>：无依赖的先跑，前置登录第一个执行。</li>
+      </ul></div>
+      <div class="card p"><h4>用例与断言</h4><ul>
+        <li>每条接口生成 <b>正常 / 异常 / 边界</b> 用例；正常用例带响应字段断言。</li>
+        <li>断言规则<b>从 Swagger responses 动态取状态码</b>，不写死硬编码状态。</li>
+        <li>认证类接口适配 OAuth2 <b>表单格式</b>；用例加随机用户名避免重复注册冲突。</li>
+      </ul></div>
+    </div>
+    <h3>③ 执行</h3>
+    <ul class="card" style="list-style:none;padding:1rem 1.2rem">
+      <li style="padding-left:1.1rem;position:relative;color:#6b5246;font-size:.9rem;margin-bottom:.4rem">◗ 用 <b>httpx</b> 实际请求目标系统；单条与批量执行；执行后落库执行记录。</li>
+      <li style="padding-left:1.1rem;position:relative;color:#6b5246;font-size:.9rem">◗ 每步按用例 <b>spec/参数</b> 组装 query/path/header/body 并发送。</li>
+    </ul>
+  </section>
+
+  <!-- 4 鉴权与数据 -->
+  <section id="auth">
+    <h2><span class="n">4</span>鉴权注入与测试数据</h2>
+    <div class="grid g2">
+      <div class="card o"><div class="ic">🔐</div><h4>运行时鉴权</h4><ul>
+        <li>项目级 api_auth（由<b>登录模块/探索 API 捕获</b>联动保存）：记录鉴权形态（Bearer 注入头/前缀、cookie、api key）。</li>
+        <li>执行前 <span class="mono">_execute_auth_config</span> 实时取 token → 注入请求头，<b>不把口令明文落库</b>（敏感字段替换为占位符）。</li>
+        <li>提供 <b>测试鉴权 /test-auth</b> 端点验证配置是否可用。</li>
+      </ul></div>
+      <div class="card p"><div class="ic">🧪</div><h4>测试数据（与 UI 共用 Manager）</h4><ul>
+        <li>API 用例的 <span class="mono">materialize_api_case</span> 用 <b>TestDataManager</b> 实例化数据计划 → 组装请求数据。</li>
+        <li><b>正常用例</b>保留探索时的真实值；<b>异常/边界用例</b>用 <b>mutation</b> 确定性生成错误值（类型错误/缺字段/不存在资源/越界…），不靠 LLM 临场编。</li>
+        <li>一次运行的随机值<b>不写回</b>用例，保持用例可复用。</li>
+      </ul></div>
+    </div>
+    <div class="callout"><b>一句话：</b>API 测试 = 从 Swagger 导入 → AI 识别依赖并生成 正常/异常/边界 用例 → httpx 执行 → 项目级鉴权运行时注入 + 共用数据体系。已能作为独立入口跑通接口回归。</div>
+  </section>
+
+  <!-- 5 执行中心 API 场景 -->
+  <section id="scene">
+    <h2><span class="n">5</span>执行中心 · API 场景测试（已接通）</h2>
+    <p class="lead">执行中心支持 <b>UI / API / 压力</b> 三类场景；API 场景可将 API 用例编入并在执行中心<b>一键执行</b>，结果按通过/失败/跳过汇总。</p>
+    <div class="grid g2">
+      <div class="card g"><div class="ic">🗂</div><h4>场景编排</h4><ul>
+        <li>创建 <b>API 类型场景</b>（scene_type=api），把 API 用例加入、拖拽排顺序、单条启停。</li>
+        <li>场景按项目组织；条目沿用 <b>wui/case_id</b> 绑定，展示名在场景详情里解析显示。</li>
+      </ul></div>
+      <div class="card o"><div class="ic">▶</div><h4>场景执行（复用 API 执行链路）</h4><ul>
+        <li>执行时收集场景内 API 用例，复用 API 批量执行链路：<b>拓扑排序</b>（含自动补 depends_on 前置如登录）→ 项目环境/项目级<b>运行时鉴权</b> → 每条 <b>httpx</b> 执行。</li>
+        <li>结果并入场景统计：<b>通过 / 失败 / 错误 / 跳过</b>，并按执行顺序展示。</li>
+        <li>与 API 测试独立入口<b>同源同行为</b>（共用同一套执行函数与数据体系），不另起炉灶。</li>
+      </ul></div>
+    </div>
+    <div class="callout"><b>结论：</b>API 场景测试链路已接通——从"把 API 用例编成场景"到"执行中心一键跑"，复用 API 自身的拓扑/鉴权/httpx 执行能力，实现 UI 与 API 场景的统一编排执行。</div>
+  </section>
+
+  <div class="footer">
+    AI 测试管理平台 · API 测试能力说明 · 依据当前代码真实接入程度编写，未实现项不虚标完成<br>
+    同源铁律：UI / API 测试数据共用 TestDataManager · 鉴权走项目级数据位 · 不硬编码
+  </div>
+
+</div>
+</body>
+</html>

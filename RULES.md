@@ -82,6 +82,7 @@
    | 任务类型 | ratio | cap | 示例 |
    |---|---|---|---|
    | 大输出（批量/多步骤/POM/业务流/审计生成） | 0.7 | 100000 | 批量转化、web_ui_conversion_v2、pom_generator、test_case_auditor:209 |
+   | Step1功能点提取（分块后每块输出 features JSON，量大防截断） | 0.5 | 30000 | two_step_generator.extract_features_once |
    | 中等（元素提取/单用例重写/API 提取） | 0.1 | 8000 | step_parser、requirement_change_service:1349、api_test_generator:271 |
    | 文档分析 | 0.3 | 8000 | doc_preprocess_service |
    | 失败分析 | 0.15 | 3000 | failure_analysis_service |

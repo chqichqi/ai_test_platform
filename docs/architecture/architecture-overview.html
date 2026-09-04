@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 测试管理平台 · 测试工作提质增效汇报</title>
+<style>
+  :root{
+    --bg:#fdf7f3;                 /* 整体暖米底 */
+    --ink:#4a2f2a;                /* 深褐主字 */
+    --sub:#8a6f63;                /* 次要字 */
+    --card:#ffffff;
+    --orange:#f08a3c;             /* 主橙 */
+    --orange-deep:#d96a1d;
+    --orange-soft:#fdeee0;
+    --purple:#8d6cc4;             /* 主紫 */
+    --purple-deep:#6d4aa8;
+    --purple-soft:#f0e9fb;
+    --line:#f3e3d6;
+    --amber:#b45309;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Segoe UI','PingFang SC','Microsoft YaHei',-apple-system,sans-serif;color:var(--ink);line-height:1.7;
+    background:
+      radial-gradient(1100px 500px at 8% -6%, rgba(240,138,60,.14), transparent 60%),
+      radial-gradient(1000px 520px at 100% -4%, rgba(141,108,196,.16), transparent 60%),
+      linear-gradient(180deg,#fef9f4,#fbf3ec);
+    background-attachment:fixed;
+    min-height:100vh}
+  .wrap{max-width:1120px;margin:0 auto;padding:2.6rem 1.7rem 4.5rem}
+
+  /* header */
+  .hero{background:linear-gradient(120deg,rgba(255,255,255,.92),rgba(253,243,237,.75));border:1px solid var(--line);border-radius:1.1rem;padding:1.9rem 2rem 1.5rem;box-shadow:0 10px 30px rgba(180,100,50,.06);position:relative;overflow:hidden}
+  .hero::after{content:'';position:absolute;right:-40px;top:-40px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(141,108,196,.18),transparent 70%)}
+  .hero .dot{display:inline-block;width:11px;height:11px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--purple));margin-right:10px;box-shadow:0 0 14px rgba(240,138,60,.5);vertical-align:2px}
+  .hero h1{font-size:1.95rem;font-weight:800;letter-spacing:-.01em;background:linear-gradient(90deg,var(--orange-deep),var(--purple-deep));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero .lede{color:var(--sub);margin-top:.8rem;font-size:1rem;max-width:940px;position:relative;z-index:1}
+  .hero .lede b{color:var(--ink)}
+  .motto{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.1rem;position:relative;z-index:1}
+  .pill{font-size:.78rem;padding:.26rem .85rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--sub);box-shadow:0 2px 6px rgba(0,0,0,.02)}
+  .pill b{color:var(--orange-deep)}
+
+  /* toc */
+  .toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.6rem;margin:1.5rem 0 2.2rem}
+  .toc a{display:block;text-align:center;padding:.6rem .4rem;border-radius:.7rem;background:rgba(255,255,255,.75);border:1px solid var(--line);color:var(--sub);text-decoration:none;font-size:.84rem;font-weight:600;transition:.2s}
+  .toc a:hover{color:#fff;background:linear-gradient(120deg,var(--orange),var(--purple));border-color:transparent;box-shadow:0 6px 16px rgba(200,110,70,.25)}
+
+  section{margin-bottom:2.4rem}
+  h2{font-size:1.35rem;font-weight:800;display:flex;align-items:center;gap:.65rem;margin-bottom:.5rem;color:var(--ink)}
+  h2 .n{display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border-radius:9px;font-size:.85rem;color:#fff;background:linear-gradient(135deg,var(--orange),var(--purple));box-shadow:0 4px 10px rgba(200,110,70,.25)}
+  h3{font-size:1rem;font-weight:700;margin:1.1rem 0 .5rem;color:#5b4036}
+  p{color:var(--sub);font-size:.94rem;margin-bottom:.5rem}
+  p b{color:var(--ink)}
+  .lead{color:#6b5246;font-size:.97rem}
+  .mono{font-family:'Cascadia Code',Consolas,monospace}
+
+  /* cards */
+  .grid{display:grid;gap:1.1rem}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .card{background:rgba(255,255,255,.85);border:1px solid var(--line);border-radius:1rem;padding:1.15rem 1.25rem;box-shadow:0 4px 14px rgba(180,100,50,.05);transition:.2s}
+  .card:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(180,100,50,.1)}
+  .card .ic{font-size:1.3rem}
+  .card h4{font-size:.98rem;font-weight:800;display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem}
+  .card ul{list-style:none}
+  .card li{color:#6b5246;font-size:.87rem;margin-bottom:.45rem;padding-left:1.1rem;position:relative}
+  .card li::before{content:'›';position:absolute;left:0;font-weight:800;color:var(--orange-deep)}
+  .card li b{color:var(--ink)}
+  .card.o h4{color:var(--orange-deep)}
+  .card.p h4{color:var(--purple-deep)}
+
+  /* table */
+  table{width:100%;border-collapse:collapse;font-size:.87rem;background:rgba(255,255,255,.9);border-radius:.8rem;overflow:hidden;box-shadow:0 4px 14px rgba(180,100,50,.05);border:1px solid var(--line)}
+  th,td{padding:.6rem .85rem;text-align:left;border-bottom:1px solid #f4e5d8;vertical-align:top}
+  th{background:linear-gradient(90deg,rgba(240,138,60,.1),rgba(141,108,196,.1));font-weight:700;color:#5b4036;white-space:nowrap}
+  td{color:#6b5246} td b{color:var(--ink)}
+  tr:last-child td{border-bottom:none}
+  .tag{display:inline-block;font-size:.7rem;padding:.08rem .55rem;border-radius:999px;font-weight:700;white-space:nowrap}
+  .tag.ok{background:var(--orange-soft);color:var(--orange-deep)}
+  .tag.part{background:#f5edfb;color:var(--purple-deep)}
+  .tag.no{background:#fdecec;color:#c2410c}
+  .tag.core{background:#e8f6ee;color:#15803d}
+
+  /* pipe */
+  .pipe{display:flex;flex-wrap:wrap;align-items:stretch;gap:.7rem;margin:1rem 0}
+  .pstep{flex:1 1 150px;background:rgba(255,255,255,.85);border:1px solid var(--line);border-radius:.7rem;padding:.75rem .9rem;min-width:130px;box-shadow:0 3px 10px rgba(180,100,50,.05);position:relative;overflow:hidden}
+  .pstep::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--orange),var(--purple))}
+  .pstep .t{font-size:.8rem;font-weight:800;color:var(--orange-deep)}
+  .pstep .d{font-size:.78rem;color:var(--sub);margin-top:.25rem}
+  .parr{align-self:center;color:#c9a78f;font-weight:800}
+
+  /* callout */
+  .callout{border-radius:.8rem;background:linear-gradient(120deg,var(--orange-soft),var(--purple-soft));padding:.85rem 1.1rem;margin:.9rem 0;font-size:.92rem;color:#5b4036;border-left:4px solid var(--orange)}
+  .callout b{color:#4a2f2a}
+  .callout.warn{border-left-color:var(--purple)}
+
+  .footer{color:#b39b8c;font-size:.78rem;text-align:center;margin-top:2.6rem;padding-top:1.4rem;border-top:1px solid var(--line)}
+  @media(max-width:620px){.hero h1{font-size:1.4rem}.hero{padding:1.4rem 1.1rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <h1><span class="dot"></span>AI 测试管理平台</h1>
+    <p class="lede">一条 <b>「需求/业务流 → 可执行自动化用例」</b> 的工程化链路。本页回答两件事：<b>① 对测试人员能带来什么价值（提质 / 增效 / 解决问题），以及现在真实能做到什么水平；② 支撑这些价值的设计原理（技术栈 / 总体框架 / 关键技术难点）。</b> 立足 <b>原创真实 · 可落地 · 可核查溯源</b>，已实现与未实现如实标注。</p>
+    <div class="motto">
+      <span class="pill">后端 <b>FastAPI · Python</b></span>
+      <span class="pill">前端 <b>React · TS</b></span>
+      <span class="pill">浏览器 <b>Playwright</b></span>
+      <span class="pill">AI <b>LLM Agent</b></span>
+      <span class="pill">执行 <b>pytest + 反射分发</b></span>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#arch">总体框架</a>
+    <a href="#stack">技术栈</a>
+    <a href="#hard">设计难点</a>
+    <a href="#iron">设计原则</a>
+    <a href="#value">价值与好处</a>
+    <a href="#now">当前水平</a>
+    <a href="#modules">功能模块</a>
+    <a href="#plan">规划能力</a>
+  </div></div></div>
+
+  <!-- 1 总体框架 -->
+  <section id="arch">
+    <h2><span class="n">1</span>总体框架（端到端用例生产管线）</h2>
+    <p class="lead">八步全流程主链路（导入 → 功能用例 → UI 用例 → 场景编排 → 执行 → 报告 → CI/CD → 反馈），是"需求 → 可跑用例 → 跑完闭环"的主干；围绕它展开服务、探索引擎与执行器。</p>
+    <div class="pipe">
+      <div class="pstep"><div class="t">① 导入</div><div class="d">需求/业务流文档按日期块追加到版本（不覆盖）；登录模块为项目级单独管理</div></div>
+      <div class="parr">→</div>
+      <div class="pstep"><div class="t">② 功能用例</div><div class="d">AI「先理解成规范模型再生成」：Step1 整篇理解出模块共享声明；Step2 按模块注入逐条生成（含前置/依赖模型）</div></div>
+      <div class="parr">→</div>
+      <div class="pstep"><div class="t">③ UI 用例</div><div class="d">功能→UI 转化：步骤解析「」标记 → 真实探索/查 KG → 生成 spec 落库</div></div>
+      <div class="parr">→</div>
+      <div class="pstep"><div class="t">④ 场景编排</div><div class="d">把生成用例按真实业务编成场景：加入用例、拖拽重排顺序、单条启用/禁用，组成可复用的回归路径</div></div>
+      <div class="parr">→</div>
+      <div class="pstep"><div class="t">⑤ 执行</div><div class="d">执行中心一键跑：依赖调度(前置先跑/共享去重/失败即跳) + 多策略定位 + 断言；失败自动截图留日志</div></div>
+      <div class="parr">→</div>
+      <div class="pstep"><div class="t">⑥ 报告生成</div><div class="d">执行结果按成功/跳过/失败汇总成报告，可查看、可追溯单条失败</div></div>
+      <div class="parr">→</div>
+      <div class="pstep"><div class="t">⑦ CI/CD 集成</div><div class="d">对接 Jenkins / GitLab 触发自动执行、回传结果(设计含于此链)</div></div>
+
+      <div class="parr">→</div>
+
+      <div class="pstep"><div class="t">⑧ 结果反馈与通知</div><div class="d">结果反馈进问题跟踪/失败分析形成闭环；站内结果已支持；飞书/钉钉等外部渠道推送规划中</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:.6rem">
+      <div class="card"><h4>技术分层</h4><ul>
+        <li><b>前端 React SPA → 后端 FastAPI 服务层 → AI Agent / 业务服务 → 浏览器与外部被测系统</b>。</li>
+        <li><b>登录模块（项目级）</b>：数据驱动 + 反射分发，贯穿探索/执行/API 鉴权，换项目重导入即登录。</li>
+        <li>关键链路先落 <span class="mono" style="font-size:.74rem">docs/architecture</span> 方案再写代码；共享规则一律 import 同源。</li>
+      </ul></div>
+      <div class="card"><h4>执行与数据层</h4><ul>
+        <li><b>测试数据体系</b>：由专门模块按 data_plan 执行期生成并注入（详见下方「重点」）。</li>
+        <li>探索结果落 KG（页面/元素/URL/API），作为转化与执行的<b>真值来源</b>。</li>
+        <li>统计口径：只算用户选中用例；<span class="mono" style="font-size:.74rem">execution_type</span> 区分 UI 验证 / 场景测试。</li>
+      </ul></div>
+    </div>
+
+    <h3>重点 · 测试数据如何生成、如何关联到用例（专门的测试数据体系）</h3>
+    <p style="margin-bottom:.5rem">平台内置一套独立的<b>测试数据生成体系</b>（数据计划 + 生成器 + Provider 注册表 + Manager），职责是：<b>数据到底怎么生成、值从哪来</b>——不让 LLM / 自动化脚本临场编造，也不把某次运行的随机值当成长期资产写死。核心链路为 <b>定义数据计划 → 执行期实例化生成 → 渲染注入用例 → 跨用例传递</b>。</p>
+    <div class="grid g3">
+      <div class="card o"><div class="ic">🗒</div><h4>① 数据计划：声明"需要什么数据"</h4><ul>
+        <li>生成功能用例时，<b>数据计划(data_plan)</b>由生成 Agent 一并产出：描述该条用例需要哪些字段及其生成策略（如 patient_name：type=generated、provider=generator、generator=name）。</li>
+        <li>规则明确：<b>data_plan 只描述"要什么"，不把一次运行产生的随机值写死</b>为长期资产；数据引用在步骤里用 ${key} 占位。</li>
+      </ul></div>
+      <div class="card p"><div class="ic">⚙</div><h4>② 执行期：数据模块真正生成</h4><ul>
+        <li>执行时 <span class="mono" style="font-size:.74rem">TestDataManager.build_plan → materialize</span>，把数据计划<b>实例化成真实值</b>。</li>
+        <li><b>TestDataGenerator</b> 按字段 key 自动推断类型（phone / email / 姓名 / 日期 / id / uuid…），也可 register 自定义生成器。</li>
+        <li><b>Provider 注册表</b>决定值来源：static / shared / generated / seeded / factory / dependent / consumable，统一从注册表取、可追溯来源。</li>
+      </ul></div>
+      <div class="card"><div class="ic">🔗</div><h4>③ 渲染注入 + 跨用例传递</h4><ul>
+        <li>生成值写入运行时变量后，<b>渲染器把用例步骤 / 请求体里的 ${key} 替换成真值</b>再执行，保证同一次运行内数据一致。</li>
+        <li>执行结果也把运行值写回审计（runtime_test_data / run_id），可<b>溯源本次跑用的是哪个值</b>。</li>
+        <li>UI 与 API 用例<b>共用同一套 Manager</b>；API 异常/边界值由 mutation provider 确定性生成。</li>
+      </ul></div>
+    </div>
+    <div class="callout" style="margin-top:.7rem"><b>一句话：</b>LLM 只在生成时定义"这条用例需要什么数据"（数据计划），<b>具体值由专门的测试数据模块在执行时按类型确定性生成、并按 ${key} 注入对应步骤</b>；动态业务数据是否出现则用守卫动作容错。</div>
+  </section>
+
+<!-- 2 技术栈 -->
+  <section id="stack">
+    <h2><span class="n">2</span>技术栈（体现选型设计）</h2>
+    <table>
+      <tr><th>层</th><th>选型</th><th>设计意图</th></tr>
+      <tr><td><b>后端</b></td><td>FastAPI + SQLAlchemy + MySQL/SQLite</td><td>异步 API；ORM 多库按环境切换；服务/Agent 分层收敛</td></tr>
+      <tr><td><b>AI / Agent</b></td><td>LLM Agent（LangChain 统一服务层）</td><td>BaseAgent 基类（截断检测/失败重试）；统一 AgentService；可切换模型</td></tr>
+      <tr><td><b>浏览器自动化</b></td><td>Playwright（chromium/firefox/webkit）</td><td>探索、UI 执行、功能→UI 转化统一驱动，一套技术栈复用登录态</td></tr>
+      <tr><td><b>执行范式</b></td><td>pytest 参数化 + 反射分发</td><td>在线执行与生成 pytest 工程同构同源；步骤按 action 名反射取 handler</td></tr>
+      <tr><td><b>前端</b></td><td>React + TypeScript + Ant Design + D3</td><td>React Query 状态；图谱力导向可视化；axios 调用</td></tr>
+      <tr><td><b>知识图谱</b></td><td>KG（页面/元素/导航流/API 落库）</td><td>探索结果作为生成/转化的"真值来源"，避免靠 LLM 猜</td></tr>
+    </table>
+  </section>
+
+<!-- 3 设计难点 -->
+  <section id="hard">
+    <h2><span class="n">3</span>关键技术难点与应对（支撑"可信"）</h2>
+    <div class="grid g2">
+      <div class="card o"><h4>难点① 自然语言 → 正确用例</h4><ul>
+        <li><b>语义 ≠ 格式</b>：先理解成规范模型（模块/入口导航/共享前置/断言），不枚举格式。</li>
+        <li><b>容错不静默</b>：分块 + 每批拆半重试到单点；坏响应显式记录，绝不静默漏卡。</li>
+        <li><b>落库净化闸</b>：整条菜单/跨模块按钮塞进对象标记的脏文本，入库前自动裁剪。</li>
+      </ul></div>
+      <div class="card p"><h4>难点② 前置条件 vs 入口导航</h4><ul>
+        <li><b>前置条件从不执行</b>，只写真实静态就绪态，不含操作动词。</li>
+        <li><b>入口导航必须是 test_steps 第 1 步</b>（不是「已处于 XX 页」），漏写时按模块声明确定性兜底前插。</li>
+      </ul></div>
+      <div class="card o"><h4>难点③ 功能 → UI 不靠猜</h4><ul>
+        <li><b>真值 ≠ 声称</b>：URL/跳转只来自真实探索，匹配不到转「等渲染」，绝不编造 goto。</li>
+        <li><b>多策略定位 + 叶子优先</b>：role/文本/占位/CSS/XPath 评分，命中容器自动选最小可操作叶子。</li>
+        <li><b>探索边界两难</b>：只放行用例真实可达的同源页，拦误点、不误伤合法跨模块跳转。</li>
+      </ul></div>
+      <div class="card p"><h4>难点④ 执行可信 / 数据关联</h4><ul>
+        <li><b>测试数据随用例走</b>：语义样本 + 运行时变量注入 + 跨用例产出传递。</li>
+        <li><b>动态数据不硬等</b>：守卫动作有则继续/无则跳过；统计只验结构不验数值。</li>
+        <li><b>不假绿</b>：guard 找不到数据=跳过，普通 click/断言找不到=失败。</li>
+      </ul></div>
+    </div>
+  </section>
+
+<!-- 4 设计原则 -->
+  <section id="iron">
+    <h2><span class="n">4</span>贯穿始终的设计原则</h2>
+    <div class="grid g2">
+      <div class="card"><h4>🧱 跨项目通用 · 零硬编码</h4><ul>
+        <li>被测系统的选择器/文案/URL/魔法数字一律进「数据位」（步骤 args / 探索配置 / 项目设置），代码位永不写死。</li>
+        <li>换任何被测系统、换登录流程，平台代码零改动即可复用。</li>
+      </ul></div>
+      <div class="card"><h4>🧾 可核查溯源 · 宁缺毋假</h4><ul>
+        <li>从需求 → 用例 → 探索真值 → 执行结果 → 失败分析，数据一路留痕，能往回追。</li>
+        <li>依赖真实探索真值的 URL/元素宁缺毋假、不编造；本页已实现/未实现如实标注。</li>
+      </ul></div>
+    </div>
+    <div class="callout">一句话：<b>把写用例、排顺序、对结果、查失败的重复劳动自动化率提上去；省下的时间用来做更有判断力的事——审用例、补边界、盯真回归。</b></div>
+  </section>
+
+<!-- 5 价值 -->
+  <section id="value">
+    <h2><span class="n">5</span>对测试人员的价值（提质 · 增效 · 解决问题）</h2>
+    <div class="grid g3">
+      <div class="card o"><div class="ic">🎯</div><h4>提质 · 测得更可信</h4><ul>
+        <li><b>用例不是编的</b>：UI 用例的页面/元素/跳转 URL 来自平台<b>真实打开被测系统探索</b>的结果，能跑才算数。</li>
+        <li><b>覆盖全、不漏卡</b>：AI 按需求逐点生成并自动核对数量，缺了补、坏了重试，不静默漏功能。</li>
+        <li><b>结果不假绿</b>：严格区分"数据没出现(跳过)"与"真出 bug(失败)"，不把没跑当通过。</li>
+      </ul></div>
+      <div class="card p"><div class="ic">⚡</div><h4>增效 · 测得更省力</h4><ul>
+        <li><b>自然语言→用例</b>：丢一段需求/业务流，自动产出规范化功能与 UI 用例。</li>
+        <li><b>跨项目复用</b>：换被测系统只重导入需求+登录流程，<b>代码零改动</b>。</li>
+        <li><b>依赖自动调度</b>：前置/共享准备自动先跑、共享去重，免人工排顺序。</li>
+        <li><b>定位免维护</b>：多策略定位 + 自动兜底，常见文案/结构微调不立刻全挂。</li>
+      </ul></div>
+      <div class="card"><div class="ic">🛠</div><h4>解决问题 · 知道错在哪</h4><ul>
+        <li><b>失败不抓瞎</b>：自动截图+日志，AI 做根因分析，从"红了"到"为什么红"。</li>
+        <li><b>问题可跟踪</b>：失败→分析→建问题→修复→回归，形成闭环有据可查。</li>
+        <li><b>死角有兜底</b>：自动进不去的页面，规划<b>手动探索补录</b>。</li>
+      </ul></div>
+    </div>
+  </section>
+
+<!-- 6 当前水平 -->
+  <section id="now">
+    <h2><span class="n">6</span>现在真实能做到什么水平（含局限）</h2>
+    <p class="lead">把愿景与现状分开，不虚标完成度。</p>
+    <table>
+      <tr><th>能力</th><th>说明</th><th>状态</th></tr>
+      <tr><td><b>端到端主链路</b></td><td>需求导入 → 功能用例 → 真实探索 → UI 用例 → 执行验证</td><td><span class="tag ok">已可落地</span></td></tr>
+      <tr><td><b>跨项目通用登录</b></td><td>换项目重导入登录流程即登录，平台代码零改动（贯穿各模块的基础）</td><td><span class="tag core">核心</span></td></tr>
+      <tr><td><b>AI 生成 + WebUI/API 用例</b></td><td>两步入式生成、setup/depends_on 依赖、多浏览器执行、Swagger 导入与拓扑执行</td><td><span class="tag ok">已可落地</span></td></tr>
+      <tr><td><b>系统探索 + 知识图谱</b></td><td>智能登录、BFS/步骤驱动探索、元素与导航流落库、D3 可视化；功能→UI 接入真实探索</td><td><span class="tag ok">已可落地</span></td></tr>
+      <tr><td><b>失败分析 / 问题跟踪</b></td><td>AI 根因分析、Issue 全生命周期</td><td><span class="tag part">部分</span></td></tr>
+      <tr><td><b>元素自愈</b></td><td>多候选回退 + 时序重试已具备；自动修复 L2/L3 推进中</td><td><span class="tag part">部分</span></td></tr>
+      <tr><td><b>手动探索（自动探索补盲）</b></td><td>设计已定（录前归模块、同页同对象替换/无则追加）</td><td><span class="tag no">规划中</span></td></tr>
+      <tr><td><b>CI/CD 集成 + 告警通知</b></td><td>Jenkins/GitLab 触发、飞书/钉钉等通知</td><td><span class="tag no">未实现</span></td></tr>
+      <tr><td><b>性能测试</b></td><td>JMeter 脚本、压测、报告</td><td><span class="tag no">未实现</span></td></tr>
+    </table>
+    <div class="callout warn" style="margin-top:.9rem"><b>要接受的局限：</b>① 自动探索有"进不去"的天花板——被权限/口令/验证码挡住的子页面会<b>如实标"探索不足"，宁缺毋假</b>，需手动补录(规划中)或可访问账号兜底；② 这不是"零人工"魔法——生成质量依赖需求清晰 + 系统可探索，<b>仍需测试人员审用例、补边界、判断真回归</b>；③ 已接入的才真实，没做的别当已完成用。</div>
+  </section>
+
+<!-- 2 已有功能点 -->
+  <section id="modules">
+    <h2><span class="n">7</span>目前已有的功能点</h2>
+    <p class="lead">围绕主链路已落地/在演进的能力（按真实接入程度标注状态）。</p>
+    <table>
+      <tr><th>功能点</th><th>说明</th><th>状态</th></tr>
+      <tr><td><b>项目 / 版本管理</b></td><td>项目、成员(RBAC)、环境配置与设置；版本状态流 (TESTING→FROZEN→RELEASED)；文档按日期块追加与版本对比</td><td><span class="tag core">已落地</span></td></tr>
+      <tr><td><b>需求 / 业务流导入</b></td><td>Word/PDF/TXT 解析，提取功能点与测试点；登录模块为项目级资产单独管理</td><td><span class="tag core">已落地</span></td></tr>
+      <tr><td><b>AI 生成功能用例</b></td><td>两步入式生成（先理解成规范模型再生成）、setup/depends_on 依赖模型、前置条件静态化、入口导航驱动、落库净化</td><td><span class="tag core">已落地</span></td></tr>
+      <tr><td><b>WebUI 测试</b></td><td>智能元素定位（多策略）、用例管理、多浏览器批量执行、守卫型动态跳过</td><td><span class="tag core">已落地</span></td></tr>
+      <tr><td><b>API 测试</b></td><td>Swagger/OpenAPI 导入、业务流程依赖识别、拓扑执行、运行时鉴权注入</td><td><span class="tag core">已落地</span></td></tr>
+      <tr><td><b>系统探索 + 知识图谱</b></td><td>智能登录、BFS 与步骤驱动 guided 探索、元素/导航流/API 落库、D3 可视化</td><td><span class="tag core">已落地</span></td></tr>
+      <tr><td><b>功能 → UI 转化</b></td><td>步骤解析 + 真实探索 + LLM 生成 spec，探索期同步生成 API 用例</td><td><span class="tag core">已落地</span></td></tr>
+      <tr><td><b>登录模块（项目级）</b></td><td>数据驱动 + 反射分发，跨项目通用，换项目重导入即登录</td><td><span class="tag core">核心</span></td></tr>
+      <tr><td><b>失败分析 / 问题跟踪</b></td><td>AI 根因分析、Issue 全生命周期</td><td><span class="tag part">推进中</span></td></tr>
+      <tr><td><b>元素自愈</b></td><td>多候选回退 + 时序重试已具备；自动修复 L2/L3 设计已定</td><td><span class="tag part">推进中</span></td></tr>
+    </table>
+    <div class="callout" style="margin-top:.7rem">另有方向已明确、尚未完全实现的能力，详见第 <b>8</b> 节「规划 / 演进中的能力」：手动探索、元素自愈 L2/L3、CI/CD + 告警、性能测试 —— 如实标注，不虚标完成。</div>
+  </section>
+
+  
+
+<!-- 3 规划中的能力 -->
+  <section id="plan">
+    <h2><span class="n">8</span>规划 / 演进中的能力</h2>
+    <p class="lead">这些能力方向已明确、设计要点已定，但目前尚未完全实现，如实列出供了解。</p>
+    <div class="grid g2">
+      <div class="card p"><div class="ic">🖱</div><h4>手动探索（自动探索补盲 · 规划中）</h4><ul>
+        <li><b>解决什么</b>：自动探索被权限/口令/验证码挡住的子页面进不去，导致这些模块没有真实真值。</li>
+        <li><b>打算怎么做</b>：页面点「手动探索」→ 打开受控录制浏览器，人真实操作一遍，平台捕获成结构化探索记录。</li>
+        <li><b>要点</b>：录前先选/归模块名；保存前按「页面+对象」查重 —— <b>同对象则替换、无则追加</b>；作为自动探索的兜底。</li>
+      </ul></div>
+      <div class="card o"><div class="ic">🔁</div><h4>元素自愈 L2 / L3（推进中）</h4><ul>
+        <li><b>已有</b>：多候选回退 + 定位可见超时的时序重试。</li>
+        <li><b>规划四层</b>：确定性回退链 → 属性指纹评分 → LLM 语义兜底 → 失败根因分组。</li>
+        <li><b>铁律</b>：只修「定位失败」，不修断言/业务/数据失败（避免误 heal 真回归、假绿）；高置信自动应用、模糊转人工审批。</li>
+      </ul></div>
+      <div class="card"><div class="ic">🔌</div><h4>CI/CD 集成 + 告警通知（未实现）</h4><ul>
+        <li><b>设想</b>：对接 Jenkins / GitLab / GitHub Actions，触发 Pipeline 并回传执行结果。</li>
+        <li><b>告警</b>：执行完成/失败时，通过飞书 / 钉钉 / 企业微信 / 邮件推送，支持告警规则配置。</li>
+        <li><b>说明</b>：方向明确，尚未接入真实 CI/CD 与通知渠道。</li>
+      </ul></div>
+      <div class="card"><div class="ic">📊</div><h4>性能测试（未实现）</h4><ul>
+        <li><b>设想</b>：JMeter 脚本 / JMX 管理、压测场景配置（并发 / 时长 / 目标）、压测执行。</li>
+        <li><b>产出</b>：结果解析（TPS / 响应时间 / 错误率）、达标评估与 HTML 报告、Grafana 展示。</li>
+        <li><b>说明</b>：方向明确，尚未实现压测执行链路。</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <div class="footer">
+    AI 测试管理平台 · 价值与设计原理 · 铁律：跨项目通用 · 零硬编码 · 不假绿 · 宁缺毋假<br>
+    状态标注均依据当前真实接入程度，未实现/规划中能力不虚标完成
+  </div>
+
+</div>
+</body>
+</html>

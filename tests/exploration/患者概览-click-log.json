@@ -1,0 +1,427 @@
+{
+  "module": "患者概览",
+  "evidence": [
+    {
+      "case_id": "567",
+      "case_name": "患者人数卡片点击跳转患者档案并校验总数与今日新增",
+      "module": "患者概览",
+      "preconditions": "已登录系统并处于工作台页面\n若「患者人数」指标卡片未展示则跳过本用例",
+      "expected_result": "患者人数卡片可正确跳转至患者档案列表，总数与今日新增校验通过；无记录时展示「暂无数据」",
+      "seq": 1,
+      "target": "患者人数",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "ac848c2fa72cb9b88945",
+      "after_state_id": "35b82973a0e82a16903d",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "患者人数",
+        "role": "",
+        "tag": "div",
+        "selector": "div.cardTitle___3hSJ7",
+        "primary_locator": "div.cardTitle___3hSJ7",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_3": "",
+                "rc_select_4": "",
+                "rc_select_5": ""
+              },
+              "after": {
+                "rc_select_9": "",
+                "rc_select_10": "",
+                "rc_select_11": ""
+              }
+            }
+          },
+          "before_state_id": "ac848c2fa72cb9b88945",
+          "after_state_id": "35b82973a0e82a16903d"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "567",
+      "case_name": "患者人数卡片点击跳转患者档案并校验总数与今日新增",
+      "module": "患者概览",
+      "preconditions": "已登录系统并处于工作台页面\n若「患者人数」指标卡片未展示则跳过本用例",
+      "expected_result": "患者人数卡片可正确跳转至患者档案列表，总数与今日新增校验通过；无记录时展示「暂无数据」",
+      "seq": 2,
+      "target": "患者人数",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "35b82973a0e82a16903d",
+      "after_state_id": "35b82973a0e82a16903d",
+      "locator": {
+        "strategy": "text_exact",
+        "actual_text": "患者人数",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "35b82973a0e82a16903d",
+          "after_state_id": "35b82973a0e82a16903d"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "567",
+      "case_name": "患者人数卡片点击跳转患者档案并校验总数与今日新增",
+      "module": "患者概览",
+      "preconditions": "已登录系统并处于工作台页面\n若「患者人数」指标卡片未展示则跳过本用例",
+      "expected_result": "患者人数卡片可正确跳转至患者档案列表，总数与今日新增校验通过；无记录时展示「暂无数据」",
+      "seq": 4,
+      "target": "",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "35b82973a0e82a16903d",
+      "after_state_id": "35b82973a0e82a16903d",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "567",
+      "case_name": "患者人数卡片点击跳转患者档案并校验总数与今日新增",
+      "module": "患者概览",
+      "preconditions": "已登录系统并处于工作台页面\n若「患者人数」指标卡片未展示则跳过本用例",
+      "expected_result": "患者人数卡片可正确跳转至患者档案列表，总数与今日新增校验通过；无记录时展示「暂无数据」",
+      "seq": 6,
+      "target": "今日新增",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "35b82973a0e82a16903d",
+      "after_state_id": "35b82973a0e82a16903d",
+      "locator": {
+        "strategy": "text_contains",
+        "actual_text": "今日新增+0",
+        "role": "",
+        "tag": "span",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "35b82973a0e82a16903d",
+          "after_state_id": "35b82973a0e82a16903d"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "568",
+      "case_name": "Smart报告(份)卡片点击跳转患者档案并校验总数与今日新增",
+      "module": "患者概览",
+      "preconditions": "已登录系统并处于工作台页面\n若「Smart报告(份)」指标卡片未展示则跳过本用例",
+      "expected_result": "Smart报告(份)卡片可正确跳转至目标患者档案列表，总数与今日新增校验通过；无记录时展示「暂无数据」",
+      "seq": 1,
+      "target": "Smart报告(份)",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "35b82973a0e82a16903d",
+      "after_state_id": "7f2dfc8398a1bbf5aebf",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "Smart 报告(份)",
+        "role": "",
+        "tag": "div",
+        "selector": "div.cardTitle___3hSJ7",
+        "primary_locator": "div.cardTitle___3hSJ7",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_9": "",
+                "rc_select_10": "",
+                "rc_select_11": ""
+              },
+              "after": {
+                "rc_select_22": "",
+                "rc_select_23": "",
+                "rc_select_24": ""
+              }
+            }
+          },
+          "before_state_id": "35b82973a0e82a16903d",
+          "after_state_id": "7f2dfc8398a1bbf5aebf"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "568",
+      "case_name": "Smart报告(份)卡片点击跳转患者档案并校验总数与今日新增",
+      "module": "患者概览",
+      "preconditions": "已登录系统并处于工作台页面\n若「Smart报告(份)」指标卡片未展示则跳过本用例",
+      "expected_result": "Smart报告(份)卡片可正确跳转至目标患者档案列表，总数与今日新增校验通过；无记录时展示「暂无数据」",
+      "seq": 2,
+      "target": "Smart报告(份)",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "7f2dfc8398a1bbf5aebf",
+      "after_state_id": "7f2dfc8398a1bbf5aebf",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "Smart 报告(份)",
+        "role": "",
+        "tag": "div",
+        "selector": "div.cardTitle___3hSJ7",
+        "primary_locator": "div.cardTitle___3hSJ7",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "7f2dfc8398a1bbf5aebf",
+          "after_state_id": "7f2dfc8398a1bbf5aebf"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "568",
+      "case_name": "Smart报告(份)卡片点击跳转患者档案并校验总数与今日新增",
+      "module": "患者概览",
+      "preconditions": "已登录系统并处于工作台页面\n若「Smart报告(份)」指标卡片未展示则跳过本用例",
+      "expected_result": "Smart报告(份)卡片可正确跳转至目标患者档案列表，总数与今日新增校验通过；无记录时展示「暂无数据」",
+      "seq": 4,
+      "target": "",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "7f2dfc8398a1bbf5aebf",
+      "after_state_id": "7f2dfc8398a1bbf5aebf",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "568",
+      "case_name": "Smart报告(份)卡片点击跳转患者档案并校验总数与今日新增",
+      "module": "患者概览",
+      "preconditions": "已登录系统并处于工作台页面\n若「Smart报告(份)」指标卡片未展示则跳过本用例",
+      "expected_result": "Smart报告(份)卡片可正确跳转至目标患者档案列表，总数与今日新增校验通过；无记录时展示「暂无数据」",
+      "seq": 6,
+      "target": "今日新增",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "7f2dfc8398a1bbf5aebf",
+      "after_state_id": "7f2dfc8398a1bbf5aebf",
+      "locator": {
+        "strategy": "text_contains",
+        "actual_text": "今日新增+0",
+        "role": "",
+        "tag": "span",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "7f2dfc8398a1bbf5aebf",
+          "after_state_id": "7f2dfc8398a1bbf5aebf"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    }
+  ],
+  "case_results": [
+    {
+      "case_id": "567",
+      "case_name": "患者人数卡片点击跳转患者档案并校验总数与今日新增",
+      "module": "患者概览",
+      "test_case_id": "567",
+      "logical_case_id": "567",
+      "revision_no": 1,
+      "version_id": 121,
+      "project_id": 11,
+      "preconditions": "已登录系统并处于工作台页面\n若「患者人数」指标卡片未展示则跳过本用例",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "ac848c2fa72cb9b88945",
+      "data_set_id": "9203f564-5139-499e-a4c2-c146a12e1e8c",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788420650.0364742,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "568",
+      "case_name": "Smart报告(份)卡片点击跳转患者档案并校验总数与今日新增",
+      "module": "患者概览",
+      "test_case_id": "568",
+      "logical_case_id": "568",
+      "revision_no": 1,
+      "version_id": 121,
+      "project_id": 11,
+      "preconditions": "已登录系统并处于工作台页面\n若「Smart报告(份)」指标卡片未展示则跳过本用例",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "35b82973a0e82a16903d",
+      "data_set_id": "c4c7fa4e-550c-4385-8590-9827bceba455",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788420651.8795455,
+      "data_cleanup": []
+    }
+  ]
+}

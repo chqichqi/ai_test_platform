@@ -1,0 +1,198 @@
+{
+  "module": "佩戴预警",
+  "evidence": [
+    {
+      "case_id": "559",
+      "case_name": "验证佩戴预警卡片跳转患者详情页并校验患者姓名一致",
+      "module": "佩戴预警",
+      "preconditions": "已登录系统并处于工作台页面；若佩戴预警卡片未出现或展示「暂无数据」，则本用例跳过",
+      "expected_result": "点击佩戴预警卡片后成功进入对应患者详情页，且详情页患者姓名与预警卡片姓名一致，并成功返回工作台",
+      "seq": 1,
+      "target": "佩戴预警",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "ac848c2fa72cb9b88945",
+      "after_state_id": "ac848c2fa72cb9b88945",
+      "locator": {
+        "strategy": "scored_text(40)",
+        "actual_text": "佩戴预警 (0)全部暂无数据暂无数据",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "ac848c2fa72cb9b88945",
+          "after_state_id": "ac848c2fa72cb9b88945"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "559",
+      "case_name": "验证佩戴预警卡片跳转患者详情页并校验患者姓名一致",
+      "module": "佩戴预警",
+      "preconditions": "已登录系统并处于工作台页面；若佩戴预警卡片未出现或展示「暂无数据」，则本用例跳过",
+      "expected_result": "点击佩戴预警卡片后成功进入对应患者详情页，且详情页患者姓名与预警卡片姓名一致，并成功返回工作台",
+      "seq": 3,
+      "target": "",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "ac848c2fa72cb9b88945",
+      "after_state_id": "ac848c2fa72cb9b88945",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "559",
+      "case_name": "验证佩戴预警卡片跳转患者详情页并校验患者姓名一致",
+      "module": "佩戴预警",
+      "preconditions": "已登录系统并处于工作台页面；若佩戴预警卡片未出现或展示「暂无数据」，则本用例跳过",
+      "expected_result": "点击佩戴预警卡片后成功进入对应患者详情页，且详情页患者姓名与预警卡片姓名一致，并成功返回工作台",
+      "seq": 4,
+      "target": "佩戴预警",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "cross_module_navigation_blocked",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "ac848c2fa72cb9b88945",
+      "after_state_id": "ac848c2fa72cb9b88945",
+      "locator": {
+        "strategy": "text_contains",
+        "actual_text": "佩戴预警 (0)",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "ac848c2fa72cb9b88945",
+          "after_state_id": "ac848c2fa72cb9b88945"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "559",
+      "case_name": "验证佩戴预警卡片跳转患者详情页并校验患者姓名一致",
+      "module": "佩戴预警",
+      "preconditions": "已登录系统并处于工作台页面；若佩戴预警卡片未出现或展示「暂无数据」，则本用例跳过",
+      "expected_result": "点击佩戴预警卡片后成功进入对应患者详情页，且详情页患者姓名与预警卡片姓名一致，并成功返回工作台",
+      "seq": 5,
+      "target": "返回",
+      "action": "click",
+      "role": "button",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "ac848c2fa72cb9b88945",
+      "after_state_id": "ac848c2fa72cb9b88945",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    }
+  ],
+  "case_results": [
+    {
+      "case_id": "559",
+      "case_name": "验证佩戴预警卡片跳转患者详情页并校验患者姓名一致",
+      "module": "佩戴预警",
+      "test_case_id": "559",
+      "logical_case_id": "559",
+      "revision_no": 1,
+      "version_id": 121,
+      "project_id": 11,
+      "preconditions": "已登录系统并处于工作台页面；若佩戴预警卡片未出现或展示「暂无数据」，则本用例跳过",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788420627953&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "ac848c2fa72cb9b88945",
+      "data_set_id": "69c96e35-5eb9-43d3-8c5b-11ba1eccd6b4",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788420645.8639307,
+      "data_cleanup": []
+    }
+  ]
+}

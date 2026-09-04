@@ -200,6 +200,7 @@ class ElementLocator:
 
             partial = root.get_by_text(target, exact=False)
             count = partial.count()
+            partial_cands = []
             for i in range(min(count, 20)):
                 try:
                     loc = partial.nth(i)
@@ -207,9 +208,17 @@ class ElementLocator:
                         continue
                     candidate = self._actionable_ancestor(loc) if require_actionable else loc
                     if candidate is not None and candidate.is_visible():
-                        return LocateResult(True, candidate, 'text_contains', self._describe(candidate))
+                        partial_cands.append(candidate)
                 except Exception:
                     continue
+            if partial_cands:
+                # 2026-09-03 审计 P1-5：部分匹配也要选“可见 DOM 面积最小”的候选，
+                # 而不是命中第一个就返回——否则易选中侧边栏<li>容器（其 inner_text 含
+                # 整条菜单/换行），把容器文本当单个目标，是“探索按整串定位乱跑”的源头。
+                # 选最小面积更可能命中叶子可操作元素。
+                pbest = self._pick_best(partial_cands, len(partial_cands))
+                if pbest:
+                    return LocateResult(True, pbest, 'text_contains', self._describe(pbest))
         except Exception as e:
             logger.debug(f"[ElementLocator] get_by_text failed: {e}")
         return LocateResult(False, strategy='text')
@@ -850,6 +859,13 @@ class ElementLocator:
         except Exception: tag = ''
         try: text = (locator.inner_text() or '').strip()
         except Exception: text = ''
+        # 2026-09-03 审计 P1-5：若命中的是容器（inner_text 含换行=整块/多元素文本），
+        # actual_text 只保留第一段短文本，避免把整条菜单/多对象拼成的文本作为定位真值
+        # 落库（下游执行按整串匹配必失败，且 _correct_case_steps 曾把它写回 test_steps）。
+        if "\n" in text or "\r" in text:
+            _first = text.splitlines()[0].strip() if text.splitlines() else ""
+            if _first and len(_first) <= 40:
+                text = _first
         role = attr('role')
         aria = attr('aria-label')
         title = attr('title')

@@ -266,7 +266,7 @@ const WebUITestPage: React.FC = () => {
     }
   };
 
-  // 执行WEB UI测试
+  // 执行WEB UI测试（单条）→ 弹出执行结果详情（与批量同一弹窗，可看状态/错误/耗时）
   const handleExecute = async (testCaseId: string) => {
     setExecutionLoading(true);
     try {
@@ -274,13 +274,28 @@ const WebUITestPage: React.FC = () => {
         web_ui_test_case_id: testCaseId,
         environment: 'development'
       });
-      
-      if (response.data.status === 'completed') {
-        message.success('测试执行成功！');
-        loadWebUITestCases();
-      } else {
-        message.error(response.data.error || '测试执行失败');
-      }
+      const r = response.data || {};
+      const st = String(r.status || 'failed');
+      const ok = st === 'completed';
+      const isSkip = st === 'skipped';
+      const isFail = !ok && !isSkip;
+      // 归一成与批量一致的 execResult 结构，复用同一详情弹窗
+      setExecResult({
+        total: 1,
+        ok: ok ? 1 : 0,
+        skipped: isSkip ? 1 : 0,
+        fail: isFail ? 1 : 0,
+        results: [{
+          test_case_id: testCaseId,
+          status: isFail ? 'failed' : (isSkip ? 'skipped' : 'completed'),
+          error: r.error || undefined,
+          duration_ms: r.performance_metrics?.duration_ms ?? r.duration ?? 0,
+          browser_mode: r.performance_metrics?.browser_mode || 'isolated',
+          steps_executed: r.performance_metrics?.steps_executed ?? 0,
+        }],
+      });
+      setExecResultVisible(true);
+      loadWebUITestCases();
     } catch (error: any) {
       console.error('执行失败:', error);
       message.error(`执行失败: ${error.response?.data?.detail || error.message}`);
@@ -864,7 +879,8 @@ const WebUITestPage: React.FC = () => {
                 <Divider orientation="left">失败明细</Divider>
                 <div style={{ maxHeight: 320, overflowY: 'auto' }}>
                   {(execResult.results || [])
-                    .filter(r => r.status !== 'completed')
+                    // 失败明细只展示真正的失败(status=error/failed)，不含 skipped(依赖前置失败/动态数据为空跳过)——它们已计入"跳过"卡
+                    .filter(r => r.status === 'error' || r.status === 'failed')
                     .map((r, i) => {
                       const tc = webUiTestCases.find(c => c.id === r.test_case_id);
                       return (

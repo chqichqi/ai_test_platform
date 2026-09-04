@@ -107,10 +107,12 @@ export const versionApi = {
     return response.data;
   },
 
-  generateAssets: async (id: number, sourceType: string = 'ai'): Promise<GenerateAssetsResponse> => {
-    const response = await axiosInstance.post(`/versions/${id}/generate-assets`, null, {
+  generateAssets: async (id: number, sourceType: string = 'ai', content?: string): Promise<GenerateAssetsResponse> => {
+    // content(可选) = 本次"新导入块"：若传入，后端只针对该块增量生成（新模块追加、同模块更新，不动其它模块）；
+    // 不传则按版本整份需求文档生成。两步法同步生成实测需 ~16-20 分钟（分模块逐批 LLM），超时必须给足余量。
+    const response = await axiosInstance.post(`/versions/${id}/generate-assets`, content ? { content } : null, {
       params: { source_type: sourceType },
-      timeout: 900000,  // 15分钟，两步法需两次LLM调用
+      timeout: 2400000,  // 40 分钟
     });
     return response.data;
   },
@@ -342,6 +344,10 @@ export interface SceneItemInfo {
   custom_params: Record<string, any>;
   /** 方案B：绑定的 WUI 实例（派生软删后执行时按逻辑 id 重解析） */
   wui_id?: string | null;
+  /** 后端解析出的用例展示名（第3项；ui 条目=WUI title，api 条目可能为空） */
+  case_name?: string;
+  /** 后端解析出的用例所属模块（第3项；ui 条目=WUI test_data.module） */
+  case_module?: string;
 }
 
 export const sceneApi = {

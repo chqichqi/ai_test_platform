@@ -4,7 +4,7 @@
 """
 
 from typing import Optional
-from fastapi import APIRouter, Depends, HTTPException, Query, status, BackgroundTasks
+from fastapi import APIRouter, Depends, HTTPException, Query, status, BackgroundTasks, Body
 from sqlalchemy.orm import Session
 from sqlalchemy import or_
 
@@ -589,12 +589,16 @@ async def generate_test_assets(
     db: Session = Depends(get_db),
     current_user: dict = Depends(Permissions.VERSION_CREATE),
     source_type: str = "ai",
+    body: Optional[dict] = Body(None),
 ):
     """
     生成测试资产（测试用例）
 
     根据版本的需求文档自动生成测试用例
     source_type: 来源类型，默认 'ai'（需求导入），业务流导入传 'business_flow'
+    body.content (可选)：若提供，则仅针对该「新导入块」增量生成（其内容通常就是某模块的一段业务流/需求，
+       用于"导入新模块=追加用例、同模块=更新该模块、不动其它模块"的增量语义）；
+       不提供则回退按 version.requirement_doc 整份生成（如新建版本一次性生成）。
     """
     version = db.query(Version).filter(Version.id == version_id).first()
 
@@ -604,10 +608,13 @@ async def generate_test_assets(
             detail=f"版本 ID {version_id} 不存在"
         )
 
-    if not version.requirement_doc:
+    # 生成来源：优先用 body.content（新导入块，增量）；否则整份 version.requirement_doc
+    delta = (body or {}).get("content") if isinstance(body, dict) else None
+    gen_content = (delta or "").strip() if delta else (version.requirement_doc or "")
+    if not gen_content:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="版本没有关联需求文档，无法生成测试资产"
+            detail="没有可生成的需求内容（未传新块且版本未关联需求文档）"
         )
 
     project = version.project
@@ -622,7 +629,7 @@ async def generate_test_assets(
     generator = VersionGeneratorService(db)
     result = await generator.generate_test_assets(
         version_id=version_id,
-        requirement_doc_content=version.requirement_doc,
+        requirement_doc_content=gen_content,
         project_name=project.name,
         version_number=version.version_number,
         source_type=source_type,

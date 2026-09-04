@@ -1,0 +1,1069 @@
+{
+  "timestamp": "2026-09-03T07:31:06.483908",
+  "pipeline": "functional_to_ui",
+  "test_cases_total": 6,
+  "exploration": {},
+  "conversions": [
+    {
+      "test_case_id": "559",
+      "case_name": "验证佩戴预警卡片跳转患者详情页并校验患者姓名一致",
+      "module": "佩戴预警",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 5,
+        "steps": [
+          {
+            "step": 1,
+            "action": "查看「佩戴预警」卡片上展示的患者姓名",
+            "expected": "成功获取「佩戴预警」卡片上展示的患者姓名，用于后续比对"
+          },
+          {
+            "step": 2,
+            "action": "点击「佩戴预警」卡片",
+            "expected": "跳转至该佩戴预警记录对应的患者详情页"
+          },
+          {
+            "step": 3,
+            "action": "验证：患者详情页展示患者姓名",
+            "expected": "患者姓名字段可见且姓名非空"
+          },
+          {
+            "step": 4,
+            "action": "验证：详情页患者姓名与「佩戴预警 (0)全部暂无数据暂无数据」卡片展示的患者姓名一致",
+            "expected": "详情页患者姓名与佩戴预警卡片展示的姓名完全一致"
+          },
+          {
+            "step": 5,
+            "action": "点击「返回」按钮返回工作台",
+            "expected": "成功返回工作台页面，无登录失效等异常"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 7,
+        "title": "验证佩戴预警卡片跳转患者详情页并校验患者姓名一致",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "skip_if_empty",
+            "desc": "若佩戴预警卡片未出现或展示「暂无数据」，则跳过本用例",
+            "args": {
+              "locator": "佩戴预警"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "click",
+            "desc": "点击「佩戴预警」卡片，跳转至患者详情页",
+            "args": {
+              "locator": "佩戴预警"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证患者详情页展示患者姓名，患者姓名字段可见且姓名非空",
+            "args": {
+              "locator": "患者姓名"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_text",
+            "desc": "验证详情页患者姓名与佩戴预警卡片展示的患者姓名一致",
+            "args": {
+              "locator": "患者姓名",
+              "expected": "${patientName}"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "click",
+            "desc": "点击「返回」按钮返回工作台",
+            "args": {
+              "locator": "返回"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "assert_url",
+            "desc": "验证成功返回工作台页面，无登录失效等异常",
+            "args": {
+              "expected": "https://hospitalweb.xinjikang.cn/"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 5,
+        "found_steps": 1,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "佩戴预警",
+            "action": "click",
+            "actual_text": "佩戴预警 (0)全部暂无数据暂无数据",
+            "status": "failed",
+            "strategy": "scored_text(40)",
+            "message": "✗ 未找到「佩戴预警」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "target": "佩戴预警",
+            "action": "click",
+            "actual_text": "佩戴预警 (0)全部暂无数据暂无数据",
+            "status": "failed",
+            "strategy": "scored_text(40)",
+            "message": "✗ 未找到「佩戴预警」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 3,
+            "step_raw": "{'step': 3, 'action': '验证：患者详情页展示患者姓名', 'expected': '患者姓名字段可见且姓名非空'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 4,
+            "target": "佩戴预警",
+            "action": "validate",
+            "actual_text": "佩戴预警 (0)全部暂无数据暂无数据",
+            "status": "success",
+            "strategy": "scored_text(40)",
+            "message": "✓ 已定位「佩戴预警」（断言目标由交互步骤覆盖）"
+          },
+          {
+            "seq": 5,
+            "target": "返回",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「返回」— element_not_found"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "567",
+      "case_name": "患者人数卡片点击跳转患者档案并校验总数与今日新增",
+      "module": "患者概览",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 6,
+        "steps": [
+          {
+            "step": 1,
+            "action": "若「患者人数」卡片未展示则跳过本用例",
+            "expected": "卡片存在时继续执行，不存在时由动态跳过机制结束用例"
+          },
+          {
+            "step": 2,
+            "action": "验证：「患者人数」卡片展示「总数」和「今日新增」两个字段",
+            "expected": "卡片同时展示「总数」与「今日新增」，字段值均为有效数字"
+          },
+          {
+            "step": 3,
+            "action": "点击「患者人数」卡片",
+            "expected": "从工作台跳转至患者档案列表页，跳转地址与患者档案入口规则一致"
+          },
+          {
+            "step": 4,
+            "action": "验证：患者档案列表页已加载",
+            "expected": "列表页基本信息区域可见，分页或结果区可读取总记录数"
+          },
+          {
+            "step": 5,
+            "action": "验证：患者档案列表总记录数等于「患者人数」卡片「总数」",
+            "expected": "列表总记录数与卡片总数数值一致；若总记录数为0则页面显示「暂无数据」"
+          },
+          {
+            "step": 6,
+            "action": "验证：患者档案列表中可按当日新增标识的记录数与卡片「今日新增」一致",
+            "expected": "当日新增记录数与卡片今日新增字段数值一致"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 6,
+        "title": "患者人数卡片点击跳转患者档案并校验总数与今日新增",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "skip_if_empty",
+            "desc": "若「患者人数」指标卡片未展示则跳过本用例",
+            "args": {
+              "locator": "患者人数"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_visible",
+            "desc": "验证「患者人数」卡片展示「总数」字段",
+            "args": {
+              "locator": "总数"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证「患者人数」卡片展示「今日新增」字段",
+            "args": {
+              "locator": "今日新增"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "click",
+            "desc": "点击「患者人数」卡片，跳转至患者档案列表页",
+            "args": {
+              "locator": "患者人数"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证患者档案列表页已加载，基本信息区域可见",
+            "args": {
+              "locator": "基本信息"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 6,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "Smart报告(份)",
+            "action": "click",
+            "actual_text": "Smart 报告(份)",
+            "status": "failed",
+            "strategy": "treewalker_text",
+            "message": "✗ 未找到「Smart报告(份)」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "target": "Smart报告(份)",
+            "action": "validate",
+            "actual_text": "Smart 报告(份)",
+            "status": "success",
+            "strategy": "treewalker_text",
+            "message": "✓ 已定位「Smart报告(份)」（断言目标由交互步骤覆盖）"
+          },
+          {
+            "seq": 3,
+            "target": "患者人数",
+            "action": "click",
+            "actual_text": "患者人数",
+            "status": "failed",
+            "strategy": "treewalker_text",
+            "message": "✗ 未找到「患者人数」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：患者档案列表页已加载', 'expected': '列表页基本信息区域可见，分页或结果区可读取总记录数'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "target": "患者人数",
+            "action": "validate",
+            "actual_text": "患者人数",
+            "status": "success",
+            "strategy": "treewalker_text",
+            "message": "✓ 已定位「患者人数」（断言目标由交互步骤覆盖）"
+          },
+          {
+            "seq": 6,
+            "target": "今日新增",
+            "action": "validate",
+            "status": "skipped",
+            "strategy": "",
+            "message": "「今日新增」为纯断言目标，探索不探索断言步骤（不计缺失）"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "568",
+      "case_name": "Smart报告(份)卡片点击跳转患者档案并校验总数与今日新增",
+      "module": "患者概览",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 6,
+        "steps": [
+          {
+            "step": 1,
+            "action": "若「Smart报告(份)」卡片未展示则跳过本用例",
+            "expected": "卡片存在时继续执行，不存在时由动态跳过机制结束用例"
+          },
+          {
+            "step": 2,
+            "action": "验证：「Smart 报告(份)」卡片展示「总数」和「今日新增」两个字段",
+            "expected": "卡片同时展示「总数」与「今日新增」，字段值均为有效数字"
+          },
+          {
+            "step": 3,
+            "action": "点击「Smart报告(份)」卡片",
+            "expected": "从工作台跳转至目标患者档案列表页，跳转地址与患者档案入口规则一致"
+          },
+          {
+            "step": 4,
+            "action": "验证：目标患者档案列表页已加载",
+            "expected": "列表页基本信息区域可见，分页或结果区可读取总记录数"
+          },
+          {
+            "step": 5,
+            "action": "验证：目标患者档案列表总记录数等于「Smart 报告(份)」卡片「总数」",
+            "expected": "列表总记录数与卡片总数数值一致；若总记录数为0则页面显示「暂无数据」"
+          },
+          {
+            "step": 6,
+            "action": "验证：目标患者档案列表中可按当日新增标识的记录数与卡片「今日新增」一致",
+            "expected": "当日新增记录数与卡片今日新增字段数值一致"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 6,
+        "title": "Smart报告(份)卡片点击跳转患者档案并校验总数与今日新增",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "skip_if_empty",
+            "desc": "若「Smart报告(份)」指标卡片未展示则跳过本用例",
+            "args": {
+              "locator": "Smart报告(份)"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_visible",
+            "desc": "验证「Smart报告(份)」卡片展示「总数」字段",
+            "args": {
+              "locator": "总数"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证「Smart报告(份)」卡片展示「今日新增」字段",
+            "args": {
+              "locator": "今日新增"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "click",
+            "desc": "点击「Smart报告(份)」卡片，跳转至目标患者档案列表页",
+            "args": {
+              "locator": "Smart报告(份)"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "assert_visible",
+            "desc": "验证目标患者档案列表页已加载，基本信息区域可见",
+            "args": {
+              "locator": "基本信息"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 6,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "Smart报告(份)",
+            "action": "click",
+            "actual_text": "Smart 报告(份)",
+            "status": "failed",
+            "strategy": "treewalker_text",
+            "message": "✗ 未找到「Smart报告(份)」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "target": "Smart报告(份)",
+            "action": "validate",
+            "actual_text": "Smart 报告(份)",
+            "status": "success",
+            "strategy": "treewalker_text",
+            "message": "✓ 已定位「Smart报告(份)」（断言目标由交互步骤覆盖）"
+          },
+          {
+            "seq": 3,
+            "target": "Smart报告(份)",
+            "action": "click",
+            "actual_text": "Smart 报告(份)",
+            "status": "failed",
+            "strategy": "treewalker_text",
+            "message": "✗ 未找到「Smart报告(份)」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：目标患者档案列表页已加载', 'expected': '列表页基本信息区域可见，分页或结果区可读取总记录数'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "target": "Smart报告(份)",
+            "action": "validate",
+            "actual_text": "Smart 报告(份)",
+            "status": "success",
+            "strategy": "treewalker_text",
+            "message": "✓ 已定位「Smart报告(份)」（断言目标由交互步骤覆盖）"
+          },
+          {
+            "seq": 6,
+            "target": "今日新增",
+            "action": "validate",
+            "status": "skipped",
+            "strategy": "",
+            "message": "「今日新增」为纯断言目标，探索不探索断言步骤（不计缺失）"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "534",
+      "case_name": "验证患者列表各搜索框输入查询条件后列表结果与搜索条件匹配",
+      "module": "患者列表页面",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 11,
+        "steps": [
+          {
+            "step": 1,
+            "action": "记录当前患者列表表格第一行「患者姓名」列的文本值作为姓名关键字",
+            "expected": "读取到非空的姓名关键字；若列表无任何患者记录，则本用例搜索验证部分跳过"
+          },
+          {
+            "step": 2,
+            "action": "在「患者姓名」搜索框中输入步骤1记录的姓名关键字",
+            "expected": "搜索框中完整显示该姓名关键字"
+          },
+          {
+            "step": 3,
+            "action": "点击「查询」按钮",
+            "expected": "患者列表按姓名关键字刷新"
+          },
+          {
+            "step": 4,
+            "action": "验证：查询结果列表中的患者姓名均与步骤1记录的姓名关键字匹配",
+            "expected": "返回记录的患者姓名均包含步骤1的姓名关键字，筛选结果正确"
+          },
+          {
+            "step": 5,
+            "action": "点击「重置」按钮",
+            "expected": "姓名搜索框等搜索条件被清空"
+          },
+          {
+            "step": 6,
+            "action": "记录当前患者列表表格第一行「手机号」列的文本值作为手机号关键字",
+            "expected": "读取到非空的手机号关键字；若列表无任何患者记录，则本用例搜索验证部分跳过"
+          },
+          {
+            "step": 7,
+            "action": "在「手机号」搜索框中输入步骤6记录的手机号关键字",
+            "expected": "搜索框中完整显示该手机号关键字"
+          },
+          {
+            "step": 8,
+            "action": "点击「查询」按钮",
+            "expected": "患者列表按手机号关键字刷新"
+          },
+          {
+            "step": 9,
+            "action": "验证：查询结果列表中的患者手机号与步骤6记录的手机号关键字一致",
+            "expected": "返回记录的患者手机号均匹配步骤6的手机号关键字，筛选结果正确"
+          },
+          {
+            "step": 10,
+            "action": "点击「重置」按钮",
+            "expected": "手机号搜索框等搜索条件被清空"
+          },
+          {
+            "step": 11,
+            "action": "若患者列表上方还存在其他搜索框，则参照读取当前行对应列值、输入、查询、验证、重置的流程逐一执行",
+            "expected": "其余搜索框的筛选结果均与搜索输入匹配，列表中无不符合条件的记录"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 11,
+        "title": "验证患者列表各搜索框输入查询条件后列表结果与搜索条件匹配",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "skip_if_empty",
+            "desc": "若列表无任何患者记录则跳过姓名搜索验证；否则读取当前患者列表表格第一行患者姓名列文本值作为姓名关键字",
+            "args": {
+              "locator": "患者列表"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "fill",
+            "desc": "在「患者姓名」搜索框中输入姓名关键字",
+            "args": {
+              "locator": "患者姓名",
+              "value": "${patientNameKeyword}"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击「查询」按钮",
+            "args": {
+              "locator": "查询"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证查询结果列表中的患者姓名均与姓名关键字匹配",
+            "args": {
+              "locator": "患者姓名"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "click",
+            "desc": "点击「重置」按钮",
+            "args": {
+              "locator": "重置"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "skip_if_empty",
+            "desc": "若列表无任何患者记录则跳过手机号搜索验证；否则读取当前患者列表表格第一行手机号列文本值作为手机号关键字",
+            "args": {
+              "locator": "患者列表"
+            }
+          },
+          {
+            "seq": 7,
+            "action": "fill",
+            "desc": "在「手机号」搜索框中输入手机号关键字",
+            "args": {
+              "locator": "手机号",
+              "value": "${phoneKeyword}"
+            }
+          },
+          {
+            "seq": 8,
+            "action": "click",
+            "desc": "点击「查询」按钮",
+            "args": {
+              "locator": "查询"
+            }
+          },
+          {
+            "seq": 9,
+            "action": "assert_visible",
+            "desc": "验证查询结果列表中的患者手机号均与手机号关键字匹配",
+            "args": {
+              "locator": "手机号"
+            }
+          },
+          {
+            "seq": 10,
+            "action": "click",
+            "desc": "点击「重置」按钮",
+            "args": {
+              "locator": "重置"
+            }
+          },
+          {
+            "seq": 11,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 11,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "新增患者",
+            "action": "click",
+            "actual_text": "患者人数107今日新增+0",
+            "status": "failed",
+            "strategy": "scored_text(20)",
+            "message": "✗ 未找到「新增患者」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "target": "新增",
+            "action": "validate",
+            "status": "skipped",
+            "strategy": "",
+            "message": "「新增」为纯断言目标，探索不探索断言步骤（不计缺失）"
+          },
+          {
+            "seq": 3,
+            "target": "查询",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「查询」— element_not_found"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：查询结果列表中的患者姓名均与步骤1记录的姓名关键字匹配', 'expected': '返回记录的患者姓名均包含步骤1的姓名关键字，筛选结果正确'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "target": "重置",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「重置」— element_not_found"
+          },
+          {
+            "seq": 6,
+            "target": "患者姓名",
+            "action": "validate",
+            "actual_text": "患者档案",
+            "status": "success",
+            "strategy": "scored(13)",
+            "message": "✓ 已定位「患者姓名」（断言目标由交互步骤覆盖）"
+          },
+          {
+            "seq": 7,
+            "target": "手机号",
+            "action": "validate",
+            "actual_text": "",
+            "status": "success",
+            "strategy": "",
+            "message": "✓ 已定位「手机号」（断言目标由交互步骤覆盖）"
+          },
+          {
+            "seq": 8,
+            "target": "查询",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「查询」— element_not_found"
+          },
+          {
+            "seq": 9,
+            "step_raw": "{'step': 9, 'action': '验证：查询结果列表中的患者手机号与步骤6记录的手机号关键字一致', 'expected': '返回记录的患者手机号均匹配步骤6的手机号关键字，筛选结果正确",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 10,
+            "target": "重置",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「重置」— element_not_found"
+          },
+          {
+            "seq": 11,
+            "step_raw": "{'step': 11, 'action': '若患者列表上方还存在其他搜索框，则参照读取当前行对应列值、输入、查询、验证、重置的流程逐一执行', 'expected': '其余搜索框的筛选结果均与搜",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "535",
+      "case_name": "验证患者列表重置按钮清空搜索条件",
+      "module": "患者列表页面",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 9,
+        "steps": [
+          {
+            "step": 1,
+            "action": "在「患者姓名」搜索框中输入\"查询测试患者\"",
+            "expected": "搜索框显示输入内容\"查询测试患者\""
+          },
+          {
+            "step": 2,
+            "action": "在「手机号」搜索框中输入\"13900000001\"",
+            "expected": "搜索框显示输入内容\"13900000001\""
+          },
+          {
+            "step": 3,
+            "action": "点击「查询」按钮",
+            "expected": "患者列表按姓名及手机号条件刷新"
+          },
+          {
+            "step": 4,
+            "action": "验证：列表展示按患者姓名和手机号过滤后的结果，无匹配记录时可为空列表",
+            "expected": "当前列表结果与查询条件匹配"
+          },
+          {
+            "step": 5,
+            "action": "点击「重置」按钮",
+            "expected": "搜索条件被成功重置"
+          },
+          {
+            "step": 6,
+            "action": "验证：「患者档案」搜索框内容为空",
+            "expected": "患者姓名搜索框已清空"
+          },
+          {
+            "step": 7,
+            "action": "验证：「手机号」搜索框内容为空",
+            "expected": "手机号搜索框已清空"
+          },
+          {
+            "step": 8,
+            "action": "验证：患者列表上方其他搜索条件恢复为默认状态",
+            "expected": "所有搜索条件均被清空或恢复默认选项"
+          },
+          {
+            "step": 9,
+            "action": "验证：患者列表恢复为查询前未筛选状态",
+            "expected": "列表数据不再受原有搜索条件过滤"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 10,
+        "title": "验证患者列表重置按钮清空搜索条件",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "fill",
+            "desc": "在「患者姓名」搜索框中输入查询测试患者",
+            "args": {
+              "locator": "患者姓名",
+              "value": "查询测试患者"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "fill",
+            "desc": "在「手机号」搜索框中输入13900000001",
+            "args": {
+              "locator": "手机号",
+              "value": "13900000001"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "click",
+            "desc": "点击「查询」按钮",
+            "args": {
+              "locator": "查询"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证列表展示按患者姓名和手机号过滤后的结果，无匹配记录时可为空列表",
+            "args": {
+              "locator": "患者列表"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "click",
+            "desc": "点击「重置」按钮",
+            "args": {
+              "locator": "重置"
+            }
+          },
+          {
+            "seq": 6,
+            "action": "assert_value",
+            "desc": "验证「患者姓名」搜索框内容为空",
+            "args": {
+              "locator": "患者姓名",
+              "value": ""
+            }
+          },
+          {
+            "seq": 7,
+            "action": "assert_value",
+            "desc": "验证「手机号」搜索框内容为空",
+            "args": {
+              "locator": "手机号",
+              "value": ""
+            }
+          },
+          {
+            "seq": 8,
+            "action": "assert_visible",
+            "desc": "验证患者列表上方其他搜索条件恢复为默认状态",
+            "args": {
+              "locator": "患者列表"
+            }
+          },
+          {
+            "seq": 9,
+            "action": "assert_visible",
+            "desc": "验证患者列表恢复为查询前未筛选状态",
+            "args": {
+              "locator": "患者列表"
+            }
+          },
+          {
+            "seq": 10,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 9,
+        "found_steps": 2,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "新增患者",
+            "action": "click",
+            "actual_text": "患者人数107今日新增+0",
+            "status": "failed",
+            "strategy": "scored_text(20)",
+            "message": "✗ 未找到「新增患者」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "target": "新增",
+            "action": "validate",
+            "status": "skipped",
+            "strategy": "",
+            "message": "「新增」为纯断言目标，探索不探索断言步骤（不计缺失）"
+          },
+          {
+            "seq": 3,
+            "target": "查询",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「查询」— element_not_found"
+          },
+          {
+            "seq": 4,
+            "step_raw": "{'step': 4, 'action': '验证：列表展示按患者姓名和手机号过滤后的结果，无匹配记录时可为空列表', 'expected': '当前列表结果与查询条件匹配'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 5,
+            "target": "重置",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「重置」— element_not_found"
+          },
+          {
+            "seq": 6,
+            "target": "患者姓名",
+            "action": "validate",
+            "actual_text": "患者档案",
+            "status": "success",
+            "strategy": "scored(13)",
+            "message": "✓ 已定位「患者姓名」（断言目标由交互步骤覆盖）"
+          },
+          {
+            "seq": 7,
+            "target": "手机号",
+            "action": "validate",
+            "actual_text": "",
+            "status": "success",
+            "strategy": "",
+            "message": "✓ 已定位「手机号」（断言目标由交互步骤覆盖）"
+          },
+          {
+            "seq": 8,
+            "step_raw": "{'step': 8, 'action': '验证：患者列表上方其他搜索条件恢复为默认状态', 'expected': '所有搜索条件均被清空或恢复默认选项'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          },
+          {
+            "seq": 9,
+            "step_raw": "{'step': 9, 'action': '验证：患者列表恢复为查询前未筛选状态', 'expected': '列表数据不再受原有搜索条件过滤'}",
+            "target": "",
+            "status": "skipped",
+            "message": "步骤描述无法解析"
+          }
+        ],
+        "warning": null
+      }
+    },
+    {
+      "test_case_id": "536",
+      "case_name": "验证点击新增患者按钮打开弹窗且默认选中新增Tab",
+      "module": "患者列表页面",
+      "mode": "v2",
+      "status": "success",
+      "error": null,
+      "before": {
+        "steps_count": 3,
+        "steps": [
+          {
+            "step": 1,
+            "action": "点击患者列表页面右上角「新增患者」按钮",
+            "expected": "弹出新增患者弹窗"
+          },
+          {
+            "step": 2,
+            "action": "验证：新增患者弹窗顶部出现「新增」页签与「批量导入」页签",
+            "expected": "弹窗内展示新增和批量导入两个页签"
+          },
+          {
+            "step": 3,
+            "action": "验证：「新增」页签处于选中状态",
+            "expected": "默认选中新增Tab，页面展示新增表单内容"
+          }
+        ]
+      },
+      "after": {
+        "steps_count": 5,
+        "title": "验证点击新增患者按钮打开弹窗且默认选中新增Tab",
+        "steps": [
+          {
+            "seq": 1,
+            "action": "click",
+            "desc": "点击患者列表页面右上角「新增患者」按钮",
+            "args": {
+              "locator": "新增患者"
+            }
+          },
+          {
+            "seq": 2,
+            "action": "assert_visible",
+            "desc": "验证新增患者弹窗顶部出现「新增」页签",
+            "args": {
+              "locator": "新增"
+            }
+          },
+          {
+            "seq": 3,
+            "action": "assert_visible",
+            "desc": "验证新增患者弹窗顶部出现「批量导入」页签",
+            "args": {
+              "locator": "批量导入"
+            }
+          },
+          {
+            "seq": 4,
+            "action": "assert_visible",
+            "desc": "验证「新增」页签默认选中，页面展示新增表单内容",
+            "args": {
+              "locator": "新增"
+            }
+          },
+          {
+            "seq": 5,
+            "action": "go_back",
+            "desc": "返回起始页",
+            "args": {}
+          }
+        ]
+      },
+      "diagnostics": {
+        "total_steps": 3,
+        "found_steps": 0,
+        "missing_steps": [],
+        "step_details": [
+          {
+            "seq": 1,
+            "target": "新增患者",
+            "action": "click",
+            "actual_text": "患者人数107今日新增+0",
+            "status": "failed",
+            "strategy": "scored_text(20)",
+            "message": "✗ 未找到「新增患者」— cross_module_navigation_blocked"
+          },
+          {
+            "seq": 2,
+            "target": "新增",
+            "action": "validate",
+            "status": "skipped",
+            "strategy": "",
+            "message": "「新增」为纯断言目标，探索不探索断言步骤（不计缺失）"
+          },
+          {
+            "seq": 3,
+            "target": "查询",
+            "action": "click",
+            "actual_text": "",
+            "status": "failed",
+            "strategy": "",
+            "message": "✗ 未找到「查询」— element_not_found"
+          }
+        ],
+        "warning": null
+      }
+    }
+  ],
+  "summary": {
+    "success": 6,
+    "exploration_insufficient": 0,
+    "exploration_failed": 0,
+    "conversion_failed": 0,
+    "steps_missing": 0
+  }
+}

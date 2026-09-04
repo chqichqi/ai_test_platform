@@ -17,6 +17,7 @@ from sqlalchemy.orm import Session
 
 from app.core.logger import logger
 from app.core.services.llm_service import LLMService
+from app.core.services.case_quality_rules import GEN_QUALITY_RULES
 from app.core.models.requirement import TestCase, TestCaseStatus, TestCaseType, TestCasePriority, ExecutionType, TestPoint
 from app.core.models.requirement_change import (
     RequirementChangeRecord, RequirementChangeBatch,
@@ -1055,6 +1056,8 @@ test_steps 中的 action 必须遵循以下约定，以便后续自动化工具�
 2. 用""标记操作值：在「患者姓名」输入框中填写"张三"
 3. 纯验证步骤用"验证："开头，不需要「」标记：验证：页面显示所有当天预警
 
+{GEN_QUALITY_RULES}
+
 ## 输出格式
 请以JSON格式输出，格式如下：
 ```json
@@ -1890,6 +1893,9 @@ test_steps 中的 action 必须遵循以下约定，以便后续自动化工具�
 
 ✅ 正确写法：
   - 验证：页面显示所有当天预警
+
+## 用例内容质量规则（必须逐条遵守）
+{GEN_QUALITY_RULES}
 
 # 输出格式
 请输出JSON格式，结构如下：

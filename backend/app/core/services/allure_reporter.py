@@ -320,24 +320,50 @@ class AllureReporter:
 
     @staticmethod
     def generate_html(results_dir: str, report_dir: str) -> bool:
-        """调用 allure CLI 生成 HTML 报告"""
-        import subprocess
+        """调用 allure CLI 生成 HTML 报告
+
+        兼容后端进程 PATH 未含 allure 的情况：按候选路径定位 allure（.bat / 无后缀脚本 /
+        exe），Windows 下用 cmd /c 执行 .bat。
+        """
+        import subprocess, shutil, os as _os
+        # 1) PATH 中已有 allure
+        cmd = shutil.which("allure")
+        # 2) 候选绝对路径（含 .bat）
+        if not cmd:
+            cands = [
+                _os.environ.get("ALLURE_HOME", ""),
+                r"D:/Program Files/allure-commandline-2.20.0/allure-2.20.0/bin/allure",
+                r"C:/Program Files/allure/bin/allure",
+            ]
+            for c in cands:
+                if not c:
+                    continue
+                for probe in (c + ".bat", c):
+                    if _os.path.exists(probe):
+                        cmd = probe
+                        break
+                if cmd:
+                    break
+        if not cmd:
+            logger.warning("[Allure] allure CLI 未找到（PATH/ALLURE_HOME/候选路径），仅保留 JSON 结果")
+            return False
+
+        # Windows 下统一经 shell 执行（cmd.exe 解析，能运行 .bat），避免列表式直接调用
+        # 对 .bat 失效的问题（allure 位于 PATH 目录时 which 返回 .BAT）。
+        import subprocess as _sp
+        _shell_str = f'"{cmd}" generate "{results_dir}" -o "{report_dir}" --clean'
         try:
-            result = subprocess.run(
-                ["allure", "generate", results_dir, "-o", report_dir, "--clean"],
-                capture_output=True, text=True, timeout=60,
-            )
-            if result.returncode == 0:
+            _res = _sp.run(_shell_str, shell=True, capture_output=True, timeout=120)
+            if _res.returncode == 0:
                 logger.info(f"[Allure] HTML 报告已生成: {report_dir}")
                 return True
-            else:
-                logger.warning(f"[Allure] HTML 生成失败: {result.stderr}")
-                return False
-        except FileNotFoundError:
-            logger.warning("[Allure] allure CLI 未安装，仅保留 JSON 结果")
+            logger.warning(f"[Allure] HTML 生成失败: {_res.returncode}")
             return False
-        except Exception as e:
-            logger.warning(f"[Allure] HTML 生成异常: {e}")
+        except FileNotFoundError:
+            logger.warning("[Allure] allure CLI 未找到（仅保留 JSON 结果）")
+            return False
+        except Exception as _e:
+            logger.warning(f"[Allure] HTML 生成异常: {_e}")
             return False
 
 

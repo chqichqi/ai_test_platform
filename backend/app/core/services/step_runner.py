@@ -381,13 +381,33 @@ class StepRunner:
     # ═══════════════════════════════════════════════
     # 交互操作
     # ═══════════════════════════════════════════════
+    def _wait_visible_with_retry(self, loc, timeout_ms: int = 5000) -> bool:
+        """L1 自愈（2026-09-03）：元素定位/可见等待超时后，做一次 SPA 事件循环等待并重试。
+
+        仅针对"元素还没渲染出来"的瞬时时序（SPA 异步填充）——这是最常见的伪失败源；
+        不吞真实失败：重试后仍不可见则返回 False 交由调用方按正常失败处理。
+        调用方只在定位可见阶段用它；不用于断言/业务校验（那些失败必须如实上报，防止假绿）。
+        """
+        try:
+            loc.wait_for(state="visible", timeout=timeout_ms)
+            return True
+        except Exception:
+            try:
+                # SPA 可能在本次重绘中才挂载元素：给一个极短事件循环窗口再试一次
+                self.page.wait_for_timeout(800)
+                loc.wait_for(state="visible", timeout=timeout_ms)
+                return True
+            except Exception:
+                return False
+
     def _do_click(self, args: dict, desc: str) -> None:
         explicit_role = str(args.get("role") or "").lower()
         if explicit_role in {"heading", "text", "paragraph", "table", "region", "card", "static"}:
             raise StepRunError(f"不可点击元素(role={explicit_role}): {args.get('locator', desc)}")
         loc = self._resolve_locator(args)
+        if not self._wait_visible_with_retry(loc):
+            raise StepRunError(f"定位/等待元素可见失败(已自愈重试一次仍不可见): {args.get('locator', desc)}")
         try:
-            loc.wait_for(state="visible", timeout=5000)
             try:
                 semantic = loc.evaluate("e => ({tag:e.tagName.toLowerCase(), role:e.getAttribute('role') || '', disabled:e.disabled === true})")
                 if semantic.get('role') in ('heading', 'presentation') or semantic.get('tag') in ('h1','h2','h3','h4','h5','h6'):
@@ -395,7 +415,7 @@ class StepRunner:
             except StepRunError:
                 raise
             except Exception:
-                pass
+                pass  # 语义探测偶发失败不阻断点击（与历史行为一致）
             loc.click(timeout=5000)
             logger.info(f"[StepRunner] click ✓ {desc[:30]}")
         except StepRunError:

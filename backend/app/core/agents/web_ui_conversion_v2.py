@@ -839,7 +839,7 @@ def _sanitize_spec_steps(spec: Dict[str, Any], page_url_map: Optional[Dict[str, 
     if not isinstance(steps, list):
         return spec
     fixed = 0
-    for s in steps:
+    for _i, s in enumerate(steps):
         if not isinstance(s, dict) or (s.get("action") or "") != "goto":
             continue
         args = s.get("args") or {}
@@ -885,6 +885,20 @@ def _sanitize_spec_steps(spec: Dict[str, Any], page_url_map: Optional[Dict[str, 
                 s["action"] = "wait_for_render"
                 s.setdefault("args", {})["ms"] = 500
                 logger.warning(f"[Conversion] 步骤修正: goto 目标为登录页（desc={desc[:30]}）→ wait_for_render")
+            fixed += 1
+            continue
+
+        # 4. 「返回起始页/返回原页面」语义禁止 goto 整页重载——SPA 项目 goto 起始 URL
+        #    （尤其 base 根地址：host 根常无鉴权默认路由，重载即落到 #/login）会丢失
+        #    organization 等运行态会话并登出（2026-09-04：待随访卡片跳转用例尾步被生成成
+        #    goto(base 根) → 整批后续用例全在 #/login）。返回一律走浏览器历史 go_back，
+        #    与单条链路 prompt 规则 8 / 批量自动补尾语义同源。仅限非首步返回语义 goto；
+        #    首步入口导航 goto 是合法整页导航，保留。
+        if _i > 0 and (desc.startswith(("返回", "回到"))
+                       or "返回工作台" in desc or "返回起始" in desc or "返回首页" in desc):
+            s["action"] = "go_back"
+            s["args"] = {}
+            logger.warning(f"[Conversion] 步骤修正: 返回语义 goto 改为 go_back（desc={desc[:30]}）")
             fixed += 1
             continue
     if fixed:

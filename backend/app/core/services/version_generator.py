@@ -13,7 +13,9 @@ from app.core.services.llm_service import LLMService
 from app.core.models.test_skill import TestSkill, SkillType, SkillStatus
 from app.core.models.requirement import RequirementDocument, TestCase as RequirementTestCase, TestCaseStatus, TestCasePriority
 from app.core.models.project import Version
-from app.core.services.two_step_generator import extract_features, build_step2_prompt
+from app.core.services.two_step_generator import (
+    extract_features, build_step2_prompt, split_doc_sections, clean_module, _STEP1_CHUNK_MAX,
+)
 from app.core.services.version_generator_utils import clean_module_name
 from app.core.services.test_case_auditor import TestCaseAuditor
 
@@ -123,70 +125,137 @@ class VersionGeneratorService:
                 skill_dict = None
                 logger.info("未找到任何激活的全局SKILL模板")
             
-            # 2. Step1: LLM + CoT 提取结构化特征列表（替代正则）
-            logger.info("[两步法] Step1: LLM提取功能点...")
+            # 2. Step1: LLM + CoT 分块提取结构化功能点列表
+            #   extract_features 已 finalize：每个 feature 带 module 归属 + 机器稳定 key（不再单值 module 全覆盖）
+            logger.info("[两步法] Step1: 分块提取功能点...")
             features_result = await extract_features(self.llm_service, requirement_doc_content)
-            features = features_result.get("features", [])
-            module_from_llm = features_result.get("module", "通用模块")
-            modules = [module_from_llm] if module_from_llm != "通用模块" else self._extract_modules_from_requirement(requirement_doc_content)
-            self._step1_module = module_from_llm  # 存储Step1识别的模块名
-            self._step1_features = features       # 存储特征列表，用于去重匹配
-            logger.info(f"[两步法] Step1完成: {len(features)}个功能点, 模块={modules}")
-            
-            # 截断需求内容
-            max_input_chars, _ = _calc_limits(max_tokens_limit)
-            truncated_content = requirement_doc_content
-            if len(requirement_doc_content) > max_input_chars:
-                truncated_content = self._extract_key_content(requirement_doc_content, modules, max_input_chars)
-                logger.info(f"需求文档过长({len(requirement_doc_content)}字符)，截断到{len(truncated_content)}字符")
+            features = features_result.get("features", []) or []
+            self._step1_features = features       # 供 Auditor / 落库归并 / diff 使用
+            self._step1_contexts = features_result.get("contexts", {}) or {}   # 规范模型：模块级共享声明 {clean_module(module): ctx}
+            module_from_llm = features[0].get("module", "通用模块") if features else "通用模块"
+            modules = sorted({f.get("module") or "通用模块" for f in features}) if features else []
+            logger.info(f"[两步法] Step1完成: {len(features)}个功能点, 涉及模块={modules}")
 
-            # ── Step2: 根据 features 数分批生成（1:1 约束，features 驱动）──
-            # 如果 features 很多，按最大每批 50 个拆分，避免 LLM token 溢出
-            # 动态计算批次大小：每条用例含 test_steps 约 600 token
-            _per_case_tokens = 600
-            _overhead = 2000
-            MAX_FEATURES_PER_BATCH = max(5, (max_tokens_limit - _overhead) // _per_case_tokens)
-            logger.info(f"[Step2] max_tokens={max_tokens_limit}, 每批最多 {MAX_FEATURES_PER_BATCH} 个功能点")
+            # 需求原文 → 章节索引（供每批注入本批 feature 对应模块的原文段，而非同款头部原文）
+            _sections = split_doc_sections(requirement_doc_content)
+            _sec_by_normhead = {}
+            for _s in _sections:
+                _h = clean_module(_s.get("heading", ""))
+                if _h:
+                    _sec_by_normhead.setdefault(_h, _s)
+
+            def _module_content(_mod: str) -> str:
+                """取某 module 对应的原文段；找不到则回退整篇头部。"""
+                _c = _sec_by_normhead.get(clean_module(_mod))
+                if _c:
+                    return _c["content"]
+                return requirement_doc_content[:_STEP1_CHUNK_MAX]
+
+            def _ensure_entry_nav(_case: dict, _mod: str):
+                """规范模型兜底（2026-09-03）：若该模块在 Step1 声明了入口导航，且该用例首步
+                不是导航类动作，则把入口导航前插为 test_steps 第 1 步——因为前置条件不执行、
+                导航必须靠步骤，否则用例永远到不了目标页（患者档案类用例即如此）。"""
+                import re as _re
+                _ctx = (self._step1_contexts or {}).get(clean_module(_mod)) or {}
+                _nav = (_ctx.get("entry_navigation") or "").strip()
+                if not _nav:
+                    return _case
+                # ── 入口导航脏声明拦截（2026-09-03）：Step1 的 entry_navigation 若本身是
+                # 整条菜单枚举（含换行/多个「」/超长），不能前插——它会把"点整条侧边栏菜单"
+                # 固化进每条用例 step1，是"探索乱跑/反复卡工作台"的上游源头。脏则弃用、
+                # 交由探索按用例步骤对象自行进入，绝不把整块菜单塞进「」。
+                if ("\n" in _nav or "\r" in _nav) or len(_nav) > 60 \
+                        or _nav.count("」") > 2 or "「工作台" in _nav:
+                    logger.warning(f"  [规范模型] 模块[{_mod}] 入口导航声明含整条菜单/脏文本，弃用不前插: {_nav[:50]}...")
+                    return _case
+                _steps = _case.get("test_steps") or []
+                if not isinstance(_steps, list) or not _steps:
+                    return _case
+                _f = _steps[0]
+                _fa = (_f.get("action") if isinstance(_f, dict) else str(_f)) or ""
+                if _re.search(r"进入|导航|goto|跳转|从工作台|打开.+?页面|点击.+?菜单", _fa):
+                    return _case   # 首步已是导航，不重复前插
+                _seq_key = None
+                if isinstance(_steps[0], dict):
+                    _seq_key = "step_no" if "step_no" in _steps[0] else ("step" if "step" in _steps[0] else None)
+                _pre = {"action": _nav, "expected_result": "成功进入目标页面"}
+                if _seq_key:
+                    _pre[_seq_key] = 1
+                _out = [_pre]
+                for _k, _s in enumerate(_steps):
+                    _s2 = dict(_s) if isinstance(_s, dict) else {"action": str(_s)}
+                    if _seq_key and _seq_key in _s2:
+                        try:
+                            _s2[_seq_key] = int(_s2[_seq_key]) + 1
+                        except Exception:
+                            _s2[_seq_key] = _k + 2
+                    _out.append(_s2)
+                _case["test_steps"] = _out
+                logger.info(f"  [规范模型] 模块[{_mod}] 用例首步前插入口导航: {_nav[:40]}...")
+                return _case
+
+            # ── Step2: 按 module 分组 → 每 module 内小批生成（1:1 约束）──
+            # 小批避免"一次吐巨型 JSON"的结构性截断风险；编号全局连续
+            _STEP2_BATCH = 8
             all_test_cases = []
-
             if features:
-                feature_batches = [features[i:i+MAX_FEATURES_PER_BATCH]
-                                  for i in range(0, len(features), MAX_FEATURES_PER_BATCH)]
-            else:
-                # 无 features → 走旧版按模块生成（回退）
-                feature_batches = []
-
-            if feature_batches:
                 system_prompt = self._build_system_prompt(skill_dict)
-                for batch_i, batch_features in enumerate(feature_batches):
-                    batch_n = len(batch_features)
-                    logger.info(f"[Step2] 第 {batch_i+1}/{len(feature_batches)} 批: {batch_n} 个功能点")
+                _gno = 1
+                _retry = 3                      # 每批最大尝试次数
+                # 生成队列：元素 (module, features子批, 剩余尝试)。整批失败 → 拆两半重入队尾降级重试，
+                # 直到单条粒度，保证功能点不因单批 LLM 空/坏响应而整批丢失。
+                _queue = []
+                for _mod in modules:
+                    _group = [f for f in features if (f.get("module") or "通用模块") == _mod]
+                    for _bi in range(0, len(_group), _STEP2_BATCH):
+                        _queue.append((_mod, _group[_bi:_bi + _STEP2_BATCH], _retry))
 
-                    user_prompt = build_step2_prompt(
-                        project_name, version_number,
-                        module_from_llm, batch_features, truncated_content)
-
-                    # 每条用例含 test_steps 约 500-800 token，留足余量避免截断丢字段
-                    dynamic_max_tokens = min(max_tokens_limit, batch_n * 800 + 2000)
-                    logger.info(f"  提示词: system={len(system_prompt)}chars, user={len(user_prompt)}chars, max_tokens={dynamic_max_tokens}")
-
-                    batch_response = await self.llm_service.async_call_llm(
-                        prompt=user_prompt, system_prompt=system_prompt,
-                        temperature=0, max_tokens=dynamic_max_tokens, json_mode=False,
-                    )
-
-                    if batch_response:
-                        batch_parsed = self._parse_llm_response(batch_response)
-                        if batch_parsed and batch_parsed.get("test_cases"):
-                            all_test_cases.extend(batch_parsed["test_cases"])
-                            logger.info(f"  第{batch_i+1}批生成 {len(batch_parsed['test_cases'])} 条用例")
-                        else:
-                            partial = self._extract_partial_cases_from_response(batch_response)
-                            if partial:
-                                all_test_cases.extend(partial)
-                                logger.warning(f"  第{batch_i+1}批JSON截断, 提取 {len(partial)} 条")
+                _qi = 0
+                while _qi < len(_queue):
+                    _mod, _batch, _left = _queue[_qi]; _qi += 1
+                    _bn = len(_batch)
+                    _got = []
+                    for _t in range(_left):
+                        user_prompt = build_step2_prompt(
+                            project_name, version_number, _mod, _batch,
+                            _module_content(_mod), start_index=_gno,
+                            module_context=(self._step1_contexts or {}).get(clean_module(_mod)),
+                        )
+                        # 大输出档：每条用例约 600-800 token，小批 + 0.7/100000 防截断
+                        dynamic_max_tokens = self.llm_service.get_scaled_max_tokens(0.7, 100000)
+                        logger.info(f"[Step2] 模块[{_mod}] 批({_bn}点, 从TC{_gno:03d}) 尝试{_t + 1}/{_left} "
+                                    f"max_tokens={dynamic_max_tokens}")
+                        _resp = await self.llm_service.async_call_llm(
+                            prompt=user_prompt, system_prompt=system_prompt,
+                            temperature=0, max_tokens=dynamic_max_tokens, json_mode=False,
+                        )
+                        if not _resp:
+                            logger.warning(f"  [{_mod}]批 LLM 返回空，重试")
+                            continue
+                        _got = self._parse_got_cases(_resp)
+                        if len(_got) >= _bn:      # 整批覆盖到点数才收（避免残缺/垃圾入库）
+                            break
+                        logger.warning(f"  [{_mod}]批仅恢复 {len(_got)}/{_bn} 条(需整批覆盖)，重试")
+                    # 收或降级
+                    if len(_got) >= _bn:
+                        _kept = []
+                        for _c in _got:
+                            if not isinstance(_c, dict):
+                                _kept.append(_c)
+                                continue
+                            if not _c.get("module"):
+                                _c["module"] = _mod
+                            _kept.append(_ensure_entry_nav(_c, _mod))
+                        all_test_cases.extend(_kept)
+                        _gno += len(_kept)
+                    elif _bn > 1:
+                        _h = _bn // 2
+                        logger.warning(f"  模块[{_mod}] 批({_bn}点)多次仍失败 → 拆为 {_h}/{_bn - _h} 两半重试")
+                        _queue.append((_mod, _batch[:_h], _retry))
+                        _queue.append((_mod, _batch[_h:], _retry))
                     else:
-                        logger.warning(f"  第{batch_i+1}批 LLM 返回空")
+                        _fn = _batch[0].get("name") if _batch else "?"
+                        logger.error(f"  模块[{_mod}] 功能点「{_fn}」多次生成仍失败, 已跳过")
 
                 if not all_test_cases:
                     logger.error("所有批次 LLM 均返回空")
@@ -205,32 +274,9 @@ class VersionGeneratorService:
                 }
                 logger.info(f"Step2 完成: 共 {case_count} 条用例 (期望 {len(features)})")
             else:
-                # ── 回退：无 features 时走旧版按模块生成 ──
-                logger.info(f"无功能点列表, 回退到按模块生成 (模块数: {len(modules)})")
-                dynamic_max_tokens = max_tokens_limit
-                system_prompt = self._build_system_prompt(skill_dict)
-                user_prompt = self._build_user_prompt(project_name, version_number, truncated_content, modules)
-                logger.info(f"提示词长度：system={len(system_prompt)}, user={len(user_prompt)}")
-
-                llm_response = await self.llm_service.async_call_llm(
-                    prompt=user_prompt, system_prompt=system_prompt,
-                    temperature=0, max_tokens=dynamic_max_tokens, json_mode=False,
-                )
-                if not llm_response:
-                    logger.error("LLM 调用失败：返回为空")
-                    return {"success": False, "error": "LLM 调用失败，请检查LLM配置和服务状态"}
-
-                resp_len = len(llm_response)
-                logger.info(f"LLM 响应长度：{resp_len} 字符, 前200字: {llm_response[:200]}")
-                parsed_result = self._parse_llm_response(llm_response)
-                if not parsed_result:
-                    logger.error("LLM 响应解析失败")
-                    return {"success": False, "error": "LLM 响应解析失败，请检查需求文档格式或稍后重试"}
-                case_count = len(parsed_result.get('test_cases', []))
-                logger.info(f"解析成功，测试用例数量：{case_count}")
-                if case_count == 0:
-                    logger.error(f"LLM 返回0条用例，响应前500字符: {llm_response[:500]}")
-                    return {"success": False, "error": "AI 未生成任何用例，请检查需求内容是否包含明确的功能模块描述"}
+                # 无 features：不再静默走无约束"按模块自由生成"（该路径曾合并卡片漏用例）
+                logger.error("[两步法] 未能从需求文档提取到结构化功能点（features 为空）")
+                return {"success": False, "error": "未能从需求文档提取到结构化功能点，请确认文档包含明确的页面/功能描述后重试"}
 
             # 4.5 Auditor 评审（数量校验 + 补偿生成 + 冗余检测）
             _raw_cases = parsed_result.get("test_cases", [])
@@ -244,6 +290,9 @@ class VersionGeneratorService:
                     parsed_result["test_cases"] = _result.corrected_cases  # 同步到 parsed_result
                     parsed_result["analysis_summary"]["total_count"] = len(_result.corrected_cases)
                     _raw_cases = _result.corrected_cases
+
+            # 共享准备/setup 的处理已下移到 _save_test_cases：依据 feature.category=='setup' 标 is_setup、
+            # 同 module 卡片自动 depends_on（不再用 preconditions 措辞规则反推——会把"处于展开状态"等静态句误抽）
 
             # 5. 保存测试用例到数据库
             logger.info(f"开始保存测试用例... ({len(_raw_cases)} 条)")
@@ -1427,6 +1476,9 @@ class VersionGeneratorService:
         """保存测试用例到数据库"""
         import re as _re
         count = 0
+        # setup 占位符 → logical_case_id（生成后处理把共享准备抽成 setup 用例，排在普通用例前先落库，
+        # 普通用例的 depends_on 若含 setup_token 字符串，在此解析为其逻辑 id）
+        _setup_logical = {}
 
         from app.core.models.project import Version
 
@@ -1444,38 +1496,37 @@ class VersionGeneratorService:
         max_order = self.db.query(TC).filter(TC.version_id == version_id).count() * 10
         base_order = max_order + 10
 
-        # ── 简化去重：1:1 约束 + Auditor 保证数量稳定 ──
-        # 策略：同版本同来源 → 旧 AI 草稿直接替换；已审核用例保留
-
-        # 清理同来源旧草稿 + 关联的 TestPoint
-        _old_drafts = self.db.query(RequirementTestCase).filter(
-            RequirementTestCase.version_id == version_id,
-            RequirementTestCase.generated_by == source_type,
-            RequirementTestCase.status == TestCaseStatus.DRAFT.value,
-        ).all()
-        if _old_drafts:
-            _old_ids = [d.id for d in _old_drafts]
-            from app.core.models.requirement import TestPoint
-            self.db.query(TestPoint).filter(TestPoint.test_case_id.in_(_old_ids)).delete(synchronize_session=False)
-            for _d in _old_drafts:
-                self.db.delete(_d)
-            self.db.flush()
-            logger.info(f"[去重] 替换旧草稿 {len(_old_drafts)} 条 + 关联 TestPoint (version={version_id}, source={source_type})")
-            max_order = self.db.query(TC).filter(TC.version_id == version_id).count() * 10
-            base_order = max_order + 10
+        # ── 同模块清理改为"按 feature 逐条 diff"，绝不前置整模块删草稿（2026-09-03）──
+        # 用户语义：
+        #   * 不同模块的旧用例一律不删（导入新模块=追加）；
+        #   * 同模块内：feature 仍存在的旧用例→由下方循环按稳定 key 就地更新（保留 id，不产生双份）；
+        #     feature 在本批确实下线(未出现)的 DRAFT 孤例→循环结束后按 feature diff 删除；
+        #     已审核/非草稿孤例→保留，待人工/文档明示再处理。
+        # 前提假设：同一模块被重新导入 = 该模块"当前权威完整需求"，因此其内缺失的 feature 视为下线移除。
+        # 注意：若将来需要"同模块分次追加子功能"(重导只含部分)，须显式区分 追加 与 整模块替换，
+        # 否则按缺即删会误删未重发的部分——那是独立增强，非本次范围。
+        # 历史缺陷：旧代码按 version+source+DRAFT 不分模块全删 → 导入 B 模块把 A 模块 58 条草稿连根删。
+        _new_modules = sorted({clean_module_name((t.get("module") or "通用模块")) for t in test_cases}) if test_cases else []
 
         # 加载剩余旧用例（已审核/待审核的，做保护性匹配）
         _old_cases = self.db.query(RequirementTestCase).filter(
             RequirementTestCase.version_id == version_id
         ).all()
         _old_by_title = {}
+        _old_by_feature = {}  # source_feature(稳定机器 key) → 旧行，用于跨次归并
         for _oc in _old_cases:
             _tn = getattr(_oc, 'name', '') or ''
             if _tn:
                 _old_by_title[_tn] = _oc
+            _sf_old = getattr(_oc, 'source_feature', '') or ''
+            if _sf_old:
+                _old_by_feature.setdefault(_sf_old, _oc)
 
         # 同一批次内的 source_feature 去重（防止多批生成同功能用例）
         _seen_features = set()
+        # 本批实际落库(更新/新建)用例的 source_feature 与 name —— 用于"同模块内按 feature diff 删真正下线的 DRAFT 孤例"
+        _issued_src: set = set()
+        _issued_names: set = set()
         # Step1 features → 用于创建 TestPoint 记录
         _step1_features = getattr(self, '_step1_features', [])
         # 双索引: key → feature, name → feature（source_feature 可能只匹配 name）
@@ -1489,15 +1540,58 @@ class VersionGeneratorService:
             if name:
                 _features_by_name[name] = f
 
+        def _match_feature(tc_name: str):
+            """反查某条用例对应的 feature（name 是 tc_name 子串者取最长匹配）。
+
+            用于把用例的稳定机器 key(source_feature) / TestPoint 与 Step1 功能点对齐。
+            """
+            best = None
+            best_len = 0
+            for _f in (_step1_features or []):
+                _n = (_f.get('name', '') or '').strip()
+                if _n and _n in tc_name and len(_n) > best_len:
+                    best = _f
+                    best_len = len(_n)
+            return best
+
+        # ── 共享准备/setup（生成源头识别，2026-09-03）：feature category=='setup' 对应用例标 is_setup=1 并先落库；
+        #    同 module 的普通用例自动 depends_on 该 setup（不依赖 preconditions 措辞反推）
+        _feat_all_setup = getattr(self, '_step1_features', []) or []
+        _setup_mods = {f.get('module') for f in _feat_all_setup if f.get('category') == 'setup'}
+        if _setup_mods:
+            def _is_setup_title(t):
+                _f = _match_feature((t.get('title') or t.get('name') or ''))
+                return bool(_f and _f.get('category') == 'setup')
+            test_cases = sorted(test_cases, key=lambda t: (0 if _is_setup_title(t) else 1))
+
         for idx, tc_data in enumerate(test_cases):
             try:
                 tc_name = tc_data.get("title") or tc_data.get("name") or "未命名用例"
-                tc_module = tc_data.get("module") or "通用模块"
-                if hasattr(self, '_step1_module') and self._step1_module and self._step1_module != "通用模块":
-                    tc_module = self._step1_module
-                else:
-                    tc_module = clean_module_name(tc_module)
+                # 模块归属直接用 LLM 为每条用例标的 module（不再被 Step1 单值 module 覆盖）
+                tc_module = clean_module_name(tc_data.get("module") or "通用模块")
                 tc_description = tc_data.get("description") or ""
+                # ── 前置依赖 / setup 标记（共享准备机制 2026-09-03）──
+                # is_setup 融合两来源：dict 显式标记 OR 该用例反查到 feature.category=='setup'
+                _feat_here = _match_feature(tc_name)
+                _feat_is_setup = 1 if (_feat_here and _feat_here.get('category') == 'setup') else 0
+                tc_is_setup = int(tc_data.get("is_setup") or 0) or _feat_is_setup
+                tc_setup_token = tc_data.get("setup_token") or (f"__SETUP__{tc_module}__" if tc_is_setup else "")
+                _raw_dep = list(tc_data.get("depends_on") or []) if isinstance(tc_data.get("depends_on"), list) else []
+                # 同 module 存在 setup feature → 非 setup 普通用例自动 depends_on 该 module 的 setup
+                if not tc_is_setup and tc_module in _setup_mods:
+                    _dtok = f"__SETUP__{tc_module}__"
+                    if _dtok not in _raw_dep:
+                        _raw_dep.append(_dtok)
+                _dep_resolved = []
+                for _d in _raw_dep:
+                    if isinstance(_d, str):
+                        if _d in _setup_logical:
+                            _dep_resolved.append(_setup_logical[_d])
+                        else:
+                            logger.warning(f"  忽略未解析依赖占位符 {_d}（setup 尚未落库）")
+                    elif isinstance(_d, int):
+                        _dep_resolved.append(_d)
+                _dep_resolved = _dep_resolved or None
                 tc_priority = tc_data.get("priority") or "P2"
                 tc_preconditions = tc_data.get("preconditions") or ""
                 if isinstance(tc_preconditions, list):
@@ -1505,7 +1599,7 @@ class VersionGeneratorService:
                 else:
                     tc_preconditions_text = str(tc_preconditions) if tc_preconditions else ""
                 tc_test_steps = tc_data.get("test_steps") or []
-                processed_steps = self._process_test_steps(tc_test_steps)
+                processed_steps = self._process_test_steps(tc_test_steps, module=tc_module)
                 tc_expected_result = (tc_data.get("expected_result") or tc_data.get("expected_results") or
                                      tc_data.get("expected") or "")
                 if tc_expected_result in ("测试通过", "功能正常", "操作成功", "功能正常运行"):
@@ -1536,18 +1630,29 @@ class VersionGeneratorService:
                     logger.warning(f"  跳过无步骤用例: {tc_name[:50]}")
                     continue
 
-                _source_feature = _re.sub(r'[\s\-_,，、]+', '', tc_name)[:50]
+                # 本用例对应的 feature（决定稳定机器 key + 关联 TestPoint）
+                _match = _match_feature(tc_name)
+                _feature_key = (_match.get('key') if _match else '') or ''
+                # source_feature 语义：新逻辑存稳定机器 key(feature.key)，供跨次归并/变更检测；
+                # 匹配不到 feature 时回退 title 归一化（兼容历史/无 features 调用方）
+                _source_feature = _feature_key or _re.sub(r'[\s\-_,，、]+', '', tc_name)[:50]
                 auto_sort_order = base_order + (idx * 10)
 
-                # 同一批次内 source_feature 去重
-                _sf_key = (_source_feature, tc_module)
+                # 同一批次内按 (feature_key 或 title归一化) 去重，避免多批/措辞差异双份
+                _dedup_key = _feature_key if _feature_key else _source_feature
+                _sf_key = (_dedup_key, tc_module)
                 if _sf_key in _seen_features:
-                    logger.info(f"  跳过同批次重复: {tc_name[:50]} (source_feature={_source_feature})")
+                    logger.info(f"  跳过同批次重复: {tc_name[:50]} (key={_feature_key or _source_feature})")
                     continue
                 _seen_features.add(_sf_key)
+                _issued_src.add(_feature_key or _source_feature)
+                _issued_names.add(tc_name)
 
-                # 保护已审核用例：同名则更新内容
-                _old_match = _old_by_title.get(tc_name)
+                # 归并目标：优先稳定 feature_key 命中旧行（跨次同功能→更新同一行，避免双份）
+                # → 其次 title 精确命中（兼容历史 title 归一化 source_feature 的行）
+                _old_match = _old_by_feature.get(_feature_key) if _feature_key else None
+                if not _old_match:
+                    _old_match = _old_by_title.get(tc_name)
                 if _old_match:
                     _ec = _old_match
                     _ec.name = tc_name
@@ -1558,7 +1663,14 @@ class VersionGeneratorService:
                     _ec.priority = ("P0" if tc_priority == "P0" else "P1" if tc_priority == "P1"
                                    else "P2" if tc_priority == "P2" else "P3")
                     _ec.tags = tc_data.get("tags", [])
-                    _ec.source_feature = getattr(_ec, 'source_feature', '') or _source_feature
+                    # 回写稳定机器 key，保证下次跨次归并能按 key 命中同一行（升级历史行）
+                    _ec.source_feature = _source_feature
+                    _ec.is_setup = tc_is_setup
+                    if _dep_resolved is not None:
+                        _ec.depends_on = _dep_resolved
+                    # 更新命中到 setup 旧行时也登记（跨次保持逻辑 id 稳定，卡片依赖不因重生成变）
+                    if tc_is_setup and tc_setup_token:
+                        _setup_logical[tc_setup_token] = getattr(_ec, 'logical_case_id', None) or _ec.id
                     _ec.updated_at = datetime.utcnow()
                     # 更新关联 TestPoint
                     _tp_data = _features_by_key.get(_source_feature) or _features_by_name.get(tc_name.split('-')[0] if '-' in tc_name else tc_name[:8])
@@ -1604,6 +1716,8 @@ class VersionGeneratorService:
                     sort_order=auto_sort_order,
                     generated_by=source_type,
                     source_feature=_source_feature,
+                    is_setup=tc_is_setup,
+                    depends_on=_dep_resolved,
                     created_by=1,
                 )
                 self.db.add(test_case)
@@ -1611,6 +1725,9 @@ class VersionGeneratorService:
 
                 # 方案B：新建用例逻辑=物理（logical_case_id=自身id，变更派生时新行共享此 id）
                 test_case.logical_case_id = test_case.id
+                # setup 登记：供其后普通用例的 depends_on 占位符解析为逻辑 id
+                if tc_is_setup and tc_setup_token:
+                    _setup_logical[tc_setup_token] = test_case.logical_case_id
 
                 # 创建关联 TestPoint（key 优先匹配，name 回退）
                 _tp_data = _features_by_key.get(_source_feature) or _features_by_name.get(tc_name.split('-')[0] if '-' in tc_name else tc_name[:8])
@@ -1640,12 +1757,181 @@ class VersionGeneratorService:
                 import traceback; traceback.print_exc()
                 continue
 
+        # ── 同模块内按 feature 逐条 diff：只删"确实下线"的 DRAFT 孤例（2026-09-03）──
+        # 判定：旧用例 module ∈ 本次生成模块、status=DRAFT、且其 source_feature/name 均未在本批发出
+        # (说明它的 feature 从本模块的需求中移除了)。已审核/非草稿孤例一律保留(待人工/文档明示)。
+        # 不同模块的旧用例、以及本批被就地更新的用例(其 source_feature 已写入 _issued_src)都不会被删。
+        _orphan_ids: list = []
+        if _new_modules:
+            from app.core.models.requirement import TestPoint as _TP
+            for _oc in _old_cases:
+                if clean_module_name(getattr(_oc, 'module', '') or '通用模块') not in _new_modules:
+                    continue
+                if getattr(_oc, 'status', None) != TestCaseStatus.DRAFT.value:
+                    continue
+                _osf = (getattr(_oc, 'source_feature', '') or '').strip()
+                _oname = (getattr(_oc, 'name', '') or '').strip()
+                if _osf and _osf in _issued_src:
+                    continue
+                if _oname and _oname in _issued_names:
+                    continue
+                _orphan_ids.append(_oc.id)
+            if _orphan_ids:
+                self.db.query(_TP).filter(_TP.test_case_id.in_(_orphan_ids)).delete(synchronize_session=False)
+                self.db.query(RequirementTestCase).filter(
+                    RequirementTestCase.id.in_(_orphan_ids)
+                ).delete(synchronize_session=False)
+                self.db.flush()
+                logger.info(f"[去重·feature diff] 删除同模块内确实下线的 DRAFT 孤例 {len(_orphan_ids)} 条(ids={_orphan_ids})")
+
         self.db.commit()
 
         # ---- Feature记录已禁用（ChromaDB模型待下载） ----
         return count
     
-    def _process_test_steps(self, test_steps: List[Any]) -> List[Dict[str, Any]]:
+    def _extract_shared_setup_cases(self, cases: list) -> list:
+        """生成后处理：把散落在多条卡片用例 preconditions 里的"共享准备动作句"抽成一条独立 setup 用例。
+
+        触发场景（2026-09-03 业务流"特殊说明"）：测工作台各指标卡片前须先"把所有指标添加到工作台"，
+        否则卡片不在台上会找不到元素。Step2 LLM 会把这一准备句复制进每条卡片用例的 preconditions，
+        导致"前置条件混入操作步骤"。本方法：
+          1. 拆 preconditions 分句，挑含操作动词的"准备动作句"；
+          2. 同一句在 >=2 条用例出现 → 视为共享准备；
+          3. 抽成一条 setup 用例（is_setup=1，放最前），其 test_steps 以该准备动作作为一步（转 UI 时由探索映射元素）；
+          4. 含该句的普通卡片用例：preconditions 移除该句（静态化），depends_on = [该 setup_token]。
+        无共享准备时原样返回（完全不影响普通需求）。
+        """
+        if not cases:
+            return cases
+        import re as _re
+        from collections import Counter
+        _ACT = ("点击", "添加", "移除", "保存", "选择", "滚动", "输入", "打开", "勾选", "填写",
+                "确认", "预览", "设置", "启用", "关闭", "切换", "上传", "拖动", "展开", "收缩",
+                "删除", "清空", "提交", "配置")
+        # 以这些开头的分句视为"静态状态"，即使句中带个别动词也不当准备动作
+        _STATIC_PREFIX = ("已展示", "已登录", "已存在", "当前", "存在", "进入", "工作台", "患者",
+                          "页面展示", "状态", "总数", "下已")
+
+        def split_clauses(pc):
+            return [s.strip() for s in _re.split(r"[;；\n。]+", pc or "") if s.strip()]
+
+        def is_prep(cl):
+            c = cl.strip()
+            if not c:
+                return False
+            if c.startswith(_STATIC_PREFIX):
+                return False
+            return any(v in c for v in _ACT)
+
+        def norm(s):
+            return _re.sub(r"[\s\-_，,、：:；;·.]+", "", s or "")
+
+        # 1. 收集每条用例的准备句（归一化）
+        clauses_map = []        # 原 order 的每条用例分句
+        prep_of_case = []       # 每条用例: {norm: orig}
+        cnt = Counter()
+        owner = {}
+        for ci, c in enumerate(cases):
+            if not isinstance(c, dict):
+                clauses_map.append([]); prep_of_case.append({}); continue
+            clauses = split_clauses(c.get("preconditions"))
+            prep = {}
+            for cl in clauses:
+                if is_prep(cl):
+                    n = norm(cl)
+                    prep.setdefault(n, cl)
+            clauses_map.append(clauses)
+            prep_of_case.append(prep)
+            for n in prep:
+                cnt[n] += 1
+                owner.setdefault(n, (ci, prep[n]))
+
+        shared = {n for n, k in cnt.items() if k >= 2}
+        if not shared:
+            return cases
+
+        top = max(shared, key=lambda n: cnt[n])
+        owner_ci, owner_orig = owner[top]
+        sample = cases[owner_ci] if isinstance(cases[owner_ci], dict) else {}
+        module = clean_module_name(sample.get("module") or "通用模块")
+        setup_token = "__SETUP_1__"
+        clean_orig = _re.sub(r"^(已通过|需先|先|需要|请|然后|若未|必须|并)", "", owner_orig).strip(" ，,。；;")
+        setup_name = (f"前置准备：{clean_orig[:40]}" if clean_orig else "前置准备")
+
+        setup = {
+            "title": setup_name, "name": setup_name, "module": module,
+            "description": "共享前置准备（生成时自动从多张卡片前置抽取）：执行本模块用例前必须先完成此准备，否则指标卡片未上工作台会找不到元素。",
+            "priority": "P0",
+            "preconditions": f"已登录系统并进入{module}页面",
+            "test_steps": [{
+                "step": 1, "action": owner_orig,
+                "expected": "准备完成，相关指标卡片已在工作台上展示",
+            }],
+            "expected_result": "相关指标卡片已在工作台上展示",
+            "tags": ["前置准备", "setup"],
+            "is_setup": 1, "setup_token": setup_token, "depends_on": [],
+        }
+
+        out = [setup]
+        affected = 0
+        for ci, c in enumerate(cases):
+            if not isinstance(c, dict):
+                out.append(c); continue
+            if top not in prep_of_case[ci]:
+                out.append(c); continue
+            # 命中共享准备 → 静态化前置 + 挂 depends_on
+            kept = [cl for cl in clauses_map[ci] if norm(cl) != top]
+            new_c = dict(c)
+            if kept:
+                new_c["preconditions"] = "; ".join(kept)
+            else:
+                new_c["preconditions"] = f"已登录系统并进入{clean_module_name(c.get('module') or module)}页面"
+            dep = list(new_c.get("depends_on") or [])
+            if setup_token not in dep:
+                dep.append(setup_token)
+            new_c["depends_on"] = dep
+            out.append(new_c)
+            affected += 1
+
+        logger.info(f"[Setup] 识别到共享准备「{clean_orig[:24]}」→ 生成 1 条前置准备用例；"
+                    f"{affected} 条卡片用例 depends_on 指向它")
+        return out
+
+    def _is_garbage_case(self, tc: Any) -> bool:
+        """判该条是否 JSON 解析/截断产生的垃圾（title 非真实功能名）。
+
+        LLM 坏 JSON 经 _fix_unclosed_json 等截断会抠出如 `1.8.0",` 的残片当 title，
+        这类必须丢弃，避免污染用例列表。"""
+        if not isinstance(tc, dict):
+            return True
+        import re as _re
+        t = (tc.get("title") or tc.get("name") or "").strip()
+        if not t:
+            return True
+        if '"' in t or "," in t:
+            return True
+        if len(t) < 3:
+            return True
+        # 纯数字/版本号/标点残片（如 "1.8.0"）
+        if _re.fullmatch(r"[\d\s.、,·:：]+", t):
+            return True
+        return False
+
+    def _parse_got_cases(self, llm_response: str) -> list:
+        """解析单批 LLM 输出为"干净"用例列表：过滤 JSON 截断/修复产生的垃圾条目。
+
+        返回可能为空的干净 list（调用方据此决定是否重试/拆半）。"""
+        cases = []
+        parsed = self._parse_llm_response(llm_response)
+        if parsed and parsed.get("test_cases"):
+            cases = list(parsed["test_cases"])
+        if not cases:
+            partial = self._extract_partial_cases_from_response(llm_response)
+            if partial:
+                cases = list(partial)
+        return [c for c in cases if not self._is_garbage_case(c)]
+
+    def _process_test_steps(self, test_steps: List[Any], module: str = "") -> List[Dict[str, Any]]:
         """处理测试步骤，统一为 [{step, action, expected}] 格式
 
         LLM 返回的格式可能是：
@@ -1654,9 +1940,63 @@ class VersionGeneratorService:
         - ["步骤1: 操作...", "步骤2: 操作..."]
 
         统一输出：每步保留 step/action/expected 三个字段
+        落库前对象标记净化（2026-09-03 审计 P1-3）：把 LLM/Step1 塞进「」的整条菜单枚举
+        （含换行/超长）裁剪为单对象，杜绝下游 step_parser/探索按整串定位乱跑。
+        module：当前用例所属模块名，净化整串菜单时优先取含模块核心词的候选
+        （“患者档案模块”的整串 → 裁到「患者档案」而非菜单首项“工作台”）。
         """
+        import re as _re_clean
+
+        # 提取模块名的核心词（去“模块/管理/中心/页面/列表/工作台”等通用词缀），用于候选匹配
+        _mod_hint = ""
+        if module:
+            _mz = _re_clean.sub(r"模块|管理|中心|页面|列表|工作台|配置|设置", "", module).strip()
+            _mz = _mz.strip(":：- ")
+            _mod_hint = _mz[:6]
+
+        def _clean_action_markers(a):
+            if not a:
+                return a
+
+            def _fix(m):
+                inner = m.group(1)
+                # 触发裁剪仅限“容器/枚举”信号：含换行（整块多元素）或含多个候选分隔符
+                # （顿号/逗号/竖线 = 枚举了多个对象）。纯长的单对象文本（如一句长描述）
+                # 不裁，避免误伤合法对象名——净化只针对“把整条菜单/多对象塞进一个「」”。
+                if ("\n" in inner or "\r" in inner) or len(_re_clean.findall(r"[、，,|]", inner)) >= 1:
+                    flat = inner.replace("\n", " ").replace("\r", " ").strip()
+                    parts = [p for p in _re_clean.split(r"[\s、，,|/]+", flat) if p.strip()]
+                    cand = ""
+                    if _mod_hint and parts:
+                        for p in parts:
+                            if _mod_hint in p or p in _mod_hint:
+                                cand = p
+                                break
+                    if not cand and parts:
+                        cand = parts[0]
+                    if not cand:
+                        cand = flat
+                    return "「" + cand.strip()[:20] + "」"
+                return m.group(0)
+
+            try:
+                return _re_clean.sub(r"「([^」]*)」", _fix, a)
+            except Exception:
+                return a
+
+        def _clean_step(s):
+            if isinstance(s, dict):
+                a = s.get("action", "") or s.get("desc", "")
+                ns = dict(s)
+                ns["action"] = _clean_action_markers(a)
+                return ns
+            if isinstance(s, str):
+                return _clean_action_markers(s)
+            return s
+
         if not test_steps:
             return []
+        test_steps = [_clean_step(s) for s in test_steps]
 
         processed = []
         for i, step in enumerate(test_steps, 1):
@@ -1685,7 +2025,6 @@ class VersionGeneratorService:
                     })
             else:
                 processed.append(str(step))
-        
+
         return processed
-    
 

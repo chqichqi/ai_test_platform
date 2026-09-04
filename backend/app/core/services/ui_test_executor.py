@@ -23,6 +23,7 @@ from typing import Any, Dict, List, Optional
 
 from app.core.logger import logger
 from app.core.services.test_data_manager import TestDataManager
+from app.core.services.ui_dependency import dependency_skip_reason
 
 
 def _materialize_runtime_test_data(test_data: dict, case_id: str = ""):
@@ -192,13 +193,17 @@ class UITestExecutor:
         self,
         test_cases: List[Any],
         progress_callback=None,
+        dep_map: Optional[Dict[int, List[int]]] = None,
     ) -> List[dict]:
         """
         批量执行 UI 用例。
 
         Args:
-            test_cases: WebUITestCase 对象列表
+            test_cases: WebUITestCase 对象列表（调用方若已用 ui_dependency 展开，此处即
+                        前置在前、每条一次的拓扑顺序）
             progress_callback: 可选进度回调 fn(stage, message, index, total)
+            dep_map: 可选依赖图 {case_id: [前置 id]}；传入时执行器在循环内做「前置未通过
+                     → 依赖用例跳过」。None/空则不启用依赖语义（保持历史行为）。
 
         Returns:
             每条用例的执行结果列表
@@ -218,9 +223,9 @@ class UITestExecutor:
             return []
 
         if self.config.browser_mode == BrowserMode.REUSE:
-            return await self._execute_reuse(test_cases, progress_callback)
+            return await self._execute_reuse(test_cases, progress_callback, dep_map)
         else:
-            return await self._execute_isolated(test_cases, progress_callback)
+            return await self._execute_isolated(test_cases, progress_callback, dep_map)
 
     async def execute_single(self, test_case: Any) -> dict:
         """执行单条 UI 用例"""
@@ -232,14 +237,27 @@ class UITestExecutor:
     # ═══════════════════════════════════════════════════════════
 
     async def _execute_isolated(self, test_cases: List[Any],
-                                progress_callback=None) -> List[dict]:
+                                progress_callback=None,
+                                dep_map: Optional[Dict[int, List[int]]] = None) -> List[dict]:
         """每条用例独立浏览器"""
         results = []
         total = len(test_cases)
+        _outcomes: Dict[int, str] = {}
         for i, tc in enumerate(test_cases):
             case_id = str(getattr(tc, 'id', ''))
             case_name = getattr(tc, 'test_case', {}).get('name', '') if hasattr(tc, 'test_case') else getattr(tc, 'id', 'unknown')
             module = getattr(tc, 'module', '') or '默认模块'
+
+            # 前置未通过 → 依赖用例跳过（不新开浏览器跑）；case_id 为不透明字符串(UUID)，直接作键
+            _skip = dependency_skip_reason(case_id, dep_map or {}, _outcomes) if dep_map else None
+            if _skip:
+                if progress_callback:
+                    progress_callback("running", f"跳过(前置未通过) {i+1}/{total}: {case_name}", i, total)
+                _sr = {"status": "skipped", "skipped": True, "error": _skip,
+                       "test_case_id": case_id, "duration_ms": 0, "browser_mode": "isolated", "index": i}
+                results.append(_sr)
+                _outcomes[case_id] = "skipped"
+                continue
 
             if progress_callback:
                 progress_callback("running", f"执行用例 {i+1}/{total}", i, total)
@@ -254,6 +272,14 @@ class UITestExecutor:
             case_config = self.config.merge_with_case(tc)
             result = await self._run_one_isolated(tc, case_config)
             result["index"] = i
+            if case_id:
+                _st = result.get("status")
+                if _st == "completed" and not result.get("skipped"):
+                    _outcomes[case_id] = "passed"
+                elif _st == "completed" and result.get("skipped"):
+                    _outcomes[case_id] = "skipped"
+                else:
+                    _outcomes[case_id] = "failed"
 
             # Allure: 结束用例
             if self.allure:
@@ -633,17 +659,19 @@ class UITestExecutor:
     # ═══════════════════════════════════════════════════════════
 
     async def _execute_reuse(self, test_cases: List[Any],
-                             progress_callback=None) -> List[dict]:
+                             progress_callback=None,
+                             dep_map: Optional[Dict[int, List[int]]] = None) -> List[dict]:
         """有头+复用模式：浏览器开一次 → 登录 → 依次执行全部用例 → 关闭"""
         # 项目隔离：从用例推导 project_id，加载本项目登录态
         storage_state = self._load_auth_state(test_cases[0] if test_cases else None)
         loop = asyncio.get_event_loop()
         return await loop.run_in_executor(
             None,
-            lambda: self._run_batch_reuse_sync(test_cases, storage_state, self.config)
+            lambda: self._run_batch_reuse_sync(test_cases, storage_state, self.config, dep_map)
         )
 
-    def _run_batch_reuse_sync(self, test_cases, storage_state, config) -> List[dict]:
+    def _run_batch_reuse_sync(self, test_cases, storage_state, config,
+                              dep_map: Optional[Dict[int, List[int]]] = None) -> List[dict]:
         """同步执行：单浏览器 + 单次登录 + 多用例"""
         from playwright.sync_api import sync_playwright
 
@@ -701,7 +729,17 @@ class UITestExecutor:
 
             if not fresh_state:
                 _ctx.close()
-                return [{"status": "error", "error": "登录失败——请确认已导入登录模块且项目URL/账号密码配置正确"} for _ in test_cases]
+                # 每个错误结果必须带 test_case_id，否则批量端点统计时按 test_case_id
+                # 过滤会全部漏掉 → 前端报 "0 成功 0 跳过 0 失败" 假绿（2026-09-03 审计 P0）。
+                return [
+                    {
+                        "status": "error",
+                        "test_case_id": str(getattr(tc, "id", "") or getattr(tc, "test_case_id", "") or ""),
+                        "case_name": getattr(tc, "name", "") or getattr(tc, "title", "") or "",
+                        "error": "登录失败——请确认已导入登录模块且项目URL/账号密码配置正确",
+                    }
+                    for tc in test_cases
+                ]
 
             # 登录态回写 KG auth_data（下次执行优先复用；应用会话过期后会自动重新登录）
             self._save_auth_state(_pid, fresh_state)
@@ -713,7 +751,8 @@ class UITestExecutor:
                 base_url = wb_url
             logger.info("[ExecuteBatch] 登录成功，开始执行用例")
 
-            # ── 逐条执行 ──
+            # ── 逐条执行（依赖语义：dep_map 传入时前置失败→依赖用例跳过；共享前置在拓扑序中只出现一次）──
+            _outcomes: Dict[int, str] = {}
             for i, tc in enumerate(test_cases):
                 mode = getattr(tc, 'generation_mode', None) or 'linear'
                 td = getattr(tc, 'test_data', {})
@@ -721,6 +760,15 @@ class UITestExecutor:
                 ts = getattr(tc, 'test_script', '')
                 cid = str(getattr(tc, 'id', ''))
                 case_name = (td.get('title', '') if isinstance(td, dict) else '') or cid[:8]
+
+                _skip_reason = dependency_skip_reason(cid, dep_map or {}, _outcomes) if dep_map else None
+                if _skip_reason:
+                    logger.info(f"[ExecuteBatch] 跳过(前置未通过): {case_name} — {_skip_reason}")
+                    _sr = {"status": "skipped", "skipped": True, "error": _skip_reason,
+                           "test_case_id": cid, "duration_ms": 0, "browser_mode": "reuse"}
+                    results.append(_sr)
+                    _outcomes[cid] = "skipped"
+                    continue
 
                 logger.info(f"[ExecuteBatch] {i+1}/{len(test_cases)}: {case_name}")
 
@@ -764,6 +812,14 @@ class UITestExecutor:
                 r["duration_ms"] = int((time.time() - _start) * 1000)
                 r["browser_mode"] = "reuse"
                 results.append(r)
+                if cid:
+                    _rst = r.get("status")
+                    if _rst == "completed" and not r.get("skipped"):
+                        _outcomes[cid] = "passed"
+                    elif _rst == "completed" and r.get("skipped"):
+                        _outcomes[cid] = "skipped"
+                    else:
+                        _outcomes[cid] = "failed"
 
             _ctx.close()
             ok = sum(1 for r in results if r.get("status") == "completed")

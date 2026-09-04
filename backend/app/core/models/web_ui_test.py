@@ -55,6 +55,9 @@ class WebUITestCase(BaseModel):
 
     # ── 方案B：软删标记（功能用例派生时旧 WUI 置 1 冻结，执行中心按 wui_id 重解析到最新版）──
     is_deleted = Column(Boolean, nullable=False, default=False, comment="软删标记（1=已被新版本取代，从UI用例列表隐藏）")
+
+    # 前置 UI 用例依赖（功能用例 depends_on 传导而来，2026-09-03）：执行本用例前先执行的 WebUITestCase.id 列表
+    depends_on = Column(JSON, default=list, comment="前置 WebUI 用例 id 列表（执行前先跑，共享去重）")
     
     # 关联项目
     project_id = Column(String(36), nullable=True, index=True, comment="所属项目ID")

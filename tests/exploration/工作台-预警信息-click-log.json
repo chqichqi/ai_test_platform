@@ -1,0 +1,3188 @@
+{
+  "module": "工作台-预警信息",
+  "evidence": [
+    {
+      "case_id": "727",
+      "case_name": "验证房颤预警卡片点击跳转患者详情并校验4个字段",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片或其记录数据未出现，则本用例跳过",
+      "expected_result": "成功从房颤预警卡片跳转至对应患者详情页，且患者姓名、负荷占比、有效时长、持续时间均一致，并能返回工作台",
+      "seq": 1,
+      "target": "工作台页面，向下滚动至页面下半区的预警信息区域",
+      "action": "navigate",
+      "role": "link",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "a0c470881e21e741b76d",
+      "after_state_id": "a0c470881e21e741b76d",
+      "locator": {
+        "strategy": "scored_text(40)",
+        "actual_text": "工作台",
+        "role": "",
+        "tag": "li",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "static",
+        "confidence": 0.25,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "a0c470881e21e741b76d",
+          "after_state_id": "a0c470881e21e741b76d"
+        }
+      },
+      "confidence": 0.25,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "727",
+      "case_name": "验证房颤预警卡片点击跳转患者详情并校验4个字段",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片或其记录数据未出现，则本用例跳过",
+      "expected_result": "成功从房颤预警卡片跳转至对应患者详情页，且患者姓名、负荷占比、有效时长、持续时间均一致，并能返回工作台",
+      "seq": 2,
+      "target": "房颤预警",
+      "action": "click",
+      "role": "table_row",
+      "context": "",
+      "ui_pattern": "table_row",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "a0c470881e21e741b76d",
+      "after_state_id": "a0c470881e21e741b76d",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "房颤预警",
+        "role": "",
+        "tag": "div",
+        "selector": "div.ant-tabs-extra-content",
+        "primary_locator": "div.ant-tabs-extra-content",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "static",
+        "confidence": 0.25,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "a0c470881e21e741b76d",
+          "after_state_id": "a0c470881e21e741b76d"
+        }
+      },
+      "confidence": 0.25,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "727",
+      "case_name": "验证房颤预警卡片点击跳转患者详情并校验4个字段",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片或其记录数据未出现，则本用例跳过",
+      "expected_result": "成功从房颤预警卡片跳转至对应患者详情页，且患者姓名、负荷占比、有效时长、持续时间均一致，并能返回工作台",
+      "seq": 3,
+      "target": "房颤预警",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "success",
+      "error": "",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "a0c470881e21e741b76d",
+      "after_state_id": "a0c470881e21e741b76d",
+      "locator": {
+        "strategy": "text_exact",
+        "actual_text": "房颤预警",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": true,
+        "effect": "validate",
+        "confidence": 1.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "a0c470881e21e741b76d",
+          "after_state_id": "a0c470881e21e741b76d"
+        }
+      },
+      "confidence": 1.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "727",
+      "case_name": "验证房颤预警卡片点击跳转患者详情并校验4个字段",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片或其记录数据未出现，则本用例跳过",
+      "expected_result": "成功从房颤预警卡片跳转至对应患者详情页，且患者姓名、负荷占比、有效时长、持续时间均一致，并能返回工作台",
+      "seq": 4,
+      "target": "负荷占比",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "a0c470881e21e741b76d",
+      "after_state_id": "a0c470881e21e741b76d",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "727",
+      "case_name": "验证房颤预警卡片点击跳转患者详情并校验4个字段",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片或其记录数据未出现，则本用例跳过",
+      "expected_result": "成功从房颤预警卡片跳转至对应患者详情页，且患者姓名、负荷占比、有效时长、持续时间均一致，并能返回工作台",
+      "seq": 5,
+      "target": "有效时长",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "a0c470881e21e741b76d",
+      "after_state_id": "a0c470881e21e741b76d",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "727",
+      "case_name": "验证房颤预警卡片点击跳转患者详情并校验4个字段",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片或其记录数据未出现，则本用例跳过",
+      "expected_result": "成功从房颤预警卡片跳转至对应患者详情页，且患者姓名、负荷占比、有效时长、持续时间均一致，并能返回工作台",
+      "seq": 6,
+      "target": "持续时间",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "success",
+      "error": "",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "a0c470881e21e741b76d",
+      "after_state_id": "a0c470881e21e741b76d",
+      "locator": {
+        "strategy": "scored_text(10)",
+        "actual_text": "持续性房颤房性0今日新增+0",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": true,
+        "effect": "validate",
+        "confidence": 1.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "a0c470881e21e741b76d",
+          "after_state_id": "a0c470881e21e741b76d"
+        }
+      },
+      "confidence": 1.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "727",
+      "case_name": "验证房颤预警卡片点击跳转患者详情并校验4个字段",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片或其记录数据未出现，则本用例跳过",
+      "expected_result": "成功从房颤预警卡片跳转至对应患者详情页，且患者姓名、负荷占比、有效时长、持续时间均一致，并能返回工作台",
+      "seq": 7,
+      "target": "工作台预警信息区域",
+      "action": "go_back",
+      "role": "",
+      "context": "",
+      "ui_pattern": "table_row",
+      "status": "success",
+      "error": "",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "a0c470881e21e741b76d",
+      "after_state_id": "9ec8281e7b3875311052",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": true,
+        "effect": "go_back",
+        "confidence": 0.95,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_3": "",
+                "rc_select_4": "",
+                "rc_select_5": ""
+              },
+              "after": {
+                "rc_select_9": "",
+                "rc_select_10": "",
+                "rc_select_11": ""
+              }
+            }
+          },
+          "before_state_id": "a0c470881e21e741b76d",
+          "after_state_id": "9ec8281e7b3875311052"
+        }
+      },
+      "confidence": 0.95,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "728",
+      "case_name": "验证佩戴预警卡片点击跳转患者详情并校验患者姓名",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「佩戴预警」卡片或其记录数据未出现，则本用例跳过",
+      "expected_result": "成功从佩戴预警卡片跳转至对应患者详情页，且患者姓名一致，并能返回工作台",
+      "seq": 1,
+      "target": "工作台页面，向下滚动至页面下半区的预警信息区域",
+      "action": "navigate",
+      "role": "link",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "9ec8281e7b3875311052",
+      "after_state_id": "9ec8281e7b3875311052",
+      "locator": {
+        "strategy": "scored_text(40)",
+        "actual_text": "工作台",
+        "role": "",
+        "tag": "li",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "static",
+        "confidence": 0.25,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "9ec8281e7b3875311052",
+          "after_state_id": "9ec8281e7b3875311052"
+        }
+      },
+      "confidence": 0.25,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "728",
+      "case_name": "验证佩戴预警卡片点击跳转患者详情并校验患者姓名",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「佩戴预警」卡片或其记录数据未出现，则本用例跳过",
+      "expected_result": "成功从佩戴预警卡片跳转至对应患者详情页，且患者姓名一致，并能返回工作台",
+      "seq": 2,
+      "target": "佩戴预警",
+      "action": "click",
+      "role": "table_row",
+      "context": "",
+      "ui_pattern": "table_row",
+      "status": "skipped",
+      "error": "skipped_empty_dynamic_state:暂无数据",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "9ec8281e7b3875311052",
+      "after_state_id": "9ec8281e7b3875311052",
+      "locator": {
+        "strategy": "scored_text(50)",
+        "actual_text": "佩戴预警 (0)全部暂无数据暂无数据",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "9ec8281e7b3875311052",
+          "after_state_id": "9ec8281e7b3875311052"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "728",
+      "case_name": "验证佩戴预警卡片点击跳转患者详情并校验患者姓名",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「佩戴预警」卡片或其记录数据未出现，则本用例跳过",
+      "expected_result": "成功从佩戴预警卡片跳转至对应患者详情页，且患者姓名一致，并能返回工作台",
+      "seq": 3,
+      "target": "佩戴预警",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "success",
+      "error": "",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "9ec8281e7b3875311052",
+      "after_state_id": "9ec8281e7b3875311052",
+      "locator": {
+        "strategy": "text_contains",
+        "actual_text": "佩戴预警 (0)",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": true,
+        "effect": "validate",
+        "confidence": 1.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "9ec8281e7b3875311052",
+          "after_state_id": "9ec8281e7b3875311052"
+        }
+      },
+      "confidence": 1.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "728",
+      "case_name": "验证佩戴预警卡片点击跳转患者详情并校验患者姓名",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「佩戴预警」卡片或其记录数据未出现，则本用例跳过",
+      "expected_result": "成功从佩戴预警卡片跳转至对应患者详情页，且患者姓名一致，并能返回工作台",
+      "seq": 4,
+      "target": "工作台预警信息区域",
+      "action": "go_back",
+      "role": "",
+      "context": "",
+      "ui_pattern": "table_row",
+      "status": "success",
+      "error": "",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "9ec8281e7b3875311052",
+      "after_state_id": "a46ab3b1fcb963af74cf",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": true,
+        "effect": "go_back",
+        "confidence": 0.95,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_9": "",
+                "rc_select_10": "",
+                "rc_select_11": ""
+              },
+              "after": {
+                "rc_select_15": "",
+                "rc_select_16": "",
+                "rc_select_17": ""
+              }
+            }
+          },
+          "before_state_id": "9ec8281e7b3875311052",
+          "after_state_id": "a46ab3b1fcb963af74cf"
+        }
+      },
+      "confidence": 0.95,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "729",
+      "case_name": "验证测量预警卡片点击跳转患者详情并校验患者姓名",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「测量预警」卡片或其记录数据未出现，则本用例跳过",
+      "expected_result": "成功从测量预警卡片跳转至对应患者详情页，且患者姓名一致，并能返回工作台",
+      "seq": 1,
+      "target": "工作台页面，向下滚动至页面下半区的预警信息区域",
+      "action": "navigate",
+      "role": "link",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "a46ab3b1fcb963af74cf",
+      "after_state_id": "a46ab3b1fcb963af74cf",
+      "locator": {
+        "strategy": "scored_text(40)",
+        "actual_text": "工作台",
+        "role": "",
+        "tag": "li",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "static",
+        "confidence": 0.25,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "a46ab3b1fcb963af74cf",
+          "after_state_id": "a46ab3b1fcb963af74cf"
+        }
+      },
+      "confidence": 0.25,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "729",
+      "case_name": "验证测量预警卡片点击跳转患者详情并校验患者姓名",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「测量预警」卡片或其记录数据未出现，则本用例跳过",
+      "expected_result": "成功从测量预警卡片跳转至对应患者详情页，且患者姓名一致，并能返回工作台",
+      "seq": 2,
+      "target": "测量预警",
+      "action": "click",
+      "role": "table_row",
+      "context": "",
+      "ui_pattern": "table_row",
+      "status": "skipped",
+      "error": "skipped_empty_dynamic_state:暂无数据",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "a46ab3b1fcb963af74cf",
+      "after_state_id": "a46ab3b1fcb963af74cf",
+      "locator": {
+        "strategy": "scored_text(50)",
+        "actual_text": "测量预警 (0)全部暂无数据暂无数据",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "execution_failed",
+        "confidence": 0.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "a46ab3b1fcb963af74cf",
+          "after_state_id": "a46ab3b1fcb963af74cf"
+        }
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "729",
+      "case_name": "验证测量预警卡片点击跳转患者详情并校验患者姓名",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「测量预警」卡片或其记录数据未出现，则本用例跳过",
+      "expected_result": "成功从测量预警卡片跳转至对应患者详情页，且患者姓名一致，并能返回工作台",
+      "seq": 3,
+      "target": "测量预警",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "success",
+      "error": "",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "a46ab3b1fcb963af74cf",
+      "after_state_id": "a46ab3b1fcb963af74cf",
+      "locator": {
+        "strategy": "text_contains",
+        "actual_text": "测量预警 (0)",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": true,
+        "effect": "validate",
+        "confidence": 1.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "a46ab3b1fcb963af74cf",
+          "after_state_id": "a46ab3b1fcb963af74cf"
+        }
+      },
+      "confidence": 1.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "729",
+      "case_name": "验证测量预警卡片点击跳转患者详情并校验患者姓名",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「测量预警」卡片或其记录数据未出现，则本用例跳过",
+      "expected_result": "成功从测量预警卡片跳转至对应患者详情页，且患者姓名一致，并能返回工作台",
+      "seq": 4,
+      "target": "工作台预警信息区域",
+      "action": "go_back",
+      "role": "",
+      "context": "",
+      "ui_pattern": "table_row",
+      "status": "success",
+      "error": "",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "a46ab3b1fcb963af74cf",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": true,
+        "effect": "go_back",
+        "confidence": 0.95,
+        "diff": {
+          "changed": true,
+          "changes": {
+            "form_values": {
+              "before": {
+                "rc_select_15": "",
+                "rc_select_16": "",
+                "rc_select_17": ""
+              },
+              "after": {
+                "rc_select_21": "",
+                "rc_select_22": "",
+                "rc_select_23": ""
+              }
+            }
+          },
+          "before_state_id": "a46ab3b1fcb963af74cf",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.95,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "730",
+      "case_name": "验证房颤预警下拉筛选-全部展示最近7天全部记录",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片未出现，则本用例跳过",
+      "expected_result": "房颤预警下拉筛选为“全部”时，列表展示最近7天全部房颤预警记录，不做占比阈值过滤",
+      "seq": 1,
+      "target": "工作台页面，向下滚动至页面下半区的预警信息区域",
+      "action": "navigate",
+      "role": "link",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "scored_text(40)",
+        "actual_text": "工作台",
+        "role": "",
+        "tag": "li",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "static",
+        "confidence": 0.25,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.25,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "730",
+      "case_name": "验证房颤预警下拉筛选-全部展示最近7天全部记录",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片未出现，则本用例跳过",
+      "expected_result": "房颤预警下拉筛选为“全部”时，列表展示最近7天全部房颤预警记录，不做占比阈值过滤",
+      "seq": 2,
+      "target": "房颤预警",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "success",
+      "error": "",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "text_exact",
+        "actual_text": "房颤预警",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": true,
+        "effect": "validate",
+        "confidence": 1.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 1.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "730",
+      "case_name": "验证房颤预警下拉筛选-全部展示最近7天全部记录",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片未出现，则本用例跳过",
+      "expected_result": "房颤预警下拉筛选为“全部”时，列表展示最近7天全部房颤预警记录，不做占比阈值过滤",
+      "seq": 3,
+      "target": "房颤预警",
+      "action": "select",
+      "role": "combobox",
+      "context": "dropdown",
+      "ui_pattern": "dropdown",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "房颤预警",
+        "role": "",
+        "tag": "div",
+        "selector": "div.ant-tabs-extra-content",
+        "primary_locator": "div.ant-tabs-extra-content",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "no_observable_selection_change",
+        "confidence": 0.35,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.35,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "731",
+      "case_name": "验证房颤预警下拉筛选-≥10占比过滤",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片未出现，则本用例跳过",
+      "expected_result": "房颤预警下拉筛选为“≥10”时，列表中每条记录占比均≥10；若筛选后无数据则显示“暂无数据”",
+      "seq": 1,
+      "target": "工作台页面，向下滚动至页面下半区的预警信息区域",
+      "action": "navigate",
+      "role": "link",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "scored_text(40)",
+        "actual_text": "工作台",
+        "role": "",
+        "tag": "li",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "static",
+        "confidence": 0.25,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.25,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "731",
+      "case_name": "验证房颤预警下拉筛选-≥10占比过滤",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片未出现，则本用例跳过",
+      "expected_result": "房颤预警下拉筛选为“≥10”时，列表中每条记录占比均≥10；若筛选后无数据则显示“暂无数据”",
+      "seq": 2,
+      "target": "房颤预警",
+      "action": "select",
+      "role": "combobox",
+      "context": "dropdown",
+      "ui_pattern": "dropdown",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "房颤预警",
+        "role": "",
+        "tag": "div",
+        "selector": "div.ant-tabs-extra-content",
+        "primary_locator": "div.ant-tabs-extra-content",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "no_observable_selection_change",
+        "confidence": 0.35,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.35,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "731",
+      "case_name": "验证房颤预警下拉筛选-≥10占比过滤",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片未出现，则本用例跳过",
+      "expected_result": "房颤预警下拉筛选为“≥10”时，列表中每条记录占比均≥10；若筛选后无数据则显示“暂无数据”",
+      "seq": 3,
+      "target": "暂无数据",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "success",
+      "error": "",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "text_exact",
+        "actual_text": "暂无数据",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": true,
+        "effect": "validate",
+        "confidence": 1.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 1.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "732",
+      "case_name": "验证房颤预警下拉筛选-≥20占比过滤",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片未出现，则本用例跳过",
+      "expected_result": "房颤预警下拉筛选为“≥20”时，列表中每条记录占比均≥20；若筛选后无数据则显示“暂无数据”",
+      "seq": 1,
+      "target": "工作台页面，向下滚动至页面下半区的预警信息区域",
+      "action": "navigate",
+      "role": "link",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "scored_text(40)",
+        "actual_text": "工作台",
+        "role": "",
+        "tag": "li",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "static",
+        "confidence": 0.25,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.25,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "732",
+      "case_name": "验证房颤预警下拉筛选-≥20占比过滤",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片未出现，则本用例跳过",
+      "expected_result": "房颤预警下拉筛选为“≥20”时，列表中每条记录占比均≥20；若筛选后无数据则显示“暂无数据”",
+      "seq": 2,
+      "target": "房颤预警",
+      "action": "select",
+      "role": "combobox",
+      "context": "dropdown",
+      "ui_pattern": "dropdown",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "房颤预警",
+        "role": "",
+        "tag": "div",
+        "selector": "div.ant-tabs-extra-content",
+        "primary_locator": "div.ant-tabs-extra-content",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "no_observable_selection_change",
+        "confidence": 0.35,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.35,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "732",
+      "case_name": "验证房颤预警下拉筛选-≥20占比过滤",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片未出现，则本用例跳过",
+      "expected_result": "房颤预警下拉筛选为“≥20”时，列表中每条记录占比均≥20；若筛选后无数据则显示“暂无数据”",
+      "seq": 3,
+      "target": "暂无数据",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "success",
+      "error": "",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "text_exact",
+        "actual_text": "暂无数据",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": true,
+        "effect": "validate",
+        "confidence": 1.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 1.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "733",
+      "case_name": "验证房颤预警下拉筛选-≥30占比过滤",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片未出现，则本用例跳过",
+      "expected_result": "房颤预警下拉筛选为“≥30”时，列表中每条记录占比均≥30；若筛选后无数据则显示“暂无数据”",
+      "seq": 1,
+      "target": "工作台页面，向下滚动至页面下半区的预警信息区域",
+      "action": "navigate",
+      "role": "link",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "scored_text(40)",
+        "actual_text": "工作台",
+        "role": "",
+        "tag": "li",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "static",
+        "confidence": 0.25,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.25,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "733",
+      "case_name": "验证房颤预警下拉筛选-≥30占比过滤",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片未出现，则本用例跳过",
+      "expected_result": "房颤预警下拉筛选为“≥30”时，列表中每条记录占比均≥30；若筛选后无数据则显示“暂无数据”",
+      "seq": 2,
+      "target": "房颤预警",
+      "action": "select",
+      "role": "combobox",
+      "context": "dropdown",
+      "ui_pattern": "dropdown",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "房颤预警",
+        "role": "",
+        "tag": "div",
+        "selector": "div.ant-tabs-extra-content",
+        "primary_locator": "div.ant-tabs-extra-content",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "no_observable_selection_change",
+        "confidence": 0.35,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.35,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "733",
+      "case_name": "验证房颤预警下拉筛选-≥30占比过滤",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片未出现，则本用例跳过",
+      "expected_result": "房颤预警下拉筛选为“≥30”时，列表中每条记录占比均≥30；若筛选后无数据则显示“暂无数据”",
+      "seq": 3,
+      "target": "暂无数据",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "success",
+      "error": "",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "text_exact",
+        "actual_text": "暂无数据",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": true,
+        "effect": "validate",
+        "confidence": 1.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 1.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "734",
+      "case_name": "验证房颤预警下拉筛选-≥40占比过滤",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片未出现，则本用例跳过",
+      "expected_result": "房颤预警下拉筛选为“≥40”时，列表中每条记录占比均≥40；若筛选后无数据则显示“暂无数据”",
+      "seq": 1,
+      "target": "工作台页面，向下滚动至页面下半区的预警信息区域",
+      "action": "navigate",
+      "role": "link",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "scored_text(40)",
+        "actual_text": "工作台",
+        "role": "",
+        "tag": "li",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "static",
+        "confidence": 0.25,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.25,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "734",
+      "case_name": "验证房颤预警下拉筛选-≥40占比过滤",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片未出现，则本用例跳过",
+      "expected_result": "房颤预警下拉筛选为“≥40”时，列表中每条记录占比均≥40；若筛选后无数据则显示“暂无数据”",
+      "seq": 2,
+      "target": "房颤预警",
+      "action": "select",
+      "role": "combobox",
+      "context": "dropdown",
+      "ui_pattern": "dropdown",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "房颤预警",
+        "role": "",
+        "tag": "div",
+        "selector": "div.ant-tabs-extra-content",
+        "primary_locator": "div.ant-tabs-extra-content",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "no_observable_selection_change",
+        "confidence": 0.35,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.35,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "734",
+      "case_name": "验证房颤预警下拉筛选-≥40占比过滤",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片未出现，则本用例跳过",
+      "expected_result": "房颤预警下拉筛选为“≥40”时，列表中每条记录占比均≥40；若筛选后无数据则显示“暂无数据”",
+      "seq": 3,
+      "target": "暂无数据",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "success",
+      "error": "",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "text_exact",
+        "actual_text": "暂无数据",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": true,
+        "effect": "validate",
+        "confidence": 1.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 1.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "735",
+      "case_name": "验证房颤预警下拉筛选“≥50”时列表占比过滤正确",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "筛选“≥50”生效后，仅展示占比≥50的房颤预警记录；若无匹配数据则卡片区域显示“暂无数据”，页面无异常",
+      "seq": 1,
+      "target": "工作台页面后，向下滚动至页面下半区预警信息区域",
+      "action": "navigate",
+      "role": "link",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "scored_text(40)",
+        "actual_text": "工作台",
+        "role": "",
+        "tag": "li",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "static",
+        "confidence": 0.25,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.25,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "735",
+      "case_name": "验证房颤预警下拉筛选“≥50”时列表占比过滤正确",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "筛选“≥50”生效后，仅展示占比≥50的房颤预警记录；若无匹配数据则卡片区域显示“暂无数据”，页面无异常",
+      "seq": 2,
+      "target": "房颤预警",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "success",
+      "error": "",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "text_exact",
+        "actual_text": "房颤预警",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": true,
+        "effect": "validate",
+        "confidence": 1.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 1.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "735",
+      "case_name": "验证房颤预警下拉筛选“≥50”时列表占比过滤正确",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "筛选“≥50”生效后，仅展示占比≥50的房颤预警记录；若无匹配数据则卡片区域显示“暂无数据”，页面无异常",
+      "seq": 3,
+      "target": "房颤预警",
+      "action": "select",
+      "role": "combobox",
+      "context": "dropdown",
+      "ui_pattern": "dropdown",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "treewalker_text",
+        "actual_text": "房颤预警",
+        "role": "",
+        "tag": "div",
+        "selector": "div.ant-tabs-extra-content",
+        "primary_locator": "div.ant-tabs-extra-content",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "no_observable_selection_change",
+        "confidence": 0.35,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.35,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "735",
+      "case_name": "验证房颤预警下拉筛选“≥50”时列表占比过滤正确",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "筛选“≥50”生效后，仅展示占比≥50的房颤预警记录；若无匹配数据则卡片区域显示“暂无数据”，页面无异常",
+      "seq": 4,
+      "target": "",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "736",
+      "case_name": "验证佩戴预警下拉筛选“全部”时展示当天全部记录",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "在“全部”状态下展示当天全部佩戴预警记录，不按发送状态过滤；若无数据则显示“暂无数据”，页面无异常",
+      "seq": 1,
+      "target": "工作台页面后，向下滚动至页面下半区预警信息区域",
+      "action": "navigate",
+      "role": "link",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "scored_text(40)",
+        "actual_text": "工作台",
+        "role": "",
+        "tag": "li",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "static",
+        "confidence": 0.25,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.25,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "736",
+      "case_name": "验证佩戴预警下拉筛选“全部”时展示当天全部记录",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "在“全部”状态下展示当天全部佩戴预警记录，不按发送状态过滤；若无数据则显示“暂无数据”，页面无异常",
+      "seq": 2,
+      "target": "佩戴预警",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "success",
+      "error": "",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "text_contains",
+        "actual_text": "佩戴预警 (0)",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": true,
+        "effect": "validate",
+        "confidence": 1.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 1.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "736",
+      "case_name": "验证佩戴预警下拉筛选“全部”时展示当天全部记录",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "在“全部”状态下展示当天全部佩戴预警记录，不按发送状态过滤；若无数据则显示“暂无数据”，页面无异常",
+      "seq": 3,
+      "target": "佩戴预警",
+      "action": "select",
+      "role": "combobox",
+      "context": "dropdown",
+      "ui_pattern": "dropdown",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "scored_text(40)",
+        "actual_text": "佩戴预警 (0)全部暂无数据暂无数据",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "no_observable_selection_change",
+        "confidence": 0.35,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.35,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "736",
+      "case_name": "验证佩戴预警下拉筛选“全部”时展示当天全部记录",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "在“全部”状态下展示当天全部佩戴预警记录，不按发送状态过滤；若无数据则显示“暂无数据”，页面无异常",
+      "seq": 4,
+      "target": "",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "737",
+      "case_name": "验证佩戴预警下拉筛选“未发送”时列表状态过滤正确",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "筛选“未发送”后，仅展示当天发送状态为未发送的佩戴预警记录；若无匹配数据则显示“暂无数据”，页面无异常",
+      "seq": 1,
+      "target": "工作台页面后，向下滚动至页面下半区预警信息区域",
+      "action": "navigate",
+      "role": "link",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "scored_text(40)",
+        "actual_text": "工作台",
+        "role": "",
+        "tag": "li",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "static",
+        "confidence": 0.25,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.25,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "737",
+      "case_name": "验证佩戴预警下拉筛选“未发送”时列表状态过滤正确",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "筛选“未发送”后，仅展示当天发送状态为未发送的佩戴预警记录；若无匹配数据则显示“暂无数据”，页面无异常",
+      "seq": 2,
+      "target": "佩戴预警",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "success",
+      "error": "",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "text_contains",
+        "actual_text": "佩戴预警 (0)",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": true,
+        "effect": "validate",
+        "confidence": 1.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 1.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "737",
+      "case_name": "验证佩戴预警下拉筛选“未发送”时列表状态过滤正确",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "筛选“未发送”后，仅展示当天发送状态为未发送的佩戴预警记录；若无匹配数据则显示“暂无数据”，页面无异常",
+      "seq": 3,
+      "target": "佩戴预警",
+      "action": "select",
+      "role": "combobox",
+      "context": "dropdown",
+      "ui_pattern": "dropdown",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "scored_text(40)",
+        "actual_text": "佩戴预警 (0)全部暂无数据暂无数据",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "no_observable_selection_change",
+        "confidence": 0.35,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.35,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "737",
+      "case_name": "验证佩戴预警下拉筛选“未发送”时列表状态过滤正确",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "筛选“未发送”后，仅展示当天发送状态为未发送的佩戴预警记录；若无匹配数据则显示“暂无数据”，页面无异常",
+      "seq": 4,
+      "target": "",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "738",
+      "case_name": "验证佩戴预警下拉筛选“已发送”时列表状态过滤正确",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "筛选“已发送”后，仅展示当天发送状态为已发送的佩戴预警记录；若无匹配数据则显示“暂无数据”，页面无异常",
+      "seq": 1,
+      "target": "工作台页面后，向下滚动至页面下半区预警信息区域",
+      "action": "navigate",
+      "role": "link",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "scored_text(40)",
+        "actual_text": "工作台",
+        "role": "",
+        "tag": "li",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "static",
+        "confidence": 0.25,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.25,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "738",
+      "case_name": "验证佩戴预警下拉筛选“已发送”时列表状态过滤正确",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "筛选“已发送”后，仅展示当天发送状态为已发送的佩戴预警记录；若无匹配数据则显示“暂无数据”，页面无异常",
+      "seq": 2,
+      "target": "佩戴预警",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "success",
+      "error": "",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "text_contains",
+        "actual_text": "佩戴预警 (0)",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": true,
+        "effect": "validate",
+        "confidence": 1.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 1.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "738",
+      "case_name": "验证佩戴预警下拉筛选“已发送”时列表状态过滤正确",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "筛选“已发送”后，仅展示当天发送状态为已发送的佩戴预警记录；若无匹配数据则显示“暂无数据”，页面无异常",
+      "seq": 3,
+      "target": "佩戴预警",
+      "action": "select",
+      "role": "combobox",
+      "context": "dropdown",
+      "ui_pattern": "dropdown",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "scored_text(40)",
+        "actual_text": "佩戴预警 (0)全部暂无数据暂无数据",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "no_observable_selection_change",
+        "confidence": 0.35,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.35,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "738",
+      "case_name": "验证佩戴预警下拉筛选“已发送”时列表状态过滤正确",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "筛选“已发送”后，仅展示当天发送状态为已发送的佩戴预警记录；若无匹配数据则显示“暂无数据”，页面无异常",
+      "seq": 4,
+      "target": "",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "739",
+      "case_name": "验证测量预警下拉筛选“全部”时展示最近3天全部记录",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "在“全部”状态下展示最近3天全部测量预警记录，不按发送状态过滤；若无数据则显示“暂无数据”，页面无异常",
+      "seq": 1,
+      "target": "工作台页面后，向下滚动至页面下半区预警信息区域",
+      "action": "navigate",
+      "role": "link",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "scored_text(40)",
+        "actual_text": "工作台",
+        "role": "",
+        "tag": "li",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "static",
+        "confidence": 0.25,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.25,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "739",
+      "case_name": "验证测量预警下拉筛选“全部”时展示最近3天全部记录",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "在“全部”状态下展示最近3天全部测量预警记录，不按发送状态过滤；若无数据则显示“暂无数据”，页面无异常",
+      "seq": 2,
+      "target": "测量预警",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "success",
+      "error": "",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "text_contains",
+        "actual_text": "测量预警 (0)",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": true,
+        "effect": "validate",
+        "confidence": 1.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 1.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "739",
+      "case_name": "验证测量预警下拉筛选“全部”时展示最近3天全部记录",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "在“全部”状态下展示最近3天全部测量预警记录，不按发送状态过滤；若无数据则显示“暂无数据”，页面无异常",
+      "seq": 3,
+      "target": "测量预警",
+      "action": "select",
+      "role": "combobox",
+      "context": "dropdown",
+      "ui_pattern": "dropdown",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "scored_text(40)",
+        "actual_text": "测量预警 (0)全部暂无数据暂无数据",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "no_observable_selection_change",
+        "confidence": 0.35,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.35,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "739",
+      "case_name": "验证测量预警下拉筛选“全部”时展示最近3天全部记录",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "在“全部”状态下展示最近3天全部测量预警记录，不按发送状态过滤；若无数据则显示“暂无数据”，页面无异常",
+      "seq": 4,
+      "target": "",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "740",
+      "case_name": "验证测量预警下拉筛选“未发送”时列表状态过滤正确",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "筛选“未发送”后，仅展示最近3天发送状态为未发送的测量预警记录；若无匹配数据则显示“暂无数据”，页面无异常",
+      "seq": 1,
+      "target": "工作台页面后，向下滚动至页面下半区预警信息区域",
+      "action": "navigate",
+      "role": "link",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "scored_text(40)",
+        "actual_text": "工作台",
+        "role": "",
+        "tag": "li",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "static",
+        "confidence": 0.25,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.25,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "740",
+      "case_name": "验证测量预警下拉筛选“未发送”时列表状态过滤正确",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "筛选“未发送”后，仅展示最近3天发送状态为未发送的测量预警记录；若无匹配数据则显示“暂无数据”，页面无异常",
+      "seq": 2,
+      "target": "测量预警",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "success",
+      "error": "",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "text_contains",
+        "actual_text": "测量预警 (0)",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": true,
+        "effect": "validate",
+        "confidence": 1.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 1.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "740",
+      "case_name": "验证测量预警下拉筛选“未发送”时列表状态过滤正确",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "筛选“未发送”后，仅展示最近3天发送状态为未发送的测量预警记录；若无匹配数据则显示“暂无数据”，页面无异常",
+      "seq": 3,
+      "target": "测量预警",
+      "action": "select",
+      "role": "combobox",
+      "context": "dropdown",
+      "ui_pattern": "dropdown",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "scored_text(40)",
+        "actual_text": "测量预警 (0)全部暂无数据暂无数据",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "no_observable_selection_change",
+        "confidence": 0.35,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.35,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "740",
+      "case_name": "验证测量预警下拉筛选“未发送”时列表状态过滤正确",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "筛选“未发送”后，仅展示最近3天发送状态为未发送的测量预警记录；若无匹配数据则显示“暂无数据”，页面无异常",
+      "seq": 4,
+      "target": "",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "741",
+      "case_name": "验证测量预警下拉筛选“已发送”时列表状态过滤正确",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "筛选“已发送”后，仅展示最近3天发送状态为已发送的测量预警记录；若无匹配数据则显示“暂无数据”，页面无异常",
+      "seq": 1,
+      "target": "工作台页面后，向下滚动至页面下半区预警信息区域",
+      "action": "navigate",
+      "role": "link",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "scored_text(40)",
+        "actual_text": "工作台",
+        "role": "",
+        "tag": "li",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "static",
+        "confidence": 0.25,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.25,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "741",
+      "case_name": "验证测量预警下拉筛选“已发送”时列表状态过滤正确",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "筛选“已发送”后，仅展示最近3天发送状态为已发送的测量预警记录；若无匹配数据则显示“暂无数据”，页面无异常",
+      "seq": 2,
+      "target": "测量预警",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "success",
+      "error": "",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "text_contains",
+        "actual_text": "测量预警 (0)",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": true,
+        "effect": "validate",
+        "confidence": 1.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 1.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "741",
+      "case_name": "验证测量预警下拉筛选“已发送”时列表状态过滤正确",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "筛选“已发送”后，仅展示最近3天发送状态为已发送的测量预警记录；若无匹配数据则显示“暂无数据”，页面无异常",
+      "seq": 3,
+      "target": "测量预警",
+      "action": "select",
+      "role": "combobox",
+      "context": "dropdown",
+      "ui_pattern": "dropdown",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "scored_text(40)",
+        "actual_text": "测量预警 (0)全部暂无数据暂无数据",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "no_observable_selection_change",
+        "confidence": 0.35,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.35,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "741",
+      "case_name": "验证测量预警下拉筛选“已发送”时列表状态过滤正确",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "筛选“已发送”后，仅展示最近3天发送状态为已发送的测量预警记录；若无匹配数据则显示“暂无数据”，页面无异常",
+      "seq": 4,
+      "target": "",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "742",
+      "case_name": "验证预警卡片无数据或筛选无匹配数据显示“暂无数据”",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "任一预警卡片无数据或下拉筛选无匹配记录时，对应卡片区域均显示“暂无数据”，页面正常展示不报错；若执行期间不存在空数据场景，本用例动态跳过",
+      "seq": 1,
+      "target": "工作台页面后，向下滚动至页面下半区预警信息区域",
+      "action": "navigate",
+      "role": "link",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "effect_not_verified",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "scored_text(40)",
+        "actual_text": "工作台",
+        "role": "",
+        "tag": "li",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "static",
+        "confidence": 0.25,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 0.25,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "742",
+      "case_name": "验证预警卡片无数据或筛选无匹配数据显示“暂无数据”",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "任一预警卡片无数据或下拉筛选无匹配记录时，对应卡片区域均显示“暂无数据”，页面正常展示不报错；若执行期间不存在空数据场景，本用例动态跳过",
+      "seq": 2,
+      "target": "房颤预警",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "success",
+      "error": "",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "text_exact",
+        "actual_text": "房颤预警",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": true,
+        "effect": "validate",
+        "confidence": 1.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 1.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "742",
+      "case_name": "验证预警卡片无数据或筛选无匹配数据显示“暂无数据”",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "任一预警卡片无数据或下拉筛选无匹配记录时，对应卡片区域均显示“暂无数据”，页面正常展示不报错；若执行期间不存在空数据场景，本用例动态跳过",
+      "seq": 3,
+      "target": "佩戴预警",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "success",
+      "error": "",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "text_contains",
+        "actual_text": "佩戴预警 (0)",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": true,
+        "effect": "validate",
+        "confidence": 1.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 1.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "742",
+      "case_name": "验证预警卡片无数据或筛选无匹配数据显示“暂无数据”",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "任一预警卡片无数据或下拉筛选无匹配记录时，对应卡片区域均显示“暂无数据”，页面正常展示不报错；若执行期间不存在空数据场景，本用例动态跳过",
+      "seq": 4,
+      "target": "测量预警",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "success",
+      "error": "",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "text_contains",
+        "actual_text": "测量预警 (0)",
+        "role": "",
+        "tag": "div",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": true,
+        "effect": "validate",
+        "confidence": 1.0,
+        "diff": {
+          "changed": false,
+          "changes": {},
+          "before_state_id": "58c146004cf57d6259e0",
+          "after_state_id": "58c146004cf57d6259e0"
+        }
+      },
+      "confidence": 1.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    },
+    {
+      "case_id": "742",
+      "case_name": "验证预警卡片无数据或筛选无匹配数据显示“暂无数据”",
+      "module": "工作台-预警信息",
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "expected_result": "任一预警卡片无数据或下拉筛选无匹配记录时，对应卡片区域均显示“暂无数据”，页面正常展示不报错；若执行期间不存在空数据场景，本用例动态跳过",
+      "seq": 5,
+      "target": "",
+      "action": "validate",
+      "role": "",
+      "context": "",
+      "ui_pattern": "",
+      "status": "failed",
+      "error": "element_not_found",
+      "before_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "after_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "before_state_id": "58c146004cf57d6259e0",
+      "after_state_id": "58c146004cf57d6259e0",
+      "locator": {
+        "strategy": "",
+        "actual_text": "",
+        "role": "",
+        "tag": "",
+        "selector": "",
+        "primary_locator": "",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "href": ""
+      },
+      "effect": {
+        "valid": false,
+        "effect": "failed",
+        "confidence": 0.0
+      },
+      "confidence": 0.0,
+      "pages_touched": [
+        "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68"
+      ]
+    }
+  ],
+  "case_results": [
+    {
+      "case_id": "727",
+      "case_name": "验证房颤预警卡片点击跳转患者详情并校验4个字段",
+      "module": "工作台-预警信息",
+      "test_case_id": "727",
+      "logical_case_id": "727",
+      "revision_no": 1,
+      "version_id": 122,
+      "project_id": 12,
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片或其记录数据未出现，则本用例跳过",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "a0c470881e21e741b76d",
+      "data_set_id": "717b2661-7c89-49b9-849c-ca40764c7a60",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788507550.114794,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "728",
+      "case_name": "验证佩戴预警卡片点击跳转患者详情并校验患者姓名",
+      "module": "工作台-预警信息",
+      "test_case_id": "728",
+      "logical_case_id": "728",
+      "revision_no": 1,
+      "version_id": 122,
+      "project_id": 12,
+      "preconditions": "已登录系统\n工作台页面已加载\n若「佩戴预警」卡片或其记录数据未出现，则本用例跳过",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "9ec8281e7b3875311052",
+      "data_set_id": "2b06928f-1f70-4c97-a997-eb5f20669e3c",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788507552.203598,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "729",
+      "case_name": "验证测量预警卡片点击跳转患者详情并校验患者姓名",
+      "module": "工作台-预警信息",
+      "test_case_id": "729",
+      "logical_case_id": "729",
+      "revision_no": 1,
+      "version_id": 122,
+      "project_id": 12,
+      "preconditions": "已登录系统\n工作台页面已加载\n若「测量预警」卡片或其记录数据未出现，则本用例跳过",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "a46ab3b1fcb963af74cf",
+      "data_set_id": "dba3850d-6ad5-40cc-99dc-b97af4ed6125",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788507554.5047388,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "730",
+      "case_name": "验证房颤预警下拉筛选-全部展示最近7天全部记录",
+      "module": "工作台-预警信息",
+      "test_case_id": "730",
+      "logical_case_id": "730",
+      "revision_no": 1,
+      "version_id": 122,
+      "project_id": 12,
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片未出现，则本用例跳过",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "58c146004cf57d6259e0",
+      "data_set_id": "c4b0bf12-7788-4b26-acaa-b3c5684e0dd7",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788507555.2579904,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "731",
+      "case_name": "验证房颤预警下拉筛选-≥10占比过滤",
+      "module": "工作台-预警信息",
+      "test_case_id": "731",
+      "logical_case_id": "731",
+      "revision_no": 1,
+      "version_id": 122,
+      "project_id": 12,
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片未出现，则本用例跳过",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "58c146004cf57d6259e0",
+      "data_set_id": "12bfd951-89ed-4423-badf-1e5c2dfeee7f",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788507556.0399766,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "732",
+      "case_name": "验证房颤预警下拉筛选-≥20占比过滤",
+      "module": "工作台-预警信息",
+      "test_case_id": "732",
+      "logical_case_id": "732",
+      "revision_no": 1,
+      "version_id": 122,
+      "project_id": 12,
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片未出现，则本用例跳过",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "58c146004cf57d6259e0",
+      "data_set_id": "32918192-6713-4069-88f0-44967517e61c",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788507556.7785933,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "733",
+      "case_name": "验证房颤预警下拉筛选-≥30占比过滤",
+      "module": "工作台-预警信息",
+      "test_case_id": "733",
+      "logical_case_id": "733",
+      "revision_no": 1,
+      "version_id": 122,
+      "project_id": 12,
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片未出现，则本用例跳过",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "58c146004cf57d6259e0",
+      "data_set_id": "9c261835-7a1b-45d7-86c2-6d7f0a591fd0",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788507557.4903207,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "734",
+      "case_name": "验证房颤预警下拉筛选-≥40占比过滤",
+      "module": "工作台-预警信息",
+      "test_case_id": "734",
+      "logical_case_id": "734",
+      "revision_no": 1,
+      "version_id": 122,
+      "project_id": 12,
+      "preconditions": "已登录系统\n工作台页面已加载\n若「房颤预警」卡片未出现，则本用例跳过",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "58c146004cf57d6259e0",
+      "data_set_id": "7f3b4431-4ff4-4887-848a-e670f7f04ef9",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788507558.2443159,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "735",
+      "case_name": "验证房颤预警下拉筛选“≥50”时列表占比过滤正确",
+      "module": "工作台-预警信息",
+      "test_case_id": "735",
+      "logical_case_id": "735",
+      "revision_no": 1,
+      "version_id": 122,
+      "project_id": 12,
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "58c146004cf57d6259e0",
+      "data_set_id": "19162bed-672e-4a81-847d-02e1fa032334",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788507558.9573636,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "736",
+      "case_name": "验证佩戴预警下拉筛选“全部”时展示当天全部记录",
+      "module": "工作台-预警信息",
+      "test_case_id": "736",
+      "logical_case_id": "736",
+      "revision_no": 1,
+      "version_id": 122,
+      "project_id": 12,
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "58c146004cf57d6259e0",
+      "data_set_id": "5ee92121-c24d-4c90-a127-6da60e8b7327",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788507559.7669706,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "737",
+      "case_name": "验证佩戴预警下拉筛选“未发送”时列表状态过滤正确",
+      "module": "工作台-预警信息",
+      "test_case_id": "737",
+      "logical_case_id": "737",
+      "revision_no": 1,
+      "version_id": 122,
+      "project_id": 12,
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "58c146004cf57d6259e0",
+      "data_set_id": "241c381a-8e21-4c2e-b7be-a8befb45486e",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788507560.5136082,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "738",
+      "case_name": "验证佩戴预警下拉筛选“已发送”时列表状态过滤正确",
+      "module": "工作台-预警信息",
+      "test_case_id": "738",
+      "logical_case_id": "738",
+      "revision_no": 1,
+      "version_id": 122,
+      "project_id": 12,
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "58c146004cf57d6259e0",
+      "data_set_id": "6aa528a2-834f-49f1-8cdb-a7dd491d7caa",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788507561.2644403,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "739",
+      "case_name": "验证测量预警下拉筛选“全部”时展示最近3天全部记录",
+      "module": "工作台-预警信息",
+      "test_case_id": "739",
+      "logical_case_id": "739",
+      "revision_no": 1,
+      "version_id": 122,
+      "project_id": 12,
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "58c146004cf57d6259e0",
+      "data_set_id": "004f983a-d263-4f55-ac68-20fb349da64c",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788507562.0035644,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "740",
+      "case_name": "验证测量预警下拉筛选“未发送”时列表状态过滤正确",
+      "module": "工作台-预警信息",
+      "test_case_id": "740",
+      "logical_case_id": "740",
+      "revision_no": 1,
+      "version_id": 122,
+      "project_id": 12,
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "58c146004cf57d6259e0",
+      "data_set_id": "44e66235-b8da-4e32-beba-df52b93572cb",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788507562.7355359,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "741",
+      "case_name": "验证测量预警下拉筛选“已发送”时列表状态过滤正确",
+      "module": "工作台-预警信息",
+      "test_case_id": "741",
+      "logical_case_id": "741",
+      "revision_no": 1,
+      "version_id": 122,
+      "project_id": 12,
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "58c146004cf57d6259e0",
+      "data_set_id": "4d5e18f0-fe25-40bf-8dea-36aee39a4d2f",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788507563.508888,
+      "data_cleanup": []
+    },
+    {
+      "case_id": "742",
+      "case_name": "验证预警卡片无数据或筛选无匹配数据显示“暂无数据”",
+      "module": "工作台-预警信息",
+      "test_case_id": "742",
+      "logical_case_id": "742",
+      "revision_no": 1,
+      "version_id": 122,
+      "project_id": 12,
+      "preconditions": "已登录系统并处于工作台页面\n工作台页面已加载",
+      "start_url": "https://hospitalweb.xinjikang.cn/#/workpanel?refresh=1788507457319&oId=9ee70b68673b4660af488e86a0112f68",
+      "start_state_id": "58c146004cf57d6259e0",
+      "data_set_id": "81379d4f-b21a-4bd3-bb3d-c760669ec62c",
+      "runtime_data": {},
+      "status": "failed",
+      "error": "one_or_more_steps_failed",
+      "finished_at": 1788507564.1917815,
+      "data_cleanup": []
+    }
+  ]
+}
